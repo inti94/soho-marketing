@@ -1,4 +1,2 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://sohotip.co.kr/sitemap.xml
+User-agent: Yeti
+Allow:/
