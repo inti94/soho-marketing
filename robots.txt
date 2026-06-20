@@ -1,2 +1,11 @@
-User-agent: Yeti
-Allow:/
+User-agent: *
+Allow: /
+
+# 색인 제외 파일
+Disallow: /article.html
+
+# 크롤링 지연 (선택사항)
+Crawl-delay: 1
+
+# 사이트맵
+Sitemap: https://sohotip.co.kr/sitemap.xml
