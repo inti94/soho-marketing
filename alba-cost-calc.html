@@ -104,6 +104,52 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
 .tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
 footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
 footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
+
+  /* ── 함께 사용한 계산기 ── */
+  .related-calcs-section{margin:32px 0 0;}
+  .related-calcs-section h2,.related-articles-section h2{font-size:16px;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .rel-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+  .rel-calc-card{display:flex;align-items:center;gap:10px;padding:14px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s;}
+  .rel-calc-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 14px rgba(255,94,0,.12);}
+  .rcc-icon{font-size:22px;flex-shrink:0;}
+  .rcc-body{flex:1;min-width:0;}
+  .rcc-title{font-size:12px;font-weight:700;line-height:1.3;margin-bottom:3px;}
+  .rcc-desc{font-size:11px;color:var(--text-muted);line-height:1.4;}
+  /* ── 함께 많이 본 글 ── */
+  .related-articles-section{margin:24px 0 0;}
+  .rel-article-list{display:flex;flex-direction:column;gap:0;}
+  .rel-article-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-light);text-decoration:none;color:var(--text);transition:color .2s;}
+  .rel-article-item:last-child{border-bottom:none;}
+  .rel-article-item:hover .rai-title{color:var(--primary);}
+  .rai-num{font-size:18px;font-weight:900;color:var(--border);width:24px;flex-shrink:0;text-align:center;}
+  .rai-body{flex:1;min-width:0;}
+  .rai-cat{font-size:10px;color:var(--primary);font-weight:700;margin-bottom:2px;}
+  .rai-title{font-size:13px;font-weight:600;line-height:1.4;}
+  .rai-arrow{color:var(--primary);font-size:14px;flex-shrink:0;}
+  /* ── 인라인 계산기 ── */
+  .inline-calc-box{background:linear-gradient(135deg,var(--primary-light),#fff);border:2px solid var(--primary);border-radius:16px;padding:24px;margin:28px 0;}
+  .inline-calc-box h3{font-size:15px;font-weight:700;color:var(--text);margin-bottom:16px;}
+  .inline-fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:14px;}
+  .inline-field{}
+  .inline-field label{display:block;font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:4px;}
+  .inline-field input{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:15px;font-family:var(--sans);color:var(--text);background:#fff;outline:none;transition:border-color .2s;-webkit-appearance:none;}
+  .inline-field input:focus{border-color:var(--primary);}
+  .inline-calc-btn{width:100%;padding:12px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background .2s;min-height:44px;}
+  .inline-calc-btn:hover{background:var(--primary-mid);}
+  .inline-result{margin-top:14px;padding:14px 16px;background:#fff;border-radius:10px;border:1px solid var(--border);display:none;}
+  .inline-result-val{font-size:22px;font-weight:700;color:var(--primary);margin-bottom:4px;}
+  .inline-result-sub{font-size:12px;color:var(--text-muted);line-height:1.5;}
+  .inline-full-link{display:block;text-align:center;margin-top:12px;font-size:12px;color:var(--primary);text-decoration:none;font-weight:600;}
+  .inline-full-link:hover{text-decoration:underline;}
+  @media(max-width:640px){
+    .rel-calc-grid{grid-template-columns:1fr 1fr;}
+    .inline-fields{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:380px){
+    .rel-calc-grid{grid-template-columns:1fr;}
+    .inline-fields{grid-template-columns:1fr;}
+  }
+
 </style></head>
 <body>
 <div id="progress-bar"></div>
@@ -284,6 +330,24 @@ function calculate() {
   document.getElementById('res-sub').textContent = `기본급 ${fmt(base)} + 주휴수당 ${applyWeekly ? fmt(weeklyPay) : '없음'} + 4대보험 ${fmt(insTotal)}`;
   document.getElementById('result-section').style.display = 'block';
   document.getElementById('result-section').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function calcInlineAlba(){
+  var h=parseFloat(document.getElementById('il_hourly').value)||10320;
+  var hrs=parseFloat(document.getElementById('il_hours').value)||8;
+  var days=parseFloat(document.getElementById('il_days').value)||5;
+  var weekHrs=hrs*days;
+  var base=h*weekHrs*4.345;
+  var weekly=weekHrs>=15?h*hrs*(weekHrs/40)*4.345:0;
+  var total=base+weekly;
+  var ins=total*(0.0475+0.03595+0.009);
+  var grand=total+ins;
+  var r=document.getElementById('il_result_alba');
+  var rv=document.getElementById('il_result_alba_val');
+  var rs=document.getElementById('il_result_alba_sub');
+  rv.textContent='월 총 '+Math.round(grand).toLocaleString('ko-KR')+'원';
+  rs.textContent='기본급 '+Math.round(base).toLocaleString('ko-KR')+'원 + 주휴 '+Math.round(weekly).toLocaleString('ko-KR')+'원 + 4대보험 '+Math.round(ins).toLocaleString('ko-KR')+'원';
+  r.style.display='block';
 }
 </script>
 <footer>
