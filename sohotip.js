@@ -1325,12 +1325,12 @@ function setupCalcShare(slug) {
      그 순간부터 글 조회수가 쌓이고, 홈/카테고리 '인기글'이 최근 30일 조회순으로 자동 표시됩니다. */
 (function () {
   var firebaseConfig = {
-    apiKey: "PASTE_API_KEY",
-    authDomain: "PASTE_PROJECT.firebaseapp.com",
-    projectId: "PASTE_PROJECT_ID",
-    storageBucket: "PASTE_PROJECT.appspot.com",
-    messagingSenderId: "PASTE_SENDER_ID",
-    appId: "PASTE_APP_ID"
+    apiKey: "AIzaSyA4fEgjXaqteKZKQPyF3jixRNOSgt2j-cY",
+    authDomain: "sohotip.firebaseapp.com",
+    projectId: "sohotip",
+    storageBucket: "sohotip.firebasestorage.app",
+    messagingSenderId: "709592565992",
+    appId: "1:709592565992:web:3bec305682fdb379eb615d"
   };
   var WINDOW_DAYS = 30; // 인기글 집계 기간(일)
   var TOP5_FALLBACK = ["baemin-vs-coupang","naver-place-ranking-2026","soho-jiwongeum-2026","solo-shop-tax-deduction","rent-increase-refusal"];
