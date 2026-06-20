@@ -43,33 +43,35 @@
   position: relative;
   display: flex;
   align-items: center;
+  flex: 1;
+  min-width: 0;
+  max-width: 260px;
 }
 .nav-search-input {
-  width: 200px;
-  padding: 7px 14px 7px 36px;
+  width: 100%;
+  padding: 7px 14px 7px 34px;
   border: 1.5px solid var(--border);
   border-radius: 20px;
   background: var(--bg-card);
   font-size: 13px;
   color: var(--text);
   outline: none;
-  transition: border-color 0.2s, width 0.3s;
+  transition: border-color 0.2s;
   font-family: var(--sans);
 }
 .nav-search-input:focus {
   border-color: var(--primary);
-  width: 260px;
 }
 .nav-search-icon {
   position: absolute;
-  left: 11px;
-  font-size: 14px;
+  left: 10px;
+  font-size: 13px;
   color: var(--text-muted);
   pointer-events: none;
 }
 @media (max-width: 768px) {
-  .nav-search-input { width: 140px; font-size: 12px; }
-  .nav-search-input:focus { width: 180px; }
+  .nav-search { max-width: 100%; }
+  .nav-search-input { font-size: 14px; padding: 8px 14px 8px 34px; }
 }
 
 /* ── 검색 드롭다운 ───────────────────────── */
