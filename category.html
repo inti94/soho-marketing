@@ -2,11 +2,47 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="소상공인 마케팅 실전 가이드 전체 목록 — 네이버 플레이스, SNS, 배달앱, 지원금, 창업 정보">
-<title>전체 가이드 — 소상공인 마케팅 실전백과</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="description" content="소상공인 마케팅 실전 가이드 80개 전체 목록. 무료 계산기(알바인건비·배달순이익·BEP)부터 네이버 플레이스, SNS, 배달앱, 지원금, 창업 정보까지.">
+<meta name="keywords" content="소상공인 마케팅 가이드, 네이버 플레이스 최적화, 배달앱 수수료, 소상공인 지원금, 소상공인 계산기, 창업 정보">
+<meta name="robots" content="index, follow">
+<meta name="author" content="소상공인 마케팅 실전백과">
+<!-- Open Graph -->
+<meta property="og:title" content="전체 마케팅 가이드 80개 — 소상공인 마케팅 실전백과">
+<meta property="og:description" content="네이버 플레이스·배달앱·SNS·지원금·창업 정보 80개 가이드. 무료 계산기 제공.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sohotip.co.kr/category.html">
+<meta property="og:image" content="https://sohotip.co.kr/android-chrome-512x512.png">
+<meta property="og:site_name" content="소상공인 마케팅 실전백과">
+<meta property="og:locale" content="ko_KR">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="전체 마케팅 가이드 80개 — 소상공인 마케팅 실전백과">
+<meta name="twitter:description" content="네이버 플레이스·배달앱·SNS·지원금·창업 정보 80개 가이드 무료 제공.">
+<meta name="twitter:image" content="https://sohotip.co.kr/android-chrome-512x512.png">
+<link rel="canonical" href="https://sohotip.co.kr/category.html">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<title>전체 마케팅 가이드 80개 — 소상공인 무료 계산기 + 실전백과</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet">
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://sohotip.co.kr/category.html",
+  "url": "https://sohotip.co.kr/category.html",
+  "name": "전체 마케팅 가이드",
+  "description": "소상공인 마케팅 실전 가이드 80개 전체 목록",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "홈", "item": "https://sohotip.co.kr/" },
+      { "@type": "ListItem", "position": 2, "name": "전체 가이드", "item": "https://sohotip.co.kr/category.html" }
+    ]
+  }
+}
+</script>
 <style>
   :root {
     --primary: #FF5E00;
@@ -26,128 +62,166 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.7; }
 
+  /* NAV */
   nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(250,250,248,0.95);
+    background: rgba(250,250,248,0.97);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 60px;
+    padding: 0 1.5rem;
+    display: flex; align-items: center; gap: 10px;
+    height: 56px;
   }
-  .nav-logo { font-family: var(--serif); font-size: 17px; color: var(--primary); font-weight: 700; text-decoration: none; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+  .nav-logo { font-family: var(--serif); font-size: 15px; color: var(--primary); font-weight: 700; text-decoration: none; flex-shrink: 0; white-space: nowrap; line-height: 1.3; }
+  .nav-links { display: flex; gap: 1.4rem; list-style: none; flex: 1; justify-content: center; }
+  .nav-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; white-space: nowrap; }
   .nav-links a:hover { color: var(--primary); }
-  .nav-cta { background: var(--primary); color: #fff; font-size: 13px; padding: 8px 18px; border-radius: 6px; text-decoration: none; }
+  .nav-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .nav-cta { background: var(--primary); color: #fff; font-size: 12px; font-weight: 600; padding: 7px 12px; border-radius: 6px; text-decoration: none; white-space: nowrap; }
 
-  .page-header {
-    background: var(--primary);
-    padding: 48px 2rem;
-    text-align: center;
-  }
-  .page-header h1 { font-family: var(--serif); font-size: 30px; color: #fff; margin-bottom: 10px; }
-  .page-header p { font-size: 15px; color: rgba(255,255,255,0.75); }
+  /* 브레드크럼 */
+  .breadcrumb { max-width: 960px; margin: 0 auto; padding: 10px 1.5rem; font-size: 12px; color: var(--text-muted); }
+  .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--primary); }
+  .breadcrumb span { margin: 0 6px; }
+
+  /* PAGE HEADER */
+  .page-header { background: var(--primary); padding: 32px 1.5rem; text-align: center; }
+  .page-header h1 { font-family: var(--serif); font-size: clamp(22px, 6vw, 30px); color: #fff; margin-bottom: 8px; word-break: keep-all; }
+  .page-header p { font-size: clamp(13px, 3.5vw, 15px); color: rgba(255,255,255,0.8); word-break: keep-all; }
 
   /* FILTER TABS */
-  .filter-wrap { background: var(--bg-card); border-bottom: 1px solid var(--border); position: sticky; top: 60px; z-index: 90; }
-  .filter-inner { max-width: 960px; margin: 0 auto; padding: 0 2rem; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+  .filter-wrap { background: var(--bg-card); border-bottom: 1px solid var(--border); position: sticky; top: 56px; z-index: 90; }
+  .filter-inner { max-width: 960px; margin: 0 auto; padding: 0 1rem; display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
   .filter-inner::-webkit-scrollbar { display: none; }
   .filter-btn {
-    flex-shrink: 0;
-    padding: 14px 18px;
-    font-size: 13px; font-weight: 500;
-    color: var(--text-muted);
+    flex-shrink: 0; padding: 12px 16px;
+    font-size: 13px; font-weight: 500; color: var(--text-muted);
     border: none; background: none; cursor: pointer;
     border-bottom: 2px solid transparent;
-    transition: all 0.2s;
-    white-space: nowrap;
+    transition: all 0.2s; white-space: nowrap; min-height: 44px;
   }
   .filter-btn:hover { color: var(--primary); }
   .filter-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
 
-  .main { max-width: 960px; margin: 0 auto; padding: 40px 2rem 80px; }
+  .main { max-width: 960px; margin: 0 auto; padding: 28px 1rem 80px; }
+
+  /* 계산기 퀵 배너 */
+  .calc-banner {
+    background: var(--primary-light);
+    border: 1.5px solid rgba(255,94,0,0.25);
+    border-radius: 14px; padding: 20px;
+    margin-bottom: 28px;
+  }
+  .calc-banner-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px; }
+  .calc-banner-title { font-size: 15px; font-weight: 700; color: var(--primary); word-break: keep-all; }
+  .calc-banner-link { font-size: 12px; color: var(--primary); text-decoration: none; white-space: nowrap; }
+  .calc-banner-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
+  .calc-mini-btn {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--bg-card); border: 1.5px solid rgba(255,94,0,0.2);
+    border-radius: 10px; padding: 10px 12px;
+    text-decoration: none; color: var(--text);
+    font-size: 13px; font-weight: 600;
+    transition: all 0.18s; min-height: 44px; word-break: keep-all;
+  }
+  .calc-mini-btn:hover { border-color: var(--primary); background: var(--primary-light); color: var(--primary); }
+  .calc-mini-icon { font-size: 18px; flex-shrink: 0; }
 
   /* CATEGORY SECTION */
-  .cat-section { margin-bottom: 56px; }
-  .cat-header {
-    display: flex; align-items: center; gap: 12px;
-    margin-bottom: 20px;
-    padding-bottom: 16px;
-    border-bottom: 2px solid var(--primary);
-  }
-  .cat-icon-big { font-size: 28px; }
-  .cat-header-text {}
-  .cat-header h2 { font-family: var(--serif); font-size: 22px; color: var(--text); }
-  .cat-header p { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+  .cat-section { margin-bottom: 48px; }
+  .cat-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 2px solid var(--primary); }
+  .cat-icon-big { font-size: 26px; }
+  .cat-header h2 { font-family: var(--serif); font-size: clamp(18px, 4vw, 22px); color: var(--text); word-break: keep-all; }
+  .cat-header p { font-size: 12px; color: var(--text-muted); margin-top: 2px; word-break: keep-all; }
 
   .article-list { display: flex; flex-direction: column; gap: 1px; }
   .article-row {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 18px 20px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 16px;
     text-decoration: none; color: var(--text);
-    display: flex; align-items: flex-start; gap: 16px;
-    transition: all 0.18s;
-    margin-bottom: 8px;
+    display: flex; align-items: flex-start; gap: 12px;
+    transition: all 0.18s; margin-bottom: 8px; min-height: 44px;
   }
   .article-row:hover { border-color: var(--primary-mid); box-shadow: 0 2px 12px rgba(255,94,0,0.08); }
-  .article-row-emoji { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
-  .article-row-body { flex: 1; }
-  .article-row-tag {
-    display: inline-block;
-    background: var(--primary-light); color: var(--primary);
-    font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
-    padding: 2px 8px; border-radius: 20px; margin-bottom: 6px;
-  }
-  .article-row-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; line-height: 1.5; }
-  .article-row-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 8px; }
-  .article-row-meta { font-size: 12px; color: var(--text-light); }
-  .article-row-arrow { color: var(--text-light); font-size: 18px; flex-shrink: 0; margin-top: 4px; transition: transform 0.2s; }
+  .article-row-emoji { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .article-row-body { flex: 1; min-width: 0; }
+  .article-row-tag { display: inline-block; background: var(--primary-light); color: var(--primary); font-size: 10px; font-weight: 700; letter-spacing: 0.05em; padding: 2px 8px; border-radius: 20px; margin-bottom: 5px; }
+  .article-row-title { font-size: 14px; font-weight: 700; margin-bottom: 3px; line-height: 1.5; word-break: keep-all; overflow-wrap: break-word; }
+  .article-row-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-bottom: 6px; word-break: keep-all; }
+  .article-row-meta { font-size: 11px; color: var(--text-light); }
+  .article-row-arrow { color: var(--text-light); font-size: 16px; flex-shrink: 0; margin-top: 4px; transition: transform 0.2s; }
   .article-row:hover .article-row-arrow { transform: translateX(3px); color: var(--primary); }
 
-  /* SIDEBAR-STYLE POPULAR */
-  .popular-box {
-    background: var(--accent-light);
-    border: 1px solid var(--accent);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin-bottom: 40px;
-  }
-  .popular-box h3 { font-size: 14px; font-weight: 700; margin-bottom: 14px; }
+  /* POPULAR BOX */
+  .popular-box { background: var(--accent-light); border: 1px solid var(--accent); border-radius: 12px; padding: 18px 20px; margin-bottom: 28px; }
+  .popular-box h3 { font-size: 14px; font-weight: 700; margin-bottom: 12px; }
   .popular-list { list-style: none; }
-  .popular-list li { padding: 8px 0; border-bottom: 1px solid rgba(255,94,0,0.2); display: flex; gap: 12px; align-items: center; }
+  .popular-list li { padding: 8px 0; border-bottom: 1px solid rgba(255,94,0,0.2); display: flex; gap: 12px; align-items: flex-start; }
   .popular-list li:last-child { border-bottom: none; }
-  .popular-num { font-size: 13px; font-weight: 700; color: var(--accent); min-width: 18px; }
-  .popular-list a { font-size: 13px; color: var(--text); text-decoration: none; }
+  .popular-num { font-size: 13px; font-weight: 700; color: var(--accent); min-width: 18px; flex-shrink: 0; padding-top: 1px; }
+  .popular-list a { font-size: 13px; color: var(--text); text-decoration: none; line-height: 1.5; word-break: keep-all; }
   .popular-list a:hover { color: var(--primary); }
 
-  footer {
-    background: #111; color: rgba(255,255,255,0.6);
-    padding: 40px 2rem; text-align: center;
-  }
+  /* SEARCH */
+  .nav-search { position: relative; display: flex; align-items: center; }
+  .nav-search-input { width: 150px; padding: 7px 12px 7px 30px; border: 1.5px solid var(--border); border-radius: 20px; background: var(--bg-card); font-size: 13px; color: var(--text); outline: none; transition: border-color 0.2s, width 0.3s; font-family: var(--sans); }
+  .nav-search-input:focus { border-color: var(--primary); width: 200px; }
+  .nav-search-icon { position: absolute; left: 9px; font-size: 12px; color: var(--text-muted); pointer-events: none; }
+  #search-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; width: 300px; background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); z-index: 1000; overflow: hidden; max-height: 400px; overflow-y: auto; }
+  .search-result-item { display: block; padding: 11px 14px; text-decoration: none; color: var(--text); border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  .search-result-item:last-child { border-bottom: none; }
+  .search-result-item:hover { background: var(--primary-light); }
+  .search-result-cat { font-size: 10px; color: var(--primary); font-weight: 600; margin-bottom: 2px; }
+  .search-result-title { font-size: 13px; font-weight: 600; line-height: 1.4; word-break: keep-all; }
+  .search-result-desc { font-size: 11px; color: var(--text-muted); line-height: 1.4; margin-top: 2px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .search-no-result { padding: 18px 14px; text-align: center; color: var(--text-muted); font-size: 13px; }
+  #search-results-section { display: none; margin-bottom: 32px; }
+  .search-result-full-item { display: block; padding: 14px; margin-bottom: 8px; background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 12px; text-decoration: none; color: var(--text); transition: border-color 0.2s; }
+  .search-result-full-item:hover { border-color: var(--primary); }
+
+  /* MOBILE SEARCH */
+  .mobile-search-bar { display: none; padding: 8px 1rem; background: var(--bg-card); border-bottom: 1px solid var(--border); }
+  .mobile-search-bar .nav-search { width: 100%; max-width: 100%; }
+  .mobile-search-bar .nav-search-input { width: 100%; font-size: 15px; padding: 10px 14px 10px 34px; border-radius: 10px; }
+  #search-dropdown-mobile { display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); z-index: 1000; overflow: hidden; max-height: 360px; overflow-y: auto; }
+
+  footer { background: #111; color: rgba(255,255,255,0.6); padding: 36px 1.5rem; text-align: center; }
   .footer-inner { max-width: 900px; margin: 0 auto; }
-  .footer-logo { font-family: var(--serif); font-size: 18px; color: #fff; margin-bottom: 12px; }
-  .footer-links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+  .footer-logo { font-family: var(--serif); font-size: 17px; color: #fff; margin-bottom: 10px; }
+  .footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
   .footer-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; }
   .footer-links a:hover { color: #fff; }
-  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.3); }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .nav-links { display: none; }
+    .nav-cta { font-size: 12px; padding: 6px 10px; }
+    .nav-right .nav-search { display: none; }
+    .mobile-search-bar { display: block; }
+    nav { justify-content: space-between; }
+    .breadcrumb { padding: 8px 1rem; }
+    .main { padding: 20px 1rem 60px; }
+    .calc-banner-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .calc-mini-btn { font-size: 12px; padding: 8px 10px; }
+    .article-row { padding: 12px 14px; }
     .article-row-emoji { display: none; }
+    .article-row-title { font-size: 14px; }
+    .article-row-desc { font-size: 12px; }
+    .filter-btn { padding: 10px 14px; font-size: 12px; }
+    .cat-header h2 { font-size: 18px; }
+    .popular-list a { font-size: 13px; }
   }
 </style>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
-  <link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://sohotip.co.kr/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://sohotip.co.kr/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
-  <link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
-  <link rel="shortcut icon" href="https://sohotip.co.kr/favicon.ico">
-  <link rel="stylesheet" href="sohotip.css">
+<link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sohotip.co.kr/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://sohotip.co.kr/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
+<link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
+<link rel="shortcut icon" href="https://sohotip.co.kr/favicon.ico">
+<link rel="stylesheet" href="sohotip.css">
 </head>
 <body>
 <div id="progress-bar"></div>
@@ -155,20 +229,23 @@
 <nav>
   <a href="index.html" class="nav-logo">소상공인 마케팅 실전백과</a>
   <ul class="nav-links">
-    <li><a href="category.html">카테고리</a></li>
+    <li><a href="index.html#calculator-section">무료 계산기</a></li>
+    <li><a href="category.html">전체 가이드</a></li>
     <li><a href="category.html#place">네이버 플레이스</a></li>
     <li><a href="category.html#delivery">배달앱</a></li>
     <li><a href="category.html#support">지원금</a></li>
-    <li><a href="tools.html">계산기</a></li>
   </ul>
-  <a href="index.html" class="nav-cta">홈으로</a>
-  <div class="nav-search">
-    <span class="nav-search-icon">🔍</span>
-    <input type="text" id="search-input" class="nav-search-input" placeholder="글 검색..." autocomplete="off">
-    <div id="search-dropdown"></div>
+  <div class="nav-right">
+    <div class="nav-search">
+      <span class="nav-search-icon">🔍</span>
+      <input type="text" id="search-input" class="nav-search-input" placeholder="글 검색..." autocomplete="off">
+      <div id="search-dropdown"></div>
+    </div>
+    <a href="index.html" class="nav-cta">홈으로</a>
   </div>
 </nav>
-<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
+
+<!-- 모바일 전용 검색바 -->
 <div class="mobile-search-bar">
   <div class="nav-search">
     <span class="nav-search-icon">🔍</span>
@@ -176,14 +253,19 @@
     <div id="search-dropdown-mobile"></div>
   </div>
 </div>
-<!-- 카카오 애드핏 광고 -->
-<div style="text-align:center;margin:24px 0;padding:0 16px;">
-<ins class="kakao_ad_area" style="display:none;"
-data-ad-unit="DAN-Clknn1e1V0cOh2VA"
-data-ad-width="320"
-data-ad-height="100"></ins>
-<script type="text/javascript" src="//t1.kakaocdn.net/kas/static/ba.min.js" async></script>
+
+<!-- 카카오 애드핏 -->
+<div style="text-align:center;margin:6px 0 0;padding:0 1rem;">
+  <ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-Clknn1e1V0cOh2VA" data-ad-width="320" data-ad-height="100"></ins>
+  <script type="text/javascript" src="//t1.kakaocdn.net/kas/static/ba.min.js" async></script>
 </div>
+
+<!-- 브레드크럼 -->
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <a href="index.html">홈</a>
+  <span>›</span>
+  <span>전체 가이드</span>
+</nav>
 
 <div class="page-header">
   <h1>전체 마케팅 가이드</h1>
@@ -194,6 +276,7 @@ data-ad-height="100"></ins>
 <div class="filter-wrap">
   <div class="filter-inner">
     <button class="filter-btn active" onclick="scrollTo(0,0)">전체</button>
+    <button class="filter-btn" onclick="document.getElementById('calc-section-cat').scrollIntoView({behavior:'smooth'})">🧮 계산기</button>
     <button class="filter-btn" onclick="document.getElementById('place').scrollIntoView({behavior:'smooth'})">📍 네이버 플레이스</button>
     <button class="filter-btn" onclick="document.getElementById('sns').scrollIntoView({behavior:'smooth'})">📱 SNS · 숏폼</button>
     <button class="filter-btn" onclick="document.getElementById('delivery').scrollIntoView({behavior:'smooth'})">🛵 배달앱</button>
@@ -204,24 +287,42 @@ data-ad-height="100"></ins>
 
 <div class="main">
 
-  <!-- POPULAR -->
-  <section id="search-results-section" style="display:none; max-width:720px; margin:0 auto 40px; padding:0 2rem;">
-  <span id="search-query-label" style="display:block; font-size:15px; font-weight:700; color:var(--text); margin-bottom:16px;"></span>
-  <div id="search-results-list"></div>
-  <button onclick="document.getElementById('search-results-section').style.display='none'; history.replaceState(null,'',location.pathname);" style="margin-top:16px; background:none; border:1.5px solid var(--border); padding:8px 16px; border-radius:8px; cursor:pointer; font-size:13px; color:var(--text-muted);">✕ 검색 결과 닫기</button>
-</section>
-<div class="popular-box">
+  <!-- 검색 결과 섹션 -->
+  <section id="search-results-section">
+    <span id="search-query-label" style="display:block; font-size:15px; font-weight:700; color:var(--text); margin-bottom:14px;"></span>
+    <div id="search-results-list"></div>
+    <button onclick="document.getElementById('search-results-section').style.display='none'; history.replaceState(null,'',location.pathname);" style="margin-top:14px; background:none; border:1.5px solid var(--border); padding:8px 16px; border-radius:8px; cursor:pointer; font-size:13px; color:var(--text-muted);">✕ 검색 결과 닫기</button>
+  </section>
+
+  <!-- ① 소상공인 무료 계산기 — 최상단 배치 -->
+  <div id="calc-section-cat" class="calc-banner">
+    <div class="calc-banner-head">
+      <div class="calc-banner-title">🧮 소상공인 무료 계산기 — 즉시 계산</div>
+      <a href="tools.html" class="calc-banner-link">전체 보기 →</a>
+    </div>
+    <div class="calc-banner-grid">
+      <a href="alba-cost-calc.html" class="calc-mini-btn"><span class="calc-mini-icon">🧮</span> 알바 인건비</a>
+      <a href="delivery-profit-calc.html" class="calc-mini-btn"><span class="calc-mini-icon">🛵</span> 배달 순이익</a>
+      <a href="bep-calc.html" class="calc-mini-btn"><span class="calc-mini-icon">📈</span> BEP 계산기</a>
+      <a href="vat-calc.html" class="calc-mini-btn"><span class="calc-mini-icon">💰</span> 부가세</a>
+      <a href="food-cost-calc.html" class="calc-mini-btn"><span class="calc-mini-icon">🍽️</span> 원가율</a>
+      <a href="tools.html" class="calc-mini-btn"><span class="calc-mini-icon">➕</span> 더 보기</a>
+    </div>
+  </div>
+
+  <!-- ② 인기글 -->
+  <div class="popular-box">
     <h3>🔥 이번 주 인기글</h3>
     <ul class="popular-list">
-        <li><span class="popular-num">1</span><a href="article.html">네이버 플레이스 최적화, 지금 당장 할 수 있는 5가지 (2026년)</a></li>
-        <li><span class="popular-num">2</span><a href="baemin-vs-coupang.html">배달의민족 vs 쿠팡이츠 수수료 완전 비교 (2026년 최신)</a></li>
-        <li><span class="popular-num">3</span><a href="soho-jiwongeum-2026.html">2026년 소상공인 지원금 총정리 — 지금 신청 가능한 것만</a></li>
-        <li><span class="popular-num">4</span><a href="instagram-restaurant.html">인스타그램으로 음식점 홍보하는 현실적인 방법</a></li>
-        <li><span class="popular-num">5</span><a href="card-terminal-compare.html">카드단말기 종류별 수수료 비교 — 우리 가게에 맞는 건?</a></li>
+      <li><span class="popular-num">1</span><a href="article.html">네이버 플레이스 최적화, 지금 당장 할 수 있는 5가지 (2026년)</a></li>
+      <li><span class="popular-num">2</span><a href="baemin-vs-coupang.html">배달의민족 vs 쿠팡이츠 수수료 완전 비교 (2026년 최신)</a></li>
+      <li><span class="popular-num">3</span><a href="soho-jiwongeum-2026.html">2026년 소상공인 지원금 총정리 — 지금 신청 가능한 것만</a></li>
+      <li><span class="popular-num">4</span><a href="instagram-restaurant.html">인스타그램으로 음식점 홍보하는 현실적인 방법</a></li>
+      <li><span class="popular-num">5</span><a href="card-terminal-compare.html">카드단말기 종류별 수수료 비교 — 우리 가게에 맞는 건?</a></li>
     </ul>
   </div>
 
-  <!-- 네이버 플레이스 -->
+<!-- 네이버 플레이스 -->
   <div class="cat-section" id="place">
     <div class="cat-header">
       <div class="cat-icon-big">📍</div>
