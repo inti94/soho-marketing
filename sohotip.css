@@ -1507,3 +1507,67 @@
   .reco-share-btn { flex: 1 1 calc(50% - 4px); min-width: 0; }
   #reco-toast { bottom: 80px; font-size: 12px; padding: 11px 16px; }
 }
+
+/* ===========================================
+   말풍선(대화체 강조) + 체크리스트 박스
+   · 게시글 본문에서 공감·위트 멘트, 핵심 체크리스트에 사용
+   · 모든 페이지 공통(sohotip.css) — 별도 page CSS 불필요
+=========================================== */
+.talk-bubble {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: #FFF7F0;
+  border: 1.5px solid var(--primary-light);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin: 24px 0;
+}
+.talk-bubble::before {
+  content: "";
+  position: absolute; left: 30px; top: -11px;
+  border-width: 0 9px 11px 9px;
+  border-style: solid;
+  border-color: transparent transparent var(--primary-light) transparent;
+}
+.talk-bubble::after {
+  content: "";
+  position: absolute; left: 31px; top: -8px;
+  border-width: 0 8px 10px 8px;
+  border-style: solid;
+  border-color: transparent transparent #FFF7F0 transparent;
+}
+.talk-bubble .tb-face {
+  font-size: 26px; line-height: 1.2; flex-shrink: 0;
+}
+.talk-bubble .tb-body {
+  font-size: 14.5px; color: var(--text); line-height: 1.7; word-break: keep-all;
+}
+.talk-bubble .tb-body strong { color: var(--primary); font-weight: 700; }
+
+/* ✅ 체크리스트 박스 */
+.check-box {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin: 24px 0;
+}
+.check-box .cb-title {
+  font-size: 14px; font-weight: 700; color: var(--text);
+  margin-bottom: 12px; word-break: keep-all;
+}
+.check-box ul { list-style: none; margin: 0 !important; padding: 0 !important; }
+.check-box li {
+  position: relative;
+  padding: 6px 0 6px 28px;
+  font-size: 14px; color: var(--text); line-height: 1.6; word-break: keep-all;
+  margin: 0 !important;
+}
+.check-box li::before {
+  content: "✅";
+  position: absolute; left: 0; top: 6px;
+  font-size: 14px;
+}
