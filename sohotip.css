@@ -1129,3 +1129,309 @@
   .calc-recommend-grid { grid-template-columns: 1fr; }
   #sticky-cta a { font-size: 12px; padding: 8px 14px; }
 }
+
+
+/* ===========================================
+   체류시간 극대화 — 내부 추천 + 인라인 계산기
+   (engage 모듈 / sohotip.js 와 1:1 대응)
+   · 모든 클래스는 reco- / inline-calc- 네임스페이스로
+     기존 스타일과 충돌하지 않습니다.
+=========================================== */
+
+/* ── 추천 영역 공통 래퍼 ───────────────────── */
+.reco-root {
+  max-width: 720px;
+  margin: 48px auto 0;
+  padding: 0 2rem;
+}
+.reco-root * { box-sizing: border-box; }
+
+/* 계산기 페이지(.page-wrap)·글 본문(.article-main) 내부에서는 폭/여백 조정 */
+.page-wrap .reco-root { max-width: 100%; padding: 0; margin-top: 40px; }
+.article-main .reco-root { max-width: 100%; padding: 0; margin-top: 48px; }
+
+.reco-section { margin-bottom: 36px; }
+.reco-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  word-break: keep-all;
+}
+.reco-section-sub {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-left: 4px;
+}
+
+/* ── 카드형 그리드 (PC 2~4열 / 모바일 1열) ──── */
+.reco-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.reco-grid.reco-grid-2 { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+
+.reco-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+  min-height: 80px;
+}
+.reco-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 16px rgba(255, 94, 0, 0.10);
+  transform: translateY(-2px);
+}
+.reco-card-icon {
+  font-size: 26px;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 30px;
+  text-align: center;
+}
+.reco-card-body { min-width: 0; flex: 1; }
+.reco-card-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+}
+.reco-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.45;
+  margin-bottom: 4px;
+  word-break: keep-all;
+}
+.reco-card-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  word-break: keep-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── 인기 TOP5 (순위형 리스트) ───────────────── */
+.reco-rank-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.reco-rank-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.18s, background 0.18s;
+  min-height: 52px;
+}
+.reco-rank-item:hover { border-color: var(--primary); background: var(--primary-light); }
+.reco-rank-num {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  border-radius: 7px;
+  background: var(--text);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.reco-rank-item:nth-child(1) .reco-rank-num,
+.reco-rank-item:nth-child(2) .reco-rank-num,
+.reco-rank-item:nth-child(3) .reco-rank-num { background: var(--primary); }
+.reco-rank-body { min-width: 0; flex: 1; }
+.reco-rank-title {
+  font-size: 13px; font-weight: 600; line-height: 1.45;
+  word-break: keep-all;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.reco-rank-tag { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.reco-rank-arrow { color: var(--primary); font-size: 15px; flex-shrink: 0; }
+
+/* ── 이전 글 / 다음 글 ──────────────────────── */
+.reco-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 8px 0 12px;
+}
+.reco-nav-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.18s, box-shadow 0.18s;
+  min-height: 64px;
+}
+.reco-nav-item:hover { border-color: var(--primary); box-shadow: 0 2px 12px rgba(255,94,0,0.08); }
+.reco-nav-item.reco-nav-next { text-align: right; align-items: flex-end; }
+.reco-nav-dir { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+.reco-nav-title {
+  font-size: 13px; font-weight: 600; line-height: 1.4;
+  word-break: keep-all;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.reco-nav-empty { opacity: 0.4; pointer-events: none; }
+
+/* ── 인라인 계산기 (글 본문 삽입형) ──────────── */
+.inline-calc {
+  background: var(--bg-card);
+  border: 2px solid var(--primary);
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin: 32px 0;
+  box-shadow: 0 4px 20px rgba(255, 94, 0, 0.08);
+}
+.inline-calc-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+  word-break: keep-all;
+}
+.inline-calc-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+.inline-calc-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.inline-calc-field { display: flex; flex-direction: column; }
+.inline-calc-field.full { grid-column: 1 / -1; }
+.inline-calc-field label {
+  font-size: 12px; font-weight: 600; color: var(--text);
+  margin-bottom: 6px;
+}
+.inline-calc-field .ic-hint { font-size: 11px; color: var(--text-muted); font-weight: 400; margin-left: 4px; }
+.inline-calc-input-wrap { position: relative; display: flex; align-items: center; }
+.inline-calc-field input,
+.inline-calc-field select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 16px; /* iOS 자동 확대 방지 */
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--bg-card);
+  outline: none;
+  transition: border-color 0.18s;
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
+}
+.inline-calc-field input:focus,
+.inline-calc-field select:focus { border-color: var(--primary); }
+.inline-calc-field .ic-suffix {
+  position: absolute; right: 14px;
+  font-size: 12px; color: var(--text-muted); pointer-events: none;
+}
+.inline-calc-field input.has-suffix { padding-right: 44px; }
+.inline-calc-btn {
+  width: 100%;
+  padding: 13px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 11px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: background 0.18s;
+}
+.inline-calc-btn:hover { background: var(--primary-mid); }
+
+.inline-calc-result {
+  margin-top: 16px;
+  border-top: 1px dashed var(--border);
+  padding-top: 16px;
+  display: none;
+}
+.inline-calc-result.show { display: block; animation: icFade 0.25s ease; }
+@keyframes icFade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.ic-res-main {
+  background: var(--primary-light);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.ic-res-main .ic-res-label { font-size: 12px; color: var(--primary-mid); margin-bottom: 4px; }
+.ic-res-main .ic-res-value { font-size: 24px; font-weight: 700; color: var(--primary); }
+.ic-res-rows { display: flex; flex-direction: column; gap: 0; }
+.ic-res-row {
+  display: flex; justify-content: space-between;
+  font-size: 13px; padding: 8px 4px;
+  border-bottom: 1px solid var(--border);
+}
+.ic-res-row:last-child { border-bottom: none; }
+.ic-res-row .k { color: var(--text-muted); }
+.ic-res-row .v { font-weight: 600; }
+.ic-res-row .v.minus { color: #EF4444; }
+
+.inline-calc-full {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  width: 100%;
+  justify-content: center;
+  padding: 11px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  transition: border-color 0.18s, background 0.18s;
+}
+.inline-calc-full:hover { border-color: var(--primary); background: var(--primary-light); }
+
+/* ── 반응형 (모바일 1열) ─────────────────────── */
+@media (max-width: 768px) {
+  .reco-grid, .reco-grid.reco-grid-2 { grid-template-columns: 1fr; }
+  .reco-nav { grid-template-columns: 1fr; }
+  .reco-nav-item.reco-nav-next { text-align: left; align-items: flex-start; }
+  .inline-calc-fields { grid-template-columns: 1fr; }
+  .inline-calc { padding: 18px 16px; }
+  .reco-root { padding-left: 0; padding-right: 0; }
+}

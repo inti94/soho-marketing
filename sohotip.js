@@ -456,3 +456,663 @@ document.addEventListener('DOMContentLoaded', function() {
   initCategorySearch();
   initLazyLoad();
 });
+
+
+/* ===========================================
+   체류시간 극대화 모듈 (engage)
+   ─────────────────────────────────────────
+   1. 계산기 페이지 → 관련 계산기/가이드/인기 TOP5 자동 추천
+   2. 게시글 → 관련 계산기 + 같은 카테고리 글 자동 추천
+   3. 게시글 본문 안 인라인 계산기 자동 삽입 (페이지 이동 없이 계산)
+   4. 인라인 계산기 → "전체 화면으로 열기" 버튼
+   5. 데이터(아래 RECO_CALCS / 매핑)만 추가하면 자동 생성
+   6. 카드형 반응형 UI
+   7. 이전 글 / 다음 글
+   8. 같은 카테고리 5개 이상 노출
+   9. 계산 완료 영역 하단 추천
+  10. 순환형 탐색 구조
+   ─────────────────────────────────────────
+   · 기존 sohotip.js(전면 개편본)의 loadSearchIndex() 반환값을 사용합니다.
+   · 모든 식별자/클래스는 reco / inline-calc 네임스페이스로 무충돌.
+=========================================== */
+
+/* 검색 인덱스 (loadSearchIndex 반환값 캐시) */
+let _engageIndex = null;
+
+/* ── [데이터] 계산기 레지스트리 ───────────────
+   slug   : 파일명 (URL)
+   inline : 인라인 계산기 타입 키 (INLINE_CALCS 와 매칭)
+   cats   : 연관 콘텐츠 카테고리 (search-index.json 의 cat 값)
+   pop    : 인기 순위 (작을수록 인기) — TOP5 정렬용
+*/
+const RECO_CALCS = [
+  { slug: 'alba-cost-calc.html',       icon: '🧮', title: '알바 인건비 계산기',      badge: '인사·노무', desc: '2026 최저시급 기준, 주휴수당·4대보험 포함 월 인건비 자동 계산', cats: ['창업·세금', '소상공인 지원금'], inline: 'wage',      pop: 1 },
+  { slug: 'delivery-profit-calc.html', icon: '🛵', title: '배달 순이익 계산기',      badge: '매출·수익', desc: '주문 1건당 수수료·배달비·재료비 빼고 실제 남는 돈 계산',        cats: ['배달앱'],                    inline: 'delivery',  pop: 2 },
+  { slug: 'vat-calc.html',             icon: '💰', title: '부가세 계산기',          badge: '세무·법률', desc: '매출·매입 입력 → 납부세액 또는 환급액 즉시 계산',              cats: ['창업·세금'],                 inline: 'vat',       pop: 3 },
+  { slug: 'severance-calc.html',       icon: '💼', title: '퇴직금 계산기',          badge: '인사·노무', desc: '근속기간·평균임금 입력 → 법정 퇴직금 자동 산출',              cats: ['창업·세금'],                 inline: 'severance', pop: 4 },
+  { slug: 'food-cost-calc.html',       icon: '🍽️', title: '메뉴 원가율 계산기',     badge: '매출·수익', desc: '재료비·판매가 → 원가율·마진율·권장 판매가 계산',              cats: ['배달앱', '창업·세금'],        inline: 'foodcost',  pop: 5 },
+  { slug: 'bep-calc.html',             icon: '📈', title: '손익분기점(BEP) 계산기',  badge: '매출·수익', desc: '고정비·변동비율 → 최소 목표 매출과 일 매출 목표 계산',         cats: ['창업·세금'],                 inline: 'bep',       pop: 6 },
+  { slug: 'rent-increase-calc.html',   icon: '🏠', title: '임대료 인상 상한 계산기', badge: '세무·법률', desc: '현재 월세 → 법정 5% 상한 기준 최대 인상 가능액 계산',          cats: ['창업·세금'],                 inline: 'rent',      pop: 7 },
+  { slug: 'loan-interest-calc.html',   icon: '💳', title: '정책자금 이자 계산기',    badge: '세무·법률', desc: '대출금·금리·기간 → 월 상환액·총이자·총 상환액 계산',           cats: ['소상공인 지원금', '창업·세금'], inline: 'loan',      pop: 8 },
+];
+
+/* 카테고리별 추천 계산기 매핑 (게시글 → 함께 쓰는 계산기) */
+const CAT_TO_CALCS = {
+  '창업·세금':       ['vat-calc.html', 'alba-cost-calc.html', 'severance-calc.html', 'bep-calc.html'],
+  '배달앱':          ['delivery-profit-calc.html', 'food-cost-calc.html', 'bep-calc.html'],
+  '네이버 플레이스': ['delivery-profit-calc.html', 'food-cost-calc.html', 'bep-calc.html'],
+  '소상공인 지원금': ['loan-interest-calc.html', 'vat-calc.html', 'alba-cost-calc.html'],
+  'SNS · 숏폼':      ['food-cost-calc.html', 'bep-calc.html', 'delivery-profit-calc.html'],
+};
+
+/* 인기글 TOP5 후보 (검색 인덱스에 존재하는 것만 사용, 부족하면 최신순 보충) */
+const POP_ARTICLE_SLUGS = [
+  'baemin-vs-coupang.html',
+  'soho-minimum-wage.html',
+  'soho-jiwongeum-2026.html',
+  'naver-place-ranking-2026.html',
+  'delivery-fee-real-calc.html',
+  'general-vs-simple-tax.html',
+  'restaurant-startup-cost.html',
+];
+
+/* 게시글 slug → 인라인 계산기 타입 명시적 매핑 (예시로 제시된 핵심 글)
+   여기에 없으면 제목·키워드로 자동 감지 (detectInlineType) */
+const SLUG_TO_INLINE = {
+  'soho-minimum-wage.html': 'wage',
+  'soho-minimum-wage (2).html': 'wage',
+  'parttime-hiring-solution.html': 'wage',
+  'employee-insurance-cost.html': 'wage',
+  'employee-termination-guide.html': 'severance',
+  'general-vs-simple-tax.html': 'vat',
+  'card-sales-tax-audit.html': 'vat',
+  'tax-refund-soho.html': 'vat',
+  'store-transfer-tax.html': 'vat',
+  'solo-shop-tax-deduction.html': 'vat',
+  'baemin-vs-coupang.html': 'delivery',
+  'baemin-takeout-vs-delivery.html': 'delivery',
+  'baemin-ultraol-vs-openlist.html': 'delivery',
+  'delivery-fee-real-calc.html': 'delivery',
+  'public-vs-private-delivery.html': 'delivery',
+  'coupangeats-review.html': 'delivery',
+  'delivery-ad-reduce.html': 'delivery',
+  'restaurant-startup-cost.html': 'bep',
+  'cafe-startup-real-cost.html': 'bep',
+  'food-cost-control.html': 'foodcost',
+  'menu-design-tips.html': 'foodcost',
+  'rent-increase-refusal.html': 'rent',
+  'premium-money-dispute.html': 'rent',
+  'policy-loan-guide.html': 'loan',
+  'noran-umbrella.html': 'loan',
+  'durunuri-application.html': 'loan',
+  'soho-jiwongeum-2026.html': 'loan',
+};
+
+/* 제목·키워드 기반 자동 감지 규칙 (위에서부터 우선) */
+const INLINE_KEYWORD_RULES = [
+  { type: 'wage',      re: /주휴|최저임금|시급|아르바이트|알바|인건비|급여|주급|시간당/ },
+  { type: 'severance', re: /퇴직금|해고|권고사직|퇴사/ },
+  { type: 'vat',       re: /부가세|부가가치세|간이과세|일반과세|세금\s?신고|매입세액|환급/ },
+  { type: 'delivery',  re: /배달\s?수수료|배달앱|배달의민족|배민|쿠팡이츠|쿠팡|울트라콜|오픈리스트|배달비|순이익/ },
+  { type: 'bep',       re: /손익분기|BEP|고정비|창업\s?비용|초기\s?비용|손익/ },
+  { type: 'foodcost',  re: /원가율|원가\s?관리|재료비|마진|메뉴\s?가격/ },
+  { type: 'rent',      re: /임대료|월세|상가\s?임대|환산보증금|권리금|임대차/ },
+  { type: 'loan',      re: /대출|이자|정책자금|상환|융자|보증/ },
+];
+
+/* ── 포맷 헬퍼 (reco 네임스페이스) ───────────── */
+const recoWon = (n) => Math.round(n).toLocaleString('ko-KR') + '원';
+const recoPct = (n) => (Math.round(n * 10) / 10) + '%';
+function recoEsc(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+/* ── [데이터] 인라인 계산기 정의 ──────────────
+   각 타입: title, sub, full(전체 계산기 URL), fields[], compute(vals)->{main,rows}
+   compute 는 순수 함수 — 입력 객체를 받아 결과를 반환합니다.
+*/
+const INLINE_CALCS = {
+  wage: {
+    title: '🧮 주휴수당·주급 바로 계산하기',
+    sub: '시급과 주 근무시간만 입력하면 주휴수당 포함 주급과 월 예상 급여를 바로 계산합니다. (2026년 최저시급 10,320원)',
+    full: 'alba-cost-calc.html',
+    fields: [
+      { id: 'wage', label: '시급', hint: '(원)', value: 10320, suffix: '원' },
+      { id: 'hours', label: '주 근무시간', hint: '(시간)', value: 40, suffix: '시간' },
+    ],
+    compute: (v) => {
+      const wage = v.wage, hours = v.hours;
+      const basePay = wage * hours;
+      const holiday = hours >= 15 ? (Math.min(hours, 40) / 40) * 8 * wage : 0;
+      const weekTotal = basePay + holiday;
+      const monthly = weekTotal * 4.345;
+      return {
+        main: { label: '예상 월급 (주휴 포함)', value: recoWon(monthly) },
+        rows: [
+          { k: '기본 주급 (시급 × 시간)', v: recoWon(basePay) },
+          { k: '주휴수당 (주 1회)', v: hours >= 15 ? recoWon(holiday) : '대상 아님(주 15시간 미만)' },
+          { k: '주급 합계', v: recoWon(weekTotal) },
+          { k: '월 환산 (4.345주)', v: recoWon(monthly) },
+        ],
+      };
+    },
+  },
+  severance: {
+    title: '🧮 퇴직금 바로 계산하기',
+    sub: '월 평균임금과 근속연수를 입력하면 법정 퇴직금을 바로 계산합니다. (1년 이상 근무 시 발생)',
+    full: 'severance-calc.html',
+    fields: [
+      { id: 'avg', label: '월 평균임금', hint: '(원)', value: 2500000, suffix: '원' },
+      { id: 'years', label: '근속연수', hint: '(년)', value: 3, suffix: '년' },
+    ],
+    compute: (v) => {
+      const avg = v.avg, years = v.years;
+      const daily = (avg * 3) / 91.25; // 1일 평균임금 ≈ 3개월 임금 / 평균일수
+      const days = Math.round(years * 365);
+      const severance = days >= 365 ? daily * 30 * (days / 365) : 0;
+      return {
+        main: { label: '예상 퇴직금', value: recoWon(severance) },
+        rows: [
+          { k: '1일 평균임금(추정)', v: recoWon(daily) },
+          { k: '총 재직일수', v: days.toLocaleString('ko-KR') + '일' },
+          { k: '계산식', v: '1일평균 × 30 × (재직일/365)' },
+          { k: '퇴직금', v: days >= 365 ? recoWon(severance) : '1년 미만 — 지급의무 없음' },
+        ],
+      };
+    },
+  },
+  vat: {
+    title: '🧮 부가세 바로 계산하기',
+    sub: '공급가액(부가세 별도 금액)을 입력하면 부가세 10%와 합계금액을 바로 계산합니다.',
+    full: 'vat-calc.html',
+    fields: [
+      { id: 'supply', label: '공급가액', hint: '(부가세 별도)', value: 1000000, suffix: '원' },
+    ],
+    compute: (v) => {
+      const supply = v.supply;
+      const vat = supply * 0.1;
+      const total = supply + vat;
+      return {
+        main: { label: '부가세 (10%)', value: recoWon(vat) },
+        rows: [
+          { k: '공급가액', v: recoWon(supply) },
+          { k: '부가세 (10%)', v: recoWon(vat) },
+          { k: '합계금액 (공급가+부가세)', v: recoWon(total) },
+          { k: '합계금액에서 역산 시 공급가', v: recoWon(total / 1.1) },
+        ],
+      };
+    },
+  },
+  delivery: {
+    title: '🧮 배달 순이익 바로 계산하기',
+    sub: '주문금액에서 배달앱 수수료·배달비·재료비를 빼고 실제 남는 순이익을 바로 계산합니다.',
+    full: 'delivery-profit-calc.html',
+    fields: [
+      { id: 'order', label: '주문금액', hint: '(원)', value: 20000, suffix: '원' },
+      { id: 'comm', label: '중개수수료율', hint: '(%)', value: 6.8, suffix: '%' },
+      { id: 'delivery', label: '업주부담 배달비', hint: '(원)', value: 2400, suffix: '원' },
+      { id: 'food', label: '재료비 원가율', hint: '(%)', value: 35, suffix: '%' },
+    ],
+    compute: (v) => {
+      const order = v.order;
+      const commission = order * (v.comm / 100);
+      const payment = order * 0.012; // 결제수수료 약 1.2%
+      const foodCost = order * (v.food / 100);
+      const profit = order - commission - payment - v.delivery - foodCost;
+      const margin = order ? (profit / order) * 100 : 0;
+      return {
+        main: { label: '주문 1건당 순이익', value: recoWon(profit) },
+        rows: [
+          { k: '주문금액', v: recoWon(order) },
+          { k: '중개수수료 (' + v.comm + '%)', v: '-' + recoWon(commission), minus: true },
+          { k: '결제수수료 (1.2%)', v: '-' + recoWon(payment), minus: true },
+          { k: '업주부담 배달비', v: '-' + recoWon(v.delivery), minus: true },
+          { k: '재료비 (' + v.food + '%)', v: '-' + recoWon(foodCost), minus: true },
+          { k: '순이익률', v: recoPct(margin) },
+        ],
+      };
+    },
+  },
+  bep: {
+    title: '🧮 손익분기점(BEP) 바로 계산하기',
+    sub: '월 고정비와 변동비율(원가율)을 입력하면 손익분기 매출과 하루 목표 매출을 바로 계산합니다.',
+    full: 'bep-calc.html',
+    fields: [
+      { id: 'fixed', label: '월 고정비', hint: '(임대료+인건비 등)', value: 5000000, suffix: '원' },
+      { id: 'variable', label: '변동비율(원가율)', hint: '(%)', value: 40, suffix: '%' },
+    ],
+    compute: (v) => {
+      const fixed = v.fixed;
+      const cmRate = 1 - (v.variable / 100); // 공헌이익률
+      const bep = cmRate > 0 ? fixed / cmRate : 0;
+      const daily = bep / 30;
+      return {
+        main: { label: '손익분기 월 매출', value: cmRate > 0 ? recoWon(bep) : '변동비율 100% 미만으로 입력' },
+        rows: [
+          { k: '월 고정비', v: recoWon(fixed) },
+          { k: '공헌이익률 (1 - 변동비율)', v: recoPct(cmRate * 100) },
+          { k: '손익분기 월 매출', v: cmRate > 0 ? recoWon(bep) : '-' },
+          { k: '하루 목표 매출 (÷30일)', v: cmRate > 0 ? recoWon(daily) : '-' },
+        ],
+      };
+    },
+  },
+  foodcost: {
+    title: '🧮 메뉴 원가율 바로 계산하기',
+    sub: '재료비와 판매가를 입력하면 원가율과 마진율을 바로 계산합니다. (외식업 권장 원가율 30~35%)',
+    full: 'food-cost-calc.html',
+    fields: [
+      { id: 'cost', label: '재료비(원가)', hint: '(원)', value: 3500, suffix: '원' },
+      { id: 'price', label: '판매가', hint: '(원)', value: 10000, suffix: '원' },
+    ],
+    compute: (v) => {
+      const cost = v.cost, price = v.price;
+      const rate = price ? (cost / price) * 100 : 0;
+      const margin = price - cost;
+      const marginRate = price ? (margin / price) * 100 : 0;
+      const recommend = cost / 0.33; // 원가율 33% 기준 권장가
+      return {
+        main: { label: '원가율', value: recoPct(rate) },
+        rows: [
+          { k: '재료비', v: recoWon(cost) },
+          { k: '판매가', v: recoWon(price) },
+          { k: '마진(판매가-재료비)', v: recoWon(margin) },
+          { k: '마진율', v: recoPct(marginRate) },
+          { k: '권장 판매가 (원가율 33%)', v: recoWon(recommend) },
+        ],
+      };
+    },
+  },
+  rent: {
+    title: '🧮 임대료 인상 상한 바로 계산하기',
+    sub: '현재 월세를 입력하면 상가임대차보호법상 연 5% 인상 상한 기준 최대 인상액을 바로 계산합니다.',
+    full: 'rent-increase-calc.html',
+    fields: [
+      { id: 'rent', label: '현재 월세', hint: '(원)', value: 2000000, suffix: '원' },
+    ],
+    compute: (v) => {
+      const rent = v.rent;
+      const maxUp = rent * 0.05;
+      const after = rent + maxUp;
+      return {
+        main: { label: '인상 후 최대 월세', value: recoWon(after) },
+        rows: [
+          { k: '현재 월세', v: recoWon(rent) },
+          { k: '법정 상한 인상률', v: '5%' },
+          { k: '최대 인상 가능액', v: recoWon(maxUp) },
+          { k: '인상 후 월세', v: recoWon(after) },
+        ],
+      };
+    },
+  },
+  loan: {
+    title: '🧮 대출 상환액 바로 계산하기',
+    sub: '대출금·연이자율·기간을 입력하면 원리금균등 기준 월 상환액과 총이자를 바로 계산합니다.',
+    full: 'loan-interest-calc.html',
+    fields: [
+      { id: 'principal', label: '대출금', hint: '(원)', value: 10000000, suffix: '원' },
+      { id: 'rate', label: '연이자율', hint: '(%)', value: 4.5, suffix: '%' },
+      { id: 'months', label: '대출기간', hint: '(개월)', value: 36, suffix: '개월' },
+    ],
+    compute: (v) => {
+      const P = v.principal, n = Math.max(1, Math.round(v.months));
+      const r = (v.rate / 100) / 12;
+      let monthly;
+      if (r === 0) monthly = P / n;
+      else monthly = P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+      const totalPay = monthly * n;
+      const totalInterest = totalPay - P;
+      return {
+        main: { label: '월 상환액 (원리금균등)', value: recoWon(monthly) },
+        rows: [
+          { k: '대출원금', v: recoWon(P) },
+          { k: '월 상환액', v: recoWon(monthly) },
+          { k: '총 이자', v: recoWon(totalInterest) },
+          { k: '총 상환액', v: recoWon(totalPay) },
+        ],
+      };
+    },
+  },
+};
+
+/* ── 현재 페이지 slug ─────────────────────────── */
+function recoCurrentSlug() {
+  let p = location.pathname.split('/').pop();
+  if (!p) p = 'index.html';
+  return decodeURIComponent(p);
+}
+
+/* ── 계산기 조회 헬퍼 ─────────────────────────── */
+function calcBySlug(slug) { return RECO_CALCS.find(c => c.slug === slug); }
+
+/* 인라인 계산기 타입 자동 감지 */
+function detectInlineType(slug, text) {
+  if (SLUG_TO_INLINE[slug]) return SLUG_TO_INLINE[slug];
+  const t = (text || '').toLowerCase();
+  for (const rule of INLINE_KEYWORD_RULES) {
+    if (rule.re.test(text) || rule.re.test(t)) return rule.type;
+  }
+  return null;
+}
+
+/* ── 카드 렌더 헬퍼 ──────────────────────────── */
+function calcCardHTML(c) {
+  return `<a href="${c.slug}" class="reco-card">
+    <div class="reco-card-icon">${c.icon}</div>
+    <div class="reco-card-body">
+      <span class="reco-card-badge">${recoEsc(c.badge)}</span>
+      <div class="reco-card-title">${recoEsc(c.title)}</div>
+      <div class="reco-card-desc">${recoEsc(c.desc)}</div>
+    </div>
+  </a>`;
+}
+function articleCardHTML(a) {
+  return `<a href="${a.url}" class="reco-card">
+    <div class="reco-card-icon">📄</div>
+    <div class="reco-card-body">
+      <span class="reco-card-badge">${recoEsc(a.cat)}</span>
+      <div class="reco-card-title">${recoEsc(a.title)}</div>
+      <div class="reco-card-desc">${recoEsc(a.desc || '')}</div>
+    </div>
+  </a>`;
+}
+function rankItemHTML(item, i, isCalc) {
+  const title = item.title;
+  const tag = isCalc ? item.badge : (item.cat + (item.rt ? ' · ' + item.rt : ''));
+  const url = isCalc ? item.slug : item.url;
+  return `<a href="${url}" class="reco-rank-item">
+    <span class="reco-rank-num">${i + 1}</span>
+    <div class="reco-rank-body">
+      <div class="reco-rank-title">${recoEsc(title)}</div>
+      <div class="reco-rank-tag">${recoEsc(tag)}</div>
+    </div>
+    <span class="reco-rank-arrow">→</span>
+  </a>`;
+}
+function recoSectionHTML(title, sub, innerHTML) {
+  return `<section class="reco-section">
+    <h3 class="reco-section-title">${title}${sub ? `<span class="reco-section-sub">${recoEsc(sub)}</span>` : ''}</h3>
+    ${innerHTML}
+  </section>`;
+}
+
+/* ── 추천 데이터 산출 ────────────────────────── */
+function popularCalcs(excludeSlug, n) {
+  return RECO_CALCS
+    .filter(c => c.slug !== excludeSlug)
+    .sort((a, b) => a.pop - b.pop)
+    .slice(0, n);
+}
+function popularArticles(excludeSlug, n) {
+  if (!_engageIndex || !_engageIndex.length) return [];
+  const seen = new Set();
+  const out = [];
+  POP_ARTICLE_SLUGS.forEach(slug => {
+    if (slug === excludeSlug) return;
+    const a = _engageIndex.find(x => x.url === slug);
+    if (a && !seen.has(a.url)) { seen.add(a.url); out.push(a); }
+  });
+  if (out.length < n) {
+    _engageIndex
+      .filter(a => a.url !== excludeSlug && !seen.has(a.url))
+      .sort((a, b) => (b.date || '').localeCompare(a.date || ''))
+      .forEach(a => { if (out.length < n) { seen.add(a.url); out.push(a); } });
+  }
+  return out.slice(0, n);
+}
+/* 같은 카테고리 글 (최소 limit개, 부족하면 최신순 보충) */
+function sameCategoryArticles(cat, excludeSlug, limit) {
+  if (!_engageIndex || !_engageIndex.length) return [];
+  const same = _engageIndex.filter(a => a.url !== excludeSlug && a.cat === cat);
+  same.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  if (same.length >= limit) return same.slice(0, limit);
+  const have = new Set(same.map(a => a.url));
+  const extra = _engageIndex
+    .filter(a => a.url !== excludeSlug && !have.has(a.url))
+    .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  return same.concat(extra).slice(0, limit);
+}
+/* 게시글에 추천할 계산기 (카테고리 + 키워드 기반) */
+function calcsForArticle(cat, inlineType, n) {
+  const order = [];
+  const push = (slug) => { const c = calcBySlug(slug); if (c && !order.find(x => x.slug === c.slug)) order.push(c); };
+  if (inlineType) { const c = RECO_CALCS.find(x => x.inline === inlineType); if (c) push(c.slug); }
+  (CAT_TO_CALCS[cat] || []).forEach(push);
+  popularCalcs(null, RECO_CALCS.length).forEach(c => push(c.slug));
+  return order.slice(0, n);
+}
+/* 계산기 페이지에서 추천할 다른 계산기 (cats 겹침 우선) */
+function relatedCalcs(current, n) {
+  return RECO_CALCS
+    .filter(c => c.slug !== current.slug)
+    .map(c => ({ c, score: c.cats.filter(x => current.cats.includes(x)).length }))
+    .sort((a, b) => (b.score - a.score) || (a.c.pop - b.c.pop))
+    .slice(0, n)
+    .map(x => x.c);
+}
+/* 계산기 페이지에서 추천할 가이드 글 (cats 매칭) */
+function guidesForCalc(current, n) {
+  if (!_engageIndex || !_engageIndex.length) return [];
+  const inCat = _engageIndex.filter(a => current.cats.includes(a.cat));
+  inCat.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  if (inCat.length >= n) return inCat.slice(0, n);
+  const have = new Set(inCat.map(a => a.url));
+  const extra = _engageIndex.filter(a => !have.has(a.url)).sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  return inCat.concat(extra).slice(0, n);
+}
+
+/* ── 이전 글 / 다음 글 ──────────────────────── */
+function prevNextHTML(cat, slug, isCalc) {
+  let list, idx, makeLink;
+  if (isCalc) {
+    list = RECO_CALCS.slice().sort((a, b) => a.pop - b.pop);
+    idx = list.findIndex(c => c.slug === slug);
+    makeLink = (c) => ({ url: c.slug, title: c.title });
+  } else {
+    if (!_engageIndex || !_engageIndex.length) return '';
+    list = _engageIndex.filter(a => a.cat === cat).sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+    idx = list.findIndex(a => a.url === slug);
+    if (idx === -1) { // 카테고리 매칭 실패 시 전체 기준
+      list = _engageIndex.slice().sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+      idx = list.findIndex(a => a.url === slug);
+    }
+    makeLink = (a) => ({ url: a.url, title: a.title });
+  }
+  if (idx === -1) return '';
+  const prev = idx > 0 ? makeLink(list[idx - 1]) : null;
+  const next = idx < list.length - 1 ? makeLink(list[idx + 1]) : null;
+  const prevHTML = prev
+    ? `<a href="${prev.url}" class="reco-nav-item reco-nav-prev"><span class="reco-nav-dir">← 이전 글</span><span class="reco-nav-title">${recoEsc(prev.title)}</span></a>`
+    : `<span class="reco-nav-item reco-nav-prev reco-nav-empty"><span class="reco-nav-dir">← 이전 글</span><span class="reco-nav-title">처음 글입니다</span></span>`;
+  const nextHTML = next
+    ? `<a href="${next.url}" class="reco-nav-item reco-nav-next"><span class="reco-nav-dir">다음 글 →</span><span class="reco-nav-title">${recoEsc(next.title)}</span></a>`
+    : `<span class="reco-nav-item reco-nav-next reco-nav-empty"><span class="reco-nav-dir">다음 글 →</span><span class="reco-nav-title">마지막 글입니다</span></span>`;
+  return `<div class="reco-nav">${prevHTML}${nextHTML}</div>`;
+}
+
+/* ── 인라인 계산기 빌드 + 동작 연결 ──────────── */
+function buildInlineCalc(type) {
+  const def = INLINE_CALCS[type];
+  if (!def) return null;
+  const wrap = document.createElement('div');
+  wrap.className = 'inline-calc';
+  wrap.dataset.calcType = type;
+
+  const fieldsHTML = def.fields.map(f => `
+    <div class="inline-calc-field${def.fields.length === 1 ? ' full' : ''}">
+      <label>${recoEsc(f.label)}${f.hint ? `<span class="ic-hint">${recoEsc(f.hint)}</span>` : ''}</label>
+      <div class="inline-calc-input-wrap">
+        <input type="number" id="ic-${type}-${f.id}" value="${f.value}" step="any" inputmode="decimal" class="${f.suffix ? 'has-suffix' : ''}">
+        ${f.suffix ? `<span class="ic-suffix">${recoEsc(f.suffix)}</span>` : ''}
+      </div>
+    </div>`).join('');
+
+  wrap.innerHTML = `
+    <div class="inline-calc-head">${recoEsc(def.title)}</div>
+    <div class="inline-calc-sub">${recoEsc(def.sub)}</div>
+    <div class="inline-calc-fields">${fieldsHTML}</div>
+    <button type="button" class="inline-calc-btn">계산하기</button>
+    <div class="inline-calc-result" id="ic-result-${type}"></div>
+    <a href="${def.full}" class="inline-calc-full">🖥️ 고급 계산기 전체 화면으로 열기 →</a>
+  `;
+
+  const runCalc = () => {
+    const vals = {};
+    def.fields.forEach(f => {
+      const el = wrap.querySelector(`#ic-${type}-${f.id}`);
+      vals[f.id] = parseFloat(el && el.value) || 0;
+    });
+    const res = def.compute(vals);
+    const rowsHTML = res.rows.map(r =>
+      `<div class="ic-res-row"><span class="k">${recoEsc(r.k)}</span><span class="v${r.minus ? ' minus' : ''}">${recoEsc(r.v)}</span></div>`
+    ).join('');
+    const out = wrap.querySelector('#ic-result-' + type);
+    out.innerHTML = `
+      <div class="ic-res-main">
+        <div class="ic-res-label">${recoEsc(res.main.label)}</div>
+        <div class="ic-res-value">${recoEsc(res.main.value)}</div>
+      </div>
+      <div class="ic-res-rows">${rowsHTML}</div>`;
+    out.classList.add('show');
+  };
+
+  wrap.querySelector('.inline-calc-btn').addEventListener('click', runCalc);
+  wrap.querySelectorAll('input').forEach(inp => {
+    inp.addEventListener('keydown', (e) => { if (e.key === 'Enter') runCalc(); });
+  });
+  return wrap;
+}
+
+/* 글 본문 중간에 인라인 계산기 삽입 */
+function injectInlineCalc(type) {
+  const content = document.querySelector('.article-content');
+  if (!content || content.querySelector('.inline-calc')) return;
+  const node = buildInlineCalc(type);
+  if (!node) return;
+  const heads = content.querySelectorAll('h2');
+  if (heads.length >= 2) {
+    const target = heads[Math.min(Math.floor(heads.length / 2), heads.length - 1)];
+    content.insertBefore(node, target);
+  } else if (heads.length === 1) {
+    heads[0].insertAdjacentElement('afterend', node);
+  } else {
+    const ps = content.querySelectorAll('p');
+    if (ps.length >= 2) ps[1].insertAdjacentElement('afterend', node);
+    else content.appendChild(node);
+  }
+}
+
+/* ── 추천 영역 삽입 (계산기 페이지) ──────────── */
+function renderCalcPage(current) {
+  const host = document.querySelector('.page-wrap') || document.querySelector('main') || document.body;
+  if (!host || document.getElementById('reco-root')) return;
+
+  const calcs = relatedCalcs(current, 3);
+  const guides = guidesForCalc(current, 5);
+  const popC = popularCalcs(null, 5);
+  const popA = popularArticles(current.slug, 5);
+
+  const root = document.createElement('div');
+  root.id = 'reco-root';
+  root.className = 'reco-root';
+  let html = '';
+
+  html += prevNextHTML(null, current.slug, true);
+
+  if (calcs.length) {
+    html += recoSectionHTML('🧮 다른 사장님들이 함께 많이 사용한 계산기', '',
+      `<div class="reco-grid">${calcs.map(calcCardHTML).join('')}</div>`);
+  }
+  if (guides.length) {
+    html += recoSectionHTML('📚 함께 많이 읽은 실전 가이드', '',
+      `<div class="reco-grid">${guides.map(articleCardHTML).join('')}</div>`);
+  }
+  if (popC.length) {
+    html += recoSectionHTML('🔥 지금 인기 있는 계산기 TOP5', '',
+      `<div class="reco-rank-list">${popC.map((c, i) => rankItemHTML(c, i, true)).join('')}</div>`);
+  }
+  if (popA.length) {
+    html += recoSectionHTML('📈 지금 많이 읽는 인기글 TOP5', '',
+      `<div class="reco-rank-list">${popA.map((a, i) => rankItemHTML(a, i, false)).join('')}</div>`);
+  }
+  root.innerHTML = html;
+  host.appendChild(root);
+}
+
+/* ── 추천 영역 삽입 (게시글) ─────────────────── */
+function renderArticlePage(slug) {
+  const main = document.querySelector('.article-main') || document.querySelector('.article-content');
+  if (!main || document.getElementById('reco-root')) return;
+
+  const meta = (_engageIndex && _engageIndex.length) ? _engageIndex.find(a => a.url === slug) : null;
+  let cat = meta ? meta.cat
+    : ((document.querySelector('.article-tag') && document.querySelector('.article-tag').textContent) || '').replace(/[^가-힣·\s]/g, '').trim();
+  const titleEl = document.querySelector('.article-title');
+  const titleText = (meta ? (meta.title + ' ' + (meta.kw || '')) : '')
+    + ' ' + ((titleEl && titleEl.textContent) || '');
+
+  // (3) 인라인 계산기 본문 삽입
+  const inlineType = detectInlineType(slug, titleText);
+  if (inlineType) injectInlineCalc(inlineType);
+
+  // 추천 데이터
+  const calcs = calcsForArticle(cat, inlineType, 3);
+  const sameCat = sameCategoryArticles(cat, slug, 5);
+  const popC = popularCalcs(null, 5);
+  const popA = popularArticles(slug, 5);
+
+  const root = document.createElement('div');
+  root.id = 'reco-root';
+  root.className = 'reco-root';
+  let html = '';
+
+  if (calcs.length) {
+    html += recoSectionHTML('🧮 이 글을 읽은 사장님들이 함께 사용한 계산기', '',
+      `<div class="reco-grid">${calcs.map(calcCardHTML).join('')}</div>`);
+  }
+  if (sameCat.length) {
+    html += recoSectionHTML('📚 함께 읽으면 좋은 글', cat ? cat + ' 카테고리' : '',
+      `<div class="reco-grid">${sameCat.map(articleCardHTML).join('')}</div>`);
+  }
+  if (popC.length) {
+    html += recoSectionHTML('🔥 지금 인기 있는 계산기 TOP5', '',
+      `<div class="reco-rank-list">${popC.map((c, i) => rankItemHTML(c, i, true)).join('')}</div>`);
+  }
+  if (popA.length) {
+    html += recoSectionHTML('📈 오늘 많이 읽는 인기글 TOP5', '',
+      `<div class="reco-rank-list">${popA.map((a, i) => rankItemHTML(a, i, false)).join('')}</div>`);
+  }
+  html += prevNextHTML(cat, slug, false);
+
+  root.innerHTML = html;
+  main.appendChild(root);
+}
+
+/* ── engage 진입점 ───────────────────────────── */
+let _engageStarted = false;
+async function initEngage() {
+  if (_engageStarted) return; // 중복 실행 방지
+  _engageStarted = true;
+  const slug = recoCurrentSlug();
+  const calc = calcBySlug(slug);
+  const isArticle = !!document.querySelector('.article-content');
+
+  if (!calc && !isArticle) return; // 목록·홈·진단 등은 제외
+
+  try { _engageIndex = await loadSearchIndex(); } catch (e) { _engageIndex = []; }
+
+  if (calc) {
+    renderCalcPage(calc);
+  } else if (isArticle) {
+    renderArticlePage(slug);
+  }
+}
+
+/* DOMContentLoaded 시점에 따라 안전하게 실행 */
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initEngage);
+} else {
+  initEngage();
+}
