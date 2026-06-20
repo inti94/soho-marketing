@@ -28,30 +28,29 @@
 
   nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(250,250,248,0.97);
+    background: rgba(250,250,248,0.95);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
-    padding: 0 1rem;
+    padding: 0 2rem;
     display: flex; align-items: center; justify-content: space-between;
-    height: 56px;
-    gap: 8px;
+    height: 60px;
   }
-  .nav-logo { font-family: var(--serif); font-size: 15px; color: var(--primary); font-weight: 700; text-decoration: none; flex-shrink: 0; line-height: 1.3; }
-  .nav-links { display: flex; gap: 1.6rem; list-style: none; flex-shrink: 0; }
+  .nav-logo { font-family: var(--serif); font-size: 17px; color: var(--primary); font-weight: 700; text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--primary); }
-  .nav-cta { background: var(--primary); color: #fff; font-size: 12px; padding: 7px 12px; border-radius: 6px; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
+  .nav-cta { background: var(--primary); color: #fff; font-size: 13px; padding: 8px 18px; border-radius: 6px; text-decoration: none; }
 
   .page-header {
     background: var(--primary);
-    padding: 36px 1.5rem;
+    padding: 48px 2rem;
     text-align: center;
   }
-  .page-header h1 { font-family: var(--serif); font-size: clamp(22px, 6vw, 30px); color: #fff; margin-bottom: 8px; word-break: keep-all; }
-  .page-header p { font-size: clamp(13px, 3.5vw, 15px); color: rgba(255,255,255,0.8); word-break: keep-all; }
+  .page-header h1 { font-family: var(--serif); font-size: 30px; color: #fff; margin-bottom: 10px; }
+  .page-header p { font-size: 15px; color: rgba(255,255,255,0.75); }
 
   /* FILTER TABS */
-  .filter-wrap { background: var(--bg-card); border-bottom: 1px solid var(--border); position: sticky; top: 56px; z-index: 90; }
+  .filter-wrap { background: var(--bg-card); border-bottom: 1px solid var(--border); position: sticky; top: 60px; z-index: 90; }
   .filter-inner { max-width: 960px; margin: 0 auto; padding: 0 2rem; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
   .filter-inner::-webkit-scrollbar { display: none; }
   .filter-btn {
@@ -67,7 +66,7 @@
   .filter-btn:hover { color: var(--primary); }
   .filter-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
 
-  .main { max-width: 960px; margin: 0 auto; padding: 32px 1rem 80px; }
+  .main { max-width: 960px; margin: 0 auto; padding: 40px 2rem 80px; }
 
   /* CATEGORY SECTION */
   .cat-section { margin-bottom: 56px; }
@@ -87,9 +86,9 @@
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 16px 18px;
+    padding: 18px 20px;
     text-decoration: none; color: var(--text);
-    display: flex; align-items: flex-start; gap: 14px;
+    display: flex; align-items: flex-start; gap: 16px;
     transition: all 0.18s;
     margin-bottom: 8px;
   }
@@ -135,21 +134,9 @@
   .footer-links a:hover { color: #fff; }
   .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     .nav-links { display: none; }
-    .nav-cta { display: none; }
-    .nav-search-input { width: 160px; font-size: 13px; }
     .article-row-emoji { display: none; }
-    .article-row { padding: 14px 14px; }
-    .article-row-title { font-size: 14px; }
-    .article-row-desc { font-size: 12px; margin-bottom: 6px; }
-    .article-row-meta { font-size: 11px; }
-    .filter-btn { padding: 12px 14px; font-size: 12px; }
-    .cat-header h2 { font-size: 19px; }
-    .popular-box { padding: 16px 18px; }
-    .popular-list a { font-size: 13px; }
-    #search-results-section { padding: 0 1rem; }
-    .search-result-full-item { padding: 14px; }
   }
 </style>
 <!-- Google AdSense -->
@@ -172,6 +159,7 @@
     <li><a href="category.html#place">네이버 플레이스</a></li>
     <li><a href="category.html#delivery">배달앱</a></li>
     <li><a href="category.html#support">지원금</a></li>
+    <li><a href="tools.html">계산기</a></li>
   </ul>
   <a href="index.html" class="nav-cta">홈으로</a>
   <div class="nav-search">
@@ -180,6 +168,14 @@
     <div id="search-dropdown"></div>
   </div>
 </nav>
+<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
+<div class="mobile-search-bar">
+  <div class="nav-search">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="search-input-mobile" class="nav-search-input" placeholder="궁금한 주제를 검색하세요..." autocomplete="off">
+    <div id="search-dropdown-mobile"></div>
+  </div>
+</div>
 <!-- 카카오 애드핏 광고 -->
 <div style="text-align:center;margin:24px 0;padding:0 16px;">
 <ins class="kakao_ad_area" style="display:none;"

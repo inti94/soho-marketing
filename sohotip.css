@@ -38,40 +38,65 @@
 }
 #back-to-top:hover { transform: scale(1.1); }
 
-/* ── 네비 검색창 ────────────────────────── */
+/* ── 네비 검색창 (PC) ───────────────────── */
 .nav-search {
   position: relative;
   display: flex;
   align-items: center;
-  flex: 1;
-  min-width: 0;
-  max-width: 260px;
 }
 .nav-search-input {
-  width: 100%;
-  padding: 7px 14px 7px 34px;
+  width: 200px;
+  padding: 7px 14px 7px 36px;
   border: 1.5px solid var(--border);
   border-radius: 20px;
   background: var(--bg-card);
   font-size: 13px;
   color: var(--text);
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, width 0.3s;
   font-family: var(--sans);
 }
 .nav-search-input:focus {
   border-color: var(--primary);
+  width: 260px;
 }
 .nav-search-icon {
   position: absolute;
-  left: 10px;
-  font-size: 13px;
+  left: 11px;
+  font-size: 14px;
   color: var(--text-muted);
   pointer-events: none;
 }
+
+/* ── 모바일 검색바 (nav 아래 별도 줄) ────── */
+.mobile-search-bar {
+  display: none;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 16px;
+}
+.mobile-search-bar .nav-search {
+  width: 100%;
+}
+.mobile-search-bar .nav-search-input {
+  width: 100%;
+  font-size: 14px;
+  padding: 9px 14px 9px 38px;
+  border-radius: 10px;
+}
+.mobile-search-bar .nav-search-input:focus {
+  width: 100%;
+}
+.mobile-search-bar #search-dropdown {
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
 @media (max-width: 768px) {
-  .nav-search { max-width: 100%; }
-  .nav-search-input { font-size: 14px; padding: 8px 14px 8px 34px; }
+  /* PC 검색창 숨기고 모바일 검색바 표시 */
+  nav .nav-search { display: none; }
+  .mobile-search-bar { display: block; }
 }
 
 /* ── 검색 드롭다운 ───────────────────────── */

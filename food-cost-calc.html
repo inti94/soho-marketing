@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="메뉴별 재료비와 판매가를 입력하면 원가율, 마진율, 목표 마진을 위한 권장 판매가를 자동으로 계산합니다.">
+<meta name="keywords" content="메뉴 원가율 계산기, 음식 원가 계산, 마진율 계산, 권장 판매가, 식재료비 계산">
+<meta property="og:title" content="메뉴 원가율 계산기 — 재료비와 판매가로 마진·권장 판매가 계산 — 소호팁">
+<meta property="og:url" content="https://sohotip.co.kr/food-cost-calc.html">
+<link rel="canonical" href="https://sohotip.co.kr/food-cost-calc.html">
+<link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
+<link rel="shortcut icon" href="https://sohotip.co.kr/favicon.ico">
+<title>메뉴 원가율 계산기 — 재료비와 판매가로 마진·권장 판매가 계산 | 소호팁</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="sohotip.css">
+<style>
+:root{--primary:#FF5E00;--primary-light:#FFEEE5;--primary-mid:#E65300;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-size:13px;color:var(--text-muted);text-decoration:none;}
+.nav-links a:hover{color:var(--primary);}
+.nav-cta{background:var(--primary);color:#fff;font-size:13px;padding:7px 16px;border-radius:6px;text-decoration:none;}
+@media(max-width:640px){.nav-links{display:none;}}
+.page-wrap{max-width:680px;margin:0 auto;padding:40px 2rem 80px;}
+.page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:32px;line-height:1.6;}
+.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;}
+.card-title{font-size:13px;font-weight:700;color:var(--text-muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:20px;}
+.field{margin-bottom:18px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;}
+.field-hint{font-size:11px;color:var(--text-muted);margin-bottom:6px;}
+.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color .2s;}
+.field input:focus,.field select:focus{border-color:var(--primary);}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.result-card{background:var(--primary);border-radius:16px;padding:28px;color:#fff;margin-bottom:20px;}
+.result-label{font-size:13px;opacity:.8;margin-bottom:6px;}
+.result-total{font-size:36px;font-weight:700;margin-bottom:4px;}
+.result-sub{font-size:13px;opacity:.75;}
+.breakdown{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px;}
+.br-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.br-row:last-child{border:none;font-weight:700;font-size:15px;}
+.br-label{color:var(--text-muted);}
+.br-val{font-weight:500;}
+.highlight{color:var(--primary);}
+.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);margin-top:8px;}
+.btn-calc:hover{background:var(--primary-mid);}
+.tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+.notice-box{background:var(--primary-light);border-radius:12px;padding:16px 20px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
+.notice-box strong{color:var(--primary);}
+footer{background:#1A1A1A;color:rgba(255,255,255,.6);text-align:center;padding:24px;font-size:12px;}
+footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">소상공인 마케팅 실전백과</a>
+  <ul class="nav-links">
+    <li><a href="category.html">카테고리</a></li>
+    <li><a href="tools.html">계산기</a></li>
+  </ul>
+  <a href="consultation.html" class="nav-cta">무료 진단</a>
+</nav>
+<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
+<div class="mobile-search-bar">
+  <div class="nav-search">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="search-input-mobile" class="nav-search-input" placeholder="궁금한 주제를 검색하세요..." autocomplete="off">
+    <div id="search-dropdown-mobile"></div>
+  </div>
+</div>
+<div class="page-wrap">
+  <span class="tag">🍽️ 원가율 계산기</span>
+  <h1 class="page-title">메뉴 원가율 계산기 — 재료비와 판매가로 마진·권장 판매가 계산</h1>
+  <p class="page-desc">메뉴별 재료비와 판매가를 입력하면 원가율, 마진율, 목표 마진을 위한 권장 판매가를 자동으로 계산합니다.</p>
+  
+<div class="calc-card">
+  <div class="card-title">메뉴 정보 입력</div>
+  <div class="field">
+    <label>메뉴명</label>
+    <input type="text" id="menu-name" value="제육볶음" placeholder="계산할 메뉴 이름">
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label>총 재료비 (원)</label>
+      <div class="field-hint">1인분 기준</div>
+      <input type="number" id="ingredient-cost" value="3500" step="100">
+    </div>
+    <div class="field">
+      <label>현재 판매가 (원)</label>
+      <input type="number" id="sell-price" value="10000" step="500">
+    </div>
+  </div>
+  <div class="field">
+    <label>목표 원가율 (%)</label>
+    <div class="field-hint">외식업 권장 30~35%. 이 비율 기준으로 권장 판매가를 계산합니다</div>
+    <input type="number" id="target-rate" value="33" step="1">
+  </div>
+  <button class="btn-calc" onclick="calcFood()">📊 원가율 계산하기</button>
+</div>
+<div id="food-result" style="display:none;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center;">
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;">현재 원가율</div>
+      <div style="font-size:28px;font-weight:700;" id="cur-rate-display">0%</div>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:4px;" id="rate-judge"></div>
+    </div>
+    <div style="background:var(--primary-light);border:1px solid var(--primary);border-radius:14px;padding:16px;text-align:center;">
+      <div style="font-size:11px;color:var(--primary);margin-bottom:6px;">권장 판매가</div>
+      <div style="font-size:28px;font-weight:700;color:var(--primary);" id="rec-price-display">0원</div>
+      <div style="font-size:11px;color:var(--primary-mid);margin-top:4px;" id="rec-margin"></div>
+    </div>
+  </div>
+  <div class="breakdown">
+    <div class="br-row"><span class="br-label" id="menu-label">메뉴</span><span class="br-val" id="food-menu-name"></span></div>
+    <div class="br-row"><span class="br-label">재료비</span><span class="br-val" id="food-ingr"></span></div>
+    <div class="br-row"><span class="br-label">현재 판매가</span><span class="br-val" id="food-sell"></span></div>
+    <div class="br-row"><span class="br-label">현재 원가율</span><span class="br-val" id="food-cur-rate"></span></div>
+    <div class="br-row"><span class="br-label">현재 마진 (건당)</span><span class="br-val highlight" id="food-margin"></span></div>
+    <div class="br-row"><span class="br-label">목표 원가율 기준 권장 판매가</span><span class="br-val highlight" id="food-rec-price"></span></div>
+  </div>
+  <div class="notice-box"><strong>💡 원가율 가이드:</strong> 외식업 권장 원가율은 30~35%입니다. 배달 주문은 수수료(15~20%)가 추가로 빠지므로, 배달 메뉴는 일반 원가율을 25% 이하로 설계하거나 배달 전용 가격을 높게 책정하는 게 유리합니다.</div>
+</div>
+
+</div>
+<button id="back-to-top" aria-label="맨 위로">↑</button>
+<script src="sohotip.js"></script>
+<script>
+function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
+function calcFood(){
+  const name = document.getElementById('menu-name').value||'메뉴';
+  const ingr = parseFloat(document.getElementById('ingredient-cost').value)||0;
+  const sell = parseFloat(document.getElementById('sell-price').value)||1;
+  const target = parseFloat(document.getElementById('target-rate').value)||33;
+  const curRate = ingr/sell*100;
+  const margin = sell-ingr;
+  const recPrice = ingr/(target/100);
+  const recMargin = recPrice-ingr;
+  const judge = curRate<=target?'✅ 목표 원가율 달성':'⚠️ 원가율이 목표보다 높습니다';
+  document.getElementById('cur-rate-display').textContent=curRate.toFixed(1)+'%';
+  document.getElementById('cur-rate-display').style.color=curRate<=target?'var(--primary)':'#EF4444';
+  document.getElementById('rate-judge').textContent=judge;
+  document.getElementById('rec-price-display').textContent=fmt(recPrice);
+  document.getElementById('rec-margin').textContent='건당 마진 '+fmt(recMargin);
+  document.getElementById('food-menu-name').textContent=name;
+  document.getElementById('food-ingr').textContent=fmt(ingr);
+  document.getElementById('food-sell').textContent=fmt(sell);
+  document.getElementById('food-cur-rate').textContent=curRate.toFixed(1)+'%';
+  document.getElementById('food-margin').textContent=fmt(margin);
+  document.getElementById('food-rec-price').textContent=fmt(recPrice);
+  document.getElementById('food-result').style.display='block';
+  document.getElementById('food-result').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+<footer>
+  <a href="index.html">홈</a><a href="category.html">카테고리</a><a href="tools.html">계산기 모음</a>
+  <p style="margin-top:12px;">© 2026 소상공인 마케팅 실전백과. 본 계산기는 참고용입니다.</p>
+</footer>
+</body>
+</html>

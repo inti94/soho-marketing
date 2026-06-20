@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="알바 인건비 계산기 — 시급, 근무시간, 주휴수당, 4대보험 사업주 부담금까지 총 인건비를 자동으로 계산해드립니다.">
+<meta name="keywords" content="알바 인건비 계산기, 시급 계산, 주휴수당 계산, 4대보험 계산, 아르바이트 월급 계산">
+<meta property="og:title" content="알바 인건비 계산기 — 소상공인 마케팅 실전백과">
+<meta property="og:description" content="시급과 근무시간을 입력하면 주휴수당·4대보험 포함 총 인건비를 자동 계산합니다.">
+<meta property="og:url" content="https://sohotip.co.kr/alba-cost-calc.html">
+<link rel="canonical" href="https://sohotip.co.kr/alba-cost-calc.html">
+<link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
+<link rel="shortcut icon" href="https://sohotip.co.kr/favicon.ico">
+<title>알바 인건비 계산기 — 주휴수당·4대보험 포함 총비용 | 소호팁</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="sohotip.css">
+<style>
+:root{--primary:#FF5E00;--primary-light:#FFEEE5;--primary-mid:#E65300;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-size:13px;color:var(--text-muted);text-decoration:none;}
+.nav-links a:hover{color:var(--primary);}
+.nav-cta{background:var(--primary);color:#fff;font-size:13px;padding:7px 16px;border-radius:6px;text-decoration:none;}
+@media(max-width:640px){.nav-links{display:none;}}
+.page-wrap{max-width:680px;margin:0 auto;padding:40px 2rem 80px;}
+.page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:32px;line-height:1.6;}
+.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;}
+.card-title{font-size:14px;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:20px;}
+.field{margin-bottom:20px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--text);}
+.field-hint{font-size:11px;color:var(--text-muted);margin-bottom:6px;}
+.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;}
+.field input:focus,.field select:focus{border-color:var(--primary);}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.toggle-group{display:flex;gap:8px;flex-wrap:wrap;}
+.toggle-btn{padding:7px 16px;border:1.5px solid var(--border);border-radius:20px;background:var(--bg-card);font-size:13px;cursor:pointer;transition:all 0.15s;color:var(--text-muted);}
+.toggle-btn.active{border-color:var(--primary);background:var(--primary-light);color:var(--primary);font-weight:600;}
+.result-card{background:var(--primary);border-radius:16px;padding:28px;color:#fff;margin-bottom:20px;}
+.result-title{font-size:13px;opacity:0.8;margin-bottom:6px;}
+.result-total{font-size:36px;font-weight:700;margin-bottom:4px;}
+.result-sub{font-size:13px;opacity:0.7;}
+.result-breakdown{background:var(--bg-card);border-radius:16px;padding:24px;border:1px solid var(--border);}
+.breakdown-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);}
+.breakdown-row:last-child{border-bottom:none;font-weight:700;font-size:15px;}
+.breakdown-label{font-size:13px;color:var(--text-muted);}
+.breakdown-value{font-size:14px;font-weight:500;color:var(--text);}
+.breakdown-value.highlight{color:var(--primary);font-weight:700;}
+.notice-box{background:var(--primary-light);border-radius:12px;padding:16px 20px;margin-top:20px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
+.notice-box strong{color:var(--primary);}
+.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background 0.2s;margin-top:8px;}
+.btn-calc:hover{background:var(--primary-mid);}
+.tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
+footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">소상공인 마케팅 실전백과</a>
+  <ul class="nav-links">
+    <li><a href="category.html">카테고리</a></li>
+    <li><a href="tools.html">계산기</a></li>
+  </ul>
+  <a href="consultation.html" class="nav-cta">무료 진단</a>
+</nav>
+<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
+<div class="mobile-search-bar">
+  <div class="nav-search">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="search-input-mobile" class="nav-search-input" placeholder="궁금한 주제를 검색하세요..." autocomplete="off">
+    <div id="search-dropdown-mobile"></div>
+  </div>
+</div>
+
+<div class="page-wrap">
+  <span class="tag">🧮 인건비 계산기</span>
+  <h1 class="page-title">알바 인건비 계산기</h1>
+  <p class="page-desc">시급과 근무시간을 입력하면 주휴수당·4대보험 사업주 부담금까지 포함한 실제 총 인건비를 계산해드립니다. 2026년 최저시급 10,320원 기준입니다. (2025년 8월 고시 확정)</p>
+
+  <div class="calc-card">
+    <div class="card-title">근무 조건 입력</div>
+    <div class="field">
+      <label>시급 (원)</label>
+      <div class="field-hint">2026년 최저시급: 10,320원</div>
+      <input type="number" id="hourly" value="10320" min="10320" step="100">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>하루 근무시간</label>
+        <input type="number" id="daily-hours" value="8" min="1" max="12" step="0.5">
+      </div>
+      <div class="field">
+        <label>주 근무일수</label>
+        <input type="number" id="weekly-days" value="5" min="1" max="6" step="1">
+      </div>
+    </div>
+    <div class="field">
+      <label>주휴수당 적용</label>
+      <div class="toggle-group">
+        <button class="toggle-btn active" id="btn-weekly-y" onclick="setWeekly(true)">주 15시간 이상 (적용)</button>
+        <button class="toggle-btn" id="btn-weekly-n" onclick="setWeekly(false)">주 15시간 미만 (미적용)</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>4대보험 적용</label>
+      <div class="toggle-group">
+        <button class="toggle-btn active" id="btn-ins-y" onclick="setInsurance(true)">적용 (월 60시간 이상)</button>
+        <button class="toggle-btn" id="btn-ins-n" onclick="setInsurance(false)">미적용 (월 60시간 미만)</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>업종 (산재보험 요율)</label>
+      <select id="industry">
+        <option value="0.007">음식점업 (0.7%)</option>
+        <option value="0.009">소매업 (0.9%)</option>
+        <option value="0.011">미용·서비스업 (1.1%)</option>
+        <option value="0.006">사무직 (0.6%)</option>
+        <option value="0.013">기타 (1.3%)</option>
+      </select>
+    </div>
+    <button class="btn-calc" onclick="calculate()">💰 인건비 계산하기</button>
+  </div>
+
+  <div id="result-section" style="display:none;">
+    <div class="result-card">
+      <div class="result-title">월 총 인건비 (사업주 실부담)</div>
+      <div class="result-total" id="res-total">0원</div>
+      <div class="result-sub" id="res-sub">기본급 + 주휴수당 + 4대보험 사업주 부담</div>
+    </div>
+    <div class="result-breakdown">
+      <div class="breakdown-row">
+        <span class="breakdown-label">기본급 (월)</span>
+        <span class="breakdown-value" id="res-base">0원</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">주휴수당 (월)</span>
+        <span class="breakdown-value" id="res-weekly">0원</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">직원 수령액 합계</span>
+        <span class="breakdown-value" id="res-worker-total">0원</span>
+      </div>
+      <div class="breakdown-row" style="margin-top:8px;padding-top:16px;border-top:2px solid var(--border);">
+        <span class="breakdown-label">국민연금 (사업주 4.75%)</span>
+        <span class="breakdown-value" id="res-pension">0원</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">건강보험 (사업주 3.595%)</span>
+        <span class="breakdown-value" id="res-health">0원</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">장기요양 (건강보험료의 12.95%)</span>
+        <span class="breakdown-value" id="res-care">0원</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">고용보험 (사업주 0.9%)</span>
+        <span class="breakdown-value" id="res-employ">0원</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">산재보험 (사업주 전액)</span>
+        <span class="breakdown-value" id="res-accident">0원</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">4대보험 사업주 부담 합계</span>
+        <span class="breakdown-value highlight" id="res-ins-total">0원</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">월 총 인건비</span>
+        <span class="breakdown-value highlight" id="res-grand-total">0원</span>
+      </div>
+    </div>
+    <div class="notice-box">
+      <strong>💡 두루누리 지원사업을 아시나요?</strong><br>
+      10인 미만 사업장에서 월평균 보수 270만원 미만 근로자를 고용하면, 국민연금·고용보험 사업주 부담분을 최대 80%까지 지원받을 수 있습니다. 고용24(www.work24.go.kr)에서 신청하세요.
+    </div>
+  </div>
+</div>
+
+<button id="back-to-top" aria-label="맨 위로">↑</button>
+<script src="sohotip.js"></script>
+<script>
+let applyWeekly = true;
+let applyInsurance = true;
+
+function setWeekly(v) {
+  applyWeekly = v;
+  document.getElementById('btn-weekly-y').classList.toggle('active', v);
+  document.getElementById('btn-weekly-n').classList.toggle('active', !v);
+}
+function setInsurance(v) {
+  applyInsurance = v;
+  document.getElementById('btn-ins-y').classList.toggle('active', v);
+  document.getElementById('btn-ins-n').classList.toggle('active', !v);
+}
+function fmt(n) { return Math.round(n).toLocaleString('ko-KR') + '원'; }
+
+function calculate() {
+  const hourly = parseFloat(document.getElementById('hourly').value) || 10030;
+  const dailyHours = parseFloat(document.getElementById('daily-hours').value) || 8;
+  const weeklyDays = parseFloat(document.getElementById('weekly-days').value) || 5;
+  const industryRate = parseFloat(document.getElementById('industry').value);
+
+  const weeklyHours = dailyHours * weeklyDays;
+  const monthlyHours = weeklyHours * 4.345;
+  const base = hourly * monthlyHours;
+
+  const weeklyPay = applyWeekly ? (hourly * dailyHours * (weeklyHours / 40) * 4.345) : 0;
+  const workerTotal = base + weeklyPay;
+
+  let pension = 0, health = 0, care = 0, employ = 0, accident = 0;
+  if (applyInsurance) {
+    pension = workerTotal * 0.0475;    // 국민연금 사업주 4.75% (2026년)
+    health = workerTotal * 0.03595;   // 건강보험 사업주 3.595% (2026년)
+    care = health * 0.1295;            // 장기요양 건강보험료의 12.95%
+    employ = workerTotal * 0.009;      // 고용보험 실업급여분 0.9%
+  }
+  accident = workerTotal * industryRate;
+  const insTotal = pension + health + care + employ + accident;
+  const grandTotal = workerTotal + insTotal;
+
+  document.getElementById('res-base').textContent = fmt(base);
+  document.getElementById('res-weekly').textContent = applyWeekly ? fmt(weeklyPay) : '미적용';
+  document.getElementById('res-worker-total').textContent = fmt(workerTotal);
+  document.getElementById('res-pension').textContent = applyInsurance ? fmt(pension) : '미적용';
+  document.getElementById('res-health').textContent = applyInsurance ? fmt(health) : '미적용';
+  document.getElementById('res-care').textContent = applyInsurance ? fmt(care) : '미적용';
+  document.getElementById('res-employ').textContent = applyInsurance ? fmt(employ) : '미적용';
+  document.getElementById('res-accident').textContent = fmt(accident);
+  document.getElementById('res-ins-total').textContent = fmt(insTotal);
+  document.getElementById('res-grand-total').textContent = fmt(grandTotal);
+  document.getElementById('res-total').textContent = fmt(grandTotal);
+  document.getElementById('res-sub').textContent = `기본급 ${fmt(base)} + 주휴수당 ${applyWeekly ? fmt(weeklyPay) : '없음'} + 4대보험 ${fmt(insTotal)}`;
+  document.getElementById('result-section').style.display = 'block';
+  document.getElementById('result-section').scrollIntoView({behavior:'smooth', block:'start'});
+}
+</script>
+<footer>
+  <a href="index.html">홈</a>
+  <a href="category.html">카테고리</a>
+  <a href="tools.html">계산기 모음</a>
+  <a href="consultation.html">무료 진단</a>
+  <p style="margin-top:12px;">© 2026 소상공인 마케팅 실전백과. 본 계산기는 참고용이며 정확한 금액은 전문가와 확인하세요.</p>
+</footer>
+</body>
+</html>

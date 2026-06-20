@@ -116,11 +116,8 @@ function renderSearchResults(results, container) {
   `).join('');
 }
 
-function initSearch() {
-  const input = document.getElementById('search-input');
-  const dropdown = document.getElementById('search-dropdown');
+function bindSearchInput(input, dropdown) {
   if (!input || !dropdown) return;
-
   let timer;
   input.addEventListener('focus', loadSearchIndex);
   input.addEventListener('input', () => {
@@ -135,20 +132,29 @@ function initSearch() {
       dropdown.style.display = 'block';
     }, 200);
   });
-
-  // 외부 클릭 시 드롭다운 닫기
   document.addEventListener('click', (e) => {
     if (!input.contains(e.target) && !dropdown.contains(e.target)) {
       dropdown.style.display = 'none';
     }
   });
-
-  // 엔터키: 카테고리 페이지로 이동 + 쿼리 파라미터
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && input.value.trim()) {
       window.location.href = `category.html?q=${encodeURIComponent(input.value.trim())}`;
     }
   });
+}
+
+function initSearch() {
+  // PC 검색창
+  bindSearchInput(
+    document.getElementById('search-input'),
+    document.getElementById('search-dropdown')
+  );
+  // 모바일 검색창
+  bindSearchInput(
+    document.getElementById('search-input-mobile'),
+    document.getElementById('search-dropdown-mobile')
+  );
 }
 
 /* ── 6. 관련 글 동적 렌더링 ─────────────── */

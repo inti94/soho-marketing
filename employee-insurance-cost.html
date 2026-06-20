@@ -318,6 +318,7 @@
     <li><a href="category.html#startup">창업·세금</a></li>
     <li><a href="category.html#delivery">배달앱</a></li>
     <li><a href="category.html#support">지원금</a></li>
+    <li><a href="tools.html">계산기</a></li>
   </ul>
   <div class="nav-search">
     <span class="nav-search-icon">🔍</span>
@@ -326,6 +327,14 @@
   </div>
   <a href="category.html" class="nav-cta">글 모아보기</a>
 </nav>
+<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
+<div class="mobile-search-bar">
+  <div class="nav-search">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="search-input-mobile" class="nav-search-input" placeholder="궁금한 주제를 검색하세요..." autocomplete="off">
+    <div id="search-dropdown-mobile"></div>
+  </div>
+</div>
 <!-- 카카오 애드핏 광고 -->
 <div style="text-align:center;margin:24px 0;padding:0 16px;">
 <ins class="kakao_ad_area" style="display:none;"
@@ -387,8 +396,8 @@ data-ad-height="100"></ins>
       <table class="article-table">
         <thead><tr><th>항목</th><th>사업주 부담</th><th>직원 부담</th></tr></thead>
         <tbody>
-          <tr><td>국민연금</td><td>4.5%</td><td>4.5%</td></tr>
-          <tr><td>건강보험</td><td>3.545%</td><td>3.545%</td></tr>
+          <tr><td>국민연금</td><td>4.75%</td><td>4.75%</td></tr>
+          <tr><td>건강보험</td><td>3.595%</td><td>3.595%</td></tr>
           <tr><td>장기요양보험</td><td>건강보험료의 12.95%</td><td>동일</td></tr>
           <tr><td>고용보험</td><td>0.9% (150인 미만)</td><td>0.9%</td></tr>
           <tr><td>산재보험</td><td>업종별 전액 부담</td><td>0%</td></tr>
@@ -397,7 +406,7 @@ data-ad-height="100"></ins>
       <div class="warn-box">⚠️ 산재보험은 100% 사업주 부담입니다. 업종에 따라 요율이 다르며, 음식점업 기준 약 1.4% 수준입니다.</div>
 
       <h2 id="calc">직접 계산해보기</h2>
-      <div class="step-box"><div class="step-num-badge">2026년 최저임금 기준 예시</div><div class="step-box-body"><div class="step-box-title">월 209시간(주 40시간) 기준 최저임금 직원 1명</div><div class="step-box-desc">2026년 최저시급 × 209시간 = 월 기본급 약 218만원 / 사업주 4대보험 부담(약 9~10%) 약 20~22만원 / 총 실인건비 약 238~240만원</div></div></div>
+      <div class="step-box"><div class="step-num-badge">2026년 최저임금 기준 예시</div><div class="step-box-body"><div class="step-box-title">월 209시간(주 40시간) 기준 최저임금 직원 1명</div><div class="step-box-desc">2026년 최저시급 × 209시간 = 월 기본급 약 216만원(2,156,880원) / 사업주 4대보험 부담(약 9.8~10.5%) 약 20~22만원 / 총 실인건비 약 238~240만원</div></div></div>
       <p>여기에 주휴수당(주 15시간 이상 근무 시 1일치 추가)까지 포함하면 실제 시급 대비 사업주 총 부담은 최저시급의 약 1.2~1.3배 수준이 됩니다.</p>
 
       <h2 id="parttime">단시간 알바는 다르다</h2>
@@ -417,7 +426,7 @@ data-ad-height="100"></ins>
 
       <h2 id="summary">정리</h2>
       <ul>
-        <li>✅ 사업주 4대보험 부담은 월급의 약 9~10% 추가 — 총 인건비는 월급보다 20만원 이상 많음</li>
+        <li>✅ 사업주 4대보험 부담은 월급의 약 9.8~10.5% 추가 — 총 인건비는 월급보다 20만원 이상 많음</li>
         <li>✅ 산재보험은 사업주 100% 부담, 업종에 따라 요율 다름</li>
         <li>✅ 주 15시간 미만 알바는 산재보험 외 4대보험 면제 — 단 주휴수당도 없음</li>
         <li>✅ 두루누리 지원사업 활용 시 10인 미만 사업장은 국민연금·고용보험 80% 지원</li>

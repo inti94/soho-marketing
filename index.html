@@ -43,25 +43,24 @@
   /* NAV */
   nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(250,250,248,0.97);
+    background: rgba(250,250,248,0.95);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
-    padding: 0 1rem;
+    padding: 0 2rem;
     display: flex; align-items: center; justify-content: space-between;
-    height: 56px;
-    gap: 8px;
+    height: 60px;
   }
-  .nav-logo { font-family: var(--serif); font-size: 15px; color: var(--primary); font-weight: 700; text-decoration: none; flex-shrink: 0; line-height: 1.3; }
-  .nav-links { display: flex; gap: 1.6rem; list-style: none; flex-shrink: 0; }
+  .nav-logo { font-family: var(--serif); font-size: 17px; color: var(--primary); font-weight: 700; text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--primary); }
-  .nav-cta { background: var(--primary); color: #fff; font-size: 12px; padding: 7px 12px; border-radius: 6px; text-decoration: none; transition: background 0.2s; white-space: nowrap; flex-shrink: 0; }
+  .nav-cta { background: var(--primary); color: #fff; font-size: 13px; padding: 8px 18px; border-radius: 6px; text-decoration: none; transition: background 0.2s; }
   .nav-cta:hover { background: var(--primary-mid); }
 
   /* HERO */
   .hero {
     max-width: 900px; margin: 0 auto;
-    padding: 48px 1.5rem 40px;
+    padding: 80px 2rem 60px;
     text-align: center;
   }
   .hero-eyebrow {
@@ -69,36 +68,34 @@
     background: var(--primary-light);
     color: var(--primary);
     font-size: 12px; font-weight: 700;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     padding: 5px 14px; border-radius: 20px;
-    margin-bottom: 18px;
+    margin-bottom: 24px;
   }
   .hero h1 {
     font-family: var(--serif);
-    font-size: clamp(26px, 7vw, 48px);
-    line-height: 1.35;
+    font-size: clamp(30px, 5vw, 48px);
+    line-height: 1.3;
     color: var(--text);
-    margin-bottom: 16px;
-    word-break: keep-all;
+    margin-bottom: 20px;
   }
   .hero h1 em { font-style: normal; color: var(--primary); }
   .hero p {
-    font-size: clamp(14px, 3.8vw, 17px); color: var(--text-muted);
-    max-width: 560px; margin: 0 auto 28px;
-    word-break: keep-all; line-height: 1.8;
+    font-size: 17px; color: var(--text-muted);
+    max-width: 560px; margin: 0 auto 36px;
   }
-  .hero-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
   .btn-primary {
     background: var(--primary); color: #fff;
-    padding: 13px 24px; border-radius: 8px;
-    font-size: clamp(14px, 3.5vw, 15px); font-weight: 600;
+    padding: 14px 28px; border-radius: 8px;
+    font-size: 15px; font-weight: 500;
     text-decoration: none; transition: background 0.2s;
   }
   .btn-primary:hover { background: var(--primary-mid); }
   .btn-secondary {
     background: var(--bg-card); color: var(--text);
-    padding: 13px 24px; border-radius: 8px;
-    font-size: clamp(14px, 3.5vw, 15px); border: 1px solid var(--border);
+    padding: 14px 28px; border-radius: 8px;
+    font-size: 15px; border: 1px solid var(--border);
     text-decoration: none; transition: border-color 0.2s;
   }
   .btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
@@ -106,19 +103,18 @@
   /* STATS BAR */
   .stats-bar {
     background: var(--primary);
-    padding: 24px 1.5rem;
+    padding: 20px 2rem;
   }
   .stats-inner {
     max-width: 900px; margin: 0 auto;
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 0;
+    display: flex; justify-content: space-around; flex-wrap: wrap; gap: 16px;
   }
-  .stat { text-align: center; padding: 4px 0; }
-  .stat-num { font-size: 22px; font-weight: 700; color: #fff; line-height: 1.2; }
-  .stat-label { font-size: 11px; color: rgba(255,255,255,0.75); margin-top: 4px; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 700; color: #fff; }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 2px; }
 
   /* SECTIONS */
-  .section { padding: 48px 1.5rem; max-width: 960px; margin: 0 auto; }
+  .section { padding: 64px 2rem; max-width: 960px; margin: 0 auto; }
   .section-header { margin-bottom: 36px; }
   .section-eyebrow { font-size: 12px; font-weight: 700; color: var(--primary); letter-spacing: 0.08em; margin-bottom: 8px; }
   .section-title { font-family: var(--serif); font-size: 26px; color: var(--text); }
@@ -220,27 +216,12 @@
   /* DIVIDER */
   .divider { border: none; border-top: 1px solid var(--border); margin: 0 2rem; }
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     .nav-links { display: none; }
-    .nav-cta { font-size: 12px; padding: 6px 10px; }
-    .hero { padding: 36px 1rem 32px; }
-    .section { padding: 36px 1rem; }
-    .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 16px 0; padding: 4px 0; }
-    .stat-num { font-size: 20px; }
-    .article-grid { grid-template-columns: 1fr; }
-    .cat-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .cat-card { padding: 16px 14px; }
-    .cat-icon { font-size: 24px; margin-bottom: 8px; }
-    .cat-name { font-size: 13px; }
-    .featured-card { grid-template-columns: 1fr; padding: 24px 20px; }
+    .featured-card { grid-template-columns: 1fr; }
     .featured-visual { display: none; }
-    .featured-title { font-size: 20px; }
-    .featured-desc { font-size: 13px; }
     .tip-list { grid-template-columns: 1fr; }
-    .tip-box { padding: 20px; }
-    .section-title { font-size: 22px; }
-    .hero-btns { flex-direction: column; align-items: center; }
-    .btn-primary, .btn-secondary { width: 100%; max-width: 320px; text-align: center; padding: 14px 20px; }
+    .stats-inner { gap: 24px; }
   }
 </style>
   <link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
@@ -262,6 +243,7 @@
     <li><a href="category.html#place">네이버 플레이스</a></li>
     <li><a href="category.html#delivery">배달앱</a></li>
     <li><a href="category.html#support">지원금</a></li>
+    <li><a href="tools.html">계산기</a></li>
   </ul>
   <div class="nav-search">
     <span class="nav-search-icon">🔍</span>
@@ -270,6 +252,14 @@
   </div>
   <a href="category.html" class="nav-cta">글 모아보기</a>
 </nav>
+<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
+<div class="mobile-search-bar">
+  <div class="nav-search">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="search-input-mobile" class="nav-search-input" placeholder="궁금한 주제를 검색하세요..." autocomplete="off">
+    <div id="search-dropdown-mobile"></div>
+  </div>
+</div>
 <!-- 카카오 애드핏 광고 -->
 <div style="text-align:center;margin:24px 0;padding:0 16px;">
 <ins class="kakao_ad_area" style="display:none;"

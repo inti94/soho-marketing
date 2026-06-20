@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="대출 금액, 금리, 기간을 입력하면 월 상환액과 총 이자를 자동으로 계산합니다. 거치 기간도 설정할 수 있습니다.">
+<meta name="keywords" content="정책자금 이자 계산기, 소상공인 대출 계산기, 월 상환액 계산, 대출 이자 계산, 소진공 대출 계산">
+<meta property="og:title" content="소상공인 정책자금 이자 계산기 — 월 상환액·총 이자 자동 계산 — 소호팁">
+<meta property="og:url" content="https://sohotip.co.kr/loan-interest-calc.html">
+<link rel="canonical" href="https://sohotip.co.kr/loan-interest-calc.html">
+<link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
+<link rel="shortcut icon" href="https://sohotip.co.kr/favicon.ico">
+<title>소상공인 정책자금 이자 계산기 — 월 상환액·총 이자 자동 계산 | 소호팁</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="sohotip.css">
+<style>
+:root{--primary:#FF5E00;--primary-light:#FFEEE5;--primary-mid:#E65300;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-size:13px;color:var(--text-muted);text-decoration:none;}
+.nav-links a:hover{color:var(--primary);}
+.nav-cta{background:var(--primary);color:#fff;font-size:13px;padding:7px 16px;border-radius:6px;text-decoration:none;}
+@media(max-width:640px){.nav-links{display:none;}}
+.page-wrap{max-width:680px;margin:0 auto;padding:40px 2rem 80px;}
+.page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:32px;line-height:1.6;}
+.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;}
+.card-title{font-size:13px;font-weight:700;color:var(--text-muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:20px;}
+.field{margin-bottom:18px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;}
+.field-hint{font-size:11px;color:var(--text-muted);margin-bottom:6px;}
+.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color .2s;}
+.field input:focus,.field select:focus{border-color:var(--primary);}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.result-card{background:var(--primary);border-radius:16px;padding:28px;color:#fff;margin-bottom:20px;}
+.result-label{font-size:13px;opacity:.8;margin-bottom:6px;}
+.result-total{font-size:36px;font-weight:700;margin-bottom:4px;}
+.result-sub{font-size:13px;opacity:.75;}
+.breakdown{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px;}
+.br-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.br-row:last-child{border:none;font-weight:700;font-size:15px;}
+.br-label{color:var(--text-muted);}
+.br-val{font-weight:500;}
+.highlight{color:var(--primary);}
+.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);margin-top:8px;}
+.btn-calc:hover{background:var(--primary-mid);}
+.tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+.notice-box{background:var(--primary-light);border-radius:12px;padding:16px 20px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
+.notice-box strong{color:var(--primary);}
+footer{background:#1A1A1A;color:rgba(255,255,255,.6);text-align:center;padding:24px;font-size:12px;}
+footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">소상공인 마케팅 실전백과</a>
+  <ul class="nav-links">
+    <li><a href="category.html">카테고리</a></li>
+    <li><a href="tools.html">계산기</a></li>
+  </ul>
+  <a href="consultation.html" class="nav-cta">무료 진단</a>
+</nav>
+<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
+<div class="mobile-search-bar">
+  <div class="nav-search">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="search-input-mobile" class="nav-search-input" placeholder="궁금한 주제를 검색하세요..." autocomplete="off">
+    <div id="search-dropdown-mobile"></div>
+  </div>
+</div>
+<div class="page-wrap">
+  <span class="tag">💳 대출 이자 계산기</span>
+  <h1 class="page-title">소상공인 정책자금 이자 계산기 — 월 상환액·총 이자 자동 계산</h1>
+  <p class="page-desc">대출 금액, 금리, 기간을 입력하면 월 상환액과 총 이자를 자동으로 계산합니다. 거치 기간도 설정할 수 있습니다.</p>
+  
+<div class="calc-card">
+  <div class="card-title">대출 조건 입력</div>
+  <div class="field">
+    <label>대출 금액 (원)</label>
+    <input type="number" id="loan-amount" value="50000000" step="1000000">
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label>연 금리 (%)</label>
+      <div class="field-hint">소진공 정책자금: 2026년 기준 2.0~4.5%대</div>
+      <input type="number" id="loan-rate" value="3.5" step="0.1">
+    </div>
+    <div class="field">
+      <label>대출 기간 (년)</label>
+      <input type="number" id="loan-term" value="5" step="1">
+    </div>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label>거치 기간 (년)</label>
+      <div class="field-hint">이자만 내는 기간. 없으면 0</div>
+      <input type="number" id="grace-term" value="1" step="1">
+    </div>
+    <div class="field">
+      <label>상환 방식</label>
+      <select id="repay-type">
+        <option value="equal">원리금균등상환</option>
+        <option value="principal">원금균등상환</option>
+      </select>
+    </div>
+  </div>
+  <button class="btn-calc" onclick="calcLoan()">💳 이자 계산하기</button>
+</div>
+<div id="loan-result" style="display:none;">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:20px;">
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center;">
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">상환 중 월 납부액</div>
+      <div style="font-size:20px;font-weight:700;" id="l-monthly">0원</div>
+    </div>
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center;">
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">총 이자</div>
+      <div style="font-size:20px;font-weight:700;" id="l-total-interest">0원</div>
+    </div>
+    <div style="background:var(--primary-light);border:1px solid var(--primary);border-radius:14px;padding:14px;text-align:center;">
+      <div style="font-size:11px;color:var(--primary);margin-bottom:4px;">총 상환액</div>
+      <div style="font-size:20px;font-weight:700;color:var(--primary);" id="l-total">0원</div>
+    </div>
+  </div>
+  <div class="breakdown">
+    <div class="br-row"><span class="br-label">대출금액</span><span class="br-val" id="l-amount"></span></div>
+    <div class="br-row"><span class="br-label">거치기간 월 이자</span><span class="br-val" id="l-grace-monthly"></span></div>
+    <div class="br-row"><span class="br-label">거치기간 총 이자</span><span class="br-val" id="l-grace-total"></span></div>
+    <div class="br-row"><span class="br-label">상환기간 월 납부액</span><span class="br-val highlight" id="l-repay-monthly"></span></div>
+    <div class="br-row"><span class="br-label">총 이자</span><span class="br-val" id="l-interest-total"></span></div>
+    <div class="br-row"><span class="br-label">총 상환액</span><span class="br-val highlight" id="l-grand-total"></span></div>
+  </div>
+  <div class="notice-box"><strong>💡 소진공 정책자금 팁:</strong> 소상공인 정책자금은 일반 은행 대출보다 금리가 낮지만 한도가 있습니다. 소상공인24(sbiz24.kr)에서 내 업종·매출 기준 신청 가능 여부를 먼저 확인하세요.</div>
+</div>
+
+</div>
+<button id="back-to-top" aria-label="맨 위로">↑</button>
+<script src="sohotip.js"></script>
+<script>
+function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
+function calcLoan(){
+  const P = parseFloat(document.getElementById('loan-amount').value)||0;
+  const r = parseFloat(document.getElementById('loan-rate').value)/100/12;
+  const totalTerm = parseFloat(document.getElementById('loan-term').value)*12;
+  const graceTerm = parseFloat(document.getElementById('grace-term').value)*12;
+  const repayType = document.getElementById('repay-type').value;
+  const repayTerm = totalTerm - graceTerm;
+  const gracePay = P * r;
+  const graceTotal = gracePay * graceTerm;
+  let monthlyPay, interestTotal;
+  if(repayType === 'equal'){
+    if(r === 0){ monthlyPay = P/repayTerm; }
+    else { monthlyPay = P * r * Math.pow(1+r,repayTerm) / (Math.pow(1+r,repayTerm)-1); }
+    interestTotal = graceTotal + (monthlyPay * repayTerm - P);
+  } else {
+    const principalPay = P/repayTerm;
+    monthlyPay = principalPay + P*r;
+    interestTotal = graceTotal + repayTerm*(repayTerm+1)/2 * principalPay * r;
+  }
+  const totalPayment = P + interestTotal;
+  document.getElementById('l-amount').textContent=fmt(P);
+  document.getElementById('l-grace-monthly').textContent=fmt(gracePay);
+  document.getElementById('l-grace-total').textContent=fmt(graceTotal);
+  document.getElementById('l-repay-monthly').textContent=fmt(monthlyPay);
+  document.getElementById('l-interest-total').textContent=fmt(interestTotal);
+  document.getElementById('l-grand-total').textContent=fmt(totalPayment);
+  document.getElementById('l-monthly').textContent=fmt(monthlyPay);
+  document.getElementById('l-total-interest').textContent=fmt(interestTotal);
+  document.getElementById('l-total').textContent=fmt(totalPayment);
+  document.getElementById('loan-result').style.display='block';
+  document.getElementById('loan-result').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+<footer>
+  <a href="index.html">홈</a><a href="category.html">카테고리</a><a href="tools.html">계산기 모음</a>
+  <p style="margin-top:12px;">© 2026 소상공인 마케팅 실전백과. 본 계산기는 참고용입니다.</p>
+</footer>
+</body>
+</html>

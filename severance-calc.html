@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="입사일, 퇴사일, 평균임금을 입력하면 법정 퇴직금을 자동으로 계산합니다. 근속연수 1년 미만 여부도 확인할 수 있습니다.">
+<meta name="keywords" content="퇴직금 계산기, 퇴직금 계산 방법, 법정 퇴직금, 평균임금 계산, 퇴직금 공식">
+<meta property="og:title" content="퇴직금 계산기 — 입사일·퇴사일·급여 입력으로 법정 퇴직금 자동 계산 — 소호팁">
+<meta property="og:url" content="https://sohotip.co.kr/severance-calc.html">
+<link rel="canonical" href="https://sohotip.co.kr/severance-calc.html">
+<link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
+<link rel="shortcut icon" href="https://sohotip.co.kr/favicon.ico">
+<title>퇴직금 계산기 — 입사일·퇴사일·급여 입력으로 법정 퇴직금 자동 계산 | 소호팁</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="sohotip.css">
+<style>
+:root{--primary:#FF5E00;--primary-light:#FFEEE5;--primary-mid:#E65300;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-size:13px;color:var(--text-muted);text-decoration:none;}
+.nav-links a:hover{color:var(--primary);}
+.nav-cta{background:var(--primary);color:#fff;font-size:13px;padding:7px 16px;border-radius:6px;text-decoration:none;}
+@media(max-width:640px){.nav-links{display:none;}}
+.page-wrap{max-width:680px;margin:0 auto;padding:40px 2rem 80px;}
+.page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:32px;line-height:1.6;}
+.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;}
+.card-title{font-size:13px;font-weight:700;color:var(--text-muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:20px;}
+.field{margin-bottom:18px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;}
+.field-hint{font-size:11px;color:var(--text-muted);margin-bottom:6px;}
+.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color .2s;}
+.field input:focus,.field select:focus{border-color:var(--primary);}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.result-card{background:var(--primary);border-radius:16px;padding:28px;color:#fff;margin-bottom:20px;}
+.result-label{font-size:13px;opacity:.8;margin-bottom:6px;}
+.result-total{font-size:36px;font-weight:700;margin-bottom:4px;}
+.result-sub{font-size:13px;opacity:.75;}
+.breakdown{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px;}
+.br-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.br-row:last-child{border:none;font-weight:700;font-size:15px;}
+.br-label{color:var(--text-muted);}
+.br-val{font-weight:500;}
+.highlight{color:var(--primary);}
+.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);margin-top:8px;}
+.btn-calc:hover{background:var(--primary-mid);}
+.tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+.notice-box{background:var(--primary-light);border-radius:12px;padding:16px 20px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
+.notice-box strong{color:var(--primary);}
+footer{background:#1A1A1A;color:rgba(255,255,255,.6);text-align:center;padding:24px;font-size:12px;}
+footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">소상공인 마케팅 실전백과</a>
+  <ul class="nav-links">
+    <li><a href="category.html">카테고리</a></li>
+    <li><a href="tools.html">계산기</a></li>
+  </ul>
+  <a href="consultation.html" class="nav-cta">무료 진단</a>
+</nav>
+<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
+<div class="mobile-search-bar">
+  <div class="nav-search">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="search-input-mobile" class="nav-search-input" placeholder="궁금한 주제를 검색하세요..." autocomplete="off">
+    <div id="search-dropdown-mobile"></div>
+  </div>
+</div>
+<div class="page-wrap">
+  <span class="tag">💼 퇴직금 계산기</span>
+  <h1 class="page-title">퇴직금 계산기 — 입사일·퇴사일·급여 입력으로 법정 퇴직금 자동 계산</h1>
+  <p class="page-desc">입사일, 퇴사일, 평균임금을 입력하면 법정 퇴직금을 자동으로 계산합니다. 근속연수 1년 미만 여부도 확인할 수 있습니다.</p>
+  
+<div class="calc-card">
+  <div class="card-title">근무 기간 입력</div>
+  <div class="field-row">
+    <div class="field"><label>입사일</label><input type="date" id="start-date" value="2025-01-01"></div>
+    <div class="field"><label>퇴사일</label><input type="date" id="end-date" value="2026-06-20"></div>
+  </div>
+  <div class="field">
+    <label>최근 3개월 월평균 임금 (원)</label>
+    <div class="field-hint">기본급 + 수당 + 상여금 1/12 등 포함한 평균 금액</div>
+    <input type="number" id="avg-salary" value="2160000" step="100000">
+  </div>
+  <div class="field">
+    <label>최근 3개월 실제 근무일수</label>
+    <div class="field-hint">통상 91일 (1월~3월 기준)</div>
+    <input type="number" id="work-days" value="91">
+  </div>
+  <button class="btn-calc" onclick="calcSeverance()">💼 퇴직금 계산하기</button>
+</div>
+<div id="sev-result" style="display:none;">
+  <div class="result-card">
+    <div class="result-label">법정 퇴직금 (세전)</div>
+    <div class="result-total" id="sev-total">0원</div>
+    <div class="result-sub" id="sev-sub"></div>
+  </div>
+  <div class="breakdown">
+    <div class="br-row"><span class="br-label">입사일</span><span class="br-val" id="sev-start"></span></div>
+    <div class="br-row"><span class="br-label">퇴사일</span><span class="br-val" id="sev-end"></span></div>
+    <div class="br-row"><span class="br-label">근속일수</span><span class="br-val" id="sev-days"></span></div>
+    <div class="br-row"><span class="br-label">근속연수</span><span class="br-val" id="sev-years"></span></div>
+    <div class="br-row"><span class="br-label">1일 평균임금 (월평균÷91일)</span><span class="br-val" id="sev-daily"></span></div>
+    <div class="br-row"><span class="br-label">퇴직금 = 1일평균임금 × 30 × (근속일÷365)</span><span class="br-val highlight" id="sev-amount"></span></div>
+  </div>
+  <div class="notice-box"><strong>💡 퇴직금 지급 의무:</strong> 1년 이상 근무하고 주 15시간 이상 일한 직원에게는 퇴직일로부터 14일 이내에 지급해야 합니다. 미지급 시 형사처벌 대상이 될 수 있습니다.</div>
+</div>
+
+</div>
+<button id="back-to-top" aria-label="맨 위로">↑</button>
+<script src="sohotip.js"></script>
+<script>
+function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
+function calcSeverance(){
+  const s = new Date(document.getElementById('start-date').value);
+  const e = new Date(document.getElementById('end-date').value);
+  const avgSalary = parseFloat(document.getElementById('avg-salary').value)||0;
+  const workDays = parseFloat(document.getElementById('work-days').value)||91;
+  const diffMs = e - s;
+  const diffDays = Math.floor(diffMs / (1000*60*60*24));
+  const years = diffDays / 365;
+  if(diffDays < 365){
+    alert('근속기간이 1년 미만입니다. 퇴직금 지급 의무가 없습니다.');
+    return;
+  }
+  const dailyWage = avgSalary / workDays;
+  const severance = dailyWage * 30 * (diffDays / 365);
+  document.getElementById('sev-start').textContent = s.toLocaleDateString('ko-KR');
+  document.getElementById('sev-end').textContent = e.toLocaleDateString('ko-KR');
+  document.getElementById('sev-days').textContent = diffDays.toLocaleString() + '일';
+  document.getElementById('sev-years').textContent = years.toFixed(2) + '년';
+  document.getElementById('sev-daily').textContent = fmt(dailyWage);
+  document.getElementById('sev-amount').textContent = fmt(severance);
+  document.getElementById('sev-total').textContent = fmt(severance);
+  document.getElementById('sev-sub').textContent = '퇴직일로부터 14일 이내 지급 의무';
+  document.getElementById('sev-result').style.display='block';
+  document.getElementById('sev-result').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+<footer>
+  <a href="index.html">홈</a><a href="category.html">카테고리</a><a href="tools.html">계산기 모음</a>
+  <p style="margin-top:12px;">© 2026 소상공인 마케팅 실전백과. 본 계산기는 참고용입니다.</p>
+</footer>
+</body>
+</html>
