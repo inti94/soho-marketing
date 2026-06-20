@@ -1435,3 +1435,75 @@
   .inline-calc { padding: 18px 16px; }
   .reco-root { padding-left: 0; padding-right: 0; }
 }
+
+
+/* ===========================================
+   계산 결과 공유 바 + 토스트 (share)
+=========================================== */
+.reco-share {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.reco-share-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.reco-share-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.reco-share-btn {
+  flex: 1 1 auto;
+  min-width: 120px;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 9px;
+  background: var(--bg-card);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--sans);
+  cursor: pointer;
+  transition: border-color 0.18s, background 0.18s, color 0.18s;
+  white-space: nowrap;
+}
+.reco-share-btn:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+.reco-share-btn:disabled { opacity: 0.6; cursor: default; }
+
+/* 토스트 */
+#reco-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 92px;
+  transform: translateX(-50%) translateY(12px);
+  background: var(--text);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 12px 18px;
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
+  z-index: 9000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  max-width: 88vw;
+  text-align: center;
+  word-break: keep-all;
+}
+#reco-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 768px) {
+  .reco-share-btn { flex: 1 1 calc(50% - 4px); min-width: 0; }
+  #reco-toast { bottom: 80px; font-size: 12px; padding: 11px 16px; }
+}

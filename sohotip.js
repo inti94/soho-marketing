@@ -976,6 +976,14 @@ function buildInlineCalc(type) {
       </div>
       <div class="ic-res-rows">${rowsHTML}</div>`;
     out.classList.add('show');
+    // 계산 결과 공유 바 (링크 복사 / 공유 / 이미지 저장)
+    const shareBar = buildShareBar({
+      getTarget: () => wrap,
+      getUrl: () => location.href,
+      getTitle: () => (def.title.replace(/^🧮\s*/, '') + ' — ' + document.title),
+      fileBase: def.title.replace(/[^가-힣A-Za-z0-9() ]/g, '').trim() + ' 결과',
+    });
+    out.appendChild(shareBar);
   };
 
   wrap.querySelector('.inline-calc-btn').addEventListener('click', runCalc);
@@ -1104,6 +1112,7 @@ async function initEngage() {
   try { _engageIndex = await loadSearchIndex(); } catch (e) { _engageIndex = []; }
 
   if (calc) {
+    setupCalcShare(slug); // 결과 공유 바 (링크/공유/이미지)
     renderCalcPage(calc);
   } else if (isArticle) {
     renderArticlePage(slug);
@@ -1115,4 +1124,181 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initEngage);
 } else {
   initEngage();
+}
+
+
+/* ===========================================
+   계산 결과 공유 모듈 (share)
+   ─────────────────────────────────────────
+   · 링크 복사 (모든 환경)
+   · 공유하기 (모바일: Web Share API → 카카오톡·문자 등 기본 공유창,
+              PC: 링크 복사 폴백) — 별도 앱 키 불필요
+   · 이미지 저장 (PNG / JPG) — html2canvas 를 CDN 에서 필요할 때만 로드
+   ─────────────────────────────────────────
+   · share-/toast 네임스페이스로 기존 스타일과 무충돌
+=========================================== */
+
+/* 계산기 페이지별 결과 컨테이너 선택자 (페이지마다 다름) */
+const CALC_RESULT_SEL = {
+  'alba-cost-calc.html': '#result-section',
+  'severance-calc.html': '#sev-result',
+  'delivery-profit-calc.html': '#result-section',
+  'food-cost-calc.html': '#food-result',
+  'bep-calc.html': '#bep-result',
+  'vat-calc.html': '#g-result',
+  'rent-increase-calc.html': '#rent-result',
+  'loan-interest-calc.html': '#loan-result',
+};
+
+/* ── 토스트 알림 ─────────────────────────────── */
+let _toastTimer = null;
+function recoToast(msg) {
+  let t = document.getElementById('reco-toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'reco-toast';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+/* ── 링크 복사 ───────────────────────────────── */
+async function recoCopyLink(url) {
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(url);
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = url;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    recoToast('🔗 링크를 복사했어요! 카카오톡·문자에 붙여넣기 하세요.');
+  } catch (e) {
+    recoToast('복사에 실패했어요. 주소창의 URL을 직접 복사해 주세요.');
+  }
+}
+
+/* ── 공유하기 (Web Share → 폴백 복사) ───────────── */
+async function recoShare(url, title) {
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: title, text: title, url: url });
+      return;
+    } catch (e) {
+      if (e && e.name === 'AbortError') return; // 사용자가 닫음
+    }
+  }
+  // PC 등 미지원 환경 → 링크 복사로 대체
+  await recoCopyLink(url);
+}
+
+/* ── html2canvas 지연 로드 ───────────────────── */
+let _h2cPromise = null;
+function loadHtml2Canvas() {
+  if (window.html2canvas) return Promise.resolve(window.html2canvas);
+  if (_h2cPromise) return _h2cPromise;
+  _h2cPromise = new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+    s.async = true;
+    s.onload = () => resolve(window.html2canvas);
+    s.onerror = () => reject(new Error('html2canvas load failed'));
+    document.head.appendChild(s);
+  });
+  return _h2cPromise;
+}
+
+/* ── 이미지 저장 (PNG/JPG) ───────────────────── */
+async function recoSaveImage(target, fmt, fileBase, btn) {
+  if (!target) { recoToast('저장할 결과가 없어요. 먼저 계산해 주세요.'); return; }
+  const orig = btn ? btn.textContent : '';
+  if (btn) { btn.textContent = '저장 중…'; btn.disabled = true; }
+  try {
+    const h2c = await loadHtml2Canvas();
+    const canvas = await h2c(target, { backgroundColor: '#ffffff', scale: 2, useCORS: true, logging: false });
+    const mime = fmt === 'jpg' ? 'image/jpeg' : 'image/png';
+    const data = canvas.toDataURL(mime, 0.95);
+    const a = document.createElement('a');
+    a.href = data;
+    a.download = (fileBase || 'sohotip-결과') + '.' + (fmt === 'jpg' ? 'jpg' : 'png');
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    recoToast('🖼️ 이미지를 저장했어요!');
+  } catch (e) {
+    recoToast('이미지 저장에 실패했어요. 잠시 후 다시 시도해 주세요.');
+  } finally {
+    if (btn) { btn.textContent = orig; btn.disabled = false; }
+  }
+}
+
+/* ── 공유 바 생성 ────────────────────────────── */
+/* opts: { getTarget(), getUrl(), getTitle(), fileBase } */
+function buildShareBar(opts) {
+  const bar = document.createElement('div');
+  bar.className = 'reco-share';
+  bar.innerHTML = `
+    <span class="reco-share-label">📤 결과 공유하기</span>
+    <div class="reco-share-btns">
+      <button type="button" class="reco-share-btn" data-act="copy">🔗 링크 복사</button>
+      <button type="button" class="reco-share-btn" data-act="share">💬 공유하기</button>
+      <button type="button" class="reco-share-btn" data-act="png">📷 이미지(PNG)</button>
+      <button type="button" class="reco-share-btn" data-act="jpg">📷 이미지(JPG)</button>
+    </div>`;
+  bar.addEventListener('click', (e) => {
+    const b = e.target.closest('.reco-share-btn');
+    if (!b) return;
+    const act = b.dataset.act;
+    const url = opts.getUrl ? opts.getUrl() : location.href;
+    const title = opts.getTitle ? opts.getTitle() : document.title;
+    if (act === 'copy') recoCopyLink(url);
+    else if (act === 'share') recoShare(url, title);
+    else if (act === 'png') recoSaveImage(opts.getTarget(), 'png', opts.fileBase, b);
+    else if (act === 'jpg') recoSaveImage(opts.getTarget(), 'jpg', opts.fileBase, b);
+  });
+  return bar;
+}
+
+/* ── 표준 계산기 페이지에 공유 바 연결 ──────────── */
+function setupCalcShare(slug) {
+  const sel = CALC_RESULT_SEL[slug];
+  const result = (sel && document.querySelector(sel)) ||
+    document.querySelector('[id*="result"]') ||
+    document.querySelector('.result-card, .result-wrap');
+  if (!result || document.querySelector('.reco-share')) return;
+
+  const fileBase = (calcBySlug(slug) ? calcBySlug(slug).title : slug.replace('.html', '')) + ' 결과';
+  const bar = buildShareBar({
+    getTarget: () => result,
+    getUrl: () => location.href,
+    getTitle: () => document.title,
+    fileBase: fileBase,
+  });
+  bar.style.display = 'none';
+  result.insertAdjacentElement('afterend', bar);
+
+  const isVisible = () => {
+    if (result.offsetParent !== null) return true;
+    try { return getComputedStyle(result).display !== 'none'; } catch (e) { return true; }
+  };
+  const reveal = () => { if (isVisible()) bar.style.display = ''; };
+
+  // 결과 영역이 표시(계산 완료)되는 순간 공유 바 노출
+  if ('MutationObserver' in window) {
+    const mo = new MutationObserver(reveal);
+    mo.observe(result, { attributes: true, attributeFilter: ['style', 'class'] });
+  }
+  // 계산 버튼 클릭도 함께 감지 (폴백)
+  document.querySelectorAll('.page-wrap button, .calc-card button').forEach(b => {
+    b.addEventListener('click', () => setTimeout(reveal, 60));
+  });
+  reveal();
 }
