@@ -1,0 +1,40 @@
+name: 매일 글 자동 발행
+
+on:
+  schedule:
+    - cron: '0 18 * * *'   # 매일 18:00 UTC = 한국시간 새벽 3시
+  workflow_dispatch: {}      # 수동 실행(테스트) 버튼
+
+permissions:
+  contents: write            # 저장소에 글을 커밋·푸시할 권한 (GitHub 앱 연결 불필요)
+
+concurrency:
+  group: daily-article
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 글 생성 + 사이트 통합
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-article.mjs
+
+      - name: 커밋 & 배포
+        run: |
+          git config user.name "sohotip-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "변경 사항 없음 — 발행 건너뜀"
+          else
+            git commit -m "Add daily article (auto)"
+            git push
+          fi

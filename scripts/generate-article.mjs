@@ -1,0 +1,109 @@
+// 매일 자동으로 SEO 최적화 글 1편을 생성·통합하는 스크립트 (GitHub Actions에서 실행)
+// 필요한 시크릿: ANTHROPIC_API_KEY  (저장소 Settings > Secrets and variables > Actions)
+import fs from 'node:fs';
+
+const KEY = process.env.ANTHROPIC_API_KEY;
+if (!KEY) { console.error('❌ ANTHROPIC_API_KEY 시크릿이 없습니다. 저장소 Settings에서 추가하세요.'); process.exit(1); }
+
+const MODEL = 'claude-sonnet-4-6';            // 최신 Sonnet
+const today = new Date().toISOString().slice(0, 10);  // YYYY-MM-DD
+
+// 1) 기존 글 수집 (중복 회피)
+const searchData = JSON.parse(fs.readFileSync('search-data.json', 'utf8'));
+const existingSlugs = searchData.map(a => a.url.replace(/\.html$/, ''));
+const existingTitles = searchData.map(a => a.title);
+const template = fs.readFileSync('naver-place-ranking-2026.html', 'utf8');
+
+// 2) 프롬프트
+const system = '너는 한국 소상공인 블로그 sohotip.co.kr의 자동 발행 에디터다. 검색 노출(SEO)이 최우선이며, 양산형 스팸이 아니라 사람에게 진짜 도움 되는 독창적·충실한 글만 쓴다.';
+
+const userPrompt = `오늘(${today}) 발행할 한국 소상공인 대상 새 글 1편을 만들어라.
+
+## 최우선 원칙
+검색 노출(SEO) 1순위. 검색 수요가 실재하고 경쟁이 약해 상위 노출이 현실적인 주제를 골라라. 절대 양산형 금지 — 구체적 정보·수치·절차로 채운 독창적 글.
+
+## 중복 금지 (아래 기존 글과 주제가 겹치면 안 됨)
+슬러그: ${existingSlugs.join(', ')}
+
+## 품질 기준(모두 충족)
+1. 본문 2,500~3,500자, 일반론 금지.
+2. 주제에 맞는 계산기 자연 연결(alba-cost-calc, severance-calc, vat-calc, food-cost-calc, bep-calc, delivery-profit-calc, delivery-fee-real-calc, loan-interest-calc, rent-increase-calc 중).
+3. 내부 링크 5개 이상(관련 기존 글 + 계산기, 위 슬러그 중 실존하는 것만).
+4. FAQ 4~5문항 + head에 FAQPage 타입 JSON-LD 별도 추가.
+5. 실제 숫자 예시·사례 여러 번.
+
+## 말투
+30년 세무사+20년 장사한 사장님이 후배에게 알려주듯 친근한 존댓말. 공감→예시→해결→팁. 문단 2~4줄, 공감 질문 자주. 과장 금지('무조건 대박/100%' → '효과 본 사례가 많습니다'). h2마다 id 부여하고 사이드바 목차와 일치.
+날짜 하드코딩 금지: 본문 freshness 라인은 정확히 → 📌 최신 정보 기준 · <span class="auto-ym">2026년 6월</span> — 최신 정보를 반영했습니다.  (단 JSON-LD datePublished/dateModified는 ${today})
+
+## 구조 — 아래 템플릿을 그대로 따라 완성된 HTML 1장을 만들 것
+광고 <ins> 블록, naver-site-verification 코드, sohotip.js/sohotip.css 링크, breadcrumb·목차·관련글·공유바 구조를 템플릿에서 그대로 복사하고 내용만 새로 채워라. canonical과 og:url은 새 글 주소(https://sohotip.co.kr/<슬러그>.html)로 바꿔라.
+
+<<<TEMPLATE_START
+${template}
+TEMPLATE_END
+
+## 출력 형식 (반드시 이 형식만, 다른 말 금지)
+<META>
+{"slug":"영문-소문자-하이픈(기존과 중복금지)","searchEntry":{"url":"<슬러그>.html","title":"...","desc":"...","tag":"🏪 창업·세금 같은 형식","date":"${today}","rt":"8분","keywords":"쉼표구분 키워드"},"rssItem":"<item>\\n<title>...</title>\\n<link>https://sohotip.co.kr/<슬러그>.html</link>\\n<description>...</description>\\n<pubDate>RFC822 날짜</pubDate>\\n</item>"}
+</META>
+<HTML>
+<!DOCTYPE html> ...완성된 전체 페이지...
+</HTML>`;
+
+// 3) API 호출
+const res = await fetch('https://api.anthropic.com/v1/messages', {
+  method: 'POST',
+  headers: { 'x-api-key': KEY, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
+  body: JSON.stringify({ model: MODEL, max_tokens: 20000, system, messages: [{ role: 'user', content: userPrompt }] })
+});
+if (!res.ok) { console.error('❌ API 오류', res.status, await res.text()); process.exit(1); }
+const data = await res.json();
+const text = (data.content || []).filter(c => c.type === 'text').map(c => c.text).join('');
+
+// 4) 파싱
+const metaM = text.match(/<META>([\s\S]*?)<\/META>/);
+const htmlM = text.match(/<HTML>([\s\S]*?)<\/HTML>/);
+if (!metaM || !htmlM) { console.error('❌ 응답 형식 불량 (META/HTML 누락)'); process.exit(1); }
+let meta;
+try { meta = JSON.parse(metaM[1].trim()); } catch (e) { console.error('❌ META JSON 파싱 실패', e); process.exit(1); }
+const fullHtml = htmlM[1].trim();
+const slug = (meta.slug || '').trim();
+
+// 5) 안전장치
+if (!slug || !/^[a-z0-9-]+$/.test(slug)) { console.error('❌ 슬러그 불량:', slug); process.exit(1); }
+if (existingSlugs.includes(slug)) { console.error('❌ 중복 슬러그(발행 취소):', slug); process.exit(1); }
+if (!/class="article-content"/.test(fullHtml) || !/sohotip\.js/.test(fullHtml) || !/<ins/.test(fullHtml)) {
+  console.error('❌ HTML 구조 검증 실패(필수 요소 누락) — 발행 취소'); process.exit(1);
+}
+
+// 6) 파일 작성 + 사이트 통합
+fs.writeFileSync(`${slug}.html`, fullHtml);
+
+const entry = meta.searchEntry || { url: `${slug}.html`, title: slug, desc: '', tag: '', date: today, rt: '8분', keywords: '' };
+searchData.unshift(entry);
+fs.writeFileSync('search-data.json', JSON.stringify(searchData, null, 2));
+
+try {
+  const si = JSON.parse(fs.readFileSync('search-index.json', 'utf8'));
+  // search-index.json은 스키마가 다름: tag→cat(이모지 제거), keywords→kw
+  const cat = (entry.tag || '').replace(/^[^\p{L}\p{N}]+/u, '').trim();
+  const indexEntry = {
+    url: entry.url, title: entry.title, desc: entry.desc,
+    cat, kw: entry.keywords || '', date: entry.date, rt: entry.rt,
+  };
+  si.unshift(indexEntry); fs.writeFileSync('search-index.json', JSON.stringify(si, null, 2));
+} catch (e) { console.warn('⚠ search-index.json 갱신 건너뜀:', e.message); }
+
+let sitemap = fs.readFileSync('sitemap.xml', 'utf8');
+const urlBlock = `  <url>\n    <loc>https://sohotip.co.kr/${slug}.html</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>\n`;
+sitemap = sitemap.replace('</urlset>', urlBlock + '</urlset>');
+fs.writeFileSync('sitemap.xml', sitemap);
+
+if (meta.rssItem) {
+  let rss = fs.readFileSync('rss.xml', 'utf8');
+  rss = rss.replace(/(\n\s*<item>)/, '\n    ' + meta.rssItem + '$1'); // 최신 글을 맨 위에
+  fs.writeFileSync('rss.xml', rss);
+}
+
+console.log(`✅ 발행 완료: ${slug}.html — ${entry.title}`);
