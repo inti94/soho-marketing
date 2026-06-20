@@ -1318,3 +1318,100 @@ function setupCalcShare(slug) {
     setAutoYM();
   }
 })();
+
+/* ── 실시간 인기글: 최근 30일 조회수 기준 (Firebase Firestore) ──────────────────
+   ▷ 설정 전에는 아무 동작도 하지 않으며, HTML에 적힌 기존 인기글 목록이 그대로 보입니다.
+   ▷ Firebase 콘솔 > 프로젝트 설정 > 내 앱(웹 </>)에서 받은 값을 아래 firebaseConfig에 붙여넣으면
+     그 순간부터 글 조회수가 쌓이고, 홈/카테고리 '인기글'이 최근 30일 조회순으로 자동 표시됩니다. */
+(function () {
+  var firebaseConfig = {
+    apiKey: "PASTE_API_KEY",
+    authDomain: "PASTE_PROJECT.firebaseapp.com",
+    projectId: "PASTE_PROJECT_ID",
+    storageBucket: "PASTE_PROJECT.appspot.com",
+    messagingSenderId: "PASTE_SENDER_ID",
+    appId: "PASTE_APP_ID"
+  };
+  var WINDOW_DAYS = 30; // 인기글 집계 기간(일)
+  var TOP5_FALLBACK = ["baemin-vs-coupang","naver-place-ranking-2026","soho-jiwongeum-2026","solo-shop-tax-deduction","rent-increase-refusal"];
+  var POP_FALLBACK  = ["article","baemin-vs-coupang","soho-jiwongeum-2026","instagram-restaurant","card-terminal-compare"];
+
+  // 설정 전이면 종료 → 기존 정적 인기글 목록 유지
+  if (!firebaseConfig.apiKey || firebaseConfig.apiKey.indexOf("PASTE") === 0) return;
+
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+  function ymd(d){ return '' + d.getFullYear() + pad(d.getMonth()+1) + pad(d.getDate()); }
+  function cutoff(){ var d = new Date(); d.setDate(d.getDate() - (WINDOW_DAYS - 1)); return ymd(d); }
+  function slugOf(file){ return file.replace(/\.html$/,''); }
+  function pageFile(){ var p = location.pathname.split('/').pop() || 'index.html'; return p === '' ? 'index.html' : p; }
+  function loadScript(src){ return new Promise(function(res, rej){ var s = document.createElement('script'); s.src = src; s.async = true; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
+  function esc(s){ return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function fmtMeta(a){ var d = (a.date || '').replace(/-/g,'.'); return d + (a.rt ? ' · ' + a.rt : ''); }
+  function splitTag(t){ t = (t || '').trim(); var i = t.indexOf(' '); return i > 0 ? { emoji: t.slice(0,i), text: t.slice(i+1) } : { emoji: '📄', text: t }; }
+
+  function renderTop5(el, slugs, meta){
+    el.innerHTML = slugs.map(function(slug, idx){
+      var a = meta[slug], n = idx + 1, tg = splitTag(a.tag), rank = n <= 3 ? ' rank' + n : '';
+      return '<a href="' + a.url + '" class="top5-item">' +
+        '<span class="top5-num' + rank + '">' + n + '</span>' +
+        '<div class="top5-body">' +
+          '<div class="top5-tag">' + esc(tg.text) + '</div>' +
+          '<div class="top5-title">' + esc(a.title) + '</div>' +
+          '<div class="top5-meta">' + esc(fmtMeta(a)) + '</div>' +
+        '</div>' +
+        '<div class="top5-icon">' + tg.emoji + '</div>' +
+      '</a>';
+    }).join('');
+  }
+  function renderPop(el, slugs, meta){
+    el.innerHTML = slugs.map(function(slug, idx){
+      var a = meta[slug];
+      return '<li><span class="popular-num">' + (idx+1) + '</span><a href="' + a.url + '">' + esc(a.title) + '</a></li>';
+    }).join('');
+  }
+
+  var BASE = 'https://www.gstatic.com/firebasejs/10.12.2/';
+  loadScript(BASE + 'firebase-app-compat.js')
+    .then(function(){ return loadScript(BASE + 'firebase-firestore-compat.js'); })
+    .then(function(){
+      firebase.initializeApp(firebaseConfig);
+      var db = firebase.firestore();
+      var ref = db.collection('stats').doc('pageviews');
+      var file = pageFile();
+
+      // 1) 글 페이지: 오늘자 조회수 +1
+      var skip = ['index.html','category.html','consultation.html','tools.html'];
+      if (/\.html$/.test(file) && skip.indexOf(file) === -1) {
+        var counts = {}; counts[slugOf(file)] = {}; counts[slugOf(file)][ymd(new Date())] = firebase.firestore.FieldValue.increment(1);
+        ref.set({ counts: counts }, { merge: true }).catch(function(){});
+      }
+
+      // 2) 홈/카테고리: 최근 30일 합산 인기글 렌더
+      var top5 = document.querySelector('.top5-list');
+      var popList = document.querySelector('.popular-list');
+      if (!top5 && !popList) return;
+
+      Promise.all([ ref.get(), fetch('search-data.json').then(function(r){ return r.json(); }) ])
+        .then(function(arr){
+          var snap = arr[0], data = arr[1], meta = {};
+          data.forEach(function(a){ meta[slugOf(a.url)] = a; });
+          var co = cutoff(), ranked = [];
+          if (snap.exists && snap.data().counts){
+            var c = snap.data().counts;
+            Object.keys(c).forEach(function(slug){
+              var sum = 0, days = c[slug] || {};
+              Object.keys(days).forEach(function(d){ if (d >= co) sum += (days[d] || 0); });
+              if (sum > 0 && meta[slug]) ranked.push({ slug: slug, v: sum });
+            });
+            ranked.sort(function(a,b){ return b.v - a.v; });
+          }
+          function fill(fb, n){
+            var out = ranked.map(function(x){ return x.slug; });
+            for (var i = 0; i < fb.length && out.length < n; i++){ if (out.indexOf(fb[i]) === -1 && meta[fb[i]]) out.push(fb[i]); }
+            return out.slice(0, n);
+          }
+          if (top5) renderTop5(top5, fill(TOP5_FALLBACK, 5), meta);
+          if (popList) renderPop(popList, fill(POP_FALLBACK, 5), meta);
+        }).catch(function(){});
+    }).catch(function(){});
+})();
