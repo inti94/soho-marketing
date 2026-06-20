@@ -586,6 +586,13 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://sohotip.co.kr/google-business-profile.html</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- 무료 계산기 툴 페이지 (허브) -->
   <url>
     <loc>https://sohotip.co.kr/tools.html</loc>
