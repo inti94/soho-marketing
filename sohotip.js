@@ -1302,3 +1302,19 @@ function setupCalcShare(slug) {
   });
   reveal();
 }
+
+/* 최신 정보 기준 년·월 자동 표시 (.auto-ym) — 매달 방문 시점 기준으로 자동 갱신 */
+(function () {
+  function setAutoYM() {
+    var now = new Date();
+    var label = now.getFullYear() + '년 ' + (now.getMonth() + 1) + '월';
+    document.querySelectorAll('.auto-ym').forEach(function (el) {
+      el.textContent = label;
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setAutoYM);
+  } else {
+    setAutoYM();
+  }
+})();
