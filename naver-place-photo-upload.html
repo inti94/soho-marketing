@@ -304,10 +304,11 @@
   <link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
   <link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
   <link rel="shortcut icon" href="https://sohotip.co.kr/favicon.ico">
+  <link rel="stylesheet" href="sohotip.css">
 </head>
 <body>
 
-<div class="progress-bar" id="progress"></div>
+<div id="progress-bar"></div>
 
 <nav>
   <a href="index.html" class="nav-logo">소상공인 마케팅 실전백과</a>
@@ -317,6 +318,11 @@
     <li><a href="category.html#delivery">배달앱</a></li>
     <li><a href="category.html#support">지원금</a></li>
   </ul>
+  <div class="nav-search">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="search-input" class="nav-search-input" placeholder="글 검색..." autocomplete="off">
+    <div id="search-dropdown"></div>
+  </div>
   <a href="category.html" class="nav-cta">글 모아보기</a>
 </nav>
 <!-- 카카오 애드핏 광고 -->
@@ -440,7 +446,7 @@ data-ad-height="250"></ins>
     <!-- 관련 글 -->
     <div class="related">
       <div class="related-title">관련 글</div>
-      <div class="related-grid">
+      <div class="related-grid" id="related-dynamic">
         <a href="article.html" class="related-card">
           <div>
             <div class="related-card-title">네이버 플레이스 최적화 5가지</div>
@@ -538,5 +544,15 @@ data-ad-height="250"></ins>
   });
 </script>
 
+
+<button id="back-to-top" aria-label="맨 위로">↑</button>
+
+<div id="sticky-cta">
+  <p>💡 내 매장 마케팅, 무료로 점검받으세요</p>
+  <a href="consultation.html">👉 무료 진단 신청</a>
+  <button id="sticky-cta-close" aria-label="닫기">✕</button>
+</div>
+
+<script src="sohotip.js"></script>
 </body>
 </html>

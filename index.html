@@ -10,10 +10,10 @@
 <meta property="og:title" content="소상공인 마케팅 실전백과">
 <meta property="og:description" content="네이버 플레이스, 배달앱, SNS, 지원금까지 소상공인 마케팅 실전 정보">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://inti94.github.io/soho-marketing/">
+<meta property="og:url" content="https://sohotip.co.kr/">
 <meta name="naver-site-verification" content="여기에_네이버_인증코드_입력">
-<link rel="canonical" href="https://inti94.github.io/soho-marketing/">
-<link rel="sitemap" type="application/xml" href="/soho-marketing/sitemap.xml">
+<link rel="canonical" href="https://sohotip.co.kr/">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <title>소상공인 마케팅 실전백과 — 네이버 플레이스·배달앱·지원금 실전 가이드</title>
 <!-- Google AdSense 승인 후 아래 코드를 실제 코드로 교체 -->
 <!-- Google AdSense -->
@@ -230,8 +230,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
   <link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
   <link rel="shortcut icon" href="https://sohotip.co.kr/favicon.ico">
+  <link rel="stylesheet" href="sohotip.css">
 </head>
 <body>
+<div id="progress-bar"></div>
 
 <!-- NAV -->
 <nav>
@@ -242,6 +244,11 @@
     <li><a href="category.html#delivery">배달앱</a></li>
     <li><a href="category.html#support">지원금</a></li>
   </ul>
+  <div class="nav-search">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="search-input" class="nav-search-input" placeholder="글 검색..." autocomplete="off">
+    <div id="search-dropdown"></div>
+  </div>
   <a href="category.html" class="nav-cta">글 모아보기</a>
 </nav>
 <!-- 카카오 애드핏 광고 -->
@@ -412,5 +419,8 @@ data-ad-height="100"></ins>
   </div>
 </footer>
 
+
+<button id="back-to-top" aria-label="맨 위로">↑</button>
+<script src="sohotip.js"></script>
 </body>
 </html>

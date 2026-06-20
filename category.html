@@ -147,8 +147,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
   <link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
   <link rel="shortcut icon" href="https://sohotip.co.kr/favicon.ico">
+  <link rel="stylesheet" href="sohotip.css">
 </head>
 <body>
+<div id="progress-bar"></div>
 
 <nav>
   <a href="index.html" class="nav-logo">소상공인 마케팅 실전백과</a>
@@ -159,6 +161,11 @@
     <li><a href="category.html#support">지원금</a></li>
   </ul>
   <a href="index.html" class="nav-cta">홈으로</a>
+  <div class="nav-search">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="search-input" class="nav-search-input" placeholder="글 검색..." autocomplete="off">
+    <div id="search-dropdown"></div>
+  </div>
 </nav>
 <!-- 카카오 애드핏 광고 -->
 <div style="text-align:center;margin:24px 0;padding:0 16px;">
@@ -189,7 +196,12 @@ data-ad-height="100"></ins>
 <div class="main">
 
   <!-- POPULAR -->
-  <div class="popular-box">
+  <section id="search-results-section" style="display:none; max-width:720px; margin:0 auto 40px; padding:0 2rem;">
+  <span id="search-query-label" style="display:block; font-size:15px; font-weight:700; color:var(--text); margin-bottom:16px;"></span>
+  <div id="search-results-list"></div>
+  <button onclick="document.getElementById('search-results-section').style.display='none'; history.replaceState(null,'',location.pathname);" style="margin-top:16px; background:none; border:1.5px solid var(--border); padding:8px 16px; border-radius:8px; cursor:pointer; font-size:13px; color:var(--text-muted);">✕ 검색 결과 닫기</button>
+</section>
+<div class="popular-box">
     <h3>🔥 이번 주 인기글</h3>
     <ul class="popular-list">
         <li><span class="popular-num">1</span><a href="article.html">네이버 플레이스 최적화, 지금 당장 할 수 있는 5가지 (2026년)</a></li>
@@ -898,5 +910,8 @@ data-ad-height="100"></ins>
   </div>
 </footer>
 
+
+<button id="back-to-top" aria-label="맨 위로">↑</button>
+<script src="sohotip.js"></script>
 </body>
 </html>

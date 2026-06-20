@@ -1,40 +1,589 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://sohotip.co.kr/</loc><lastmod>2026-06-16</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://sohotip.co.kr/category.html</loc><lastmod>2026-06-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://sohotip.co.kr/article.html</loc><lastmod>2026-06-10</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/baemin-vs-coupang.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/soho-jiwongeum-2026.html</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/naver-place-review.html</loc><lastmod>2026-06-10</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/instagram-restaurant.html</loc><lastmod>2026-06-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/card-terminal-compare.html</loc><lastmod>2026-06-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/tax-refund-soho.html</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/restaurant-startup-cost.html</loc><lastmod>2026-06-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/policy-loan-guide.html</loc><lastmod>2026-06-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/general-vs-simple-tax.html</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/youtube-shorts-marketing.html</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/delivery-ad-reduce.html</loc><lastmod>2026-06-10</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/naver-blog-seo.html</loc><lastmod>2026-06-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/daangn-marketing.html</loc><lastmod>2026-06-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/menu-design-tips.html</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/noran-umbrella.html</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/delivery-photo-tips.html</loc><lastmod>2026-06-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/hygiene-grade.html</loc><lastmod>2026-06-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/cheap-interior.html</loc><lastmod>2026-06-03</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/kiosk-guide.html</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/closure-support.html</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/smart-store-guide.html</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/delivery-packaging.html</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/no-parking-marketing.html</loc><lastmod>2026-05-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/fire-insurance.html</loc><lastmod>2026-05-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/soho-sns-strategy.html</loc><lastmod>2026-05-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/review-event.html</loc><lastmod>2026-05-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/lunch-special-marketing.html</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/kakao-channel-marketing.html</loc><lastmod>2026-05-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/naver-advertising.html</loc><lastmod>2026-05-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/soho-accounting.html</loc><lastmod>2026-05-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/peak-time-marketing.html</loc><lastmod>2026-05-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/soho-minimum-wage.html</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/food-cost-control.html</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sohotip.co.kr/weekend-event.html</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+
+  <!-- 메인 페이지 -->
+  <url>
+    <loc>https://sohotip.co.kr/</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 카테고리 페이지 -->
+  <url>
+    <loc>https://sohotip.co.kr/category.html</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 상담 페이지 -->
+  <url>
+    <loc>https://sohotip.co.kr/consultation.html</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/academy-fitness-marketing.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/bad-review-legal-response.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/baemin-takeout-vs-delivery.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/baemin-ultraol-vs-openlist.html</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/baemin-vs-coupang.html</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/beauty-salon-marketing.html</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/business-license-types.html</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/cafe-marketing-by-type.html</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/cafe-startup-real-cost.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/card-sales-tax-audit.html</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/card-terminal-compare.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/cheap-interior.html</loc>
+    <lastmod>2026-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/closure-support.html</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/cold-noodle-summer-menu.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/coupangeats-review.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/daangn-marketing.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/delivery-ad-reduce.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/delivery-fee-real-calc.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/delivery-only-marketing.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/delivery-packaging.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/delivery-photo-tips.html</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/durunuri-application.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/employee-insurance-cost.html</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/employee-termination-guide.html</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/fire-insurance.html</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/food-cost-control.html</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/food-poisoning-prevention.html</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/general-vs-simple-tax.html</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/heatwave-sales-strategy.html</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/hygiene-grade.html</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/instagram-ads-budget.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/instagram-follower-zero.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/instagram-restaurant.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/kakao-channel-marketing.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/kiosk-guide.html</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/loyalty-point-system.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/lunch-special-marketing.html</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/management-voucher-2026.html</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/menu-design-tips.html</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/naver-advertising.html</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/naver-blog-seo.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/naver-place-photo-upload.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/naver-place-ranking-2026.html</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/naver-place-review.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/no-parking-marketing.html</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/noran-umbrella-cancel.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/noran-umbrella.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/online-order-system.html</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/parttime-hiring-solution.html</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/peak-time-marketing.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/phone-marketing-script.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/policy-loan-guide.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/pos-system-guide.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/premium-money-dispute.html</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/public-vs-private-delivery.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/rent-increase-refusal.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/restaurant-business-registration.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/restaurant-startup-cost.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/retail-store-marketing.html</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/review-event.html</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/self-employed-injury-insurance.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/smart-store-guide.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/soho-2026-second-half-support.html</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/soho-accounting.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/soho-bookkeeping-app.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/soho-health-checkup.html</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/soho-jiwongeum-2026.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/soho-minimum-wage.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/soho-sns-strategy.html</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/solo-shop-tax-deduction.html</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/store-cctv-guide.html</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/store-electricity-bill-reduce.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/store-signage-design.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/store-theft-insurance-claim.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/store-transfer-tax.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/summer-restaurant-marketing.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/tax-refund-soho.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/unpaid-settlement-dispute.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/weekend-event.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sohotip.co.kr/youtube-shorts-marketing.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
