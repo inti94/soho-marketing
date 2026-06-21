@@ -931,6 +931,15 @@
 }
 .article-content a:hover { opacity: 0.8; }
 
+/* ── 글 본문 모바일 가로 넘침 방지 ─────────────────
+   .article-wrap(grid)의 아이템 .article-main 은 인라인 CSS에서 비어 있어
+   min-width:auto 기본값을 가진다. 그러면 넓은 표·긴 텍스트의 min-content
+   만큼 트랙이 벌어져 모바일에서 화면 밖으로 넘친다(제목·본문 잘림).
+   min-width:0 으로 트랙 폭에 맞춰 줄어들게 하고, 넓은 표는 가로 스크롤 처리.
+   (이 파일은 각 글의 인라인 <style> 보다 뒤에 로드되어 동일 specificity로 우선함) */
+.article-wrap > .article-main { min-width: 0; }
+.article-main .article-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
 /* 팁 박스 */
 .tip-inline {
   background: var(--primary-light);
