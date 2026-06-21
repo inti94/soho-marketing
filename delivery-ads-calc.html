@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="울트라콜·오픈리스트 광고비와 예상 추가 주문 수, 주문당 순이익을 입력하면 광고 ROI와 본전을 맞추는 손익분기 주문 수를 계산합니다.">
+<meta name="keywords" content="배달앱 광고비 계산기, 울트라콜 ROI, 오픈리스트 효과, 배달 광고 손익분기, 배달앱 광고비">
+<meta name="robots" content="index, follow">
+<meta name="author" content="소상공인 마케팅 실전백과">
+<meta name="date" content="2026-06-20">
+<meta property="og:type" content="website">
+<meta property="og:title" content="배달앱 광고비 ROI 계산기 — 소호팁">
+<meta property="og:description" content="울트라콜·오픈리스트 광고비와 예상 추가 주문 수, 주문당 순이익을 입력하면 광고 ROI와 본전을 맞추는 손익분기 주문 수를 계산합니다.">
+<meta property="og:url" content="https://sohotip.co.kr/delivery-ads-calc.html">
+<meta property="og:image" content="https://sohotip.co.kr/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="소상공인 마케팅 실전백과">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="배달앱 광고비 ROI 계산기 — 소호팁">
+<meta name="twitter:description" content="울트라콜·오픈리스트 광고비와 예상 추가 주문 수, 주문당 순이익을 입력하면 광고 ROI와 본전을 맞추는 손익분기 주문 수를 계산합니다.">
+<meta name="twitter:image" content="https://sohotip.co.kr/og-image.png">
+<meta name="naver-site-verification" content="d7369feb5de3df4cce2e9016b84ad045c4ed70a4">
+<link rel="canonical" href="https://sohotip.co.kr/delivery-ads-calc.html">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sohotip.co.kr/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
+<link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
+<title>배달앱 광고비 ROI 계산기 — 울트라콜·오픈리스트 본전 주문 수 | 소호팁</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "배달앱 광고비 ROI 계산기",
+  "description": "배달앱 광고비 대비 수익(ROI)과 손익분기 주문 수를 계산하는 무료 계산기.",
+  "url": "https://sohotip.co.kr/delivery-ads-calc.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"},
+  "publisher": {"@type": "Organization", "name": "소상공인 마케팅 실전백과", "url": "https://sohotip.co.kr"},
+  "dateModified": "2026-06-20",
+  "inLanguage": "ko-KR"
+}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"홈","item":"https://sohotip.co.kr/"},
+{"@type":"ListItem","position":2,"name":"계산기","item":"https://sohotip.co.kr/tools.html"},
+{"@type":"ListItem","position":3,"name":"배달앱 광고비 ROI 계산기","item":"https://sohotip.co.kr/delivery-ads-calc.html"}
+]}
+</script>
+<link rel="stylesheet" href="sohotip.css">
+<style>
+:root{--primary:#FF5E00;--primary-light:#FFEEE5;--primary-mid:#E65300;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-size:13px;color:var(--text-muted);text-decoration:none;}
+.nav-links a:hover{color:var(--primary);}
+.nav-cta{background:var(--primary);color:#fff;font-size:13px;padding:7px 16px;border-radius:6px;text-decoration:none;}
+@media(max-width:640px){.nav-links{display:none;}}
+.ad-wrap{max-width:680px;margin:0 auto;padding:12px 2rem 0;text-align:center;}
+.page-wrap{max-width:680px;margin:0 auto;padding:24px 2rem 80px;}
+.page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:32px;line-height:1.6;}
+.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;}
+.card-title{font-size:14px;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:20px;}
+.field{margin-bottom:20px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--text);}
+.field-hint{font-size:11px;color:var(--text-muted);margin-bottom:6px;}
+.field input,.field select{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;-webkit-appearance:none;}
+.field input:focus,.field select:focus{border-color:var(--primary);}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.toggle-group{display:flex;gap:8px;flex-wrap:wrap;}
+.toggle-btn{padding:9px 16px;border:1.5px solid var(--border);border-radius:20px;background:var(--bg-card);font-size:13px;cursor:pointer;transition:all 0.15s;color:var(--text-muted);min-height:40px;}
+.toggle-btn.active{border-color:var(--primary);background:var(--primary-light);color:var(--primary);font-weight:600;}
+.result-card{background:var(--primary);border-radius:16px;padding:28px;color:#fff;margin-bottom:20px;}
+.result-title{font-size:13px;opacity:0.85;margin-bottom:6px;}
+.result-total{font-size:34px;font-weight:700;margin-bottom:4px;line-height:1.2;}
+.result-sub{font-size:13px;opacity:0.8;}
+.result-breakdown{background:var(--bg-card);border-radius:16px;padding:24px;border:1px solid var(--border);}
+.breakdown-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);gap:12px;}
+.breakdown-row:last-child{border-bottom:none;}
+.breakdown-label{font-size:13px;color:var(--text-muted);}
+.breakdown-value{font-size:14px;font-weight:500;color:var(--text);text-align:right;}
+.breakdown-value.highlight{color:var(--primary);font-weight:700;}
+.notice-box{background:var(--primary-light);border-radius:12px;padding:16px 20px;margin-top:20px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
+.notice-box strong{color:var(--primary);}
+.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background 0.2s;margin-top:8px;min-height:44px;}
+.btn-calc:hover{background:var(--primary-mid);}
+.tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
+footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
+@media(max-width:640px){.field-row{grid-template-columns:1fr;}}
+</style></head>
+<body>
+<div id="progress-bar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">소상공인 마케팅 실전백과</a>
+  <ul class="nav-links">
+    <li><a href="category.html">카테고리</a></li>
+    <li><a href="tools.html">계산기</a></li>
+  </ul>
+  <a href="consultation.html" class="nav-cta">무료 진단</a>
+</nav>
+<div class="mobile-search-bar">
+  <div class="nav-search">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="search-input-mobile" class="nav-search-input" placeholder="궁금한 주제를 검색하세요..." autocomplete="off">
+    <div id="search-dropdown-mobile"></div>
+  </div>
+</div>
+<div class="ad-wrap"><ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-OXO7QmLJ3fqDjM3l" data-ad-width="320" data-ad-height="100"></ins></div>
+<div class="page-wrap">
+  <span class="tag">🧮 매출·수익 계산기</span>
+  <h1 class="page-title">배달앱 광고비 ROI 계산기</h1>
+  <p class="page-desc">울트라콜·오픈리스트에 광고비는 나가는데 효과가 있는지 헷갈리시죠? 광고비와 예상 추가 주문 수를 넣으면 ROI와 "이만큼은 팔아야 본전"인 손익분기 주문 수를 계산해드려요.</p>
+
+  <div class="calc-card">
+    <div class="card-title">광고·주문 정보 입력</div>
+    <div class="field-row">
+      <div class="field"><label>월 광고비 (원)</label><input type="number" id="adcost" value="88000" min="0" step="1000"></div>
+      <div class="field"><label>광고로 늘어난 월 주문 수</label><input type="number" id="orders" value="100" min="0" step="1"></div>
+    </div>
+    <div class="field"><label>주문 1건당 순이익 (원)</label><div class="field-hint">수수료·재료비·배달비 다 빼고 남는 돈</div><input type="number" id="profit" value="7000" min="0" step="500"></div>
+    <button class="btn-calc" onclick="calculate()">📣 광고 ROI 계산하기</button>
+  </div>
+
+  <div id="result-section" style="display:none;">
+    <div class="result-card">
+      <div class="result-title">광고 순효과 (월)</div>
+      <div class="result-total" id="res-total">-</div>
+      <div class="result-sub" id="res-sub"></div>
+    </div>
+    <div class="result-breakdown">
+      <div class="breakdown-row"><span class="breakdown-label">광고로 늘어난 수익 (월)</span><span class="breakdown-value" id="res-gain">-</span></div>
+      <div class="breakdown-row"><span class="breakdown-label">광고비</span><span class="breakdown-value" id="res-cost">-</span></div>
+      <div class="breakdown-row"><span class="breakdown-label">순효과 (수익 − 광고비)</span><span class="breakdown-value highlight" id="res-net">-</span></div>
+      <div class="breakdown-row"><span class="breakdown-label">ROI (광고비 대비)</span><span class="breakdown-value highlight" id="res-roi">-</span></div>
+      <div class="breakdown-row"><span class="breakdown-label">손익분기 주문 수 (본전)</span><span class="breakdown-value" id="res-bep">-</span></div>
+    </div>
+    <div class="notice-box"><strong>💡 ROI 읽는 법</strong><br>ROI가 <strong>0%면 본전</strong>, 플러스면 광고가 남는 장사예요. 손익분기 주문 수보다 실제 추가 주문이 많아야 이득입니다. 추가 주문 수는 "광고 켰을 때 vs 껐을 때" 차이로 잡아야 정확해요. 광고비만 늘리기보다 주문당 순이익(원가·수수료)부터 점검하는 게 먼저입니다.</div>
+  </div>
+</div>
+<div class="ad-wrap"><ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-92dlbIcNNOkHSZw8" data-ad-width="300" data-ad-height="250"></ins>
+<script type="text/javascript" src="//t1.kakaocdn.net/kas/static/ba.min.js" async></script></div>
+<button id="back-to-top" aria-label="맨 위로">↑</button>
+<script src="sohotip.js"></script>
+<script>
+function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
+function won(n){return Math.round(n).toLocaleString('ko-KR');}
+function num(id){return parseFloat(document.getElementById(id).value)||0;}
+function setT(id,v){var e=document.getElementById(id);if(e)e.textContent=v;}
+function showResult(){var r=document.getElementById('result-section');r.style.display='block';r.scrollIntoView({behavior:'smooth',block:'start'});}
+function calculate(){
+  var cost=num('adcost'),orders=num('orders'),profit=num('profit');
+  var gain=orders*profit;
+  var net=gain-cost;
+  var roi=cost>0?(net/cost*100):0;
+  var bep=profit>0?Math.ceil(cost/profit):0;
+  setT('res-gain',fmt(gain));
+  setT('res-cost',fmt(cost));
+  setT('res-net',fmt(net));
+  setT('res-roi',roi.toFixed(0)+'%');
+  setT('res-bep',bep.toLocaleString('ko-KR')+'건');
+  setT('res-total',fmt(net));
+  setT('res-sub',(net>=0?'광고가 남는 장사예요 (ROI '+roi.toFixed(0)+'%)':'아직 본전 미달이에요 — 월 '+bep+'건 이상 필요'));
+  showResult();
+}
+</script>
+<footer>
+  <a href="index.html">홈</a>
+  <a href="category.html">카테고리</a>
+  <a href="tools.html">계산기 모음</a>
+  <a href="consultation.html">무료 진단</a>
+  <p style="margin-top:12px;">© 2026 소상공인 마케팅 실전백과. 본 계산기는 참고용이며 정확한 금액은 전문가와 확인하세요.</p>
+</footer>
+</body>
+</html>

@@ -494,6 +494,16 @@ const RECO_CALCS = [
   { slug: 'bep-calc.html',             icon: '📈', title: '손익분기점(BEP) 계산기',  badge: '매출·수익', desc: '고정비·변동비율 → 최소 목표 매출과 일 매출 목표 계산',         cats: ['창업·세금'],                 inline: 'bep',       pop: 6 },
   { slug: 'rent-increase-calc.html',   icon: '🏠', title: '임대료 인상 상한 계산기', badge: '세무·법률', desc: '현재 월세 → 법정 5% 상한 기준 최대 인상 가능액 계산',          cats: ['창업·세금'],                 inline: 'rent',      pop: 7 },
   { slug: 'loan-interest-calc.html',   icon: '💳', title: '정책자금 이자 계산기',    badge: '세무·법률', desc: '대출금·금리·기간 → 월 상환액·총이자·총 상환액 계산',           cats: ['소상공인 지원금', '창업·세금'], inline: 'loan',      pop: 8 },
+  { slug: 'weekly-pay-calc.html',      icon: '📅', title: '주휴수당 계산기',        badge: '인사·노무', desc: '시급·근무시간 → 주휴수당 지급 여부와 주·월 금액 자동 계산',      cats: ['창업·세금', '소상공인 지원금'], inline: 'wage',      pop: 9 },
+  { slug: 'insurance-4d-calc.html',    icon: '🛡️', title: '4대보험 계산기',         badge: '인사·노무', desc: '월급 → 직원 공제액과 사업주 부담액 동시 계산(두루누리 포함)',     cats: ['창업·세금', '소상공인 지원금'], inline: 'wage',      pop: 10 },
+  { slug: 'premium-calc.html',         icon: '🔑', title: '권리금 계산기',          badge: '세무·법률', desc: '월 순이익·시설 잔존가치 → 시설+영업 권리금 적정 범위 계산',       cats: ['창업·세금'],                 inline: 'bep',       pop: 11 },
+  { slug: 'closure-cost-calc.html',    icon: '📦', title: '폐업 비용 계산기',        badge: '세무·법률', desc: '철거비·퇴직금·재고 + 폐업 지원금 차감한 실부담 계산',            cats: ['창업·세금', '소상공인 지원금'], inline: 'severance', pop: 12 },
+  { slug: 'store-profit-calc.html',    icon: '🏪', title: '매장 수익성 계산기',      badge: '매출·수익', desc: '월 매출·비용 → 영업이익률·순이익·목표 손님 수 계산',             cats: ['창업·세금', '배달앱'],        inline: 'bep',       pop: 13 },
+  { slug: 'card-fee-calc.html',        icon: '💳', title: '카드수수료 계산기',       badge: '세무·법률', desc: '월 카드매출 → 우대수수료율 구간 자동 적용, 월·연 수수료 계산',    cats: ['창업·세금'],                 inline: 'vat',       pop: 14 },
+  { slug: 'delivery-ads-calc.html',    icon: '📣', title: '배달앱 광고비 ROI 계산기', badge: '매출·수익', desc: '광고비·추가 주문 → 배달앱 광고 ROI와 손익분기 주문 수 계산',      cats: ['배달앱'],                    inline: 'delivery',  pop: 15 },
+  { slug: 'annual-leave-calc.html',    icon: '🌴', title: '직원 연차 계산기',        badge: '인사·노무', desc: '입사일 → 연차 발생 일수와 미사용 연차수당 자동 계산',            cats: ['창업·세금'],                 inline: 'severance', pop: 16 },
+  { slug: 'naver-ads-calc.html',       icon: '📍', title: '네이버 플레이스 광고비 계산기', badge: '매출·수익', desc: '예산·CPC·전환율 → 예상 방문 고객과 고객 1명당 광고비 계산',   cats: ['네이버 플레이스'],            inline: 'bep',       pop: 17 },
+  { slug: 'startup-cost-calc.html',    icon: '🚀', title: '창업 초기비용 계산기',     badge: '세무·법률', desc: '업종·평수 → 창업비용(인테리어·보증금·권리금 등)+월 BEP 추정',     cats: ['창업·세금'],                 inline: 'bep',       pop: 18 },
 ];
 
 /* 카테고리별 추천 계산기 매핑 (게시글 → 함께 쓰는 계산기) */
