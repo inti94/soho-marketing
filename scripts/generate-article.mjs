@@ -1,11 +1,13 @@
 // 매일 자동으로 SEO 최적화 글 1편을 생성·통합하는 스크립트 (GitHub Actions에서 실행)
-// 필요한 시크릿: ANTHROPIC_API_KEY  (저장소 Settings > Secrets and variables > Actions)
+// 무료: Google Gemini 사용. 필요한 시크릿: GEMINI_API_KEY
+//   → https://aistudio.google.com 에서 신용카드 없이 무료 발급 후
+//     저장소 Settings > Secrets and variables > Actions 에 등록
 import fs from 'node:fs';
 
-const KEY = process.env.ANTHROPIC_API_KEY;
-if (!KEY) { console.error('❌ ANTHROPIC_API_KEY 시크릿이 없습니다. 저장소 Settings에서 추가하세요.'); process.exit(1); }
+const KEY = process.env.GEMINI_API_KEY;
+if (!KEY) { console.error('❌ GEMINI_API_KEY 시크릿이 없습니다. 저장소 Settings에서 추가하세요.'); process.exit(1); }
 
-const MODEL = 'claude-sonnet-4-6';            // 최신 Sonnet
+const MODEL = 'gemini-2.5-flash';             // 무료 한도가 넉넉한 모델
 const today = new Date().toISOString().slice(0, 10);  // YYYY-MM-DD
 
 // 1) 기존 글 수집 (중복 회피)
@@ -51,15 +53,22 @@ TEMPLATE_END
 <!DOCTYPE html> ...완성된 전체 페이지...
 </HTML>`;
 
-// 3) API 호출
-const res = await fetch('https://api.anthropic.com/v1/messages', {
+// 3) API 호출 (Google Gemini)
+const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`, {
   method: 'POST',
-  headers: { 'x-api-key': KEY, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
-  body: JSON.stringify({ model: MODEL, max_tokens: 20000, system, messages: [{ role: 'user', content: userPrompt }] })
+  headers: { 'x-goog-api-key': KEY, 'content-type': 'application/json' },
+  body: JSON.stringify({
+    system_instruction: { parts: [{ text: system }] },
+    contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
+    generationConfig: { temperature: 1, maxOutputTokens: 32768, thinkingConfig: { thinkingBudget: 0 } },
+  }),
 });
 if (!res.ok) { console.error('❌ API 오류', res.status, await res.text()); process.exit(1); }
 const data = await res.json();
-const text = (data.content || []).filter(c => c.type === 'text').map(c => c.text).join('');
+const cand = (data.candidates || [])[0];
+if (!cand) { console.error('❌ 응답 비어있음:', JSON.stringify(data).slice(0, 600)); process.exit(1); }
+if (cand.finishReason && cand.finishReason !== 'STOP') { console.error('⚠ 비정상 종료:', cand.finishReason); }
+const text = (cand.content?.parts || []).map(p => p.text || '').join('');
 
 // 4) 파싱
 const metaM = text.match(/<META>([\s\S]*?)<\/META>/);

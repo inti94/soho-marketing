@@ -24,7 +24,7 @@ jobs:
 
       - name: 글 생성 + 사이트 통합
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: node scripts/generate-article.mjs
 
       - name: 커밋 & 배포
