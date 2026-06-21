@@ -125,10 +125,10 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <div class="calc-card">
     <div class="card-title">광고·주문 정보 입력</div>
     <div class="field-row">
-      <div class="field"><label>월 광고비 (원)</label><input type="number" id="adcost" value="88000" min="0" step="1000"></div>
+      <div class="field"><label>월 광고비 (원)</label><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="adcost" value="88,000" min="0" step="1000"></div>
       <div class="field"><label>광고로 늘어난 월 주문 수</label><input type="number" id="orders" value="100" min="0" step="1"></div>
     </div>
-    <div class="field"><label>주문 1건당 순이익 (원)</label><div class="field-hint">수수료·재료비·배달비 다 빼고 남는 돈</div><input type="number" id="profit" value="7000" min="0" step="500"></div>
+    <div class="field"><label>주문 1건당 순이익 (원)</label><div class="field-hint">수수료·재료비·배달비 다 빼고 남는 돈</div><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="profit" value="7,000" min="0" step="500"></div>
     <button class="btn-calc" onclick="calculate()">📣 광고 ROI 계산하기</button>
   </div>
 
@@ -155,7 +155,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
 <script>
 function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
 function won(n){return Math.round(n).toLocaleString('ko-KR');}
-function num(id){return parseFloat(document.getElementById(id).value)||0;}
+function num(id){return parseFloat(String(document.getElementById(id).value).replace(/,/g,''))||0;}
 function setT(id,v){var e=document.getElementById(id);if(e)e.textContent=v;}
 function showResult(){var r=document.getElementById('result-section');r.style.display='block';r.scrollIntoView({behavior:'smooth',block:'start'});}
 function calculate(){

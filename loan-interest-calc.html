@@ -175,7 +175,7 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
   <div class="card-title">대출 조건 입력</div>
   <div class="field">
     <label>대출 금액 (원)</label>
-    <input type="number" id="loan-amount" value="50000000" step="1000000">
+    <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="loan-amount" value="50,000,000" step="1000000">
   </div>
   <div class="field-row">
     <div class="field">
@@ -236,10 +236,10 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
 <script>
 function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
 function calcLoan(){
-  const P = parseFloat(document.getElementById('loan-amount').value)||0;
-  const r = parseFloat(document.getElementById('loan-rate').value)/100/12;
-  const totalTerm = parseFloat(document.getElementById('loan-term').value)*12;
-  const graceTerm = parseFloat(document.getElementById('grace-term').value)*12;
+  const P = getRawNumber('loan-amount')||0;
+  const r = getRawNumber('loan-rate')/100/12;
+  const totalTerm = getRawNumber('loan-term')*12;
+  const graceTerm = getRawNumber('grace-term')*12;
   const repayType = document.getElementById('repay-type').value;
   const repayTerm = totalTerm - graceTerm;
   const gracePay = P * r;
@@ -269,9 +269,9 @@ function calcLoan(){
 }
 
 function calcInlineLoan(){
-  var P=parseFloat(document.getElementById('il_loan_amt').value)||0;
-  var r=parseFloat(document.getElementById('il_loan_rate').value)/100/12;
-  var n=parseFloat(document.getElementById('il_loan_term').value)*12;
+  var P=getRawNumber('il_loan_amt')||0;
+  var r=getRawNumber('il_loan_rate')/100/12;
+  var n=getRawNumber('il_loan_term')*12;
   var monthly=(r===0)?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
   var totalInt=(monthly*n)-P;
   var rv=document.getElementById('il_result_loan');

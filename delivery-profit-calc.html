@@ -191,7 +191,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
     </div>
     <div class="field">
       <label>주문금액 (원)</label>
-      <input type="number" id="order-price" value="20000" step="1000">
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="order-price" value="20,000" step="1000">
     </div>
     <div class="field-row">
       <div class="field">
@@ -202,7 +202,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
       <div class="field">
         <label>업주부담 배달비 (원)</label>
         <div class="field-hint">배달 선택시 1,900~3,400원</div>
-        <input type="number" id="delivery-fee" value="2400" step="100">
+        <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="delivery-fee" value="2,400" step="100">
       </div>
     </div>
     <div class="field-row">
@@ -212,7 +212,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
       </div>
       <div class="field">
         <label>포장재비 (원)</label>
-        <input type="number" id="package-cost" value="500" step="100">
+        <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="package-cost" value="500" step="100">
       </div>
     </div>
     <div class="field">
@@ -288,12 +288,12 @@ function setPlatform(p, btn) {
 }
 function fmt(n) { return Math.round(n).toLocaleString('ko-KR') + '원'; }
 function calculate() {
-  const order = parseFloat(document.getElementById('order-price').value) || 0;
-  const commRate = parseFloat(document.getElementById('commission-rate').value) / 100;
-  const deliveryFee = parseFloat(document.getElementById('delivery-fee').value) || 0;
-  const payRate = parseFloat(document.getElementById('payment-rate').value) / 100;
-  const packageCost = parseFloat(document.getElementById('package-cost').value) || 0;
-  const foodRate = parseFloat(document.getElementById('food-cost-rate').value) / 100;
+  const order = getRawNumber('order-price') || 0;
+  const commRate = getRawNumber('commission-rate') / 100;
+  const deliveryFee = getRawNumber('delivery-fee') || 0;
+  const payRate = getRawNumber('payment-rate') / 100;
+  const packageCost = getRawNumber('package-cost') || 0;
+  const foodRate = getRawNumber('food-cost-rate') / 100;
 
   const foodCost = order * foodRate;
   const commission = order * commRate;
@@ -330,10 +330,10 @@ function calculate() {
 }
 
 function calcInlineDelivery(){
-  var o=parseFloat(document.getElementById('il_order').value)||20000;
-  var c=parseFloat(document.getElementById('il_comm').value)/100;
-  var d=parseFloat(document.getElementById('il_deli').value)||2400;
-  var f=parseFloat(document.getElementById('il_food').value)/100;
+  var o=getRawNumber('il_order')||20000;
+  var c=getRawNumber('il_comm')/100;
+  var d=getRawNumber('il_deli')||2400;
+  var f=getRawNumber('il_food')/100;
   var profit=o-(o*f)-(o*c)-(o*0.012)-d;
   var r=document.getElementById('il_result_delivery');
   document.getElementById('il_result_delivery_val').textContent='순이익 '+Math.round(profit).toLocaleString('ko-KR')+'원';

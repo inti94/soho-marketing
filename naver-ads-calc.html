@@ -125,12 +125,12 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <div class="calc-card">
     <div class="card-title">예산·전환 정보 입력</div>
     <div class="field-row">
-      <div class="field"><label>월 광고 예산 (원)</label><input type="number" id="budget" value="300000" min="0" step="10000"></div>
-      <div class="field"><label>클릭당 비용 CPC (원)</label><input type="number" id="cpc" value="300" min="0" step="10"></div>
+      <div class="field"><label>월 광고 예산 (원)</label><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="budget" value="300,000" min="0" step="10000"></div>
+      <div class="field"><label>클릭당 비용 CPC (원)</label><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="cpc" value="300" min="0" step="10"></div>
     </div>
     <div class="field-row">
       <div class="field"><label>전환율 (클릭→방문, %)</label><input type="number" id="conv" value="10" min="0" max="100" step="1"></div>
-      <div class="field"><label>객단가 (1인 평균 결제, 원)</label><input type="number" id="ticket" value="15000" min="0" step="500"></div>
+      <div class="field"><label>객단가 (1인 평균 결제, 원)</label><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="ticket" value="15,000" min="0" step="500"></div>
     </div>
     <button class="btn-calc" onclick="calculate()">📍 광고 효과 계산하기</button>
   </div>
@@ -157,7 +157,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
 <script>
 function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
 function won(n){return Math.round(n).toLocaleString('ko-KR');}
-function num(id){return parseFloat(document.getElementById(id).value)||0;}
+function num(id){return parseFloat(String(document.getElementById(id).value).replace(/,/g,''))||0;}
 function setT(id,v){var e=document.getElementById(id);if(e)e.textContent=v;}
 function showResult(){var r=document.getElementById('result-section');r.style.display='block';r.scrollIntoView({behavior:'smooth',block:'start'});}
 function calculate(){

@@ -1136,6 +1136,39 @@ if (document.readyState === 'loading') {
   initEngage();
 }
 
+/* ── 금액 입력 콤마 포맷 (계산기 공통) ─────────────
+   input[data-money] 인 금액 필드만 3자리 콤마 자동 표시.
+   계산식에서는 getRawNumber('id') 로 콤마 제거 후 숫자를 읽는다. */
+function formatNumber(n) {
+  return String(n == null ? '' : n).replace(/[^\d]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function getRawNumber(id) {
+  var el = document.getElementById(id);
+  return el ? (parseFloat(String(el.value).replace(/,/g, '')) || 0) : 0;
+}
+function initFormatInput(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  if (el.value !== '') el.value = formatNumber(el.value);
+  var ph = el.getAttribute('placeholder');
+  if (ph) el.setAttribute('placeholder', formatNumber(ph));
+  el.addEventListener('input', function () {
+    var pos = this.selectionStart || 0, prev = this.value.length;
+    this.value = formatNumber(this.value);
+    var np = Math.max(0, pos + (this.value.length - prev));
+    try { this.setSelectionRange(np, np); } catch (e) {}
+  });
+}
+function initMoneyInputs() {
+  var els = document.querySelectorAll('input[data-money]');
+  for (var i = 0; i < els.length; i++) if (els[i].id) initFormatInput(els[i].id);
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMoneyInputs);
+} else {
+  initMoneyInputs();
+}
+
 
 /* ===========================================
    계산 결과 공유 모듈 (share)

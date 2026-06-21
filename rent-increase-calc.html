@@ -176,11 +176,11 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
   <div class="field-row">
     <div class="field">
       <label>현재 월세 (원)</label>
-      <input type="number" id="rent-monthly" value="1500000" step="100000">
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="rent-monthly" value="1,500,000" step="100000">
     </div>
     <div class="field">
       <label>현재 보증금 (원)</label>
-      <input type="number" id="rent-deposit" value="20000000" step="1000000">
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="rent-deposit" value="20,000,000" step="1000000">
     </div>
   </div>
   <div class="field">
@@ -213,9 +213,9 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
 <script>
 function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
 function calcRent(){
-  const m = parseFloat(document.getElementById('rent-monthly').value)||0;
-  const d = parseFloat(document.getElementById('rent-deposit').value)||0;
-  const r = Math.min(parseFloat(document.getElementById('rent-rate').value)||5, 5)/100;
+  const m = getRawNumber('rent-monthly')||0;
+  const d = getRawNumber('rent-deposit')||0;
+  const r = Math.min(getRawNumber('rent-rate')||5, 5)/100;
   const im = m*r, id = d*r;
   document.getElementById('r-cur-m').textContent=fmt(m);
   document.getElementById('r-increase-m').textContent='+'+fmt(im);
@@ -230,7 +230,7 @@ function calcRent(){
 }
 
 function calcInlineRent(){
-  var rent=parseFloat(document.getElementById('il_rent').value)||0;
+  var rent=getRawNumber('il_rent')||0;
   var max=rent*1.05;
   var increase=rent*0.05;
   var r=document.getElementById('il_result_rent');

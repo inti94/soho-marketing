@@ -181,7 +181,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
     <div class="field">
       <label>시급 (원)</label>
       <div class="field-hint">2026년 최저시급: 10,320원</div>
-      <input type="number" id="hourly" value="10320" min="10320" step="100">
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="hourly" value="10,320" min="10320" step="100">
     </div>
     <div class="field-row">
       <div class="field">
@@ -294,10 +294,10 @@ function setInsurance(v) {
 function fmt(n) { return Math.round(n).toLocaleString('ko-KR') + '원'; }
 
 function calculate() {
-  const hourly = parseFloat(document.getElementById('hourly').value) || 10030;
-  const dailyHours = parseFloat(document.getElementById('daily-hours').value) || 8;
-  const weeklyDays = parseFloat(document.getElementById('weekly-days').value) || 5;
-  const industryRate = parseFloat(document.getElementById('industry').value);
+  const hourly = getRawNumber('hourly') || 10030;
+  const dailyHours = getRawNumber('daily-hours') || 8;
+  const weeklyDays = getRawNumber('weekly-days') || 5;
+  const industryRate = getRawNumber('industry');
 
   const weeklyHours = dailyHours * weeklyDays;
   const monthlyHours = weeklyHours * 4.345;
@@ -334,9 +334,9 @@ function calculate() {
 }
 
 function calcInlineAlba(){
-  var h=parseFloat(document.getElementById('il_hourly').value)||10320;
-  var hrs=parseFloat(document.getElementById('il_hours').value)||8;
-  var days=parseFloat(document.getElementById('il_days').value)||5;
+  var h=getRawNumber('il_hourly')||10320;
+  var hrs=getRawNumber('il_hours')||8;
+  var days=getRawNumber('il_days')||5;
   var weekHrs=hrs*days;
   var base=h*weekHrs*4.345;
   var weekly=weekHrs>=15?h*hrs*(weekHrs/40)*4.345:0;

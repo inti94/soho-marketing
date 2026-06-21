@@ -125,12 +125,12 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <div class="calc-card">
     <div class="card-title">폐업 정보 입력</div>
     <div class="field-row">
-      <div class="field"><label>인테리어 철거비 (원)</label><input type="number" id="demo" value="3000000" min="0" step="500000"></div>
-      <div class="field"><label>직원 퇴직금 합계 (원)</label><input type="number" id="sev" value="0" min="0" step="500000"></div>
+      <div class="field"><label>인테리어 철거비 (원)</label><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="demo" value="3,000,000" min="0" step="500000"></div>
+      <div class="field"><label>직원 퇴직금 합계 (원)</label><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="sev" value="0" min="0" step="500000"></div>
     </div>
     <div class="field-row">
-      <div class="field"><label>재고 처리 손실 (원)</label><input type="number" id="stock" value="2000000" min="0" step="500000"></div>
-      <div class="field"><label>잔여 임대차 위약·월세 (원)</label><input type="number" id="rentloss" value="0" min="0" step="500000"></div>
+      <div class="field"><label>재고 처리 손실 (원)</label><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="stock" value="2,000,000" min="0" step="500000"></div>
+      <div class="field"><label>잔여 임대차 위약·월세 (원)</label><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="rentloss" value="0" min="0" step="500000"></div>
     </div>
     <button class="btn-calc" onclick="calculate()">📦 폐업 비용 계산하기</button>
   </div>
@@ -160,7 +160,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
 <script>
 function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
 function won(n){return Math.round(n).toLocaleString('ko-KR');}
-function num(id){return parseFloat(document.getElementById(id).value)||0;}
+function num(id){return parseFloat(String(document.getElementById(id).value).replace(/,/g,''))||0;}
 function setT(id,v){var e=document.getElementById(id);if(e)e.textContent=v;}
 function showResult(){var r=document.getElementById('result-section');r.style.display='block';r.scrollIntoView({behavior:'smooth',block:'start'});}
 function calculate(){

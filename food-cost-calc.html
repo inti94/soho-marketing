@@ -181,11 +181,11 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
     <div class="field">
       <label>총 재료비 (원)</label>
       <div class="field-hint">1인분 기준</div>
-      <input type="number" id="ingredient-cost" value="3500" step="100">
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="ingredient-cost" value="3,500" step="100">
     </div>
     <div class="field">
       <label>현재 판매가 (원)</label>
-      <input type="number" id="sell-price" value="10000" step="500">
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="sell-price" value="10,000" step="500">
     </div>
   </div>
   <div class="field">
@@ -226,9 +226,9 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
 function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
 function calcFood(){
   const name = document.getElementById('menu-name').value||'메뉴';
-  const ingr = parseFloat(document.getElementById('ingredient-cost').value)||0;
-  const sell = parseFloat(document.getElementById('sell-price').value)||1;
-  const target = parseFloat(document.getElementById('target-rate').value)||33;
+  const ingr = getRawNumber('ingredient-cost')||0;
+  const sell = getRawNumber('sell-price')||1;
+  const target = getRawNumber('target-rate')||33;
   const curRate = ingr/sell*100;
   const margin = sell-ingr;
   const recPrice = ingr/(target/100);
@@ -250,8 +250,8 @@ function calcFood(){
 }
 
 function calcInlineFood(){
-  var ingr=parseFloat(document.getElementById('il_fc_ingr').value)||0;
-  var sell=parseFloat(document.getElementById('il_fc_sell').value)||1;
+  var ingr=getRawNumber('il_fc_ingr')||0;
+  var sell=getRawNumber('il_fc_sell')||1;
   var rate=ingr/sell*100;
   var margin=sell-ingr;
   var rec=ingr/0.33;
