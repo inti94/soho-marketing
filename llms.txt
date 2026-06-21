@@ -1,0 +1,30 @@
+# 소상공인 마케팅 실전백과 (sohotip.co.kr)
+
+> 한국 소상공인·자영업 사장님을 위한 무료 도구와 실전 정보 사이트. 세금·인건비·배달앱·임대료 등을 우리 가게 기준으로 바로 계산하는 무료 계산기와, 30년 현장 경험을 바탕으로 한 마케팅·세무 실전 가이드를 제공합니다. 모든 콘텐츠는 한국어이며, 광고가 아닌 실제로 도움 되는 정보를 지향합니다.
+
+## 무료 계산기
+- [부가세 계산기](https://sohotip.co.kr/vat-calc.html): 매출·매입으로 납부세액/환급액 즉시 계산(일반·간이·공급가액 분리)
+- [알바 인건비 계산기](https://sohotip.co.kr/alba-cost-calc.html): 2026 최저시급 기준 주휴수당·4대보험 포함 월 인건비
+- [퇴직금 계산기](https://sohotip.co.kr/severance-calc.html): 근속기간·평균임금으로 법정 퇴직금 산출
+- [배달 순이익 계산기](https://sohotip.co.kr/delivery-profit-calc.html): 주문 1건당 수수료·배달비·재료비 제외 실수익
+- [배달 수수료 실비용 계산기](https://sohotip.co.kr/delivery-fee-real-calc.html): 배달앱별 실제 부담 수수료 비교
+- [메뉴 원가율 계산기](https://sohotip.co.kr/food-cost-calc.html): 재료비·판매가로 원가율·마진율·권장 판매가
+- [손익분기점(BEP) 계산기](https://sohotip.co.kr/bep-calc.html): 고정비·변동비율로 최소 목표 매출
+- [임대료 인상 상한 계산기](https://sohotip.co.kr/rent-increase-calc.html): 법정 5% 상한 기준 최대 인상액
+- [정책자금 이자 계산기](https://sohotip.co.kr/loan-interest-calc.html): 대출금·금리·기간으로 월 상환액·총이자
+
+## 주요 카테고리
+- [전체 글 모아보기](https://sohotip.co.kr/category.html): 창업·세금, 배달앱, 네이버 플레이스, 소상공인 지원금, SNS·숏폼 마케팅
+- [무료 계산기 모음](https://sohotip.co.kr/tools.html)
+- [1:1 무료 진단 상담](https://sohotip.co.kr/consultation.html)
+
+## 대표 가이드
+- [네이버 플레이스 상위 노출 방법 2026](https://sohotip.co.kr/naver-place-ranking-2026.html)
+- [배민 울트라콜 vs 오픈리스트 차이](https://sohotip.co.kr/baemin-ultraol-vs-openlist.html)
+- [일반과세 vs 간이과세 차이](https://sohotip.co.kr/general-vs-simple-tax.html)
+- [2026년 소상공인 지원금 총정리](https://sohotip.co.kr/soho-jiwongeum-2026.html)
+
+## 안내
+- 사이트맵: https://sohotip.co.kr/sitemap.xml
+- RSS: https://sohotip.co.kr/rss.xml
+- 매일 새로운 실전 글이 자동 발행됩니다. 인용 시 출처로 sohotip.co.kr를 표기해 주세요.
