@@ -77,7 +77,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="sohotip.css">
+<link rel="stylesheet" href="sohotip.css?v=20260623">
 
 <style>
   :root {
@@ -497,6 +497,10 @@
     .calc-pop-wrap { grid-template-columns: 1fr 1fr; gap: 10px; }
     .cat-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
     .checklist-grid { grid-template-columns: 1fr; }
+    /* 그리드 칸이 내용 폭에 밀려 넘치거나 겹치지 않도록 카드가 줄어들 수 있게 함
+       (grid item 기본값 min-width:auto → 긴 텍스트가 칸을 밀어내는 문제 방지) */
+    .calc-main-grid > *, .article-grid > *, .calc-pop-wrap > *,
+    .cat-grid > *, .checklist-grid > * { min-width: 0; }
 
     /* 한국어 단어 단위 줄바꿈 — 텍스트가 카드 밖으로 흐르거나 겹치지 않게 */
     .cmc-title, .cmc-desc, .cpc-title, .cpc-use,
@@ -999,7 +1003,7 @@
   <button id="sticky-cta-close" aria-label="닫기">✕</button>
 </div>
 
-<script src="sohotip.js"></script>
+<script src="sohotip.js?v=20260623"></script>
 <script>
 // 체크리스트 localStorage 저장
 (function() {
