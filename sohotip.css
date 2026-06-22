@@ -262,9 +262,9 @@
   background: var(--bg-card);
   border-bottom: 1px solid var(--border);
   padding: 10px 1rem;
-  position: sticky;
-  top: 58px;
-  z-index: 99;
+  /* sticky 제거: 스크롤 시 인기글 등 본문 위에 떠서 겹쳐 보이던 문제 수정.
+     relative 로 흐름에 두되, 아래 검색 드롭다운(absolute)의 기준점은 유지. */
+  position: relative;
 }
 .mobile-search-bar .nav-search {
   width: 100%;

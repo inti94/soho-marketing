@@ -480,8 +480,9 @@
     nav .nav-links { display: none; }
     nav { padding: 0 1rem; }
     .hero { padding: 44px 1rem 40px; }
-    .section { padding: 40px 1rem; }
+    .section { padding: 36px 1rem; }
     .section-sm { padding: 28px 1rem; }
+    .section-header { margin-bottom: 20px; }
     .checklist-section { margin: 0 1rem; border-radius: 12px; padding: 20px 16px; }
     .footer-top { flex-direction: column; gap: 16px; }
     .footer-bottom { flex-direction: column; }
@@ -489,16 +490,37 @@
     .ad-block { padding: 12px 1rem; }
     .stats-inner { gap: 8px; }
     .stat-num { font-size: 18px; }
+
+    /* 카드 레이아웃 1열 정리 (가로형 카드는 1열, 작은 타일은 2열) */
+    .calc-main-grid { grid-template-columns: 1fr; gap: 12px; }
+    .article-grid { grid-template-columns: 1fr; gap: 14px; }
+    .calc-pop-wrap { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .cat-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .checklist-grid { grid-template-columns: 1fr; }
+
+    /* 한국어 단어 단위 줄바꿈 — 텍스트가 카드 밖으로 흐르거나 겹치지 않게 */
+    .cmc-title, .cmc-desc, .cpc-title, .cpc-use,
+    .article-title, .article-summary, .cat-name, .cat-count,
+    .top5-tag, .top5-title, .top5-meta, .section-title {
+      word-break: keep-all; overflow-wrap: break-word;
+    }
+
+    /* 인기글 TOP5 — 번호·태그·제목 겹침 제거 */
+    .top5-item { gap: 12px; padding: 14px 0; align-items: flex-start; }
+    .top5-num { width: 24px; font-size: 20px; margin-top: 1px; }
+    .top5-body { flex: 1 1 auto; min-width: 0; display: block; }
+    .top5-tag, .top5-title, .top5-meta { display: block; }
+    .top5-tag { margin-bottom: 4px; }
+    .top5-title { font-size: 14px; line-height: 1.45; }
+    .top5-meta { margin-top: 4px; }
+    .top5-icon { display: none; }
   }
   @media (max-width: 480px) {
-    .calc-main-grid { grid-template-columns: 1fr; }
-    .calc-pop-wrap { grid-template-columns: 1fr 1fr; }
-    .article-grid { grid-template-columns: 1fr; }
-    .cat-grid { grid-template-columns: 1fr 1fr; }
-    .checklist-grid { grid-template-columns: 1fr; }
     .hero-btns { flex-direction: column; align-items: stretch; }
     .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
-    .top5-icon { display: none; }
+  }
+  @media (max-width: 360px) {
+    .calc-pop-wrap, .cat-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
