@@ -12,6 +12,10 @@
 =========================================== */
 'use strict';
 
+/* PART 2: 계산기 페이지의 "관련 계산기/가이드" 추천은 inline-calc.js(영수증형
+   '함께 보면 좋은')가 담당한다. 중복 렌더 방지용 플래그(아래 renderCalcPage에서 사용). */
+window.SOHO_RECO_V2 = true;
+
 /* ── 검색 인덱스 전역 ──────────────────── */
 let _searchIndex = null;
 let _indexLoading = false;
@@ -1039,13 +1043,17 @@ function renderCalcPage(current) {
 
   html += prevNextHTML(null, current.slug, true);
 
-  if (calcs.length) {
-    html += recoSectionHTML('🧮 다른 사장님들이 함께 많이 사용한 계산기', '',
-      `<div class="reco-grid">${calcs.map(calcCardHTML).join('')}</div>`);
-  }
-  if (guides.length) {
-    html += recoSectionHTML('📚 함께 많이 읽은 실전 가이드', '',
-      `<div class="reco-grid">${guides.map(articleCardHTML).join('')}</div>`);
+  /* 관련 계산기·가이드는 PART 2 inline-calc.js('함께 보면 좋은')가 영수증형으로 렌더.
+     중복 방지를 위해 V2가 켜져 있으면 여기서는 생략하고 인기 TOP5/이전·다음만 유지. */
+  if (!window.SOHO_RECO_V2) {
+    if (calcs.length) {
+      html += recoSectionHTML('🧮 다른 사장님들이 함께 많이 사용한 계산기', '',
+        `<div class="reco-grid">${calcs.map(calcCardHTML).join('')}</div>`);
+    }
+    if (guides.length) {
+      html += recoSectionHTML('📚 함께 많이 읽은 실전 가이드', '',
+        `<div class="reco-grid">${guides.map(articleCardHTML).join('')}</div>`);
+    }
   }
   if (popC.length) {
     html += recoSectionHTML('🔥 지금 인기 있는 계산기 TOP5', '',
@@ -1457,4 +1465,22 @@ function setupCalcShare(slug) {
           if (popList) renderPop(popList, fill(POP_FALLBACK, 5), meta);
         }).catch(function(){});
     }).catch(function(){});
+})();
+
+/* ── PART 2 로더: 계산기 매핑 + 미니 계산기/함께보면좋은 ──────────────
+   모든 계산기·글 페이지에 이 파일(sohotip.js)이 이미 로드되므로,
+   여기서 inline-calc.js 를 한 번만 주입하면 페이지별 수정 없이 적용된다.
+   (inline-calc.js 가 필요 시 calc-map.js 를 스스로 로드함) */
+(function () {
+  if (window.__sohoPart2Loaded) return;
+  window.__sohoPart2Loaded = true;
+  /* PART 2: 미니 계산기 + "함께 보면 좋은"  /  PART 4: 상담 전환 + 6사이트 네트워크.
+     모두 자체 게이트(문맥 맞을 때만 렌더)되므로 전 페이지 로드해도 안전. */
+  ['assets/inline-calc.js?v=20260626',
+   'assets/consult.js?v=20260626',
+   'assets/network.js?v=20260626'].forEach(function (src) {
+    var s = document.createElement('script');
+    s.src = src; s.async = true;
+    document.head.appendChild(s);
+  });
 })();

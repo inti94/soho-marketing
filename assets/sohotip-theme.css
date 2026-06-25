@@ -1,0 +1,232 @@
+/* =================================================================
+   sohotip-theme.css — 소호팁 공용 디자인 시스템
+   컨셉: "사장님의 계산소 — 영수증 / 장부"
+   가게 계산대에 놓인 영수증 느낌. 순수 CSS, 프레임워크 없음.
+   2026-06-26 신규 생성
+   -----------------------------------------------------------------
+   포함:
+   · 디자인 토큰(:root)
+   · 영수증 종이(.receipt) + 절취선·노치(.tear)
+   · 고무도장(.stamp)
+   · 입체 버튼(.btn-receipt / .btn-ghost)
+   · 명세서 점선 리더 리스트(.ledger-row)
+   · 장부 입력칸(.ledger-field)
+   · 형광펜 밑줄(.hl)
+   ================================================================= */
+
+:root {
+  /* ── 색상 ── */
+  --paper:    #FBF6EE;   /* 크라프트 종이 배경 */
+  --receipt:  #FFFFFF;   /* 영수증 흰 종이 */
+  --ink:      #2A2018;   /* 먹색(검정 대신) */
+  --orange:   #FF5E00;   /* 메인 포인트(소호팁 주키) */
+  --orange-d: #D94E00;
+  --soft:     #FFEEE2;   /* 연주황 강조 배경 */
+  --dash:     #D6C8B6;   /* 점선 / 절취선 */
+  --stamp:    #E5392E;   /* 빨강 도장 악센트 */
+  --line:     #EDE3D5;   /* 옅은 구분선 */
+  --sub:      #8A7B6B;   /* 보조 텍스트(먹색 흐림) */
+  --mint:     #1E9E6A;
+
+  /* ── 타이포 ── */
+  --sans: 'Apple SD Gothic Neo', 'Pretendard', 'Noto Sans KR', system-ui, sans-serif;
+  --mono: 'Roboto Mono', 'SF Mono', 'Consolas', 'D2Coding', ui-monospace, monospace;
+
+  /* ── 형태 ── */
+  --r-sm: 8px;
+  --r:    12px;
+  --r-lg: 18px;
+  --shadow-paper: 0 10px 30px rgba(42,32,24,.10), 0 2px 6px rgba(42,32,24,.05);
+  --shadow-btn:   0 4px 0 var(--orange-d);
+}
+
+/* 숫자·금액·D-day 는 영수증 느낌의 monospace + 자릿수 정렬 */
+.num, .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+
+/* ── 형광펜 밑줄 ── */
+.hl {
+  background: linear-gradient(180deg, transparent 58%, rgba(255,94,0,.28) 58%, rgba(255,94,0,.28) 92%, transparent 92%);
+  padding: 0 .06em;
+}
+
+/* =================================================================
+   영수증 종이 카드
+   ================================================================= */
+.receipt {
+  position: relative;
+  background: var(--receipt);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-paper);
+  /* 영수증 위·아래 톱니(지그재그) 가장자리 */
+  border: 1px solid var(--line);
+}
+
+/* =================================================================
+   절취선 + 양쪽 반원 노치 (영수증 찢는 자리)
+   <div class="tear"></div> 로 영역 구분
+   ================================================================= */
+.tear {
+  position: relative;
+  height: 0;
+  border-top: 2px dashed var(--dash);
+  margin: 22px 0;
+}
+.tear::before,
+.tear::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 22px; height: 22px;
+  background: var(--paper);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.tear::before { left: -11px; }
+.tear::after  { right: -11px; }
+/* 흰 종이(영수증) 위에 올라가는 절취선은 노치 색을 종이 배경에 맞춤 */
+.receipt .tear::before,
+.receipt .tear::after { background: var(--paper); }
+
+/* =================================================================
+   고무도장 (신뢰 문구) — 주황 테두리 + 살짝 회전
+   ================================================================= */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--orange-d);
+  padding: 8px 16px;
+  border: 2.5px solid var(--orange);
+  border-radius: 8px;
+  background: rgba(255,94,0,.04);
+  letter-spacing: .01em;
+  transform: rotate(-3deg);
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: inset 0 0 0 1px rgba(255,94,0,.25);
+}
+.stamp:nth-child(2n) { transform: rotate(2deg); }
+.stamp:nth-child(3n) { transform: rotate(-1.5deg); }
+.stamp .stamp-ico { font-size: 14px; }
+
+/* 빨강 LIVE / 도장 변형 */
+.stamp--red {
+  color: var(--stamp);
+  border-color: var(--stamp);
+  background: rgba(229,57,46,.05);
+  box-shadow: inset 0 0 0 1px rgba(229,57,46,.25);
+}
+
+/* =================================================================
+   입체 버튼 (영수증 / 계산대 버튼)
+   누르면 눌리는 느낌 (translateY + 그림자 축소)
+   ================================================================= */
+.btn-receipt {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: 15px;
+  color: #fff;
+  background: var(--orange);
+  border: none;
+  border-radius: 10px;
+  padding: 15px 26px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: var(--shadow-btn);
+  transition: transform .08s ease, box-shadow .08s ease, background .15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-receipt:hover { background: var(--orange-d); }
+.btn-receipt:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 var(--orange-d);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--ink);
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  padding: 14px 24px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 0 rgba(42,32,24,.18);
+  transition: transform .08s ease, box-shadow .08s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-ghost:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 rgba(42,32,24,.18);
+}
+
+/* =================================================================
+   명세서 점선 리더 리스트 — "품목 ······ 숫자"
+   ================================================================= */
+.ledger-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 9px 0;
+  font-size: 14px;
+  color: var(--ink);
+}
+.ledger-row .lr-name { flex-shrink: 0; }
+.ledger-row .lr-dots {
+  flex: 1;
+  border-bottom: 1.5px dotted var(--dash);
+  transform: translateY(-3px);
+  min-width: 18px;
+}
+.ledger-row .lr-val {
+  flex-shrink: 0;
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+/* =================================================================
+   장부 입력칸 (각진 테두리, 모눈 종이 느낌)
+   ================================================================= */
+.ledger-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--receipt);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 4px 8px 4px 14px;
+  box-shadow: 0 3px 0 rgba(42,32,24,.12);
+}
+.ledger-field input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--sans);
+  font-size: 16px; /* iOS 자동 확대 방지(≥16px) */
+  color: var(--ink);
+  padding: 12px 0;
+  min-width: 0;
+}
+.ledger-field input::placeholder { color: var(--sub); }
+
+/* =================================================================
+   유틸
+   ================================================================= */
+.t-sub  { color: var(--sub); }
+.t-ink  { color: var(--ink); }
+.t-orange { color: var(--orange); }
