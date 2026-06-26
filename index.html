@@ -59,8 +59,8 @@
 
 <style>
 /* =====================================================================
-   소호팁 — 딥 인디고 8섹션 나열형 메인 (index.html)
-   Hero / 계산기 / 인기계산기 / 최신가이드 / TOP5 / 카테고리 / 체크리스트 / Footer
+   소호팁 — 딥 인디고 스플릿뷰 메인 (index.html)
+   좌측 고정 아이콘 레일(모바일 80px / 데스크톱 220px) + 우측 패널 탭 전환
    ===================================================================== */
 :root{
   --primary:#3D5AFE; --primary-dark:#2541E0; --primary-light:#ECEEFF;
@@ -69,7 +69,7 @@
   --g50:#FAFAFA; --g100:#F2F4F6; --g200:#E5E8EB;
   --g400:#9EA7B4; --g600:#6B7684; --g900:#191F28;
   --red:#F04452; --green:#00C471; --yellow:#FFB800;
-  --top:58px; --tabbar:60px;
+  --top:58px; --rail:80px; --tabbar:62px;
   --sans:'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -83,7 +83,7 @@ body{
 img{max-width:100%;display:block;}
 button{font-family:inherit;cursor:pointer;}
 a{color:inherit;text-decoration:none;}
-::-webkit-scrollbar{display:none;}
+::-webkit-scrollbar{width:0;height:0;}
 *{scrollbar-width:none;}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
 
@@ -99,48 +99,108 @@ a{color:inherit;text-decoration:none;}
 .brand .em{font-size:20px;}
 .brand b{color:var(--primary);font-weight:900;}
 .top-menu{display:none;gap:22px;margin-left:8px;}
-.top-menu a{font-size:14px;font-weight:700;color:var(--g600);transition:color .15s;}
+.top-menu a{font-size:14px;font-weight:700;color:var(--g600);transition:color .15s;cursor:pointer;}
 .top-menu a:hover{color:var(--primary);}
 .top-right{display:flex;align-items:center;gap:2px;margin-left:auto;flex-shrink:0;}
 .ico-btn{width:44px;height:44px;border-radius:12px;border:none;background:transparent;display:grid;place-items:center;font-size:19px;color:var(--g900);transition:background .15s;}
 .ico-btn:hover{background:var(--g100);}
 
-/* ── 검색바 (헤더 바로 아래 고정) ── */
-.searchbar{
-  position:sticky; top:var(--top); z-index:280;
-  background:var(--bg); padding:10px 16px; border-bottom:1px solid var(--g200);
+/* 헤더 바로 아래 검색바 밴드 */
+.search-band{
+  position:sticky; top:var(--top); z-index:290;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(180%) blur(12px); -webkit-backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--g200);
+  padding:9px 16px;
 }
-.topbar .searchbar{display:none;}
-.searchbox{position:relative;display:flex;align-items:center;background:var(--g100);border-radius:14px;padding:0 14px;}
+.search-band .searchbar{display:block;}
+.searchbox{position:relative;display:flex;align-items:center;background:var(--g100);border-radius:12px;padding:0 14px;}
 .searchbox .s-ico{font-size:17px;color:var(--g400);flex-shrink:0;}
-.searchbar .nav-search{flex:1;min-width:0;background:transparent;border:none;padding:0;}
-.searchbar .nav-search-input,.searchbox input{
+.nav-search{flex:1;min-width:0;background:transparent;border:none;padding:0;}
+.nav-search-input,.searchbox input{
   width:100%;border:none;background:transparent;outline:none;
   font-family:var(--sans);font-size:16px;font-weight:500;color:var(--g900);
   padding:13px 10px;
 }
-.searchbar .nav-search-input::placeholder,.searchbox input::placeholder{color:var(--g400);font-weight:500;}
+.nav-search-input::placeholder,.searchbox input::placeholder{color:var(--g400);font-weight:500;}
 
-/* ── 본문 컨테이너 (나열형 단일 컬럼) ── */
-.main{max-width:960px;margin:0 auto;padding:18px 16px calc(var(--tabbar) + 28px);}
+/* =====================================================================
+   ▼▼ 스플릿 셸: 좌(레일) + 우(패널)  — 가로 split, 절대 세로로 쌓지 않음 ▼▼
+   ===================================================================== */
+.shell{display:flex;align-items:flex-start;min-height:calc(100vh - var(--top));}
+
+/* ── 좌측 고정 아이콘 레일 ── */
+.rail{
+  position:sticky; top:var(--top); align-self:flex-start;
+  width:var(--rail); flex-shrink:0;
+  height:calc(100vh - var(--top));
+  background:var(--white); border-right:1px solid var(--g200);
+  display:flex; flex-direction:column; gap:2px;
+  padding:10px 0; overflow-y:auto; z-index:200;
+}
+.rail-item{
+  position:relative;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+  width:100%; padding:12px 6px;
+  border:none; border-left:3px solid transparent; background:transparent;
+  color:var(--g600); font-family:var(--sans); font-weight:700; text-align:center;
+  cursor:pointer; transition:background .15s,color .15s,border-color .15s;
+}
+.rail-item .ri-ico{font-size:22px;line-height:1;}
+.rail-item .ri-label{font-size:11px;letter-spacing:-.02em;}
+.rail-item:hover{background:var(--g50);color:var(--g900);}
+.rail-item.active{border-left-color:var(--primary);background:var(--primary-light);color:var(--primary-dark);}
+
+/* ── 모바일 하단 고정 탭바 ── */
+.tabbar{
+  position:fixed; left:0; right:0; bottom:0; z-index:400;
+  display:flex; height:var(--tabbar);
+  background:rgba(255,255,255,.96);
+  backdrop-filter:saturate(180%) blur(12px); -webkit-backdrop-filter:saturate(180%) blur(12px);
+  border-top:1px solid var(--g200);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.tab-item{
+  flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
+  border:none; background:transparent;
+  color:var(--g400); font-family:var(--sans); font-weight:700;
+  transition:color .15s;
+}
+.tab-item .tb-ico{font-size:21px;line-height:1;}
+.tab-item .tb-label{font-size:10.5px;letter-spacing:-.02em;}
+.tab-item.active{color:var(--primary);}
+
+/* ── 우측 스크롤 콘텐츠 패널 ── */
+.panel-wrap{flex:1;min-width:0;}
+.panel-inner{max-width:1000px;margin:0 auto;padding:18px 16px 48px;}
+.panel{display:none;}
+.panel.active{display:block;animation:panelfade .26s ease;}
+@keyframes panelfade{from{opacity:0;transform:translateY(7px);}to{opacity:1;transform:none;}}
+
+/* ── 패널 헤더(카테고리 패널용) ── */
+.panel-title{font-size:22px;font-weight:900;letter-spacing:-.03em;display:flex;align-items:center;gap:9px;margin-bottom:7px;}
+.panel-sub{font-size:14px;font-weight:500;color:var(--g600);line-height:1.6;margin-bottom:18px;max-width:560px;}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin:4px 0 24px;}
+.cta-btn{display:inline-flex;align-items:center;gap:7px;background:var(--primary-grad);color:#fff;font-weight:800;font-size:14px;padding:12px 20px;border-radius:12px;box-shadow:0 6px 18px rgba(61,90,254,.25);transition:transform .15s;}
+.cta-btn:active{transform:scale(.97);}
+.cta-btn.ghost{background:var(--white);color:var(--primary-dark);border:1.5px solid var(--primary-light);box-shadow:none;}
 
 /* ── 섹션 공통 ── */
-.sec{margin-bottom:30px;scroll-margin-top:calc(var(--top) + 64px);}
+.sec{margin-bottom:30px;}
 .sec-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px;}
 .sec-head h2{font-size:18px;font-weight:900;letter-spacing:-.02em;color:var(--g900);display:flex;align-items:center;gap:7px;}
 .sec-desc{font-size:13px;font-weight:500;color:var(--g600);margin:-6px 0 13px;}
-.sec-more{font-size:13px;font-weight:700;color:var(--primary);flex-shrink:0;}
+.sec-more{font-size:13px;font-weight:700;color:var(--primary);flex-shrink:0;cursor:pointer;}
 
 /* ── 히어로 배너 카드 ── */
 .hero-card{
-  background:var(--primary-grad); border-radius:24px; padding:28px 24px;
+  background:var(--primary-grad); border-radius:20px; padding:30px 26px;
   color:#fff; position:relative; overflow:hidden; box-shadow:0 10px 30px rgba(61,90,254,.28);
 }
-.hero-card::after{content:"🧮";position:absolute;right:-10px;bottom:-18px;font-size:120px;opacity:.14;transform:rotate(-8deg);}
-.hero-card .hc-badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.04em;background:rgba(255,255,255,.22);padding:5px 11px;border-radius:100px;margin-bottom:13px;}
-.hero-card h1{font-size:clamp(20px,5vw,26px);font-weight:900;line-height:1.32;letter-spacing:-.03em;margin-bottom:9px;position:relative;z-index:1;color:#fff;}
-.hero-card p{font-size:14px;font-weight:500;line-height:1.6;color:rgba(255,255,255,.92);max-width:430px;position:relative;z-index:1;}
-.hero-card .hc-cta{display:inline-flex;align-items:center;gap:6px;margin-top:18px;background:#fff;color:var(--primary-dark);font-weight:800;font-size:14px;padding:12px 20px;border-radius:12px;position:relative;z-index:1;transition:transform .15s;}
+.hero-card .hc-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;letter-spacing:.03em;background:rgba(255,255,255,.22);padding:6px 12px;border-radius:100px;margin-bottom:14px;}
+.hero-card h1{font-size:clamp(30px,7vw,40px);font-weight:900;line-height:1.18;letter-spacing:-.04em;margin-bottom:6px;position:relative;z-index:1;color:#fff;}
+.hero-card p{font-size:15px;font-weight:600;color:rgba(255,255,255,.92);position:relative;z-index:1;}
+.hero-card .hc-cta{display:inline-flex;align-items:center;gap:6px;margin-top:20px;background:#fff;color:var(--primary-dark);font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;position:relative;z-index:1;transition:transform .15s;}
 .hero-card .hc-cta:active{transform:scale(.97);}
 
 /* ── 블링크 카드 피드 ── */
@@ -202,7 +262,7 @@ a{color:inherit;text-decoration:none;}
 
 /* ── 카테고리 칩 그리드 ── */
 .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.cat-chip{display:flex;align-items:center;gap:12px;background:var(--white);border:1px solid var(--g200);border-radius:18px;padding:16px;box-shadow:0 1px 8px rgba(0,0,0,.04);transition:all .15s;}
+.cat-chip{display:flex;align-items:center;gap:12px;background:var(--white);border:1px solid var(--g200);border-radius:18px;padding:16px;box-shadow:0 1px 8px rgba(0,0,0,.04);transition:all .15s;cursor:pointer;}
 .cat-chip:hover{transform:translateY(-3px);border-color:transparent;box-shadow:0 8px 22px rgba(61,90,254,.12);}
 .cat-chip:active{transform:scale(.98);}
 .cat-chip .cc-ico{width:44px;height:44px;border-radius:13px;background:var(--primary-light);display:grid;place-items:center;font-size:23px;flex-shrink:0;}
@@ -229,12 +289,22 @@ a{color:inherit;text-decoration:none;}
 .check-reset{display:block;width:100%;text-align:center;padding:13px;border:none;background:var(--g50);color:var(--g600);font-size:12.5px;font-weight:700;border-top:1px solid var(--g100);}
 .check-reset:hover{background:var(--g100);}
 
+/* ── 검색 패널 ── */
+.search-panel-box{position:relative;}
+.search-panel-box .searchbox{padding:4px 16px;border-radius:16px;}
+.search-panel-box .nav-search{position:static;}
+.search-panel-box .nav-search-input{font-size:17px;padding:16px 10px;}
+#search-dropdown-panel{display:none;position:absolute;top:calc(100% + 10px);left:0;right:0;width:100%;background:var(--white);border:1.5px solid var(--g200);border-radius:14px;box-shadow:0 12px 36px rgba(0,0,0,.12);z-index:50;max-height:62vh;overflow-y:auto;}
+#search-dropdown-panel.active{display:block;}
+.search-hint{font-size:13px;font-weight:500;color:var(--g600);margin-top:14px;line-height:1.7;}
+.search-hint b{color:var(--primary-dark);font-weight:700;}
+
 /* ── 광고 ── */
 .ad-slot{margin:18px 0;min-height:90px;text-align:center;background:var(--g100);border-radius:16px;overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .ad-slot ins{width:100%;}
 
 /* ── 푸터 ── */
-.foot{background:var(--g900);color:rgba(255,255,255,.6);padding:30px 18px 26px;border-radius:24px 24px 0 0;margin-top:14px;}
+.foot{background:var(--g900);color:rgba(255,255,255,.6);padding:30px 18px 26px;border-radius:24px 24px 0 0;margin-top:8px;}
 .foot .f-logo{font-size:17px;font-weight:900;color:#fff;margin-bottom:8px;}
 .foot .f-logo b{color:#7B8FFF;}
 .foot .f-tag{font-size:12.5px;line-height:1.7;max-width:340px;margin-bottom:18px;}
@@ -244,41 +314,47 @@ a{color:inherit;text-decoration:none;}
 .foot hr{border:none;border-top:1px solid rgba(255,255,255,.14);margin-bottom:16px;}
 .foot .f-copy{font-size:11.5px;color:rgba(255,255,255,.42);line-height:1.7;}
 
-/* ── 모바일 하단 탭바 ── */
-.tabbar{
-  position:fixed; left:0; right:0; bottom:0; z-index:320;
-  height:calc(var(--tabbar) + env(safe-area-inset-bottom,0px));
-  padding-bottom:env(safe-area-inset-bottom,0px);
-  background:rgba(255,255,255,.96); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
-  border-top:1px solid var(--g200);
-  display:flex; align-items:stretch;
-}
-.tabbar .tb{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:none;background:transparent;color:var(--g400);font-family:var(--sans);font-size:10.5px;font-weight:700;}
-.tabbar .tb .tb-ico{font-size:20px;line-height:1;}
-.tabbar .tb.active{color:var(--primary);}
-
 #briefing:empty{display:none;}
 #briefing{margin-bottom:30px;}
 
-/* ============ 반응형 ============ */
+/* ============ 반응형 (3 브레이크포인트) ============ */
+/* ── 모바일(~768px): 좌측 80px 아이콘 레일 + 우측 패널 + 하단 탭바 ── */
+.rail{display:flex;}                                 /* 80px 아이콘 레일 노출 */
+.tabbar{display:flex;}                               /* 하단 고정 탭바 노출 */
+.search-band{position:static;}                       /* 검색바는 정적 배치(스티키 레일과 충돌 방지) */
+.rail{height:calc(100vh - var(--top) - var(--tabbar));} /* 하단 탭바에 가리지 않게 */
+body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
+
+/* ── 태블릿(769~1024px): 레일 120px(아이콘+레이블) + 우측 2열 그리드 ── */
 @media (min-width:769px){
-  .main{padding:24px 20px calc(var(--tabbar) + 30px);}
-  .feed{grid-template-columns:1fr 1fr;gap:14px;}
+  :root{--rail:120px;}
+  .tabbar{display:none;}                             /* 탭바 숨김 */
+  body{padding-bottom:0;}
+  .rail{height:calc(100vh - var(--top));padding:12px 0;gap:4px;}
+  .rail-item{padding:14px 6px;gap:6px;}
+  .rail-item .ri-ico{font-size:24px;}
+  .rail-item .ri-label{font-size:12.5px;}
+  .panel-inner{padding:24px 26px 56px;}
+  .feed{grid-template-columns:1fr 1fr;gap:14px;}     /* 2열 */
   .cat-grid{grid-template-columns:repeat(3,1fr);}
 }
+
+/* ── 데스크톱(1025px~): 좌측 220px 사이드바 + 우측 최대 1200px 3열 그리드 ── */
 @media (min-width:1025px){
-  :root{--top:64px;}
-  .tabbar{display:none;}
+  :root{--top:64px;--rail:220px;}
   .top-menu{display:flex;}
   .topbar{padding:0 28px;gap:20px;}
-  .topbar .searchbar{display:block;flex:1;max-width:520px;padding:0;background:transparent;border:none;position:static;}
-  body>.searchbar{display:none;}
-  .main{max-width:1040px;padding:30px 28px 60px;}
-  .feed{grid-template-columns:repeat(3,1fr);gap:20px;}
-  .cat-grid{grid-template-columns:repeat(4,1fr);}
-  .hero-card{padding:38px 36px;}
-  .hero-card h1{font-size:28px;}
-  .foot{border-radius:24px;margin:14px 0 0;}
+  .search-band{padding:10px 28px;}
+  .search-band .searchbox{max-width:620px;}
+  /* 데스크톱 레일: 아이콘+라벨 가로 정렬 */
+  .rail{padding:14px 10px;gap:5px;height:calc(100vh - var(--top));}
+  .rail-item{flex-direction:row;justify-content:flex-start;gap:13px;padding:13px 16px;border-radius:0 12px 12px 0;}
+  .rail-item .ri-ico{font-size:20px;}
+  .rail-item .ri-label{font-size:14.5px;}
+  .panel-inner{max-width:1200px;padding:30px 40px 64px;}  /* 최대 1200px */
+  .feed{grid-template-columns:repeat(3,1fr);gap:18px;}    /* 3열 */
+  .cat-grid{grid-template-columns:repeat(3,1fr);}
+  .hero-card{padding:42px 40px;}
   .sec-head h2{font-size:20px;}
 }
 </style>
@@ -287,7 +363,20 @@ a{color:inherit;text-decoration:none;}
 
 <!-- ── 글로벌 헤더 ── -->
 <header class="topbar" role="banner">
-  <a href="index.html" class="brand" title="소호팁 홈"><span class="em" aria-hidden="true">🧮</span>소호<b>팁</b></a>
+  <a href="index.html" class="brand" title="소호팁 홈">소호<b>팁</b></a>
+  <nav class="top-menu" aria-label="주요 메뉴">
+    <a data-tab="calc">계산기</a>
+    <a data-tab="guide">가이드</a>
+    <a data-tab="forms">서식</a>
+  </nav>
+  <div class="top-right">
+    <button class="ico-btn" type="button" id="hdr-search-btn" title="검색" aria-label="검색"><span aria-hidden="true">🔍</span></button>
+    <a class="ico-btn" href="contact.html" title="알림·문의" aria-label="알림·문의"><span aria-hidden="true">🔔</span></a>
+  </div>
+</header>
+
+<!-- ── 헤더 바로 아래 검색바 ── -->
+<div class="search-band">
   <nav class="searchbar" role="search" aria-label="사이트 검색">
     <div class="searchbox">
       <span class="s-ico" aria-hidden="true">🔍</span>
@@ -297,170 +386,216 @@ a{color:inherit;text-decoration:none;}
       </div>
     </div>
   </nav>
-  <nav class="top-menu" aria-label="주요 메뉴">
-    <a href="#sec-calc">계산기</a>
-    <a href="#sec-guide">가이드</a>
-    <a href="#sec-cat">카테고리</a>
-    <a href="forms.html">서식</a>
-  </nav>
-  <div class="top-right">
-    <a class="ico-btn" href="contact.html" title="문의하기" aria-label="문의하기"><span aria-hidden="true">🔔</span></a>
-  </div>
-</header>
+</div>
 
-<!-- ── 모바일/태블릿 검색바 ── -->
-<nav class="searchbar" role="search" aria-label="사이트 검색(모바일)">
-  <div class="searchbox">
-    <span class="s-ico" aria-hidden="true">🔍</span>
-    <div class="nav-search">
-      <input type="text" id="search-input-mobile" class="nav-search-input" placeholder="계산기·가이드·서식 검색…" autocomplete="off" aria-label="검색어 입력">
-      <div id="search-dropdown-mobile" role="listbox"></div>
-    </div>
-  </div>
-</nav>
+<!-- =====================================================================
+     스플릿 셸: 좌(레일) + 우(패널)
+     ===================================================================== -->
+<div class="shell">
 
-<main class="main" role="main">
+  <!-- ── 좌측 고정 아이콘 레일 (6개 패널) ── -->
+  <aside class="rail" role="navigation" aria-label="주요 섹션">
+    <button class="rail-item active" type="button" data-tab="home"    aria-current="page"><span class="ri-ico" aria-hidden="true">🏠</span><span class="ri-label">홈</span></button>
+    <button class="rail-item"        type="button" data-tab="calc"><span class="ri-ico" aria-hidden="true">🧮</span><span class="ri-label">계산기</span></button>
+    <button class="rail-item"        type="button" data-tab="guide"><span class="ri-ico" aria-hidden="true">📖</span><span class="ri-label">가이드</span></button>
+    <button class="rail-item"        type="button" data-tab="category"><span class="ri-ico" aria-hidden="true">📂</span><span class="ri-label">카테고리</span></button>
+    <button class="rail-item"        type="button" data-tab="forms"><span class="ri-ico" aria-hidden="true">📄</span><span class="ri-label">서식</span></button>
+    <button class="rail-item"        type="button" data-tab="search"><span class="ri-ico" aria-hidden="true">🔍</span><span class="ri-label">검색</span></button>
+  </aside>
 
-  <!-- ===== 1. Hero ===== -->
-  <section class="sec" id="sec-hero" aria-label="소개">
-    <article class="hero-card">
-      <span class="hc-badge">가입 없음 · 완전 무료</span>
-      <h1>소상공인을 위한 무료 계산기·실전 가이드<br><span style="font-weight:900">장사 계산은 여기서 한 방에</span></h1>
-      <p>알바 인건비·배달 순이익·부가세·손익분기점까지, 복잡한 가게 숫자를 18가지 무료 계산기로 바로 계산하세요.</p>
-      <a href="#sec-calc" class="hc-cta">🧮 무료 계산기 보기 →</a>
-    </article>
-  </section>
+  <!-- ── 우측 스크롤 콘텐츠 패널 ── -->
+  <div class="panel-wrap">
+   <div class="panel-inner">
 
-  <!-- AD SLOT: 히어로 배너 아래 -->
-  <div class="ad-slot">
-    <ins class="adsbygoogle" style="display:block;min-height:90px" data-ad-client="ca-pub-4059494172804910" data-ad-slot="여기에_광고슬롯ID" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-  </div>
+    <!-- ============ 패널: 홈 ============ -->
+    <section class="panel active" id="panel-home" role="tabpanel" aria-label="홈">
 
-  <!-- AD SLOT: 카카오 애드핏 (300×250) -->
-  <div class="ad-slot">
-    <ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-92dlbIcNNOkHSZw8" data-ad-width="300" data-ad-height="250"></ins>
-  </div>
+      <!-- Hero -->
+      <article class="hero-card">
+        <span class="hc-badge">🏆 이번 달 1위 계산기</span>
+        <h1>알바 인건비</h1>
+        <p>지금 바로 계산</p>
+        <a href="alba-cost-calc.html" class="hc-cta">🧮 무료로 계산하기 →</a>
+      </article>
 
-  <!-- ===== 2. 계산기 (18종) ===== -->
-  <section class="sec" id="sec-calc" aria-labelledby="calc-h">
-    <div class="sec-head"><h2 id="calc-h">🧮 무료 계산기 18종</h2><a class="sec-more" href="tools.html">전체 보기</a></div>
-    <p class="sec-desc">가입 없이 바로 쓰는, 사장님들이 북마크해두고 반복 사용하는 계산기예요.</p>
-    <div class="feed" id="feed-calc"></div>
-  </section>
-
-  <!-- ===== 3. 인기 계산기 (실시간 LIVE) ===== -->
-  <section class="sec" id="sec-popular" aria-labelledby="pop-h">
-    <div class="sec-head"><h2 id="pop-h"><span class="live-tag"><span class="dot" aria-hidden="true"></span>LIVE</span> 실시간 인기 계산기</h2><span class="sec-more auto-ym">2026년 6월</span></div>
-    <p class="sec-desc">지금 사장님들이 가장 많이 두드리고 있는 계산기예요.</p>
-    <div class="rank-card">
-      <a class="rank-item" href="alba-cost-calc.html" title="알바 인건비 계산기"><span class="rank-no">1</span><span class="rank-emoji" aria-hidden="true">🧮</span><span class="rank-name">알바 인건비 계산기<small>주휴수당·4대보험 포함</small></span><span class="rank-cnt">12,840<small>회</small></span></a>
-      <a class="rank-item" href="delivery-profit-calc.html" title="배달 순이익 계산기"><span class="rank-no">2</span><span class="rank-emoji" aria-hidden="true">🛵</span><span class="rank-name">배달 순이익 계산기<small>수수료·배달비 제외</small></span><span class="rank-cnt">9,310<small>회</small></span></a>
-      <a class="rank-item" href="vat-calc.html" title="부가세 계산기"><span class="rank-no">3</span><span class="rank-emoji" aria-hidden="true">💰</span><span class="rank-name">부가세 계산기<small>납부세액·환급액</small></span><span class="rank-cnt">7,625<small>회</small></span></a>
-      <a class="rank-item" href="bep-calc.html" title="손익분기점 계산기"><span class="rank-no">4</span><span class="rank-emoji" aria-hidden="true">📈</span><span class="rank-name">손익분기점(BEP) 계산기<small>최소 목표 매출</small></span><span class="rank-cnt">5,180<small>회</small></span></a>
-      <a class="rank-item" href="food-cost-calc.html" title="메뉴 원가율 계산기"><span class="rank-no">5</span><span class="rank-emoji" aria-hidden="true">🍽️</span><span class="rank-name">메뉴 원가율 계산기<small>마진율·권장 판매가</small></span><span class="rank-cnt">4,470<small>회</small></span></a>
-    </div>
-  </section>
-
-  <!-- 오늘의 사업 브리핑 (환율·금리·주가·소식) -->
-  <section id="briefing"></section>
-
-  <!-- ===== 4. 최신 가이드 ===== -->
-  <section class="sec" id="sec-guide" aria-labelledby="guide-h">
-    <div class="sec-head"><h2 id="guide-h">📖 최신 실전 가이드</h2><a class="sec-more" href="category.html">전체 가이드</a></div>
-    <p class="sec-desc">옆 가게 잘되는 선배 사장님의 현장 노하우.</p>
-    <div class="feed" id="feed-guide"></div>
-  </section>
-
-  <!-- AD SLOT: 카카오 애드핏 (320×100) -->
-  <div class="ad-slot">
-    <ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-OXO7QmLJ3fqDjM3l" data-ad-width="320" data-ad-height="100"></ins>
-    <script type="text/javascript" src="//t1.kakaocdn.net/kas/static/ba.min.js" async></script>
-  </div>
-
-  <!-- ===== 5. 인기 가이드 TOP5 (Firebase 최근 30일 자동 렌더) ===== -->
-  <section class="sec" id="sec-top5" aria-labelledby="top5-h">
-    <div class="sec-head"><h2 id="top5-h">🔥 인기 가이드 TOP 5</h2><a class="sec-more" href="category.html">더보기</a></div>
-    <p class="sec-desc">실제 조회수 기준으로 매일 자동 갱신돼요.</p>
-    <nav class="top5-list" aria-label="인기글 순위">
-      <a href="baemin-vs-coupang.html" class="top5-item"><span class="top5-num rank1">1</span><div class="top5-body"><div class="top5-tag">배달앱</div><div class="top5-title">배달의민족 vs 쿠팡이츠 수수료 완전 비교 (2026년 최신)</div><div class="top5-meta">2026.06.12 · 7분</div></div><div class="top5-icon" aria-hidden="true">🛵</div></a>
-      <a href="naver-place-ranking-2026.html" class="top5-item"><span class="top5-num rank2">2</span><div class="top5-body"><div class="top5-tag">네이버 플레이스</div><div class="top5-title">네이버 플레이스 상위 노출 방법 2026 — 실제로 작동하는 5가지</div><div class="top5-meta">2026.06.27 · 7분</div></div><div class="top5-icon" aria-hidden="true">📍</div></a>
-      <a href="soho-jiwongeum-2026.html" class="top5-item"><span class="top5-num rank3">3</span><div class="top5-body"><div class="top5-tag">소상공인 지원금</div><div class="top5-title">2026년 소상공인 지원금 총정리 — 지금 신청 가능한 것만</div><div class="top5-meta">2026.06.11 · 6분</div></div><div class="top5-icon" aria-hidden="true">💰</div></a>
-      <a href="solo-shop-tax-deduction.html" class="top5-item"><span class="top5-num">4</span><div class="top5-body"><div class="top5-tag">창업·세금</div><div class="top5-title">1인 사장님 절세 꿀팁 — 사업자 경비처리 가능한 항목 완전 정리</div><div class="top5-meta">2026.06.26 · 8분</div></div><div class="top5-icon" aria-hidden="true">💡</div></a>
-      <a href="rent-increase-refusal.html" class="top5-item"><span class="top5-num">5</span><div class="top5-body"><div class="top5-tag">창업·세금</div><div class="top5-title">임대료 올려달라고 할 때 거절하는 법 — 계약갱신청구권과 5% 상한선</div><div class="top5-meta">2026.06.24 · 8분</div></div><div class="top5-icon" aria-hidden="true">🏠</div></a>
-    </nav>
-  </section>
-
-  <!-- ===== 6. 카테고리 ===== -->
-  <section class="sec" id="sec-cat" aria-labelledby="cat-h">
-    <div class="sec-head"><h2 id="cat-h">📂 카테고리별로 찾아보기</h2><span class="sec-more">8개 분야</span></div>
-    <div class="cat-grid">
-      <a class="cat-chip" href="category.html?cat=calculator" title="무료 계산기"><span class="cc-ico" aria-hidden="true">🧮</span><span><span class="cc-nm">무료 계산기</span><span class="cc-cnt">18개</span></span></a>
-      <a class="cat-chip" href="category.html?cat=place" title="네이버 플레이스"><span class="cc-ico" aria-hidden="true">📍</span><span><span class="cc-nm">네이버 플레이스</span><span class="cc-cnt">9개</span></span></a>
-      <a class="cat-chip" href="category.html?cat=delivery" title="배달앱"><span class="cc-ico" aria-hidden="true">🛵</span><span><span class="cc-nm">배달앱</span><span class="cc-cnt">12개</span></span></a>
-      <a class="cat-chip" href="category.html?cat=support" title="소상공인 지원금"><span class="cc-ico" aria-hidden="true">💰</span><span><span class="cc-nm">소상공인 지원금</span><span class="cc-cnt">9개</span></span></a>
-      <a class="cat-chip" href="category.html?cat=sns" title="SNS·숏폼"><span class="cc-ico" aria-hidden="true">📱</span><span><span class="cc-nm">SNS·숏폼</span><span class="cc-cnt">11개</span></span></a>
-      <a class="cat-chip" href="category.html?cat=startup" title="창업·세금"><span class="cc-ico" aria-hidden="true">🏪</span><span><span class="cc-nm">창업·세금</span><span class="cc-cnt">44개</span></span></a>
-      <a class="cat-chip" href="forms.html" title="무료 서식"><span class="cc-ico" aria-hidden="true">📄</span><span><span class="cc-nm">무료 서식</span><span class="cc-cnt">14개</span></span></a>
-      <a class="cat-chip" href="category.html?cat=card" title="카드·결제"><span class="cc-ico" aria-hidden="true">💳</span><span><span class="cc-nm">카드·결제</span><span class="cc-cnt">6개</span></span></a>
-    </div>
-  </section>
-
-  <!-- ===== 7. 체크리스트 ===== -->
-  <section class="sec" id="sec-checklist" aria-labelledby="check-h">
-    <div class="sec-head"><h2 id="check-h">✅ 이번 달 사장님 체크리스트</h2></div>
-    <p class="sec-desc">매달 챙겨야 할 핵심 항목이에요. 체크 상태는 이 기기에만 저장돼요.</p>
-    <div class="check-card" id="checklist">
-      <div class="check-head">
-        <span class="ch-ico" aria-hidden="true">🗓️</span>
-        <div><div class="ch-t">월간 운영 점검</div><div class="ch-p">세무·노무·매장까지 한 번에</div></div>
-        <span class="check-prog" id="check-prog">0/8</span>
+      <!-- AD SLOT: 히어로 배너 아래 -->
+      <div class="ad-slot">
+        <ins class="adsbygoogle" style="display:block;min-height:90px" data-ad-client="ca-pub-4059494172804910" data-ad-slot="여기에_광고슬롯ID" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
       </div>
-      <div id="check-list"></div>
-      <button class="check-reset" id="check-reset" type="button">전체 초기화</button>
+
+      <!-- 실시간 인기 계산기 -->
+      <div class="sec">
+        <div class="sec-head"><h2><span class="live-tag"><span class="dot" aria-hidden="true"></span>LIVE</span> 실시간 인기 계산기</h2><span class="sec-more" data-tab="calc">전체 보기</span></div>
+        <p class="sec-desc">지금 사장님들이 가장 많이 두드리고 있는 계산기예요.</p>
+        <div class="rank-card">
+          <a class="rank-item" href="alba-cost-calc.html" title="알바 인건비 계산기"><span class="rank-no">1</span><span class="rank-emoji" aria-hidden="true">🧮</span><span class="rank-name">알바 인건비 계산기<small>주휴수당·4대보험 포함</small></span><span class="rank-cnt">12,840<small>회</small></span></a>
+          <a class="rank-item" href="delivery-profit-calc.html" title="배달 순이익 계산기"><span class="rank-no">2</span><span class="rank-emoji" aria-hidden="true">🛵</span><span class="rank-name">배달 순이익 계산기<small>수수료·배달비 제외</small></span><span class="rank-cnt">9,310<small>회</small></span></a>
+          <a class="rank-item" href="vat-calc.html" title="부가세 계산기"><span class="rank-no">3</span><span class="rank-emoji" aria-hidden="true">💰</span><span class="rank-name">부가세 계산기<small>납부세액·환급액</small></span><span class="rank-cnt">7,625<small>회</small></span></a>
+          <a class="rank-item" href="bep-calc.html" title="손익분기점 계산기"><span class="rank-no">4</span><span class="rank-emoji" aria-hidden="true">📈</span><span class="rank-name">손익분기점(BEP) 계산기<small>최소 목표 매출</small></span><span class="rank-cnt">5,180<small>회</small></span></a>
+          <a class="rank-item" href="food-cost-calc.html" title="메뉴 원가율 계산기"><span class="rank-no">5</span><span class="rank-emoji" aria-hidden="true">🍽️</span><span class="rank-name">메뉴 원가율 계산기<small>마진율·권장 판매가</small></span><span class="rank-cnt">4,470<small>회</small></span></a>
+        </div>
+      </div>
+
+      <!-- 오늘의 사업 브리핑 (환율·금리·주가·소식) -->
+      <section id="briefing"></section>
+
+      <!-- 카테고리 -->
+      <div class="sec">
+        <div class="sec-head"><h2>📂 카테고리별로 찾아보기</h2><span class="sec-more" data-tab="category">전체 보기</span></div>
+        <div class="cat-grid">
+          <a class="cat-chip" data-tab="calc" title="무료 계산기"><span class="cc-ico" aria-hidden="true">🧮</span><span><span class="cc-nm">무료 계산기</span><span class="cc-cnt">18개</span></span></a>
+          <a class="cat-chip" href="category.html?cat=place" title="네이버 플레이스"><span class="cc-ico" aria-hidden="true">📍</span><span><span class="cc-nm">네이버 플레이스</span><span class="cc-cnt">9개</span></span></a>
+          <a class="cat-chip" href="category.html?cat=delivery" title="배달앱"><span class="cc-ico" aria-hidden="true">🛵</span><span><span class="cc-nm">배달앱</span><span class="cc-cnt">12개</span></span></a>
+          <a class="cat-chip" href="category.html?cat=support" title="소상공인 지원금"><span class="cc-ico" aria-hidden="true">💰</span><span><span class="cc-nm">소상공인 지원금</span><span class="cc-cnt">9개</span></span></a>
+          <a class="cat-chip" href="category.html?cat=sns" title="SNS·숏폼"><span class="cc-ico" aria-hidden="true">📱</span><span><span class="cc-nm">SNS·숏폼</span><span class="cc-cnt">11개</span></span></a>
+          <a class="cat-chip" href="category.html?cat=startup" title="창업·세금"><span class="cc-ico" aria-hidden="true">🏪</span><span><span class="cc-nm">창업·세금</span><span class="cc-cnt">44개</span></span></a>
+          <a class="cat-chip" data-tab="forms" title="무료 서식"><span class="cc-ico" aria-hidden="true">📄</span><span><span class="cc-nm">무료 서식</span><span class="cc-cnt">14개</span></span></a>
+          <a class="cat-chip" href="category.html?cat=card" title="카드·결제"><span class="cc-ico" aria-hidden="true">💳</span><span><span class="cc-nm">카드·결제</span><span class="cc-cnt">6개</span></span></a>
+        </div>
+      </div>
+
+      <!-- 체크리스트 -->
+      <div class="sec">
+        <div class="sec-head"><h2>✅ 이번 달 사장님 체크리스트</h2></div>
+        <p class="sec-desc">매달 챙겨야 할 핵심 항목이에요. 체크 상태는 이 기기에만 저장돼요.</p>
+        <div class="check-card" id="checklist">
+          <div class="check-head">
+            <span class="ch-ico" aria-hidden="true">🗓️</span>
+            <div><div class="ch-t">월간 운영 점검</div><div class="ch-p">세무·노무·매장까지 한 번에</div></div>
+            <span class="check-prog" id="check-prog">0/8</span>
+          </div>
+          <div id="check-list"></div>
+          <button class="check-reset" id="check-reset" type="button">전체 초기화</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 패널: 계산기 ============ -->
+    <section class="panel" id="panel-calc" role="tabpanel" aria-label="계산기">
+      <div class="sec-head"><h2 style="font-size:22px">🧮 무료 계산기 18종</h2><a class="sec-more" href="tools.html">전체 보기</a></div>
+      <p class="sec-desc">가입 없이 바로 쓰는, 사장님들이 북마크해두고 반복 사용하는 계산기예요.</p>
+      <div class="feed" id="feed-calc"></div>
+      <div class="ad-slot">
+        <ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-92dlbIcNNOkHSZw8" data-ad-width="300" data-ad-height="250"></ins>
+      </div>
+    </section>
+
+    <!-- ============ 패널: 가이드 ============ -->
+    <section class="panel" id="panel-guide" role="tabpanel" aria-label="가이드">
+      <div class="sec-head"><h2 style="font-size:22px">📖 최신 실전 가이드</h2><a class="sec-more" href="category.html">전체 가이드</a></div>
+      <p class="sec-desc">옆 가게 잘되는 선배 사장님의 현장 노하우.</p>
+      <div class="feed" id="feed-guide"></div>
+
+      <div class="ad-slot">
+        <ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-OXO7QmLJ3fqDjM3l" data-ad-width="320" data-ad-height="100"></ins>
+        <script type="text/javascript" src="//t1.kakaocdn.net/kas/static/ba.min.js" async></script>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head"><h2>🔥 인기 가이드 TOP 5</h2><a class="sec-more" href="category.html">더보기</a></div>
+        <p class="sec-desc">실제 조회수 기준으로 매일 자동 갱신돼요.</p>
+        <nav class="top5-list" aria-label="인기글 순위">
+          <a href="baemin-vs-coupang.html" class="top5-item"><span class="top5-num rank1">1</span><div class="top5-body"><div class="top5-tag">배달앱</div><div class="top5-title">배달의민족 vs 쿠팡이츠 수수료 완전 비교 (2026년 최신)</div><div class="top5-meta">2026.06.12 · 7분</div></div><div class="top5-icon" aria-hidden="true">🛵</div></a>
+          <a href="naver-place-ranking-2026.html" class="top5-item"><span class="top5-num rank2">2</span><div class="top5-body"><div class="top5-tag">네이버 플레이스</div><div class="top5-title">네이버 플레이스 상위 노출 방법 2026 — 실제로 작동하는 5가지</div><div class="top5-meta">2026.06.27 · 7분</div></div><div class="top5-icon" aria-hidden="true">📍</div></a>
+          <a href="soho-jiwongeum-2026.html" class="top5-item"><span class="top5-num rank3">3</span><div class="top5-body"><div class="top5-tag">소상공인 지원금</div><div class="top5-title">2026년 소상공인 지원금 총정리 — 지금 신청 가능한 것만</div><div class="top5-meta">2026.06.11 · 6분</div></div><div class="top5-icon" aria-hidden="true">💰</div></a>
+          <a href="solo-shop-tax-deduction.html" class="top5-item"><span class="top5-num">4</span><div class="top5-body"><div class="top5-tag">창업·세금</div><div class="top5-title">1인 사장님 절세 꿀팁 — 사업자 경비처리 가능한 항목 완전 정리</div><div class="top5-meta">2026.06.26 · 8분</div></div><div class="top5-icon" aria-hidden="true">💡</div></a>
+          <a href="rent-increase-refusal.html" class="top5-item"><span class="top5-num">5</span><div class="top5-body"><div class="top5-tag">창업·세금</div><div class="top5-title">임대료 올려달라고 할 때 거절하는 법 — 계약갱신청구권과 5% 상한선</div><div class="top5-meta">2026.06.24 · 8분</div></div><div class="top5-icon" aria-hidden="true">🏠</div></a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ============ 패널: 카테고리 ============ -->
+    <section class="panel" id="panel-category" role="tabpanel" aria-label="카테고리">
+      <div class="panel-title">📂 카테고리</div>
+      <p class="panel-sub">분야별로 계산기·가이드·서식을 모아봤어요. 칩을 누르면 해당 분야 모음으로 이동해요.</p>
+      <div class="cat-grid">
+        <a class="cat-chip" href="category.html?cat=calculator" title="무료 계산기"><span class="cc-ico" aria-hidden="true">🧮</span><span><span class="cc-nm">무료 계산기</span><span class="cc-cnt">18개</span></span></a>
+        <a class="cat-chip" href="category.html?cat=place" title="네이버 플레이스"><span class="cc-ico" aria-hidden="true">📍</span><span><span class="cc-nm">네이버 플레이스</span><span class="cc-cnt">9개</span></span></a>
+        <a class="cat-chip" href="category.html?cat=delivery" title="배달앱"><span class="cc-ico" aria-hidden="true">🛵</span><span><span class="cc-nm">배달앱</span><span class="cc-cnt">12개</span></span></a>
+        <a class="cat-chip" href="category.html?cat=support" title="소상공인 지원금"><span class="cc-ico" aria-hidden="true">💰</span><span><span class="cc-nm">소상공인 지원금</span><span class="cc-cnt">9개</span></span></a>
+        <a class="cat-chip" href="category.html?cat=sns" title="SNS·숏폼"><span class="cc-ico" aria-hidden="true">📱</span><span><span class="cc-nm">SNS·숏폼</span><span class="cc-cnt">11개</span></span></a>
+        <a class="cat-chip" href="category.html?cat=startup" title="창업·세금"><span class="cc-ico" aria-hidden="true">🏪</span><span><span class="cc-nm">창업·세금</span><span class="cc-cnt">44개</span></span></a>
+        <a class="cat-chip" href="forms.html" title="무료 서식"><span class="cc-ico" aria-hidden="true">📄</span><span><span class="cc-nm">무료 서식</span><span class="cc-cnt">14개</span></span></a>
+        <a class="cat-chip" href="category.html?cat=card" title="카드·결제"><span class="cc-ico" aria-hidden="true">💳</span><span><span class="cc-nm">카드·결제</span><span class="cc-cnt">6개</span></span></a>
+      </div>
+    </section>
+
+    <!-- ============ 패널: 서식 ============ -->
+    <section class="panel" id="panel-forms" role="tabpanel" aria-label="무료 서식">
+      <div class="panel-title">📄 무료 서식 자료실</div>
+      <p class="panel-sub">근로계약서·급여명세서·재고 관리표 등 사장님이 자주 쓰는 서식 14종을 가입 없이 무료로 받아가세요.</p>
+      <div class="cta-row">
+        <a class="cta-btn" href="forms.html">📄 서식 자료실 열기 →</a>
+        <a class="cta-btn ghost" href="contact.html">필요한 서식 요청하기</a>
+      </div>
+      <div class="cat-grid" style="margin-top:6px">
+        <a class="cat-chip" href="forms.html" title="근로계약서"><span class="cc-ico" aria-hidden="true">📝</span><span><span class="cc-nm">근로계약서</span><span class="cc-cnt">표준 양식</span></span></a>
+        <a class="cat-chip" href="forms.html" title="급여명세서"><span class="cc-ico" aria-hidden="true">💴</span><span><span class="cc-nm">급여명세서</span><span class="cc-cnt">자동 계산</span></span></a>
+        <a class="cat-chip" href="forms.html" title="재고·발주표"><span class="cc-ico" aria-hidden="true">📦</span><span><span class="cc-nm">재고·발주표</span><span class="cc-cnt">엑셀</span></span></a>
+        <a class="cat-chip" href="forms.html" title="간이 영수증"><span class="cc-ico" aria-hidden="true">🧾</span><span><span class="cc-nm">간이 영수증</span><span class="cc-cnt">인쇄용</span></span></a>
+      </div>
+    </section>
+
+    <!-- ============ 패널: 검색 ============ -->
+    <section class="panel" id="panel-search" role="tabpanel" aria-label="검색">
+      <div class="panel-title">🔍 검색</div>
+      <p class="panel-sub">계산기·가이드·서식을 한 번에 찾아보세요.</p>
+      <div class="search-panel-box">
+        <div class="searchbox">
+          <span class="s-ico" aria-hidden="true">🔍</span>
+          <div class="nav-search">
+            <input type="text" id="search-input-panel" class="nav-search-input" placeholder="예: 알바 인건비, 부가세, 배달 수수료…" autocomplete="off" aria-label="검색어 입력">
+            <div id="search-dropdown-panel" role="listbox"></div>
+          </div>
+        </div>
+      </div>
+      <p class="search-hint">자주 찾는 검색어: <b>알바 인건비</b> · <b>부가세</b> · <b>배달 순이익</b> · <b>주휴수당</b> · <b>플레이스 상위노출</b></p>
+    </section>
+
+    <!-- AD SLOT: 콘텐츠 하단 (공통) -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle" style="display:block;min-height:90px" data-ad-client="ca-pub-4059494172804910" data-ad-slot="여기에_광고슬롯ID3" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
     </div>
-  </section>
 
-  <!-- AD SLOT: 콘텐츠 하단 -->
-  <div class="ad-slot">
-    <ins class="adsbygoogle" style="display:block;min-height:90px" data-ad-client="ca-pub-4059494172804910" data-ad-slot="여기에_광고슬롯ID3" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-  </div>
+    <!-- ── Footer ── -->
+    <footer class="foot" role="contentinfo">
+      <div class="f-logo">🧮 소호<b>팁</b></div>
+      <p class="f-tag">소상공인 무료 계산기와 실전 마케팅 정보를 한곳에서. 가입 없이 무료, 내 폰에만 저장.</p>
+      <nav class="f-nav" aria-label="푸터 메뉴">
+        <a href="tools.html">계산기 모음</a>
+        <a href="forms.html">무료 서식</a>
+        <a href="category.html">전체 가이드</a>
+        <a href="category.html?cat=place">네이버 플레이스</a>
+        <a href="category.html?cat=delivery">배달앱</a>
+        <a href="category.html?cat=support">소상공인 지원금</a>
+        <a href="about.html">사이트 소개</a>
+        <a href="privacy.html">개인정보처리방침</a>
+        <a href="terms.html">이용약관</a>
+        <a href="contact.html">문의하기</a>
+      </nav>
+      <hr>
+      <p class="f-copy">© 2026 소호팁 (sohotip.co.kr) · 계산 결과는 참고용이며 정확한 금액은 전문가와 확인하세요.</p>
+    </footer>
 
-  <!-- ===== 8. Footer ===== -->
-  <footer class="foot" role="contentinfo">
-    <div class="f-logo">🧮 소호<b>팁</b></div>
-    <p class="f-tag">소상공인 무료 계산기와 실전 마케팅 정보를 한곳에서. 가입 없이 무료, 내 폰에만 저장.</p>
-    <nav class="f-nav" aria-label="푸터 메뉴">
-      <a href="tools.html">계산기 모음</a>
-      <a href="forms.html">무료 서식</a>
-      <a href="category.html">전체 가이드</a>
-      <a href="category.html?cat=place">네이버 플레이스</a>
-      <a href="category.html?cat=delivery">배달앱</a>
-      <a href="category.html?cat=support">소상공인 지원금</a>
-      <a href="about.html">사이트 소개</a>
-      <a href="privacy.html">개인정보처리방침</a>
-      <a href="terms.html">이용약관</a>
-      <a href="contact.html">문의하기</a>
-    </nav>
-    <hr>
-    <p class="f-copy">© 2026 소호팁 (sohotip.co.kr) · 계산 결과는 참고용이며 정확한 금액은 전문가와 확인하세요.</p>
-  </footer>
-</main>
+   </div><!-- /.panel-inner -->
+  </div><!-- /.panel-wrap -->
+</div><!-- /.shell -->
 
-<!-- ── 모바일 하단 탭바 (섹션 앵커 이동) ── -->
-<nav class="tabbar" role="navigation" aria-label="하단 탭">
-  <a class="tb active" href="#sec-hero"><span class="tb-ico" aria-hidden="true">🏠</span>홈</a>
-  <a class="tb" href="#sec-calc"><span class="tb-ico" aria-hidden="true">🧮</span>계산기</a>
-  <a class="tb" href="forms.html"><span class="tb-ico" aria-hidden="true">📄</span>서식</a>
-  <a class="tb" href="#sec-guide"><span class="tb-ico" aria-hidden="true">📖</span>가이드</a>
-  <a class="tb" href="#sec-cat"><span class="tb-ico" aria-hidden="true">📂</span>카테고리</a>
+<!-- ── 모바일 하단 고정 탭바 ── -->
+<nav class="tabbar" role="navigation" aria-label="모바일 주요 메뉴">
+  <button class="tab-item active" type="button" data-tab="home"  aria-current="page"><span class="tb-ico" aria-hidden="true">🏠</span><span class="tb-label">홈</span></button>
+  <button class="tab-item"        type="button" data-tab="calc"><span class="tb-ico" aria-hidden="true">🧮</span><span class="tb-label">계산기</span></button>
+  <button class="tab-item"        type="button" data-tab="forms"><span class="tb-ico" aria-hidden="true">📄</span><span class="tb-label">서식</span></button>
+  <button class="tab-item"        type="button" data-tab="guide"><span class="tb-ico" aria-hidden="true">📖</span><span class="tb-label">가이드</span></button>
+  <button class="tab-item"        type="button" data-tab="search"><span class="tb-ico" aria-hidden="true">🔍</span><span class="tb-label">검색</span></button>
 </nav>
 
 <script src="sohotip.js?v=20260626"></script>
 <script>
 /* ===================================================================
-   소호팁 메인(나열형) — 카드 렌더 · 북마크 · 체크리스트
+   소호팁 메인(스플릿뷰) — 레일 탭 전환 · 카드 렌더 · 북마크 · 체크리스트
    =================================================================== */
 (function(){
   'use strict';
@@ -603,17 +738,60 @@ a{color:inherit;text-decoration:none;}
   var rs=document.getElementById('check-reset');
   if(rs)rs.addEventListener('click',function(){ck={};setCk(ck);renderChecklist();});
 
-  /* ── 탭바 active 상태 (스크롤 스파이) ── */
-  var tabs=Array.prototype.slice.call(document.querySelectorAll('.tabbar .tb[href^="#"]'));
-  var ids=tabs.map(function(t){return t.getAttribute('href').slice(1);});
-  function onScroll(){
-    var y=window.scrollY+ (window.innerHeight*0.35);
-    var cur=ids[0];
-    ids.forEach(function(id){var el=document.getElementById(id);if(el&&el.offsetTop<=y)cur=id;});
-    tabs.forEach(function(t){t.classList.toggle('active',t.getAttribute('href')==='#'+cur);});
+  /* ===================================================================
+     레일 ↔ 패널 탭 전환
+     =================================================================== */
+  var VALID={home:1,calc:1,guide:1,category:1,forms:1,search:1};
+  var railItems=Array.prototype.slice.call(document.querySelectorAll('.rail-item,.tab-item'));
+  var panels=Array.prototype.slice.call(document.querySelectorAll('.panel'));
+  var searchInited=false;
+
+  function showTab(id,push){
+    if(!VALID[id])id='home';
+    panels.forEach(function(p){p.classList.toggle('active',p.id==='panel-'+id);});
+    railItems.forEach(function(r){
+      var on=r.getAttribute('data-tab')===id;
+      r.classList.toggle('active',on);
+      r.setAttribute('aria-current',on?'page':'false');
+    });
+    if(push!==false){
+      var target=(id==='home')?location.pathname+location.search:'#'+id;
+      try{history.replaceState(null,'',target);}catch(e){}
+    }
+    window.scrollTo(0,0);
+    if(id==='search'){
+      if(!searchInited && typeof window.initSearchInput==='function'){
+        window.initSearchInput('search-input-panel','search-dropdown-panel');
+        searchInited=true;
+      }
+      var si=document.getElementById('search-input-panel');
+      if(si)setTimeout(function(){si.focus();},60);
+    }
   }
-  window.addEventListener('scroll',onScroll,{passive:true});
-  onScroll();
+
+  /* 레일·메뉴·칩 등 data-tab 클릭 위임 */
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('[data-tab]'); if(!t)return;
+    e.preventDefault();
+    showTab(t.getAttribute('data-tab'));
+  });
+  /* 키보드 접근성: 레일 버튼은 기본 button이라 Enter/Space 동작 */
+
+  /* 헤더 검색 아이콘 → 검색바 포커스 */
+  var hsb=document.getElementById('hdr-search-btn');
+  if(hsb)hsb.addEventListener('click',function(){
+    window.scrollTo(0,0);
+    var si=document.getElementById('search-input');
+    if(si)si.focus();
+  });
+
+  /* 초기 진입: 해시로 탭 복원 */
+  var initial=(location.hash||'').replace('#','');
+  showTab(VALID[initial]?initial:'home',false);
+  window.addEventListener('hashchange',function(){
+    var h=(location.hash||'').replace('#','');
+    if(VALID[h])showTab(h,false);
+  });
 })();
 </script>
 
@@ -623,6 +801,6 @@ a{color:inherit;text-decoration:none;}
 <script src="assets/exchange.js?v=20260626"></script>
 <script src="assets/stocks.js?v=20260626"></script>
 <script src="assets/briefing.js?v=20260626"></script>
-<script src="network.js?v=20260625"></script>
+<script src="network.js?v=20260626"></script>
 </body>
 </html>
