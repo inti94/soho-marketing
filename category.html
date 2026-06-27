@@ -44,6 +44,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="sohotip.css?v=20260626">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/theme.css?v=20260626">
+  <link rel="stylesheet" href="assets/soho-cards.css?v=20260626">
 <link rel="stylesheet" href="assets/sohotip-theme.css?v=20260626">
 
 <style>
@@ -268,9 +271,11 @@ a{color:inherit;text-decoration:none;}
 </nav>
 
 <script src="sohotip.js?v=20260626"></script>
+<script src="assets/soho-share.js?v=20260626"></script>
+<script src="assets/soho-cards.js?v=20260626"></script>
 <script>
 /* ===================================================================
-   소호팁 카테고리 — ?cat / ?q 기반 블링크 피드 (실제 데이터)
+   소호팁 카테고리 — ?cat / ?q 기반 카드 피드 (SohoCards 통일)
    =================================================================== */
 (function(){
   'use strict';
@@ -351,7 +356,7 @@ a{color:inherit;text-decoration:none;}
   }
   function matchSub(item){
     if(activeSub==='전체')return true;
-    if(activeSub==='북마크')return !!bm[item.u];
+    if(activeSub==='북마크')return window.SohoCards?SohoCards.isBookmarked(item.u):!!bm[item.u];
     if(item.isCalc)return (item.sub||'')===activeSub;
     return (item.cat+' '+item.kw).toLowerCase().indexOf(activeSub.toLowerCase())>=0;
   }
@@ -373,25 +378,39 @@ a{color:inherit;text-decoration:none;}
     });
   }
 
+  /* 계산기 URL → SVG 아이콘/색 매핑 (이모지 대체) */
+  var CALC_VIS={
+    'alba-cost-calc.html':{icon:'Users',color:'#3D5AFE'},'severance-calc.html':{icon:'Briefcase',color:'#00B8D9'},
+    'weekly-pay-calc.html':{icon:'Clock',color:'#3D5AFE'},'insurance-4d-calc.html':{icon:'Shield',color:'#3D5AFE'},
+    'annual-leave-calc.html':{icon:'CalendarDays',color:'#00B8D9'},'delivery-profit-calc.html':{icon:'Bike',color:'#FF6B35'},
+    'food-cost-calc.html':{icon:'UtensilsCrossed',color:'#E040FB'},'bep-calc.html':{icon:'TrendingUp',color:'#FFB800'},
+    'store-profit-calc.html':{icon:'BarChart2',color:'#3D5AFE'},'delivery-ads-calc.html':{icon:'Megaphone',color:'#FF6B35'},
+    'naver-ads-calc.html':{icon:'MapPin',color:'#00C471'},'vat-calc.html':{icon:'Receipt',color:'#00C471'},
+    'rent-increase-calc.html':{icon:'Home',color:'#F04452'},'card-fee-calc.html':{icon:'CreditCard',color:'#00B8D9'},
+    'premium-calc.html':{icon:'KeyRound',color:'#FFB800'},'loan-interest-calc.html':{icon:'Banknote',color:'#00B8D9'},
+    'closure-cost-calc.html':{icon:'Package',color:'#6B7684'},'startup-cost-calc.html':{icon:'Rocket',color:'#F04452'}
+  };
+  /* 게시글 카테고리명 → SVG 아이콘/색 */
+  function catVis(name){
+    name=name||'';
+    if(/플레이스/.test(name))return{icon:'MapPin',color:'#00C471'};
+    if(/배달/.test(name))return{icon:'Bike',color:'#FF6B35'};
+    if(/지원금|정책|보험/.test(name))return{icon:'Banknote',color:'#3D5AFE'};
+    if(/SNS|숏폼|인스타|블로그/.test(name))return{icon:'Camera',color:'#E040FB'};
+    if(/마케팅|광고/.test(name))return{icon:'Megaphone',color:'#FF6B35'};
+    if(/카드|결제|단말/.test(name))return{icon:'CreditCard',color:'#00B8D9'};
+    if(/노무|직원|알바|채용/.test(name))return{icon:'Users',color:'#3D5AFE'};
+    return{icon:'FileText',color:'#6B7684'};
+  }
   function card(item){
-    var u=item.u, on=bm[u]?' on':'';
-    var tags=(item.t||[]).filter(Boolean).slice(0,3).map(function(t,i){return '<span class="bc-tag'+(i===0?' pri':'')+'">#'+esc(String(t).trim())+'</span>';}).join('');
-    var hot=viewsOf(u)>7000 && !item.isCalc;
-    var badge=isNew(item)?'<span class="b-new">NEW</span>':(hot?'<span class="b-hot">HOT</span>':'');
-    var meta=item.isCalc?'무료 · 가입없음':((item.dt||'')+(item.rt?' · '+item.rt:''));
-    return '<article class="bcard">'+
-      '<a class="bc-link" href="'+esc(u)+'" title="'+esc(item.n)+'" aria-label="'+esc(item.n)+'"></a>'+
-      '<div class="bc-top">'+
-        '<span class="bc-cat"><span class="ico" aria-hidden="true">'+item.e+'</span><span class="nm">'+esc(item.cat)+'</span></span>'+
-        '<span class="bc-actions"><button class="bc-btn bc-bm'+on+'" data-bm="'+esc(u)+'" aria-label="북마크" aria-pressed="'+(bm[u]?'true':'false')+'">'+(bm[u]?'🔖':'🏷️')+'</button></span>'+
-      '</div>'+
-      '<div class="bc-main"><div class="bc-text">'+
-        '<h2 class="bc-title">'+badge+esc(item.n)+'</h2>'+
-        '<p class="bc-desc">'+esc(item.d)+'</p>'+
-      '</div><div class="bc-thumb" aria-hidden="true">'+item.e+'</div></div>'+
-      (tags?'<div class="bc-tags">'+tags+'</div>':'')+
-      '<div class="bc-foot"><span>👁 '+fmt(viewsOf(u))+'</span><span>♥ '+fmt(likesOf(u))+'</span><span class="sp">'+esc(meta)+'</span></div>'+
-    '</article>';
+    if(!window.SohoCards)return '';
+    var u=item.u, v=viewsOf(u);
+    if(item.isCalc){
+      var ci=CALC_VIS[u]||{icon:'Calculator',color:'#3D5AFE'};
+      return SohoCards.calculator({name:item.n,desc:item.d,href:u,tags:item.t,views:v,isNew:isNew(item),icon:ci.icon,color:ci.color});
+    }
+    var cv=catVis(item.cat);
+    return SohoCards.article({title:item.n,desc:item.d,url:u,categoryName:item.cat,categoryIcon:cv.icon,categoryColor:cv.color,tags:item.t,views:v,likes:likesOf(u),date:item.dt,isNew:isNew(item),isHot:(v>7000)});
   }
 
   var ALL=[];
@@ -429,15 +448,16 @@ a{color:inherit;text-decoration:none;}
     document.getElementById('ci-cnt').textContent=(query?'검색 결과 ':'게시글 ')+set.length+'개';
     var feed=document.getElementById('feed');
     if(!set.length){
-      feed.innerHTML='<div class="empty" style="grid-column:1/-1"><span class="em" aria-hidden="true">🔍</span>'+(activeSub==='북마크'?'아직 북마크한 글이 없어요. 카드의 🏷️ 버튼으로 저장해 보세요.':'조건에 맞는 글이 없어요.')+'</div>';
+      feed.innerHTML='<div class="empty" style="grid-column:1/-1"><span class="em" aria-hidden="true">🔍</span>'+(activeSub==='북마크'?'아직 북마크한 글이 없어요. 카드의 북마크 버튼으로 저장해 보세요.':'조건에 맞는 글이 없어요.')+'</div>';
       return;
     }
     feed.innerHTML=set.map(card).join('');
+    if(window.SohoCards)SohoCards.mount(feed);
     if(set.length>5){
       var ad='<div class="ad-slot" style="grid-column:1/-1">'+
         '<ins class="adsbygoogle" style="display:block;min-height:90px" data-ad-client="ca-pub-4059494172804910" data-ad-slot="여기에_광고슬롯ID2" data-ad-format="auto" data-full-width-responsive="true"></ins>'+
         '</div>';
-      var cards=feed.querySelectorAll('.bcard');
+      var cards=feed.querySelectorAll('.sc-card');
       if(cards[5]){cards[5].insertAdjacentHTML('beforebegin',ad);try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}}
     }
   }
@@ -464,16 +484,9 @@ a{color:inherit;text-decoration:none;}
   });
   clr.addEventListener('click',function(){qIn.value='';query='';clr.classList.remove('show');renderAll();qIn.focus();});
 
-  /* 북마크 토글 */
-  document.addEventListener('click',function(e){
-    var b=e.target.closest('.bc-bm');if(!b)return;
-    e.preventDefault();
-    var u=b.getAttribute('data-bm');
-    if(bm[u]){delete bm[u];}else{bm[u]=1;}
-    setBm(bm);
-    b.classList.toggle('on',!!bm[u]);
-    b.textContent=bm[u]?'🔖':'🏷️';
-    b.setAttribute('aria-pressed',bm[u]?'true':'false');
+  /* 북마크: SohoCards가 토글·저장(localStorage sohotip_) 담당.
+     '북마크' 필터 활성 시 토글되면 피드 갱신 */
+  document.addEventListener('sohocards:bookmark',function(){
     if(activeSub==='북마크')renderFeed();
   });
 

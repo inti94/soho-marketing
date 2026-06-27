@@ -44,6 +44,30 @@ function getEmoji(cat) {
   return CAT_EMOJI.default;
 }
 
+/* 카테고리 → 인라인 SVG 라인 아이콘 (이모지 대체, 검색 결과용) */
+function getCatSvg(cat) {
+  var P = {
+    place:    '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+    delivery: '<circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3.5 11.5L9 9l3-3 4 4h3"/>',
+    sns:      '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/>',
+    support:  '<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/>',
+    startup:  '<path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/>',
+    calc:     '<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="16" y2="18"/>',
+    def:      '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>'
+  };
+  var key = 'def';
+  if (cat) {
+    if (cat.indexOf('플레이스') >= 0) key = 'place';
+    else if (cat.indexOf('배달') >= 0) key = 'delivery';
+    else if (cat.indexOf('SNS') >= 0 || cat.indexOf('숏폼') >= 0) key = 'sns';
+    else if (cat.indexOf('지원금') >= 0) key = 'support';
+    else if (cat.indexOf('창업') >= 0 || cat.indexOf('세금') >= 0) key = 'startup';
+    else if (cat.indexOf('계산기') >= 0) key = 'calc';
+  }
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+    'stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">' + P[key] + '</svg>';
+}
+
 /* ── 1. 검색 인덱스 로드 ────────────────── */
 async function loadSearchIndex() {
   if (_searchIndex) return _searchIndex;
@@ -149,7 +173,7 @@ function renderDropdown(input, dropdown, q) {
     html += '<div class="search-section-title">인기 검색어</div>';
     POPULAR_KEYWORDS.slice(0, 4).forEach(function(kw) {
       html += '<div class="recent-search-item" data-q="' + escHtml(kw) + '">' +
-        '<span class="recent-search-text">🔥 ' + escHtml(kw) + '</span>' +
+        '<span class="recent-search-text">' + escHtml(kw) + '</span>' +
         '</div>';
     });
     dropdown.innerHTML = html;
@@ -166,9 +190,9 @@ function renderDropdown(input, dropdown, q) {
       return;
     }
     var html = results.map(function(r) {
-      var emoji = getEmoji(r.cat);
+      var ic = getCatSvg(r.cat);
       return '<a href="' + escHtml(r.url) + '" class="search-result-item">' +
-        '<span class="search-result-icon">' + emoji + '</span>' +
+        '<span class="search-result-icon" style="color:#3D5AFE">' + ic + '</span>' +
         '<div class="search-result-body">' +
           '<div class="search-result-cat">' + escHtml(r.cat || '') + '</div>' +
           '<div class="search-result-title">' + highlight(escHtml(r.title || ''), q) + '</div>' +
@@ -1056,7 +1080,7 @@ function renderCalcPage(current) {
     }
   }
   if (popC.length) {
-    html += recoSectionHTML('🔥 지금 인기 있는 계산기 TOP5', '',
+    html += recoSectionHTML('지금 인기 있는 계산기 TOP5', '',
       `<div class="reco-rank-list">${popC.map((c, i) => rankItemHTML(c, i, true)).join('')}</div>`);
   }
   if (popA.length) {
@@ -1103,7 +1127,7 @@ function renderArticlePage(slug) {
       `<div class="reco-grid">${sameCat.map(articleCardHTML).join('')}</div>`);
   }
   if (popC.length) {
-    html += recoSectionHTML('🔥 지금 인기 있는 계산기 TOP5', '',
+    html += recoSectionHTML('지금 인기 있는 계산기 TOP5', '',
       `<div class="reco-rank-list">${popC.map((c, i) => rankItemHTML(c, i, true)).join('')}</div>`);
   }
   if (popA.length) {

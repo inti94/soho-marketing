@@ -95,18 +95,17 @@
   function injectStyle() {
     if (document.getElementById('soho-consult-style')) return;
     var css = [
-      '.sohoc{max-width:680px;margin:30px auto;font-family:var(--sans,"Apple SD Gothic Neo","Noto Sans KR",sans-serif);}',
+      '.sohoc{max-width:680px;margin:30px auto;font-family:var(--sans,"Pretendard","Noto Sans KR",sans-serif);}',
       '.page-wrap .sohoc,.article-main .sohoc,.article-content .sohoc{max-width:100%;}',
-      '.sohoc-card{position:relative;background:var(--receipt,#fff);border:1px solid var(--line,#EDE3D5);border-radius:14px;box-shadow:0 8px 22px rgba(42,32,24,.10);padding:20px 22px;}',
-      '.sohoc-card::before{content:"";position:absolute;left:18px;right:18px;top:0;border-top:2px dashed var(--dash,#D6C8B6);}',
-      '.sohoc-stamp{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;color:var(--orange-d,#D94E00);border:2px solid var(--orange,#FF5E00);border-radius:7px;padding:4px 9px;transform:rotate(-2deg);background:rgba(255,94,0,.05);margin-bottom:12px;}',
-      '.sohoc-t{font-size:17px;font-weight:800;color:var(--ink,#2A2018);line-height:1.4;letter-spacing:-.02em;}',
-      '.sohoc-d{font-size:13.5px;color:var(--sub,#8A7B6B);line-height:1.65;margin:7px 0 16px;}',
-      '.sohoc-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:var(--orange,#FF5E00);color:#fff;font-weight:800;font-size:15px;text-decoration:none;padding:13px 22px;border-radius:10px;box-shadow:0 4px 0 var(--orange-d,#D94E00);transition:transform .08s,box-shadow .08s,background .15s;-webkit-tap-highlight-color:transparent;}',
-      '.sohoc-btn:hover{background:var(--orange-d,#D94E00);}',
-      '.sohoc-btn:active{transform:translateY(4px);box-shadow:0 0 0 var(--orange-d,#D94E00);}',
-      '.sohoc-trust{display:flex;align-items:center;gap:6px;margin-top:12px;font-size:12px;color:var(--sub,#8A7B6B);}',
-      '.sohoc-trust .dot{width:6px;height:6px;border-radius:50%;background:var(--mint,#1E9E6A);display:inline-block;flex-shrink:0;}',
+      '.sohoc-card{background:#fff;border:1px solid var(--g200,#E5E8EB);border-radius:20px;box-shadow:0 1px 8px rgba(0,0,0,.04);padding:22px;}',
+      '.sohoc-badge{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--primary,#3D5AFE);background:var(--primary-light,#ECEEFF);border-radius:100px;padding:5px 12px;margin-bottom:12px;}',
+      '.sohoc-t{font-size:17px;font-weight:800;color:var(--g900,#191F28);line-height:1.4;letter-spacing:-.02em;}',
+      '.sohoc-d{font-size:13.5px;color:var(--g600,#6B7684);line-height:1.65;margin:7px 0 16px;}',
+      '.sohoc-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:var(--primary,#3D5AFE);color:#fff;font-weight:700;font-size:15px;text-decoration:none;padding:13px 24px;border-radius:12px;transition:background .15s,transform .1s;-webkit-tap-highlight-color:transparent;}',
+      '.sohoc-btn:hover{background:var(--primary-dark,#2541E0);}',
+      '.sohoc-btn:active{transform:scale(.97);}',
+      '.sohoc-trust{display:flex;align-items:center;gap:6px;margin-top:12px;font-size:12px;color:var(--g600,#6B7684);}',
+      '.sohoc-trust .dot{width:6px;height:6px;border-radius:50%;background:var(--green,#00C471);display:inline-block;flex-shrink:0;}',
       '@media (max-width:520px){.sohoc-btn{width:100%;}}',
     ].join('\n');
     var st = document.createElement('style'); st.id = 'soho-consult-style'; st.textContent = css;
@@ -115,6 +114,7 @@
 
   function render() {
     if (document.getElementById('soho-consult')) return;
+    if (slugOf() === 'consultation' || slugOf() === 'contact') return; // 상담/문의 페이지엔 미노출
     var host = contentHost();
     if (!host) return;
     var topic = detectTopic();
@@ -129,10 +129,10 @@
     box.className = 'sohoc';
     box.innerHTML =
       '<div class="sohoc-card">' +
-        '<span class="sohoc-stamp">' + c.emoji + ' ' + esc(c.stamp) + '</span>' +
+        '<span class="sohoc-badge">' + esc(c.stamp) + '</span>' +
         '<div class="sohoc-t">' + esc(c.title) + '</div>' +
         '<div class="sohoc-d">' + esc(c.desc) + '</div>' +
-        '<a class="sohoc-btn" href="' + CONSULT_URL + '">💬 무료 상담 요청하기</a>' +
+        '<a class="sohoc-btn" href="' + CONSULT_URL + '">무료 상담 요청하기</a>' +
         '<div class="sohoc-trust"><span class="dot"></span>광고 아닌 실제 상담 · 1영업일 내 답변 · 부담 없이 질문만 OK</div>' +
       '</div>';
     host.appendChild(box);

@@ -1,6 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- 강렬한 오렌지 주황색 원형 배경 -->
-  <circle cx="32" cy="32" r="32" fill="#FF5E00"/>
-  <!-- 볼드한 흰색 글씨 '팁' -->
-  <text x="32" y="44" font-family="Noto Sans CJK KR" font-size="34" font-weight="900" fill="#FFFFFF" text-anchor="middle">팁</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="8" fill="#3D5AFE"/>
+  <text x="16" y="22" font-family="system-ui, sans-serif" font-size="16" font-weight="900" fill="white" text-anchor="middle">팁</text>
 </svg>

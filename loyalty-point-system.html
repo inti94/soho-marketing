@@ -50,11 +50,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --primary: #FF5E00;
-    --primary-light: #FFEEE5;
-    --primary-mid: #E65300;
-    --accent: #FF5E00;
-    --accent-light: #FFEEE5;
+    --primary: #3D5AFE;
+    --primary-light: #ECEFFF;
+    --primary-mid: #2C45D8;
+    --accent: #3D5AFE;
+    --accent-light: #ECEFFF;
     --text: #1A1A1A;
     --text-muted: #6B7280;
     --text-light: #9CA3AF;
@@ -324,7 +324,9 @@
   <link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
   <link rel="shortcut icon" href="https://sohotip.co.kr/favicon.ico">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="sohotip.css?v=20260623">
+  <link rel="stylesheet" href="sohotip.css?v=20260626">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/theme.css?v=20260626">
 </head>
 <body>
 
@@ -380,7 +382,7 @@ data-ad-height="100"></ins>
   <!-- MAIN CONTENT -->
   <article class="article-main">
     <header class="article-header">
-      <div class="article-tag">📱 SNS · 숏폼</div>
+      <div class="article-tag"><svg viewBox="0 0 24 24" fill="none" stroke="#E040FB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1em;height:1em;vertical-align:-2px;margin-right:5px" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>SNS · 숏폼</div>
       <h1 class="article-title">단골 고객 적립 시스템 설계법 — 스탬프 vs 포인트 어떤 게 재방문율 높일까</h1>
       <div class="article-summary">큰맘 먹고 도장 카드 만들어 돌렸는데 단골은 그대로였던 경험, 한 번쯤 있으시죠? 스탬프와 단계별 적립 중 어떤 게 손님을 다시 오게 하는지, 유효기간은 며칠로 잡아야 하는지 선배 입장에서 짚어드릴게요.</div>
       <div class="article-meta-row">
@@ -413,11 +415,11 @@ data-ad-height="100"></ins>
       <h2 id="stamp">도장 카드, 왜 효과가 약할까요</h2>
       <p>"10번 찍으면 한 잔 공짜"… 익숙하시죠. 직관적이라 만들기는 쉬운데, 막상 손님 입장에서 보면 김이 빠지는 구간이 있어요.</p>
       <p>처음 한두 번은 신나서 모으다가도, <strong>중간쯤 가면 "언제 다 채우나" 싶어 흥미가 식는 경우</strong>가 많습니다.</p>
-      <div class="warn-box">⚠️ 도장 10개를 꽉 채워야만 뭔가 주는 구조는, 5~6개쯤에서 손님이 마음을 놓아버리기 쉬워요. 그래서 생각만큼 재방문이 안 늘 수 있습니다.</div>
+      <div class="warn-box">도장 10개를 꽉 채워야만 뭔가 주는 구조는, 5~6개쯤에서 손님이 마음을 놓아버리기 쉬워요. 그래서 생각만큼 재방문이 안 늘 수 있습니다.</div>
       <h2 id="tier">그래서 단계별로 나눠주면 좋습니다</h2>
       <p>해결책은 의외로 간단해요. 끝까지 가야 주는 대신, 중간중간 작게라도 손에 쥐여주는 겁니다. 예시로 보면 감이 오실 거예요.</p>
       <table class="article-table"><thead><tr><th>방문 횟수</th><th>보상 예시</th></tr></thead><tbody><tr><td>3회차</td><td>사이드 메뉴 무료 제공</td></tr><tr><td>7회차</td><td>10% 할인 쿠폰</td></tr><tr><td>10회차</td><td>대표 메뉴 1개 무료</td></tr></tbody></table>
-      <div class="tip-inline"><strong>💡 핵심은 이겁니다:</strong> 첫 보상까지 거리가 짧아야 초반에 손님을 안 놓치고, 뒤로 갈수록 보상이 커져야 "조금만 더 와볼까" 하는 마음이 생깁니다.</div>
+      <div class="tip-inline"><strong>핵심은 이겁니다:</strong> 첫 보상까지 거리가 짧아야 초반에 손님을 안 놓치고, 뒤로 갈수록 보상이 커져야 "조금만 더 와볼까" 하는 마음이 생깁니다.</div>
       <h2 id="expire">유효기간, 여기서 많이들 실수해요</h2>
       <p>적립만 만들어놓고 유효기간은 대충 잡는 분이 많은데, 사실 여기서 단골이 갈리기도 합니다. 너무 빡빡해도, 너무 느슨해도 안 돼요.</p>
       <div class="step-box"><div class="step-num-badge">권장</div><div class="step-box-body"><div class="step-box-title">3~6개월 정도가 무난해요</div><div class="step-box-desc">너무 짧으면 손님이 쫓기는 기분이 들고, 너무 길면 적립한 사실 자체를 잊어버려요. 우리 업종 손님들이 보통 며칠 만에 다시 오는지를 떠올려보고 잡는 게 핵심입니다.</div></div></div>
@@ -425,7 +427,7 @@ data-ad-height="100"></ins>
       <p>여기서 한 발 더 나가면, 적립 데이터가 그냥 숫자가 아니라는 걸 알게 됩니다. 누가 언제 오는지가 고스란히 남거든요.</p>
       <p>적립을 돌리다 보면 <strong>손님마다 얼마나 자주 오는지</strong>가 자연스럽게 쌓입니다. 평소 2주에 한 번씩 오던 손님이 4주째 안 보이면 "어, 이분 발길 끊기려나" 하고 미리 알아채서, 안부 문자라도 한 통 넣어볼 수 있어요.</p>
       <h2 id="summary">한 줄로 정리하면</h2>
-      <ul><li>✅ 도장 카드는 중간 이탈이 많아서, 단계별로 나눠 보상하는 게 효과 본 사례가 많아요</li><li>✅ 첫 보상까지 거리를 짧게 잡아야 초반에 손님을 안 놓칩니다</li><li>✅ 유효기간은 3~6개월이 쫓기는 느낌과 잊어버림 사이 적당한 지점</li><li>✅ 적립 기록은 곧 방문주기 명부 — 끊길 것 같은 손님을 미리 챙길 수 있어요</li></ul>
+      <ul><li>도장 카드는 중간 이탈이 많아서, 단계별로 나눠 보상하는 게 효과 본 사례가 많아요</li><li>첫 보상까지 거리를 짧게 잡아야 초반에 손님을 안 놓칩니다</li><li>유효기간은 3~6개월이 쫓기는 느낌과 잊어버림 사이 적당한 지점</li><li>적립 기록은 곧 방문주기 명부 — 끊길 것 같은 손님을 미리 챙길 수 있어요</li></ul>
       <p>거창하게 시스템부터 갖출 필요 없어요. 우선 우리 가게 손님이 보통 며칠 만에 다시 오는지부터 떠올려보세요. 그 주기에 맞춰 "3회차에 뭘 줄지" 한 줄만 정해도 첫발은 뗀 겁니다. 오늘 마감하고 종이 한 장에 적어보시는 건 어떨까요?</p>
     </div>
 
@@ -495,7 +497,7 @@ data-ad-height="250"></ins>
       </div>
     
       <div style="margin-top:40px; padding:24px; background:var(--accent-light); border-radius:14px; text-align:center;">
-        <p style="font-size:15px; color:var(--text); font-weight:500; margin-bottom:14px;">💡 내 매장의 마케팅 상태를 무료로 점검받고 싶다면?</p>
+        <p style="font-size:15px; color:var(--text); font-weight:500; margin-bottom:14px;">내 매장의 마케팅 상태를 무료로 점검받고 싶다면?</p>
         <a href="consultation.html" style="display:inline-block; background:var(--primary); color:#fff; font-size:15px; font-weight:700; text-decoration:none; padding:12px 28px; border-radius:10px;">👉 1:1 무료 진단 컨설팅 신청하기</a>
       </div>
     </div>
@@ -573,12 +575,14 @@ data-ad-height="250"></ins>
 <button id="back-to-top" aria-label="맨 위로">↑</button>
 
 <div id="sticky-cta">
-  <p>💡 내 매장 마케팅, 무료로 점검받으세요</p>
+  <p>내 매장 마케팅, 무료로 점검받으세요</p>
   <a href="consultation.html">👉 무료 진단 신청</a>
   <button id="sticky-cta-close" aria-label="닫기">✕</button>
 </div>
 
-<script src="sohotip.js?v=20260623"></script>
-<script src="network.js?v=20260625"></script>
+<script src="assets/layout.js?v=20260626"></script>
+<script src="sohotip.js?v=20260626"></script>
+<script src="assets/consult.js?v=20260626"></script>
+<script src="network.js?v=20260626"></script>
 </body>
 </html>

@@ -51,11 +51,11 @@
       '.rate-card .rc-top{display:flex;align-items:center;justify-content:space-between;gap:8px;}',
       '.rate-card .rc-t{font-weight:800;font-size:15px;color:var(--ink,#2A2018);}',
       '.rate-card .rc-badge{font-family:var(--mono,"Roboto Mono",monospace);font-size:10.5px;color:var(--sub,#8A7B6B);}',
-      '.rate-card .rc-val{font-family:var(--mono,"Roboto Mono",monospace);font-size:34px;font-weight:700;color:var(--orange-d,#D94E00);letter-spacing:-.02em;margin:10px 0 2px;}',
+      '.rate-card .rc-val{font-family:var(--mono,"Roboto Mono",monospace);font-size:34px;font-weight:700;color:var(--orange-d,#2438B0);letter-spacing:-.02em;margin:10px 0 2px;}',
       '.rate-card .rc-val .pct{font-size:20px;}',
       '.rate-card .rc-pending{font-size:22px;color:var(--sub,#8A7B6B);font-weight:700;margin:12px 0 2px;}',
       '.rate-card .rc-sub{font-size:12px;color:var(--sub,#8A7B6B);line-height:1.5;}',
-      '.rate-card .rc-sub a{color:var(--orange,#FF5E00);text-decoration:none;}',
+      '.rate-card .rc-sub a{color:var(--orange,#3D5AFE);text-decoration:none;}',
 
       /* 뉴스 카드 */
       '.news-card{background:var(--receipt,#fff);border:1px solid var(--line,#EDE3D5);border-radius:14px;box-shadow:0 6px 18px rgba(42,32,24,.08);padding:16px 18px;}',
@@ -63,7 +63,7 @@
       '.news-item{display:block;text-decoration:none;color:var(--ink,#2A2018);padding:10px 0;border-top:1px dotted var(--line,#EDE3D5);}',
       '.news-item:first-of-type{border-top:none;}',
       '.news-item .ni-t{font-size:13.5px;font-weight:700;line-height:1.4;}',
-      '.news-item:hover .ni-t{color:var(--orange,#FF5E00);}',
+      '.news-item:hover .ni-t{color:var(--orange,#3D5AFE);}',
       '.news-item .ni-s{font-size:12px;color:var(--sub,#8A7B6B);line-height:1.5;margin-top:2px;}',
       '.news-item .ni-d{font-family:var(--mono,"Roboto Mono",monospace);font-size:10.5px;color:var(--sub,#8A7B6B);margin-top:3px;}',
       '.news-empty{background:var(--receipt,#fff);border:1px dashed var(--dash,#D6C8B6);border-radius:14px;padding:20px;text-align:center;color:var(--sub,#8A7B6B);font-size:13px;line-height:1.6;}',

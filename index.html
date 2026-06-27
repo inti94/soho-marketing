@@ -55,6 +55,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="sohotip.css?v=20260626">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/theme.css?v=20260626">
 <link rel="stylesheet" href="assets/sohotip-theme.css?v=20260626">
 
 <style>
@@ -63,8 +65,8 @@
    좌측 고정 아이콘 레일(모바일 80px / 데스크톱 220px) + 우측 패널 탭 전환
    ===================================================================== */
 :root{
-  --primary:#3D5AFE; --primary-dark:#2541E0; --primary-light:#ECEEFF;
-  --primary-grad:linear-gradient(135deg,#3D5AFE,#7B8FFF);
+  --primary:oklch(0.48 0.26 264); --primary-dark:oklch(0.42 0.25 264); --primary-light:oklch(0.95 0.03 264);
+  --primary-grad:linear-gradient(135deg, oklch(0.48 0.26 264), oklch(0.62 0.20 280));
   --bg:#F4F6FB; --white:#FFFFFF;
   --g50:#FAFAFA; --g100:#F2F4F6; --g200:#E5E8EB;
   --g400:#9EA7B4; --g600:#6B7684; --g900:#191F28;
@@ -211,7 +213,7 @@ a{color:inherit;text-decoration:none;}
 .bc-link{position:absolute;inset:0;z-index:1;border-radius:20px;}
 .bc-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:11px;}
 .bc-cat{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:var(--g600);min-width:0;}
-.bc-cat .ico{width:26px;height:26px;border-radius:9px;background:var(--primary-light);display:grid;place-items:center;font-size:15px;flex-shrink:0;}
+.bc-cat .ico{width:26px;height:26px;border-radius:9px;background:var(--primary-light);display:grid;place-items:center;font-size:15px;flex-shrink:0;color:var(--primary);}
 .bc-cat .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .bc-actions{display:flex;align-items:center;gap:2px;flex-shrink:0;position:relative;z-index:2;}
 .bc-btn{width:34px;height:34px;border-radius:10px;border:none;background:transparent;display:grid;place-items:center;font-size:16px;color:var(--g400);transition:all .15s;}
@@ -222,7 +224,7 @@ a{color:inherit;text-decoration:none;}
 .bc-title{font-size:16px;font-weight:900;line-height:1.4;color:var(--g900);margin-bottom:6px;letter-spacing:-.01em;}
 .bc-title .b-new,.bc-title .b-hot{vertical-align:middle;margin-right:6px;}
 .bc-desc{font-size:13.5px;font-weight:500;color:var(--g600);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-.bc-thumb{width:80px;height:80px;border-radius:12px;background:var(--primary-light);display:grid;place-items:center;font-size:36px;flex-shrink:0;}
+.bc-thumb{width:80px;height:80px;border-radius:12px;background:var(--primary-light);display:grid;place-items:center;font-size:36px;flex-shrink:0;color:var(--primary);}
 .bc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
 .bc-tag{font-size:11px;font-weight:600;color:var(--g600);background:var(--g100);border-radius:100px;padding:4px 10px;}
 .bc-tag.pri{color:var(--primary-dark);background:var(--primary-light);}
@@ -237,10 +239,14 @@ a{color:inherit;text-decoration:none;}
 .rank-item+.rank-item{border-top:1px solid var(--g100);}
 .rank-item:hover{background:var(--g50);}
 .rank-no{flex-shrink:0;width:24px;font-size:16px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--g400);text-align:center;}
-.rank-item:nth-child(1) .rank-no,.rank-item:nth-child(2) .rank-no,.rank-item:nth-child(3) .rank-no{color:var(--primary);}
-.rank-emoji{font-size:22px;flex-shrink:0;}
+.rank-item:nth-child(1) .rank-no{color:var(--primary);}
+.rank-item:nth-child(2) .rank-no{color:var(--green);}
+.rank-item:nth-child(3) .rank-no{color:var(--yellow);}
+.rank-ico{width:34px;height:34px;border-radius:10px;background:var(--primary-light);color:var(--primary);display:grid;place-items:center;flex-shrink:0;}
+.rank-ico svg{width:20px;height:20px;}
 .rank-name{flex:1;min-width:0;font-size:14.5px;font-weight:700;color:var(--g900);}
-.rank-name small{display:block;font-size:11.5px;font-weight:500;color:var(--g400);margin-top:1px;}
+.rank-name .rn-t{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.rank-name small{display:block;font-size:11.5px;font-weight:500;color:var(--g400);margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .rank-cnt{flex-shrink:0;font-size:13px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--g600);}
 .rank-cnt small{color:var(--g400);font-weight:600;}
 .live-tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;color:var(--red);background:#FFE9EB;padding:4px 9px;border-radius:100px;}
@@ -357,6 +363,49 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
   .hero-card{padding:42px 40px;}
   .sec-head h2{font-size:20px;}
 }
+
+/* ── 히어로: 트로피 아이콘 + 반투명 원 장식 ── */
+.hero-card{position:relative;}
+.hero-card .hc-badge svg{width:13px;height:13px;stroke:#fff;fill:none;}
+.hero-card .hc-cta svg{width:18px;height:18px;stroke:var(--primary-dark);fill:none;}
+.hero-card .hc-deco{position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.13);top:-60px;right:-40px;pointer-events:none;}
+.hero-card .hc-deco::after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.10);top:90px;left:30px;}
+
+/* ── 빠른 실행 그리드 ── */
+.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.quick-card{display:flex;flex-direction:column;align-items:center;gap:9px;background:var(--white);border:1px solid var(--g200);border-radius:18px;padding:16px 8px;box-shadow:0 1px 8px rgba(0,0,0,.04);transition:transform .15s,box-shadow .15s,border-color .15s;}
+.quick-card:hover{transform:translateY(-3px);border-color:transparent;box-shadow:0 8px 22px rgba(61,90,254,.12);}
+.quick-card:active{transform:scale(.97);}
+.quick-card .q-ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;}
+.quick-card .q-ico svg{width:24px;height:24px;}
+.quick-card .q-label{font-size:13px;font-weight:800;color:var(--g900);letter-spacing:-.02em;text-align:center;}
+.q-indigo{background:var(--primary-light);color:var(--primary);}
+.q-green{background:#E3F9EF;color:var(--green);}
+.q-yellow{background:#FFF4D6;color:#B98900;}
+.q-red{background:#FFE9EB;color:var(--red);}
+@media (max-width:380px){.quick-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* ── 새로고침 버튼 ── */
+.sec-refresh{width:34px;height:34px;border-radius:10px;border:none;background:transparent;color:var(--g400);display:grid;place-items:center;cursor:pointer;flex-shrink:0;}
+.sec-refresh:hover{background:var(--g100);color:var(--g600);}
+.sec-refresh svg{width:18px;height:18px;stroke:currentColor;fill:none;}
+.sec-refresh.spin svg{animation:spin .6s ease;}
+@keyframes spin{from{transform:rotate(0);}to{transform:rotate(360deg);}}
+
+/* ── 소식 / 최신 가이드 카드 리스트 ── */
+.news-card{background:var(--white);border:1px solid var(--g200);border-radius:20px;box-shadow:0 1px 8px rgba(0,0,0,.04);overflow:hidden;}
+.news-item{display:flex;align-items:center;gap:12px;padding:14px 16px;color:var(--g900);}
+.news-item+.news-item{border-top:1px solid var(--g100);}
+.news-item:hover{background:var(--g50);}
+.news-no{flex-shrink:0;width:22px;text-align:center;font-size:15px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--g400);}
+.news-body{flex:1;min-width:0;}
+.news-cat{display:block;font-size:11px;font-weight:700;color:var(--primary);margin-bottom:2px;}
+.news-title{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:14px;font-weight:700;line-height:1.4;color:var(--g900);}
+.news-date{display:block;font-size:11.5px;font-weight:500;color:var(--g400);margin-top:3px;}
+.news-ext{flex-shrink:0;color:var(--g400);display:grid;place-items:center;}
+.news-ext svg{width:16px;height:16px;stroke:currentColor;fill:none;}
+.news-empty{padding:22px 16px;text-align:center;font-size:13px;color:var(--g400);}
+.check-head .ch-ico svg{width:22px;height:22px;stroke:var(--primary);fill:none;}
 </style>
 </head>
 <body>
@@ -370,8 +419,8 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
     <a data-tab="forms">서식</a>
   </nav>
   <div class="top-right">
-    <button class="ico-btn" type="button" id="hdr-search-btn" title="검색" aria-label="검색"><span aria-hidden="true">🔍</span></button>
-    <a class="ico-btn" href="contact.html" title="알림·문의" aria-label="알림·문의"><span aria-hidden="true">🔔</span></a>
+    <button class="ico-btn" type="button" id="hdr-search-btn" title="검색" aria-label="검색"><svg class="lucide" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+    <a class="ico-btn" href="contact.html" title="알림·문의" aria-label="알림·문의"><svg class="lucide" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></a>
   </div>
 </header>
 
@@ -379,7 +428,7 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
 <div class="search-band">
   <nav class="searchbar" role="search" aria-label="사이트 검색">
     <div class="searchbox">
-      <span class="s-ico" aria-hidden="true">🔍</span>
+      <span class="s-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
       <div class="nav-search">
         <input type="text" id="search-input" class="nav-search-input" placeholder="계산기·가이드·서식 검색…" autocomplete="off" aria-label="검색어 입력">
         <div id="search-dropdown" role="listbox"></div>
@@ -395,12 +444,12 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
 
   <!-- ── 좌측 고정 아이콘 레일 (6개 패널) ── -->
   <aside class="rail" role="navigation" aria-label="주요 섹션">
-    <button class="rail-item active" type="button" data-tab="home"    aria-current="page"><span class="ri-ico" aria-hidden="true">🏠</span><span class="ri-label">홈</span></button>
-    <button class="rail-item"        type="button" data-tab="calc"><span class="ri-ico" aria-hidden="true">🧮</span><span class="ri-label">계산기</span></button>
-    <button class="rail-item"        type="button" data-tab="guide"><span class="ri-ico" aria-hidden="true">📖</span><span class="ri-label">가이드</span></button>
-    <button class="rail-item"        type="button" data-tab="category"><span class="ri-ico" aria-hidden="true">📂</span><span class="ri-label">카테고리</span></button>
-    <button class="rail-item"        type="button" data-tab="forms"><span class="ri-ico" aria-hidden="true">📄</span><span class="ri-label">서식</span></button>
-    <button class="rail-item"        type="button" data-tab="search"><span class="ri-ico" aria-hidden="true">🔍</span><span class="ri-label">검색</span></button>
+    <button class="rail-item active" type="button" data-tab="home"    aria-current="page"><span class="ri-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="ri-label">홈</span></button>
+    <button class="rail-item"        type="button" data-tab="calc"><span class="ri-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg></span><span class="ri-label">계산기</span></button>
+    <button class="rail-item"        type="button" data-tab="guide"><span class="ri-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><span class="ri-label">가이드</span></button>
+    <button class="rail-item"        type="button" data-tab="category"><span class="ri-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></span><span class="ri-label">카테고리</span></button>
+    <button class="rail-item"        type="button" data-tab="forms"><span class="ri-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span><span class="ri-label">서식</span></button>
+    <button class="rail-item"        type="button" data-tab="search"><span class="ri-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><span class="ri-label">검색</span></button>
   </aside>
 
   <!-- ── 우측 스크롤 콘텐츠 패널 ── -->
@@ -410,58 +459,52 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
     <!-- ============ 패널: 홈 ============ -->
     <section class="panel active" id="panel-home" role="tabpanel" aria-label="홈">
 
-      <!-- Hero -->
+      <!-- 1) Hero -->
       <article class="hero-card">
-        <span class="hc-badge">🏆 이번 달 1위 계산기</span>
-        <h1>알바 인건비</h1>
-        <p>지금 바로 계산</p>
-        <a href="alba-cost-calc.html" class="hc-cta">🧮 무료로 계산하기 →</a>
+        <span class="hc-deco" aria-hidden="true"></span>
+        <span class="hc-badge"><svg class="lucide" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg> 이번 달 1위 계산기</span>
+        <h1>알바 인건비 계산기</h1>
+        <p>주휴수당·4대보험 포함 총 인건비</p>
+        <a href="alba-cost-calc.html" class="hc-cta">무료로 계산하기 <svg class="lucide" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
       </article>
 
-      <!-- AD SLOT: 히어로 배너 아래 -->
+      <!-- AD SLOT: 히어로 배너 아래 (기존 슬롯 보존) -->
       <div class="ad-slot">
         <ins class="adsbygoogle" style="display:block;min-height:90px" data-ad-client="ca-pub-4059494172804910" data-ad-slot="여기에_광고슬롯ID" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
       </div>
 
-      <!-- 실시간 인기 계산기 -->
+      <!-- 2) 빠른 실행 -->
       <div class="sec">
-        <div class="sec-head"><h2><span class="live-tag"><span class="dot" aria-hidden="true"></span>LIVE</span> 실시간 인기 계산기</h2><span class="sec-more" data-tab="calc">전체 보기</span></div>
+        <div class="quick-grid" id="quick-grid"></div>
+      </div>
+
+      <!-- 3) 실시간 인기 계산기 -->
+      <div class="sec">
+        <div class="sec-head"><h2><span class="live-tag"><span class="dot" aria-hidden="true"></span>LIVE</span> 실시간 인기 계산기</h2><span class="sec-more" data-tab="calc">전체 보기 →</span></div>
         <p class="sec-desc">지금 사장님들이 가장 많이 두드리고 있는 계산기예요.</p>
-        <div class="rank-card">
-          <a class="rank-item" href="alba-cost-calc.html" title="알바 인건비 계산기"><span class="rank-no">1</span><span class="rank-emoji" aria-hidden="true">🧮</span><span class="rank-name">알바 인건비 계산기<small>주휴수당·4대보험 포함</small></span><span class="rank-cnt">12,840<small>회</small></span></a>
-          <a class="rank-item" href="delivery-profit-calc.html" title="배달 순이익 계산기"><span class="rank-no">2</span><span class="rank-emoji" aria-hidden="true">🛵</span><span class="rank-name">배달 순이익 계산기<small>수수료·배달비 제외</small></span><span class="rank-cnt">9,310<small>회</small></span></a>
-          <a class="rank-item" href="vat-calc.html" title="부가세 계산기"><span class="rank-no">3</span><span class="rank-emoji" aria-hidden="true">💰</span><span class="rank-name">부가세 계산기<small>납부세액·환급액</small></span><span class="rank-cnt">7,625<small>회</small></span></a>
-          <a class="rank-item" href="bep-calc.html" title="손익분기점 계산기"><span class="rank-no">4</span><span class="rank-emoji" aria-hidden="true">📈</span><span class="rank-name">손익분기점(BEP) 계산기<small>최소 목표 매출</small></span><span class="rank-cnt">5,180<small>회</small></span></a>
-          <a class="rank-item" href="food-cost-calc.html" title="메뉴 원가율 계산기"><span class="rank-no">5</span><span class="rank-emoji" aria-hidden="true">🍽️</span><span class="rank-name">메뉴 원가율 계산기<small>마진율·권장 판매가</small></span><span class="rank-cnt">4,470<small>회</small></span></a>
-        </div>
+        <div class="rank-card" id="rank-list"></div>
       </div>
 
-      <!-- 오늘의 사업 브리핑 (환율·금리·주가·소식) -->
-      <section id="briefing"></section>
-
-      <!-- 카테고리 -->
+      <!-- 4) 오늘의 사업 소식 (assets/news-data.js) -->
       <div class="sec">
-        <div class="sec-head"><h2>📂 카테고리별로 찾아보기</h2><span class="sec-more" data-tab="category">전체 보기</span></div>
-        <div class="cat-grid">
-          <a class="cat-chip" data-tab="calc" title="무료 계산기"><span class="cc-ico" aria-hidden="true">🧮</span><span><span class="cc-nm">무료 계산기</span><span class="cc-cnt">18개</span></span></a>
-          <a class="cat-chip" href="category.html?cat=place" title="네이버 플레이스"><span class="cc-ico" aria-hidden="true">📍</span><span><span class="cc-nm">네이버 플레이스</span><span class="cc-cnt">9개</span></span></a>
-          <a class="cat-chip" href="category.html?cat=delivery" title="배달앱"><span class="cc-ico" aria-hidden="true">🛵</span><span><span class="cc-nm">배달앱</span><span class="cc-cnt">12개</span></span></a>
-          <a class="cat-chip" href="category.html?cat=support" title="소상공인 지원금"><span class="cc-ico" aria-hidden="true">💰</span><span><span class="cc-nm">소상공인 지원금</span><span class="cc-cnt">9개</span></span></a>
-          <a class="cat-chip" href="category.html?cat=sns" title="SNS·숏폼"><span class="cc-ico" aria-hidden="true">📱</span><span><span class="cc-nm">SNS·숏폼</span><span class="cc-cnt">11개</span></span></a>
-          <a class="cat-chip" href="category.html?cat=startup" title="창업·세금"><span class="cc-ico" aria-hidden="true">🏪</span><span><span class="cc-nm">창업·세금</span><span class="cc-cnt">44개</span></span></a>
-          <a class="cat-chip" data-tab="forms" title="무료 서식"><span class="cc-ico" aria-hidden="true">📄</span><span><span class="cc-nm">무료 서식</span><span class="cc-cnt">14개</span></span></a>
-          <a class="cat-chip" href="category.html?cat=card" title="카드·결제"><span class="cc-ico" aria-hidden="true">💳</span><span><span class="cc-nm">카드·결제</span><span class="cc-cnt">6개</span></span></a>
-        </div>
+        <div class="sec-head"><h2>오늘의 사업 소식</h2><button class="sec-refresh" id="news-refresh" type="button" aria-label="새로고침"><svg class="lucide" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg></button></div>
+        <div class="news-card" id="news-list"></div>
       </div>
 
-      <!-- 체크리스트 -->
+      <!-- 5) 최신 가이드 -->
       <div class="sec">
-        <div class="sec-head"><h2>✅ 이번 달 사장님 체크리스트</h2></div>
+        <div class="sec-head"><h2>최신 가이드</h2><a class="sec-more" href="category.html">전체 보기 →</a></div>
+        <div class="news-card" id="latest-guides"></div>
+      </div>
+
+      <!-- 이번 달 체크리스트 (기존 기능 보존) -->
+      <div class="sec">
+        <div class="sec-head"><h2>이번 달 사장님 체크리스트</h2></div>
         <p class="sec-desc">매달 챙겨야 할 핵심 항목이에요. 체크 상태는 이 기기에만 저장돼요.</p>
         <div class="check-card" id="checklist">
           <div class="check-head">
-            <span class="ch-ico" aria-hidden="true">🗓️</span>
+            <span class="ch-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg></span>
             <div><div class="ch-t">월간 운영 점검</div><div class="ch-p">세무·노무·매장까지 한 번에</div></div>
             <span class="check-prog" id="check-prog">0/8</span>
           </div>
@@ -543,7 +586,7 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
       <p class="panel-sub">계산기·가이드·서식을 한 번에 찾아보세요.</p>
       <div class="search-panel-box">
         <div class="searchbox">
-          <span class="s-ico" aria-hidden="true">🔍</span>
+          <span class="s-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
           <div class="nav-search">
             <input type="text" id="search-input-panel" class="nav-search-input" placeholder="예: 알바 인건비, 부가세, 배달 수수료…" autocomplete="off" aria-label="검색어 입력">
             <div id="search-dropdown-panel" role="listbox"></div>
@@ -561,7 +604,7 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
 
     <!-- ── Footer ── -->
     <footer class="foot" role="contentinfo">
-      <div class="f-logo">🧮 소호<b>팁</b></div>
+      <div class="f-logo">소호<b>팁</b></div>
       <p class="f-tag">소상공인 무료 계산기와 실전 마케팅 정보를 한곳에서. 가입 없이 무료, 내 폰에만 저장.</p>
       <nav class="f-nav" aria-label="푸터 메뉴">
         <a href="tools.html">계산기 모음</a>
@@ -585,14 +628,16 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
 
 <!-- ── 모바일 하단 고정 탭바 ── -->
 <nav class="tabbar" role="navigation" aria-label="모바일 주요 메뉴">
-  <button class="tab-item active" type="button" data-tab="home"  aria-current="page"><span class="tb-ico" aria-hidden="true">🏠</span><span class="tb-label">홈</span></button>
-  <button class="tab-item"        type="button" data-tab="calc"><span class="tb-ico" aria-hidden="true">🧮</span><span class="tb-label">계산기</span></button>
-  <button class="tab-item"        type="button" data-tab="forms"><span class="tb-ico" aria-hidden="true">📄</span><span class="tb-label">서식</span></button>
-  <button class="tab-item"        type="button" data-tab="guide"><span class="tb-ico" aria-hidden="true">📖</span><span class="tb-label">가이드</span></button>
-  <button class="tab-item"        type="button" data-tab="search"><span class="tb-ico" aria-hidden="true">🔍</span><span class="tb-label">검색</span></button>
+  <button class="tab-item active" type="button" data-tab="home"  aria-current="page"><span class="tb-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="tb-label">홈</span></button>
+  <button class="tab-item"        type="button" data-tab="calc"><span class="tb-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg></span><span class="tb-label">계산기</span></button>
+  <button class="tab-item"        type="button" data-tab="forms"><span class="tb-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span><span class="tb-label">서식</span></button>
+  <button class="tab-item"        type="button" data-tab="guide"><span class="tb-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><span class="tb-label">가이드</span></button>
+  <button class="tab-item"        type="button" data-tab="search"><span class="tb-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><span class="tb-label">검색</span></button>
 </nav>
 
 <script src="sohotip.js?v=20260626"></script>
+<script src="assets/soho-cards.js?v=20260626"></script>
+<script src="assets/news-data.js?v=20260626"></script>
 <script>
 /* ===================================================================
    소호팁 메인(스플릿뷰) — 레일 탭 전환 · 카드 렌더 · 북마크 · 체크리스트
@@ -647,7 +692,7 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
   ];
 
   /* ── 유틸 ── */
-  var BM_KEY='soho_bookmarks';
+  var BM_KEY='sohotip_bookmarks';  /* SohoCards(tools·category)와 북마크 저장소 공유 */
   function getBm(){try{return JSON.parse(localStorage.getItem(BM_KEY))||{};}catch(e){return {};}}
   function setBm(o){try{localStorage.setItem(BM_KEY,JSON.stringify(o));}catch(e){}}
   function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
@@ -657,22 +702,40 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
   function fmt(n){return n.toLocaleString('ko-KR');}
   var bm=getBm();
 
+  /* ── 카드 아이콘 매핑 (이모지 → SVG, SohoCards.icon 재사용) ── */
+  var CALC_ICON={
+    'alba-cost-calc.html':'Users','delivery-profit-calc.html':'Bike','vat-calc.html':'Receipt',
+    'bep-calc.html':'TrendingUp','food-cost-calc.html':'UtensilsCrossed','severance-calc.html':'Briefcase',
+    'weekly-pay-calc.html':'Clock','insurance-4d-calc.html':'Shield','annual-leave-calc.html':'CalendarDays',
+    'store-profit-calc.html':'BarChart2','delivery-ads-calc.html':'Megaphone','naver-ads-calc.html':'MapPin',
+    'rent-increase-calc.html':'Home','card-fee-calc.html':'CreditCard','premium-calc.html':'KeyRound',
+    'loan-interest-calc.html':'Banknote','closure-cost-calc.html':'Package','startup-cost-calc.html':'Rocket'
+  };
+  var CAT_ICON={
+    '창업·세금':'FileText','네이버 플레이스':'MapPin','배달앱':'Bike',
+    '소상공인 지원금':'Banknote','SNS·숏폼':'Camera'
+  };
+  function svgIcon(name,size){
+    return (window.SohoCards&&SohoCards.icon)?SohoCards.icon(name,size):'';
+  }
+
   /* ── 카드 렌더 ── */
   function card(item,opt){
     opt=opt||{};
     var u=item.u, on=bm[u]?' on':'', isCalc=opt.calc;
     var catName=isCalc?'무료 계산기':(item.c||'가이드');
-    var catEmoji=isCalc?'🧮':item.e;
+    var iconName=isCalc?(CALC_ICON[u]||'Calculator'):(CAT_ICON[item.c]||'FileText');
     var tags=(item.t||[]).slice(0,3).map(function(t,i){return '<span class="bc-tag'+(i===0?' pri':'')+'">#'+esc(t)+'</span>';}).join('');
     var badge=item.hot?'<span class="b-hot">HOT</span>':(opt.isNew?'<span class="b-new">NEW</span>':'');
     var meta=isCalc?'무료':(item.dt+' · '+item.rt);
-    var thumb=opt.thumb?('<div class="bc-thumb" aria-hidden="true">'+item.e+'</div>'):'';
+    var thumb=opt.thumb?('<div class="bc-thumb" aria-hidden="true">'+svgIcon(iconName,34)+'</div>'):'';
     return '<article class="bcard">'+
       '<a class="bc-link" href="'+esc(u)+'" title="'+esc(item.n)+'" aria-label="'+esc(item.n)+'"></a>'+
       '<div class="bc-top">'+
-        '<span class="bc-cat"><span class="ico" aria-hidden="true">'+catEmoji+'</span><span class="nm">'+esc(catName)+'</span></span>'+
+        '<span class="bc-cat"><span class="ico" aria-hidden="true">'+svgIcon(iconName,16)+'</span><span class="nm">'+esc(catName)+'</span></span>'+
         '<span class="bc-actions">'+
-          '<button class="bc-btn bc-bm'+on+'" data-bm="'+esc(u)+'" aria-label="북마크" aria-pressed="'+(bm[u]?'true':'false')+'">'+(bm[u]?'🔖':'🏷️')+'</button>'+
+          '<button class="bc-btn bc-bm'+on+'" data-bm="'+esc(u)+'" aria-label="북마크" aria-pressed="'+(bm[u]?'true':'false')+'"><svg class="lucide" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>'+
+          '<button class="bc-btn bc-share" data-share-title="'+esc(item.n)+'" data-share-desc="'+esc(item.d)+'" data-share-url="'+esc('https://sohotip.co.kr/'+u)+'" aria-label="공유하기"><svg class="lucide" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>'+
         '</span>'+
       '</div>'+
       '<div class="bc-main"><div class="bc-text">'+
@@ -680,7 +743,7 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
         '<p class="bc-desc">'+esc(item.d)+'</p>'+
       '</div>'+thumb+'</div>'+
       '<div class="bc-tags">'+tags+'</div>'+
-      '<div class="bc-foot"><span>👁 '+fmt(views(u))+'</span><span>♥ '+fmt(likes(u))+'</span><span class="sp">'+esc(meta)+'</span></div>'+
+      '<div class="bc-foot"><span><svg class="lucide" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>'+fmt(views(u))+'</span><span><svg class="lucide" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>'+fmt(likes(u))+'</span><span class="sp">'+esc(meta)+'</span></div>'+
     '</article>';
   }
   function renderFeed(id,items,opt){
@@ -690,15 +753,148 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
   renderFeed('feed-calc',CALCS,{calc:true});
   renderFeed('feed-guide',GUIDES,{thumb:true});
 
+  /* ===================================================================
+     홈 패널 섹션 렌더 (빠른 실행 / 인기 계산기 / 소식 / 최신 가이드)
+     =================================================================== */
+  /* 2) 빠른 실행 */
+  var QUICK=[
+    {n:'인건비 계산',u:'alba-cost-calc.html',ic:'Users',cl:'indigo'},
+    {n:'배달 수익',u:'delivery-profit-calc.html',ic:'Bike',cl:'green'},
+    {n:'부가세',u:'vat-calc.html',ic:'Receipt',cl:'yellow'},
+    {n:'손익분기',u:'bep-calc.html',ic:'TrendingUp',cl:'red'}
+  ];
+  (function(){
+    var el=document.getElementById('quick-grid'); if(!el)return;
+    el.innerHTML=QUICK.map(function(q){
+      return '<a class="quick-card" href="'+esc(q.u)+'" title="'+esc(q.n)+'">'+
+        '<span class="q-ico q-'+q.cl+'" aria-hidden="true">'+svgIcon(q.ic,24)+'</span>'+
+        '<span class="q-label">'+esc(q.n)+'</span></a>';
+    }).join('');
+  })();
+
+  /* 3) 실시간 인기 계산기 */
+  var POP=[
+    {n:'알바 인건비 계산기',d:'주휴수당·4대보험 포함',u:'alba-cost-calc.html',ic:'Users',cnt:12840},
+    {n:'배달 순이익 계산기',d:'수수료·배달비 제외',u:'delivery-profit-calc.html',ic:'Bike',cnt:9310},
+    {n:'부가세 계산기',d:'납부세액·환급액',u:'vat-calc.html',ic:'Receipt',cnt:7625},
+    {n:'손익분기점(BEP) 계산기',d:'최소 목표 매출',u:'bep-calc.html',ic:'TrendingUp',cnt:5180},
+    {n:'메뉴 원가율 계산기',d:'마진율·권장 판매가',u:'food-cost-calc.html',ic:'UtensilsCrossed',cnt:4470}
+  ];
+  (function(){
+    var el=document.getElementById('rank-list'); if(!el)return;
+    el.innerHTML=POP.map(function(p,i){
+      return '<a class="rank-item" href="'+esc(p.u)+'" title="'+esc(p.n)+'">'+
+        '<span class="rank-no">'+(i+1)+'</span>'+
+        '<span class="rank-ico" aria-hidden="true">'+svgIcon(p.ic,20)+'</span>'+
+        '<span class="rank-name"><span class="rn-t">'+esc(p.n)+'</span><small>'+esc(p.d)+'</small></span>'+
+        '<span class="rank-cnt">'+fmt(p.cnt)+'<small>회</small></span></a>';
+    }).join('');
+  })();
+
+  /* 4) 오늘의 사업 소식 (assets/news-data.js → window.SOHO_NEWS) */
+  function renderNews(){
+    var el=document.getElementById('news-list'); if(!el)return;
+    var news=(window.SOHO_NEWS&&window.SOHO_NEWS.length)?window.SOHO_NEWS:[];
+    if(!news.length){el.innerHTML='<div class="news-empty">표시할 소식이 없어요.</div>';return;}
+    el.innerHTML=news.slice(0,5).map(function(it,i){
+      var ext=/^https?:\/\//.test(it.url||'');
+      return '<a class="news-item" href="'+esc(it.url||'#')+'"'+(ext?' target="_blank" rel="noopener"':'')+' title="'+esc(it.title||'')+'">'+
+        '<span class="news-no">'+(i+1)+'</span>'+
+        '<span class="news-body"><span class="news-title">'+esc(it.title||'')+'</span>'+
+        '<span class="news-date">'+esc(it.date||'')+'</span></span>'+
+        '<span class="news-ext" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span></a>';
+    }).join('');
+  }
+  renderNews();
+  var nrf=document.getElementById('news-refresh');
+  if(nrf)nrf.addEventListener('click',function(){nrf.classList.add('spin');renderNews();setTimeout(function(){nrf.classList.remove('spin');},600);});
+
+  /* 5) 최신 가이드 */
+  (function(){
+    var el=document.getElementById('latest-guides'); if(!el)return;
+    el.innerHTML=GUIDES.slice(0,5).map(function(g){
+      return '<a class="news-item" href="'+esc(g.u)+'" title="'+esc(g.n)+'">'+
+        '<span class="news-body"><span class="news-cat">'+esc(g.c)+'</span>'+
+        '<span class="news-title">'+esc(g.n)+'</span>'+
+        '<span class="news-date">'+esc(g.dt)+' · '+esc(g.rt)+'</span></span>'+
+        '<span class="news-ext" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></a>';
+    }).join('');
+  })();
+
   /* ── 북마크 토글 (이벤트 위임) ── */
   document.addEventListener('click',function(e){
     var b=e.target.closest('.bc-bm'); if(!b)return;
     e.preventDefault();
     var u=b.getAttribute('data-bm');
-    if(bm[u]){delete bm[u];b.classList.remove('on');b.textContent='🏷️';b.setAttribute('aria-pressed','false');}
-    else{bm[u]=1;b.classList.add('on');b.textContent='🔖';b.setAttribute('aria-pressed','true');}
+    if(bm[u]){delete bm[u];b.classList.remove('on');b.setAttribute('aria-pressed','false');}
+    else{bm[u]=1;b.classList.add('on');b.setAttribute('aria-pressed','true');}
     setBm(bm);
   });
+
+  /* ── 공유 (카카오톡 / 링크 복사 / Web Share API) ── */
+  var sharePop=null;
+  function closeShare(){ if(sharePop){sharePop.remove();sharePop=null;} }
+  function sohoToast(msg){
+    var t=document.createElement('div'); t.className='soho-toast'; t.textContent=msg;
+    document.body.appendChild(t);
+    requestAnimationFrame(function(){t.classList.add('show');});
+    setTimeout(function(){t.classList.remove('show');setTimeout(function(){if(t.parentNode)t.parentNode.removeChild(t);},260);},1900);
+  }
+  function copyLink(url){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){sohoToast('링크가 복사되었습니다');},function(){sohoToast('링크 복사에 실패했습니다');});
+    }else{
+      var ta=document.createElement('textarea'); ta.value=url; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      try{document.execCommand('copy');sohoToast('링크가 복사되었습니다');}catch(err){sohoToast('링크 복사에 실패했습니다');}
+      document.body.removeChild(ta);
+    }
+  }
+  function kakaoShare(title,desc,url){
+    window.open('https://sharer.kakao.com/talk/friends/picker/easylink?app_key=none&shimless_url='+encodeURIComponent(url)+'&title='+encodeURIComponent(title)+'&description='+encodeURIComponent(desc),'_blank','width=500,height=600,noopener');
+  }
+  function nativeShare(title,desc,url){ if(navigator.share)navigator.share({title:title,text:desc,url:url}).catch(function(){}); }
+  function openSharePop(btn){
+    closeShare();
+    var title=btn.getAttribute('data-share-title')||document.title;
+    var url=btn.getAttribute('data-share-url')||location.href;
+    var desc=btn.getAttribute('data-share-desc')||'소호팁에서 소상공인에게 유용한 정보를 확인하세요.';
+    var hasNative=!!navigator.share;
+    var pop=document.createElement('div'); pop.className='share-pop'; pop.setAttribute('role','menu');
+    pop.innerHTML=
+      '<div class="sp-head">공유하기</div>'+
+      '<button class="sp-item" data-act="kakao"><span class="sp-ico kakao"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C6.477 3 2 6.582 2 11c0 2.793 1.665 5.25 4.2 6.75L5.1 21l4.35-2.85c.83.15 1.69.23 2.55.23 5.523 0 10-3.582 10-8S17.523 3 12 3z" fill="#3C1E1E"/></svg></span>카카오톡</button>'+
+      '<button class="sp-item" data-act="copy"><span class="sp-ico"><svg class="lucide" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>링크 복사</button>'+
+      (hasNative?'<button class="sp-item" data-act="native"><span class="sp-ico indigo"><svg class="lucide" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></span>더 보기</button>':'');
+    document.body.appendChild(pop);
+    var r=btn.getBoundingClientRect();
+    pop.style.top=(window.scrollY+r.bottom+8)+'px';
+    pop.style.left=Math.max(8,window.scrollX+r.right-pop.offsetWidth)+'px';
+    sharePop=pop;
+    pop.addEventListener('click',function(ev){
+      var it=ev.target.closest('.sp-item'); if(!it)return;
+      var act=it.getAttribute('data-act');
+      if(act==='kakao')kakaoShare(title,desc,url);
+      else if(act==='copy')copyLink(url);
+      else if(act==='native')nativeShare(title,desc,url);
+      closeShare();
+    });
+  }
+  document.addEventListener('click',function(e){
+    var s=e.target.closest('.bc-share');
+    if(s){
+      e.preventDefault(); e.stopPropagation();
+      if(navigator.share && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
+        nativeShare(s.getAttribute('data-share-title')||document.title, s.getAttribute('data-share-desc')||'', s.getAttribute('data-share-url')||location.href);
+        return;
+      }
+      if(sharePop){closeShare();return;}
+      openSharePop(s);
+      return;
+    }
+    if(sharePop && !e.target.closest('.share-pop')) closeShare();
+  });
+  window.addEventListener('resize',closeShare);
 
   /* ── 체크리스트 (localStorage) ── */
   var CK_KEY='soho_checklist';
@@ -795,12 +991,9 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
 })();
 </script>
 
-<!-- ── 오늘의 사업 브리핑 + 인기글 Firebase + 검색 인덱스 + 네트워크 ── -->
+<!-- ── 인기글 Firebase 설정 + 검색 인덱스 + 네트워크 ──
+     (금리·실시간주가·환율 브리핑 위젯은 메인에서 제거 — '오늘의 사업 소식'으로 대체) -->
 <script src="assets/config.js?v=20260626"></script>
-<script src="assets/briefing-data.js?v=20260626"></script>
-<script src="assets/exchange.js?v=20260626"></script>
-<script src="assets/stocks.js?v=20260626"></script>
-<script src="assets/briefing.js?v=20260626"></script>
 <script src="network.js?v=20260626"></script>
 </body>
 </html>

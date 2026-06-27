@@ -18,9 +18,10 @@
   overflow-wrap: break-word;
 }
 :root {
-  --primary: #3D5AFE;
-  --primary-light: #ECEEFF;
-  --primary-mid: #2541E0;
+  /* 딥 인디고 리디자인 토큰 (oklch, 2026) */
+  --primary: oklch(0.48 0.26 264);
+  --primary-light: oklch(0.95 0.03 264);
+  --primary-mid: oklch(0.42 0.25 264);
   --text: #1A1A1A;
   --text-muted: #6B7280;
   --text-light: #9CA3AF;
@@ -1579,3 +1580,112 @@
   position: absolute; left: 0; top: 6px;
   font-size: 14px;
 }
+
+/* =====================================================================
+   디자인 시스템 유틸리티 — 2026 딥 인디고 리디자인 이식
+   (Tailwind/shadcn 스펙 → 정적 사이트용 순수 CSS)
+   ===================================================================== */
+:root {
+  --indigo-50:  oklch(0.97 0.02 264);
+  --indigo-100: oklch(0.93 0.04 264);
+  --indigo-500: oklch(0.55 0.22 264);
+  --indigo-600: oklch(0.48 0.24 264);
+  --indigo-700: oklch(0.42 0.25 264);
+}
+
+/* 진입 애니메이션 */
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95) translateY(-4px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up { animation: fadeInUp 0.3s cubic-bezier(0.23,1,0.32,1) both; }
+.fade-in-up-delay-1 { animation-delay: 0.05s; }
+.fade-in-up-delay-2 { animation-delay: 0.1s; }
+.fade-in-up-delay-3 { animation-delay: 0.15s; }
+.fade-in-up-delay-4 { animation-delay: 0.2s; }
+.fade-in-up-delay-5 { animation-delay: 0.25s; }
+
+/* 카드 호버 들어올림 */
+.card-hover { transition: transform 0.18s cubic-bezier(0.23,1,0.32,1), box-shadow 0.18s cubic-bezier(0.23,1,0.32,1); }
+.card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 24px oklch(0.48 0.26 264 / 0.12); }
+
+/* 버튼 눌림 */
+.btn-active:active { transform: scale(0.97); transition: transform 0.1s ease-out; }
+
+/* 라이브 표시 점 */
+@keyframes live-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+.live-dot { animation: live-pulse 1.5s ease-in-out infinite; }
+
+/* 북마크 버튼 */
+.bookmark-btn { transition: color 0.15s ease-out, transform 0.15s ease-out; }
+.bookmark-btn:hover { transform: scale(1.1); }
+.bookmark-btn.bookmarked { color: oklch(0.48 0.26 264); }
+
+/* 폰트 굵기 유틸 */
+.font-500 { font-weight: 500; }
+.font-600 { font-weight: 600; }
+.font-700 { font-weight: 700; }
+.font-800 { font-weight: 800; }
+.font-900 { font-weight: 900; }
+
+/* 한국어 가독 행간 */
+.leading-korean { line-height: 1.6; letter-spacing: -0.01em; }
+
+/* 뱃지 */
+.badge-new { background: oklch(0.48 0.26 264); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+.badge-hot { background: oklch(0.97 0.03 20); color: oklch(0.55 0.22 20); font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+
+/* 하단 안전영역 패딩 (모바일 고정 탭바 대응) */
+.pb-safe { padding-bottom: calc(60px + env(safe-area-inset-bottom)); }
+
+/* 가는 커스텀 스크롤바 */
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: oklch(0.85 0.02 264); border-radius: 2px; }
+
+/* Lucide 인라인 내비 아이콘 (이모지 대체, currentColor로 테마 상속) */
+svg.lucide { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; display: block; }
+.ri-ico svg.lucide, .tb-ico svg.lucide { width: 1em; height: 1em; }   /* 레일/탭바: 래퍼 font-size에 따라 스케일 */
+.ico-btn svg.lucide { width: 21px; height: 21px; }                     /* 헤더 아이콘 버튼 */
+.searchbox .s-ico svg.lucide { width: 18px; height: 18px; }            /* 검색바 좌측 아이콘 */
+
+/* 카드 내 SVG 아이콘 (북마크·공유·조회·좋아요) */
+.bc-btn svg.lucide { width: 17px; height: 17px; }
+.bc-bm.on svg.lucide { fill: var(--primary); stroke: var(--primary); }
+.bc-foot span { display: inline-flex; align-items: center; }
+.bc-foot svg.lucide { width: 13px; height: 13px; margin-right: 5px; vertical-align: -2px; }
+
+/* 공유 팝오버 */
+.share-pop {
+  position: absolute; z-index: 1000; min-width: 184px;
+  background: #fff; border: 1px solid var(--border-light);
+  border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  overflow: hidden; animation: fadeInScale 0.15s cubic-bezier(0.23,1,0.32,1);
+}
+.share-pop .sp-head { padding: 10px 14px 8px; font-size: 11px; font-weight: 600; color: var(--text-light); border-bottom: 1px solid var(--border-light); }
+.share-pop .sp-item {
+  display: flex; align-items: center; gap: 12px; width: 100%;
+  padding: 11px 14px; background: none; border: none;
+  font-size: 13px; font-weight: 600; color: var(--text);
+  text-align: left; font-family: var(--sans); cursor: pointer; transition: background 0.12s;
+}
+.share-pop .sp-item:hover { background: #FAFAFA; }
+.share-pop .sp-ico { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; background: #F2F4F6; }
+.share-pop .sp-ico.kakao { background: #FEE500; }
+.share-pop .sp-ico.indigo { background: var(--primary-light); }
+.share-pop .sp-ico svg { width: 16px; height: 16px; }
+.share-pop .sp-ico.indigo svg.lucide { stroke: var(--primary); }
+
+/* 토스트 알림 */
+.soho-toast {
+  position: fixed; left: 50%; bottom: 84px; transform: translate(-50%, 12px);
+  z-index: 2000; background: rgba(25,31,40,0.95); color: #fff;
+  font-size: 13px; font-weight: 600; padding: 11px 20px; border-radius: 100px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.25); opacity: 0;
+  transition: opacity 0.25s, transform 0.25s; pointer-events: none; white-space: nowrap;
+}
+.soho-toast.show { opacity: 1; transform: translate(-50%, 0); }
