@@ -54,10 +54,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="sohotip.css?v=20260630">
+<link rel="stylesheet" href="sohotip.css?v=20260701">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630">
-<link rel="stylesheet" href="assets/sohotip-theme.css?v=20260630">
+  <link rel="stylesheet" href="assets/theme.css?v=20260701">
+<link rel="stylesheet" href="assets/sohotip-theme.css?v=20260701">
 
 <style>
 /* =====================================================================
@@ -189,7 +189,7 @@ a{color:inherit;text-decoration:none;}
 
 /* ── 섹션 공통 ── */
 .sec{margin-bottom:30px;}
-.sec-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px;}
+.sec-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px;}
 .sec-head h2{font-size:18px;font-weight:900;letter-spacing:-.02em;color:var(--g900);display:flex;align-items:center;gap:7px;}
 .sec-desc{font-size:13px;font-weight:500;color:var(--g600);margin:-6px 0 13px;}
 .sec-more{font-size:13px;font-weight:700;color:var(--primary);flex-shrink:0;cursor:pointer;}
@@ -269,7 +269,7 @@ a{color:inherit;text-decoration:none;}
 /* ── 카테고리 칩 그리드 ── */
 .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 /* 세로 정렬 카드: 아이콘박스(56) → 이름(최대 2줄) → 개수 */
-.cat-chip{display:flex;flex-direction:column;align-items:flex-start;background:var(--white);border:1px solid var(--g200);border-radius:20px;padding:18px 16px;box-shadow:0 1px 8px rgba(0,0,0,.04);transition:transform .15s,box-shadow .15s,border-color .15s;cursor:pointer;}
+.cat-chip{display:flex;flex-direction:column;align-items:flex-start;background:var(--white);border:1px solid var(--g200);border-radius:20px;padding:16px;box-shadow:0 1px 8px rgba(0,0,0,.04);transition:transform .15s,box-shadow .15s,border-color .15s;cursor:pointer;}
 .cat-chip:hover{transform:translateY(-3px);border-color:transparent;box-shadow:0 8px 22px rgba(61,90,254,.12);}
 .cat-chip:active{transform:scale(.98);}
 .cat-chip .cc-ico{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;flex-shrink:0;margin-bottom:12px;background:var(--primary-light);color:var(--primary);}
@@ -646,9 +646,9 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
   <button class="tab-item"        type="button" data-tab="search"><span class="tb-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><span class="tb-label">검색</span></button>
 </nav>
 
-<script src="sohotip.js?v=20260630"></script>
-<script src="assets/soho-cards.js?v=20260630"></script>
-<script src="assets/news-data.js?v=20260630"></script>
+<script src="sohotip.js?v=20260701"></script>
+<script src="assets/soho-cards.js?v=20260701"></script>
+<script src="assets/news-data.js?v=20260701"></script>
 <script>
 /* ===================================================================
    소호팁 메인(스플릿뷰) — 레일 탭 전환 · 카드 렌더 · 북마크 · 체크리스트
@@ -1004,7 +1004,7 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
 
 <!-- ── 인기글 Firebase 설정 + 검색 인덱스 + 네트워크 ──
      (금리·실시간주가·환율 브리핑 위젯은 메인에서 제거 — '오늘의 사업 소식'으로 대체) -->
-<script src="assets/config.js?v=20260630"></script>
-<script src="network.js?v=20260630"></script>
+<script src="assets/config.js?v=20260701"></script>
+<script src="network.js?v=20260701"></script>
 </body>
 </html>
