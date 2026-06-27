@@ -231,10 +231,11 @@ a, button, input, select, textarea,
 @media (min-width: 769px)  { :root { --rail-w: 100px; } }  /* 태블릿 */
 @media (min-width: 1025px) { :root { --rail-w: 220px; } }  /* 데스크톱 */
 
-/* 본문 오프셋: html.soho-chrome 로 특이도(0,1,2)를 높여
-   페이지 인라인 <style> 의 body{} (0,0,1) 보다 우선 적용 */
+/* 본문 오프셋: html.soho-chrome 로 특이도(0,1,2)를 높여 페이지 인라인 <style> body{}보다 우선.
+   !important + 레일폭+8px 버퍼 → 어떤 페이지/캐시 규칙에도 본문이 레일과 1px도 안 겹침.
+   (본문 전체를 감싸는 메인 컨테이너 = body 에 직접 마진) */
 html.soho-chrome body {
-  margin-left: var(--rail-w);
+  margin-left: calc(var(--rail-w) + 8px) !important;   /* 모바일 80 / 태블릿 108 / 데스크톱 228 */
   padding-top: var(--hdr-h);
   padding-bottom: 80px;          /* 모바일 하단 탭바 가림 방지 */
   background: var(--bg);
@@ -339,8 +340,8 @@ html.soho-chrome #sticky-cta { display: none !important; }
    본문 시작점(body margin)에 붙어 본문을 덮는 버그를 유발 → 사용하지 말고 left/right 명시. */
 .soho-header, .soho-rail, .soho-tabbar { margin: 0; max-width: none; min-width: 0; }
 .soho-header { left: 0; right: 0; top: 0; bottom: auto; }
-/* 레일은 반드시 viewport 좌측(left:0)에 고정 — left:auto 면 본문 위로 겹침 */
-.soho-rail { left: 0; right: auto; }
+/* 레일은 반드시 viewport 좌측(left:0)에 고정 — left:auto 면 본문 위로 겹침. !important로 못 덮게. */
+.soho-rail { left: 0 !important; right: auto !important; width: var(--rail-w) !important; }
 /* top:auto 명시 — 페이지 인라인 nav{top:0} 누수로 탭바가 상단에 박혀 헤더를 덮던 버그 차단 */
 .soho-tabbar { left: 0; right: 0; top: auto; bottom: 0; height: var(--tabbar-h); }
 /* nav{justify-content/align-items/border} 누수로 레일 항목이 퍼지거나 보더 생기는 것 차단 */

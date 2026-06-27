@@ -1500,9 +1500,9 @@ function setupCalcShare(slug) {
   window.__sohoPart2Loaded = true;
   /* PART 2: 미니 계산기 + "함께 보면 좋은"  /  PART 4: 상담 전환 + 6사이트 네트워크.
      모두 자체 게이트(문맥 맞을 때만 렌더)되므로 전 페이지 로드해도 안전. */
-  ['assets/inline-calc.js?v=20260702',
-   'assets/consult.js?v=20260702',
-   'assets/network.js?v=20260702'].forEach(function (src) {
+  ['assets/inline-calc.js?v=20260703',
+   'assets/consult.js?v=20260703',
+   'assets/network.js?v=20260703'].forEach(function (src) {
     var s = document.createElement('script');
     s.src = src; s.async = true;
     document.head.appendChild(s);
