@@ -62,9 +62,10 @@
     }
   }
   </script>
-<link rel="stylesheet" href="sohotip.css?v=20260626">
+<link rel="stylesheet" href="sohotip.css?v=20260627">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260626">
+  <link rel="stylesheet" href="assets/theme.css?v=20260627">
+<link rel="stylesheet" href="assets/calc.css?v=20260627">
 <style>
 :root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -175,7 +176,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
 </div>
 
 <div class="page-wrap">
-  <span class="tag">💰 부가세 계산기</span>
+  <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="12" y2="18"/></svg> 부가세 계산기</span>
   <h1 class="page-title">부가세 계산기</h1>
   <p class="page-desc">매출과 매입을 입력하면 납부할 부가세 또는 환급받을 금액을 즉시 계산합니다. 일반과세자와 간이과세자 모두 지원합니다.</p>
 
@@ -198,7 +199,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
         <div class="field-hint">세금계산서·신용카드 매입 합계</div>
         <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="g-purchase" value="4,000,000" step="100000">
       </div>
-      <button class="btn-calc" onclick="calcGeneral()">🧮 부가세 계산하기</button>
+      <button class="btn-calc" onclick="calcGeneral()">부가세 계산하기</button>
     </div>
     <div id="g-result" style="display:none;">
       <div class="result-big" id="g-result-box">
@@ -230,7 +231,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
           <option value="0.40">부동산임대업 (부가가치율 40%)</option>
         </select>
       </div>
-      <button class="btn-calc" onclick="calcSimple()">🧮 부가세 계산하기</button>
+      <button class="btn-calc" onclick="calcSimple()">부가세 계산하기</button>
     </div>
     <div id="s-result" style="display:none;">
       <div class="result-big" id="s-result-box">
@@ -254,7 +255,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
         <label>VAT 포함 금액 (원)</label>
         <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="i-total" value="1,100,000" step="10000">
       </div>
-      <button class="btn-calc" onclick="calcInclude()">🧮 계산하기</button>
+      <button class="btn-calc" onclick="calcInclude()">계산하기</button>
     </div>
     <div id="i-result" style="display:none;">
       <div class="breakdown">
@@ -267,9 +268,9 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
 </div>
 
 <button id="back-to-top" aria-label="맨 위로">↑</button>
-<script src="assets/layout.js?v=20260626"></script>
-<script src="sohotip.js?v=20260626"></script>
-<script src="assets/consult.js?v=20260626"></script>
+<script src="assets/layout.js?v=20260627"></script>
+<script src="sohotip.js?v=20260627"></script>
+<script src="assets/consult.js?v=20260627"></script>
 <script>
 function switchTab(t, btn) {
   ['general','simple','include'].forEach(id => {
@@ -326,6 +327,6 @@ function calcInlineVat(){
   <a href="index.html">홈</a><a href="category.html">카테고리</a><a href="tools.html">계산기 모음</a>
   <p style="margin-top:12px;">© 2026 소상공인 마케팅 실전백과. 본 계산기는 참고용입니다.</p>
 </footer>
-<script src="network.js?v=20260626"></script>
+<script src="network.js?v=20260627"></script>
 </body>
 </html>

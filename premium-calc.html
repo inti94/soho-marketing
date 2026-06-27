@@ -53,9 +53,10 @@
 {"@type":"ListItem","position":3,"name":"권리금 계산기","item":"https://sohotip.co.kr/premium-calc.html"}
 ]}
 </script>
-<link rel="stylesheet" href="sohotip.css?v=20260626">
+<link rel="stylesheet" href="sohotip.css?v=20260627">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260626">
+  <link rel="stylesheet" href="assets/theme.css?v=20260627">
+<link rel="stylesheet" href="assets/calc.css?v=20260627">
 <style>
 :root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -121,7 +122,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
 </div>
 <div class="ad-wrap"><ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-OXO7QmLJ3fqDjM3l" data-ad-width="320" data-ad-height="100"></ins></div>
 <div class="page-wrap">
-  <span class="tag">🧮 세무·법률 계산기</span>
+  <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="12" y2="18"/></svg> 세무·법률 계산기</span>
   <h1 class="page-title">권리금 계산기</h1>
   <p class="page-desc">가게를 넘기거나 받을 때 권리금이 적정한지 감이 안 오시죠? 월 순이익과 인테리어 잔존가치를 넣으면 시설+영업 권리금 적정 범위를 계산해드려요. (월순이익 12~18개월 기준)</p>
 
@@ -136,7 +137,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
       <div class="field"><label>영업 기간 (년)</label><input type="number" id="years" value="3" min="0" step="0.5"></div>
       <div class="field"><label>인테리어·시설 잔존가치 (원)</label><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="fixture" value="20,000,000" min="0" step="1000000"></div>
     </div>
-    <button class="btn-calc" onclick="calculate()">🔑 적정 권리금 계산하기</button>
+    <button class="btn-calc" onclick="calculate()">적정 권리금 계산하기</button>
   </div>
 
   <div id="result-section" style="display:none;">
@@ -158,9 +159,9 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
 <div class="ad-wrap"><ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-92dlbIcNNOkHSZw8" data-ad-width="300" data-ad-height="250"></ins>
 <script type="text/javascript" src="//t1.kakaocdn.net/kas/static/ba.min.js" async></script></div>
 <button id="back-to-top" aria-label="맨 위로">↑</button>
-<script src="assets/layout.js?v=20260626"></script>
-<script src="sohotip.js?v=20260626"></script>
-<script src="assets/consult.js?v=20260626"></script>
+<script src="assets/layout.js?v=20260627"></script>
+<script src="sohotip.js?v=20260627"></script>
+<script src="assets/consult.js?v=20260627"></script>
 <script>
 function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
 function won(n){return Math.round(n).toLocaleString('ko-KR');}
@@ -187,6 +188,6 @@ function calculate(){
   <a href="consultation.html">무료 진단</a>
   <p style="margin-top:12px;">© 2026 소상공인 마케팅 실전백과. 본 계산기는 참고용이며 정확한 금액은 전문가와 확인하세요.</p>
 </footer>
-<script src="network.js?v=20260626"></script>
+<script src="network.js?v=20260627"></script>
 </body>
 </html>

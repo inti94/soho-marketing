@@ -243,6 +243,18 @@ html.soho-chrome body {
   html.soho-chrome body { padding-bottom: 24px; }  /* 탭바 숨김 → 여백 축소 */
 }
 
+/* 미디어/광고/표가 레일 마진과 겹쳐 가로 넘침 나는 것 방지(모바일) */
+html.soho-chrome img,
+html.soho-chrome iframe,
+html.soho-chrome ins.adsbygoogle,
+html.soho-chrome embed,
+html.soho-chrome video { max-width: 100% !important; }
+/* 광고망이 ins 안에 주입하는 고정폭 호스트(aswift 등)를 컨테이너로 클립 */
+html.soho-chrome ins.adsbygoogle { display: block; overflow: hidden; }
+html.soho-chrome [id^="aswift_"] { max-width: 100% !important; }
+/* 공유 버튼 행이 좁은 화면에서 줄바꿈되게(가로 넘침 방지) */
+html.soho-chrome .share-row { flex-wrap: wrap; }
+
 /* 공통 SVG 아이콘 기본 스타일 */
 .soho-chrome svg.ic {
   fill: none;
@@ -309,6 +321,9 @@ html.soho-chrome body {
 .soho-rail {
   position: fixed; left: 0; top: var(--hdr-h); bottom: 0;
   width: var(--rail-w);
+  /* 명시적 높이: 페이지 인라인 CSS의 nav{height:..} 누수 방지(레일이 56px로 잘리는 버그 차단) */
+  height: calc(100vh - var(--hdr-h));
+  box-sizing: border-box;
   background: var(--white);
   border-right: 1px solid var(--g200);
   display: flex; flex-direction: column; gap: 2px;
@@ -316,6 +331,13 @@ html.soho-chrome body {
   z-index: 900;
   overflow-y: auto;
 }
+/* 주입 크롬은 페이지의 bare 요소 셀렉터(nav/header) 영향 안 받게 핵심 속성 고정 */
+.soho-header, .soho-rail, .soho-tabbar { margin: 0; max-width: none; min-width: 0; inset-inline: auto; }
+.soho-header { left: 0; right: 0; top: 0; }
+.soho-tabbar { left: 0; right: 0; bottom: 0; height: var(--tabbar-h); }
+/* nav{justify-content/align-items/border} 누수로 레일 항목이 퍼지거나 보더 생기는 것 차단 */
+.soho-rail { justify-content: flex-start; align-items: stretch; border-top: none; border-bottom: none; }
+.soho-tabbar { justify-content: stretch; align-items: stretch; }
 .soho-rail::-webkit-scrollbar { width: 0; }
 .soho-rail-item {
   display: flex; flex-direction: column; align-items: center; gap: 4px;
