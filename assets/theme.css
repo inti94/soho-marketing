@@ -333,8 +333,9 @@ html.soho-chrome .share-row { flex-wrap: wrap; }
 }
 /* 주입 크롬은 페이지의 bare 요소 셀렉터(nav/header) 영향 안 받게 핵심 속성 고정 */
 .soho-header, .soho-rail, .soho-tabbar { margin: 0; max-width: none; min-width: 0; inset-inline: auto; }
-.soho-header { left: 0; right: 0; top: 0; }
-.soho-tabbar { left: 0; right: 0; bottom: 0; height: var(--tabbar-h); }
+.soho-header { left: 0; right: 0; top: 0; bottom: auto; }
+/* top:auto 명시 — 페이지 인라인 nav{top:0} 누수로 탭바가 상단에 박혀 헤더를 덮던 버그 차단 */
+.soho-tabbar { left: 0; right: 0; top: auto; bottom: 0; height: var(--tabbar-h); }
 /* nav{justify-content/align-items/border} 누수로 레일 항목이 퍼지거나 보더 생기는 것 차단 */
 .soho-rail { justify-content: flex-start; align-items: stretch; border-top: none; border-bottom: none; }
 .soho-tabbar { justify-content: stretch; align-items: stretch; }
