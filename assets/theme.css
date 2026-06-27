@@ -254,6 +254,9 @@ html.soho-chrome ins.adsbygoogle { display: block; overflow: hidden; }
 html.soho-chrome [id^="aswift_"] { max-width: 100% !important; }
 /* 공유 버튼 행이 좁은 화면에서 줄바꿈되게(가로 넘침 방지) */
 html.soho-chrome .share-row { flex-wrap: wrap; }
+/* 레거시 #sticky-cta(near-black 풀폭 하단 바)는 글로벌 크롬에서 숨김
+   — 하단 탭바·인콘텐츠 상담 CTA와 중복, 레일/탭바와 겹치고 검정바라 비노출 */
+html.soho-chrome #sticky-cta { display: none !important; }
 
 /* 공통 SVG 아이콘 기본 스타일 */
 .soho-chrome svg.ic {
@@ -331,9 +334,13 @@ html.soho-chrome .share-row { flex-wrap: wrap; }
   z-index: 900;
   overflow-y: auto;
 }
-/* 주입 크롬은 페이지의 bare 요소 셀렉터(nav/header) 영향 안 받게 핵심 속성 고정 */
-.soho-header, .soho-rail, .soho-tabbar { margin: 0; max-width: none; min-width: 0; inset-inline: auto; }
+/* 주입 크롬은 페이지의 bare 요소 셀렉터(nav/header) 영향 안 받게 핵심 속성 고정.
+   ⚠️ inset-inline:auto 는 left/right 를 auto 로 만들어 fixed 레일이 viewport(0)이 아닌
+   본문 시작점(body margin)에 붙어 본문을 덮는 버그를 유발 → 사용하지 말고 left/right 명시. */
+.soho-header, .soho-rail, .soho-tabbar { margin: 0; max-width: none; min-width: 0; }
 .soho-header { left: 0; right: 0; top: 0; bottom: auto; }
+/* 레일은 반드시 viewport 좌측(left:0)에 고정 — left:auto 면 본문 위로 겹침 */
+.soho-rail { left: 0; right: auto; }
 /* top:auto 명시 — 페이지 인라인 nav{top:0} 누수로 탭바가 상단에 박혀 헤더를 덮던 버그 차단 */
 .soho-tabbar { left: 0; right: 0; top: auto; bottom: 0; height: var(--tabbar-h); }
 /* nav{justify-content/align-items/border} 누수로 레일 항목이 퍼지거나 보더 생기는 것 차단 */

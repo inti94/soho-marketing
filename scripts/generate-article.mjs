@@ -161,7 +161,7 @@ const { meta, fullHtml, slug } = result;
 
 // ── 인디고 통일 후처리(Gemini 출력 보정): 자산 링크/스크립트 주입 + 이모지 정규화 ──
 //    Gemini는 boilerplate를 불안정하게 내므로, 여기서 강제로 사이트 표준에 맞춘다.
-const ASSET_V = '20260701';
+const ASSET_V = '20260702';
 const _CONT = '(?:\\uFE0F|\\u200D\\p{Extended_Pictographic}|\\p{Extended_Pictographic})*';
 const _ANY = `(?:\\p{Extended_Pictographic}${_CONT})+`;
 const _DECOR = '[💡📌✅✔☑🔥🧮🎯👉📝⚠❗💬📂🙅💸🚀📊📈🗓🕒🛡🔑]';
