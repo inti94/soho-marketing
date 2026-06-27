@@ -15,34 +15,9 @@
 
   var CONSULT_URL = 'consultation.html';
 
-  /* 토픽별 문구 (광고 카피 아님 — 공감/맥락 우선) */
-  var TOPICS = {
-    ad: {
-      stamp: '광고 상담', emoji: '📣',
-      title: '광고 운영이 어렵다면, 혼자 끙끙대지 마세요',
-      desc: '광고비는 쓰는데 주문이 안 늘 때 — 어디서 새는지 실제 운영 사례로 같이 봐드려요.',
-    },
-    startup: {
-      stamp: '창업 상담', emoji: '🚀',
-      title: '창업·운영 비용이 고민된다면',
-      desc: '숫자만 보면 막막하죠. 사장님 가게 상황에 맞춰 비용·손익을 같이 따져봐요.',
-    },
-    tax: {
-      stamp: '세무 상담', emoji: '🧾',
-      title: '세무, 이것만 물어봐도 돈 아껴요',
-      desc: '부가세·종합소득세·경비처리… 헷갈리는 것만 짚어드릴게요. 혼자 끙끙 마세요.',
-    },
-    labor: {
-      stamp: '노무 상담', emoji: '👥',
-      title: '노무 문제, 혼자 앓지 마세요',
-      desc: '주휴수당·퇴직금·4대보험 분쟁은 커지기 전이 쌉니다. 지금 짚어보세요.',
-    },
-    marketing: {
-      stamp: '마케팅 상담', emoji: '📈',
-      title: '마케팅 성과가 안 나온다면',
-      desc: '플레이스·배달앱·SNS, 뭐부터 손대야 할지 막막할 때 우선순위를 같이 정해요.',
-    },
-  };
+  /* 토픽은 '노출 여부' 게이트로만 사용(문구 분기 없음 — CTA는 항상 마케팅 상담 단일).
+     아래 키 중 하나가 감지될 때만 CTA를 띄운다(무관한 글엔 미노출). */
+  var TOPICS = { ad: 1, startup: 1, tax: 1, labor: 1, marketing: 1 };
 
   /* 글 키워드 → 토픽 (위에서부터 우선). 매칭 없으면 노출 안 함(보수적). */
   var KEYWORD_TOPICS = [
@@ -118,8 +93,13 @@
     var host = contentHost();
     if (!host) return;
     var topic = detectTopic();
-    if (!topic) return; // 맥락 안 맞으면 절대 노출 안 함
-    var c = TOPICS[topic];
+    if (!topic) return; // 맥락 안 맞으면 절대 노출 안 함(노출 위치는 기존 게이트 유지)
+    // 주제별 분기 제거 — 모든 상담 CTA를 '마케팅 상담' 단일 버전으로 고정
+    var c = {
+      stamp: '마케팅 상담',
+      title: '마케팅, 혼자 앓지 마세요',
+      desc: '매출·홍보·광고 고민은 키우기 전이 쌉니다. 지금 짚어보세요.'
+    };
 
     function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
