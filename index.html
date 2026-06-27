@@ -267,13 +267,24 @@ a{color:inherit;text-decoration:none;}
 .top5-icon{font-size:24px;flex-shrink:0;}
 
 /* ── 카테고리 칩 그리드 ── */
-.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.cat-chip{display:flex;align-items:center;gap:12px;background:var(--white);border:1px solid var(--g200);border-radius:18px;padding:16px;box-shadow:0 1px 8px rgba(0,0,0,.04);transition:all .15s;cursor:pointer;}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+/* 세로 정렬 카드: 아이콘박스(56) → 이름(최대 2줄) → 개수 */
+.cat-chip{display:flex;flex-direction:column;align-items:flex-start;background:var(--white);border:1px solid var(--g200);border-radius:20px;padding:18px 16px;box-shadow:0 1px 8px rgba(0,0,0,.04);transition:transform .15s,box-shadow .15s,border-color .15s;cursor:pointer;}
 .cat-chip:hover{transform:translateY(-3px);border-color:transparent;box-shadow:0 8px 22px rgba(61,90,254,.12);}
 .cat-chip:active{transform:scale(.98);}
-.cat-chip .cc-ico{width:44px;height:44px;border-radius:13px;background:var(--primary-light);display:grid;place-items:center;font-size:23px;flex-shrink:0;}
-.cat-chip .cc-nm{font-size:14.5px;font-weight:800;color:var(--g900);}
-.cat-chip .cc-cnt{font-size:12px;font-weight:600;color:var(--g400);margin-top:1px;}
+.cat-chip .cc-ico{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;flex-shrink:0;margin-bottom:12px;background:var(--primary-light);color:var(--primary);}
+.cat-chip .cc-ico svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.cat-chip .cc-nm{font-size:15.5px;font-weight:800;color:var(--g900);line-height:1.35;letter-spacing:-.01em;word-break:keep-all;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.7em;}
+.cat-chip .cc-cnt{font-size:13px;font-weight:700;color:var(--g400);margin-top:4px;}
+/* 카테고리별 색(아이콘 박스 + 개수) */
+.cc-indigo .cc-ico{background:var(--primary-light);color:var(--primary);} .cc-indigo .cc-cnt{color:var(--primary);}
+.cc-green .cc-ico{background:#E3F9EF;color:#00C471;} .cc-green .cc-cnt{color:#00C471;}
+.cc-orange .cc-ico{background:#FFEDE5;color:#FF6B35;} .cc-orange .cc-cnt{color:#FF6B35;}
+.cc-yellow .cc-ico{background:#FFF4D6;color:#E0A000;} .cc-yellow .cc-cnt{color:#FFB800;}
+.cc-purple .cc-ico{background:#F7E9FE;color:#E040FB;} .cc-purple .cc-cnt{color:#C026D3;}
+.cc-red .cc-ico{background:#FFE9EB;color:#F04452;} .cc-red .cc-cnt{color:#F04452;}
+.cc-gray .cc-ico{background:#EDF0F3;color:#6B7684;} .cc-gray .cc-cnt{color:#6B7684;}
+.cc-teal .cc-ico{background:#E0F7FA;color:#00B8D9;} .cc-teal .cc-cnt{color:#00B8D9;}
 
 /* ── 체크리스트 ── */
 .check-card{background:var(--white);border:1px solid var(--g200);border-radius:20px;box-shadow:0 1px 8px rgba(0,0,0,.04);overflow:hidden;}
@@ -553,14 +564,14 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
       <div class="panel-title">📂 카테고리</div>
       <p class="panel-sub">분야별로 계산기·가이드·서식을 모아봤어요. 칩을 누르면 해당 분야 모음으로 이동해요.</p>
       <div class="cat-grid">
-        <a class="cat-chip" href="category.html?cat=calculator" title="무료 계산기"><span class="cc-ico" aria-hidden="true">🧮</span><span><span class="cc-nm">무료 계산기</span><span class="cc-cnt">18개</span></span></a>
-        <a class="cat-chip" href="category.html?cat=place" title="네이버 플레이스"><span class="cc-ico" aria-hidden="true">📍</span><span><span class="cc-nm">네이버 플레이스</span><span class="cc-cnt">9개</span></span></a>
-        <a class="cat-chip" href="category.html?cat=delivery" title="배달앱"><span class="cc-ico" aria-hidden="true">🛵</span><span><span class="cc-nm">배달앱</span><span class="cc-cnt">12개</span></span></a>
-        <a class="cat-chip" href="category.html?cat=support" title="소상공인 지원금"><span class="cc-ico" aria-hidden="true">💰</span><span><span class="cc-nm">소상공인 지원금</span><span class="cc-cnt">9개</span></span></a>
-        <a class="cat-chip" href="category.html?cat=sns" title="SNS·숏폼"><span class="cc-ico" aria-hidden="true">📱</span><span><span class="cc-nm">SNS·숏폼</span><span class="cc-cnt">11개</span></span></a>
-        <a class="cat-chip" href="category.html?cat=startup" title="창업·세금"><span class="cc-ico" aria-hidden="true">🏪</span><span><span class="cc-nm">창업·세금</span><span class="cc-cnt">44개</span></span></a>
-        <a class="cat-chip" href="forms.html" title="무료 서식"><span class="cc-ico" aria-hidden="true">📄</span><span><span class="cc-nm">무료 서식</span><span class="cc-cnt">14개</span></span></a>
-        <a class="cat-chip" href="category.html?cat=card" title="카드·결제"><span class="cc-ico" aria-hidden="true">💳</span><span><span class="cc-nm">카드·결제</span><span class="cc-cnt">6개</span></span></a>
+        <a class="cat-chip cc-indigo" href="category.html?cat=calculator" title="무료 계산기"><span class="cc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="12" y2="18"/></svg></span><span class="cc-nm">무료 계산기</span><span class="cc-cnt">18개</span></a>
+        <a class="cat-chip cc-green" href="category.html?cat=place" title="네이버 플레이스"><span class="cc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="cc-nm">네이버 플레이스</span><span class="cc-cnt">9개</span></a>
+        <a class="cat-chip cc-orange" href="category.html?cat=delivery" title="배달앱"><span class="cc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3.5 11.5L9 9l3-3 4 4h3"/></svg></span><span class="cc-nm">배달앱</span><span class="cc-cnt">12개</span></a>
+        <a class="cat-chip cc-yellow" href="category.html?cat=support" title="소상공인 지원금"><span class="cc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></span><span class="cc-nm">소상공인 지원금</span><span class="cc-cnt">9개</span></a>
+        <a class="cat-chip cc-purple" href="category.html?cat=sns" title="SNS·숏폼"><span class="cc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span><span class="cc-nm">SNS·숏폼</span><span class="cc-cnt">11개</span></a>
+        <a class="cat-chip cc-red" href="category.html?cat=startup" title="창업·세금"><span class="cc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg></span><span class="cc-nm">창업·세금</span><span class="cc-cnt">44개</span></a>
+        <a class="cat-chip cc-gray" href="forms.html" title="무료 서식"><span class="cc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span class="cc-nm">무료 서식</span><span class="cc-cnt">14개</span></a>
+        <a class="cat-chip cc-teal" href="category.html?cat=card" title="카드·결제"><span class="cc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span><span class="cc-nm">카드·결제</span><span class="cc-cnt">6개</span></a>
       </div>
     </section>
 
@@ -573,10 +584,10 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
         <a class="cta-btn ghost" href="contact.html">필요한 서식 요청하기</a>
       </div>
       <div class="cat-grid" style="margin-top:6px">
-        <a class="cat-chip" href="forms.html" title="근로계약서"><span class="cc-ico" aria-hidden="true">📝</span><span><span class="cc-nm">근로계약서</span><span class="cc-cnt">표준 양식</span></span></a>
-        <a class="cat-chip" href="forms.html" title="급여명세서"><span class="cc-ico" aria-hidden="true">💴</span><span><span class="cc-nm">급여명세서</span><span class="cc-cnt">자동 계산</span></span></a>
-        <a class="cat-chip" href="forms.html" title="재고·발주표"><span class="cc-ico" aria-hidden="true">📦</span><span><span class="cc-nm">재고·발주표</span><span class="cc-cnt">엑셀</span></span></a>
-        <a class="cat-chip" href="forms.html" title="간이 영수증"><span class="cc-ico" aria-hidden="true">🧾</span><span><span class="cc-nm">간이 영수증</span><span class="cc-cnt">인쇄용</span></span></a>
+        <a class="cat-chip cc-indigo" href="forms.html" title="근로계약서"><span class="cc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span class="cc-nm">근로계약서</span><span class="cc-cnt">표준 양식</span></a>
+        <a class="cat-chip cc-green" href="forms.html" title="급여명세서"><span class="cc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></span><span class="cc-nm">급여명세서</span><span class="cc-cnt">자동 계산</span></a>
+        <a class="cat-chip cc-orange" href="forms.html" title="재고·발주표"><span class="cc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16.5 9.4 7.5 4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span><span class="cc-nm">재고·발주표</span><span class="cc-cnt">엑셀</span></a>
+        <a class="cat-chip cc-teal" href="forms.html" title="간이 영수증"><span class="cc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></span><span class="cc-nm">간이 영수증</span><span class="cc-cnt">인쇄용</span></a>
       </div>
     </section>
 
