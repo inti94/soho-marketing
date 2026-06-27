@@ -355,19 +355,7 @@
       var first = true;
       function sectionTear() { if (!first) html += '<div class="soho-tear"></div>'; first = false; }
 
-      if (relCalcs.length) {
-        sectionTear();
-        html += '<div class="soho-sec"><span class="soho-sec-tag t-calc">🧮 관련 계산기</span>';
-        relCalcs.forEach(function (c) {
-          html += '<a class="soho-item" href="' + esc(c.url) + '">' +
-            '<span class="si-ico">' + esc(c.emoji) + '</span>' +
-            '<span class="si-body"><span class="si-t">' + esc(c.name) + '</span>' +
-            '<span class="si-d">' + esc(c.desc || '') + '</span></span>' +
-            '<span class="si-arrow">→</span></a>';
-        });
-        html += '</div>';
-      }
-
+      /* 관련 게시글(가이드) 먼저 — 있을 때만 */
       if (relGuides.length) {
         sectionTear();
         html += '<div class="soho-sec"><span class="soho-sec-tag t-guide">📖 함께 보면 좋은 가이드</span>';
@@ -376,6 +364,20 @@
             '<span class="si-ico">' + guideEmoji(a.cat) + '</span>' +
             '<span class="si-body"><span class="si-t">' + esc(a.title || '') + '</span>' +
             '<span class="si-d">' + esc((a.desc || '').slice(0, 64)) + '</span></span>' +
+            '<span class="si-arrow">→</span></a>';
+        });
+        html += '</div>';
+      }
+
+      /* 관련 계산기 — 그 아래 */
+      if (relCalcs.length) {
+        sectionTear();
+        html += '<div class="soho-sec"><span class="soho-sec-tag t-calc">🧮 관련 계산기</span>';
+        relCalcs.forEach(function (c) {
+          html += '<a class="soho-item" href="' + esc(c.url) + '">' +
+            '<span class="si-ico">' + esc(c.emoji) + '</span>' +
+            '<span class="si-body"><span class="si-t">' + esc(c.name) + '</span>' +
+            '<span class="si-d">' + esc(c.desc || '') + '</span></span>' +
             '<span class="si-arrow">→</span></a>';
         });
         html += '</div>';
