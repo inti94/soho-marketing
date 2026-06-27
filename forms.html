@@ -51,11 +51,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@700&family=Roboto+Mono:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="sohotip.css?v=20260703">
+<link rel="stylesheet" href="sohotip.css?v=20260704">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260703">
-  <link rel="stylesheet" href="assets/soho-cards.css?v=20260703">
-<link rel="stylesheet" href="assets/sohotip-theme.css?v=20260703">
+  <link rel="stylesheet" href="assets/theme.css?v=20260704">
+  <link rel="stylesheet" href="assets/soho-cards.css?v=20260704">
+<link rel="stylesheet" href="assets/sohotip-theme.css?v=20260704">
 
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -137,9 +137,11 @@
   }
 
   /* ── 인디고 통일 오버라이드 (영수증 톤 제거) ── */
+  /* 서식 전용 보조색(오렌지) — 메인 포인트는 #3D5AFE 블루 유지 */
+  :root { --accent: #FF6A00; --accent-light: #FFEDE5; --accent-dark: #E65E00; }
   body { background: var(--bg); background-image: none; color: var(--g900); }
-  .f-hero .label { font-family: inherit; color: var(--primary); letter-spacing: .08em; font-weight: 700; }
-  .f-stamps .stamp { transform: none; border: none; background: var(--primary-light); color: var(--primary); font-weight: 700; font-size: 13px; padding: 7px 14px; border-radius: 100px; box-shadow: none; }
+  .f-hero .label { font-family: inherit; color: var(--accent); letter-spacing: .08em; font-weight: 700; }
+  .f-stamps .stamp { transform: none; border: none; background: var(--accent-light); color: var(--accent); font-weight: 700; font-size: 13px; padding: 7px 14px; border-radius: 100px; box-shadow: none; }
   .f-notice { border: 1px solid var(--g200); background: #fff; color: var(--g600); border-radius: 12px; }
   .f-cat { background: #fff; border: 1px solid var(--g200); box-shadow: 0 1px 8px rgba(0,0,0,.04); border-radius: 20px; }
   .f-cat-title { color: var(--g900); }
@@ -153,6 +155,9 @@
   .f-consult .ct-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-light); color: var(--primary); font-weight: 700; font-size: 13px; padding: 6px 14px; border-radius: 100px; margin-bottom: 12px; }
   .f-consult .ct-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: #fff; font-weight: 700; font-size: 15px; padding: 13px 24px; border-radius: 12px; text-decoration: none; transition: background .15s; }
   .f-consult .ct-btn:hover { background: var(--primary-dark); }
+  /* 다운로드 버튼 = 서식 시그니처 액션 → 오렌지 보조색 (상담 CTA 버튼은 사이트 공통 블루 유지) */
+  .f-dl { background: var(--accent) !important; box-shadow: 0 3px 10px rgba(255,106,0,.25) !important; }
+  .f-dl:hover { background: var(--accent-dark) !important; }
   footer { background: var(--g900); }
   .footer-nav a:hover { color: #7B8FFF; }
 </style>
@@ -324,10 +329,10 @@
 
 <button id="back-to-top" aria-label="맨 위로 이동">↑</button>
 
-<script src="assets/layout.js?v=20260703"></script>
-<script src="sohotip.js?v=20260703"></script>
-<script src="assets/consult.js?v=20260703"></script>
-<script src="assets/soho-cards.js?v=20260703"></script>
+<script src="assets/layout.js?v=20260704"></script>
+<script src="sohotip.js?v=20260704"></script>
+<script src="assets/consult.js?v=20260704"></script>
+<script src="assets/soho-cards.js?v=20260704"></script>
 <script>
 /* forms.html — 이모지 아이콘 → SVG 통일 */
 (function(){
@@ -349,6 +354,6 @@
   });
 })();
 </script>
-<script src="network.js?v=20260703"></script>
+<script src="network.js?v=20260704"></script>
 </body>
 </html>

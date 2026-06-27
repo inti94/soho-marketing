@@ -349,7 +349,7 @@
       if (!relCalcs.length && !relGuides.length && !relForms.length) return;
 
       var html = '<div class="soho-card">' +
-        '<div class="soho-card-top"><span class="sc-h">📋 함께 보면 좋은</span>' +
+        '<div class="soho-card-top"><span class="sc-h"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>함께 보면 좋은</span>' +
         '<span class="sc-no">SOHOTIP · 연관 명세</span></div>';
 
       var first = true;
@@ -358,7 +358,7 @@
       /* 관련 게시글(가이드) 먼저 — 있을 때만 */
       if (relGuides.length) {
         sectionTear();
-        html += '<div class="soho-sec"><span class="soho-sec-tag t-guide">📖 함께 보면 좋은 가이드</span>';
+        html += '<div class="soho-sec"><span class="soho-sec-tag t-guide"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>함께 보면 좋은 가이드</span>';
         relGuides.forEach(function (a) {
           html += '<a class="soho-item" href="' + esc(a.url) + '">' +
             '<span class="si-ico">' + guideEmoji(a.cat) + '</span>' +
@@ -372,7 +372,7 @@
       /* 관련 계산기 — 그 아래 */
       if (relCalcs.length) {
         sectionTear();
-        html += '<div class="soho-sec"><span class="soho-sec-tag t-calc">🧮 관련 계산기</span>';
+        html += '<div class="soho-sec"><span class="soho-sec-tag t-calc"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="12" y2="18"/></svg>관련 계산기</span>';
         relCalcs.forEach(function (c) {
           html += '<a class="soho-item" href="' + esc(c.url) + '">' +
             '<span class="si-ico">' + esc(c.emoji) + '</span>' +
@@ -385,7 +385,7 @@
 
       if (relForms.length) {
         sectionTear();
-        html += '<div class="soho-sec"><span class="soho-sec-tag t-form">📂 무료 서식</span>';
+        html += '<div class="soho-sec"><span class="soho-sec-tag t-form"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px" aria-hidden="true"><path d="M6 14l1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6A2 2 0 0 1 18.46 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2"/></svg>무료 서식</span>';
         relForms.forEach(function (f) {
           html += '<a class="soho-item" href="' + esc(f.url) + '">' +
             '<span class="si-ico">' + esc(f.emoji || '📄') + '</span>' +

@@ -2,14 +2,16 @@
    calc.css — 계산기 상세 페이지 인디고 통일 (옛 인라인 스타일 위에 덮어씀)
    2026-06-27 신규. 계산 로직/마크업 구조는 그대로, 디자인 토큰만 통일.
    theme.css 변수(--primary,--g200 등) 사용. !important로 페이지 인라인 <style> 우선 적용.
+   계산기 상세 전용 보조색(오렌지) — 메인 포인트는 #3D5AFE 블루 유지.
    ================================================================= */
+:root { --accent: #FF6A00; --accent-light: #FFEDE5; }
 
-/* 상단 카테고리 태그 → 인디고 pill (이모지 대신 SVG 아이콘은 마크업에서 주입) */
+/* 상단 카테고리 태그 → 오렌지 보조 pill (메인 CTA는 블루 유지) */
 .page-wrap .tag {
   display: inline-flex !important;
   align-items: center; gap: 6px;
-  background: var(--primary-light, #ECEEFF) !important;
-  color: var(--primary, #3D5AFE) !important;
+  background: var(--accent-light) !important;
+  color: var(--accent) !important;
   font-size: 12px !important; font-weight: 700 !important;
   padding: 6px 13px !important; border-radius: 100px !important;
   margin-bottom: 14px !important; letter-spacing: -.01em;
