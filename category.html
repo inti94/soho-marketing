@@ -90,7 +90,8 @@ a{color:inherit;text-decoration:none;}
 .catinfo .ci-name{font-size:20px;font-weight:800;letter-spacing:-.02em;line-height:1.25;}
 .catinfo .ci-cnt{font-size:14px;font-weight:500;color:#6B7684;margin-top:2px;}
 /* 필터 칩: 높이36 radius pill 14/600 좌우16 (선택=#191F28 배경 흰글자) */
-.chips{display:flex;gap:8px;overflow-x:auto;padding:14px 0 2px;margin:0 -2px;}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:12px 16px 4px;margin:0;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.chips::-webkit-scrollbar{display:none;}
 .chip{flex-shrink:0;height:36px;display:inline-flex;align-items:center;border:1px solid var(--g200);background:var(--white);color:var(--g600);font-family:var(--sans);font-size:14px;font-weight:600;padding:0 16px;border-radius:9999px;white-space:nowrap;transition:all .15s;}
 .chip:hover{border-color:var(--g400);}
 .chip.active{background:var(--g900);color:#fff;border-color:var(--g900);}
@@ -177,7 +178,7 @@ a{color:inherit;text-decoration:none;}
   .fab{bottom:28px;}
   .feed{grid-template-columns:repeat(3,1fr);gap:20px;}
   .bcard:hover{cursor:pointer;}
-  .catinfo,.searchbar,.sortrow,.feed{padding-left:0;padding-right:0;}
+  .catinfo,.searchbar,.chips,.sortrow,.feed{padding-left:0;padding-right:0;}
   .catinfo{border-radius:0;}
   .ad-slot{margin-left:0;margin-right:0;}
 }
@@ -206,17 +207,19 @@ a{color:inherit;text-decoration:none;}
         <div class="ci-cnt" id="ci-cnt">게시글 0개</div>
       </div>
     </div>
-    <nav class="chips" id="chips" role="tablist" aria-label="필터"></nav>
   </section>
 
-  <!-- ── 검색바 ── -->
+  <!-- ── 검색바 (글 목록 바로 위) ── -->
   <div class="searchbar">
     <div class="searchbox">
       <span class="s-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
-      <input type="text" id="cat-q" placeholder="이 카테고리에서 검색…" autocomplete="off" aria-label="카테고리 내 검색">
+      <input type="text" id="cat-q" placeholder="이 카테고리에서 검색…" autocomplete="off" aria-label="가이드 검색">
       <button class="s-clear" id="s-clear" aria-label="검색어 지우기"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
   </div>
+
+  <!-- ── 카테고리 필터 칩 (검색창 아래) ── -->
+  <nav class="chips" id="chips" role="tablist" aria-label="카테고리 필터"></nav>
 
   <!-- ── 정렬 행 ── -->
   <div class="sortrow">
@@ -333,6 +336,7 @@ a{color:inherit;text-decoration:none;}
   var params=new URLSearchParams(location.search);
   var catKey=params.get('cat')||'all';
   var query=(params.get('q')||'').trim();
+  var searchMode=!!query;   /* URL ?q= 로 진입한 '전역 검색' 모드(이때만 칩 숨김·전체 풀 검색) */
   if(!CATS[catKey])catKey='all';
   var cat=CATS[catKey];
   var bm=getBm();
@@ -342,8 +346,9 @@ a{color:inherit;text-decoration:none;}
   /* search-data → 공통 아이템 모양으로 정규화 */
   function normArticle(a){
     var st=splitTag(a.tag);
-    return {e:st.e, cat:st.x, n:a.title, d:a.desc, u:a.url, dt:(a.date||'').replace(/-/g,'.'),
-            rt:a.rt||'', kw:(a.keywords||'')+' '+st.x, date:a.date||'', isCalc:false,
+    var catName=(st.x||'').replace(/\s*·\s*/g,'·').trim();   /* '창업 · 세금'·'창업·세금' 표기 통일 → 칩 중복 방지 */
+    return {e:st.e, cat:catName, n:a.title, d:a.desc, u:a.url, dt:(a.date||'').replace(/-/g,'.'),
+            rt:a.rt||'', kw:(a.keywords||'')+' '+catName, date:a.date||'', isCalc:false,
             t:(a.keywords||'').split(',').slice(0,3)};
   }
   function normCalc(c){
@@ -363,6 +368,7 @@ a{color:inherit;text-decoration:none;}
   function matchSub(item){
     if(activeSub==='전체')return true;
     if(activeSub==='북마크')return window.SohoCards?SohoCards.isBookmarked(item.u):!!bm[item.u];
+    if(catKey==='all')return !item.isCalc && item.cat===activeSub;   /* 전체 가이드: 칩=실제 카테고리(정확 일치) */
     if(item.isCalc)return (item.sub||'')===activeSub;
     return (item.cat+' '+item.kw).toLowerCase().indexOf(activeSub.toLowerCase())>=0;
   }
@@ -423,8 +429,8 @@ a{color:inherit;text-decoration:none;}
 
   function currentSet(){
     var set=ALL.filter(function(it){
-      if(query)return matchQuery(it);   /* 검색 모드: 전체 풀에서 검색 */
-      return matchCat(it)&&matchSub(it);
+      if(searchMode)return matchQuery(it);   /* 전역 검색(?q=): 전체 풀에서 검색 */
+      return matchCat(it)&&matchSub(it)&&matchQuery(it);   /* 일반: 카테고리 칩 + 검색 결합 */
     });
     return sortItems(set);
   }
@@ -442,20 +448,32 @@ a{color:inherit;text-decoration:none;}
   }
 
   function renderHeader(){
-    var iconName=query?'Search':(CAT_ICON[catKey]||'BookOpen');
-    var name=query?('“'+query+'” 검색 결과'):cat.name;
-    document.getElementById('cat-title-text').textContent=query?('“'+query+'” 검색'):cat.name;
+    var iconName=searchMode?'Search':(CAT_ICON[catKey]||'BookOpen');
+    var name=searchMode?('“'+query+'” 검색 결과'):cat.name;
+    document.getElementById('cat-title-text').textContent=searchMode?('“'+query+'” 검색'):cat.name;
     document.getElementById('cat-title-ico').innerHTML=iconSvg(iconName,18);
     document.getElementById('ci-ico').innerHTML=iconSvg(iconName,28);
     document.getElementById('ci-name').textContent=name;
     document.title=name+' | 소호팁';
   }
 
+  /* 전체 가이드: 실제 글들이 속한 카테고리만 자동 추출 (정렬: 글 많은 순) */
+  function guideCategories(){
+    var cnt={},order=[];
+    ALL.forEach(function(it){
+      if(it.isCalc||!it.cat)return;
+      if(cnt[it.cat]==null){cnt[it.cat]=0;order.push(it.cat);}
+      cnt[it.cat]++;
+    });
+    order.sort(function(a,b){return cnt[b]-cnt[a];});
+    return ['전체'].concat(order).concat(['북마크']);
+  }
   function renderChips(){
     var box=document.getElementById('chips');
-    if(query){box.style.display='none';return;}
+    if(searchMode){box.style.display='none';return;}   /* 전역 검색 결과 화면에서만 칩 숨김 */
     box.style.display='';
-    box.innerHTML=(cat.sub||['전체','북마크']).map(function(s){
+    var subs=(catKey==='all')?guideCategories():(cat.sub||['전체','북마크']);
+    box.innerHTML=subs.map(function(s){
       return '<button class="chip'+(s===activeSub?' active':'')+'" data-sub="'+esc(s)+'" role="tab" aria-selected="'+(s===activeSub?'true':'false')+'">'+esc(s)+'</button>';
     }).join('');
   }
@@ -463,10 +481,11 @@ a{color:inherit;text-decoration:none;}
   function renderFeed(){
     var set=currentSet();
     document.getElementById('total-cnt').textContent=set.length;
-    document.getElementById('ci-cnt').textContent=(query?'검색 결과 ':'게시글 ')+set.length+'개';
+    document.getElementById('ci-cnt').textContent=(searchMode?'검색 결과 ':'게시글 ')+set.length+'개';
     var feed=document.getElementById('feed');
     if(!set.length){
-      feed.innerHTML='<div class="empty" style="grid-column:1/-1"><span class="em" aria-hidden="true"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>'+(activeSub==='북마크'?'아직 북마크한 글이 없어요. 카드의 북마크 버튼으로 저장해 보세요.':'조건에 맞는 글이 없어요.')+'</div>';
+      var emptyMsg=activeSub==='북마크'?'아직 북마크한 글이 없어요. 카드의 북마크 버튼으로 저장해 보세요.':(catKey==='all'?'조건에 맞는 가이드가 없어요.':'조건에 맞는 글이 없어요.');
+      feed.innerHTML='<div class="empty" style="grid-column:1/-1"><span class="em" aria-hidden="true"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>'+emptyMsg+'</div>';
       return;
     }
     feed.innerHTML=set.map(card).join('');
@@ -495,10 +514,11 @@ a{color:inherit;text-decoration:none;}
   });
   document.getElementById('sort').addEventListener('change',function(){sortMode=this.value;renderFeed();});
   var qIn=document.getElementById('cat-q'), clr=document.getElementById('s-clear');
+  if(catKey==='all')qIn.placeholder='가이드 검색...';
   qIn.addEventListener('input',function(){
     query=this.value.trim();
     clr.classList.toggle('show',!!query);
-    renderAll();
+    if(searchMode)renderAll(); else renderFeed();   /* 일반 모드: 칩 유지하고 피드만 갱신 */
   });
   clr.addEventListener('click',function(){qIn.value='';query='';clr.classList.remove('show');renderAll();qIn.focus();});
 
