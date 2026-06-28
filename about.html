@@ -4,22 +4,42 @@
 <meta charset="UTF-8">
 <script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>소개 - 소호팁</title>
-<meta name="description" content="소호팁(sohotip.co.kr)은 소상공인과 자영업 사장님을 위한 실전 마케팅 팁과 무료 계산기를 제공하는 정보 사이트입니다.">
+<title>소개 · 운영자 — 소호팁 (소상공인 마케터 인티)</title>
+<meta name="description" content="소호팁 운영자 인티 소개. 숏폼 영상 제작, 네이버 플레이스 최적화, 소상공인 마케팅 컨설팅을 직접 하는 실무자가 현장 경험을 글과 무료 계산기로 정리합니다. 문의 sap01257@gmail.com">
 <meta name="robots" content="index, follow">
+<meta name="author" content="인티 (멘토마케팅 / 소상공인 마케터)">
 <link rel="canonical" href="https://sohotip.co.kr/about.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="소개 - 소호팁">
-<meta property="og:description" content="소호팁(sohotip.co.kr)은 소상공인과 자영업 사장님을 위한 실전 마케팅 팁과 무료 계산기를 제공하는 정보 사이트입니다.">
+<meta property="og:title" content="소개 · 운영자 — 소호팁 (소상공인 마케터 인티)">
+<meta property="og:description" content="숏폼 영상 제작·네이버 플레이스 최적화·소상공인 마케팅 컨설팅을 직접 하는 실무자가 운영하는 소호팁.">
 <meta property="og:url" content="https://sohotip.co.kr/about.html">
 <meta property="og:image" content="https://sohotip.co.kr/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:site_name" content="소상공인 마케팅 실전백과">
+<meta property="og:site_name" content="소호팁">
+
+<!-- 운영자(작성자) 프로필 구조화 데이터 — 글의 author.url 이 이 페이지를 가리킴 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "url": "https://sohotip.co.kr/about.html",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "인티",
+    "url": "https://sohotip.co.kr/about.html",
+    "jobTitle": "소상공인 마케터",
+    "worksFor": {"@type": "Organization", "name": "멘토마케팅"},
+    "email": "sap01257@gmail.com",
+    "knowsAbout": ["소상공인 마케팅", "네이버 플레이스 최적화", "숏폼 영상 제작", "자영업 홍보", "배달앱 운영"],
+    "description": "숏폼 영상 제작, 네이버 플레이스 최적화, 소상공인 마케팅 컨설팅을 직접 하는 실무자이자 소호팁(sohotip.co.kr) 운영자."
+  }
+}
+</script>
 <style>
   :root{
     --bg:#ffffff; --text:#23262b; --muted:#5f6671; --line:#e8ebef;
-    --accent:#2563a8; --soft:#f5f7fa;
+    --accent:#3D5AFE; --soft:#f5f7fa;
   }
   *{box-sizing:border-box;}
   body{
@@ -52,6 +72,18 @@
   a{color:var(--accent); text-decoration:none;}
   a:hover{text-decoration:underline;}
   .back{display:inline-block; margin-top:48px; font-size:15px; color:var(--muted);}
+  h3{font-size:16px; font-weight:700; margin:26px 0 10px; color:var(--text);}
+  .author-card{display:flex; align-items:center; gap:14px; background:var(--soft); border:1px solid var(--line); border-radius:12px; padding:16px 18px; margin:6px 0 16px;}
+  .author-card .ac-av{width:48px; height:48px; border-radius:50%; flex-shrink:0; display:grid; place-items:center; background:#ECEEFF; color:var(--accent);}
+  .author-card .ac-av svg{width:26px; height:26px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;}
+  .author-card .ac-name{font-size:17px; font-weight:700; color:var(--text);}
+  .author-card .ac-role{font-size:13px; font-weight:500; color:var(--muted); margin-left:7px;}
+  .author-card .ac-org{font-size:13px; color:var(--muted); margin-top:3px;}
+  .contact-row{display:flex; flex-wrap:wrap; gap:10px; margin:8px 0 6px;}
+  .contact-btn{display:inline-flex; align-items:center; gap:8px; background:var(--accent); color:#fff; font-size:14px; font-weight:600; padding:12px 18px; border-radius:12px;}
+  .contact-btn:hover{text-decoration:none; opacity:.92;}
+  .contact-btn.ghost{background:#fff; color:var(--accent); border:1px solid var(--accent);}
+  .contact-btn svg{width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;}
 </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="stylesheet" href="assets/theme.css?v=20260628">
@@ -91,8 +123,30 @@
     <li><strong>꾸준히.</strong> 변화하는 플랫폼 환경에 맞춰 정보를 업데이트합니다.</li>
   </ul>
 
-  <h2>운영자</h2>
-  <p>소호팁은 개인 운영자 <strong>인티</strong>가 직접 콘텐츠를 기획하고 작성·관리합니다. 소상공인 마케팅 현장에서 얻은 경험을 바탕으로, 실제로 도움이 되는 정보만 전하려 노력합니다. 문의나 제안은 언제든 <a href="contact.html">연락처 페이지</a>를 통해 보내주세요.</p>
+  <h2>운영자 · 작성자</h2>
+  <div class="author-card">
+    <span class="ac-av" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+    <div>
+      <div class="ac-name">인티<span class="ac-role">소상공인 마케터</span></div>
+      <div class="ac-org">멘토마케팅 운영 · 소호팁 기획·작성·운영</div>
+    </div>
+  </div>
+  <p>소호팁의 모든 글은 소상공인 마케팅 현장에서 일하는 <strong>인티</strong>가 직접 기획하고 씁니다. 책상에서 정리한 이론이 아니라, 실제로 가게를 홍보하고 손님을 늘리는 일을 하면서 부딪힌 경험을 바탕으로 합니다.</p>
+
+  <h3>실제로 하는 일</h3>
+  <ul>
+    <li><strong>숏폼 영상 제작.</strong> 가게·메뉴·매장 분위기를 짧은 영상으로 만들어 인스타그램 릴스, 유튜브 숏츠 등에 올립니다. 기획·촬영·편집을 직접 합니다.</li>
+    <li><strong>네이버 플레이스 최적화.</strong> 가게 정보·사진·키워드·리뷰를 손봐 검색에서 더 잘 보이도록 하고, 리뷰 응대까지 함께 관리합니다.</li>
+    <li><strong>소상공인 마케팅 컨설팅.</strong> 업종·상권·예산에 맞춰 무엇부터 손볼지 같이 정하고, 광고비를 효율적으로 쓰는 방법을 현장 기준으로 조언합니다.</li>
+  </ul>
+  <p>이 일들을 하면서 "사장님들이 같은 부분에서 똑같이 막힌다"는 걸 자주 느꼈습니다. 그 답을 한 번 정리해 두면 더 많은 사장님이 직접 해볼 수 있겠다 싶어 만든 곳이 소호팁이고, 글과 무료 계산기 모두 그 현장 경험에서 나옵니다.</p>
+
+  <h3>연락처</h3>
+  <p>마케팅 상담, 숏폼·플레이스 작업 문의, 글 관련 제안은 이메일로 보내주세요. 확인하는 대로 보통 1영업일 안에 답장드립니다.</p>
+  <div class="contact-row">
+    <a class="contact-btn" href="mailto:sap01257@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></svg>sap01257@gmail.com</a>
+    <a class="contact-btn ghost" href="contact.html">문의 페이지</a>
+  </div>
 
   <a class="back" href="/">← 소호팁 홈으로</a>
 </div>
