@@ -136,77 +136,6 @@
     });
   }
 
-  /* ── 본문 목차(가이드 글 전용) 자동 생성 ──
-     · .article-content 안의 H2/H3를 추출해 본문 맨 위에 목차 블록 삽입
-     · H2가 2개 미만이면 생략(짧은 글). 클릭 시 고정 헤더 높이만큼 보정해 부드럽게 스크롤
-     · 데스크톱 레거시 사이드바 목차(.sidebar-toc)는 중복 방지로 숨김(사이드바 광고는 유지) */
-  function escHtml(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-  function injectArticleCss() {
-    if (document.getElementById('soho-toc-css')) return;
-    var s = document.createElement('style');
-    s.id = 'soho-toc-css';
-    s.textContent =
-      '#progress{position:fixed;top:0;left:0;height:3px;width:0;max-width:100%;background:#3D5AFE;z-index:1200;transition:width .08s linear;pointer-events:none;}' +
-      '.soho-toc{background:#fff;border:1px solid #E5E8EB;border-radius:14px;padding:14px 16px 12px;margin:0 0 24px;}' +
-      '.soho-toc-head{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:800;color:#191F28;letter-spacing:-.01em;margin-bottom:8px;}' +
-      '.soho-toc-head svg{width:16px;height:16px;flex:none;stroke:#3D5AFE;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}' +
-      '.soho-toc-list{list-style:none;margin:0;padding:0;}' +
-      '.soho-toc-list li{margin:0;}' +
-      '.soho-toc-list a{display:block;padding:6px 8px;border-radius:8px;font-size:14px;line-height:1.45;color:#4E5968;text-decoration:none;transition:background .12s,color .12s;}' +
-      '.soho-toc-list a:hover,.soho-toc-list a:focus{background:#F2F4F6;color:#3D5AFE;}' +
-      '.soho-toc-list li.lv3 a{padding-left:24px;font-size:13px;color:#6B7684;}' +
-      '.soho-toc-list li.lv3 a::before{content:"";position:relative;left:-12px;display:inline-block;width:4px;height:4px;border-radius:50%;background:#C4CAD1;vertical-align:middle;}' +
-      '.article-content h2,.article-content h3{scroll-margin-top:84px;}' +
-      '.sidebar-toc{display:none!important;}';
-    document.head.appendChild(s);
-  }
-  /* 읽기 진행바: 글 템플릿의 스크립트가 #progress 를 찾는데 요소가 #progress-bar 로 잘못 박혀
-     매 스크롤마다 null.style 에러가 나던 것을 #progress 주입으로 바로잡음(에러 제거 + 진행바 복구) */
-  function ensureProgressBar() {
-    if (!document.querySelector('.article-content')) return;
-    if (document.getElementById('progress')) return;
-    injectArticleCss();
-    var bar = document.createElement('div');
-    bar.id = 'progress';
-    bar.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(bar);
-  }
-  function buildTOC() {
-    var content = document.querySelector('.article-content');
-    if (!content || content.querySelector('.soho-toc')) return;
-    var heads = content.querySelectorAll('h2, h3');
-    var h2n = 0, i;
-    for (i = 0; i < heads.length; i++) if (heads[i].tagName === 'H2') h2n++;
-    if (h2n < 2) return;                         // 짧은 글(H2 2개 미만) → 목차 생략
-    var lis = '', made = 0, seq = 0;
-    for (i = 0; i < heads.length; i++) {
-      var h = heads[i];
-      var txt = (h.textContent || '').replace(/\s+/g, ' ').trim();
-      if (!txt) continue;
-      if (!h.id) h.id = 'sec-' + (++seq);
-      lis += '<li class="lv' + (h.tagName === 'H3' ? 3 : 2) + '"><a href="#' + h.id + '">' + escHtml(txt) + '</a></li>';
-      made++;
-    }
-    if (made < 2) return;
-    injectArticleCss();
-    var listSvg = '<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>';
-    var nav = document.createElement('nav');
-    nav.className = 'soho-toc';
-    nav.setAttribute('aria-label', '목차');
-    nav.innerHTML = '<div class="soho-toc-head">' + listSvg + '목차</div><ul class="soho-toc-list">' + lis + '</ul>';
-    content.insertBefore(nav, content.firstChild);
-    nav.addEventListener('click', function (e) {
-      var a = e.target.closest('a');
-      if (!a) return;
-      e.preventDefault();
-      var t = document.getElementById((a.getAttribute('href') || '').slice(1));
-      if (!t) return;
-      /* scroll-margin-top(84px)로 고정 헤더 보정 — 브라우저 네이티브라 레이아웃 변동에도 안정적 */
-      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      if (history.replaceState) history.replaceState(null, '', '#' + t.id);
-    });
-  }
-
   /* ── 실행 ── */
   function mount() {
     if (document.documentElement.classList.contains('soho-chrome')) return;
@@ -217,8 +146,6 @@
     body.insertBefore(buildHeader(), body.firstChild);
     document.documentElement.classList.add('soho-chrome');
     wireSearch();
-    ensureProgressBar();
-    buildTOC();
   }
 
   if (document.body) {
