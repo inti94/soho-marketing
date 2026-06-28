@@ -146,6 +146,11 @@ async function attempt() {
   if (!/class="article-content"/.test(fullHtml) || !/sohotip\.js/.test(fullHtml) || !/<ins/.test(fullHtml))
     throw { msg: 'HTML 구조 검증 실패(필수 요소 누락)' };
 
+  // JSON-LD 블록은 전부 유효해야 함 — Gemini가 본문 따옴표를 이스케이프 안 해 깨뜨리는 경우 방지(재생성 유도)
+  for (const m of fullHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    try { JSON.parse(m[1]); } catch (e) { throw { msg: 'JSON-LD 파싱 실패(구조화 데이터 불량)' }; }
+  }
+
   return { meta, fullHtml, slug };
 }
 
