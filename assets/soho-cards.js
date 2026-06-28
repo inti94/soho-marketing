@@ -94,11 +94,15 @@
       'stroke-linejoin="round" aria-hidden="true">' + paths + '</svg>';
   }
 
-  /* CategoryIcon 대체: 색상 라운드 배경 + 아이콘 */
+  /* CategoryIcon 대체: 색상 라운드 배경 + 아이콘
+   * size: 'sm'(32) | 'md'(40) | 'lg'(44) | 숫자(px). radius는 CSS .sc-cicon(12px) 고정. */
   function categoryIcon(name, color, size) {
-    var px = size === 'sm' ? 32 : 40;          // sm=32, md=40
-    var ipx = size === 'sm' ? 16 : 20;
-    return '<span class="sc-cicon sc-cicon--' + (size || 'md') + '" ' +
+    var px = typeof size === 'number' ? size
+      : size === 'sm' ? 32
+      : size === 'lg' ? 44
+      : 40;                                    // md(기본)
+    var ipx = Math.round(px * 0.5);            // 40→20, 44→22, 36→18, 32→16
+    return '<span class="sc-cicon" ' +
       'style="color:' + esc(color) + ';background:' + esc(color) + '14;width:' + px + 'px;height:' + px + 'px">' +
       icon(name, ipx) + '</span>';
   }
@@ -132,10 +136,11 @@
       '" data-bmsize="' + (size || 16) + '">' +
       icon('Bookmark', size || 16) + '</button>';
   }
-  function badges(isNew, isHot) {
+  function badges(isNew, isHot, inline) {
+    var cls = inline ? ' sc-badge--inline' : '';
     var out = '';
-    if (isNew) out += '<span class="sc-badge sc-badge--new">NEW</span>';
-    if (isHot) out += '<span class="sc-badge sc-badge--hot">HOT</span>';
+    if (isNew) out += '<span class="sc-badge sc-badge--new' + cls + '">NEW</span>';
+    if (isHot) out += '<span class="sc-badge sc-badge--hot' + cls + '">HOT</span>';
     return out;
   }
   function tags(list, kind) {
@@ -154,15 +159,14 @@
     var url = a.url || ('https://sohotip.co.kr/guide/' + (a.id || ''));
     var head =
       '<div class="sc-card-top">' +
-        '<div class="sc-cat">' + categoryIcon(a.categoryIcon || 'FileText', color, 'sm') +
+        '<div class="sc-cat">' + categoryIcon(a.categoryIcon || 'FileText', color, 'md') +
           '<span class="sc-cat-name">' + esc(a.categoryName || '') + '</span></div>' +
         '<div class="sc-actions">' + bookmarkBtn(16, url) +
           shareSlot(a.title || '', a.desc || '', url) + '</div>' +
       '</div>';
     var body =
       '<div class="sc-art-body">' +
-        ((a.isNew || a.isHot) ? '<div class="sc-badges">' + badges(a.isNew, a.isHot) + '</div>' : '') +
-        '<h3 class="sc-title sc-title--art">' + esc(a.title || '') + '</h3>' +
+        '<h3 class="sc-title sc-title--art">' + badges(a.isNew, a.isHot, true) + esc(a.title || '') + '</h3>' +
         '<p class="sc-desc sc-desc--art">' + esc(a.desc || '') + '</p>' +
       '</div>';
     /* 썸네일(있을 때만) 우측 80x80 */
@@ -188,18 +192,18 @@
     var href = c.href || ('/calculator/' + (c.id || ''));
 
     if (variant === 'rank') {
-      var rankColor = rank === 1 ? '#3D5AFE' : rank === 2 ? '#00C471' : rank === 3 ? '#FFB800' : '#C4C9D4';
       return '<a class="sc-rank" href="' + esc(href) + '">' +
-        '<span class="sc-rank-num" style="color:' + rankColor + '">' + esc(rank) + '</span>' +
-        categoryIcon(iconName, color, 'sm') +
+        '<span class="sc-rank-num">' + esc(rank) + '</span>' +
+        categoryIcon(iconName, color, 44) +
         '<span class="sc-rank-body"><span class="sc-rank-name">' + esc(c.name || '') + '</span>' +
         '<span class="sc-rank-desc">' + esc(c.desc || '') + '</span></span>' +
-        '<span class="sc-rank-views">' + formatCount(c.views) + '회</span></a>';
+        '<span class="sc-rank-right"><span class="sc-rank-views">' + formatCount(c.views) + '회</span>' +
+        '<span class="sc-rank-arrow">' + icon('ArrowRight', 16) + '</span></span></a>';
     }
 
     if (variant === 'compact') {
       return '<a class="sc-compact" href="' + esc(href) + '">' +
-        categoryIcon(iconName, color, 'md') +
+        categoryIcon(iconName, color, 36) +
         '<span class="sc-compact-body"><span class="sc-compact-name">' + esc(c.name || '') + '</span>' +
         '<span class="sc-compact-desc">' + esc(c.desc || '') + '</span></span>' +
         '<span class="sc-compact-arrow">' + icon('ArrowRight', 16) + '</span></a>';

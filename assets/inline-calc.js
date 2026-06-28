@@ -42,14 +42,40 @@
     return fetch('search-index.json').then(function (r) { return r.json(); }).catch(function () { return []; });
   }
 
-  var GUIDE_EMOJI = {
-    '네이버 플레이스': '📍', '배달앱': '🛵', 'SNS': '📱',
-    '소상공인 지원금': '💰', '창업': '🏪', '계산기': '🧮',
+  /* ── 아이콘(이모지 금지 → SVG, ③ SohoCards.icon 재사용) ── */
+  /* 계산기 슬러그 → 아이콘 이름 */
+  var SLUG_ICON = {
+    'alba-cost-calc': 'Users', 'delivery-profit-calc': 'Bike', 'vat-calc': 'Receipt',
+    'bep-calc': 'TrendingUp', 'food-cost-calc': 'UtensilsCrossed', 'severance-calc': 'Briefcase',
+    'weekly-pay-calc': 'Clock', 'insurance-4d-calc': 'Shield', 'annual-leave-calc': 'CalendarDays',
+    'store-profit-calc': 'BarChart2', 'delivery-ads-calc': 'Megaphone', 'naver-ads-calc': 'MapPin',
+    'rent-increase-calc': 'Home', 'card-fee-calc': 'CreditCard', 'premium-calc': 'KeyRound',
+    'loan-interest-calc': 'Banknote', 'closure-cost-calc': 'Package', 'startup-cost-calc': 'Rocket'
   };
-  function guideEmoji(cat) {
+  /* 가이드 카테고리(부분일치) → {아이콘, 색} */
+  var CAT_VIS = [
+    { k: '플레이스', i: 'MapPin', c: '#00C471' },
+    { k: '배달', i: 'Bike', c: '#FF6B35' },
+    { k: 'SNS', i: 'Camera', c: '#E040FB' }, { k: '숏폼', i: 'Camera', c: '#E040FB' },
+    { k: '지원금', i: 'Banknote', c: '#FFB800' },
+    { k: '창업', i: 'FileText', c: '#F04452' }, { k: '세금', i: 'FileText', c: '#F04452' }
+  ];
+  function catVis(cat) {
     cat = cat || '';
-    for (var k in GUIDE_EMOJI) { if (cat.indexOf(k) !== -1) return GUIDE_EMOJI[k]; }
-    return '📄';
+    for (var i = 0; i < CAT_VIS.length; i++) { if (cat.indexOf(CAT_VIS[i].k) !== -1) return CAT_VIS[i]; }
+    return { i: 'FileText', c: '#3D5AFE' };
+  }
+  /* SVG 아이콘: SohoCards.icon 우선, 없으면 빈 박스 */
+  function iconSVG(name, size) {
+    return (window.SohoCards && SohoCards.icon) ? SohoCards.icon(name, size || 22) : '';
+  }
+  /* 44x44 연한 색 아이콘 박스 */
+  function iconBox(name, color) {
+    return '<span class="soho-ico" style="background:' + color + '1A;color:' + color + '">' + iconSVG(name, 22) + '</span>';
+  }
+  var ARROW_R = '<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>';
+  function arrowRight() {
+    return '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ARROW_R + '</svg>';
   }
 
   /* ── 1. 공통 스타일 1회 주입 ───────────────────── */
@@ -59,29 +85,32 @@
       ':root{}',
       '.soho-reco,.soho-mini{font-family:var(--sans,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif);}',
 
-      /* 함께 보면 좋은 (영수증 명세서) */
-      '.soho-reco{max-width:680px;margin:40px auto 0;}',
+      /* 함께 보면 좋은 — 정밀 흰카드(게시글 먼저 → 계산기) */
+      '.soho-reco{max-width:680px;margin:30px auto 0;}',
       '.page-wrap .soho-reco{max-width:100%;}',
-      '.soho-card{background:var(--receipt,#fff);border:1px solid var(--line,#EDE3D5);border-radius:14px;box-shadow:0 10px 30px rgba(42,32,24,.10),0 2px 6px rgba(42,32,24,.05);padding:8px 22px 20px;}',
-      '.soho-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 0 4px;}',
-      '.soho-card-top .sc-h{font-size:16px;font-weight:800;color:var(--ink,#2A2018);letter-spacing:-.02em;}',
-      '.soho-card-top .sc-no{font-family:var(--mono,"Roboto Mono","Consolas",monospace);font-size:11px;color:var(--sub,#8A7B6B);letter-spacing:.06em;}',
-      '.soho-sec{padding:6px 0 2px;}',
-      '.soho-sec-tag{display:inline-block;font-size:11px;font-weight:800;padding:3px 10px;border-radius:6px;margin:6px 0 4px;}',
-      '.soho-sec-tag.t-calc{color:var(--orange-d,#2438B0);background:var(--soft,#FFEEE2);}',
-      '.soho-sec-tag.t-guide{color:var(--sub,#8A7B6B);background:#F1ECE3;}',
-      '.soho-sec-tag.t-form{color:#147a52;background:#E3F6EE;}',
-      '.soho-item{display:flex;align-items:center;gap:12px;padding:12px 8px;margin:0 -8px;border-radius:9px;text-decoration:none;color:var(--ink,#2A2018);transition:background .15s;}',
-      '.soho-item+.soho-item{border-top:1px dotted var(--line,#EDE3D5);}',
-      '.soho-item:hover{background:var(--paper,#FBF6EE);}',
-      '.soho-item .si-ico{font-size:24px;flex-shrink:0;line-height:1;}',
+      '.soho-card{background:#fff;border:1px solid var(--g200,#E5E8EB);border-radius:24px;box-shadow:0 1px 8px rgba(0,0,0,.04);padding:6px 20px 14px;}',
+      '.soho-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 0 6px;}',
+      '.soho-card-top .sc-h{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:700;color:var(--g900,#191F28);letter-spacing:-.02em;}',
+      '.soho-card-top .sc-h svg{width:18px;height:18px;stroke:var(--primary,#3D5AFE);fill:none;flex-shrink:0;}',
+      '.soho-card-top .sc-no{font-size:12px;color:#ADB5BD;letter-spacing:.01em;white-space:nowrap;}',
+      '.soho-sec{padding:2px 0;}',
+      '.soho-sec-tag{display:block;font-size:13px;font-weight:700;color:var(--g900,#191F28);margin:10px 0 2px;}',
+      '.soho-item{display:flex;align-items:center;gap:12px;height:72px;text-decoration:none;color:var(--g900,#191F28);}',
+      '.soho-item+.soho-item{border-top:1px solid var(--g100,#F2F4F6);}',
+      '.soho-ico{width:44px;height:44px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}',
+      '.soho-ico svg{width:22px;height:22px;stroke:currentColor;fill:none;}',
       '.soho-item .si-body{flex:1;min-width:0;}',
-      '.soho-item .si-t{font-size:14.5px;font-weight:700;line-height:1.3;}',
-      '.soho-item .si-d{font-size:12px;color:var(--sub,#8A7B6B);line-height:1.45;margin-top:2px;}',
-      '.soho-item .si-arrow{flex-shrink:0;color:var(--orange,#3D5AFE);font-size:17px;font-weight:700;}',
-      '.soho-tear{position:relative;height:0;border-top:2px dashed var(--dash,#D6C8B6);margin:14px 0 6px;}',
-      '.soho-tear::before,.soho-tear::after{content:"";position:absolute;top:50%;width:20px;height:20px;background:var(--bg,#FAFAF8);border-radius:50%;transform:translateY(-50%);}',
-      '.soho-tear::before{left:-32px;}.soho-tear::after{right:-32px;}',
+      '.soho-item .si-t{font-size:15px;font-weight:700;line-height:1.3;color:var(--g900,#191F28);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}',
+      '.soho-item .si-d{font-size:13px;color:#6B7684;line-height:1.4;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}',
+      '.soho-item .si-arrow{flex-shrink:0;color:var(--g300,#C4C9D4);display:flex;}',
+      '.soho-tear{height:0;border-top:1px dashed var(--g200,#E5E8EB);margin:12px 0;}',
+
+      /* 맨 위로 플로팅(오렌지 원, 탭바와 안 겹침) */
+      '.soho-backtop{position:fixed;right:16px;bottom:calc(var(--tabbar-h,72px) + 16px);width:52px;height:52px;border-radius:50%;border:none;background:#FF6A00;color:#fff;display:none;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 24px rgba(255,106,0,.45);z-index:300;transition:transform .15s;-webkit-tap-highlight-color:transparent;}',
+      '.soho-backtop.show{display:inline-flex;}',
+      '.soho-backtop:active{transform:scale(.92);}',
+      '.soho-backtop svg{width:24px;height:24px;stroke:currentColor;fill:none;}',
+      '@media (min-width:769px){.soho-backtop{bottom:24px;}}',
 
       /* 미니 계산기 (영수증 박스) — 플레이스홀더(.inline-calc[data-calc]) 리셋 */
       '.inline-calc[data-calc]{all:unset;display:block;margin:30px 0;}',
@@ -349,49 +378,52 @@
       if (!relCalcs.length && !relGuides.length && !relForms.length) return;
 
       var html = '<div class="soho-card">' +
-        '<div class="soho-card-top"><span class="sc-h"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>함께 보면 좋은</span>' +
-        '<span class="sc-no">SOHOTIP · 연관 명세</span></div>';
+        '<div class="soho-card-top"><span class="sc-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>함께 보면 좋은</span>' +
+        '<span class="sc-no">SOHOTIP · 연관</span></div>';
 
       var first = true;
       function sectionTear() { if (!first) html += '<div class="soho-tear"></div>'; first = false; }
 
-      /* 관련 게시글(가이드) 먼저 — 있을 때만 */
+      /* (1) 관련 게시글(가이드) 먼저 — 있을 때만(빈 섹션 금지) */
       if (relGuides.length) {
         sectionTear();
-        html += '<div class="soho-sec"><span class="soho-sec-tag t-guide"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>함께 보면 좋은 가이드</span>';
+        html += '<div class="soho-sec"><span class="soho-sec-tag">함께 보면 좋은 가이드</span>';
         relGuides.forEach(function (a) {
+          var v = catVis(a.cat);
           html += '<a class="soho-item" href="' + esc(a.url) + '">' +
-            '<span class="si-ico">' + guideEmoji(a.cat) + '</span>' +
+            iconBox(v.i, v.c) +
             '<span class="si-body"><span class="si-t">' + esc(a.title || '') + '</span>' +
             '<span class="si-d">' + esc((a.desc || '').slice(0, 64)) + '</span></span>' +
-            '<span class="si-arrow">→</span></a>';
+            '<span class="si-arrow">' + arrowRight() + '</span></a>';
         });
         html += '</div>';
       }
 
-      /* 관련 계산기 — 그 아래 */
+      /* (2) 관련 계산기 — 게시글 다음 */
       if (relCalcs.length) {
         sectionTear();
-        html += '<div class="soho-sec"><span class="soho-sec-tag t-calc"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="12" y2="18"/></svg>관련 계산기</span>';
+        html += '<div class="soho-sec"><span class="soho-sec-tag">관련 계산기</span>';
         relCalcs.forEach(function (c) {
+          var ic = SLUG_ICON[slugOfFile(c.url)] || 'Calculator';
           html += '<a class="soho-item" href="' + esc(c.url) + '">' +
-            '<span class="si-ico">' + esc(c.emoji) + '</span>' +
+            iconBox(ic, '#3D5AFE') +
             '<span class="si-body"><span class="si-t">' + esc(c.name) + '</span>' +
             '<span class="si-d">' + esc(c.desc || '') + '</span></span>' +
-            '<span class="si-arrow">→</span></a>';
+            '<span class="si-arrow">' + arrowRight() + '</span></a>';
         });
         html += '</div>';
       }
 
+      /* (3) 무료 서식 — 있을 때만 */
       if (relForms.length) {
         sectionTear();
-        html += '<div class="soho-sec"><span class="soho-sec-tag t-form"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px" aria-hidden="true"><path d="M6 14l1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6A2 2 0 0 1 18.46 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2"/></svg>무료 서식</span>';
+        html += '<div class="soho-sec"><span class="soho-sec-tag">무료 서식</span>';
         relForms.forEach(function (f) {
           html += '<a class="soho-item" href="' + esc(f.url) + '">' +
-            '<span class="si-ico">' + esc(f.emoji || '📄') + '</span>' +
+            iconBox('FolderOpen', '#00C471') +
             '<span class="si-body"><span class="si-t">' + esc(f.name) + '</span>' +
             '<span class="si-d">' + esc(f.desc || '') + '</span></span>' +
-            '<span class="si-arrow">↓</span></a>';
+            '<span class="si-arrow">' + arrowRight() + '</span></a>';
         });
         html += '</div>';
       }
@@ -441,22 +473,62 @@
     });
   }
 
-  /* ── 6. 초기화 ───────────────────────────────── */
+  /* ── 6. 인건비 계산기 → 카테고리 배지 블루(나머지는 calc.css 오렌지) ── */
+  function colorTag() {
+    var map = window.SOHO_CALC_MAP;
+    if (!map || !map.calcs) return;
+    var entry = map.calcs[currentSlug()];
+    if (!entry || entry.cat !== 'labor') return;
+    var tag = document.querySelector('.page-wrap .tag');
+    if (tag) tag.classList.add('tag--blue');
+  }
+
+  /* ── 7. 맨 위로 플로팅(계산기 상세 페이지에서만) ── */
+  function renderBackToTop() {
+    var map = window.SOHO_CALC_MAP;
+    if (!map || !map.calcs || !map.calcs[currentSlug()]) return;   // 등록된 계산기 상세에서만
+    if (document.getElementById('soho-backtop')) return;
+    injectStyle();
+    var b = document.createElement('button');
+    b.id = 'soho-backtop';
+    b.type = 'button';
+    b.className = 'soho-backtop';
+    b.setAttribute('aria-label', '맨 위로');
+    b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>';
+    b.addEventListener('click', function () {
+      try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); }
+    });
+    document.body.appendChild(b);
+    function onScroll() {
+      var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+      b.classList.toggle('show', y > 300);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ── 8. 초기화 ───────────────────────────────── */
   function init() {
     try { renderMiniCalcs(); } catch (e) {}
+    try { colorTag(); } catch (e) {}
     try { renderCalcHub(); } catch (e) {}
+    try { renderBackToTop(); } catch (e) {}
     try { persistFullCalc(); } catch (e) {}
   }
 
-  /* calc-map.js 가 아직 없으면 로드 후 실행 */
-  function start() {
-    if (window.SOHO_CALC_MAP) { init(); return; }
+  /* soho-cards.js(③ 아이콘) → calc-map.js 순으로 확보 후 실행 */
+  function loadScript(src, cb) {
     var s = document.createElement('script');
-    s.src = 'assets/calc-map.js?v=20260626';
-    s.async = true;
-    s.onload = init;
-    s.onerror = init; // 맵 없어도 미니 계산기는 동작
+    s.src = src; s.async = true; s.onload = cb; s.onerror = cb;
     document.head.appendChild(s);
+  }
+  function start() {
+    function withMap() {
+      if (window.SOHO_CALC_MAP) { init(); return; }
+      loadScript('assets/calc-map.js?v=20260628', init); // 맵 없어도 미니 계산기는 동작
+    }
+    if (window.SohoCards) withMap();
+    else loadScript('assets/soho-cards.js?v=20260628', withMap); // 아이콘 레지스트리(③) 확보
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);

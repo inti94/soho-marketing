@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="소호팁 통합 검색 — 무료 계산기와 실전 가이드를 한 번에 검색하세요. 알바 인건비, 부가세, 배달 수수료, 퇴직금 등.">
+<meta name="robots" content="noindex, follow">
+<meta name="author" content="소호팁">
+<link rel="canonical" href="https://sohotip.co.kr/search.html">
+<link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
+<link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
+<title>통합 검색 — 계산기·가이드 | 소호팁</title>
+
+<link rel="stylesheet" href="sohotip.css?v=20260628">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="assets/theme.css?v=20260628">
+<link rel="stylesheet" href="assets/soho-cards.css?v=20260628">
+
+<style>
+  .srch-wrap{max-width:920px;margin:0 auto;padding:4px 16px 48px;}
+  .srch-h{font-size:22px;font-weight:800;letter-spacing:-.02em;color:#191F28;margin:14px 2px 4px;}
+  /* 고정 검색창: sticky · 높이52 · pill · 흰배경 */
+  .srch-bar{position:sticky;top:var(--hdr-h,56px);z-index:50;background:var(--color-bg,#F4F6FB);padding:12px 0;}
+  .srch-box{display:flex;align-items:center;gap:8px;height:52px;background:#fff;border:1px solid #E8ECF0;border-radius:9999px;padding:0 18px;box-shadow:0 1px 8px rgba(0,0,0,.04);}
+  .srch-box .ic{color:#ADB5BD;display:inline-flex;flex-shrink:0;}
+  .srch-box .ic svg{width:18px;height:18px;stroke:currentColor;fill:none;}
+  .srch-box input{flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:inherit;font-size:16px;font-weight:500;color:#191F28;}
+  .srch-box input::placeholder{color:#ADB5BD;}
+  .srch-box .clr{border:none;background:transparent;color:#ADB5BD;width:28px;height:28px;border-radius:50%;display:none;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
+  .srch-box .clr.show{display:inline-flex;}
+  .srch-box .clr svg{width:16px;height:16px;stroke:currentColor;fill:none;}
+
+  /* 검색 전: 자주 찾는 검색어 */
+  .srch-pop-h{font-size:13px;font-weight:700;color:#6B7684;margin:18px 2px 12px;}
+  .srch-pop{display:flex;flex-wrap:wrap;gap:8px;}
+  .srch-kw{border:1px solid #E5E8EB;background:#fff;color:#333D4B;font-size:14px;font-weight:600;height:38px;display:inline-flex;align-items:center;padding:0 16px;border-radius:9999px;cursor:pointer;font-family:inherit;transition:border-color .15s,color .15s;}
+  .srch-kw:hover{border-color:#3D5AFE;color:#3D5AFE;}
+
+  /* 검색 후 */
+  .srch-rh{font-size:15px;font-weight:700;color:#191F28;margin:18px 2px 14px;}
+  .srch-rh b{color:#3D5AFE;}
+  .srch-empty{text-align:center;padding:54px 20px;color:#8B95A1;}
+  .srch-empty .ic{display:inline-flex;color:#C4C9D4;margin-bottom:12px;}
+  .srch-empty .ic svg{width:40px;height:40px;stroke:currentColor;fill:none;}
+  .srch-empty p{font-size:14px;font-weight:600;}
+</style>
+</head>
+<body>
+
+<main class="srch-wrap" role="main">
+  <h1 class="srch-h">통합 검색</h1>
+
+  <!-- 고정 검색창 -->
+  <div class="srch-bar">
+    <div class="srch-box">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+      <input type="text" id="q" placeholder="계산기·서식·가이드 검색…" autocomplete="off" autofocus aria-label="통합 검색">
+      <button class="clr" id="clr" type="button" aria-label="검색어 지우기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+  </div>
+
+  <!-- 검색 전: 자주 찾는 검색어 -->
+  <section id="before">
+    <div class="srch-pop-h">자주 찾는 검색어</div>
+    <div class="srch-pop" id="kw"></div>
+  </section>
+
+  <!-- 검색 후 -->
+  <section id="results" style="display:none">
+    <div class="srch-rh" id="rh"></div>
+    <div class="sc-grid" id="rgrid" aria-live="polite"></div>
+    <div class="srch-empty" id="empty" style="display:none">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+      <p>검색 결과가 없어요.</p>
+    </div>
+  </section>
+</main>
+
+<script src="assets/layout.js?v=20260628"></script>
+<script src="sohotip.js?v=20260628"></script>
+<script src="assets/soho-share.js?v=20260628"></script>
+<script src="assets/soho-cards.js?v=20260628"></script>
+<script>
+/* search.html — 통합 검색(계산기 ③ + 게시글 ③) */
+(function(){
+  if(!window.SohoCards) return;
+
+  var KW=['알바 인건비','부가세','배달 수수료','퇴직금','손익분기점','4대보험','연차','창업비용','최저임금','소상공인 지원금'];
+
+  /* 계산기 18종 (③ 계산기 카드용) */
+  var CALCS=[
+    {name:'알바 인건비 계산기',desc:'주휴수당·4대보험 포함 월 실인건비를 한 번에 계산',href:'alba-cost-calc.html',icon:'Users',color:'#3D5AFE',tags:['주휴수당','4대보험','인건비'],views:12840,isHot:true},
+    {name:'배달 순이익 계산기',desc:'수수료·배달비·재료비 빼고 실제 남는 돈을 계산',href:'delivery-profit-calc.html',icon:'Bike',color:'#FF6B35',tags:['배달앱','수수료','순이익'],views:9310,isHot:true},
+    {name:'부가세 계산기',desc:'매출·매입으로 납부세액과 환급액을 즉시 계산',href:'vat-calc.html',icon:'Receipt',color:'#00C471',tags:['부가세','납부세액','환급'],views:7625},
+    {name:'손익분기점(BEP) 계산기',desc:'고정비·변동비율로 최소 목표 매출을 한눈에',href:'bep-calc.html',icon:'TrendingUp',color:'#FFB800',tags:['BEP','손익분기','고정비'],views:5180},
+    {name:'메뉴 원가율 계산기',desc:'재료비·판매가로 원가율·마진율·권장가 계산',href:'food-cost-calc.html',icon:'UtensilsCrossed',color:'#E040FB',tags:['원가율','마진율','판매가'],views:4470},
+    {name:'퇴직금 계산기',desc:'근속기간·평균임금으로 법정 퇴직금 자동 산출',href:'severance-calc.html',icon:'Briefcase',color:'#00B8D9',tags:['퇴직금','법정','직원'],views:6120},
+    {name:'주휴수당 계산기',desc:'시급·근무시간으로 주휴수당 지급 여부와 금액 계산',href:'weekly-pay-calc.html',icon:'Clock',color:'#3D5AFE',tags:['주휴수당','시급','최저임금'],views:4980,isNew:true},
+    {name:'4대보험 계산기',desc:'직원 공제액과 사업주 부담액을 동시에 계산',href:'insurance-4d-calc.html',icon:'Shield',color:'#3D5AFE',tags:['4대보험','직원','사업주'],views:5240,isNew:true},
+    {name:'직원 연차 계산기',desc:'입사일로 연차 발생 일수와 미사용 연차수당 계산',href:'annual-leave-calc.html',icon:'CalendarDays',color:'#00B8D9',tags:['연차','법정','휴가'],views:3870,isNew:true},
+    {name:'매장 수익성 계산기',desc:'월 매출·비용으로 영업이익률과 순이익을 계산',href:'store-profit-calc.html',icon:'BarChart2',color:'#3D5AFE',tags:['매출','이익률','순이익'],views:3320,isNew:true},
+    {name:'배달앱 광고비 ROI 계산기',desc:'광고비 대비 추가 주문·ROI·손익분기 주문수 계산',href:'delivery-ads-calc.html',icon:'Megaphone',color:'#FF6B35',tags:['배달광고','ROI'],views:2980,isNew:true},
+    {name:'플레이스 광고비 계산기',desc:'예산·CPC·전환율로 방문 고객·고객당 광고비 계산',href:'naver-ads-calc.html',icon:'MapPin',color:'#00C471',tags:['플레이스','CPC','광고'],views:2740,isNew:true},
+    {name:'임대료 인상 상한 계산기',desc:'현재 월세 기준 법정 5% 상한 인상액 계산',href:'rent-increase-calc.html',icon:'Home',color:'#F04452',tags:['임대료','5%상한'],views:4110},
+    {name:'카드수수료 계산기',desc:'월 카드매출 기준 우대수수료율·월·연 수수료 계산',href:'card-fee-calc.html',icon:'CreditCard',color:'#00B8D9',tags:['카드수수료','단말기'],views:3180,isNew:true},
+    {name:'권리금 계산기',desc:'순이익·시설 잔존가치로 적정 권리금 범위 계산',href:'premium-calc.html',icon:'KeyRound',color:'#FFB800',tags:['권리금','시설가치'],views:2890,isNew:true},
+    {name:'정책자금 이자 계산기',desc:'대출금·금리·기간으로 월 상환액·총이자 계산',href:'loan-interest-calc.html',icon:'Banknote',color:'#00B8D9',tags:['정책자금','대출','이자','소상공인 지원금'],views:3560},
+    {name:'폐업 비용 계산기',desc:'철거비·퇴직금·재고에서 지원금 차감한 실부담 계산',href:'closure-cost-calc.html',icon:'Package',color:'#6B7684',tags:['폐업','철거','지원금'],views:2530,isNew:true},
+    {name:'창업 초기비용 계산기',desc:'업종·평수로 창업비용과 월 손익분기를 추정',href:'startup-cost-calc.html',icon:'Rocket',color:'#F04452',tags:['창업','초기자금','창업비용'],views:3940,isNew:true}
+  ];
+
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function hash(s){var h=0;for(var i=0;i<s.length;i++){h=(h<<5)-h+s.charCodeAt(i);h|=0;}return Math.abs(h);}
+  function likesOf(u){return hash(u+'l')%480+20;}
+  function splitTag(t){t=(t||'').trim();var i=t.indexOf(' ');return i>0?{e:t.slice(0,i),x:t.slice(i+1)}:{e:'',x:t};}
+
+  /* 게시글 카테고리명 → SVG 아이콘/색 */
+  function catVis(name){
+    name=name||'';
+    if(/플레이스/.test(name))return{icon:'MapPin',color:'#00C471'};
+    if(/배달/.test(name))return{icon:'Bike',color:'#FF6B35'};
+    if(/지원금|정책|보험/.test(name))return{icon:'Banknote',color:'#3D5AFE'};
+    if(/SNS|숏폼|인스타|블로그/.test(name))return{icon:'Camera',color:'#E040FB'};
+    if(/마케팅|광고/.test(name))return{icon:'Megaphone',color:'#FF6B35'};
+    if(/카드|결제|단말/.test(name))return{icon:'CreditCard',color:'#00B8D9'};
+    if(/노무|직원|알바|채용/.test(name))return{icon:'Users',color:'#3D5AFE'};
+    return{icon:'FileText',color:'#6B7684'};
+  }
+
+  var ALL=[]; /* {isCalc, ...} 정규화 통합 풀 */
+  CALCS.forEach(function(c){
+    ALL.push({isCalc:true,n:c.name,d:c.desc,u:c.href,kw:(c.tags||[]).join(' '),views:c.views,data:c});
+  });
+  function addArticles(arr){
+    (arr||[]).forEach(function(a){
+      var st=splitTag(a.tag);
+      ALL.push({isCalc:false,n:a.title,d:a.desc,u:a.url,kw:(a.keywords||'')+' '+st.x,
+        views:hash(a.url)%9000+1000,
+        data:{title:a.title,desc:a.desc,url:a.url,cat:st.x,date:a.date||'',
+          tags:(a.keywords||'').split(',').slice(0,3),dt:(a.date||'').replace(/-/g,'.')}});
+    });
+  }
+
+  function cardHTML(it){
+    if(it.isCalc) return SohoCards.calculator(it.data);
+    var d=it.data, cv=catVis(d.cat);
+    return SohoCards.article({title:d.title,desc:d.desc,url:d.url,categoryName:d.cat,
+      categoryIcon:cv.icon,categoryColor:cv.color,tags:d.tags,views:it.views,likes:likesOf(d.url),
+      date:d.dt,isNew:(d.date>='2026-06-20'),isHot:(it.views>7000)});
+  }
+
+  var input=document.getElementById('q');
+  var clr=document.getElementById('clr');
+  var before=document.getElementById('before');
+  var results=document.getElementById('results');
+  var rh=document.getElementById('rh');
+  var rgrid=document.getElementById('rgrid');
+  var empty=document.getElementById('empty');
+
+  function render(){
+    var q=(input.value||'').trim();
+    clr.classList.toggle('show',!!q);
+    if(!q){ before.style.display=''; results.style.display='none'; rgrid.innerHTML=''; return; }
+    before.style.display='none'; results.style.display='';
+    var ql=q.toLowerCase();
+    var set=ALL.filter(function(it){return (it.n+' '+it.d+' '+it.kw).toLowerCase().indexOf(ql)>=0;})
+      .sort(function(a,b){ if(a.isCalc!==b.isCalc)return a.isCalc?-1:1; return b.views-a.views; });
+    rh.innerHTML='“'+esc(q)+'” 검색 결과 <b>'+set.length+'</b>개';
+    if(!set.length){ rgrid.innerHTML=''; empty.style.display=''; return; }
+    empty.style.display='none';
+    rgrid.innerHTML=set.map(cardHTML).join('');
+    SohoCards.mount(rgrid);
+  }
+
+  /* 자주 찾는 검색어 칩 */
+  document.getElementById('kw').innerHTML=KW.map(function(k){
+    return '<button type="button" class="srch-kw" data-kw="'+esc(k)+'">'+esc(k)+'</button>';
+  }).join('');
+  document.getElementById('kw').addEventListener('click',function(e){
+    var b=e.target.closest('.srch-kw'); if(!b)return;
+    input.value=b.getAttribute('data-kw'); render(); input.focus();
+  });
+
+  input.addEventListener('input',render);
+  clr.addEventListener('click',function(){input.value='';render();input.focus();});
+
+  /* ?q= 초기값 */
+  var q0=new URLSearchParams(location.search).get('q');
+  if(q0)input.value=q0;
+
+  /* 게시글 데이터 로드 후 (있으면) 렌더 */
+  fetch('search-data.json').then(function(r){return r.json();}).then(function(d){addArticles(d);render();}).catch(render);
+})();
+</script>
+<script src="network.js?v=20260628"></script>
+</body>
+</html>

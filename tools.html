@@ -49,10 +49,10 @@
   }
 }
 </script>
-<link rel="stylesheet" href="sohotip.css?v=20260706">
+<link rel="stylesheet" href="sohotip.css?v=20260628">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260706">
-  <link rel="stylesheet" href="assets/soho-cards.css?v=20260706">
+  <link rel="stylesheet" href="assets/theme.css?v=20260628">
+  <link rel="stylesheet" href="assets/soho-cards.css?v=20260628">
 <style>
 :root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -64,10 +64,12 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
 .nav-links a:hover{color:var(--primary);}
 .nav-cta{background:var(--primary);color:#fff;font-size:13px;padding:7px 16px;border-radius:6px;text-decoration:none;}
 @media(max-width:640px){.nav-links{display:none;}}
-.hero{background:var(--primary);padding:48px 2rem;text-align:center;}
-.hero h1{font-size:28px;font-weight:700;color:#fff;margin-bottom:10px;}
-.hero p{font-size:15px;color:rgba(255,255,255,.85);max-width:480px;margin:0 auto;}
-.page-wrap{max-width:720px;margin:0 auto;padding:40px 2rem 80px;}
+/* 히어로 배너: 다크 그라데이션 카드 + 우하단 반투명원 */
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#191F28,#2D3748);border-radius:24px;padding:30px 26px;color:#fff;margin-bottom:18px;}
+.hero::after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.07);bottom:-66px;right:-34px;pointer-events:none;}
+.hero h1{font-size:24px;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-.02em;position:relative;z-index:1;}
+.hero p{font-size:14px;font-weight:500;color:rgba(255,255,255,.8);position:relative;z-index:1;}
+.page-wrap{max-width:720px;margin:0 auto;padding:24px 2rem 80px;}
 .section-label{font-size:12px;font-weight:700;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin:0 0 16px;}
 .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-bottom:40px;}
 .tool-card{background:var(--bg-card);border:1.5px solid var(--border);border-radius:16px;padding:20px;text-decoration:none;color:var(--text);transition:all .2s;display:block;}
@@ -83,15 +85,30 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
 .calc-search{display:flex;align-items:center;gap:10px;background:var(--g100,#F2F4F6);border-radius:12px;padding:12px 16px;margin-bottom:14px;}
 .calc-search .ic{width:20px;height:20px;flex-shrink:0;fill:none;stroke:#9EA7B4;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
 .calc-search input{flex:1;border:none;background:transparent;outline:none;font-size:16px;font-family:inherit;color:var(--text);min-width:0;}
-.calc-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
-.cchip{border:none;background:#F2F4F6;color:#6B7684;font-size:13px;font-weight:700;padding:8px 14px;border-radius:100px;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;transition:background .15s,color .15s;}
+/* 필터칩: 가로 스크롤, 선택=#3D5AFE 배경 흰글자 */
+.calc-chips{display:flex;flex-wrap:nowrap;gap:8px;margin-bottom:14px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.calc-chips::-webkit-scrollbar{display:none;}
+.cchip{flex-shrink:0;border:none;background:#F2F4F6;color:#6B7684;font-size:14px;font-weight:600;padding:9px 16px;border-radius:9999px;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;transition:background .15s,color .15s;}
 .cchip:hover{background:#E5E8EB;}
-.cchip.active{background:#191F28;color:#fff;}
+.cchip.active{background:#3D5AFE;color:#fff;}
 .cchip-link{background:var(--primary-light);color:var(--primary);}
 .cchip-link:hover{background:#E0E4FF;}
 .calc-count{font-size:13px;font-weight:600;color:var(--text-muted);margin-bottom:16px;}
 .calc-count b{color:var(--primary);font-weight:800;}
 .calc-empty{padding:40px 16px;text-align:center;color:var(--text-light);font-size:14px;}
+
+/* 계산기 그리드: 2/3/4열 gap12 · 아이콘48 + 이름14/700 + 설명12 + 조회수11 */
+.calc-grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+@media(min-width:600px){.calc-grid2{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:1024px){.calc-grid2{grid-template-columns:repeat(4,1fr);}}
+.cg-card{display:flex;flex-direction:column;gap:8px;background:#fff;border:1px solid var(--border);border-radius:20px;padding:16px;text-decoration:none;color:var(--text);transition:transform .15s,box-shadow .15s,border-color .15s;}
+.cg-card:hover{transform:translateY(-2px);border-color:transparent;box-shadow:0 8px 22px rgba(61,90,254,.12);}
+.cg-card:active{transform:scale(.98);}
+.cg-ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;flex-shrink:0;}
+.cg-ico svg{width:24px;height:24px;stroke:currentColor;fill:none;}
+.cg-name{font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.01em;}
+.cg-desc{font-size:12px;font-weight:500;color:#6B7684;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.cg-views{font-size:11px;font-weight:500;color:#ADB5BD;margin-top:2px;}
 .notice{background:var(--primary-light);border-radius:14px;padding:20px 24px;text-align:center;margin-top:16px;}
 .notice p{font-size:13px;color:var(--primary-mid);line-height:1.7;}
 footer{background:#1A1A1A;color:rgba(255,255,255,.6);text-align:center;padding:24px;font-size:12px;}
@@ -116,12 +133,11 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
   </div>
 </div>
 
-<div class="hero">
-  <h1>소상공인 무료 계산기 모음</h1>
-  <p>인건비부터 대출 이자까지, 사장님이 자주 계산해야 하는 것들을 한 곳에 모았습니다</p>
-</div>
-
 <div class="page-wrap">
+  <div class="hero">
+    <h1>무료 계산기 18종</h1>
+    <p>가입 없이 바로 계산</p>
+  </div>
   <div class="calc-search">
     <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
     <input type="text" id="calc-q" placeholder="계산기 검색…" autocomplete="off" aria-label="계산기 검색">
@@ -137,24 +153,24 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
   </div>
   <div class="calc-count">총 <b id="calc-total">0</b>개</div>
 
-  <div class="sc-grid" id="calc-grid"></div>
+  <div class="calc-grid2" id="calc-grid"></div>
   <div class="calc-empty" id="calc-empty" style="display:none">조건에 맞는 계산기가 없어요.</div>
 
   <div class="notice">
-    <p>📌 모든 계산기는 <strong>무료</strong>로 제공되며, 계산 결과는 <strong>참고용</strong>입니다.<br>정확한 세액, 퇴직금, 법적 판단은 세무사·노무사·변호사와 확인하세요.</p>
+    <p><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:5px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>모든 계산기는 <strong>무료</strong>로 제공되며, 계산 결과는 <strong>참고용</strong>입니다.<br>정확한 세액, 퇴직금, 법적 판단은 세무사·노무사·변호사와 확인하세요.</p>
   </div>
 </div>
 
 <button id="back-to-top" aria-label="맨 위로">↑</button>
-<script src="assets/layout.js?v=20260706"></script>
-<script src="sohotip.js?v=20260706"></script>
-<script src="assets/consult.js?v=20260706"></script>
+<script src="assets/layout.js?v=20260628"></script>
+<script src="sohotip.js?v=20260628"></script>
+<script src="assets/consult.js?v=20260628"></script>
 <footer>
   <a href="index.html">홈</a><a href="category.html">마케팅 가이드</a><a href="tools.html">계산기 모음</a><a href="consultation.html">무료 진단</a>
   <p style="margin-top:12px;">© 2026 소상공인 마케팅 실전백과</p>
 </footer>
-<script src="assets/soho-share.js?v=20260706"></script>
-<script src="assets/soho-cards.js?v=20260706"></script>
+<script src="assets/soho-share.js?v=20260628"></script>
+<script src="assets/soho-cards.js?v=20260628"></script>
 <script>
 /* tools.html — 계산기 카드(SohoCards) + 검색·필터칩·카운트 */
 (function(){
@@ -187,6 +203,15 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
   var chipBox=document.getElementById('calc-chips');
   var activeCat='all';
 
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function cardHTML(c){
+    var views=SohoCards.formatCount(c.views)+'회';
+    return '<a class="cg-card" href="'+esc(c.href)+'" title="'+esc(c.name)+'">'+
+      '<span class="cg-ico" aria-hidden="true" style="background:'+c.color+'1A;color:'+c.color+'">'+SohoCards.icon(c.icon,24)+'</span>'+
+      '<span class="cg-name">'+esc(c.name)+'</span>'+
+      '<span class="cg-desc">'+esc(c.desc)+'</span>'+
+      '<span class="cg-views">'+views+'</span></a>';
+  }
   function render(){
     var q=(qInput.value||'').trim().toLowerCase();
     var set=CALCS.filter(function(c){
@@ -194,8 +219,7 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
       if(q){ var hay=(c.name+' '+(c.tags||[]).join(' ')+' '+c.desc).toLowerCase(); if(hay.indexOf(q)<0) return false; }
       return true;
     });
-    grid.innerHTML=set.map(function(c){return SohoCards.calculator(c);}).join('');
-    SohoCards.mount(grid);
+    grid.innerHTML=set.map(cardHTML).join('');
     totalEl.textContent=set.length;
     emptyEl.style.display=set.length?'none':'';
   }
@@ -210,6 +234,6 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
   render();
 })();
 </script>
-<script src="network.js?v=20260706"></script>
+<script src="network.js?v=20260628"></script>
 </body>
 </html>

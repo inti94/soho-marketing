@@ -51,11 +51,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@700&family=Roboto+Mono:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="sohotip.css?v=20260706">
+<link rel="stylesheet" href="sohotip.css?v=20260628">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260706">
-  <link rel="stylesheet" href="assets/soho-cards.css?v=20260706">
-<link rel="stylesheet" href="assets/sohotip-theme.css?v=20260706">
+  <link rel="stylesheet" href="assets/theme.css?v=20260628">
+  <link rel="stylesheet" href="assets/soho-cards.css?v=20260628">
+<link rel="stylesheet" href="assets/sohotip-theme.css?v=20260628">
 
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -136,28 +136,63 @@
     .wrap { padding: 0 14px; }
   }
 
-  /* ── 인디고 통일 오버라이드 (영수증 톤 제거) ── */
-  /* 서식 전용 보조색(오렌지) — 메인 포인트는 #3D5AFE 블루 유지 */
-  :root { --accent: #FF6A00; --accent-light: #FFEDE5; --accent-dark: #E65E00; }
+  /* ── ⑦ 정밀 수치 (보조색 오렌지 #FF6A00, 다운로드 버튼은 인디고 #3D5AFE) ── */
+  :root { --accent: #FF6A00; --accent-light: #FFF3EC; --accent-dark: #E65E00; }
   body { background: var(--bg); background-image: none; color: var(--g900); }
-  .f-hero .label { font-family: inherit; color: var(--accent); letter-spacing: .08em; font-weight: 700; }
-  .f-stamps .stamp { transform: none; border: none; background: var(--accent-light); color: var(--accent); font-weight: 700; font-size: 13px; padding: 7px 14px; border-radius: 100px; box-shadow: none; }
-  .f-notice { border: 1px solid var(--g200); background: #fff; color: var(--g600); border-radius: 12px; }
+
+  /* 히어로: 연크림 배경 #FFF8F2 */
+  .f-hero { background: #FFF8F2; padding: 44px 18px 30px; }
+  .f-hero .label { font-family: inherit; color: #ADB5BD; letter-spacing: .12em; font-weight: 600; font-size: 12px; }
+  .f-hero h1 { font-size: 34px; font-weight: 900; letter-spacing: -.03em; margin: 12px 0 12px; color: var(--g900); }
+  .f-hero .hl { background: linear-gradient(transparent 58%, #FFD9BE 58%); padding: 0 2px; }
+  .f-hero p { font-size: 16px; font-weight: 500; color: #6B7684; }
+  /* CTA 3개 pill: 오렌지보더 흰배경 오렌지글자 h48 */
+  .f-stamps .stamp { transform: none; height: 48px; display: inline-flex; align-items: center; border: 1.5px solid var(--accent); background: #fff; color: var(--accent); font-weight: 600; font-size: 14px; padding: 0 18px; border-radius: 9999px; box-shadow: none; }
+  .f-notice { border: 1px dashed var(--g300, #C4C9D4); background: #fff; color: var(--g600); border-radius: 12px; }
+
+  /* 그룹 카드 + 헤더(아이콘20 + 그룹명16/800 + NO.0X 12/#ADB5BD) */
   .f-cat { background: #fff; border: 1px solid var(--g200); box-shadow: 0 1px 8px rgba(0,0,0,.04); border-radius: 20px; }
-  .f-cat-title { color: var(--g900); }
+  .f-cat-title { color: var(--g900); font-size: 16px; font-weight: 800; }
   .fct-ico { display: inline-flex; align-items: center; color: var(--primary); }
-  .f-cat-no { font-family: inherit; color: var(--g400); }
-  .f-card { border: 1px solid var(--g200); border-radius: 16px; }
-  .f-card .fc-ico { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 12px; background: var(--primary-light); color: var(--primary); font-size: 20px; }
-  .f-cat-related { border-top: 1px solid var(--g200); }
-  .f-cat-related a { color: var(--primary); }
+  .fct-ico svg { width: 20px; height: 20px; }
+  .f-cat-no { font-family: inherit; color: #ADB5BD; font-size: 12px; font-weight: 600; }
+
+  /* 서식 아이템 카드: radius20 · 이름16/700 · 아이콘40 radius12 · 파일배지11/700 */
+  .f-card { border: 1px solid var(--g200); border-radius: 20px; }
+  .f-card .fc-name { font-size: 16px; font-weight: 700; }
+  .f-card .fc-ico { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 12px; background: var(--primary-light); color: var(--primary); }
+  .f-card .fc-ico svg { width: 20px; height: 20px; }
+  .f-fmt { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
+  .f-fmt.xls { color: #00C471; background: #E8FAF2; }   /* 엑셀: 연민트/민트 */
+  .f-fmt.doc { color: #2563EB; background: #E8EFFE; }   /* 워드: 연블루/블루 */
+  .f-fmt.pdf { color: #F04452; background: #FFEAEC; }   /* PDF: 연빨강/빨강 */
+
+  /* 다운로드 버튼: 전체폭 h52 radius16 · 배경 #3D5AFE(★검정 아님) 흰 15/700 · Download 18 */
+  .f-dl { width: 100%; height: 52px; padding: 0 16px; gap: 8px; font-size: 15px; font-weight: 700; border-radius: 16px; background: var(--primary) !important; box-shadow: 0 3px 10px rgba(61,90,254,.22) !important; }
+  .f-dl::before { width: 18px; height: 18px; }
+  .f-dl:hover { background: var(--primary-dark) !important; }
+
+  /* 함께 쓰면 좋은 계산기: 라벨 13/600 + 계산기명 오렌지 */
+  .f-cat-related { border-top: 1px solid var(--g200); font-size: 13px; font-weight: 600; }
+  .f-cat-related b { color: var(--g900); font-weight: 600; }
+  .f-cat-related a { color: var(--accent); font-weight: 600; }
+
+  /* 필요한 서식 요청하기 카드 */
+  .f-request { display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid var(--g200); box-shadow: 0 1px 8px rgba(0,0,0,.04); border-radius: 20px; padding: 16px 18px; margin: 22px 0; text-decoration: none; color: var(--g900); transition: box-shadow .15s, transform .15s; }
+  .f-request:hover { box-shadow: 0 6px 20px rgba(61,90,254,.10); transform: translateY(-2px); }
+  .f-request .fr-ico { width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0; display: grid; place-items: center; background: var(--primary-light); color: var(--primary); }
+  .f-request .fr-ico svg { width: 22px; height: 22px; }
+  .f-request .fr-body { flex: 1; min-width: 0; }
+  .f-request .fr-t { display: block; font-size: 15px; font-weight: 700; }
+  .f-request .fr-d { display: block; font-size: 13px; color: #6B7684; margin-top: 2px; }
+  .f-request .fr-arrow { flex-shrink: 0; color: var(--g300, #C4C9D4); display: flex; }
+  .f-request .fr-arrow svg { width: 18px; height: 18px; }
+
+  /* 상담 CTA (사이트 공통 블루 유지) */
   .f-consult { background: #fff; border: 1px solid var(--g200); box-shadow: 0 1px 8px rgba(0,0,0,.04); border-radius: 20px; }
   .f-consult .ct-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-light); color: var(--primary); font-weight: 700; font-size: 13px; padding: 6px 14px; border-radius: 100px; margin-bottom: 12px; }
   .f-consult .ct-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: #fff; font-weight: 700; font-size: 15px; padding: 13px 24px; border-radius: 12px; text-decoration: none; transition: background .15s; }
   .f-consult .ct-btn:hover { background: var(--primary-dark); }
-  /* 다운로드 버튼 = 서식 시그니처 액션 → 오렌지 보조색 (상담 CTA 버튼은 사이트 공통 블루 유지) */
-  .f-dl { background: var(--accent) !important; box-shadow: 0 3px 10px rgba(255,106,0,.25) !important; }
-  .f-dl:hover { background: var(--accent-dark) !important; }
   footer { background: var(--g900); }
   .footer-nav a:hover { color: #7B8FFF; }
 </style>
@@ -298,6 +333,13 @@
     </div>
   </section>
 
+  <!-- 필요한 서식 요청하기 -->
+  <a class="f-request" href="contact.html">
+    <span class="fr-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="12" y1="7" x2="12" y2="13"/><line x1="9" y1="10" x2="15" y2="10"/></svg></span>
+    <span class="fr-body"><span class="fr-t">필요한 서식 요청하기</span><span class="fr-d">찾는 서식이 없나요? 알려주시면 만들어 드려요.</span></span>
+    <span class="fr-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+  </a>
+
   <!-- 상담 CTA (광고 아님 · 마케팅 상담 통일) -->
   <section class="f-consult">
     <span class="ct-badge">마케팅 상담</span>
@@ -329,10 +371,10 @@
 
 <button id="back-to-top" aria-label="맨 위로 이동">↑</button>
 
-<script src="assets/layout.js?v=20260706"></script>
-<script src="sohotip.js?v=20260706"></script>
-<script src="assets/consult.js?v=20260706"></script>
-<script src="assets/soho-cards.js?v=20260706"></script>
+<script src="assets/layout.js?v=20260628"></script>
+<script src="sohotip.js?v=20260628"></script>
+<script src="assets/consult.js?v=20260628"></script>
+<script src="assets/soho-cards.js?v=20260628"></script>
 <script>
 /* forms.html — 이모지 아이콘 → SVG 통일 */
 (function(){
@@ -354,6 +396,6 @@
   });
 })();
 </script>
-<script src="network.js?v=20260706"></script>
+<script src="network.js?v=20260628"></script>
 </body>
 </html>

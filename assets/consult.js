@@ -72,16 +72,20 @@
     var css = [
       '.sohoc{max-width:680px;margin:30px auto;font-family:var(--sans,"Pretendard","Noto Sans KR",sans-serif);}',
       '.page-wrap .sohoc,.article-main .sohoc,.article-content .sohoc{max-width:100%;}',
-      '.sohoc-card{background:#fff;border:1px solid var(--g200,#E5E8EB);border-radius:20px;box-shadow:0 1px 8px rgba(0,0,0,.04);padding:22px;}',
-      '.sohoc-badge{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--primary,#3D5AFE);background:var(--primary-light,#ECEEFF);border-radius:100px;padding:5px 12px;margin-bottom:12px;}',
-      '.sohoc-t{font-size:17px;font-weight:800;color:var(--g900,#191F28);line-height:1.4;letter-spacing:-.02em;}',
-      '.sohoc-d{font-size:13.5px;color:var(--g600,#6B7684);line-height:1.65;margin:7px 0 16px;}',
-      '.sohoc-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:var(--primary,#3D5AFE);color:#fff;font-weight:700;font-size:15px;text-decoration:none;padding:13px 24px;border-radius:12px;transition:background .15s,transform .1s;-webkit-tap-highlight-color:transparent;}',
+      '.sohoc-card{background:#fff;border:1px solid var(--g200,#E5E8EB);border-radius:24px;box-shadow:0 1px 8px rgba(0,0,0,.04);padding:24px 22px;}',
+      '.sohoc-badge{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--primary,#3D5AFE);background:var(--primary-light,#ECEEFF);border:1px solid transparent;border-radius:9999px;padding:5px 13px;margin-bottom:12px;}',
+      '.sohoc-t{font-size:20px;font-weight:800;color:var(--g900,#191F28);line-height:1.35;letter-spacing:-.02em;}',
+      '.sohoc-d{font-size:14px;font-weight:500;color:#6B7684;line-height:1.65;margin:8px 0 18px;}',
+      '.sohoc-btn{width:100%;box-sizing:border-box;height:56px;display:inline-flex;align-items:center;justify-content:center;gap:7px;background:var(--primary,#3D5AFE);color:#fff;font-weight:700;font-size:16px;text-decoration:none;border-radius:16px;transition:background .15s,transform .1s;-webkit-tap-highlight-color:transparent;}',
       '.sohoc-btn:hover{background:var(--primary-dark,#2541E0);}',
-      '.sohoc-btn:active{transform:scale(.97);}',
-      '.sohoc-trust{display:flex;align-items:center;gap:6px;margin-top:12px;font-size:12px;color:var(--g600,#6B7684);}',
+      '.sohoc-btn:active{transform:scale(.98);}',
+      '.sohoc-trust{display:flex;align-items:center;gap:6px;margin-top:12px;font-size:12px;color:#ADB5BD;}',
       '.sohoc-trust .dot{width:6px;height:6px;border-radius:50%;background:var(--green,#00C471);display:inline-block;flex-shrink:0;}',
-      '@media (max-width:520px){.sohoc-btn{width:100%;}}',
+      /* 계산기 상세 전용 오렌지 변형(상단 점선 + 오렌지 배지/버튼) */
+      '.sohoc--accent .sohoc-card{border-top:2px dashed #FFD2B3;}',
+      '.sohoc--accent .sohoc-badge{color:#FF6A00;background:#fff;border-color:#FF6A00;}',
+      '.sohoc--accent .sohoc-btn{background:#FF6A00;}',
+      '.sohoc--accent .sohoc-btn:hover{background:#E55F00;}',
     ].join('\n');
     var st = document.createElement('style'); st.id = 'soho-consult-style'; st.textContent = css;
     document.head.appendChild(st);
@@ -98,7 +102,7 @@
     var c = {
       stamp: '마케팅 상담',
       title: '마케팅, 혼자 앓지 마세요',
-      desc: '매출·홍보·광고 고민은 키우기 전이 쌉니다. 지금 짚어보세요.'
+      desc: '매출·홍보·광고 고민은 키우기 전이 쌉니다.'
     };
 
     function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
@@ -107,13 +111,15 @@
     var box = document.createElement('div');
     box.id = 'soho-consult';
     box.className = 'sohoc';
+    // 계산기 상세(.page-wrap)에서는 오렌지 보조색 변형 적용(글 페이지는 블루 유지)
+    if (host.classList && host.classList.contains('page-wrap')) box.className += ' sohoc--accent';
     box.innerHTML =
       '<div class="sohoc-card">' +
         '<span class="sohoc-badge">' + esc(c.stamp) + '</span>' +
         '<div class="sohoc-t">' + esc(c.title) + '</div>' +
         '<div class="sohoc-d">' + esc(c.desc) + '</div>' +
         '<a class="sohoc-btn" href="' + CONSULT_URL + '">무료 상담 요청하기</a>' +
-        '<div class="sohoc-trust"><span class="dot"></span>광고 아닌 실제 상담 · 1영업일 내 답변 · 부담 없이 질문만 OK</div>' +
+        '<div class="sohoc-trust"><span class="dot"></span>광고 아닌 실제 상담 · 1영업일 내 답변</div>' +
       '</div>';
     host.appendChild(box);
   }
