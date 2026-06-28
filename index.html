@@ -391,6 +391,7 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
 .news-item{display:flex;align-items:center;gap:12px;min-height:56px;padding:8px 16px 8px 13px;border-left:3px solid var(--primary);color:var(--g900);}
 .news-item+.news-item{border-top:1px solid var(--g100);}
 .news-item:hover{background:var(--g50);}
+.news-item--static{cursor:default;}
 .news-title{flex:1;min-width:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:14px;font-weight:600;line-height:1.4;color:var(--g900);}
 .news-meta{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:1px;text-align:right;}
 .news-src{font-size:11px;font-weight:600;color:#ADB5BD;}
@@ -630,7 +631,7 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
 <script src="sohotip.js?v=20260628"></script>
 <script src="assets/soho-share.js?v=20260628"></script>
 <script src="assets/soho-cards.js?v=20260628"></script>
-<script src="assets/news-data.js?v=20260628"></script>
+<script src="assets/news-data.js?v=20260629"></script>
 <script>
 /* ===================================================================
    소호팁 메인(스플릿뷰) — 레일 탭 전환 · 카드 렌더 · 북마크 · 체크리스트
@@ -793,8 +794,12 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
       var meta='<span class="news-meta">'+
         (it.source?'<span class="news-src">'+esc(it.source)+'</span>':'')+
         '<span class="news-date">'+esc(it.date||'')+'</span></span>';
-      return '<a class="news-item" href="'+esc(it.url||'#')+'"'+(ext?' target="_blank" rel="noopener"':'')+' title="'+esc(it.title||'')+'">'+
-        '<span class="news-title">'+esc(it.title||'')+'</span>'+meta+'</a>';
+      var inner='<span class="news-title">'+esc(it.title||'')+'</span>'+meta;
+      /* 링크 있으면 <a>로 이동, 없으면 클릭 안 되는 정적 항목 */
+      if(it.url){
+        return '<a class="news-item" href="'+esc(it.url)+'"'+(ext?' target="_blank" rel="noopener"':'')+' title="'+esc(it.title||'')+'">'+inner+'</a>';
+      }
+      return '<div class="news-item news-item--static" title="'+esc(it.title||'')+'">'+inner+'</div>';
     }).join('');
   }
   renderNews();
