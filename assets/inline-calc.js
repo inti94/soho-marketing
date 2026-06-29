@@ -100,8 +100,8 @@
       '.soho-ico{width:44px;height:44px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}',
       '.soho-ico svg{width:22px;height:22px;stroke:currentColor;fill:none;}',
       '.soho-item .si-body{flex:1;min-width:0;}',
-      '.soho-item .si-t{font-size:15px;font-weight:700;line-height:1.3;color:var(--g900,#191F28);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}',
-      '.soho-item .si-d{font-size:13px;color:#6B7684;line-height:1.4;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}',
+      '.soho-item .si-t{display:block;max-width:100%;font-size:15px;font-weight:700;line-height:1.3;color:var(--g900,#191F28);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}',
+      '.soho-item .si-d{display:block;max-width:100%;font-size:13px;color:#6B7684;line-height:1.4;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}',
       '.soho-item .si-arrow{flex-shrink:0;color:var(--g300,#C4C9D4);display:flex;}',
       '.soho-tear{height:0;border-top:1px dashed var(--g200,#E5E8EB);margin:12px 0;}',
 
