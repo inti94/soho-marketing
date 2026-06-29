@@ -43,12 +43,16 @@
 
   function slugOf() { var p = location.pathname.split('/').pop() || ''; return p.replace(/\.html$/, ''); }
 
+  /* 브랜드명("소상공인 마케팅 실전백과"·"소호팁")은 매칭에서 제거 —
+     안 그러면 제목 꼬리말의 '마케팅' 때문에 모든 글이 marketing 으로 오탐됨. */
+  function deBrand(s) { return String(s || '').replace(/소상공인\s*마케팅\s*실전백과/g, '').replace(/소호팁/g, ''); }
+
   function pageText() {
     var parts = [];
-    var mk = document.querySelector('meta[name="keywords"]'); if (mk && mk.content) parts.push(mk.content);
-    if (document.title) parts.push(document.title);
-    var h1 = document.querySelector('h1'); if (h1) parts.push(h1.textContent || '');
-    var tag = document.querySelector('.article-tag'); if (tag) parts.push(tag.textContent || '');
+    var mk = document.querySelector('meta[name="keywords"]'); if (mk && mk.content) parts.push(deBrand(mk.content));
+    if (document.title) parts.push(deBrand(document.title));
+    var h1 = document.querySelector('h1'); if (h1) parts.push(deBrand(h1.textContent || ''));
+    var tag = document.querySelector('.article-tag'); if (tag) parts.push(deBrand(tag.textContent || ''));
     return parts.join(' ');
   }
 
