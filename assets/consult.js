@@ -1,11 +1,17 @@
 /* =================================================================
    consult.js — 상담 전환 (영수증 박스, 광고처럼 안 보이게)
-   PART 4 (2026-06-26)
+   PART 5 (2026-06-29)
    -----------------------------------------------------------------
-   · 절대 강제 노출 금지. data-topic 속성 또는 계산기 토픽/키워드 문맥이
-     "창업·마케팅·광고·세무·노무" 맥락일 때만 노출. 단순 정보글엔 안 띄움.
-   · 문맥별 문구 자동 매칭. 하단에 "광고 아닌 실제 상담" 신뢰 문구.
-   · 배치: 글/계산기 본문 하단(= FAQ·결과 영역 아래).
+   · 절대 강제 노출 금지. data-topic 속성 또는 글/계산기 키워드 문맥이
+     "지원금·플레이스·배달앱·마케팅(SNS 등)" 맥락일 때만 노출.
+   · 주제별 문구 자동 매칭:
+       지원금  → 지원금 상담
+       플레이스 → 플레이스 상담
+       배달앱  → 배달운영 상담
+       마케팅(SNS·기타) → 마케팅 상담
+   · 노무(주휴·퇴직금·4대보험 등)·세무(부가세·종소세 등) 단독 글은
+     위 4개 상담과 맥락이 어울리지 않으므로 미노출(억지 상담 방지).
+   · 배치: 글/계산기 본문 하단(= FAQ·결과 영역 아래). 링크는 consultation.html 유지.
    · 색상은 var(--토큰, 폴백) → 테마 미로드 페이지에서도 정상.
    ================================================================= */
 (function () {
@@ -15,17 +21,24 @@
 
   var CONSULT_URL = 'consultation.html';
 
-  /* 토픽은 '노출 여부' 게이트로만 사용(문구 분기 없음 — CTA는 항상 마케팅 상담 단일).
-     아래 키 중 하나가 감지될 때만 CTA를 띄운다(무관한 글엔 미노출). */
-  var TOPICS = { ad: 1, startup: 1, tax: 1, labor: 1, marketing: 1 };
+  /* 노출 가능한 상담 주제(이 중 하나로 감지될 때만 CTA 노출) */
+  var TOPICS = { support: 1, place: 1, delivery: 1, marketing: 1 };
 
-  /* 글 키워드 → 토픽 (위에서부터 우선). 매칭 없으면 노출 안 함(보수적). */
+  /* 주제별 CTA 문구 */
+  var COPY = {
+    support:   { stamp: '지원금 상담',   title: '받을 수 있는 지원금, 놓치지 마세요',   desc: '우리 가게가 신청 가능한 지원금·정책자금을 함께 찾아드려요.' },
+    place:     { stamp: '플레이스 상담', title: '네이버 플레이스, 상위 노출 막막하셨죠', desc: '지금 플레이스 상태와 개선 포인트를 무료로 진단해드려요.' },
+    delivery:  { stamp: '배달운영 상담', title: '배달앱, 수수료·노출 같이 점검해드려요', desc: '수수료 구조부터 노출·광고까지 우리 가게 맞춤으로 봐드려요.' },
+    marketing: { stamp: '마케팅 상담',   title: '마케팅, 혼자 앓지 마세요',             desc: '매출·홍보·광고 고민은 키우기 전이 쌉니다.' }
+  };
+
+  /* 글/계산기 키워드 → 주제 (위에서부터 우선. 매칭 없으면 미노출=보수적).
+     노무·세무 단독 키워드는 목록에 없으므로 그런 글은 null → 미노출. */
   var KEYWORD_TOPICS = [
-    { t: 'ad',        re: /광고|울트라콜|오픈리스트|파워링크|cpc|상위\s*노출\s*광고|광고비|배너/i },
-    { t: 'labor',     re: /주휴|퇴직금|4대\s*보험|해고|권고사직|근로계약|인건비|노무|연차|최저임금|알바/i },
-    { t: 'tax',       re: /부가세|종합소득세|종소세|세무|절세|경비\s*처리|세금계산서|간이과세|일반과세|소득세|세금/i },
-    { t: 'startup',   re: /창업|손익분기|권리금|임대차|폐업|초기\s*비용|인테리어|정책자금|대출|매출\s*분석|비용\s*절감/i },
-    { t: 'marketing', re: /마케팅|플레이스|인스타|블로그|릴스|숏폼|리뷰|단골|재방문|스마트플레이스/i },
+    { t: 'place',     re: /네이버\s*플레이스|스마트\s*플레이스|플레이스\s*(상위|노출|리뷰|순위|사진)|플레이스/i },
+    { t: 'delivery',  re: /배달의민족|배민|쿠팡이츠|배달앱|배달\s*수수료|배달\s*광고|배달\s*순이익|울트라콜|오픈리스트|포장\s*주문|배달/i },
+    { t: 'support',   re: /지원금|정책자금|소상공인\s*지원|두루누리|보조금|융자|폐업\s*지원|바우처|관리지원금/i },
+    { t: 'marketing', re: /마케팅|인스타|블로그|릴스|숏폼|유튜브|sns|단골|재방문|체험단|리뷰\s*이벤트|상위\s*노출|광고/i }
   ];
 
   function slugOf() { var p = location.pathname.split('/').pop() || ''; return p.replace(/\.html$/, ''); }
@@ -40,19 +53,13 @@
   }
 
   function detectTopic() {
-    /* 1) 명시적 data-topic */
+    /* 1) 명시적 data-topic (지원금/플레이스/배달/마케팅) */
     var el = document.querySelector('[data-topic]');
     if (el) {
       var t = (el.getAttribute('data-topic') || '').trim().toLowerCase();
       if (TOPICS[t]) return t;
     }
-    /* 2) 계산기 페이지 → calc-map 토픽 */
-    var map = window.SOHO_CALC_MAP;
-    if (map && map.calcs) {
-      var c = map.calcs[slugOf()];
-      if (c && TOPICS[c.topic]) return c.topic;
-    }
-    /* 3) 글 키워드 추론 (보수적, 매칭 없으면 null) */
+    /* 2) 글/계산기 키워드 추론 (보수적, 매칭 없으면 null → 미노출) */
     var blob = pageText();
     for (var i = 0; i < KEYWORD_TOPICS.length; i++) {
       if (KEYWORD_TOPICS[i].re.test(blob)) return KEYWORD_TOPICS[i].t;
@@ -97,13 +104,8 @@
     var host = contentHost();
     if (!host) return;
     var topic = detectTopic();
-    if (!topic) return; // 맥락 안 맞으면 절대 노출 안 함(노출 위치는 기존 게이트 유지)
-    // 주제별 분기 제거 — 모든 상담 CTA를 '마케팅 상담' 단일 버전으로 고정
-    var c = {
-      stamp: '마케팅 상담',
-      title: '마케팅, 혼자 앓지 마세요',
-      desc: '매출·홍보·광고 고민은 키우기 전이 쌉니다.'
-    };
+    if (!topic) return; // 맥락 안 맞으면 절대 노출 안 함(노무·세무 단독 글 포함)
+    var c = COPY[topic] || COPY.marketing; // 주제별 문구
 
     function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
