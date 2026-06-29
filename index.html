@@ -223,8 +223,13 @@ body:has(.search-band #search-dropdown.active)::before{content:"";position:fixed
 .hero-card .hc-badge{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;letter-spacing:.01em;background:rgba(255,255,255,.22);padding:6px 13px;border-radius:100px;margin-bottom:14px;position:relative;z-index:1;}
 .hero-card h1{font-size:32px;font-weight:900;line-height:1.25;letter-spacing:-.03em;margin-bottom:6px;position:relative;z-index:1;color:#fff;}
 .hero-card p{font-size:16px;font-weight:500;color:rgba(255,255,255,.8);position:relative;z-index:1;}
-.hero-card .hc-cta{display:inline-flex;align-items:center;justify-content:center;gap:7px;margin-top:20px;height:56px;background:#fff;color:#3D5AFE;font-weight:700;font-size:15px;padding:0 24px;border-radius:18px;position:relative;z-index:1;transition:transform .15s;}
+.hero-card .hc-cta{display:inline-flex;align-items:center;justify-content:center;gap:7px;margin-top:18px;height:56px;background:#fff;color:#3D5AFE;font-weight:700;font-size:15px;padding:0 24px;border-radius:18px;position:relative;z-index:1;transition:transform .15s;}
 .hero-card .hc-cta:active{transform:scale(.97);}
+/* 3축(계산기·가이드·서식) 칩 — Hero에서 사이트 성격을 3초 안에 전달 */
+.hero-card .hc-axes{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative;z-index:1;}
+.hero-card .hc-axis{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.24);padding:7px 13px;border-radius:100px;transition:background .15s;}
+.hero-card .hc-axis:hover{background:rgba(255,255,255,.28);}
+.hero-card .hc-axis svg{width:14px;height:14px;stroke:currentColor;fill:none;flex-shrink:0;}
 
 /* ── 블링크 카드 피드 ── */
 .feed{display:grid;grid-template-columns:1fr;gap:10px;}
@@ -468,9 +473,14 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
       <!-- 1) Hero -->
       <article class="hero-card">
         <span class="hc-deco" aria-hidden="true"></span>
-        <span class="hc-badge">이번 달 1위 계산기</span>
-        <h1>알바 인건비 계산기</h1>
-        <p>주휴수당·4대보험 포함, 지금 바로 계산</p>
+        <span class="hc-badge">소상공인 무료 도구함</span>
+        <h1>계산기·가이드·서식<br>한 곳에서 무료로</h1>
+        <p>인건비·부가세·배달 수수료 계산부터 실전 마케팅 노하우, 바로 쓰는 서식까지.</p>
+        <div class="hc-axes">
+          <a href="tools.html" class="hc-axis"><svg class="lucide" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="12" y2="18"/></svg>무료 계산기 18종</a>
+          <a href="category.html" class="hc-axis"><svg class="lucide" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>실전 마케팅 가이드</a>
+          <a href="forms.html" class="hc-axis"><svg class="lucide" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>바로 쓰는 서식</a>
+        </div>
         <a href="alba-cost-calc.html" class="hc-cta"><svg class="lucide" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="12" y2="18"/></svg>무료로 계산하기 →</a>
       </article>
 
