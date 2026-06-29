@@ -131,6 +131,10 @@ a{color:inherit;text-decoration:none;}
 .search-band .s-ico svg{width:18px;height:18px;}
 .search-band .nav-search-input{font-size:14px;padding:0 10px;}
 .search-band .nav-search-input::placeholder{color:#ADB5BD;font-weight:500;}
+/* ★ 버그수정: 공통 sohotip.css의 @media(max-width:768px){ nav .nav-search{display:none} } 가
+   홈 검색바의 <nav class="searchbar"> 안 .nav-search 까지 숨겨, 모바일에서 상단 검색창이
+   안 눌리던 문제 해결. .search-band 범위로 특이도를 높여 입력 래퍼를 항상 노출(전 폭 클릭 가능). */
+.search-band .nav-search{display:flex;align-items:center;}
 
 /* =====================================================================
    ▼▼ 스플릿 셸: 좌(레일) + 우(패널)  — 가로 split, 절대 세로로 쌓지 않음 ▼▼
