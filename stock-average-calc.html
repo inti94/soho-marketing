@@ -7,7 +7,7 @@
 <meta http-equiv="Expires" content="0">
 <script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="주식 평단가(평균 매입단가) 계산기. 여러 번 나눠 산 매수가와 수량을 넣으면 평균단가·총 매입금액·총 보유수량을 자동 계산하고, 현재가를 넣으면 평가손익과 수익률까지 보여줍니다.">
+<meta name="description" content="주식 평단가(평균 매입단가) 계산기. 여러 번 나눠 산 매수가와 수량을 넣으면 평균단가·총 매입금액·총 보유수량을 자동 계산하고, 현재가를 넣으면 평가손익과 수익률까지 보여줍니다. 물타기·분할매수 평단 관리에 딱.">
 <meta name="keywords" content="주식 평단가 계산기, 평균단가 계산, 물타기 평단가, 분할매수 평균, 주식 수익률 계산, 평가손익 계산">
 <meta name="robots" content="index, follow">
 <meta name="author" content="소호팁">
@@ -43,16 +43,8 @@
     "url": "https://sohotip.co.kr/stock-average-calc.html",
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Web",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "KRW"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "소호팁",
-      "url": "https://sohotip.co.kr"
-    },
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"},
+    "publisher": {"@type": "Organization", "name": "소호팁", "url": "https://sohotip.co.kr"},
     "dateModified": "2026-06-30",
     "inLanguage": "ko-KR",
     "breadcrumb": {
@@ -65,15 +57,28 @@
     }
   }
   </script>
-<link rel="stylesheet" href="sohotip.css?v=20260630g">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"증권사 앱에 뜨는 평단가랑 왜 조금 달라요?","acceptedAnswer":{"@type":"Answer","text":"이 계산기는 매수가와 수량만으로 단순 평균을 냅니다. 증권사 평단가는 매매 수수료, 거래세, 해외주식이라면 환전 환율까지 반영하기 때문에 보통 몇 원에서 몇십 원 차이가 납니다. 큰 흐름을 잡는 용도로 쓰고, 정확한 숫자는 증권사 앱을 함께 확인하세요."}},
+      {"@type":"Question","name":"물타기를 하면 왜 평단가가 내려가나요?","acceptedAnswer":{"@type":"Answer","text":"평단가는 총 매입금액을 총 수량으로 나눈 값입니다. 지금보다 싼 가격에 더 사면 총 수량은 늘고 평균이 아래로 당겨져 평단가가 내려갑니다. 다만 평단가가 내려간다고 손실이 사라지는 건 아니고, 그만큼 더 많은 돈이 그 종목에 묶인다는 점은 같이 봐야 합니다."}},
+      {"@type":"Question","name":"무상증자나 배당을 받으면 평단가가 바뀌나요?","acceptedAnswer":{"@type":"Answer","text":"무상증자로 주식 수가 늘면 총 매입금액은 그대로인데 수량만 늘어 평단가가 낮아집니다. 현금배당은 평단가 계산에는 직접 반영되지 않지만 실제 수익률을 따질 땐 받은 배당을 더해서 보면 됩니다. 이 계산기는 단순 매수 기준이라 증자·배당 반영은 수량을 직접 조정해 입력하세요."}},
+      {"@type":"Question","name":"미국 주식 평단가도 여기서 계산할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"원화 기준이면 환전된 매수가로 입력하면 됩니다. 달러 기준 평단가와 환율까지 함께 보고 싶다면, 곧 추가될 미국주식 평단가 계산기에서 실시간 환율을 반영해 원화·달러를 같이 보여드릴 예정입니다."}},
+      {"@type":"Question","name":"평단가를 낮추면 무조건 이득인가요?","acceptedAnswer":{"@type":"Answer","text":"아닙니다. 평단가는 '얼마에 회복하면 본전인지'를 보여주는 숫자일 뿐, 그 종목이 다시 오를지는 별개입니다. 가치가 무너진 종목에 평단만 낮추려고 계속 사는 건 위험할 수 있습니다. 평단가는 판단을 돕는 참고 숫자이고, 투자 결정과 책임은 본인에게 있습니다."}}
+    ]
+  }
+  </script>
+<link rel="stylesheet" href="sohotip.css?v=20260630h">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630g">
-<link rel="stylesheet" href="assets/calc.css?v=20260630g">
+  <link rel="stylesheet" href="assets/theme.css?v=20260630h">
+<link rel="stylesheet" href="assets/calc.css?v=20260630h">
 <style>
-:root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;--up:#F04452;--down:#3D5AFE;}
+:root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--text-light:#9CA3AF;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--border-light:#F3F4F6;--sans:'Noto Sans KR',sans-serif;--up:#F04452;--down:#3D5AFE;}
 *{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;}
+html{scroll-behavior:smooth;overflow-x:clip;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:clip;}
 nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
 .nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
 .nav-links{display:flex;gap:1.5rem;list-style:none;}
@@ -81,50 +86,101 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
 .nav-links a:hover{color:var(--primary);}
 .nav-cta{background:var(--primary);color:#fff;font-size:13px;padding:7px 16px;border-radius:6px;text-decoration:none;}
 @media(max-width:640px){.nav-links{display:none;}}
-.page-wrap{max-width:680px;margin:0 auto;padding:40px 2rem 80px;}
+.page-wrap{max-width:680px;margin:0 auto;padding:36px 16px 80px;}
 .page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
-.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:32px;line-height:1.6;}
-.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;}
-.card-title{font-size:14px;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:20px;}
-.field{margin-bottom:20px;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:28px;line-height:1.6;}
+.tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+
+/* 블록① 계산기 */
+.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px;}
+.card-title{font-size:14px;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:18px;}
+.field{margin-bottom:18px;}
 .field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--text);}
-.field-hint{font-size:11px;color:var(--text-muted);margin-bottom:6px;}
-.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;}
-.field input:focus,.field select:focus{border-color:var(--primary);}
+.field input{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;}
+.field input:focus{border-color:var(--primary);}
 .btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background 0.2s;margin-top:8px;}
 .btn-calc:hover{background:var(--primary-mid);}
-.result-card{background:var(--primary);border-radius:16px;padding:28px;color:#fff;margin-bottom:20px;}
-.result-title{font-size:13px;opacity:0.8;margin-bottom:6px;}
-.result-total{font-size:36px;font-weight:700;margin-bottom:4px;}
-.result-sub{font-size:13px;opacity:0.7;}
-.result-breakdown{background:var(--bg-card);border-radius:16px;padding:24px;border:1px solid var(--border);}
-.breakdown-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);}
-.breakdown-row:last-child{border-bottom:none;font-weight:700;font-size:15px;}
-.breakdown-label{font-size:13px;color:var(--text-muted);}
-.breakdown-value{font-size:14px;font-weight:500;color:var(--text);}
-.breakdown-value.highlight{color:var(--primary);font-weight:700;}
-.breakdown-value.up{color:var(--up);font-weight:700;}
-.breakdown-value.down{color:var(--down);font-weight:700;}
-.notice-box{background:var(--primary-light);border-radius:12px;padding:16px 20px;margin-top:20px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
-.notice-box strong{color:var(--primary);}
-.tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
-footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
-footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
-
-/* ── 매수 내역(분할매수) 행 ── */
-.lots-head{display:flex;gap:10px;font-size:11px;font-weight:600;color:var(--text-muted);padding:0 38px 6px 2px;}
-.lots-head .lh-price{flex:1.3;}
-.lots-head .lh-qty{flex:1;}
+.lots-head{display:flex;gap:10px;font-size:11px;font-weight:600;color:var(--text-muted);padding:0 40px 6px 2px;}
+.lots-head .lh-price{flex:1.3;}.lots-head .lh-qty{flex:1;}
 .lot-row{display:flex;gap:10px;align-items:center;margin-bottom:10px;}
 .lot-row .lot-field{display:flex;flex-direction:column;}
-.lot-row .lot-field.lf-price{flex:1.3;}
-.lot-row .lot-field.lf-qty{flex:1;}
+.lot-row .lot-field.lf-price{flex:1.3;}.lot-row .lot-field.lf-qty{flex:1;}
 .lot-row input{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;-webkit-appearance:none;}
 .lot-row input:focus{border-color:var(--primary);}
 .lot-del{width:30px;height:30px;flex-shrink:0;border:none;background:#F2F4F6;color:#9EA7B4;border-radius:50%;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:background .15s,color .15s;}
 .lot-del:hover{background:#FFE9EC;color:var(--up);}
 .btn-add-lot{width:100%;padding:11px;background:#fff;border:1.5px dashed var(--border);color:var(--text-muted);border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--sans);transition:all .15s;margin-bottom:6px;}
 .btn-add-lot:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light);}
+.result-card{background:var(--primary);border-radius:16px;padding:26px;color:#fff;margin-bottom:18px;}
+.result-title{font-size:13px;opacity:0.8;margin-bottom:6px;}
+.result-total{font-size:34px;font-weight:700;margin-bottom:4px;}
+.result-sub{font-size:13px;opacity:0.75;}
+.result-breakdown{background:var(--bg-card);border-radius:16px;padding:22px;border:1px solid var(--border);}
+.breakdown-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+.breakdown-row:last-child{border-bottom:none;}
+.breakdown-label{font-size:13px;color:var(--text-muted);min-width:0;}
+.breakdown-value{font-size:14px;font-weight:500;color:var(--text);text-align:right;flex-shrink:0;}
+.breakdown-value.highlight{color:var(--primary);font-weight:700;}
+.breakdown-value.up{color:var(--up);font-weight:700;}
+.breakdown-value.down{color:var(--down);font-weight:700;}
+.notice-box{background:var(--primary-light);border-radius:12px;padding:16px 18px;margin-top:18px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
+.notice-box strong{color:var(--primary);}
+
+/* 블록②~⑦ 설명 콘텐츠 */
+.article-content{margin-top:36px;}
+.article-content h2{font-size:20px;font-weight:800;color:var(--text);margin:34px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-.01em;}
+.article-content p{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:16px;}
+.article-content strong{font-weight:700;color:var(--primary);}
+.article-content ul{margin:14px 0 18px 18px;}
+.article-content li{font-size:15px;line-height:1.8;margin-bottom:6px;}
+.formula-box{background:#191F28;color:#fff;border-radius:14px;padding:20px 22px;margin:8px 0 18px;font-size:15px;font-weight:600;line-height:1.7;text-align:center;}
+.formula-box .fx-sub{display:block;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);margin-top:8px;}
+.tip-inline{background:var(--primary-light);border-radius:12px;padding:14px 18px;margin:8px 0 18px;font-size:14px;color:var(--primary-mid);line-height:1.7;}
+.tip-inline strong{color:var(--primary);}
+.step-box{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin:8px 0 18px;}
+.step-box .sb-badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--primary);padding:3px 11px;border-radius:20px;margin-bottom:10px;}
+.step-box .sb-body{font-size:14.5px;line-height:1.8;color:var(--text);}
+.article-table{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:13.5px;}
+.article-table th,.article-table td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.6;}
+.article-table th{background:#F4F6FB;font-weight:700;color:var(--text);}
+.article-table td:first-child{font-weight:600;white-space:nowrap;}
+.prepare{background:#FFF8F2;border:1px solid #FFE3CC;border-radius:12px;padding:14px 18px;font-size:13px;color:#9A5B1E;line-height:1.7;margin:8px 0 18px;}
+/* FAQ */
+.faq-section{margin-top:8px;}
+.faq-item{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;background:var(--bg-card);}
+.faq-q{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:7px;}
+.faq-q::before{content:"Q. ";color:var(--primary);}
+.faq-a{font-size:13.5px;color:var(--text-muted);line-height:1.75;}
+
+/* 블록⑧ 관련 계산기 */
+.related-calcs-section{margin:34px 0 0;}
+.related-calcs-section h2,.related-articles-section h2{font-size:17px;font-weight:800;color:var(--text);margin-bottom:14px;}
+.rel-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;}
+.rel-calc-card{display:flex;align-items:center;gap:10px;padding:14px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s;}
+.rel-calc-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 14px rgba(61,90,254,.12);}
+.rel-calc-card.soon{opacity:.6;cursor:default;}
+.rel-calc-card.soon:hover{transform:none;box-shadow:none;border-color:var(--border);}
+.rcc-icon{font-size:22px;flex-shrink:0;}
+.rcc-title{font-size:12.5px;font-weight:700;line-height:1.3;}
+.rcc-desc{font-size:11px;color:var(--text-muted);margin-top:2px;}
+/* 블록⑨ 관련 글 */
+.related-articles-section{margin:28px 0 0;}
+.rel-article-item{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--border-light);text-decoration:none;color:var(--text);}
+.rel-article-item:last-child{border-bottom:none;}
+.rel-article-item:hover .rai-title{color:var(--primary);}
+.rai-num{font-size:18px;font-weight:900;color:var(--border);width:22px;flex-shrink:0;text-align:center;}
+.rai-title{font-size:13.5px;font-weight:600;line-height:1.4;flex:1;min-width:0;}
+.rai-arrow{color:var(--primary);font-size:14px;flex-shrink:0;}
+/* 블록⑩ CTA */
+.cta-box{margin-top:34px;background:linear-gradient(135deg,#3D5AFE,#536DFE);border-radius:18px;padding:26px 22px;text-align:center;color:#fff;}
+.cta-box h3{font-size:18px;font-weight:800;margin-bottom:6px;}
+.cta-box p{font-size:13.5px;opacity:.85;margin-bottom:16px;line-height:1.6;}
+.cta-box a{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--primary);font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;text-decoration:none;transition:transform .12s;}
+.cta-box a:active{transform:scale(.97);}
+
+footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
+footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
+@media(max-width:380px){.rel-calc-grid{grid-template-columns:1fr 1fr;}}
 </style></head>
 <body>
 <div id="progress-bar"></div>
@@ -150,7 +206,8 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <h1 class="page-title">주식 평단가 계산기</h1>
   <p class="page-desc">여러 번 나눠 산 주식의 매수가와 수량을 넣으면 평균 매입단가와 총 매입금액을 자동으로 계산해드립니다. 현재가까지 넣으면 지금 평가손익이 얼마인지, 수익률은 몇 %인지 바로 확인할 수 있어요.</p>
 
-  <div class="calc-card">
+  <!-- ① 계산기 -->
+  <div class="calc-card" id="calc">
     <div class="card-title">매수 내역 입력</div>
     <div class="lots-head"><span class="lh-price">매수가 (원)</span><span class="lh-qty">수량 (주)</span></div>
     <div id="lots"></div>
@@ -169,48 +226,119 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
       <div class="result-sub" id="res-sub">총 매입금액 ÷ 총 보유수량</div>
     </div>
     <div class="result-breakdown">
-      <div class="breakdown-row">
-        <span class="breakdown-label">총 보유수량</span>
-        <span class="breakdown-value" id="res-qty">0주</span>
-      </div>
-      <div class="breakdown-row">
-        <span class="breakdown-label">총 매입금액</span>
-        <span class="breakdown-value" id="res-cost">0원</span>
-      </div>
-      <div class="breakdown-row">
-        <span class="breakdown-label">평균 매입단가</span>
-        <span class="breakdown-value highlight" id="res-avg2">0원</span>
-      </div>
+      <div class="breakdown-row"><span class="breakdown-label">총 보유수량</span><span class="breakdown-value" id="res-qty">0주</span></div>
+      <div class="breakdown-row"><span class="breakdown-label">총 매입금액</span><span class="breakdown-value" id="res-cost">0원</span></div>
+      <div class="breakdown-row"><span class="breakdown-label">평균 매입단가</span><span class="breakdown-value highlight" id="res-avg2">0원</span></div>
       <div id="eval-rows" style="display:none;">
-        <div class="breakdown-row" style="margin-top:8px;padding-top:16px;border-top:2px solid var(--border);">
-          <span class="breakdown-label">현재 평가금액 (현재가 × 수량)</span>
-          <span class="breakdown-value" id="res-eval">0원</span>
-        </div>
-        <div class="breakdown-row">
-          <span class="breakdown-label">평가손익</span>
-          <span class="breakdown-value" id="res-pl">0원</span>
-        </div>
-        <div class="breakdown-row">
-          <span class="breakdown-label">수익률</span>
-          <span class="breakdown-value" id="res-rate">0%</span>
-        </div>
+        <div class="breakdown-row" style="margin-top:8px;padding-top:16px;border-top:2px solid var(--border);"><span class="breakdown-label">현재 평가금액 (현재가 × 수량)</span><span class="breakdown-value" id="res-eval">0원</span></div>
+        <div class="breakdown-row"><span class="breakdown-label">평가손익</span><span class="breakdown-value" id="res-pl">0원</span></div>
+        <div class="breakdown-row"><span class="breakdown-label">수익률</span><span class="breakdown-value" id="res-rate">0%</span></div>
       </div>
     </div>
     <div class="notice-box">
-      <strong>💡 평단가는 이렇게 계산돼요.</strong><br>
-      평균단가 = (각 매수가 × 수량을 모두 더한 총 매입금액) ÷ (총 보유수량) 입니다. 같은 종목을 더 싸게 더 사면(물타기) 평단가가 내려가고, 더 비싸게 사면(불타기) 평단가가 올라가요. 수수료·세금·환율은 빠진 단순 계산이라 실제 증권사 평단가와는 약간 차이가 날 수 있습니다.
+      <strong>💡 참고하세요.</strong> 수수료·거래세·환율이 빠진 단순 평균이라, 증권사 앱에 뜨는 평단가와는 몇 원 정도 차이가 날 수 있어요. 큰 흐름을 잡는 용도로 쓰시면 됩니다.
     </div>
+  </div>
+
+  <div class="article-content">
+    <!-- ② 공식 설명 -->
+    <h2>평단가, 공식은 의외로 단순해요</h2>
+    <p>주식 처음 시작하면 '평단가'라는 말부터 헷갈리시죠? 어렵게 생각할 거 없어요. <strong>지금까지 그 종목에 들어간 돈을, 갖고 있는 주식 수로 나눈 값</strong>이 평단가입니다. "한 주당 평균 얼마에 샀냐"는 거예요.</p>
+    <div class="formula-box">평균단가 = 총 매입금액 ÷ 총 보유수량<span class="fx-sub">총 매입금액 = (매수가 × 수량)을 매수할 때마다 더한 값</span></div>
+    <p>나눠서 여러 번 샀어도 똑같아요. 산 가격마다 수량을 곱해서 다 더하고, 전체 주식 수로 한 번 나누면 끝입니다. 위 계산기가 이걸 자동으로 해주는 거고요.</p>
+
+    <!-- ③ 실제 사례 -->
+    <h2>이런 경험, 다들 한 번쯤 있으시죠</h2>
+    <p>예를 들어 볼게요. 어떤 종목을 <strong>7만 원에 10주</strong> 샀는데, 며칠 뒤 6만 원으로 떨어졌어요. "어, 더 싸졌네?" 하고 <strong>6만 원에 10주</strong>를 더 샀습니다. 흔히 말하는 '물타기'죠.</p>
+    <p>이제 평단가가 어떻게 될까요? 7만 원에만 샀을 땐 평단가가 7만 원이었는데, 6만 원에 더 사면서 평단가가 <strong>6만 5천 원</strong>으로 내려갑니다. 주가가 다시 6만 5천 원만 넘어도 본전이 되는 거예요. 이게 평단가를 챙겨 봐야 하는 이유입니다.</p>
+
+    <!-- ④ 계산 예시 -->
+    <h2>숫자로 천천히 따라가 볼게요</h2>
+    <div class="step-box">
+      <span class="sb-badge">계산 따라하기</span>
+      <div class="sb-body">
+        1차 매수: 70,000원 × 10주 = <strong>700,000원</strong><br>
+        2차 매수: 60,000원 × 10주 = <strong>600,000원</strong><br>
+        총 매입금액 = 700,000 + 600,000 = <strong>1,300,000원</strong><br>
+        총 보유수량 = 10 + 10 = <strong>20주</strong><br>
+        → 평단가 = 1,300,000 ÷ 20 = <strong>65,000원</strong>
+      </div>
+    </div>
+    <p>여기서 현재가가 75,000원이라면? 평가금액은 75,000 × 20 = 1,500,000원, 평가손익은 1,500,000 − 1,300,000 = <strong>+200,000원</strong>, 수익률은 +15.38%가 됩니다. 위 계산기에 그대로 넣어보면 똑같이 나와요.</p>
+
+    <!-- ⑤ 항목표 -->
+    <h2>결과에 나오는 항목, 뜻만 알면 쉬워요</h2>
+    <table class="article-table">
+      <thead><tr><th>항목</th><th>무슨 뜻</th><th>예시</th></tr></thead>
+      <tbody>
+        <tr><td>총 매입금액</td><td>매수가 × 수량을 전부 더한 실제로 들어간 돈</td><td>1,300,000원</td></tr>
+        <tr><td>총 보유수량</td><td>지금 갖고 있는 전체 주식 수</td><td>20주</td></tr>
+        <tr><td>평균 매입단가</td><td>총 매입금액 ÷ 총 보유수량 (= 평단가)</td><td>65,000원</td></tr>
+        <tr><td>평가금액</td><td>현재가 × 보유수량 (지금 팔면 받는 돈)</td><td>1,500,000원</td></tr>
+        <tr><td>평가손익</td><td>평가금액 − 총 매입금액 (현재 손익)</td><td>+200,000원</td></tr>
+        <tr><td>수익률</td><td>평가손익 ÷ 총 매입금액 × 100</td><td>+15.38%</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ⑥ 장단점표 -->
+    <h2>물타기·불타기, 평단가 관점에서 장단점</h2>
+    <p>평단가를 바꾸는 대표적인 두 가지 행동이 물타기와 불타기예요. 정답이 있는 건 아니고, 각각 이런 특징이 있습니다.</p>
+    <table class="article-table">
+      <thead><tr><th>구분</th><th>장점</th><th>단점</th></tr></thead>
+      <tbody>
+        <tr><td>물타기<br>(하락 시 추가매수 → 평단↓)</td><td>평단가가 낮아져 주가가 조금만 회복해도 본전·수익 구간이 빨리 온다</td><td>이미 빠지는 종목에 돈이 더 묶이고, 더 내려가면 손실 규모가 커질 수 있다</td></tr>
+        <tr><td>불타기<br>(상승 시 추가매수 → 평단↑)</td><td>오르는 추세에 비중을 실어 수익을 키울 수 있다</td><td>평단가가 높아져, 조정이 오면 한 번에 손실로 돌아설 수 있다</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-inline"><strong>핵심은 평단가가 아니라 '그 종목이 다시 오를 만한가'예요.</strong> 평단가를 낮추는 것 자체가 목적이 되면 위험합니다. 평단가는 판단을 돕는 숫자일 뿐, 투자 결정과 책임은 본인에게 있다는 점 꼭 기억하세요.</div>
+
+    <!-- ⑦ FAQ -->
+    <h2 id="faq">자주 묻는 질문</h2>
+    <div class="faq-section">
+      <div class="faq-item"><div class="faq-q">증권사 앱에 뜨는 평단가랑 왜 조금 달라요?</div><div class="faq-a">이 계산기는 매수가와 수량만으로 단순 평균을 냅니다. 증권사 평단가는 매매 수수료·거래세, 해외주식이라면 환율까지 반영해서 보통 몇 원~몇십 원 차이가 나요. 큰 흐름 잡는 용도로 쓰고 정확한 숫자는 증권사 앱을 함께 확인하세요.</div></div>
+      <div class="faq-item"><div class="faq-q">물타기를 하면 왜 평단가가 내려가나요?</div><div class="faq-a">평단가는 총 매입금액을 총 수량으로 나눈 값이에요. 지금보다 싼 값에 더 사면 수량이 늘면서 평균이 아래로 당겨집니다. 다만 평단가가 내려간다고 손실이 사라지는 건 아니고, 그만큼 더 많은 돈이 묶인다는 점은 같이 봐야 해요.</div></div>
+      <div class="faq-item"><div class="faq-q">무상증자나 배당을 받으면 평단가가 바뀌나요?</div><div class="faq-a">무상증자로 주식 수가 늘면 총 매입금액은 그대로인데 수량만 늘어 평단가가 낮아집니다. 현금배당은 평단가에 직접 반영되진 않지만 실제 수익률을 볼 땐 받은 배당을 더해 보면 돼요. 이 계산기는 단순 매수 기준이라 증자·배당은 수량을 직접 조정해 입력하세요.</div></div>
+      <div class="faq-item"><div class="faq-q">미국 주식 평단가도 여기서 계산할 수 있나요?</div><div class="faq-a">원화 기준이면 환전된 매수가로 넣으면 됩니다. 달러 기준 평단가와 환율까지 함께 보고 싶다면, 곧 추가될 <strong>미국주식 평단가 계산기</strong>에서 실시간 환율을 반영해 원화·달러를 같이 보여드릴 예정이에요.</div></div>
+      <div class="faq-item"><div class="faq-q">평단가를 낮추면 무조건 이득인가요?</div><div class="faq-a">아니에요. 평단가는 '얼마에 회복하면 본전인지'를 알려주는 숫자일 뿐, 그 종목이 다시 오를지는 별개입니다. 가치가 무너진 종목에 평단만 낮추려고 계속 사는 건 위험할 수 있어요. 평단가는 참고 숫자이고 투자 판단·책임은 본인에게 있습니다.</div></div>
+    </div>
+  </div>
+
+  <!-- ⑧ 관련 계산기 (주식 계산기 시리즈) -->
+  <div class="related-calcs-section">
+    <h2>주식 계산기 시리즈</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="stock-average-calc.html"><span class="rcc-icon">📊</span><span><span class="rcc-title">평단가 계산기</span><span class="rcc-desc">지금 보는 계산기</span></span></a>
+      <a class="rel-calc-card soon"><span class="rcc-icon">💧</span><span><span class="rcc-title">물타기 계산기</span><span class="rcc-desc">준비 중</span></span></a>
+      <a class="rel-calc-card soon"><span class="rcc-icon">🔥</span><span><span class="rcc-title">불타기 계산기</span><span class="rcc-desc">준비 중</span></span></a>
+      <a class="rel-calc-card soon"><span class="rcc-icon">📈</span><span><span class="rcc-title">수익률 계산기</span><span class="rcc-desc">준비 중</span></span></a>
+      <a class="rel-calc-card soon"><span class="rcc-icon">🎯</span><span><span class="rcc-title">목표가 계산기</span><span class="rcc-desc">준비 중</span></span></a>
+      <a class="rel-calc-card soon"><span class="rcc-icon">🇺🇸</span><span><span class="rcc-title">미국주식 계산기</span><span class="rcc-desc">준비 중 · 실시간 환율</span></span></a>
+    </div>
+  </div>
+
+  <!-- ⑨ 관련 글 -->
+  <div class="related-articles-section">
+    <h2>함께 보면 좋은 글</h2>
+    <a class="rel-article-item" href="soho-loan-refinancing.html"><span class="rai-num">1</span><span class="rai-title">소상공인 대환대출 — 이자 100만원 이상 아끼는 법</span><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="policy-loan-guide.html"><span class="rai-num">2</span><span class="rai-title">소상공인 정책자금 대출 신청 방법 완전 가이드</span><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="solo-shop-tax-deduction.html"><span class="rai-num">3</span><span class="rai-title">1인 사장님 절세 꿀팁 — 경비처리 완전 정리</span><span class="rai-arrow">→</span></a>
+  </div>
+
+  <!-- ⑩ 직접 계산 CTA -->
+  <div class="cta-box">
+    <h3>지금 내 평단가, 직접 넣어보세요</h3>
+    <p>매수가랑 수량만 넣으면 평단가·평가손익이 5초 만에 나옵니다.</p>
+    <a href="#calc">📊 평단가 바로 계산하기</a>
   </div>
 </div>
 
 <button id="back-to-top" aria-label="맨 위로">↑</button>
-<script src="assets/layout.js?v=20260630g"></script>
-<script src="sohotip.js?v=20260630g"></script>
-<script src="assets/consult.js?v=20260630g"></script>
+<script src="assets/layout.js?v=20260630h"></script>
+<script src="sohotip.js?v=20260630h"></script>
+<script src="assets/consult.js?v=20260630h"></script>
 <script>
 /* 평단가 계산기 — 분할매수 평균단가 + 평가손익 */
 var lotSeq = 0;
-
 function numOf(v){ var n = parseFloat(String(v == null ? '' : v).replace(/[^0-9.]/g, '')); return isNaN(n) ? 0 : n; }
 function won(n){ return Math.round(n).toLocaleString('ko-KR') + '원'; }
 function comma(v){ var s = String(v).replace(/[^0-9]/g, ''); return s ? Number(s).toLocaleString('ko-KR') : ''; }
@@ -223,23 +351,14 @@ function lotRowHtml(price, qty){
     '<button type="button" class="lot-del" onclick="removeLot(this)" aria-label="이 행 삭제">&times;</button>' +
     '</div>';
 }
+function addLot(price, qty){ document.getElementById('lots').insertAdjacentHTML('beforeend', lotRowHtml(price, qty)); }
+function removeLot(btn){ var rows = document.querySelectorAll('#lots .lot-row'); if (rows.length <= 1) return; btn.closest('.lot-row').remove(); }
 
-function addLot(price, qty){
-  document.getElementById('lots').insertAdjacentHTML('beforeend', lotRowHtml(price, qty));
-}
-
-function removeLot(btn){
-  var rows = document.querySelectorAll('#lots .lot-row');
-  if (rows.length <= 1) return;   /* 최소 1행 유지 */
-  btn.closest('.lot-row').remove();
-}
-
-/* 매수가·현재가 입력에 천단위 콤마 자동 */
+/* 매수가·현재가 입력 천단위 콤마 자동 */
 document.addEventListener('input', function(e){
   if (e.target.classList && (e.target.classList.contains('lot-price') || e.target.id === 'current-price')) {
     var p = e.target.selectionStart, before = e.target.value;
     e.target.value = comma(before);
-    /* 커서 위치 보정(대략) */
     var diff = e.target.value.length - before.length;
     try { e.target.setSelectionRange(p + diff, p + diff); } catch (err) {}
   }
@@ -253,11 +372,7 @@ function calculate(){
     var qty = numOf(row.querySelector('.lot-qty').value);
     if (price > 0 && qty > 0) { totalQty += qty; totalCost += price * qty; }
   });
-
-  if (totalQty <= 0) {
-    alert('매수가와 수량을 1건 이상 입력해 주세요.');
-    return;
-  }
+  if (totalQty <= 0) { alert('매수가와 수량을 1건 이상 입력해 주세요.'); return; }
 
   var avg = totalCost / totalQty;
   document.getElementById('res-avg').textContent = won(avg);
@@ -273,8 +388,7 @@ function calculate(){
     var pl = evalAmt - totalCost;
     var rate = totalCost > 0 ? (pl / totalCost) * 100 : 0;
     document.getElementById('res-eval').textContent = won(evalAmt);
-    var plEl = document.getElementById('res-pl');
-    var rateEl = document.getElementById('res-rate');
+    var plEl = document.getElementById('res-pl'), rateEl = document.getElementById('res-rate');
     var sign = pl > 0 ? '+' : '';
     plEl.textContent = sign + won(pl);
     rateEl.textContent = sign + (Math.round(rate * 100) / 100).toLocaleString('ko-KR') + '%';
@@ -282,9 +396,7 @@ function calculate(){
     plEl.className = 'breakdown-value ' + cls;
     rateEl.className = 'breakdown-value ' + cls;
     evalRows.style.display = 'block';
-  } else {
-    evalRows.style.display = 'none';
-  }
+  } else { evalRows.style.display = 'none'; }
 
   document.getElementById('result-section').style.display = 'block';
   document.getElementById('result-section').scrollIntoView({behavior:'smooth', block:'start'});
@@ -301,6 +413,6 @@ addLot();
   <a href="consultation.html">무료 진단</a>
   <p style="margin-top:12px;">© 2026 소호팁. 본 계산기는 참고용이며 투자 판단의 책임은 본인에게 있습니다.</p>
 </footer>
-<script src="network.js?v=20260630g"></script>
+<script src="network.js?v=20260630h"></script>
 </body>
 </html>

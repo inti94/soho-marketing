@@ -52,10 +52,10 @@
   }
 }
 </script>
-<link rel="stylesheet" href="sohotip.css?v=20260630f">
+<link rel="stylesheet" href="sohotip.css?v=20260630h">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630f">
-  <link rel="stylesheet" href="assets/soho-cards.css?v=20260630f">
+  <link rel="stylesheet" href="assets/theme.css?v=20260630h">
+  <link rel="stylesheet" href="assets/soho-cards.css?v=20260630h">
 <style>
 :root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -138,7 +138,7 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
 
 <div class="page-wrap">
   <div class="hero">
-    <h1>무료 계산기 18종</h1>
+    <h1>무료 계산기 19종</h1>
     <p>가입 없이 바로 계산</p>
   </div>
   <div class="calc-search">
@@ -152,6 +152,7 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
     <button class="cchip" type="button" data-cat="배달">배달</button>
     <button class="cchip" type="button" data-cat="창업">창업</button>
     <button class="cchip" type="button" data-cat="매출">매출</button>
+    <button class="cchip" type="button" data-cat="주식">주식</button>
     <a class="cchip cchip-link" href="forms.html">서식</a>
   </div>
   <div class="calc-count">총 <b id="calc-total">0</b>개</div>
@@ -165,15 +166,15 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
 </div>
 
 <button id="back-to-top" aria-label="맨 위로">↑</button>
-<script src="assets/layout.js?v=20260630f"></script>
-<script src="sohotip.js?v=20260630f"></script>
-<script src="assets/consult.js?v=20260630f"></script>
+<script src="assets/layout.js?v=20260630h"></script>
+<script src="sohotip.js?v=20260630h"></script>
+<script src="assets/consult.js?v=20260630h"></script>
 <footer>
   <a href="index.html">홈</a><a href="category.html">마케팅 가이드</a><a href="tools.html">계산기 모음</a><a href="consultation.html">무료 진단</a>
   <p style="margin-top:12px;">© 2026 소호팁 (sohotip.co.kr)</p>
 </footer>
-<script src="assets/soho-share.js?v=20260630f"></script>
-<script src="assets/soho-cards.js?v=20260630f"></script>
+<script src="assets/soho-share.js?v=20260630h"></script>
+<script src="assets/soho-cards.js?v=20260630h"></script>
 <script>
 /* tools.html — 계산기 카드(SohoCards) + 검색·필터칩·카운트 */
 (function(){
@@ -212,7 +213,8 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
     {cat:'세금',name:'카드수수료 계산기',desc:'월 카드매출 → 우대수수료율 구간 자동 적용, 월·연 수수료 계산',href:'card-fee-calc.html',icon:'CreditCard',color:'#00B8D9',tags:['카드수수료','단말기'],views:3180,isNew:true},
     {cat:'창업',name:'권리금 계산기',desc:'월 순이익·시설 잔존가치 → 시설+영업 권리금 적정 범위 계산',href:'premium-calc.html',icon:'KeyRound',color:'#FFB800',tags:['권리금','시설가치'],views:2890,isNew:true},
     {cat:'창업',name:'폐업 비용 계산기',desc:'철거비·퇴직금·재고 + 폐업 지원금 차감한 실제 부담액 계산',href:'closure-cost-calc.html',icon:'Package',color:'#6B7684',tags:['폐업','철거','지원금'],views:2530,isNew:true},
-    {cat:'창업',name:'창업 초기비용 계산기',desc:'업종·평수 → 인테리어·보증금·권리금 등 창업비용 + 월 BEP 매출 추정',href:'startup-cost-calc.html',icon:'Rocket',color:'#F04452',tags:['창업','초기자금'],views:3940,isNew:true}
+    {cat:'창업',name:'창업 초기비용 계산기',desc:'업종·평수 → 인테리어·보증금·권리금 등 창업비용 + 월 BEP 매출 추정',href:'startup-cost-calc.html',icon:'Rocket',color:'#F04452',tags:['창업','초기자금'],views:3940,isNew:true},
+    {cat:'주식',name:'주식 평단가 계산기',desc:'분할매수 매수가·수량으로 평균단가·총매입·평가손익·수익률 자동 계산',href:'stock-average-calc.html',icon:'TrendingUp',color:'#3D5AFE',tags:['평단가','물타기','수익률'],views:1280,isNew:true}
   ];
   var grid=document.getElementById('calc-grid');
   var totalEl=document.getElementById('calc-total');
@@ -252,6 +254,6 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
   render();
 })();
 </script>
-<script src="network.js?v=20260630f"></script>
+<script src="network.js?v=20260630h"></script>
 </body>
 </html>
