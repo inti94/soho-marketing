@@ -46,11 +46,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="sohotip.css?v=20260630h">
+<link rel="stylesheet" href="sohotip.css?v=20260630i">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630h">
-  <link rel="stylesheet" href="assets/soho-cards.css?v=20260630h">
-<link rel="stylesheet" href="assets/sohotip-theme.css?v=20260630h">
+  <link rel="stylesheet" href="assets/theme.css?v=20260630i">
+  <link rel="stylesheet" href="assets/soho-cards.css?v=20260630i">
+<link rel="stylesheet" href="assets/sohotip-theme.css?v=20260630i">
 
 <style>
 /* =====================================================================
@@ -144,6 +144,19 @@ a{color:inherit;text-decoration:none;}
 .b-hot{display:inline-block;font-size:10px;font-weight:800;color:var(--red);background:#FFE9EB;padding:2px 8px;border-radius:100px;vertical-align:middle;margin-right:6px;}
 .empty{text-align:center;color:var(--g400);font-size:14px;font-weight:600;padding:50px 20px;}
 .empty .em{font-size:40px;display:block;margin-bottom:10px;}
+
+/* ── 카드 글자 잘림 방지: 잘리지 말고 자연스럽게 줄바꿈(soho-cards.css 위에서 덮어씀, 가이드 페이지 한정) ── */
+/* 제목·설명·카테고리·태그: 한 줄 강제(nowrap) 해제 + 어떤 긴 토큰도 줄바꿈 → 가로 넘침/clip 잘림 방지 */
+.sc-title, .sc-title--art, .sc-desc, .sc-desc--art, .sc-cat-name, .sc-tag{
+  white-space:normal; word-break:keep-all; overflow-wrap:anywhere;
+}
+/* 제목 2줄·설명 2줄까지만 보여주고 그 이상은 '…'로(글자 중간 잘림 아님). 높이는 고정 X, 내용만큼 늘어남 */
+.sc-title--art{ -webkit-line-clamp:2; }
+.sc-desc--art{ -webkit-line-clamp:2; }
+.sc-art-body{ min-width:0; }
+/* 태그: 가로 스크롤로 잘리던 것 → 여러 줄로 줄바꿈해 다 보이게 */
+.sc-tags{ flex-wrap:wrap; overflow-x:visible; }
+.sc-tag{ flex-shrink:1; }
 
 /* ── 광고 ── */
 .ad-slot{margin:18px 16px;min-height:90px;text-align:center;background:var(--g100);border-radius:16px;overflow:hidden;display:flex;align-items:center;justify-content:center;}
@@ -282,9 +295,9 @@ a{color:inherit;text-decoration:none;}
   <a class="tb" href="search.html"><span class="tb-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>검색</a>
 </nav>
 
-<script src="sohotip.js?v=20260630h"></script>
-<script src="assets/soho-share.js?v=20260630h"></script>
-<script src="assets/soho-cards.js?v=20260630h"></script>
+<script src="sohotip.js?v=20260630i"></script>
+<script src="assets/soho-share.js?v=20260630i"></script>
+<script src="assets/soho-cards.js?v=20260630i"></script>
 <script>
 /* ===================================================================
    소호팁 카테고리 — ?cat / ?q 기반 카드 피드 (SohoCards 통일)
@@ -545,6 +558,6 @@ a{color:inherit;text-decoration:none;}
   });
 })();
 </script>
-<script src="network.js?v=20260630h"></script>
+<script src="network.js?v=20260630i"></script>
 </body>
 </html>
