@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="주식 수익률 계산기. 매수가·매도가·수량을 넣으면 수익금과 수익률(%)을 바로 계산하고, 매매 수수료·증권거래세를 넣으면 실제로 손에 쥐는 실수익금·실수익률까지 한눈에 보여줍니다.">
+<meta name="keywords" content="수익률 계산기, 주식 수익률, 매도 수익률 계산, 실수익 계산, 수수료 세금 수익률, 손익 계산기">
+<meta name="robots" content="index, follow">
+<meta name="author" content="소호팁">
+<meta name="date" content="2026-06-30">
+<meta property="og:type" content="website">
+<meta property="og:title" content="주식 수익률 계산기 — 수수료·세금 포함 실수익까지 | 소호팁">
+<meta property="og:description" content="매수가·매도가·수량만 넣으면 수익금·수익률 자동 계산. 수수료·거래세를 넣으면 실제 손에 쥐는 실수익률까지.">
+<meta property="og:url" content="https://sohotip.co.kr/stock-return-calc.html">
+<meta property="og:image" content="https://sohotip.co.kr/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="소호팁">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="주식 수익률 계산기 — 수수료·세금 포함 실수익까지 | 소호팁">
+<meta name="twitter:description" content="매수가·매도가·수량으로 수익률을 바로 계산. 수수료·거래세 입력 시 실수익률까지.">
+<meta name="twitter:image" content="https://sohotip.co.kr/og-image.png">
+<meta name="naver-site-verification" content="d7369feb5de3df4cce2e9016b84ad045c4ed70a4">
+<link rel="canonical" href="https://sohotip.co.kr/stock-return-calc.html">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sohotip.co.kr/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
+<link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
+<title>주식 수익률 계산기 — 수수료·세금 포함 실수익률 자동계산 (2026) | 소호팁</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "주식 수익률 계산기",
+    "description": "매수가·매도가·수량으로 수익금과 수익률을 계산하고, 매매 수수료·증권거래세를 반영해 실수익금·실수익률까지 자동 계산하는 무료 주식 수익률 계산기.",
+    "url": "https://sohotip.co.kr/stock-return-calc.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"},
+    "publisher": {"@type": "Organization", "name": "소호팁", "url": "https://sohotip.co.kr"},
+    "dateModified": "2026-06-30",
+    "inLanguage": "ko-KR",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"홈","item":"https://sohotip.co.kr/"},
+        {"@type":"ListItem","position":2,"name":"계산기","item":"https://sohotip.co.kr/tools.html"},
+        {"@type":"ListItem","position":3,"name":"주식 수익률 계산기","item":"https://sohotip.co.kr/stock-return-calc.html"}
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"수익률은 어떻게 계산하나요?","acceptedAnswer":{"@type":"Answer","text":"수익률(%)은 수익금을 매수금액으로 나눈 뒤 100을 곱한 값입니다. 수익금은 (매도가 − 매수가) × 수량이고, 매수금액은 매수가 × 수량이에요. 예를 들어 1만 원에 100주 사서 1만 2천 원에 다 팔면, 수익금 20만 원 ÷ 매수금액 100만 원 × 100 = 수익률 20%가 됩니다."}},
+      {"@type":"Question","name":"수수료·세금을 넣으면 수익률이 왜 줄어드나요?","acceptedAnswer":{"@type":"Answer","text":"매매 수수료는 살 때와 팔 때 모두 붙고, 증권거래세는 팔 때 매도금액 기준으로 떼입니다. 이 비용이 수익금에서 빠지기 때문에 실제 손에 쥐는 실수익률은 단순 수익률보다 낮아집니다. 수익이 작을수록 이 차이가 체감상 더 크게 느껴져요."}},
+      {"@type":"Question","name":"수수료율·거래세율은 얼마로 넣어야 하나요?","acceptedAnswer":{"@type":"Answer","text":"수수료율은 증권사·계좌마다 달라서 보통 0.01~0.5% 수준이고, 비대면 계좌는 더 낮거나 이벤트로 무료인 경우도 있습니다. 증권거래세율은 시장(코스피·코스닥)과 연도에 따라 바뀌므로, 정확한 값은 본인 증권사 수수료 안내와 그 해 적용 세율을 확인해 입력하세요. 이 계산기의 기본값은 예시입니다."}},
+      {"@type":"Question","name":"손실이 났을 때 수익률은 어떻게 보나요?","acceptedAnswer":{"@type":"Answer","text":"매도가가 매수가보다 낮으면 수익금이 마이너스가 되고, 수익률도 음수(−%)로 표시됩니다. 수수료·세금을 포함하면 손실 폭은 조금 더 커집니다. 본전이 되려면 적어도 수수료·세금만큼은 가격이 더 올라줘야 한다는 점도 같이 기억해 두면 좋아요."}},
+      {"@type":"Question","name":"증권사 앱 수익률이랑 다를 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"네, 조금 다를 수 있습니다. 증권사 앱은 실제 체결 수수료·거래세, 해외주식이라면 환율과 환전 비용까지 반영하기 때문입니다. 이 계산기는 입력한 값만으로 단순 계산하므로 큰 흐름을 잡는 용도로 쓰고, 정확한 숫자는 증권사 거래내역을 함께 확인하세요."}}
+    ]
+  }
+  </script>
+<link rel="stylesheet" href="sohotip.css?v=20260630r">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/theme.css?v=20260630r">
+<link rel="stylesheet" href="assets/calc.css?v=20260630r">
+<style>
+:root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--text-light:#9CA3AF;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--border-light:#F3F4F6;--sans:'Noto Sans KR',sans-serif;--up:#F04452;--down:#3D5AFE;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;overflow-x:clip;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:clip;}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-size:13px;color:var(--text-muted);text-decoration:none;}
+.nav-links a:hover{color:var(--primary);}
+.nav-cta{background:var(--primary);color:#fff;font-size:13px;padding:7px 16px;border-radius:6px;text-decoration:none;}
+@media(max-width:640px){.nav-links{display:none;}}
+.page-wrap{max-width:680px;margin:0 auto;padding:36px 16px 80px;}
+.page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:28px;line-height:1.6;}
+.tag{display:inline-flex;align-items:center;gap:5px;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+.tag svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* 블록① 계산기 */
+.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px;}
+.card-title{font-size:14px;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:18px;}
+.field{margin-bottom:18px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--text);}
+.field input{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;-webkit-appearance:none;}
+.field input:focus{border-color:var(--primary);}
+.field-group{display:flex;gap:12px;}
+.field-group .field{flex:1;}
+.group-label{font-size:13px;font-weight:700;color:var(--text);margin:2px 0 10px;display:flex;align-items:center;gap:7px;}
+.group-label .gl-tag{font-size:10px;font-weight:700;color:#fff;background:var(--primary);padding:2px 9px;border-radius:20px;letter-spacing:.02em;}
+.group-label .gl-tag.opt{background:#6B7280;}
+.group-note{font-size:11.5px;color:var(--text-muted);font-weight:400;}
+.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background 0.2s;margin-top:8px;}
+.btn-calc:hover{background:var(--primary-mid);}
+.divider-line{height:1px;background:var(--border);margin:8px 0 18px;}
+.result-card{background:var(--primary);border-radius:16px;padding:26px;color:#fff;margin-bottom:18px;}
+.result-title{font-size:13px;opacity:0.8;margin-bottom:6px;}
+.result-total{font-size:34px;font-weight:700;margin-bottom:4px;}
+.result-sub{font-size:13px;opacity:0.75;}
+.result-breakdown{background:var(--bg-card);border-radius:16px;padding:22px;border:1px solid var(--border);}
+.breakdown-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+.breakdown-row:last-child{border-bottom:none;}
+.breakdown-label{font-size:13px;color:var(--text-muted);min-width:0;}
+.breakdown-value{font-size:14px;font-weight:500;color:var(--text);text-align:right;flex-shrink:0;}
+.breakdown-value.highlight{color:var(--primary);font-weight:700;}
+.breakdown-value.up{color:var(--up);font-weight:700;}
+.breakdown-value.down{color:var(--down);font-weight:700;}
+.notice-box{background:var(--primary-light);border-radius:12px;padding:16px 18px;margin-top:18px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
+.notice-box strong{color:var(--primary);}
+.notice-box .nb-ico{display:inline-flex;vertical-align:-2px;margin-right:4px;}
+.notice-box .nb-ico svg{width:14px;height:14px;fill:none;stroke:var(--primary);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* 블록②~⑦ 설명 콘텐츠 */
+.article-content{margin-top:36px;}
+.article-content h2{font-size:20px;font-weight:800;color:var(--text);margin:34px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-.01em;}
+.article-content p{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:16px;}
+.article-content strong{font-weight:700;color:var(--primary);}
+.article-content ul{margin:14px 0 18px 18px;}
+.article-content li{font-size:15px;line-height:1.8;margin-bottom:6px;}
+.formula-box{background:#191F28;color:#fff;border-radius:14px;padding:20px 22px;margin:8px 0 18px;font-size:15px;font-weight:600;line-height:1.7;text-align:center;}
+.formula-box .fx-sub{display:block;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);margin-top:8px;}
+.tip-inline{background:var(--primary-light);border-radius:12px;padding:14px 18px;margin:8px 0 18px;font-size:14px;color:var(--primary-mid);line-height:1.7;}
+.tip-inline strong{color:var(--primary);}
+.step-box{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin:8px 0 18px;}
+.step-box .sb-badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--primary);padding:3px 11px;border-radius:20px;margin-bottom:10px;}
+.step-box .sb-body{font-size:14.5px;line-height:1.8;color:var(--text);}
+.article-table{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:13.5px;}
+.article-table th,.article-table td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.6;}
+.article-table th{background:#F4F6FB;font-weight:700;color:var(--text);}
+.article-table td:first-child{font-weight:600;white-space:nowrap;}
+.prepare{background:#FFF8F2;border:1px solid #FFE3CC;border-radius:12px;padding:14px 18px;font-size:13px;color:#9A5B1E;line-height:1.7;margin:8px 0 18px;}
+.prepare strong{color:#C2410C;}
+/* FAQ */
+.faq-section{margin-top:8px;}
+.faq-item{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;background:var(--bg-card);}
+.faq-q{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:7px;}
+.faq-q::before{content:"Q. ";color:var(--primary);}
+.faq-a{font-size:13.5px;color:var(--text-muted);line-height:1.75;}
+
+/* 블록⑧ 관련 계산기 */
+.related-calcs-section{margin:34px 0 0;}
+.related-calcs-section h2,.related-articles-section h2{font-size:17px;font-weight:800;color:var(--text);margin-bottom:14px;}
+.rel-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;}
+.rel-calc-card{display:flex;align-items:center;gap:10px;padding:14px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s;}
+.rel-calc-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 14px rgba(61,90,254,.12);}
+.rel-calc-card.soon{opacity:.6;cursor:default;}
+.rel-calc-card.soon:hover{transform:none;box-shadow:none;border-color:var(--border);}
+.rcc-icon{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;}
+.rcc-icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.rcc-title{font-size:12.5px;font-weight:700;line-height:1.3;}
+.rcc-desc{font-size:11px;color:var(--text-muted);margin-top:2px;}
+/* 블록⑨ 관련 글 */
+.related-articles-section{margin:28px 0 0;}
+.rel-article-item{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--border-light);text-decoration:none;color:var(--text);}
+.rel-article-item:last-child{border-bottom:none;}
+.rel-article-item:hover .rai-title{color:var(--primary);}
+.rai-num{font-size:18px;font-weight:900;color:var(--border);width:22px;flex-shrink:0;text-align:center;}
+.rai-title{font-size:13.5px;font-weight:600;line-height:1.4;flex:1;min-width:0;}
+.rai-arrow{color:var(--primary);font-size:14px;flex-shrink:0;}
+/* 블록⑩ CTA */
+.cta-box{margin-top:34px;background:linear-gradient(135deg,#3D5AFE,#536DFE);border-radius:18px;padding:26px 22px;text-align:center;color:#fff;}
+.cta-box h3{font-size:18px;font-weight:800;margin-bottom:6px;}
+.cta-box p{font-size:13.5px;opacity:.85;margin-bottom:16px;line-height:1.6;}
+.cta-box a{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--primary);font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;text-decoration:none;transition:transform .12s;}
+.cta-box a:active{transform:scale(.97);}
+.cta-box a svg{width:18px;height:18px;fill:none;stroke:var(--primary);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.nav-search-icon svg{width:16px;height:16px;fill:none;stroke:#9CA3AF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
+footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
+@media(max-width:380px){.rel-calc-grid{grid-template-columns:1fr 1fr;}}
+</style></head>
+<body>
+<div id="progress-bar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">소호팁</a>
+  <ul class="nav-links">
+    <li><a href="category.html">카테고리</a></li>
+    <li><a href="tools.html">계산기</a></li>
+  </ul>
+  <a href="consultation.html" class="nav-cta">무료 진단</a>
+</nav>
+<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
+<div class="mobile-search-bar">
+  <div class="nav-search">
+    <span class="nav-search-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg></span>
+    <input type="text" id="search-input-mobile" class="nav-search-input" placeholder="궁금한 주제를 검색하세요..." autocomplete="off">
+    <div id="search-dropdown-mobile"></div>
+  </div>
+</div>
+
+<div class="page-wrap">
+  <span class="tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg> 주식 이야기</span>
+  <h1 class="page-title">주식 수익률 계산기</h1>
+  <p class="page-desc">매수가·매도가·수량만 넣으면 수익금과 수익률이 바로 나옵니다. 매매 수수료와 증권거래세까지 넣으면, 실제로 손에 쥐는 실수익금·실수익률이 단순 수익률과 얼마나 차이 나는지도 한눈에 볼 수 있어요.</p>
+
+  <!-- ① 계산기 -->
+  <div class="calc-card" id="calc">
+    <div class="card-title">수익률 정보 입력</div>
+
+    <div class="field-group">
+      <div class="field">
+        <label>매수가 (원)</label>
+        <input type="text" inputmode="numeric" pattern="[0-9,]*" id="buy-price" placeholder="예: 10,000">
+      </div>
+      <div class="field">
+        <label>매도가 (원)</label>
+        <input type="text" inputmode="numeric" pattern="[0-9,]*" id="sell-price" placeholder="예: 12,000">
+      </div>
+    </div>
+    <div class="field">
+      <label>수량 (주)</label>
+      <input type="number" id="qty" min="0" step="1" inputmode="numeric" placeholder="예: 100">
+    </div>
+
+    <div class="divider-line"></div>
+
+    <div class="group-label"><span class="gl-tag opt">선택</span> 수수료·세금 <span class="group-note">· 넣으면 실수익까지 계산 (비우면 0)</span></div>
+    <div class="field-group">
+      <div class="field">
+        <label>매매 수수료율 (%)</label>
+        <input type="text" inputmode="decimal" id="fee-rate" placeholder="예: 0.015">
+      </div>
+      <div class="field">
+        <label>증권거래세율 (%)</label>
+        <input type="text" inputmode="decimal" id="tax-rate" placeholder="예: 0.15">
+      </div>
+    </div>
+    <button class="btn-calc" onclick="calculate()">수익률 계산하기</button>
+  </div>
+
+  <div id="result-section" style="display:none;">
+    <div class="result-card">
+      <div class="result-title" id="res-rate-title">수익률</div>
+      <div class="result-total" id="res-rate">0%</div>
+      <div class="result-sub" id="res-sub">수익금 ÷ 매수금액 × 100</div>
+    </div>
+    <div class="result-breakdown">
+      <div class="breakdown-row"><span class="breakdown-label">매수금액 (매수가 × 수량)</span><span class="breakdown-value" id="res-buy">0원</span></div>
+      <div class="breakdown-row"><span class="breakdown-label">매도금액 (매도가 × 수량)</span><span class="breakdown-value" id="res-sell">0원</span></div>
+      <div class="breakdown-row"><span class="breakdown-label">단순 수익금</span><span class="breakdown-value" id="res-gross">0원</span></div>
+      <div class="breakdown-row"><span class="breakdown-label">단순 수익률</span><span class="breakdown-value" id="res-grate">0%</span></div>
+      <div id="fee-rows" style="display:none;">
+        <div class="breakdown-row" style="margin-top:8px;padding-top:16px;border-top:2px solid var(--border);"><span class="breakdown-label">매매 수수료 (매수+매도)</span><span class="breakdown-value" id="res-fee">0원</span></div>
+        <div class="breakdown-row"><span class="breakdown-label">증권거래세 (매도 시)</span><span class="breakdown-value" id="res-tax">0원</span></div>
+        <div class="breakdown-row"><span class="breakdown-label">실수익금 (수수료·세금 차감)</span><span class="breakdown-value highlight" id="res-net">0원</span></div>
+        <div class="breakdown-row"><span class="breakdown-label">실수익률</span><span class="breakdown-value highlight" id="res-nrate">0%</span></div>
+      </div>
+    </div>
+    <div class="notice-box">
+      <span class="nb-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.4.8 1 .9 1.6l.1.7h6l.1-.7c.1-.6.4-1.2.9-1.6A7 7 0 0 0 12 2z"/></svg></span><strong>참고하세요.</strong> 수수료율·거래세율은 증권사·시장·연도마다 달라요. 정확한 숫자는 본인 증권사 안내와 그해 적용 세율로 확인하시고, 여기 값은 비교용 예시로 넣어보세요. 해외주식은 환율·환전 비용이 더 붙습니다.
+    </div>
+  </div>
+
+  <div class="article-content">
+    <!-- ② 공식 설명 -->
+    <h2>수익률 공식, 한 줄이면 끝나요</h2>
+    <p>수익률은 <strong>번 돈을 처음 들어간 돈으로 나눈 비율</strong>이에요. "100만 원 넣어서 20만 원 벌었으면 20%"처럼요. 주식이라면 판 금액에서 산 금액을 빼면 수익금이고, 그걸 산 금액으로 나누면 수익률입니다.</p>
+    <div class="formula-box">수익률(%) = 수익금 ÷ 매수금액 × 100<span class="fx-sub">수익금 = (매도가 − 매수가) × 수량 / 매수금액 = 매수가 × 수량</span></div>
+    <p>여기에 현실을 더하면, <strong>살 때·팔 때 수수료</strong>와 <strong>팔 때 증권거래세</strong>가 빠집니다. 이걸 뺀 게 진짜 손에 쥐는 '실수익'이에요. 위 계산기는 단순 수익률과 실수익률을 같이 보여줍니다.</p>
+
+    <!-- ③ 실제 사례 -->
+    <h2>이런 경험, 다들 한 번쯤 있으시죠</h2>
+    <p>"분명 20% 올라서 팔았는데, 통장 보니 딱 20%는 아니네?" 이런 경험 한 번쯤 있으시죠. 이유는 간단해요. <strong>수수료와 세금</strong> 때문입니다.</p>
+    <p>예를 들어 1만 원에 100주(100만 원어치) 사서 1만 2천 원에 다 팔면 단순 수익은 <strong>20만 원, 수익률 20%</strong>예요. 그런데 살 때·팔 때 수수료와 매도 거래세를 빼면 실제로는 <strong>19만 원대 후반</strong>이 남습니다. 금액이 클수록, 매매가 잦을수록 이 차이는 더 벌어져요.</p>
+
+    <!-- ④ 계산 예시 -->
+    <h2>숫자로 천천히 따라가 볼게요</h2>
+    <div class="step-box">
+      <span class="sb-badge">계산 따라하기</span>
+      <div class="sb-body">
+        매수금액 = 10,000원 × 100주 = <strong>1,000,000원</strong><br>
+        매도금액 = 12,000원 × 100주 = <strong>1,200,000원</strong><br>
+        단순 수익금 = 1,200,000 − 1,000,000 = <strong>200,000원</strong><br>
+        단순 수익률 = 200,000 ÷ 1,000,000 × 100 = <strong>20%</strong><br>
+        ── 수수료 0.015%(양방향) = (1,000,000+1,200,000)×0.015% ≈ <strong>330원</strong><br>
+        ── 거래세 0.15%(매도) = 1,200,000×0.15% = <strong>1,800원</strong><br>
+        → 실수익금 = 200,000 − 330 − 1,800 = <strong>197,870원</strong><br>
+        → 실수익률 = 197,870 ÷ 1,000,000 × 100 ≈ <strong>19.79%</strong>
+      </div>
+    </div>
+    <p>단순 수익률 20%가 비용을 빼면 <strong>19.79%</strong>로 줄었죠. 0.2%p 차이지만, 매매가 잦거나 금액이 크면 이런 차이가 쌓여 무시 못 할 크기가 됩니다.</p>
+
+    <!-- ⑤ 항목표 -->
+    <h2>결과에 나오는 항목, 뜻만 알면 쉬워요</h2>
+    <table class="article-table">
+      <thead><tr><th>항목</th><th>무슨 뜻</th><th>예시</th></tr></thead>
+      <tbody>
+        <tr><td>매수금액</td><td>매수가 × 수량 (산 데 들어간 돈)</td><td>1,000,000원</td></tr>
+        <tr><td>매도금액</td><td>매도가 × 수량 (팔아서 받은 돈)</td><td>1,200,000원</td></tr>
+        <tr><td>단순 수익금</td><td>매도금액 − 매수금액 (비용 빼기 전)</td><td>+200,000원</td></tr>
+        <tr><td>단순 수익률</td><td>단순 수익금 ÷ 매수금액 × 100</td><td>+20%</td></tr>
+        <tr><td>매매 수수료</td><td>(매수금액 + 매도금액) × 수수료율</td><td>330원</td></tr>
+        <tr><td>증권거래세</td><td>매도금액 × 거래세율 (팔 때만)</td><td>1,800원</td></tr>
+        <tr><td>실수익금 / 실수익률</td><td>수수료·세금 뺀 진짜 손익과 그 비율</td><td>197,870원 / +19.79%</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ⑥ 장단점·주의표 -->
+    <h2>단순 수익률만 믿으면 안 되는 이유</h2>
+    <p>화면에 뜨는 단순 수익률은 빠르게 감을 잡기 좋지만, 실제 손에 쥐는 돈과는 차이가 있어요. 둘을 비교해 두면 헷갈리지 않습니다.</p>
+    <table class="article-table">
+      <thead><tr><th>구분</th><th>단순 수익률</th><th>실수익률 (수수료·세금 포함)</th></tr></thead>
+      <tbody>
+        <tr><td>계산</td><td>(매도−매수) ÷ 매수 × 100</td><td>비용까지 뺀 실수익 ÷ 매수 × 100</td></tr>
+        <tr><td>장점</td><td>빠르고 직관적, 종목 비교에 편함</td><td>실제 통장에 남는 돈에 가장 가까움</td></tr>
+        <tr><td>한계</td><td>수수료·세금이 빠져 실제보다 높게 보임</td><td>증권사·세율을 정확히 알아야 맞음</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-inline"><strong>본전 기준도 챙겨 보세요.</strong> 사자마자 본전이 되려면 적어도 수수료·세금만큼은 가격이 더 올라야 해요. 짧게 자주 사고파는 단타일수록 이 비용이 수익을 갉아먹는다는 점을 기억하면 좋습니다.</div>
+    <div class="prepare"><strong>입력 전 확인.</strong> ① 내 증권사 실제 수수료율 · ② 그해·그 시장(코스피·코스닥) 거래세율 · ③ 해외주식이면 환율·환전 비용 — 이 세 가지를 확인해 넣으면 실수익률이 더 정확해집니다.</div>
+
+    <!-- ⑦ FAQ -->
+    <h2 id="faq">자주 묻는 질문</h2>
+    <div class="faq-section">
+      <div class="faq-item"><div class="faq-q">수익률은 어떻게 계산하나요?</div><div class="faq-a">수익금을 매수금액으로 나눈 뒤 100을 곱합니다. 수익금은 (매도가 − 매수가) × 수량, 매수금액은 매수가 × 수량이에요. 1만 원에 100주 사서 1만 2천 원에 팔면 수익금 20만 원 ÷ 매수금액 100만 원 × 100 = 20%가 됩니다.</div></div>
+      <div class="faq-item"><div class="faq-q">수수료·세금을 넣으면 수익률이 왜 줄어드나요?</div><div class="faq-a">매매 수수료는 살 때와 팔 때 모두 붙고, 증권거래세는 팔 때 매도금액 기준으로 떼입니다. 이 비용이 수익금에서 빠지니 실수익률은 단순 수익률보다 낮아져요. 수익이 작을수록 이 차이가 더 크게 느껴집니다.</div></div>
+      <div class="faq-item"><div class="faq-q">수수료율·거래세율은 얼마로 넣어야 하나요?</div><div class="faq-a">수수료율은 증권사·계좌마다 달라 보통 0.01~0.5% 수준이고, 비대면 계좌는 더 낮거나 무료 이벤트도 있어요. 거래세율은 시장(코스피·코스닥)과 연도에 따라 바뀌니, 정확한 값은 본인 증권사 안내와 그해 세율로 확인해 넣으세요. 기본값은 예시입니다.</div></div>
+      <div class="faq-item"><div class="faq-q">손실이 났을 때 수익률은 어떻게 보나요?</div><div class="faq-a">매도가가 매수가보다 낮으면 수익금이 마이너스가 되고 수익률도 음수(−%)로 나옵니다. 수수료·세금을 포함하면 손실 폭이 조금 더 커져요. 본전이 되려면 최소한 수수료·세금만큼은 가격이 더 올라야 한다는 점도 같이 보면 좋습니다.</div></div>
+      <div class="faq-item"><div class="faq-q">증권사 앱 수익률이랑 다를 수 있나요?</div><div class="faq-a">네, 조금 다를 수 있어요. 증권사 앱은 실제 체결 수수료·거래세, 해외주식이면 환율·환전 비용까지 반영합니다. 이 계산기는 입력값만으로 단순 계산하니 큰 흐름 잡는 용도로 쓰고, 정확한 숫자는 증권사 거래내역을 함께 확인하세요.</div></div>
+    </div>
+  </div>
+
+  <!-- ⑧ 관련 계산기 (주식 계산기 시리즈) -->
+  <div class="related-calcs-section">
+    <h2>주식 계산기 시리즈</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="stock-average-calc.html"><span class="rcc-icon" style="color:#3D5AFE"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span><span><span class="rcc-title">평단가 계산기</span><span class="rcc-desc">분할매수 평균단가</span></span></a>
+      <a class="rel-calc-card" href="averaging-down-calc.html"><span class="rcc-icon" style="color:#00B8D9"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></span><span><span class="rcc-title">물타기 계산기</span><span class="rcc-desc">하락 추가매수 · 평단↓</span></span></a>
+      <a class="rel-calc-card" href="averaging-up-calc.html"><span class="rcc-icon" style="color:#FF6B35"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span><span><span class="rcc-title">불타기 계산기</span><span class="rcc-desc">상승 추가매수 · 평단↑</span></span></a>
+      <a class="rel-calc-card" href="stock-return-calc.html"><span class="rcc-icon" style="color:#00C471"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span><span><span class="rcc-title">수익률 계산기</span><span class="rcc-desc">지금 보는 계산기</span></span></a>
+      <a class="rel-calc-card soon"><span class="rcc-icon" style="color:#F04452"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><span><span class="rcc-title">목표가 계산기</span><span class="rcc-desc">준비 중</span></span></a>
+      <a class="rel-calc-card soon"><span class="rcc-icon" style="color:#6B7280"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span><span class="rcc-title">미국주식 계산기</span><span class="rcc-desc">준비 중 · 실시간 환율</span></span></a>
+    </div>
+  </div>
+
+  <!-- ⑨ 관련 글 -->
+  <div class="related-articles-section">
+    <h2>함께 보면 좋은 글</h2>
+    <a class="rel-article-item" href="soho-loan-refinancing.html"><span class="rai-num">1</span><span class="rai-title">소상공인 대환대출 — 이자 100만원 이상 아끼는 법</span><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="policy-loan-guide.html"><span class="rai-num">2</span><span class="rai-title">소상공인 정책자금 대출 신청 방법 완전 가이드</span><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="solo-shop-tax-deduction.html"><span class="rai-num">3</span><span class="rai-title">1인 사장님 절세 꿀팁 — 경비처리 완전 정리</span><span class="rai-arrow">→</span></a>
+  </div>
+
+  <!-- ⑩ 직접 계산 CTA -->
+  <div class="cta-box">
+    <h3>지금 내 수익률, 직접 넣어보세요</h3>
+    <p>매수가·매도가·수량만 넣으면 수익금·수익률이 5초 만에 나옵니다.</p>
+    <a href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>수익률 바로 계산하기</a>
+  </div>
+</div>
+
+<button id="back-to-top" aria-label="맨 위로">↑</button>
+<script src="assets/layout.js?v=20260630r"></script>
+<script src="sohotip.js?v=20260630r"></script>
+<script src="assets/consult.js?v=20260630r"></script>
+<script>
+/* 주식 수익률 계산기 — 단순 수익률 + 수수료·세금 반영 실수익률 */
+function numOf(v){ var n = parseFloat(String(v == null ? '' : v).replace(/[^0-9.]/g, '')); return isNaN(n) ? 0 : n; }
+function won(n){ return Math.round(n).toLocaleString('ko-KR') + '원'; }
+function pct(n){ var s = n > 0 ? '+' : ''; return s + (Math.round(n * 100) / 100).toLocaleString('ko-KR') + '%'; }
+function comma(v){ var s = String(v).replace(/[^0-9]/g, ''); return s ? Number(s).toLocaleString('ko-KR') : ''; }
+function clsOf(n){ return n > 0 ? 'up' : (n < 0 ? 'down' : ''); }
+
+/* 가격 입력 천단위 콤마 자동 (수량·율 필드는 제외) */
+document.addEventListener('input', function(e){
+  if (e.target.id === 'buy-price' || e.target.id === 'sell-price') {
+    var p = e.target.selectionStart, before = e.target.value;
+    e.target.value = comma(before);
+    var diff = e.target.value.length - before.length;
+    try { e.target.setSelectionRange(p + diff, p + diff); } catch (err) {}
+  }
+});
+
+function calculate(){
+  var buy  = numOf(document.getElementById('buy-price').value);
+  var sell = numOf(document.getElementById('sell-price').value);
+  var qty  = numOf(document.getElementById('qty').value);
+  var feeR = numOf(document.getElementById('fee-rate').value);
+  var taxR = numOf(document.getElementById('tax-rate').value);
+
+  if (buy <= 0 || sell <= 0 || qty <= 0) { alert('매수가·매도가·수량을 모두 입력해 주세요.'); return; }
+
+  var buyAmt  = buy * qty;
+  var sellAmt = sell * qty;
+  var gross   = sellAmt - buyAmt;
+  var grate   = (gross / buyAmt) * 100;
+
+  document.getElementById('res-buy').textContent = won(buyAmt);
+  document.getElementById('res-sell').textContent = won(sellAmt);
+  var grossEl = document.getElementById('res-gross');
+  grossEl.textContent = (gross > 0 ? '+' : '') + won(gross);
+  grossEl.className = 'breakdown-value ' + clsOf(gross);
+  var grateEl = document.getElementById('res-grate');
+  grateEl.textContent = pct(grate);
+  grateEl.className = 'breakdown-value ' + clsOf(gross);
+
+  var hasCost = (feeR > 0 || taxR > 0);
+  var feeRows = document.getElementById('fee-rows');
+  var headRate = grate, headTitle = '수익률';
+
+  if (hasCost) {
+    var fee = (buyAmt + sellAmt) * feeR / 100;
+    var tax = sellAmt * taxR / 100;
+    var net = gross - fee - tax;
+    var nrate = (net / buyAmt) * 100;
+    document.getElementById('res-fee').textContent = won(fee);
+    document.getElementById('res-tax').textContent = won(tax);
+    var netEl = document.getElementById('res-net');
+    netEl.textContent = (net > 0 ? '+' : '') + won(net);
+    netEl.className = 'breakdown-value highlight';
+    var nrateEl = document.getElementById('res-nrate');
+    nrateEl.textContent = pct(nrate);
+    nrateEl.className = 'breakdown-value highlight';
+    feeRows.style.display = 'block';
+    headRate = nrate; headTitle = '실수익률 (수수료·세금 포함)';
+  } else {
+    feeRows.style.display = 'none';
+  }
+
+  document.getElementById('res-rate-title').textContent = headTitle;
+  document.getElementById('res-rate').textContent = pct(headRate);
+  document.getElementById('res-sub').textContent = hasCost
+    ? '단순 ' + pct(grate) + ' · 비용 차감 후'
+    : '수익금 ' + (gross > 0 ? '+' : '') + won(gross) + ' ÷ 매수금액 ' + won(buyAmt);
+
+  document.getElementById('result-section').style.display = 'block';
+  document.getElementById('result-section').scrollIntoView({behavior:'smooth', block:'start'});
+}
+</script>
+<footer>
+  <a href="index.html">홈</a>
+  <a href="category.html">카테고리</a>
+  <a href="tools.html">계산기 모음</a>
+  <a href="consultation.html">무료 진단</a>
+  <p style="margin-top:12px;">© 2026 소호팁. 본 계산기는 참고용이며 투자 판단의 책임은 본인에게 있습니다.</p>
+</footer>
+<script src="network.js?v=20260630r"></script>
+</body>
+</html>
