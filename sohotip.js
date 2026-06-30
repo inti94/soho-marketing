@@ -26,6 +26,22 @@ const POPULAR_KEYWORDS = [
   '네이버 플레이스', '소상공인 지원금', '퇴직금', '원가율'
 ];
 
+/* 추천 검색어 (큐레이션 — 인기와 다른 '발견형' 제안. 클릭 시 전역검색) */
+const RECOMMENDED_KEYWORDS = [
+  '2026 지원금', '폐업 지원', '주휴수당', '권리금',
+  '부가세 신고', '배달 순이익', '정책자금 대출'
+];
+
+/* 카테고리 추천 (category.html?cat= 키 — category.html의 CATS와 1:1 일치) */
+const CATEGORY_SHORTCUTS = [
+  { key: 'place',      label: '네이버 플레이스', emoji: '📍' },
+  { key: 'delivery',   label: '배달앱',          emoji: '🛵' },
+  { key: 'support',    label: '소상공인 지원금', emoji: '💰' },
+  { key: 'sns',        label: 'SNS·숏폼',        emoji: '📱' },
+  { key: 'startup',    label: '창업·세금',       emoji: '🏪' },
+  { key: 'calculator', label: '무료 계산기',     emoji: '🧮' }
+];
+
 /* 카테고리별 이모지 */
 const CAT_EMOJI = {
   '네이버 플레이스': '📍',
@@ -151,16 +167,33 @@ function removeRecentSearch(q) {
 }
 
 /* ── 4. 드롭다운 렌더링 ──────────────────── */
+/* 계산기 페이지 식별 (url에 'calc' 포함: vat-calc, alba-cost-calc 등 전부 해당) */
+function isCalcUrl(u) {
+  return (u || '').indexOf('calc') >= 0;
+}
+
+/* 검색 결과 1건 마크업 (관련 계산기/관련 글 공통) */
+function renderResultItem(r, q) {
+  var ic = getCatSvg(r.cat);
+  return '<a href="' + escHtml(r.url) + '" class="search-result-item">' +
+    '<span class="search-result-icon" style="color:#3D5AFE">' + ic + '</span>' +
+    '<div class="search-result-body">' +
+      '<div class="search-result-cat">' + escHtml(r.cat || '') + '</div>' +
+      '<div class="search-result-title">' + highlight(escHtml(r.title || ''), q) + '</div>' +
+      '<div class="search-result-desc">' + escHtml((r.desc || '').slice(0, 60)) + '</div>' +
+    '</div>' +
+    '</a>';
+}
+
 function renderDropdown(input, dropdown, q) {
   if (!dropdown) return;
 
+  /* ── 입력 전(포커스): 최근·인기·추천 검색어 + 카테고리 추천 ── */
   if (!q || q.length < 1) {
     var recent = getRecentSearches();
-    if (!recent.length && !POPULAR_KEYWORDS.length) {
-      dropdown.classList.remove('active');
-      return;
-    }
     var html = '';
+
+    /* 최근 검색어 (기존 유지) */
     if (recent.length) {
       html += '<div class="search-section-title">최근 검색어</div>';
       recent.forEach(function(r) {
@@ -170,36 +203,64 @@ function renderDropdown(input, dropdown, q) {
           '</div>';
       });
     }
+
+    /* 인기 검색어 (기존 유지) */
     html += '<div class="search-section-title">인기 검색어</div>';
     POPULAR_KEYWORDS.slice(0, 4).forEach(function(kw) {
       html += '<div class="recent-search-item" data-q="' + escHtml(kw) + '">' +
         '<span class="recent-search-text">' + escHtml(kw) + '</span>' +
         '</div>';
     });
+
+    /* 추천 검색어 (신규 — 칩, 클릭 시 전역검색) */
+    if (RECOMMENDED_KEYWORDS.length) {
+      html += '<div class="search-section-title">추천 검색어</div>';
+      html += '<div class="search-chip-row">';
+      RECOMMENDED_KEYWORDS.forEach(function(kw) {
+        html += '<button type="button" class="search-chip" data-q="' + escHtml(kw) + '">' +
+          escHtml(kw) + '</button>';
+      });
+      html += '</div>';
+    }
+
+    /* 카테고리 추천 (신규 — 칩, category.html?cat= 로 이동) */
+    if (CATEGORY_SHORTCUTS.length) {
+      html += '<div class="search-section-title">카테고리</div>';
+      html += '<div class="search-chip-row">';
+      CATEGORY_SHORTCUTS.forEach(function(c) {
+        html += '<a href="category.html?cat=' + encodeURIComponent(c.key) + '" class="search-cat-chip">' +
+          '<span class="search-cat-emoji" aria-hidden="true">' + c.emoji + '</span>' +
+          escHtml(c.label) + '</a>';
+      });
+      html += '</div>';
+    }
+
+    if (!html) { dropdown.classList.remove('active'); return; }
     dropdown.innerHTML = html;
     dropdown.classList.add('active');
     return;
   }
 
+  /* ── 입력 중: 관련 계산기 + 관련 글 동시(분리) 표시 ── */
   loadSearchIndex().then(function(index) {
-    var results = searchArticles(q, index, 7);
+    var results = searchArticles(q, index, 8);
     if (!results.length) {
       dropdown.innerHTML = '<div class="search-no-result">검색 결과가 없습니다.</div>' +
         '<a href="category.html?q=' + encodeURIComponent(q) + '" class="search-footer-link">전체에서 검색하기 →</a>';
       dropdown.classList.add('active');
       return;
     }
-    var html = results.map(function(r) {
-      var ic = getCatSvg(r.cat);
-      return '<a href="' + escHtml(r.url) + '" class="search-result-item">' +
-        '<span class="search-result-icon" style="color:#3D5AFE">' + ic + '</span>' +
-        '<div class="search-result-body">' +
-          '<div class="search-result-cat">' + escHtml(r.cat || '') + '</div>' +
-          '<div class="search-result-title">' + highlight(escHtml(r.title || ''), q) + '</div>' +
-          '<div class="search-result-desc">' + escHtml((r.desc || '').slice(0, 60)) + '</div>' +
-        '</div>' +
-        '</a>';
-    }).join('');
+    var calcs = results.filter(function(r) { return isCalcUrl(r.url); });
+    var arts  = results.filter(function(r) { return !isCalcUrl(r.url); });
+    var html = '';
+    if (calcs.length) {
+      html += '<div class="search-section-title">관련 계산기</div>';
+      html += calcs.map(function(r) { return renderResultItem(r, q); }).join('');
+    }
+    if (arts.length) {
+      html += '<div class="search-section-title">관련 글</div>';
+      html += arts.map(function(r) { return renderResultItem(r, q); }).join('');
+    }
     html += '<a href="category.html?q=' + encodeURIComponent(q) + '" class="search-footer-link">더 많은 결과 보기 →</a>';
     dropdown.innerHTML = html;
     dropdown.classList.add('active');

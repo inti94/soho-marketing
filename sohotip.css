@@ -257,6 +257,42 @@
   color: var(--text-muted);
 }
 
+/* ── 검색 칩 (추천 검색어 · 카테고리 추천) ── */
+.search-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 6px 14px 12px;
+}
+.search-chip,
+.search-cat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 12px;
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.search-chip:hover,
+.search-cat-chip:hover {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.search-cat-emoji {
+  font-size: 13px;
+  line-height: 1;
+}
+
 /* ── 모바일 검색바 (nav 아래 별도 줄) ──── */
 .mobile-search-bar {
   display: none;
