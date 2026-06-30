@@ -57,10 +57,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="sohotip.css?v=20260630f">
+<link rel="stylesheet" href="sohotip.css?v=20260630g">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630f">
-<link rel="stylesheet" href="assets/soho-cards.css?v=20260630f">
+  <link rel="stylesheet" href="assets/theme.css?v=20260630g">
+<link rel="stylesheet" href="assets/soho-cards.css?v=20260630g">
 
 <style>
 /* =====================================================================
@@ -110,15 +110,7 @@ a{color:inherit;text-decoration:none;}
 .ico-btn{width:44px;height:44px;border-radius:12px;border:none;background:transparent;display:grid;place-items:center;font-size:19px;color:var(--g900);transition:background .15s;}
 .ico-btn:hover{background:var(--g100);}
 
-/* 헤더 바로 아래 검색바 밴드 */
-.search-band{
-  position:sticky; top:var(--top); z-index:290;
-  background:rgba(255,255,255,.92);
-  backdrop-filter:saturate(180%) blur(12px); -webkit-backdrop-filter:saturate(180%) blur(12px);
-  border-bottom:1px solid var(--g200);
-  padding:12px 16px;                       /* 좌우16 상하12 */
-}
-.search-band .searchbar{display:block;}
+/* 공통 검색 입력(검색 패널 등에서 사용) — 상단 검색바는 제거되고 빠른 바로가기 칩으로 대체됨 */
 .searchbox{position:relative;display:flex;align-items:center;background:var(--g100);border-radius:12px;padding:0 14px;}
 .searchbox .s-ico{font-size:17px;color:var(--g400);flex-shrink:0;}
 .nav-search{flex:1;min-width:0;background:transparent;border:none;padding:0;}
@@ -128,26 +120,16 @@ a{color:inherit;text-decoration:none;}
   padding:13px 10px;
 }
 .nav-search-input::placeholder,.searchbox input::placeholder{color:var(--g400);font-weight:500;}
-/* 헤더 아래 검색바: 높이52 · pill · 흰배경 · 1px #E8ECF0 · 아이콘/플레이스홀더 #ADB5BD */
-.search-band .searchbox{height:52px;background:var(--white);border:1px solid #E8ECF0;border-radius:999px;padding:0 16px;}
-.search-band .s-ico{font-size:18px;color:#ADB5BD;display:inline-flex;}
-.search-band .s-ico svg{width:18px;height:18px;}
-.search-band .nav-search-input{font-size:14px;padding:0 10px;}
-.search-band .nav-search-input::placeholder{color:#ADB5BD;font-weight:500;}
-/* ★ 버그수정: 공통 sohotip.css의 @media(max-width:768px){ nav .nav-search{display:none} } 가
-   홈 검색바의 <nav class="searchbar"> 안 .nav-search 까지 숨겨, 모바일에서 상단 검색창이
-   안 눌리던 문제 해결. .search-band 범위로 특이도를 높여 입력 래퍼를 항상 노출(전 폭 클릭 가능). */
-.search-band .nav-search{display:flex;align-items:center;}
-/* ── 검색 드롭다운(최근/추천 검색어): 히어로 카드 등 모든 콘텐츠 위로 확실히 띄움 ──
-   .search-band 는 backdrop-filter 로 stacking context 를 만들지만 position:static 이면 z-index 가
-   무시돼 뒤(히어로)에 깔렸음 → 위 모바일 규칙에서 position:relative+z-index 로 context 를 올림.
-   여기서 드롭다운을 검색창 폭에 맞춰 바로 아래 붙이고, 입력창은 백드롭 위에 둔다. */
-.search-band .searchbox{position:relative;z-index:2;}                 /* 입력창(+드롭다운)을 백드롭 위로 */
-.search-band #search-dropdown{left:0;right:0;width:auto;z-index:9999;background:#fff;} /* 검색창 폭·바로 아래·불투명 흰색 · Hero 위로 확실히(z:9999) */
-/* 드롭다운 열렸을 때 뒤 콘텐츠(히어로 등) 클릭 차단 백드롭.
-   ※ .search-band 는 backdrop-filter 가 fixed 의 containing block 을 가둬 못 쓰므로 body 에 부착.
-   z-index:1 → .shell(히어로, auto) 위 · .search-band(290, 드롭다운 포함) 아래. 바깥 탭 시 기존 닫힘 핸들러로 닫힘. */
-body:has(.search-band #search-dropdown.active)::before{content:"";position:fixed;inset:0;z-index:1;background:transparent;}
+
+/* 헤더 아래 빠른 바로가기 칩 (상단 검색창 대체) */
+.quick-band{padding:14px 16px 8px;}
+.quick-band .qb-title{font-size:12px;font-weight:700;color:var(--g500,#6B7684);letter-spacing:-.01em;margin:0 0 10px;}
+.quick-chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px;}
+.quick-chips::-webkit-scrollbar{display:none;}
+.quick-chip{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--g200);color:var(--g900);font-size:13.5px;font-weight:600;padding:9px 15px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:transform .12s,border-color .12s,color .12s,box-shadow .12s;}
+.quick-chip:hover{border-color:var(--primary);color:var(--primary);box-shadow:0 2px 10px rgba(61,90,254,.12);}
+.quick-chip:active{transform:scale(.96);}
+.quick-chip .qc-ico{font-size:15px;line-height:1;}
 
 /* =====================================================================
    ▼▼ 스플릿 셸: 좌(레일) + 우(패널)  — 가로 split, 절대 세로로 쌓지 않음 ▼▼
@@ -354,7 +336,6 @@ body:has(.search-band #search-dropdown.active)::before{content:"";position:fixed
 /* ── 모바일(~768px): 좌측 80px 아이콘 레일 + 우측 패널 + 하단 탭바 ── */
 .rail{display:none;}                                 /* 모바일: 좌측 레일 숨김 → 본문 풀폭, 이동은 하단 탭바 */
 .tabbar{display:flex;}                               /* 하단 고정 탭바 노출 */
-.search-band{position:relative;z-index:290;}         /* 비-sticky(레일 충돌 방지) + stacking context 확보 → 검색 드롭다운이 히어로 위로 뜨게(헤더 z:300보다 낮음) */
 .rail{height:calc(100vh - var(--top) - var(--tabbar));} /* 하단 탭바에 가리지 않게 */
 body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
 
@@ -377,8 +358,7 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
   :root{--top:64px;--rail:220px;}
   .top-menu{display:flex;}
   .topbar{padding:0 28px;gap:20px;}
-  .search-band{padding:10px 28px;}
-  .search-band .searchbox{max-width:620px;}
+  .quick-band{padding:14px 28px 8px;}
   /* 데스크톱 레일: 아이콘+라벨 가로 정렬 */
   .rail{padding:14px 10px;gap:5px;height:calc(100vh - var(--top));}
   .rail-item{flex-direction:row;justify-content:flex-start;gap:13px;padding:13px 16px;border-radius:0 12px 12px 0;}
@@ -438,16 +418,15 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
   </div>
 </header>
 
-<!-- ── 헤더 바로 아래 검색바 ── -->
-<div class="search-band">
-  <nav class="searchbar" role="search" aria-label="사이트 검색">
-    <div class="searchbox">
-      <span class="s-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
-      <div class="nav-search">
-        <input type="text" id="search-input" class="nav-search-input" placeholder="계산기·서식·가이드 검색…" autocomplete="off" aria-label="검색어 입력">
-        <div id="search-dropdown" role="listbox"></div>
-      </div>
-    </div>
+<!-- ── 헤더 아래 빠른 바로가기 칩 (상단 검색창 대체) ── -->
+<div class="quick-band">
+  <p class="qb-title">자주 쓰는 계산기 바로가기</p>
+  <nav class="quick-chips" aria-label="자주 쓰는 계산기 바로가기">
+    <a class="quick-chip" href="alba-cost-calc.html"><span class="qc-ico" aria-hidden="true">🧮</span>알바 인건비</a>
+    <a class="quick-chip" href="vat-calc.html"><span class="qc-ico" aria-hidden="true">🧾</span>부가세</a>
+    <a class="quick-chip" href="delivery-profit-calc.html"><span class="qc-ico" aria-hidden="true">🛵</span>배달 수익</a>
+    <a class="quick-chip" href="weekly-pay-calc.html"><span class="qc-ico" aria-hidden="true">📅</span>주휴수당</a>
+    <a class="quick-chip" href="bep-calc.html"><span class="qc-ico" aria-hidden="true">📈</span>손익분기점</a>
   </nav>
 </div>
 
@@ -655,10 +634,10 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
   <a class="tab-item" href="search.html"><span class="tb-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><span class="tb-label">검색</span></a>
 </nav>
 
-<script src="sohotip.js?v=20260630f"></script>
-<script src="assets/soho-share.js?v=20260630f"></script>
-<script src="assets/soho-cards.js?v=20260630f"></script>
-<script src="assets/news-data.js?v=20260630f"></script>
+<script src="sohotip.js?v=20260630g"></script>
+<script src="assets/soho-share.js?v=20260630g"></script>
+<script src="assets/soho-cards.js?v=20260630g"></script>
+<script src="assets/news-data.js?v=20260630g"></script>
 <script>
 /* ===================================================================
    소호팁 메인(스플릿뷰) — 레일 탭 전환 · 카드 렌더 · 북마크 · 체크리스트
@@ -1003,12 +982,10 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
   });
   /* 키보드 접근성: 레일 버튼은 기본 button이라 Enter/Space 동작 */
 
-  /* 헤더 검색 아이콘 → 검색바 포커스 */
+  /* 헤더 검색 아이콘 → 검색 패널 열기 (상단 검색창은 빠른 바로가기 칩으로 대체됨) */
   var hsb=document.getElementById('hdr-search-btn');
   if(hsb)hsb.addEventListener('click',function(){
-    window.scrollTo(0,0);
-    var si=document.getElementById('search-input');
-    if(si)si.focus();
+    showTab('search');
   });
 
   /* 초기 진입: 해시로 탭 복원 */
@@ -1023,7 +1000,7 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
 
 <!-- ── 인기글 Firebase 설정 + 검색 인덱스 + 네트워크 ──
      (금리·실시간주가·환율 브리핑 위젯은 메인에서 제거 — '오늘의 사업 소식'으로 대체) -->
-<script src="assets/config.js?v=20260630f"></script>
-<script src="network.js?v=20260630f"></script>
+<script src="assets/config.js?v=20260630g"></script>
+<script src="network.js?v=20260630g"></script>
 </body>
 </html>
