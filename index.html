@@ -57,10 +57,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="sohotip.css?v=20260630b">
+<link rel="stylesheet" href="sohotip.css?v=20260630c">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630b">
-<link rel="stylesheet" href="assets/soho-cards.css?v=20260630b">
+  <link rel="stylesheet" href="assets/theme.css?v=20260630c">
+<link rel="stylesheet" href="assets/soho-cards.css?v=20260630c">
 
 <style>
 /* =====================================================================
@@ -143,7 +143,7 @@ a{color:inherit;text-decoration:none;}
    무시돼 뒤(히어로)에 깔렸음 → 위 모바일 규칙에서 position:relative+z-index 로 context 를 올림.
    여기서 드롭다운을 검색창 폭에 맞춰 바로 아래 붙이고, 입력창은 백드롭 위에 둔다. */
 .search-band .searchbox{position:relative;z-index:2;}                 /* 입력창(+드롭다운)을 백드롭 위로 */
-.search-band #search-dropdown{left:0;right:0;width:auto;z-index:1000;background:#fff;} /* 검색창 폭·바로 아래·불투명 흰색 */
+.search-band #search-dropdown{left:0;right:0;width:auto;z-index:9999;background:#fff;} /* 검색창 폭·바로 아래·불투명 흰색 · Hero 위로 확실히(z:9999) */
 /* 드롭다운 열렸을 때 뒤 콘텐츠(히어로 등) 클릭 차단 백드롭.
    ※ .search-band 는 backdrop-filter 가 fixed 의 containing block 을 가둬 못 쓰므로 body 에 부착.
    z-index:1 → .shell(히어로, auto) 위 · .search-band(290, 드롭다운 포함) 아래. 바깥 탭 시 기존 닫힘 핸들러로 닫힘. */
@@ -655,10 +655,10 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
   <a class="tab-item" href="search.html"><span class="tb-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><span class="tb-label">검색</span></a>
 </nav>
 
-<script src="sohotip.js?v=20260630b"></script>
-<script src="assets/soho-share.js?v=20260630b"></script>
-<script src="assets/soho-cards.js?v=20260630b"></script>
-<script src="assets/news-data.js?v=20260630b"></script>
+<script src="sohotip.js?v=20260630c"></script>
+<script src="assets/soho-share.js?v=20260630c"></script>
+<script src="assets/soho-cards.js?v=20260630c"></script>
+<script src="assets/news-data.js?v=20260630c"></script>
 <script>
 /* ===================================================================
    소호팁 메인(스플릿뷰) — 레일 탭 전환 · 카드 렌더 · 북마크 · 체크리스트
@@ -1023,7 +1023,7 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
 
 <!-- ── 인기글 Firebase 설정 + 검색 인덱스 + 네트워크 ──
      (금리·실시간주가·환율 브리핑 위젯은 메인에서 제거 — '오늘의 사업 소식'으로 대체) -->
-<script src="assets/config.js?v=20260630b"></script>
-<script src="network.js?v=20260630b"></script>
+<script src="assets/config.js?v=20260630c"></script>
+<script src="network.js?v=20260630c"></script>
 </body>
 </html>
