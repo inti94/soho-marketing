@@ -53,9 +53,9 @@
     }
   }
   </script>
-<link rel="stylesheet" href="sohotip.css?v=20260630i">
+<link rel="stylesheet" href="sohotip.css?v=20260630j">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630i">
+  <link rel="stylesheet" href="assets/theme.css?v=20260630j">
 <style>
 :root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-dark:#2541E0;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--g100:#F2F4F6;--sans:'Noto Sans KR',sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -95,17 +95,35 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
   .brief-cats::-webkit-scrollbar{display:none;}
 }
 
-/* 5단계 카드 (메인 브리핑과 동일 톤) */
-.biz-card{background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--primary);border-radius:18px;box-shadow:0 1px 8px rgba(0,0,0,.04);padding:18px 18px 14px;}
-.bz-catlabel{display:inline-block;font-size:11px;font-weight:700;color:var(--primary);background:var(--primary-light);border-radius:7px;padding:3px 9px;margin-bottom:10px;}
-.bz-title{font-size:16px;font-weight:800;color:var(--text);line-height:1.4;letter-spacing:-.01em;margin-bottom:13px;word-break:keep-all;overflow-wrap:anywhere;}
-.bz-row{display:flex;gap:9px;margin-bottom:10px;}
-.bz-tag{flex-shrink:0;font-size:11px;font-weight:700;color:var(--primary);background:var(--primary-light);border-radius:8px;padding:3px 8px;height:-moz-fit-content;height:fit-content;white-space:nowrap;}
-.bz-text{flex:1;min-width:0;font-size:13.5px;font-weight:500;color:var(--text-muted);line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;}
-.bz-cta{display:inline-flex;align-items:center;gap:6px;margin-top:2px;background:var(--primary);color:#fff;font-size:13px;font-weight:700;padding:10px 16px;border-radius:10px;text-decoration:none;transition:background .15s;}
-.bz-cta:hover{background:var(--primary-dark);}
-.bz-cta .bz-ar{font-size:14px;line-height:1;}
-.bz-src{margin-top:13px;padding-top:11px;border-top:1px solid var(--g100);font-size:11.5px;color:#ADB5BD;word-break:keep-all;}
+/* 브리핑 카드 (9필드: 제목·30초요약·실제영향·해결·계산기·가이드·서식·날짜·영향도) */
+.biz-card{background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--primary);border-radius:18px;box-shadow:0 1px 8px rgba(0,0,0,.04);padding:18px 18px 15px;}
+.bz-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;}
+.bz-catlabel{display:inline-block;font-size:11px;font-weight:700;color:var(--primary);background:var(--primary-light);border-radius:7px;padding:3px 9px;}
+.bz-stars{display:inline-flex;gap:1.5px;flex-shrink:0;}
+.bz-st{width:15px;height:15px;}
+.bz-st.on{fill:currentColor;}
+.bz-st.off{fill:#E5E8EB;}
+.bz-stars.r5{color:#F04452;}
+.bz-stars.r4{color:#FF8A3D;}
+.bz-stars.r3{color:#FFB800;}
+.bz-stars.r2{color:#9EA7B4;}
+.bz-stars.r1{color:#9EA7B4;}
+.bz-title{font-size:16.5px;font-weight:800;color:var(--text);line-height:1.4;letter-spacing:-.01em;margin-bottom:12px;word-break:keep-all;overflow-wrap:anywhere;}
+.bz-summary{font-size:14px;color:var(--text);line-height:1.8;margin-bottom:13px;word-break:keep-all;overflow-wrap:anywhere;}
+.bz-impact{display:flex;gap:10px;background:#FFF5F5;border:1px solid #FFDFDF;border-radius:12px;padding:12px 14px;margin-bottom:13px;}
+.bz-impact-lb{flex-shrink:0;font-size:11px;font-weight:800;color:#fff;background:#F04452;border-radius:7px;padding:3px 8px;height:-moz-fit-content;height:fit-content;white-space:nowrap;}
+.bz-impact-tx{flex:1;min-width:0;font-size:13.5px;font-weight:700;color:#E03131;line-height:1.55;word-break:keep-all;overflow-wrap:anywhere;}
+.bz-solve{display:flex;gap:9px;margin-bottom:14px;}
+.bz-solve-lb{flex-shrink:0;font-size:11px;font-weight:700;color:var(--primary);background:var(--primary-light);border-radius:8px;padding:3px 8px;height:-moz-fit-content;height:fit-content;white-space:nowrap;}
+.bz-solve-tx{flex:1;min-width:0;font-size:13px;color:var(--text-muted);line-height:1.7;word-break:keep-all;overflow-wrap:anywhere;}
+.bz-links{display:flex;flex-wrap:wrap;gap:8px;}
+.bz-link{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:700;padding:8px 13px;border-radius:10px;text-decoration:none;transition:all .15s;}
+.bz-link svg{width:14px;height:14px;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.bz-link--calc{background:var(--primary);color:#fff;}
+.bz-link--calc:hover{background:var(--primary-dark);}
+.bz-link--guide,.bz-link--form{background:#fff;border:1.5px solid var(--border);color:var(--text-muted);}
+.bz-link--guide:hover,.bz-link--form:hover{border-color:var(--primary);color:var(--primary);}
+.bz-src{margin-top:14px;padding-top:11px;border-top:1px solid var(--g100);font-size:11.5px;color:#ADB5BD;word-break:keep-all;}
 .bz-src a{color:var(--text-muted);font-weight:600;}
 .bz-src a:hover{color:var(--primary);}
 .brief-empty{padding:40px 16px;text-align:center;font-size:14px;color:#ADB5BD;}
@@ -142,7 +160,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <p style="margin-top:12px;">© 2026 소호팁. 모든 수치·정책은 공식기관 발표 기준이며 참고용입니다.</p>
 </footer>
 
-<script src="assets/briefing-data.js?v=20260630i"></script>
+<script src="assets/briefing-data.js?v=20260630j"></script>
 <script>
 /* 소분류 4개 — 순서/아이콘 고정 (이모지 금지, SVG) */
 var BRIEF_CATS = [
@@ -155,23 +173,42 @@ function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){retu
 
 var ALL = (window.SOHO_BRIEFING && window.SOHO_BRIEFING.cards) ? window.SOHO_BRIEFING.cards : [];
 
-function bzRow(tag, txt){ return txt ? ('<div class="bz-row"><span class="bz-tag">'+tag+'</span><p class="bz-text">'+esc(txt)+'</p></div>') : ''; }
+/* ⑨ 영향도 별점 — 5:빨강 4:주황 3:노랑 2:회색 (SVG 별, 이모지 금지) */
+function stars(n){
+  n = Math.max(0, Math.min(5, parseInt(n,10)||0));
+  var p='<path d="M12 2l2.9 6.2 6.8.6-5.1 4.5 1.5 6.7L12 17.2 5.9 20.5l1.5-6.7L2.3 8.8l6.8-.6z"/>';
+  var h=''; for(var i=1;i<=5;i++){ h+='<svg class="bz-st '+(i<=n?'on':'off')+'" viewBox="0 0 24 24" aria-hidden="true">'+p+'</svg>'; }
+  return '<span class="bz-stars r'+n+'" title="영향도 '+n+'/5">'+h+'</span>';
+}
+/* 링크 아이콘(계산기/가이드/서식) — SVG */
+var IC={
+  calc:'<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8" y2="14.01"/><line x1="12" y1="14" x2="12" y2="14.01"/><line x1="16" y1="14" x2="16" y2="14.01"/><line x1="8" y1="18" x2="16" y2="18"/>',
+  guide:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+  form:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/>'
+};
+function lnk(o, kind, ic){
+  if(!o || !o.url || !o.label) return '';
+  var ext = /^https?:\/\//.test(o.url);
+  return '<a class="bz-link bz-link--'+kind+'" href="'+esc(o.url)+'"'+(ext?' target="_blank" rel="noopener"':'')+'><svg viewBox="0 0 24 24" aria-hidden="true">'+ic+'</svg>'+esc(o.label)+'</a>';
+}
+function ml(s){ return esc(s).replace(/\n/g, '<br>'); }
 
 function cardHtml(it){
-  var rows = bzRow('30초 요약', it.summary) + bzRow('내 가게 영향', it.impact) + bzRow('지금 할 것', it.action);
-  var cta = '';
-  if(it.cta && it.cta.url && it.cta.label){
-    var ext = /^https?:\/\//.test(it.cta.url);
-    cta = '<a class="bz-cta" href="'+esc(it.cta.url)+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'+esc(it.cta.label)+'<span class="bz-ar" aria-hidden="true">&rarr;</span></a>';
-  }
+  var summary = it.summary ? ('<p class="bz-summary">'+ml(it.summary)+'</p>') : '';
+  var impact  = it.impact ? ('<div class="bz-impact"><span class="bz-impact-lb">실제 영향</span><span class="bz-impact-tx">'+ml(it.impact)+'</span></div>') : '';
+  var solve   = it.solution ? ('<div class="bz-solve"><span class="bz-solve-lb">이렇게 해보세요</span><span class="bz-solve-tx">'+esc(it.solution)+'</span></div>') : '';
+  var l = lnk(it.calc,'calc',IC.calc) + lnk(it.guide,'guide',IC.guide) + lnk(it.form,'form',IC.form);
+  var links = l ? ('<div class="bz-links">'+l+'</div>') : '';
   var src = '';
   if(it.source){
     var s = it.sourceUrl ? ('<a href="'+esc(it.sourceUrl)+'" target="_blank" rel="noopener">'+esc(it.source)+'</a>') : esc(it.source);
     src = '<div class="bz-src">출처 · '+s+(it.date?(' · '+esc(it.date)):'')+'</div>';
   }
   return '<article class="biz-card">'+
-    (it.cat?'<span class="bz-catlabel">'+esc(it.cat)+'</span>':'')+
-    '<h3 class="bz-title">'+esc(it.title||'')+'</h3>'+rows+cta+src+'</article>';
+    '<div class="bz-head">'+(it.cat?'<span class="bz-catlabel">'+esc(it.cat)+'</span>':'<span></span>')+stars(it.rating)+'</div>'+
+    '<h3 class="bz-title">'+esc(it.title||'')+'</h3>'+
+    summary + impact + solve + links + src +
+    '</article>';
 }
 
 function renderFeed(cat){
@@ -198,6 +235,6 @@ function renderCats(){
 renderCats();
 renderFeed(BRIEF_CATS[0].key);
 </script>
-<script src="network.js?v=20260630i"></script>
+<script src="network.js?v=20260630j"></script>
 </body>
 </html>
