@@ -54,7 +54,8 @@
     { key: 'calc',   label: '계산기', icon: 'calc',   href: 'tools.html' },
     { key: 'forms',  label: '서식',   icon: 'doc',    href: 'forms.html' },
     { key: 'guide',  label: '가이드', icon: 'guide',  href: 'category.html' },
-    { key: 'search', label: '검색',   icon: 'search', href: '#', search: true }
+    /* 하단 탭바 검색은 실제 검색 페이지로 이동(전 페이지 통일). 데스크톱 레일/헤더 검색창은 그대로 유지 */
+    { key: 'search', label: '검색',   icon: 'search', href: 'search.html' }
   ];
 
   function itemHTML(it, cls) {
