@@ -125,5 +125,17 @@ window.SOHO_BRIEFING = {
       sourceUrl: 'https://www.semas.or.kr',
       date: '2026.06.25'
     }
+  ],
+
+  /* ───────────── 사장님들이 가장 많이 찾는 질문 (운영자 편집) ─────────────
+     각 질문에 관련 계산기 연결. { q:'질문', calc:{ label, url } } · url 은 실존만. */
+  faqs: [
+    { q: '직원 2명이면 최저임금 얼마나 늘까?', calc: { label: '인건비 계산기', url: 'alba-cost-calc.html' } },
+    { q: '이번 분기 부가세, 얼마나 내야 할까?', calc: { label: '부가세 계산기', url: 'vat-calc.html' } },
+    { q: '배달 한 건 팔면 진짜 얼마 남을까?', calc: { label: '순이익 계산기', url: 'delivery-profit-calc.html' } },
+    { q: '카드 수수료, 우리 가게는 월 얼마나?', calc: { label: '카드수수료 계산기', url: 'card-fee-calc.html' } },
+    { q: '직원 내보낼 때 퇴직금 얼마 줘야 할까?', calc: { label: '퇴직금 계산기', url: 'severance-calc.html' } },
+    { q: '주휴수당까지 치면 시급이 얼마야?', calc: { label: '주휴수당 계산기', url: 'weekly-pay-calc.html' } },
+    { q: '월세 올린다는데 법정 상한이 얼마지?', calc: { label: '임대료 인상 계산기', url: 'rent-increase-calc.html' } }
   ]
 };

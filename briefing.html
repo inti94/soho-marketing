@@ -53,9 +53,9 @@
     }
   }
   </script>
-<link rel="stylesheet" href="sohotip.css?v=20260630k">
+<link rel="stylesheet" href="sohotip.css?v=20260630l">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630k">
+  <link rel="stylesheet" href="assets/theme.css?v=20260630l">
 <style>
 :root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-dark:#2541E0;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--g100:#F2F4F6;--sans:'Noto Sans KR',sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -94,7 +94,38 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
 .bcat-btn:hover{border-color:var(--primary);color:var(--primary);}
 .bcat-btn.active{background:var(--primary);color:#fff;border-color:var(--primary);}
 .bcat-btn svg{width:17px;height:17px;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-.brief-feed{flex:1;min-width:0;display:flex;flex-direction:column;gap:12px;}
+.brief-right{flex:1;min-width:0;}
+.brief-feed{display:flex;flex-direction:column;gap:12px;}
+
+/* 검색창 */
+.brief-searchwrap{max-width:920px;margin:0 auto;padding:14px 16px 0;}
+.brief-search{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:11px 15px;transition:border-color .15s;}
+.brief-search:focus-within{border-color:var(--primary);}
+.brief-search .bs-ico{width:19px;height:19px;flex-shrink:0;stroke:#ADB5BD;fill:none;stroke-width:2;stroke-linecap:round;}
+.brief-search input{flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:inherit;font-size:15px;color:var(--text);}
+.brief-search input::placeholder{color:#ADB5BD;}
+.bs-clear{display:none;flex-shrink:0;width:24px;height:24px;border:none;background:var(--g100);border-radius:50%;cursor:pointer;padding:0;place-items:center;}
+.bs-clear.show{display:grid;}
+.bs-clear svg{width:13px;height:13px;stroke:var(--text-muted);fill:none;stroke-width:2.2;stroke-linecap:round;}
+
+/* 정렬 행 */
+.brief-sortrow{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;}
+.brief-count{font-size:13px;font-weight:600;color:var(--text-muted);}
+.brief-count b{color:var(--primary);font-weight:800;}
+.brief-sortlb{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--text-muted);}
+.brief-sort{font-family:inherit;font-size:13px;font-weight:700;color:var(--text);background:#fff;border:1px solid var(--border);border-radius:9px;padding:7px 10px;cursor:pointer;outline:none;}
+.brief-sort:focus{border-color:var(--primary);}
+
+/* FAQ — 사장님들이 가장 많이 찾는 질문 */
+.brief-faq{max-width:920px;margin:0 auto;padding:8px 16px 80px;}
+.bfaq-title{font-size:19px;font-weight:800;letter-spacing:-.01em;margin-bottom:14px;}
+.bfaq-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:680px){.bfaq-list{grid-template-columns:1fr;}}
+.bfaq-item{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 16px;text-decoration:none;transition:all .15s;}
+.bfaq-item:hover{border-color:var(--primary);box-shadow:0 4px 14px rgba(61,90,254,.1);transform:translateY(-1px);}
+.bfaq-q{flex:1;min-width:0;font-size:14px;font-weight:700;color:var(--text);line-height:1.45;word-break:keep-all;}
+.bfaq-cta{flex-shrink:0;display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;color:var(--primary);background:var(--primary-light);border-radius:8px;padding:6px 10px;white-space:nowrap;}
+.bfaq-cta svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
 
 /* PC(≥860): 좌측 세로 사이드 레일 */
 @media(min-width:860px){
@@ -160,6 +191,15 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <p>오늘 변경된 세금·노무·정부지원·배달·창업·마케팅 정보를 쉽고 빠르게 확인하세요.</p>
 </div>
 
+<!-- 검색: 정책/지원금/배민/부가세/최저임금/SEO 등 -->
+<div class="brief-searchwrap">
+  <div class="brief-search">
+    <svg class="bs-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+    <input type="text" id="brief-q" placeholder="정책·지원금·배민·부가세·최저임금·SEO 검색…" autocomplete="off" aria-label="브리핑 검색">
+    <button type="button" class="bs-clear" id="brief-qx" aria-label="검색어 지우기"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+</div>
+
 <!-- 업종 필터: 선택하면 해당 업종 관련 카드가 위로 정렬됨 -->
 <div class="brief-indwrap">
   <span class="brief-indlb">내 업종</span>
@@ -168,8 +208,26 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
 
 <div class="brief-wrap">
   <div class="brief-cats" id="brief-cats" role="tablist"></div>
-  <div class="brief-feed" id="brief-feed"></div>
+  <div class="brief-right">
+    <div class="brief-sortrow">
+      <span class="brief-count" id="brief-count"></span>
+      <label class="brief-sortlb">정렬
+        <select class="brief-sort" id="brief-sort" aria-label="정렬 기준">
+          <option value="pop">인기순</option>
+          <option value="impact">영향도순</option>
+          <option value="recent">최신순</option>
+        </select>
+      </label>
+    </div>
+    <div class="brief-feed" id="brief-feed"></div>
+  </div>
 </div>
+
+<!-- 사장님들이 가장 많이 찾는 질문 → 관련 계산기 -->
+<section class="brief-faq" id="brief-faq">
+  <h2 class="bfaq-title">사장님들이 가장 많이 찾는 질문</h2>
+  <div class="bfaq-list" id="bfaq-list"></div>
+</section>
 
 <footer>
   <a href="index.html">홈</a>
@@ -179,7 +237,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <p style="margin-top:12px;">© 2026 소호팁. 모든 수치·정책은 공식기관 발표 기준이며 참고용입니다.</p>
 </footer>
 
-<script src="assets/briefing-data.js?v=20260630k"></script>
+<script src="assets/briefing-data.js?v=20260630l"></script>
 <script>
 /* 소분류 4개 — 순서/아이콘 고정 (이모지 금지, SVG) */
 var BRIEF_CATS = [
@@ -193,6 +251,8 @@ function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){retu
 var ALL = (window.SOHO_BRIEFING && window.SOHO_BRIEFING.cards) ? window.SOHO_BRIEFING.cards : [];
 var currentInd = '전체';   // 선택된 업종 ('전체'=정렬 안 함)
 var currentCat = '';       // 선택된 소분류
+var searchQuery = '';      // 검색어 (있으면 전체 카드에서 검색)
+var sortMode = 'pop';      // 정렬: pop(인기·운영자순) | impact(영향도순) | recent(최신순)
 
 /* ⑨ 영향도 별점 — 5:빨강 4:주황 3:노랑 2:회색 (SVG 별, 이모지 금지) */
 function stars(n){
@@ -235,18 +295,46 @@ function cardHtml(it, ind){
     '</article>';
 }
 
-function renderFeed(cat){
-  currentCat = cat;
+/* 검색 매칭: 제목·요약·영향·해결·분류·업종태그 전체에서 */
+function matchQuery(c, q){
+  var hay = [c.title, c.summary, c.impact, c.solution, c.cat].concat(c.tags||[]).join(' ').toLowerCase();
+  return hay.indexOf(q) >= 0;
+}
+/* 정렬: 영향도순/최신순. pop(인기·운영자순)=배열 순서 유지 */
+function sortList(list){
+  var a = list.slice();
+  if(sortMode==='impact'){ a.sort(function(x,y){ return (y.rating||0)-(x.rating||0); }); }
+  else if(sortMode==='recent'){ a.sort(function(x,y){ return String(y.date||'').localeCompare(String(x.date||'')); }); }
+  return a;
+}
+function renderFeed(){
   var feed = document.getElementById('brief-feed');
-  var list = ALL.filter(function(c){ return c.cat===cat; });
-  /* 업종 필터: 선택 업종 태그를 가진 카드를 위로(안정 정렬), 나머지는 아래에 그대로 노출 */
+  var list;
+  if(searchQuery){
+    var q = searchQuery.toLowerCase();
+    list = ALL.filter(function(c){ return matchQuery(c, q); });   // 검색 중엔 전체에서
+  } else {
+    list = ALL.filter(function(c){ return c.cat===currentCat; }); // 평소엔 선택 분류
+  }
+  list = sortList(list);
+  /* 업종 필터: 선택 업종 태그를 가진 카드를 위로(정렬 결과 내 안정 분할), 나머지는 아래 노출 */
   if(currentInd && currentInd!=='전체'){
     var hit=[], rest=[];
     list.forEach(function(c){ (hasTag(c, currentInd) ? hit : rest).push(c); });
     list = hit.concat(rest);
   }
-  if(!list.length){ feed.innerHTML='<div class="brief-empty">이 분류의 소식은 곧 채워집니다.</div>'; return; }
+  var cnt = document.getElementById('brief-count');
+  if(cnt){ cnt.innerHTML = '총 <b>'+list.length+'</b>건' + (searchQuery?' · 검색 결과':''); }
+  if(!list.length){ feed.innerHTML='<div class="brief-empty">'+(searchQuery?'검색 결과가 없어요. 다른 키워드로 찾아보세요.':'이 분류의 소식은 곧 채워집니다.')+'</div>'; return; }
   feed.innerHTML = list.map(function(c){ return cardHtml(c, currentInd); }).join('');
+}
+function clearSearch(){
+  searchQuery = '';
+  var inp = document.getElementById('brief-q'); if(inp) inp.value = '';
+  var x = document.getElementById('brief-qx'); if(x) x.classList.remove('show');
+}
+function setCatActive(){
+  document.querySelectorAll('.bcat-btn').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-cat')===currentCat); });
 }
 
 function renderCats(){
@@ -257,9 +345,10 @@ function renderCats(){
   }).join('');
   wrap.addEventListener('click', function(e){
     var b = e.target.closest('.bcat-btn'); if(!b) return;
-    wrap.querySelectorAll('.bcat-btn').forEach(function(x){ x.classList.remove('active'); });
-    b.classList.add('active');
-    renderFeed(b.getAttribute('data-cat'));
+    currentCat = b.getAttribute('data-cat');
+    clearSearch();           // 분류 선택 시 검색 해제
+    setCatActive();
+    renderFeed();
   });
 }
 
@@ -275,14 +364,51 @@ function renderInd(){
     w.querySelectorAll('.ind-chip').forEach(function(x){ x.classList.remove('active'); });
     b.classList.add('active');
     currentInd = b.getAttribute('data-ind');
-    renderFeed(currentCat);
+    renderFeed();
   });
 }
 
+/* 검색 */
+function initSearch(){
+  var inp = document.getElementById('brief-q'), x = document.getElementById('brief-qx');
+  if(!inp) return;
+  inp.addEventListener('input', function(){
+    searchQuery = inp.value.trim();
+    x.classList.toggle('show', !!inp.value);
+    if(searchQuery){ document.querySelectorAll('.bcat-btn').forEach(function(b){ b.classList.remove('active'); }); }
+    else { setCatActive(); }
+    renderFeed();
+  });
+  x.addEventListener('click', function(){ clearSearch(); setCatActive(); renderFeed(); inp.focus(); });
+}
+/* 정렬 */
+function initSort(){
+  var sel = document.getElementById('brief-sort'); if(!sel) return;
+  sel.addEventListener('change', function(){ sortMode = sel.value; renderFeed(); });
+}
+/* 사장님들이 가장 많이 찾는 질문 → 관련 계산기 */
+function renderFaqs(){
+  var el = document.getElementById('bfaq-list'); if(!el) return;
+  var faqs = (window.SOHO_BRIEFING && window.SOHO_BRIEFING.faqs) ? window.SOHO_BRIEFING.faqs : [];
+  if(!faqs.length){ var s=document.getElementById('brief-faq'); if(s) s.style.display='none'; return; }
+  el.innerHTML = faqs.map(function(f){
+    var c = f.calc || {};
+    if(!c.url || !c.label) return '';
+    var ext = /^https?:\/\//.test(c.url);
+    return '<a class="bfaq-item" href="'+esc(c.url)+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'+
+      '<span class="bfaq-q">'+esc(f.q||'')+'</span>'+
+      '<span class="bfaq-cta">'+esc(c.label)+'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>';
+  }).join('');
+}
+
+currentCat = BRIEF_CATS[0].key;
 renderInd();
 renderCats();
-renderFeed(BRIEF_CATS[0].key);
+renderFaqs();
+initSearch();
+initSort();
+renderFeed();
 </script>
-<script src="network.js?v=20260630k"></script>
+<script src="network.js?v=20260630l"></script>
 </body>
 </html>
