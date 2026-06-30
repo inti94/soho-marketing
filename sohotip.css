@@ -293,6 +293,87 @@
   line-height: 1;
 }
 
+/* ── AI 핵심 요약 박스 (게시글 제목 아래) ── */
+.ai-summary {
+  margin: 20px 0 30px;
+  padding: 22px 22px 20px;
+  background: linear-gradient(180deg, #F4F7FF, #FFFFFF);
+  border: 1px solid #E1E8FF;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(61, 90, 254, 0.06);
+}
+.ai-summary .ais-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #3D5AFE;
+  background: #E8ECFF;
+  padding: 5px 12px;
+  border-radius: 100px;
+  margin-bottom: 14px;
+}
+.ai-summary p {
+  font-size: 15px;
+  line-height: 1.78;
+  color: #2B3038;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+.ai-summary p:last-of-type {
+  margin-bottom: 0;
+}
+.ai-summary .ais-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+.ai-summary .ais-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 11px 16px;
+  border-radius: 11px;
+  transition: transform 0.12s, box-shadow 0.12s, background 0.12s;
+}
+.ai-summary .ais-btn.primary {
+  background: #3D5AFE;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(61, 90, 254, 0.25);
+}
+.ai-summary .ais-btn.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(61, 90, 254, 0.32);
+}
+.ai-summary .ais-btn.ghost {
+  background: #fff;
+  color: #3D5AFE;
+  border: 1px solid #C9D4FF;
+}
+.ai-summary .ais-btn.ghost:hover {
+  background: #F4F7FF;
+}
+.ai-summary .ais-links {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #6B7280;
+  line-height: 1.6;
+}
+.ai-summary .ais-links a {
+  color: #3D5AFE;
+  text-decoration: none;
+  font-weight: 600;
+}
+.ai-summary .ais-links a:hover {
+  text-decoration: underline;
+}
+
 /* ── 모바일 검색바 (nav 아래 별도 줄) ──── */
 .mobile-search-bar {
   display: none;
