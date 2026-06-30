@@ -46,11 +46,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="sohotip.css?v=20260630f">
+<link rel="stylesheet" href="sohotip.css?v=20260630g">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630f">
-  <link rel="stylesheet" href="assets/soho-cards.css?v=20260630f">
-<link rel="stylesheet" href="assets/sohotip-theme.css?v=20260630f">
+  <link rel="stylesheet" href="assets/theme.css?v=20260630g">
+  <link rel="stylesheet" href="assets/soho-cards.css?v=20260630g">
+<link rel="stylesheet" href="assets/sohotip-theme.css?v=20260630g">
 
 <style>
 /* =====================================================================
@@ -282,9 +282,9 @@ a{color:inherit;text-decoration:none;}
   <a class="tb" href="search.html"><span class="tb-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>검색</a>
 </nav>
 
-<script src="sohotip.js?v=20260630f"></script>
-<script src="assets/soho-share.js?v=20260630f"></script>
-<script src="assets/soho-cards.js?v=20260630f"></script>
+<script src="sohotip.js?v=20260630g"></script>
+<script src="assets/soho-share.js?v=20260630g"></script>
+<script src="assets/soho-cards.js?v=20260630g"></script>
 <script>
 /* ===================================================================
    소호팁 카테고리 — ?cat / ?q 기반 카드 피드 (SohoCards 통일)
@@ -346,11 +346,21 @@ a{color:inherit;text-decoration:none;}
   var activeSub='전체';
   var sortMode='pop';
 
+  /* 가이드 카테고리 고정 6개 — 모든 글을 아래 중 하나로 매핑(그 외 카테고리 자동 흡수, 새 카테고리 안 생김) */
+  var GUIDE_CATS=['창업·세금','배달앱','SNS·숏폼','네이버 플레이스','소상공인 지원금'];
+  function canonCat(cat){
+    var c=cat||'';
+    if(/플레이스/.test(c))return '네이버 플레이스';
+    if(/배달/.test(c))return '배달앱';                 /* '배달앱 마케팅' 등도 배달앱으로 */
+    if(/SNS|숏폼/.test(c))return 'SNS·숏폼';
+    if(/지원금|정책자금|대출/.test(c))return '소상공인 지원금';
+    return '창업·세금';   /* 노하우·정책 외 잡 카테고리(노무·세무·운영·안전·매출·마케팅·서식 등) 전부 흡수 */
+  }
   /* search-data → 공통 아이템 모양으로 정규화 */
   function normArticle(a){
     var st=splitTag(a.tag);
     var catName=(st.x||'').replace(/\s*·\s*/g,'·').trim();   /* '창업 · 세금'·'창업·세금' 표기 통일 → 칩 중복 방지 */
-    return {e:st.e, cat:catName, n:a.title, d:a.desc, u:a.url, dt:(a.date||'').replace(/-/g,'.'),
+    return {e:st.e, cat:canonCat(catName), n:a.title, d:a.desc, u:a.url, dt:(a.date||'').replace(/-/g,'.'),
             rt:a.rt||'', kw:(a.keywords||'')+' '+catName, date:a.date||'', isCalc:false,
             t:(a.keywords||'').split(',').slice(0,3)};
   }
@@ -460,16 +470,9 @@ a{color:inherit;text-decoration:none;}
     document.title=name+' | 소호팁';
   }
 
-  /* 전체 가이드: 실제 글들이 속한 카테고리만 자동 추출 (정렬: 글 많은 순) */
+  /* 전체 가이드: 고정 카테고리 6개 + 북마크 (스트레이 카테고리 자동 흡수 → 칩 줄이 화면을 벗어나지 않음) */
   function guideCategories(){
-    var cnt={},order=[];
-    ALL.forEach(function(it){
-      if(it.isCalc||!it.cat)return;
-      if(cnt[it.cat]==null){cnt[it.cat]=0;order.push(it.cat);}
-      cnt[it.cat]++;
-    });
-    order.sort(function(a,b){return cnt[b]-cnt[a];});
-    return ['전체'].concat(order).concat(['북마크']);
+    return ['전체'].concat(GUIDE_CATS).concat(['북마크']);
   }
   function renderChips(){
     var box=document.getElementById('chips');
@@ -542,6 +545,6 @@ a{color:inherit;text-decoration:none;}
   });
 })();
 </script>
-<script src="network.js?v=20260630f"></script>
+<script src="network.js?v=20260630g"></script>
 </body>
 </html>
