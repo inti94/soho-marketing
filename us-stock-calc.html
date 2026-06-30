@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="미국주식 계산기. 달러 기준 매수가·수량과 실시간 USD/KRW 환율로 원화 환산 금액과 수익률을 계산합니다. 매수 시점·현재 환율을 넣으면 환율 변동까지 반영한 원화 수익률을 보여줍니다.">
+<meta name="keywords" content="미국주식 계산기, 달러 환산 계산기, 미국주식 수익률, 환율 수익률, USD KRW 환율 계산, 해외주식 원화">
+<meta name="robots" content="index, follow">
+<meta name="author" content="소호팁">
+<meta name="date" content="2026-06-30">
+<meta property="og:type" content="website">
+<meta property="og:title" content="미국주식 계산기 — 실시간 환율 원화 환산·수익률 | 소호팁">
+<meta property="og:description" content="달러 매수가·수량을 넣으면 실시간 USD/KRW 환율로 원화 환산 금액·수익률을 자동 계산. 환율 변동 효과까지.">
+<meta property="og:url" content="https://sohotip.co.kr/us-stock-calc.html">
+<meta property="og:image" content="https://sohotip.co.kr/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="소호팁">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="미국주식 계산기 — 실시간 환율 원화 환산·수익률 | 소호팁">
+<meta name="twitter:description" content="달러 매수가·수량을 실시간 환율로 원화 환산하고 수익률까지. 환율 변동 효과 포함.">
+<meta name="twitter:image" content="https://sohotip.co.kr/og-image.png">
+<meta name="naver-site-verification" content="d7369feb5de3df4cce2e9016b84ad045c4ed70a4">
+<link rel="canonical" href="https://sohotip.co.kr/us-stock-calc.html">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sohotip.co.kr/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
+<link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
+<title>미국주식 계산기 — 실시간 환율 원화 환산·수익률 자동계산 (2026) | 소호팁</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "미국주식 계산기",
+    "description": "달러 기준 매수가·수량과 실시간 USD/KRW 환율로 원화 환산 금액과 수익률을 계산하고, 환율 변동까지 반영한 원화 수익률을 보여주는 무료 미국주식 계산기.",
+    "url": "https://sohotip.co.kr/us-stock-calc.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"},
+    "publisher": {"@type": "Organization", "name": "소호팁", "url": "https://sohotip.co.kr"},
+    "dateModified": "2026-06-30",
+    "inLanguage": "ko-KR",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"홈","item":"https://sohotip.co.kr/"},
+        {"@type":"ListItem","position":2,"name":"계산기","item":"https://sohotip.co.kr/tools.html"},
+        {"@type":"ListItem","position":3,"name":"미국주식 계산기","item":"https://sohotip.co.kr/us-stock-calc.html"}
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"미국주식 수익률은 달러 기준인가요, 원화 기준인가요?","acceptedAnswer":{"@type":"Answer","text":"둘 다 봐야 합니다. 주가만 따지는 달러 수익률과, 환전까지 따지는 원화 수익률은 다를 수 있어요. 살 때보다 환율이 오르면 달러로는 그대로여도 원화로는 이득이 늘고, 환율이 내리면 반대입니다. 이 계산기는 매수 시점 환율과 현재 환율을 함께 넣어 환율 변동까지 반영한 원화 수익률을 보여줍니다."}},
+      {"@type":"Question","name":"환율이 오르면 무조건 이득인가요?","acceptedAnswer":{"@type":"Answer","text":"이미 보유 중인 미국주식이라면, 원/달러 환율이 오르면 같은 달러 가치가 더 많은 원화로 환산돼 원화 평가금액과 수익률이 올라갑니다. 반대로 새로 살 때는 환율이 높으면 더 많은 원화가 들어 불리해요. 그래서 매수 시점 환율과 현재 환율을 같이 보는 게 중요합니다."}},
+      {"@type":"Question","name":"실시간 환율은 어디서 가져오나요?","acceptedAnswer":{"@type":"Answer","text":"ExchangeRate-API의 실시간 USD/KRW 시세를 불러와 자동으로 채웁니다. 다만 이 값은 시장 기준 환율이라, 실제 증권사 환전에 적용되는 고시환율·매매기준율과는 약간 다르고 환전 수수료(스프레드)도 별도예요. 정확한 환전 금액은 거래 증권사에서 확인하세요. 환율 칸은 직접 수정할 수도 있습니다."}},
+      {"@type":"Question","name":"미국주식도 세금을 내나요?","acceptedAnswer":{"@type":"Answer","text":"해외주식 양도차익은 연간 250만 원 기본공제 후 초과분에 양도소득세(지방소득세 포함 22%)가 매겨지고, 다음 해 5월에 신고·납부합니다. 배당금은 보통 현지에서 원천징수(미국 약 15%)됩니다. 세율·공제 기준은 바뀔 수 있으니 신고 전 국세청·증권사로 꼭 확인하세요. 이 계산기는 세금을 뺀 단순 환산입니다."}},
+      {"@type":"Question","name":"증권사 평가금액이랑 왜 달라요?","acceptedAnswer":{"@type":"Answer","text":"적용한 환율이 다르기 때문입니다. 증권사는 자체 고시환율과 환전 수수료, 매매 수수료·세금까지 반영하지만, 이 계산기는 시장 환율로 단순 계산합니다. 큰 흐름을 잡는 용도로 쓰고, 정확한 평가금액·실현손익은 증권사 거래내역에서 확인하세요."}}
+    ]
+  }
+  </script>
+<link rel="stylesheet" href="sohotip.css?v=20260630t">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/theme.css?v=20260630t">
+<link rel="stylesheet" href="assets/calc.css?v=20260630t">
+<style>
+:root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--text-light:#9CA3AF;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--border-light:#F3F4F6;--sans:'Noto Sans KR',sans-serif;--up:#F04452;--down:#3D5AFE;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;overflow-x:clip;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:clip;}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-size:13px;color:var(--text-muted);text-decoration:none;}
+.nav-links a:hover{color:var(--primary);}
+.nav-cta{background:var(--primary);color:#fff;font-size:13px;padding:7px 16px;border-radius:6px;text-decoration:none;}
+@media(max-width:640px){.nav-links{display:none;}}
+.page-wrap{max-width:680px;margin:0 auto;padding:36px 16px 80px;}
+.page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:28px;line-height:1.6;}
+.tag{display:inline-flex;align-items:center;gap:5px;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+.tag svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* 블록① 계산기 */
+.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px;}
+.card-title{font-size:14px;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:18px;}
+.field{margin-bottom:18px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--text);}
+.field input{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;-webkit-appearance:none;}
+.field input:focus{border-color:var(--primary);}
+.field-group{display:flex;gap:12px;}
+.field-group .field{flex:1;}
+.group-label{font-size:13px;font-weight:700;color:var(--text);margin:2px 0 10px;display:flex;align-items:center;gap:7px;}
+.group-label .gl-tag{font-size:10px;font-weight:700;color:#fff;background:var(--primary);padding:2px 9px;border-radius:20px;letter-spacing:.02em;}
+.group-label .gl-tag.fx{background:#00B8D9;}
+.group-note{font-size:11.5px;color:var(--text-muted);font-weight:400;}
+.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background 0.2s;margin-top:8px;}
+.btn-calc:hover{background:var(--primary-mid);}
+.divider-line{height:1px;background:var(--border);margin:8px 0 18px;}
+/* 실시간 환율 상태줄 */
+.fx-status{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:8px;font-size:11.5px;color:var(--text-muted);line-height:1.5;}
+.fx-status.err{color:#C2410C;}
+.fx-live{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--text);}
+.fx-live .led{width:7px;height:7px;border-radius:50%;background:#00C471;display:inline-block;flex-shrink:0;animation:fxpulse 1.6s infinite;}
+@keyframes fxpulse{0%{box-shadow:0 0 0 0 rgba(0,196,113,.45)}70%{box-shadow:0 0 0 6px rgba(0,196,113,0)}100%{box-shadow:0 0 0 0 rgba(0,196,113,0)}}
+.fx-refresh{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--border);background:#fff;color:var(--text-muted);font-size:11px;font-weight:600;padding:4px 9px;border-radius:8px;cursor:pointer;font-family:inherit;transition:all .15s;}
+.fx-refresh:hover{border-color:var(--primary);color:var(--primary);}
+.fx-refresh svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.result-card{background:var(--primary);border-radius:16px;padding:26px;color:#fff;margin-bottom:18px;}
+.result-title{font-size:13px;opacity:0.8;margin-bottom:6px;}
+.result-total{font-size:34px;font-weight:700;margin-bottom:4px;}
+.result-sub{font-size:13px;opacity:0.75;}
+.result-breakdown{background:var(--bg-card);border-radius:16px;padding:22px;border:1px solid var(--border);}
+.breakdown-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+.breakdown-row:last-child{border-bottom:none;}
+.breakdown-label{font-size:13px;color:var(--text-muted);min-width:0;}
+.breakdown-value{font-size:14px;font-weight:500;color:var(--text);text-align:right;flex-shrink:0;}
+.breakdown-value.highlight{color:var(--primary);font-weight:700;}
+.breakdown-value.up{color:var(--up);font-weight:700;}
+.breakdown-value.down{color:var(--down);font-weight:700;}
+.notice-box{background:var(--primary-light);border-radius:12px;padding:16px 18px;margin-top:18px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
+.notice-box strong{color:var(--primary);}
+.notice-box a{color:var(--primary);font-weight:600;}
+.notice-box .nb-ico{display:inline-flex;vertical-align:-2px;margin-right:4px;}
+.notice-box .nb-ico svg{width:14px;height:14px;fill:none;stroke:var(--primary);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* 블록②~⑦ 설명 콘텐츠 */
+.article-content{margin-top:36px;}
+.article-content h2{font-size:20px;font-weight:800;color:var(--text);margin:34px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-.01em;}
+.article-content p{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:16px;}
+.article-content strong{font-weight:700;color:var(--primary);}
+.article-content ul{margin:14px 0 18px 18px;}
+.article-content li{font-size:15px;line-height:1.8;margin-bottom:6px;}
+.formula-box{background:#191F28;color:#fff;border-radius:14px;padding:20px 22px;margin:8px 0 18px;font-size:15px;font-weight:600;line-height:1.7;text-align:center;}
+.formula-box .fx-sub{display:block;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);margin-top:8px;}
+.tip-inline{background:var(--primary-light);border-radius:12px;padding:14px 18px;margin:8px 0 18px;font-size:14px;color:var(--primary-mid);line-height:1.7;}
+.tip-inline strong{color:var(--primary);}
+.step-box{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin:8px 0 18px;}
+.step-box .sb-badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--primary);padding:3px 11px;border-radius:20px;margin-bottom:10px;}
+.step-box .sb-body{font-size:14.5px;line-height:1.8;color:var(--text);}
+.article-table{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:13.5px;}
+.article-table th,.article-table td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.6;}
+.article-table th{background:#F4F6FB;font-weight:700;color:var(--text);}
+.article-table td:first-child{font-weight:600;white-space:nowrap;}
+.prepare{background:#FFF8F2;border:1px solid #FFE3CC;border-radius:12px;padding:14px 18px;font-size:13px;color:#9A5B1E;line-height:1.7;margin:8px 0 18px;}
+.prepare strong{color:#C2410C;}
+/* FAQ */
+.faq-section{margin-top:8px;}
+.faq-item{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;background:var(--bg-card);}
+.faq-q{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:7px;}
+.faq-q::before{content:"Q. ";color:var(--primary);}
+.faq-a{font-size:13.5px;color:var(--text-muted);line-height:1.75;}
+
+/* 블록⑧ 관련 계산기 */
+.related-calcs-section{margin:34px 0 0;}
+.related-calcs-section h2,.related-articles-section h2{font-size:17px;font-weight:800;color:var(--text);margin-bottom:14px;}
+.rel-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;}
+.rel-calc-card{display:flex;align-items:center;gap:10px;padding:14px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s;}
+.rel-calc-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 14px rgba(61,90,254,.12);}
+.rel-calc-card.soon{opacity:.6;cursor:default;}
+.rel-calc-card.soon:hover{transform:none;box-shadow:none;border-color:var(--border);}
+.rcc-icon{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;}
+.rcc-icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.rcc-title{font-size:12.5px;font-weight:700;line-height:1.3;}
+.rcc-desc{font-size:11px;color:var(--text-muted);margin-top:2px;}
+/* 블록⑨ 관련 글 */
+.related-articles-section{margin:28px 0 0;}
+.rel-article-item{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--border-light);text-decoration:none;color:var(--text);}
+.rel-article-item:last-child{border-bottom:none;}
+.rel-article-item:hover .rai-title{color:var(--primary);}
+.rai-num{font-size:18px;font-weight:900;color:var(--border);width:22px;flex-shrink:0;text-align:center;}
+.rai-title{font-size:13.5px;font-weight:600;line-height:1.4;flex:1;min-width:0;}
+.rai-arrow{color:var(--primary);font-size:14px;flex-shrink:0;}
+/* 블록⑩ CTA */
+.cta-box{margin-top:34px;background:linear-gradient(135deg,#3D5AFE,#536DFE);border-radius:18px;padding:26px 22px;text-align:center;color:#fff;}
+.cta-box h3{font-size:18px;font-weight:800;margin-bottom:6px;}
+.cta-box p{font-size:13.5px;opacity:.85;margin-bottom:16px;line-height:1.6;}
+.cta-box a{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--primary);font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;text-decoration:none;transition:transform .12s;}
+.cta-box a:active{transform:scale(.97);}
+.cta-box a svg{width:18px;height:18px;fill:none;stroke:var(--primary);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.nav-search-icon svg{width:16px;height:16px;fill:none;stroke:#9CA3AF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
+footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
+@media(max-width:380px){.rel-calc-grid{grid-template-columns:1fr 1fr;}}
+</style></head>
+<body>
+<div id="progress-bar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">소호팁</a>
+  <ul class="nav-links">
+    <li><a href="category.html">카테고리</a></li>
+    <li><a href="tools.html">계산기</a></li>
+  </ul>
+  <a href="consultation.html" class="nav-cta">무료 진단</a>
+</nav>
+<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
+<div class="mobile-search-bar">
+  <div class="nav-search">
+    <span class="nav-search-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg></span>
+    <input type="text" id="search-input-mobile" class="nav-search-input" placeholder="궁금한 주제를 검색하세요..." autocomplete="off">
+    <div id="search-dropdown-mobile"></div>
+  </div>
+</div>
+
+<div class="page-wrap">
+  <span class="tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg> 주식 이야기</span>
+  <h1 class="page-title">미국주식 계산기</h1>
+  <p class="page-desc">달러 기준 매수가·수량을 넣으면 실시간 USD/KRW 환율로 원화 환산 금액이 바로 나옵니다. 매수 시점 환율과 현재 환율을 함께 넣으면, 주가뿐 아니라 환율 변동까지 반영한 진짜 원화 수익률을 볼 수 있어요.</p>
+
+  <!-- ① 계산기 -->
+  <div class="calc-card" id="calc">
+    <div class="card-title">미국주식 정보 입력</div>
+
+    <div class="field-group">
+      <div class="field">
+        <label>매수가 (USD, $)</label>
+        <input type="text" inputmode="decimal" id="buy-usd" placeholder="예: 100">
+      </div>
+      <div class="field">
+        <label>수량 (주)</label>
+        <input type="number" id="qty" min="0" step="1" inputmode="numeric" placeholder="예: 10">
+      </div>
+    </div>
+    <div class="field">
+      <label>현재가 / 매도가 (USD, $) <span style="color:var(--text-muted);font-weight:400;">· 선택 입력 시 수익률 계산</span></label>
+      <input type="text" inputmode="decimal" id="cur-usd" placeholder="예: 110">
+    </div>
+
+    <div class="divider-line"></div>
+
+    <div class="group-label"><span class="gl-tag fx">환율</span> USD → KRW <span class="group-note">· 현재 환율은 실시간 자동, 직접 수정 가능</span></div>
+    <div class="field-group">
+      <div class="field">
+        <label>매수 시점 환율 (원/$) <span style="color:var(--text-muted);font-weight:400;">· 선택</span></label>
+        <input type="text" inputmode="decimal" id="buy-fx" placeholder="비우면 현재 환율로 가정">
+      </div>
+      <div class="field">
+        <label>현재 환율 (원/$)</label>
+        <input type="text" inputmode="decimal" id="cur-fx" placeholder="불러오는 중…">
+      </div>
+    </div>
+    <div class="fx-status" id="fx-status"></div>
+
+    <button class="btn-calc" onclick="calculate()" style="margin-top:18px;">원화 환산·수익률 계산하기</button>
+  </div>
+
+  <div id="result-section" style="display:none;">
+    <div class="result-card">
+      <div class="result-title" id="res-title">원화 매수금액</div>
+      <div class="result-total" id="res-total">0원</div>
+      <div class="result-sub" id="res-sub">달러 금액 × 환율</div>
+    </div>
+    <div class="result-breakdown">
+      <div class="breakdown-row"><span class="breakdown-label">적용 환율 (현재)</span><span class="breakdown-value" id="res-fx">0원/$</span></div>
+      <div class="breakdown-row"><span class="breakdown-label">원화 매수금액</span><span class="breakdown-value" id="res-krwbuy">0원</span></div>
+      <div id="eval-rows" style="display:none;">
+        <div class="breakdown-row" style="margin-top:8px;padding-top:16px;border-top:2px solid var(--border);"><span class="breakdown-label">달러 수익률 (주가만)</span><span class="breakdown-value" id="res-usdrate">0%</span></div>
+        <div class="breakdown-row"><span class="breakdown-label">원화 평가금액 (현재가 × 환율)</span><span class="breakdown-value" id="res-krweval">0원</span></div>
+        <div class="breakdown-row"><span class="breakdown-label">원화 수익금</span><span class="breakdown-value" id="res-krwprofit">0원</span></div>
+        <div class="breakdown-row"><span class="breakdown-label">원화 수익률 (환율 포함)</span><span class="breakdown-value highlight" id="res-krwrate">0%</span></div>
+        <div class="breakdown-row" id="row-fxeffect" style="display:none;"><span class="breakdown-label">환율 효과 (원화 − 달러)</span><span class="breakdown-value" id="res-fxeffect">0%p</span></div>
+      </div>
+    </div>
+    <div class="notice-box">
+      <span class="nb-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.4.8 1 .9 1.6l.1.7h6l.1-.7c.1-.6.4-1.2.9-1.6A7 7 0 0 0 12 2z"/></svg></span><strong>참고하세요.</strong> 실시간 환율은 시장 기준값이라 증권사 고시환율·환전 수수료와 차이가 있어요. 매매 수수료·세금도 빠진 단순 환산이라, 실제 실현 수익은 더 줄 수 있습니다. 달러 기준 수익률만 따로 보려면 <a href="stock-return-calc.html">수익률 계산기</a>도 함께 써보세요.
+    </div>
+  </div>
+
+  <div class="article-content">
+    <!-- ② 공식 설명 -->
+    <h2>미국주식은 '주가'와 '환율'을 같이 봐야 해요</h2>
+    <p>미국주식은 달러로 사고팔기 때문에, 내 손익은 <strong>주가 변화</strong>뿐 아니라 <strong>원/달러 환율 변화</strong>에도 영향을 받아요. 달러로는 그대로여도 환율이 오르면 원화로는 이득이 늘고, 환율이 내리면 줄어듭니다.</p>
+    <div class="formula-box">원화 금액 = 달러 금액 × 환율(원/$)<span class="fx-sub">원화 수익률 = (원화 평가금액 − 원화 매수금액) ÷ 원화 매수금액 × 100</span></div>
+    <p>그래서 매수할 때 환율과 지금 환율을 함께 넣으면, <strong>주가로 번 부분(달러 수익률)</strong>과 <strong>환율로 번(또는 잃은) 부분</strong>을 나눠서 볼 수 있어요. 위 계산기의 현재 환율은 실시간 시세로 자동으로 채워집니다.</p>
+
+    <!-- ③ 실제 사례 -->
+    <h2>환율이 오르면? 내리면?</h2>
+    <p>예를 들어 어떤 미국주식을 <strong>$100에 10주</strong> 샀다고 해볼게요. 살 때 환율이 1,300원이었는데 지금 주가가 <strong>$110</strong>로 올랐어요. 달러로는 딱 <strong>10%</strong> 수익이죠.</p>
+    <p>그런데 지금 환율이 <strong>1,380원으로 올랐다면</strong>, 원화로 환산한 수익률은 <strong>약 16.8%</strong>까지 커져요. 주가 10%에 환율 상승분이 더해진 거죠. 반대로 환율이 <strong>1,250원으로 내렸다면</strong> 원화 수익률은 10%보다 낮아집니다. 같은 주가여도 환율이 손익을 바꾸는 거예요.</p>
+
+    <!-- ④ 계산 예시 -->
+    <h2>숫자로 천천히 따라가 볼게요</h2>
+    <div class="step-box">
+      <span class="sb-badge">계산 따라하기</span>
+      <div class="sb-body">
+        원화 매수금액 = $100 × 10주 × 1,300원 = <strong>1,300,000원</strong><br>
+        원화 평가금액 = $110 × 10주 × 1,380원 = <strong>1,518,000원</strong><br>
+        달러 수익률 = (110 − 100) ÷ 100 × 100 = <strong>10%</strong><br>
+        원화 수익금 = 1,518,000 − 1,300,000 = <strong>218,000원</strong><br>
+        원화 수익률 = 218,000 ÷ 1,300,000 × 100 ≈ <strong>16.77%</strong><br>
+        → 환율 효과 = 16.77% − 10% = <strong>+6.77%p</strong> (환율 상승 덕)
+      </div>
+    </div>
+    <p>달러로는 10% 수익인데 환율이 1,300원에서 1,380원으로 오르면서 원화 수익률이 <strong>16.77%</strong>가 됐어요. 그 차이 6.77%p가 바로 '환율 효과'입니다. 미국주식은 이렇게 환율을 같이 봐야 진짜 손익이 보여요.</p>
+
+    <!-- ⑤ 항목표 -->
+    <h2>결과에 나오는 항목, 뜻만 알면 쉬워요</h2>
+    <table class="article-table">
+      <thead><tr><th>항목</th><th>무슨 뜻</th><th>예시</th></tr></thead>
+      <tbody>
+        <tr><td>적용 환율</td><td>원화로 환산할 때 쓰는 현재 USD/KRW 환율</td><td>1,380원/$</td></tr>
+        <tr><td>원화 매수금액</td><td>매수가($) × 수량 × 매수 시점 환율</td><td>1,300,000원</td></tr>
+        <tr><td>달러 수익률</td><td>(현재가 − 매수가) ÷ 매수가 × 100 (주가만)</td><td>+10%</td></tr>
+        <tr><td>원화 평가금액</td><td>현재가($) × 수량 × 현재 환율</td><td>1,518,000원</td></tr>
+        <tr><td>원화 수익률</td><td>환율 변동까지 반영한 실제 원화 기준 수익률</td><td>+16.77%</td></tr>
+        <tr><td>환율 효과</td><td>원화 수익률 − 달러 수익률 (환율이 더한 부분)</td><td>+6.77%p</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ⑥ 주의표 -->
+    <h2>미국주식, 환전·세금에서 더 챙길 것</h2>
+    <p>원화 환산만으로는 안 보이는 비용이 있어요. 환전과 세금은 미국주식에서 특히 중요합니다.</p>
+    <table class="article-table">
+      <thead><tr><th>구분</th><th>꼭 알아둘 점</th></tr></thead>
+      <tbody>
+        <tr><td>환전 비용</td><td>증권사 환전엔 고시환율 + 환전 수수료(스프레드)가 붙어, 시장 환율보다 살 땐 비싸고 팔 땐 싸게 적용됩니다.</td></tr>
+        <tr><td>환율 변동</td><td>주가가 그대로여도 환율이 내리면 원화 수익이 줄어요. 환헤지가 없으면 환율도 하나의 변수입니다.</td></tr>
+        <tr><td>양도소득세</td><td>해외주식 양도차익은 연 250만 원 기본공제 후 22%(지방소득세 포함), 이듬해 5월 신고·납부. 세율·공제는 바뀔 수 있어 신고 전 확인 필요.</td></tr>
+        <tr><td>배당세</td><td>미국 배당은 보통 현지에서 약 15% 원천징수 후 입금됩니다.</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-inline"><strong>이 계산기는 환전 수수료·세금을 뺀 단순 환산이에요.</strong> 큰 흐름을 잡는 용도로 쓰고, 실제 환전 금액·실현 손익·세금은 거래 증권사와 국세청 기준으로 꼭 확인하세요.</div>
+    <div class="prepare"><strong>입력 전 확인.</strong> ① 현재 환율은 실시간 자동(시장 기준) — 증권사 적용 환율과 다를 수 있음 · ② 매수 시점 환율을 넣어야 환율 효과가 보임 · ③ 양도세·배당세는 2026년 기준이며 변동 가능, 신고 전 확인.</div>
+
+    <!-- ⑦ FAQ -->
+    <h2 id="faq">자주 묻는 질문</h2>
+    <div class="faq-section">
+      <div class="faq-item"><div class="faq-q">미국주식 수익률은 달러 기준인가요, 원화 기준인가요?</div><div class="faq-a">둘 다 봐야 해요. 주가만 따지는 달러 수익률과 환전까지 따지는 원화 수익률은 다를 수 있어요. 살 때보다 환율이 오르면 달러로는 그대로여도 원화로는 이득이 늘고, 내리면 반대예요. 이 계산기는 매수·현재 환율을 함께 넣어 환율까지 반영한 원화 수익률을 보여줍니다.</div></div>
+      <div class="faq-item"><div class="faq-q">환율이 오르면 무조건 이득인가요?</div><div class="faq-a">이미 보유 중이라면 환율이 오를 때 원화 평가금액·수익률이 올라갑니다. 하지만 새로 살 때는 환율이 높으면 더 많은 원화가 들어 불리해요. 그래서 매수 시점 환율과 현재 환율을 같이 보는 게 중요합니다.</div></div>
+      <div class="faq-item"><div class="faq-q">실시간 환율은 어디서 가져오나요?</div><div class="faq-a">ExchangeRate-API의 실시간 USD/KRW 시세를 불러와 자동으로 채웁니다. 다만 시장 기준 환율이라 증권사 고시환율·매매기준율과는 약간 다르고 환전 수수료도 별도예요. 정확한 환전 금액은 거래 증권사에서 확인하시고, 환율 칸은 직접 수정해도 됩니다.</div></div>
+      <div class="faq-item"><div class="faq-q">미국주식도 세금을 내나요?</div><div class="faq-a">해외주식 양도차익은 연 250만 원 기본공제 후 22%(지방소득세 포함)가 매겨지고 이듬해 5월에 신고·납부해요. 배당은 보통 현지에서 약 15% 원천징수됩니다. 세율·공제는 바뀔 수 있으니 신고 전 국세청·증권사로 확인하세요.</div></div>
+      <div class="faq-item"><div class="faq-q">증권사 평가금액이랑 왜 달라요?</div><div class="faq-a">적용 환율이 다르기 때문이에요. 증권사는 자체 고시환율과 환전 수수료, 매매 수수료·세금까지 반영하지만 이 계산기는 시장 환율로 단순 계산합니다. 큰 흐름 잡는 용도로 쓰고 정확한 숫자는 증권사 거래내역에서 확인하세요.</div></div>
+    </div>
+  </div>
+
+  <!-- ⑧ 관련 계산기 (주식 계산기 시리즈) -->
+  <div class="related-calcs-section">
+    <h2>주식 계산기 시리즈</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="stock-average-calc.html"><span class="rcc-icon" style="color:#3D5AFE"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span><span><span class="rcc-title">평단가 계산기</span><span class="rcc-desc">분할매수 평균단가</span></span></a>
+      <a class="rel-calc-card" href="averaging-down-calc.html"><span class="rcc-icon" style="color:#00B8D9"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></span><span><span class="rcc-title">물타기 계산기</span><span class="rcc-desc">하락 추가매수 · 평단↓</span></span></a>
+      <a class="rel-calc-card" href="averaging-up-calc.html"><span class="rcc-icon" style="color:#FF6B35"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span><span><span class="rcc-title">불타기 계산기</span><span class="rcc-desc">상승 추가매수 · 평단↑</span></span></a>
+      <a class="rel-calc-card" href="stock-return-calc.html"><span class="rcc-icon" style="color:#00C471"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span><span><span class="rcc-title">수익률 계산기</span><span class="rcc-desc">수수료·세금 포함 실수익</span></span></a>
+      <a class="rel-calc-card" href="target-price-calc.html"><span class="rcc-icon" style="color:#F04452"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><span><span class="rcc-title">목표가 계산기</span><span class="rcc-desc">목표 매도가·손절가</span></span></a>
+      <a class="rel-calc-card" href="us-stock-calc.html"><span class="rcc-icon" style="color:#6B7280"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span><span class="rcc-title">미국주식 계산기</span><span class="rcc-desc">지금 보는 계산기 · 실시간 환율</span></span></a>
+    </div>
+  </div>
+
+  <!-- ⑨ 관련 글 -->
+  <div class="related-articles-section">
+    <h2>함께 보면 좋은 글</h2>
+    <a class="rel-article-item" href="soho-loan-refinancing.html"><span class="rai-num">1</span><span class="rai-title">소상공인 대환대출 — 이자 100만원 이상 아끼는 법</span><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="policy-loan-guide.html"><span class="rai-num">2</span><span class="rai-title">소상공인 정책자금 대출 신청 방법 완전 가이드</span><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="solo-shop-tax-deduction.html"><span class="rai-num">3</span><span class="rai-title">1인 사장님 절세 꿀팁 — 경비처리 완전 정리</span><span class="rai-arrow">→</span></a>
+  </div>
+
+  <!-- ⑩ 직접 계산 CTA -->
+  <div class="cta-box">
+    <h3>지금 내 미국주식, 직접 넣어보세요</h3>
+    <p>달러 매수가·수량만 넣으면 실시간 환율로 원화 환산이 5초 만에 나옵니다.</p>
+    <a href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>미국주식 바로 계산하기</a>
+  </div>
+</div>
+
+<button id="back-to-top" aria-label="맨 위로">↑</button>
+<script src="assets/layout.js?v=20260630t"></script>
+<script src="sohotip.js?v=20260630t"></script>
+<script src="assets/consult.js?v=20260630t"></script>
+<script src="assets/config.js?v=20260630t"></script>
+<script>
+/* 미국주식 계산기 — 달러 매수 → 원화 환산·수익률 + 실시간 USD/KRW 환율 */
+function numOf(v){ var n = parseFloat(String(v == null ? '' : v).replace(/[^0-9.]/g, '')); return isNaN(n) ? 0 : n; }
+function won(n){ return Math.round(n).toLocaleString('ko-KR') + '원'; }
+function fmt(n, dec){ return Number(n).toLocaleString('ko-KR', { minimumFractionDigits: dec, maximumFractionDigits: dec }); }
+function pctTxt(n){ return (n > 0 ? '+' : '') + (Math.round(n * 100) / 100).toLocaleString('ko-KR') + '%'; }
+function clsOf(n){ return n > 0 ? 'up' : (n < 0 ? 'down' : ''); }
+
+/* ── 실시간 환율 (ExchangeRate-API, config.js 키 재사용 · 캐시 1시간) ── */
+var FX_CACHE = 'sohotip_fx_usdkrw', FX_TTL = 60 * 60 * 1000;
+function fxCfg(){ return window.SOHO_CONFIG || {}; }
+function fxGet(){ try { return JSON.parse(localStorage.getItem(FX_CACHE) || 'null'); } catch (e) { return null; } }
+function fxSetCache(rate, upd){ try { localStorage.setItem(FX_CACHE, JSON.stringify({ ts: Date.now(), updated: upd || null, rate: rate })); } catch (e) {} }
+function fxWhen(unix, fallbackTs){
+  var d;
+  try { d = unix ? new Date(unix * 1000) : new Date(fallbackTs); } catch (e) { return ''; }
+  function p(n){ return ('0' + n).slice(-2); }
+  return d.getFullYear() + '.' + p(d.getMonth() + 1) + '.' + p(d.getDate()) + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+}
+var REFRESH_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>';
+function fxEl(){ return document.getElementById('fx-status'); }
+function fxStatusLoading(){ fxEl().className = 'fx-status'; fxEl().innerHTML = '<span class="fx-live"><span class="led"></span>실시간 환율 불러오는 중…</span>'; }
+function fxStatusOk(rate, whenStr, stale){
+  fxEl().className = 'fx-status';
+  fxEl().innerHTML = '<span class="fx-live"><span class="led"></span>' + (stale ? '최신 연결 실패 · 마지막 ' : '') + '1 USD = ' + fmt(rate, 2) + '원</span>' +
+    '<span>· 기준 ' + whenStr + ' · ExchangeRate-API</span>' +
+    '<button type="button" class="fx-refresh" onclick="fxLoad(true)">' + REFRESH_SVG + '새로고침</button>';
+}
+function fxStatusError(){
+  fxEl().className = 'fx-status err';
+  fxEl().innerHTML = '<span>환율을 불러오지 못했어요. 잠시 후 새로고침하거나 환율을 직접 입력해 주세요.</span>' +
+    '<button type="button" class="fx-refresh" onclick="fxLoad(true)">' + REFRESH_SVG + '새로고침</button>';
+}
+function fxApply(rate, whenStr, stale){
+  var input = document.getElementById('cur-fx');
+  if (input) input.value = (Math.round(rate * 100) / 100);
+  fxStatusOk(rate, whenStr, stale);
+}
+function fxLoad(force){
+  var cache = fxGet();
+  var fresh = cache && cache.rate && (Date.now() - cache.ts < FX_TTL);
+  /* 1) 캐시가 신선하면 호출 없이 즉시 사용 (과도한 호출 방지) */
+  if (fresh && !force) { fxApply(cache.rate, fxWhen(cache.updated, cache.ts), false); return; }
+
+  fxStatusLoading();
+  var key = (fxCfg().EXCHANGE_API_KEY || '').trim();
+  /* 키 있으면 운영자 엔드포인트, 없으면 무키 무료 엔드포인트(open.er-api.com) — 둘 다 실시간 */
+  var url = key
+    ? 'https://v6.exchangerate-api.com/v6/' + encodeURIComponent(key) + '/latest/USD'
+    : 'https://open.er-api.com/v6/latest/USD';
+  fetch(url)
+    .then(function (r) { return r.json(); })
+    .then(function (j) {
+      if (!j || j.result !== 'success') throw new Error('api');
+      var rates = j.conversion_rates || j.rates;        /* 키=conversion_rates / 무키=rates */
+      if (!rates || !rates.KRW) throw new Error('rates');
+      fxSetCache(rates.KRW, j.time_last_update_unix || null);
+      fxApply(rates.KRW, fxWhen(j.time_last_update_unix, Date.now()), false);
+    })
+    .catch(function () {
+      /* 실패 → 캐시 폴백, 캐시도 없으면 안내(과거값 하드코딩 금지) */
+      if (cache && cache.rate) fxApply(cache.rate, fxWhen(cache.updated, cache.ts), true);
+      else fxStatusError();
+    });
+}
+
+/* 달러 입력 소수 허용, 천단위는 강제 X (소수점 입력 자연스럽게) */
+
+function calculate(){
+  var bUSD = numOf(document.getElementById('buy-usd').value);
+  var qty  = numOf(document.getElementById('qty').value);
+  var cUSD = numOf(document.getElementById('cur-usd').value);
+  var cFx  = numOf(document.getElementById('cur-fx').value);
+  var bFx  = numOf(document.getElementById('buy-fx').value);
+
+  if (bUSD <= 0 || qty <= 0) { alert('매수가(USD)와 수량을 입력해 주세요.'); return; }
+  if (cFx <= 0) { alert('현재 환율을 불러오는 중이거나 비어 있어요. 잠시 후 새로고침하거나 직접 입력해 주세요.'); return; }
+  if (bFx <= 0) bFx = cFx;  /* 매수 시점 환율 비우면 현재 환율로 가정 */
+
+  var krwBuy = bUSD * qty * bFx;
+
+  document.getElementById('res-fx').textContent = fmt(cFx, 2) + '원/$';
+  document.getElementById('res-krwbuy').textContent = won(krwBuy);
+
+  var evalRows = document.getElementById('eval-rows');
+  var rowFx = document.getElementById('row-fxeffect');
+
+  if (cUSD > 0) {
+    var usdRate = (cUSD - bUSD) / bUSD * 100;
+    var krwEval = cUSD * qty * cFx;
+    var krwProfit = krwEval - krwBuy;
+    var krwRate = krwProfit / krwBuy * 100;
+    var fxEffect = krwRate - usdRate;
+
+    var usdEl = document.getElementById('res-usdrate');
+    usdEl.textContent = pctTxt(usdRate); usdEl.className = 'breakdown-value ' + clsOf(usdRate);
+    document.getElementById('res-krweval').textContent = won(krwEval);
+    var profEl = document.getElementById('res-krwprofit');
+    profEl.textContent = (krwProfit > 0 ? '+' : '') + won(krwProfit); profEl.className = 'breakdown-value ' + clsOf(krwProfit);
+    var rateEl = document.getElementById('res-krwrate');
+    rateEl.textContent = pctTxt(krwRate); rateEl.className = 'breakdown-value highlight';
+
+    if (Math.abs(bFx - cFx) > 0.005) {
+      var fxEl2 = document.getElementById('res-fxeffect');
+      fxEl2.textContent = (fxEffect > 0 ? '+' : '') + (Math.round(fxEffect * 100) / 100).toLocaleString('ko-KR') + '%p (환율 ' + (cFx > bFx ? '상승' : '하락') + ')';
+      fxEl2.className = 'breakdown-value ' + clsOf(fxEffect);
+      rowFx.style.display = 'flex';
+    } else { rowFx.style.display = 'none'; }
+
+    document.getElementById('res-title').textContent = '원화 평가금액';
+    document.getElementById('res-total').textContent = won(krwEval);
+    document.getElementById('res-sub').textContent = '$' + fmt(cUSD, 2) + ' × ' + qty.toLocaleString('ko-KR') + '주 × ' + fmt(cFx, 2) + '원';
+    evalRows.style.display = 'block';
+  } else {
+    document.getElementById('res-title').textContent = '원화 매수금액';
+    document.getElementById('res-total').textContent = won(krwBuy);
+    document.getElementById('res-sub').textContent = '$' + fmt(bUSD, 2) + ' × ' + qty.toLocaleString('ko-KR') + '주 × ' + fmt(bFx, 2) + '원';
+    evalRows.style.display = 'none';
+  }
+
+  document.getElementById('result-section').style.display = 'block';
+  document.getElementById('result-section').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+/* 페이지 로드 시 실시간 환율 자동 채움 */
+fxLoad(false);
+</script>
+<footer>
+  <a href="index.html">홈</a>
+  <a href="category.html">카테고리</a>
+  <a href="tools.html">계산기 모음</a>
+  <a href="consultation.html">무료 진단</a>
+  <p style="margin-top:12px;">© 2026 소호팁. 본 계산기는 참고용이며 투자 판단의 책임은 본인에게 있습니다.</p>
+</footer>
+<script src="network.js?v=20260630t"></script>
+</body>
+</html>
