@@ -53,9 +53,9 @@
     }
   }
   </script>
-<link rel="stylesheet" href="sohotip.css?v=20260630l">
+<link rel="stylesheet" href="sohotip.css?v=20260630m">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630l">
+  <link rel="stylesheet" href="assets/theme.css?v=20260630m">
 <style>
 :root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-dark:#2541E0;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--g100:#F2F4F6;--sans:'Noto Sans KR',sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -126,6 +126,25 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
 .bfaq-q{flex:1;min-width:0;font-size:14px;font-weight:700;color:var(--text);line-height:1.45;word-break:keep-all;}
 .bfaq-cta{flex-shrink:0;display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;color:var(--primary);background:var(--primary-light);border-radius:8px;padding:6px 10px;white-space:nowrap;}
 .bfaq-cta svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* 함께 본 (카드 하단 무한 내부링크) */
+.bz-together{margin-top:12px;padding-top:11px;border-top:1px dashed var(--border);display:flex;flex-wrap:wrap;align-items:center;gap:7px;}
+.bz-tg-lb{font-size:11px;font-weight:800;color:var(--text-muted);}
+.bz-tg-link{font-size:12px;font-weight:600;color:var(--primary);background:var(--primary-light);border-radius:7px;padding:4px 9px;text-decoration:none;white-space:nowrap;}
+.bz-tg-link:hover{background:#DFE4FF;}
+
+/* 인기 콘텐츠 (운영자 선정) */
+.brief-pop{max-width:920px;margin:0 auto;padding:16px 16px 0;}
+.bpop-head{display:flex;align-items:center;gap:9px;margin-bottom:14px;}
+.bpop-head h2{font-size:19px;font-weight:800;letter-spacing:-.01em;}
+.bpop-tag{font-size:11px;font-weight:700;color:var(--text-muted);background:var(--g100);border-radius:7px;padding:3px 9px;}
+.bpop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+@media(max-width:780px){.bpop-grid{grid-template-columns:1fr 1fr;}}
+.bpop-col{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 15px;}
+.bpop-col h3{font-size:13px;font-weight:800;color:var(--text);margin-bottom:6px;}
+.bpop-li{display:block;font-size:12.5px;font-weight:600;color:var(--text-muted);text-decoration:none;padding:8px 0;border-top:1px solid var(--g100);line-height:1.45;word-break:keep-all;cursor:pointer;}
+.bpop-col .bpop-li:first-of-type{border-top:none;}
+.bpop-li:hover{color:var(--primary);}
 
 /* PC(≥860): 좌측 세로 사이드 레일 */
 @media(min-width:860px){
@@ -223,6 +242,12 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   </div>
 </div>
 
+<!-- 인기 콘텐츠 (운영자 선정 — 실시간 집계 아님) -->
+<section class="brief-pop" id="brief-pop">
+  <div class="bpop-head"><h2>인기 콘텐츠</h2><span class="bpop-tag">운영자 선정</span></div>
+  <div class="bpop-grid" id="bpop-grid"></div>
+</section>
+
 <!-- 사장님들이 가장 많이 찾는 질문 → 관련 계산기 -->
 <section class="brief-faq" id="brief-faq">
   <h2 class="bfaq-title">사장님들이 가장 많이 찾는 질문</h2>
@@ -237,7 +262,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <p style="margin-top:12px;">© 2026 소호팁. 모든 수치·정책은 공식기관 발표 기준이며 참고용입니다.</p>
 </footer>
 
-<script src="assets/briefing-data.js?v=20260630l"></script>
+<script src="assets/briefing-data.js?v=20260630m"></script>
 <script>
 /* 소분류 4개 — 순서/아이콘 고정 (이모지 금지, SVG) */
 var BRIEF_CATS = [
@@ -275,6 +300,19 @@ function lnk(o, kind, ic){
 function ml(s){ return esc(s).replace(/\n/g, '<br>'); }
 
 function hasTag(it, ind){ return ind && ind!=='전체' && Array.isArray(it.tags) && it.tags.indexOf(ind)>=0; }
+function byId(id){ for(var i=0;i<ALL.length;i++){ if(ALL[i].id===id) return ALL[i]; } return null; }
+function shareTag(a, b){ return Array.isArray(a.tags)&&Array.isArray(b.tags)&&a.tags.some(function(t){ return b.tags.indexOf(t)>=0; }); }
+/* 함께 본 — 같은 분류·업종 공유하는 다른 브리핑의 계산기/가이드(무한 내부링크) */
+function relatedOf(it){
+  var seen={}, out=[];
+  [it.calc, it.guide, it.form].forEach(function(o){ if(o&&o.url) seen[o.url]=1; });
+  ALL.forEach(function(c){
+    if(c===it) return;
+    if(!(c.cat===it.cat || shareTag(c, it))) return;
+    [c.calc, c.guide].forEach(function(o){ if(o&&o.url&&o.label&&!seen[o.url]){ seen[o.url]=1; out.push(o); } });
+  });
+  return out.slice(0, 4);
+}
 
 function cardHtml(it, ind){
   var summary = it.summary ? ('<p class="bz-summary">'+ml(it.summary)+'</p>') : '';
@@ -287,11 +325,13 @@ function cardHtml(it, ind){
     var s = it.sourceUrl ? ('<a href="'+esc(it.sourceUrl)+'" target="_blank" rel="noopener">'+esc(it.source)+'</a>') : esc(it.source);
     src = '<div class="bz-src">출처 · '+s+(it.date?(' · '+esc(it.date)):'')+'</div>';
   }
+  var rel = relatedOf(it);
+  var together = rel.length ? ('<div class="bz-together"><span class="bz-tg-lb">이 글 본 사장님이 함께 본</span>'+rel.map(function(o){ var ext=/^https?:\/\//.test(o.url); return '<a class="bz-tg-link" href="'+esc(o.url)+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'+esc(o.label)+'</a>'; }).join('')+'</div>') : '';
   var match = hasTag(it, ind) ? ('<span class="bz-match"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>'+esc(ind)+' 관련</span>') : '';
-  return '<article class="biz-card">'+
+  return '<article class="biz-card" id="b-'+esc(it.id||'')+'">'+
     '<div class="bz-head"><span class="bz-head-l">'+(it.cat?'<span class="bz-catlabel">'+esc(it.cat)+'</span>':'')+match+'</span>'+stars(it.rating)+'</div>'+
     '<h3 class="bz-title">'+esc(it.title||'')+'</h3>'+
-    summary + impact + solve + links + src +
+    summary + impact + solve + links + together + src +
     '</article>';
 }
 
@@ -401,14 +441,62 @@ function renderFaqs(){
   }).join('');
 }
 
+/* 인기 콘텐츠 (운영자 선정) */
+function popList(items){
+  return items.map(function(o){
+    if(o.anchor){ return '<a class="bpop-li" href="#b-'+esc(o.anchor)+'" data-go="'+esc(o.anchor)+'">'+esc(o.label)+'</a>'; }
+    if(!o.url) return '';
+    var ext=/^https?:\/\//.test(o.url);
+    return '<a class="bpop-li" href="'+esc(o.url)+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'+esc(o.label)+'</a>';
+  }).join('');
+}
+function renderPopular(){
+  var grid=document.getElementById('bpop-grid'); if(!grid) return;
+  var P=(window.SOHO_BRIEFING&&window.SOHO_BRIEFING.popular)||{};
+  var brief=(P.briefings||[]).map(function(id){ var c=byId(id); return c?{label:c.title, anchor:id}:null; }).filter(Boolean);
+  var cols=[
+    {t:'인기 브리핑', items:brief},
+    {t:'많이 보는 계산기', items:P.calcs||[]},
+    {t:'추천 서식', items:P.forms||[]},
+    {t:'인기 가이드', items:P.guides||[]}
+  ].filter(function(c){ return c.items.length; });
+  var sec=document.getElementById('brief-pop');
+  if(!cols.length){ if(sec) sec.style.display='none'; return; }
+  grid.innerHTML=cols.map(function(c){ return '<div class="bpop-col"><h3>'+esc(c.t)+'</h3>'+popList(c.items)+'</div>'; }).join('');
+  grid.addEventListener('click', function(e){
+    var a=e.target.closest('[data-go]'); if(!a) return;
+    e.preventDefault();
+    var id=a.getAttribute('data-go'), c=byId(id); if(!c) return;
+    clearSearch(); currentCat=c.cat; setCatActive(); renderFeed();
+    var el=document.getElementById('b-'+id); if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
+  });
+}
+/* SEO — 브리핑(ItemList/Article) + FAQ(FAQPage) JSON-LD 자동 생성 */
+function injectJsonLd(){
+  if(!ALL.length) return;
+  var items=ALL.map(function(c,i){ return {"@type":"ListItem","position":i+1,"item":{
+    "@type":"Article","headline":c.title||'',"description":(c.summary||'').replace(/\n/g,' '),
+    "articleSection":c.cat||'',"inLanguage":"ko-KR","datePublished":(c.date||'').replace(/\./g,'-'),
+    "url":"https://sohotip.co.kr/briefing.html#b-"+(c.id||''),
+    "publisher":{"@type":"Organization","name":"소호팁","url":"https://sohotip.co.kr"}
+  }}; });
+  var ld=[{"@context":"https://schema.org","@type":"ItemList","name":"오늘의 사업 브리핑","itemListElement":items}];
+  var faqs=(window.SOHO_BRIEFING&&window.SOHO_BRIEFING.faqs)||[];
+  var qa=faqs.filter(function(f){ return f.a; }).map(function(f){ return {"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}; });
+  if(qa.length) ld.push({"@context":"https://schema.org","@type":"FAQPage","mainEntity":qa});
+  ld.forEach(function(obj){ var s=document.createElement('script'); s.type='application/ld+json'; s.textContent=JSON.stringify(obj); document.head.appendChild(s); });
+}
+
 currentCat = BRIEF_CATS[0].key;
 renderInd();
 renderCats();
+renderPopular();
 renderFaqs();
 initSearch();
 initSort();
 renderFeed();
+injectJsonLd();
 </script>
-<script src="network.js?v=20260630l"></script>
+<script src="network.js?v=20260630m"></script>
 </body>
 </html>
