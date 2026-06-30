@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="주식 평단가(평균 매입단가) 계산기. 여러 번 나눠 산 매수가와 수량을 넣으면 평균단가·총 매입금액·총 보유수량을 자동 계산하고, 현재가를 넣으면 평가손익과 수익률까지 보여줍니다.">
+<meta name="keywords" content="주식 평단가 계산기, 평균단가 계산, 물타기 평단가, 분할매수 평균, 주식 수익률 계산, 평가손익 계산">
+<meta name="robots" content="index, follow">
+<meta name="author" content="소호팁">
+<meta name="date" content="2026-06-30">
+<meta property="og:type" content="website">
+<meta property="og:title" content="주식 평단가 계산기 — 분할매수 평균단가·평가손익 자동계산 | 소호팁">
+<meta property="og:description" content="여러 번 나눠 산 매수가·수량을 넣으면 평균 매입단가와 총 매입금액을 자동 계산. 현재가를 넣으면 평가손익·수익률까지 한눈에.">
+<meta property="og:url" content="https://sohotip.co.kr/stock-average-calc.html">
+<meta property="og:image" content="https://sohotip.co.kr/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="소호팁">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="주식 평단가 계산기 — 분할매수 평균단가·평가손익 자동계산 | 소호팁">
+<meta name="twitter:description" content="여러 번 나눠 산 매수가·수량으로 평균단가를 바로 계산. 현재가 입력 시 평가손익·수익률까지.">
+<meta name="twitter:image" content="https://sohotip.co.kr/og-image.png">
+<meta name="naver-site-verification" content="d7369feb5de3df4cce2e9016b84ad045c4ed70a4">
+<link rel="canonical" href="https://sohotip.co.kr/stock-average-calc.html">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sohotip.co.kr/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
+<link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
+<title>주식 평단가 계산기 — 분할매수 평균단가·평가손익 자동계산 (2026) | 소호팁</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "주식 평단가 계산기",
+    "description": "분할매수한 매수가와 수량으로 평균 매입단가·총 매입금액·평가손익을 자동 계산하는 무료 주식 평단가 계산기.",
+    "url": "https://sohotip.co.kr/stock-average-calc.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "KRW"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "소호팁",
+      "url": "https://sohotip.co.kr"
+    },
+    "dateModified": "2026-06-30",
+    "inLanguage": "ko-KR",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"홈","item":"https://sohotip.co.kr/"},
+        {"@type":"ListItem","position":2,"name":"계산기","item":"https://sohotip.co.kr/tools.html"},
+        {"@type":"ListItem","position":3,"name":"주식 평단가 계산기","item":"https://sohotip.co.kr/stock-average-calc.html"}
+      ]
+    }
+  }
+  </script>
+<link rel="stylesheet" href="sohotip.css?v=20260630g">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/theme.css?v=20260630g">
+<link rel="stylesheet" href="assets/calc.css?v=20260630g">
+<style>
+:root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;--up:#F04452;--down:#3D5AFE;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-size:13px;color:var(--text-muted);text-decoration:none;}
+.nav-links a:hover{color:var(--primary);}
+.nav-cta{background:var(--primary);color:#fff;font-size:13px;padding:7px 16px;border-radius:6px;text-decoration:none;}
+@media(max-width:640px){.nav-links{display:none;}}
+.page-wrap{max-width:680px;margin:0 auto;padding:40px 2rem 80px;}
+.page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:32px;line-height:1.6;}
+.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;}
+.card-title{font-size:14px;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:20px;}
+.field{margin-bottom:20px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--text);}
+.field-hint{font-size:11px;color:var(--text-muted);margin-bottom:6px;}
+.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;}
+.field input:focus,.field select:focus{border-color:var(--primary);}
+.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background 0.2s;margin-top:8px;}
+.btn-calc:hover{background:var(--primary-mid);}
+.result-card{background:var(--primary);border-radius:16px;padding:28px;color:#fff;margin-bottom:20px;}
+.result-title{font-size:13px;opacity:0.8;margin-bottom:6px;}
+.result-total{font-size:36px;font-weight:700;margin-bottom:4px;}
+.result-sub{font-size:13px;opacity:0.7;}
+.result-breakdown{background:var(--bg-card);border-radius:16px;padding:24px;border:1px solid var(--border);}
+.breakdown-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);}
+.breakdown-row:last-child{border-bottom:none;font-weight:700;font-size:15px;}
+.breakdown-label{font-size:13px;color:var(--text-muted);}
+.breakdown-value{font-size:14px;font-weight:500;color:var(--text);}
+.breakdown-value.highlight{color:var(--primary);font-weight:700;}
+.breakdown-value.up{color:var(--up);font-weight:700;}
+.breakdown-value.down{color:var(--down);font-weight:700;}
+.notice-box{background:var(--primary-light);border-radius:12px;padding:16px 20px;margin-top:20px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
+.notice-box strong{color:var(--primary);}
+.tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
+footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
+
+/* ── 매수 내역(분할매수) 행 ── */
+.lots-head{display:flex;gap:10px;font-size:11px;font-weight:600;color:var(--text-muted);padding:0 38px 6px 2px;}
+.lots-head .lh-price{flex:1.3;}
+.lots-head .lh-qty{flex:1;}
+.lot-row{display:flex;gap:10px;align-items:center;margin-bottom:10px;}
+.lot-row .lot-field{display:flex;flex-direction:column;}
+.lot-row .lot-field.lf-price{flex:1.3;}
+.lot-row .lot-field.lf-qty{flex:1;}
+.lot-row input{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;-webkit-appearance:none;}
+.lot-row input:focus{border-color:var(--primary);}
+.lot-del{width:30px;height:30px;flex-shrink:0;border:none;background:#F2F4F6;color:#9EA7B4;border-radius:50%;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:background .15s,color .15s;}
+.lot-del:hover{background:#FFE9EC;color:var(--up);}
+.btn-add-lot{width:100%;padding:11px;background:#fff;border:1.5px dashed var(--border);color:var(--text-muted);border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--sans);transition:all .15s;margin-bottom:6px;}
+.btn-add-lot:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light);}
+</style></head>
+<body>
+<div id="progress-bar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">소호팁</a>
+  <ul class="nav-links">
+    <li><a href="category.html">카테고리</a></li>
+    <li><a href="tools.html">계산기</a></li>
+  </ul>
+  <a href="consultation.html" class="nav-cta">무료 진단</a>
+</nav>
+<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
+<div class="mobile-search-bar">
+  <div class="nav-search">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="search-input-mobile" class="nav-search-input" placeholder="궁금한 주제를 검색하세요..." autocomplete="off">
+    <div id="search-dropdown-mobile"></div>
+  </div>
+</div>
+
+<div class="page-wrap">
+  <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg> 주식 이야기</span>
+  <h1 class="page-title">주식 평단가 계산기</h1>
+  <p class="page-desc">여러 번 나눠 산 주식의 매수가와 수량을 넣으면 평균 매입단가와 총 매입금액을 자동으로 계산해드립니다. 현재가까지 넣으면 지금 평가손익이 얼마인지, 수익률은 몇 %인지 바로 확인할 수 있어요.</p>
+
+  <div class="calc-card">
+    <div class="card-title">매수 내역 입력</div>
+    <div class="lots-head"><span class="lh-price">매수가 (원)</span><span class="lh-qty">수량 (주)</span></div>
+    <div id="lots"></div>
+    <button type="button" class="btn-add-lot" onclick="addLot()">+ 매수 내역 추가</button>
+    <div class="field" style="margin-top:18px;">
+      <label>현재가 (원) <span style="color:var(--text-muted);font-weight:400;">· 선택 입력 시 평가손익 계산</span></label>
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" id="current-price" value="" placeholder="예: 75,000">
+    </div>
+    <button class="btn-calc" onclick="calculate()">평단가 계산하기</button>
+  </div>
+
+  <div id="result-section" style="display:none;">
+    <div class="result-card">
+      <div class="result-title">평균 매입단가 (평단가)</div>
+      <div class="result-total" id="res-avg">0원</div>
+      <div class="result-sub" id="res-sub">총 매입금액 ÷ 총 보유수량</div>
+    </div>
+    <div class="result-breakdown">
+      <div class="breakdown-row">
+        <span class="breakdown-label">총 보유수량</span>
+        <span class="breakdown-value" id="res-qty">0주</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">총 매입금액</span>
+        <span class="breakdown-value" id="res-cost">0원</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">평균 매입단가</span>
+        <span class="breakdown-value highlight" id="res-avg2">0원</span>
+      </div>
+      <div id="eval-rows" style="display:none;">
+        <div class="breakdown-row" style="margin-top:8px;padding-top:16px;border-top:2px solid var(--border);">
+          <span class="breakdown-label">현재 평가금액 (현재가 × 수량)</span>
+          <span class="breakdown-value" id="res-eval">0원</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-label">평가손익</span>
+          <span class="breakdown-value" id="res-pl">0원</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-label">수익률</span>
+          <span class="breakdown-value" id="res-rate">0%</span>
+        </div>
+      </div>
+    </div>
+    <div class="notice-box">
+      <strong>💡 평단가는 이렇게 계산돼요.</strong><br>
+      평균단가 = (각 매수가 × 수량을 모두 더한 총 매입금액) ÷ (총 보유수량) 입니다. 같은 종목을 더 싸게 더 사면(물타기) 평단가가 내려가고, 더 비싸게 사면(불타기) 평단가가 올라가요. 수수료·세금·환율은 빠진 단순 계산이라 실제 증권사 평단가와는 약간 차이가 날 수 있습니다.
+    </div>
+  </div>
+</div>
+
+<button id="back-to-top" aria-label="맨 위로">↑</button>
+<script src="assets/layout.js?v=20260630g"></script>
+<script src="sohotip.js?v=20260630g"></script>
+<script src="assets/consult.js?v=20260630g"></script>
+<script>
+/* 평단가 계산기 — 분할매수 평균단가 + 평가손익 */
+var lotSeq = 0;
+
+function numOf(v){ var n = parseFloat(String(v == null ? '' : v).replace(/[^0-9.]/g, '')); return isNaN(n) ? 0 : n; }
+function won(n){ return Math.round(n).toLocaleString('ko-KR') + '원'; }
+function comma(v){ var s = String(v).replace(/[^0-9]/g, ''); return s ? Number(s).toLocaleString('ko-KR') : ''; }
+
+function lotRowHtml(price, qty){
+  lotSeq++;
+  return '<div class="lot-row" data-lot="' + lotSeq + '">' +
+    '<div class="lot-field lf-price"><input type="text" inputmode="numeric" pattern="[0-9,]*" class="lot-price" value="' + (price || '') + '" placeholder="0"></div>' +
+    '<div class="lot-field lf-qty"><input type="number" class="lot-qty" value="' + (qty || '') + '" min="0" step="1" placeholder="0"></div>' +
+    '<button type="button" class="lot-del" onclick="removeLot(this)" aria-label="이 행 삭제">&times;</button>' +
+    '</div>';
+}
+
+function addLot(price, qty){
+  document.getElementById('lots').insertAdjacentHTML('beforeend', lotRowHtml(price, qty));
+}
+
+function removeLot(btn){
+  var rows = document.querySelectorAll('#lots .lot-row');
+  if (rows.length <= 1) return;   /* 최소 1행 유지 */
+  btn.closest('.lot-row').remove();
+}
+
+/* 매수가·현재가 입력에 천단위 콤마 자동 */
+document.addEventListener('input', function(e){
+  if (e.target.classList && (e.target.classList.contains('lot-price') || e.target.id === 'current-price')) {
+    var p = e.target.selectionStart, before = e.target.value;
+    e.target.value = comma(before);
+    /* 커서 위치 보정(대략) */
+    var diff = e.target.value.length - before.length;
+    try { e.target.setSelectionRange(p + diff, p + diff); } catch (err) {}
+  }
+});
+
+function calculate(){
+  var rows = document.querySelectorAll('#lots .lot-row');
+  var totalQty = 0, totalCost = 0;
+  rows.forEach(function(row){
+    var price = numOf(row.querySelector('.lot-price').value);
+    var qty = numOf(row.querySelector('.lot-qty').value);
+    if (price > 0 && qty > 0) { totalQty += qty; totalCost += price * qty; }
+  });
+
+  if (totalQty <= 0) {
+    alert('매수가와 수량을 1건 이상 입력해 주세요.');
+    return;
+  }
+
+  var avg = totalCost / totalQty;
+  document.getElementById('res-avg').textContent = won(avg);
+  document.getElementById('res-avg2').textContent = won(avg);
+  document.getElementById('res-qty').textContent = totalQty.toLocaleString('ko-KR') + '주';
+  document.getElementById('res-cost').textContent = won(totalCost);
+  document.getElementById('res-sub').textContent = '총 ' + won(totalCost) + ' ÷ ' + totalQty.toLocaleString('ko-KR') + '주';
+
+  var cur = numOf(document.getElementById('current-price').value);
+  var evalRows = document.getElementById('eval-rows');
+  if (cur > 0) {
+    var evalAmt = cur * totalQty;
+    var pl = evalAmt - totalCost;
+    var rate = totalCost > 0 ? (pl / totalCost) * 100 : 0;
+    document.getElementById('res-eval').textContent = won(evalAmt);
+    var plEl = document.getElementById('res-pl');
+    var rateEl = document.getElementById('res-rate');
+    var sign = pl > 0 ? '+' : '';
+    plEl.textContent = sign + won(pl);
+    rateEl.textContent = sign + (Math.round(rate * 100) / 100).toLocaleString('ko-KR') + '%';
+    var cls = pl > 0 ? 'up' : (pl < 0 ? 'down' : '');
+    plEl.className = 'breakdown-value ' + cls;
+    rateEl.className = 'breakdown-value ' + cls;
+    evalRows.style.display = 'block';
+  } else {
+    evalRows.style.display = 'none';
+  }
+
+  document.getElementById('result-section').style.display = 'block';
+  document.getElementById('result-section').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+/* 초기 매수 2행 */
+addLot();
+addLot();
+</script>
+<footer>
+  <a href="index.html">홈</a>
+  <a href="category.html">카테고리</a>
+  <a href="tools.html">계산기 모음</a>
+  <a href="consultation.html">무료 진단</a>
+  <p style="margin-top:12px;">© 2026 소호팁. 본 계산기는 참고용이며 투자 판단의 책임은 본인에게 있습니다.</p>
+</footer>
+<script src="network.js?v=20260630g"></script>
+</body>
+</html>
