@@ -53,9 +53,9 @@
     }
   }
   </script>
-<link rel="stylesheet" href="sohotip.css?v=20260630j">
+<link rel="stylesheet" href="sohotip.css?v=20260630k">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630j">
+  <link rel="stylesheet" href="assets/theme.css?v=20260630k">
 <style>
 :root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-dark:#2541E0;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--g100:#F2F4F6;--sans:'Noto Sans KR',sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -73,6 +73,19 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
 .brief-hero{max-width:920px;margin:0 auto;padding:34px 16px 8px;}
 .brief-hero h1{font-size:25px;font-weight:800;line-height:1.3;letter-spacing:-.02em;margin-bottom:8px;}
 .brief-hero p{font-size:14px;color:var(--text-muted);line-height:1.6;word-break:keep-all;}
+
+/* 업종 필터 (상단 가로 스크롤) — 선택 시 해당 업종 카드 위로 */
+.brief-indwrap{max-width:920px;margin:0 auto;padding:14px 16px 0;display:flex;align-items:center;gap:10px;}
+.brief-indlb{flex-shrink:0;font-size:12px;font-weight:700;color:var(--text-muted);}
+.brief-ind{display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;min-width:0;padding-bottom:2px;}
+.brief-ind::-webkit-scrollbar{display:none;}
+.ind-chip{flex-shrink:0;border:1px solid var(--border);background:#fff;color:var(--text-muted);font-size:13px;font-weight:600;padding:7px 13px;border-radius:9999px;cursor:pointer;white-space:nowrap;font-family:inherit;transition:all .15s;}
+.ind-chip:hover{border-color:var(--primary);color:var(--primary);}
+.ind-chip.active{background:#1A1A1A;color:#fff;border-color:#1A1A1A;}
+/* 필터된 업종에 해당하는 카드 표시 배지 */
+.bz-match{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:#0CA678;background:#E6FCF5;border-radius:7px;padding:3px 8px;}
+.bz-match svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;}
+.bz-head-l{display:inline-flex;align-items:center;gap:7px;flex-wrap:wrap;min-width:0;}
 
 /* 본문: PC=좌측 레일+피드 / 모바일=상단 가로탭+피드 */
 .brief-wrap{max-width:920px;margin:0 auto;padding:18px 16px 80px;display:flex;gap:24px;align-items:flex-start;}
@@ -147,6 +160,12 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <p>오늘 변경된 세금·노무·정부지원·배달·창업·마케팅 정보를 쉽고 빠르게 확인하세요.</p>
 </div>
 
+<!-- 업종 필터: 선택하면 해당 업종 관련 카드가 위로 정렬됨 -->
+<div class="brief-indwrap">
+  <span class="brief-indlb">내 업종</span>
+  <div class="brief-ind" id="brief-ind" role="tablist" aria-label="업종 필터"></div>
+</div>
+
 <div class="brief-wrap">
   <div class="brief-cats" id="brief-cats" role="tablist"></div>
   <div class="brief-feed" id="brief-feed"></div>
@@ -160,7 +179,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <p style="margin-top:12px;">© 2026 소호팁. 모든 수치·정책은 공식기관 발표 기준이며 참고용입니다.</p>
 </footer>
 
-<script src="assets/briefing-data.js?v=20260630j"></script>
+<script src="assets/briefing-data.js?v=20260630k"></script>
 <script>
 /* 소분류 4개 — 순서/아이콘 고정 (이모지 금지, SVG) */
 var BRIEF_CATS = [
@@ -172,6 +191,8 @@ var BRIEF_CATS = [
 function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
 
 var ALL = (window.SOHO_BRIEFING && window.SOHO_BRIEFING.cards) ? window.SOHO_BRIEFING.cards : [];
+var currentInd = '전체';   // 선택된 업종 ('전체'=정렬 안 함)
+var currentCat = '';       // 선택된 소분류
 
 /* ⑨ 영향도 별점 — 5:빨강 4:주황 3:노랑 2:회색 (SVG 별, 이모지 금지) */
 function stars(n){
@@ -193,7 +214,9 @@ function lnk(o, kind, ic){
 }
 function ml(s){ return esc(s).replace(/\n/g, '<br>'); }
 
-function cardHtml(it){
+function hasTag(it, ind){ return ind && ind!=='전체' && Array.isArray(it.tags) && it.tags.indexOf(ind)>=0; }
+
+function cardHtml(it, ind){
   var summary = it.summary ? ('<p class="bz-summary">'+ml(it.summary)+'</p>') : '';
   var impact  = it.impact ? ('<div class="bz-impact"><span class="bz-impact-lb">실제 영향</span><span class="bz-impact-tx">'+ml(it.impact)+'</span></div>') : '';
   var solve   = it.solution ? ('<div class="bz-solve"><span class="bz-solve-lb">이렇게 해보세요</span><span class="bz-solve-tx">'+esc(it.solution)+'</span></div>') : '';
@@ -204,18 +227,26 @@ function cardHtml(it){
     var s = it.sourceUrl ? ('<a href="'+esc(it.sourceUrl)+'" target="_blank" rel="noopener">'+esc(it.source)+'</a>') : esc(it.source);
     src = '<div class="bz-src">출처 · '+s+(it.date?(' · '+esc(it.date)):'')+'</div>';
   }
+  var match = hasTag(it, ind) ? ('<span class="bz-match"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>'+esc(ind)+' 관련</span>') : '';
   return '<article class="biz-card">'+
-    '<div class="bz-head">'+(it.cat?'<span class="bz-catlabel">'+esc(it.cat)+'</span>':'<span></span>')+stars(it.rating)+'</div>'+
+    '<div class="bz-head"><span class="bz-head-l">'+(it.cat?'<span class="bz-catlabel">'+esc(it.cat)+'</span>':'')+match+'</span>'+stars(it.rating)+'</div>'+
     '<h3 class="bz-title">'+esc(it.title||'')+'</h3>'+
     summary + impact + solve + links + src +
     '</article>';
 }
 
 function renderFeed(cat){
+  currentCat = cat;
   var feed = document.getElementById('brief-feed');
   var list = ALL.filter(function(c){ return c.cat===cat; });
+  /* 업종 필터: 선택 업종 태그를 가진 카드를 위로(안정 정렬), 나머지는 아래에 그대로 노출 */
+  if(currentInd && currentInd!=='전체'){
+    var hit=[], rest=[];
+    list.forEach(function(c){ (hasTag(c, currentInd) ? hit : rest).push(c); });
+    list = hit.concat(rest);
+  }
   if(!list.length){ feed.innerHTML='<div class="brief-empty">이 분류의 소식은 곧 채워집니다.</div>'; return; }
-  feed.innerHTML = list.map(cardHtml).join('');
+  feed.innerHTML = list.map(function(c){ return cardHtml(c, currentInd); }).join('');
 }
 
 function renderCats(){
@@ -232,9 +263,26 @@ function renderCats(){
   });
 }
 
+/* 업종 필터 (이모지 금지, 텍스트 칩). '전체'=정렬 안 함 */
+var INDUSTRIES = ['전체','카페','음식점','치킨집','피자','배달전문점','정육점','소매업','편의점','미용실','네일샵','피부관리','펜션','캠핑장','자동차','농업','제조업','1인사업자','법인사업자','기타'];
+function renderInd(){
+  var w = document.getElementById('brief-ind');
+  w.innerHTML = INDUSTRIES.map(function(n, i){
+    return '<button class="ind-chip'+(i===0?' active':'')+'" type="button" role="tab" data-ind="'+esc(n)+'">'+esc(n)+'</button>';
+  }).join('');
+  w.addEventListener('click', function(e){
+    var b = e.target.closest('.ind-chip'); if(!b) return;
+    w.querySelectorAll('.ind-chip').forEach(function(x){ x.classList.remove('active'); });
+    b.classList.add('active');
+    currentInd = b.getAttribute('data-ind');
+    renderFeed(currentCat);
+  });
+}
+
+renderInd();
 renderCats();
 renderFeed(BRIEF_CATS[0].key);
 </script>
-<script src="network.js?v=20260630j"></script>
+<script src="network.js?v=20260630k"></script>
 </body>
 </html>
