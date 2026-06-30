@@ -54,8 +54,8 @@
 </script>
 <link rel="stylesheet" href="sohotip.css?v=20260630a">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260629e">
-  <link rel="stylesheet" href="assets/soho-cards.css?v=20260629e">
+  <link rel="stylesheet" href="assets/theme.css?v=20260630a">
+  <link rel="stylesheet" href="assets/soho-cards.css?v=20260630a">
 <style>
 :root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -120,7 +120,7 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
 <body>
 <div id="progress-bar"></div>
 <nav>
-  <a href="index.html" class="nav-logo">소상공인 마케팅 실전백과</a>
+  <a href="index.html" class="nav-logo">소호팁</a>
   <ul class="nav-links">
     <li><a href="category.html">마케팅 가이드</a></li>
     <li><a href="tools.html" style="color:var(--primary);font-weight:600;">계산기</a></li>
@@ -165,19 +165,34 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
 </div>
 
 <button id="back-to-top" aria-label="맨 위로">↑</button>
-<script src="assets/layout.js?v=20260629e"></script>
+<script src="assets/layout.js?v=20260630a"></script>
 <script src="sohotip.js?v=20260630a"></script>
-<script src="assets/consult.js?v=20260629e"></script>
+<script src="assets/consult.js?v=20260630a"></script>
 <footer>
   <a href="index.html">홈</a><a href="category.html">마케팅 가이드</a><a href="tools.html">계산기 모음</a><a href="consultation.html">무료 진단</a>
-  <p style="margin-top:12px;">© 2026 소상공인 마케팅 실전백과</p>
+  <p style="margin-top:12px;">© 2026 소호팁 (sohotip.co.kr)</p>
 </footer>
-<script src="assets/soho-share.js?v=20260629e"></script>
-<script src="assets/soho-cards.js?v=20260629e"></script>
+<script src="assets/soho-share.js?v=20260630a"></script>
+<script src="assets/soho-cards.js?v=20260630a"></script>
 <script>
 /* tools.html — 계산기 카드(SohoCards) + 검색·필터칩·카운트 */
 (function(){
-  if(!window.SohoCards) return;
+  /* SohoCards(assets/soho-cards.js) 로딩 실패·캐시 지연에도 계산기 목록이 항상 보이도록 폴백 제공.
+     (예전엔 if(!window.SohoCards) return; 으로 조용히 0개가 되던 문제 수정) */
+  var SC = window.SohoCards || null;
+  function fmtCount(n){
+    if(SC && SC.formatCount) return SC.formatCount(n);
+    n=+n||0;
+    if(n>=10000) return (Math.round(n/1000)/10)+'만';
+    if(n>=1000)  return (Math.round(n/100)/10)+'천';
+    return String(n);
+  }
+  function iconSvg(name){
+    if(SC && SC.icon) return SC.icon(name,24);
+    /* 폴백: 일반 계산기 아이콘 */
+    return '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+
+      '<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="16" y2="18"/></svg>';
+  }
   /* cat: 필터칩 분류(인건비/세금/배달/창업/매출) */
   var CALCS=[
     {cat:'인건비',name:'알바 인건비 계산기',desc:'2026년 최저시급 10,320원 기준. 주휴수당·4대보험 포함 총 월 인건비 자동 계산',href:'alba-cost-calc.html',icon:'Users',color:'#3D5AFE',tags:['주휴수당','4대보험','인건비'],views:12840,isHot:true},
@@ -208,9 +223,9 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
 
   function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
   function cardHTML(c){
-    var views=SohoCards.formatCount(c.views)+'회';
+    var views=fmtCount(c.views)+'회';
     return '<a class="cg-card" href="'+esc(c.href)+'" title="'+esc(c.name)+'">'+
-      '<span class="cg-ico" aria-hidden="true" style="background:'+c.color+'1A;color:'+c.color+'">'+SohoCards.icon(c.icon,24)+'</span>'+
+      '<span class="cg-ico" aria-hidden="true" style="background:'+c.color+'1A;color:'+c.color+'">'+iconSvg(c.icon)+'</span>'+
       '<span class="cg-name">'+esc(c.name)+'</span>'+
       '<span class="cg-desc">'+esc(c.desc)+'</span>'+
       '<span class="cg-views">'+views+'</span></a>';
@@ -237,6 +252,6 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
   render();
 })();
 </script>
-<script src="network.js?v=20260629e"></script>
+<script src="network.js?v=20260630a"></script>
 </body>
 </html>
