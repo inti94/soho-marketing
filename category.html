@@ -46,11 +46,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="sohotip.css?v=20260630g">
+<link rel="stylesheet" href="sohotip.css?v=20260630h">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630g">
-  <link rel="stylesheet" href="assets/soho-cards.css?v=20260630g">
-<link rel="stylesheet" href="assets/sohotip-theme.css?v=20260630g">
+  <link rel="stylesheet" href="assets/theme.css?v=20260630h">
+  <link rel="stylesheet" href="assets/soho-cards.css?v=20260630h">
+<link rel="stylesheet" href="assets/sohotip-theme.css?v=20260630h">
 
 <style>
 /* =====================================================================
@@ -67,15 +67,15 @@
   --sans:'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{font-size:16px;-webkit-text-size-adjust:100%;}
-body{font-family:var(--sans);background:var(--bg);color:var(--g900);line-height:1.6;word-break:keep-all;overflow-wrap:break-word;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+html{font-size:16px;-webkit-text-size-adjust:100%;overflow-x:clip;}
+body{font-family:var(--sans);background:var(--bg);color:var(--g900);line-height:1.6;word-break:keep-all;overflow-wrap:break-word;-webkit-tap-highlight-color:transparent;touch-action:manipulation;width:100%;max-width:100%;overflow-x:clip;}
 button{font-family:inherit;cursor:pointer;}
 a{color:inherit;text-decoration:none;}
 ::-webkit-scrollbar{display:none;}
 *{scrollbar-width:none;}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
 
-.shell{max-width:920px;margin:0 auto;padding-bottom:calc(var(--tabbar) + 30px);}
+.shell{width:100%;max-width:920px;margin:0 auto;padding-bottom:calc(var(--tabbar) + 30px);}
 
 /* ── 헤더 ── */
 .topbar{position:sticky;top:0;z-index:300;height:var(--top);background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--g200);display:flex;align-items:center;gap:6px;padding:0 8px;}
@@ -282,9 +282,9 @@ a{color:inherit;text-decoration:none;}
   <a class="tb" href="search.html"><span class="tb-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>검색</a>
 </nav>
 
-<script src="sohotip.js?v=20260630g"></script>
-<script src="assets/soho-share.js?v=20260630g"></script>
-<script src="assets/soho-cards.js?v=20260630g"></script>
+<script src="sohotip.js?v=20260630h"></script>
+<script src="assets/soho-share.js?v=20260630h"></script>
+<script src="assets/soho-cards.js?v=20260630h"></script>
 <script>
 /* ===================================================================
    소호팁 카테고리 — ?cat / ?q 기반 카드 피드 (SohoCards 통일)
@@ -545,6 +545,6 @@ a{color:inherit;text-decoration:none;}
   });
 })();
 </script>
-<script src="network.js?v=20260630g"></script>
+<script src="network.js?v=20260630h"></script>
 </body>
 </html>
