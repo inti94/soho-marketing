@@ -65,10 +65,23 @@
     }
   }
   </script>
-<link rel="stylesheet" href="sohotip.css?v=20260630f">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"알바한테 주휴수당은 꼭 줘야 하나요?","acceptedAnswer":{"@type":"Answer","text":"1주 소정근로시간이 15시간 이상이고 그 주에 개근하면 주휴수당은 법적 의무입니다. 지급하지 않으면 임금체불로 신고 대상이 됩니다. 반대로 주 15시간 미만으로 근무표를 짜면 주휴수당이 발생하지 않습니다."}},
+      {"@type":"Question","name":"알바도 4대보험에 꼭 가입해야 하나요?","acceptedAnswer":{"@type":"Answer","text":"월 60시간 이상(주 15시간 이상) 근무하면 국민연금·건강보험을 포함한 4대보험 가입 대상입니다. 월 60시간 미만 초단시간이어도 고용보험과 산재보험은 적용되는 경우가 많습니다. 미가입은 과태료와 소급 부과 대상이 될 수 있습니다."}},
+      {"@type":"Question","name":"두루누리 지원을 받으면 얼마나 아끼나요?","acceptedAnswer":{"@type":"Answer","text":"10인 미만 사업장에서 월평균 보수 270만원 미만 근로자를 고용하면 국민연금·고용보험 사업주 부담분을 최대 80%까지 지원받을 수 있습니다. 고용24(work24.go.kr)에서 신청하며, 사업주 부담을 크게 줄여줍니다."}},
+      {"@type":"Question","name":"수습기간에는 최저시급보다 적게 줘도 되나요?","acceptedAnswer":{"@type":"Answer","text":"1년 이상 근로계약을 맺은 경우 수습 3개월간 최저임금의 90%까지 감액할 수 있습니다. 다만 단순노무직은 수습이어도 감액이 허용되지 않고, 1년 미만 계약은 감액 대상이 아닙니다."}},
+      {"@type":"Question","name":"최저시급보다 적게 주면 어떻게 되나요?","acceptedAnswer":{"@type":"Answer","text":"2026년 최저시급 10,320원보다 적게 지급하면 최저임금법 위반으로 3년 이하 징역 또는 2천만원 이하 벌금 대상이 됩니다. 미달분은 소급해 지급해야 하므로 시급은 반드시 최저시급 이상으로 책정해야 합니다."}}
+    ]
+  }
+  </script>
+<link rel="stylesheet" href="sohotip.css?v=20260630i">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630f">
-<link rel="stylesheet" href="assets/calc.css?v=20260630f">
+  <link rel="stylesheet" href="assets/theme.css?v=20260630i">
+<link rel="stylesheet" href="assets/calc.css?v=20260630i">
 <style>
 :root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -158,6 +171,37 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
     .inline-fields{grid-template-columns:1fr;}
   }
 
+  /* ── 공통 10블록: 설명 콘텐츠(②~⑦) ── */
+  .article-content{margin-top:36px;}
+  .article-content h2{font-size:20px;font-weight:800;color:var(--text);margin:34px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-.01em;}
+  .article-content h3{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}
+  .article-content p{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:16px;word-break:keep-all;overflow-wrap:anywhere;}
+  .article-content strong{font-weight:700;color:var(--primary);}
+  .article-content ul{margin:14px 0 18px 18px;}
+  .article-content li{font-size:15px;line-height:1.8;margin-bottom:6px;}
+  .formula-box{background:#191F28;color:#fff;border-radius:14px;padding:20px 22px;margin:8px 0 18px;font-size:15px;font-weight:600;line-height:1.7;text-align:center;}
+  .formula-box .fx-sub{display:block;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);margin-top:8px;}
+  .tip-inline{background:var(--primary-light);border-radius:12px;padding:14px 18px;margin:8px 0 18px;font-size:14px;color:var(--primary-mid);line-height:1.7;}
+  .tip-inline strong{color:var(--primary);}
+  .step-box{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin:8px 0 18px;}
+  .step-box .sb-badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--primary);padding:3px 11px;border-radius:20px;margin-bottom:10px;}
+  .step-box .sb-body{font-size:14.5px;line-height:1.8;color:var(--text);}
+  .article-table{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:13.5px;}
+  .article-table th,.article-table td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.6;word-break:keep-all;}
+  .article-table th{background:#F4F6FB;font-weight:700;color:var(--text);}
+  .article-table td:first-child{font-weight:600;}
+  .faq-section{margin-top:8px;}
+  .faq-item{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;background:var(--bg-card);}
+  .faq-q{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:7px;}
+  .faq-q::before{content:"Q. ";color:var(--primary);}
+  .faq-a{font-size:13.5px;color:var(--text-muted);line-height:1.75;word-break:keep-all;overflow-wrap:anywhere;}
+  /* ⑩ 직접계산 CTA */
+  .cta-box{margin-top:34px;background:linear-gradient(135deg,#3D5AFE,#536DFE);border-radius:18px;padding:26px 22px;text-align:center;color:#fff;}
+  .cta-box h3{font-size:18px;font-weight:800;margin-bottom:6px;}
+  .cta-box p{font-size:13.5px;opacity:.85;margin-bottom:16px;line-height:1.6;}
+  .cta-box a{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--primary);font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;text-decoration:none;transition:transform .12s;}
+  .cta-box a:active{transform:scale(.97);}
+
 </style></head>
 <body>
 <div id="progress-bar"></div>
@@ -183,7 +227,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <h1 class="page-title">알바 인건비 계산기</h1>
   <p class="page-desc">시급과 근무시간을 입력하면 주휴수당·4대보험 사업주 부담금까지 포함한 실제 총 인건비를 계산해드립니다. 2026년 최저시급 10,320원 기준입니다. (2025년 8월 고시 확정)</p>
 
-  <div class="calc-card">
+  <div class="calc-card" id="calc">
     <div class="card-title">근무 조건 입력</div>
     <div class="field">
       <label>시급 (원)</label>
@@ -280,12 +324,101 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
       10인 미만 사업장에서 월평균 보수 270만원 미만 근로자를 고용하면, 국민연금·고용보험 사업주 부담분을 최대 80%까지 지원받을 수 있습니다. 고용24(www.work24.go.kr)에서 신청하세요.
     </div>
   </div>
+
+  <div class="article-content">
+    <!-- ② 공식 설명 -->
+    <h2>알바 인건비, 시급만 보면 안 되는 이유</h2>
+    <p>알바 한 명 쓰는데 "시급 곱하기 시간이면 되겠지" 하셨다가, 막상 통장 보고 놀라신 적 있으시죠? 시급은 시작일 뿐이에요. 여기에 <strong>주휴수당</strong>과 <strong>4대보험 사업주 부담분</strong>이 더 붙어야 '진짜 나가는 돈'이 됩니다.</p>
+    <div class="formula-box">월 인건비 = 기본급 + 주휴수당 + 4대보험 사업주 부담<span class="fx-sub">기본급 = 시급 × 월 근로시간 · 주휴수당 = 주 15시간 이상 개근 시 · 4대보험 = 직원 임금의 약 9~11%</span></div>
+    <p>위 계산기가 이 셋을 한 번에 더해서 보여주는 거예요. 시급·근무시간만 넣으면 됩니다.</p>
+
+    <!-- ③ 실제 사례 -->
+    <h2>이런 적, 사장님도 있으시죠</h2>
+    <p>"최저시급이니까 별거 아니겠지" 하고 알바 한 명 풀타임으로 썼는데, 한 달 뒤 빠져나간 돈 보고 "어? 이렇게 많이?" 하신 분 정말 많습니다. 시급에 근무시간만 곱한 금액보다 <strong>20% 넘게 더</strong> 나가거든요. 주휴수당에 4대보험까지 붙어서요.</p>
+
+    <!-- ④ 계산 예시 -->
+    <h2>숫자로 따라가 볼게요 (최저시급 풀타임 기준)</h2>
+    <div class="step-box">
+      <span class="sb-badge">계산 따라하기</span>
+      <div class="sb-body">
+        시급 10,320원 × 하루 8시간 × 주 5일 → 월 근로시간 약 173.8시간<br>
+        기본급 = 10,320 × 173.8 ≈ <strong>약 179만 원</strong><br>
+        주휴수당(주 40시간) ≈ <strong>약 36만 원</strong><br>
+        4대보험 사업주 부담(음식점 기준) ≈ <strong>약 22만 원</strong><br>
+        → 월 총 인건비 ≈ <strong>약 237만 원</strong>
+      </div>
+    </div>
+    <p>시급은 10,320원인데 한 사람 쓰는 데 월 237만 원 안팎이 든다는 얘기예요. 우리 가게 조건(시급·시간·업종)으로 넣으면 위 계산기가 정확한 숫자를 뽑아줍니다.</p>
+
+    <!-- ⑤ 항목표 -->
+    <h2>인건비에 들어가는 항목과 요율 (2026)</h2>
+    <table class="article-table">
+      <thead><tr><th>항목</th><th>부담 주체</th><th>기준·요율</th></tr></thead>
+      <tbody>
+        <tr><td>기본급</td><td>—</td><td>시급 × 근로시간 (최저시급 10,320원)</td></tr>
+        <tr><td>주휴수당</td><td>사업주</td><td>주 15시간 이상 개근 시 지급</td></tr>
+        <tr><td>국민연금</td><td>사업주</td><td>약 4.5%</td></tr>
+        <tr><td>건강보험</td><td>사업주</td><td>약 3.595%</td></tr>
+        <tr><td>장기요양</td><td>사업주</td><td>건강보험료의 12.95%</td></tr>
+        <tr><td>고용보험</td><td>사업주</td><td>0.9%</td></tr>
+        <tr><td>산재보험</td><td>사업주 전액</td><td>업종별 0.6~1.3%</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ⑥ 장단점표 -->
+    <h2>주 15시간 경계, 이게 인건비를 가릅니다</h2>
+    <p>근무표를 어떻게 짜느냐에 따라 주휴수당·4대보험 부담이 확 달라져요. 정답이 있는 건 아니고 이런 차이가 있습니다.</p>
+    <table class="article-table">
+      <thead><tr><th>고용 형태</th><th>장점</th><th>단점</th></tr></thead>
+      <tbody>
+        <tr><td>주 15시간 이상</td><td>오래 일할 사람 확보, 업무 연속성·숙련도</td><td>주휴수당 의무 + 4대보험으로 인건비 부담 큼</td></tr>
+        <tr><td>주 15시간 미만<br>(초단시간)</td><td>주휴수당·일부 4대보험 부담이 줄어듦</td><td>여러 명 돌려쓰면 채용·교육 시간이 더 들고 손발이 안 맞음</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-inline"><strong>한 가지만:</strong> 무조건 초단시간으로 쪼개는 게 답은 아니에요. 오래 일할 한 사람을 제대로 쓰는 게 결국 더 싸게 먹히는 경우가 많습니다.</div>
+
+    <!-- ⑦ FAQ -->
+    <h2 id="faq">자주 묻는 질문</h2>
+    <div class="faq-section">
+      <div class="faq-item"><div class="faq-q">알바한테 주휴수당은 꼭 줘야 하나요?</div><div class="faq-a">1주 소정근로가 15시간 이상이고 그 주에 개근하면 주휴수당은 법적 의무입니다. 안 주면 임금체불로 신고 대상이 돼요. 반대로 주 15시간 미만으로 짜면 주휴수당은 발생하지 않습니다.</div></div>
+      <div class="faq-item"><div class="faq-q">알바도 4대보험에 꼭 가입해야 하나요?</div><div class="faq-a">월 60시간 이상(주 15시간 이상) 근무하면 국민연금·건강보험까지 4대보험 가입 대상입니다. 월 60시간 미만 초단시간이어도 고용·산재보험은 적용되는 경우가 많아요. 미가입은 과태료·소급 부과로 이어질 수 있습니다.</div></div>
+      <div class="faq-item"><div class="faq-q">두루누리 지원을 받으면 얼마나 아끼나요?</div><div class="faq-a">10인 미만 사업장에서 월평균 보수 270만원 미만 근로자를 고용하면 국민연금·고용보험 사업주 부담분을 최대 80%까지 지원받습니다. 고용24(work24.go.kr)에서 신청하면 부담이 꽤 줄어요.</div></div>
+      <div class="faq-item"><div class="faq-q">수습기간엔 시급을 깎아도 되나요?</div><div class="faq-a">1년 이상 계약이면 수습 3개월간 최저임금의 90%까지 감액할 수 있어요. 단, 단순노무직은 수습이어도 감액이 안 되고, 1년 미만 계약은 감액 대상이 아닙니다.</div></div>
+      <div class="faq-item"><div class="faq-q">최저시급보다 적게 주면 어떻게 되나요?</div><div class="faq-a">2026년 최저시급 10,320원보다 적게 주면 최저임금법 위반으로 처벌 대상이고, 미달분은 소급해 지급해야 합니다. 시급은 반드시 최저시급 이상으로 잡으세요.</div></div>
+    </div>
+  </div>
+
+  <!-- ⑧ 관련 계산기 -->
+  <div class="related-calcs-section">
+    <h2>함께 보면 좋은 계산기</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="weekly-pay-calc.html"><span class="rcc-icon">📅</span><div class="rcc-body"><div class="rcc-title">주휴수당 계산기</div><div class="rcc-desc">주 15시간 주휴수당</div></div></a>
+      <a class="rel-calc-card" href="insurance-4d-calc.html"><span class="rcc-icon">🛡️</span><div class="rcc-body"><div class="rcc-title">4대보험 계산기</div><div class="rcc-desc">직원·사업주 부담</div></div></a>
+      <a class="rel-calc-card" href="severance-calc.html"><span class="rcc-icon">💼</span><div class="rcc-body"><div class="rcc-title">퇴직금 계산기</div><div class="rcc-desc">법정 퇴직금</div></div></a>
+      <a class="rel-calc-card" href="annual-leave-calc.html"><span class="rcc-icon">🗓️</span><div class="rcc-body"><div class="rcc-title">연차 계산기</div><div class="rcc-desc">연차·연차수당</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑨ 관련 글 -->
+  <div class="related-articles-section">
+    <h2>함께 보면 좋은 글</h2>
+    <a class="rel-article-item" href="soho-minimum-wage.html"><span class="rai-num">1</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">소상공인 최저임금 2026 — 직원 고용 시 꼭 알아야 할 것</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="parttime-hiring-solution.html"><span class="rai-num">2</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">알바 구인난 해결법 — 사장님이 진짜 써야 할 채널</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="employee-insurance-cost.html"><span class="rai-num">3</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">직원 1명 고용하면 실제 인건비 얼마나 드나</div></div><span class="rai-arrow">→</span></a>
+  </div>
+
+  <!-- ⑩ 직접 계산 CTA -->
+  <div class="cta-box">
+    <h3>우리 가게 알바 인건비, 지금 계산해보세요</h3>
+    <p>시급·근무시간만 넣으면 주휴수당·4대보험까지 포함한 진짜 비용이 나옵니다.</p>
+    <a href="#calc">🧮 인건비 바로 계산하기</a>
+  </div>
 </div>
 
 <button id="back-to-top" aria-label="맨 위로">↑</button>
-<script src="assets/layout.js?v=20260630f"></script>
-<script src="sohotip.js?v=20260630f"></script>
-<script src="assets/consult.js?v=20260630f"></script>
+<script src="assets/layout.js?v=20260630i"></script>
+<script src="sohotip.js?v=20260630i"></script>
+<script src="assets/consult.js?v=20260630i"></script>
 <script>
 let applyWeekly = true;
 let applyInsurance = true;
@@ -367,6 +500,6 @@ function calcInlineAlba(){
   <a href="consultation.html">무료 진단</a>
   <p style="margin-top:12px;">© 2026 소상공인 마케팅 실전백과. 본 계산기는 참고용이며 정확한 금액은 전문가와 확인하세요.</p>
 </footer>
-<script src="network.js?v=20260630f"></script>
+<script src="network.js?v=20260630i"></script>
 </body>
 </html>
