@@ -57,10 +57,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="sohotip.css?v=20260630i">
+<link rel="stylesheet" href="sohotip.css?v=20260630n">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630i">
-<link rel="stylesheet" href="assets/soho-cards.css?v=20260630i">
+  <link rel="stylesheet" href="assets/theme.css?v=20260630n">
+<link rel="stylesheet" href="assets/soho-cards.css?v=20260630n">
 
 <style>
 /* =====================================================================
@@ -401,6 +401,22 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
 .bz-src{margin-top:13px;padding-top:11px;border-top:1px solid var(--g100);font-size:11.5px;color:#ADB5BD;word-break:keep-all;}
 .bz-src a{color:var(--g600);font-weight:600;}
 .bz-src a:hover{color:var(--primary);}
+/* ── 메인 축약 노출: 대표(궁금증) 카드 + 보조 한 줄 + 더보기 (히어로 1/3 크기) ── */
+.nf-card{background:var(--white);border:1px solid var(--g200);border-left:4px solid var(--primary);border-radius:18px;box-shadow:0 1px 8px rgba(0,0,0,.05);padding:16px 18px 15px;}
+.nf-kicker{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:.01em;color:var(--primary);margin-bottom:8px;}
+.nf-kicker svg{width:13px;height:13px;stroke:currentColor;fill:none;}
+.nf-hook{font-size:17px;font-weight:800;line-height:1.38;letter-spacing:-.02em;color:var(--g900);word-break:keep-all;}
+.nf-sub{font-size:13px;font-weight:500;color:var(--g600);line-height:1.55;margin-top:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:keep-all;}
+.nf-cta{display:inline-flex;align-items:center;gap:6px;margin-top:13px;background:var(--primary);color:#fff;font-size:13px;font-weight:700;padding:10px 16px;border-radius:11px;transition:background .15s;}
+.nf-cta:hover{background:var(--primary-dark);}
+.nf-mini{display:flex;align-items:center;gap:11px;min-height:52px;padding:11px 15px;background:var(--white);border:1px solid var(--g200);border-radius:14px;color:var(--g900);box-shadow:0 1px 8px rgba(0,0,0,.04);}
+.nf-mini:hover{background:var(--g50);}
+.nf-mini .nm-dot{flex-shrink:0;width:6px;height:6px;border-radius:50%;background:var(--primary);}
+.nf-mini .nm-t{flex:1;min-width:0;font-size:13.5px;font-weight:600;line-height:1.4;color:var(--g900);display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;word-break:keep-all;}
+.nf-mini .nm-d{flex-shrink:0;font-size:11px;font-weight:500;color:#ADB5BD;}
+.nf-more{display:flex;align-items:center;justify-content:center;gap:6px;height:46px;border:1px dashed var(--g200);border-radius:14px;background:var(--g50);color:var(--g600);font-size:13px;font-weight:700;transition:background .15s,color .15s,border-color .15s;}
+.nf-more:hover{background:var(--primary-light);color:var(--primary);border-color:var(--primary);}
+.nf-more svg{width:15px;height:15px;stroke:currentColor;fill:none;}
 .news-empty{padding:22px 16px;text-align:center;font-size:13px;color:var(--g400);}
 .check-head .ch-ico svg{width:22px;height:22px;stroke:var(--primary);fill:none;}
 </style>
@@ -637,10 +653,10 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
   <a class="tab-item" href="search.html"><span class="tb-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><span class="tb-label">검색</span></a>
 </nav>
 
-<script src="sohotip.js?v=20260630i"></script>
-<script src="assets/soho-share.js?v=20260630i"></script>
-<script src="assets/soho-cards.js?v=20260630i"></script>
-<script src="assets/news-data.js?v=20260630i"></script>
+<script src="sohotip.js?v=20260630n"></script>
+<script src="assets/soho-share.js?v=20260630n"></script>
+<script src="assets/soho-cards.js?v=20260630n"></script>
+<script src="assets/news-data.js?v=20260630n"></script>
 <script>
 /* ===================================================================
    소호팁 메인(스플릿뷰) — 레일 탭 전환 · 카드 렌더 · 북마크 · 체크리스트
@@ -793,29 +809,42 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
     }).join('');
   })();
 
-  /* 3) 오늘의 사업 소식 (assets/news-data.js → window.SOHO_NEWS) */
+  /* 3) 오늘의 사업 소식 — 메인엔 딱 2개만(대표 궁금증 카드 + 보조 한 줄),
+        나머지는 '더보기 →'로 전체 목록(briefing.html). 문구는 news-data.js에서 운영자 편집 */
   function renderNews(){
     var el=document.getElementById('news-list'); if(!el)return;
     var news=(window.SOHO_NEWS&&window.SOHO_NEWS.length)?window.SOHO_NEWS:[];
     if(!news.length){el.innerHTML='<div class="news-empty">표시할 소식이 없어요.</div>';return;}
-    function bzRow(tag,txt){ return txt?('<div class="bz-row"><span class="bz-tag">'+tag+'</span><p class="bz-text">'+esc(txt)+'</p></div>'):''; }
-    el.innerHTML=news.slice(0,5).map(function(it){
-      /* ②30초요약 ③내가게영향 ④지금할것 */
-      var rows=bzRow('30초 요약',it.summary)+bzRow('내 가게 영향',it.impact)+bzRow('지금 할 것',it.action);
-      /* ⑤ 관련 계산기/가이드 — 실존 URL만. https는 새 탭, 그 외 내부 이동 */
-      var cta='';
-      if(it.cta&&it.cta.url&&it.cta.label){
-        var ext=/^https?:\/\//.test(it.cta.url);
-        cta='<a class="bz-cta" href="'+esc(it.cta.url)+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'+esc(it.cta.label)+'<span class="bz-ar" aria-hidden="true">→</span></a>';
-      }
-      /* 출처(공식기관) */
-      var src='';
-      if(it.source){
-        var s=it.sourceUrl?('<a href="'+esc(it.sourceUrl)+'" target="_blank" rel="noopener">'+esc(it.source)+'</a>'):esc(it.source);
-        src='<div class="bz-src">출처 · '+s+(it.date?(' · '+esc(it.date)):'')+'</div>';
-      }
-      return '<article class="biz-card"><h3 class="bz-title">'+esc(it.title||'')+'</h3>'+rows+cta+src+'</article>';
-    }).join('');
+    var html='';
+
+    /* (대표) 궁금증 유발 카드 — 목록 맨 위 1개를 아담하게(히어로 1/3). 맥락 계산기/가이드 버튼 1개 */
+    var f=news[0], fcta='';
+    if(f.cta&&f.cta.url&&f.cta.label){
+      var fext=/^https?:\/\//.test(f.cta.url);
+      fcta='<a class="nf-cta" href="'+esc(f.cta.url)+'"'+(fext?' target="_blank" rel="noopener"':'')+'>'+esc(f.cta.label)+'<span class="bz-ar" aria-hidden="true">→</span></a>';
+    }
+    html+='<div class="nf-card">'+
+      '<span class="nf-kicker"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>사장님, 잠깐만요</span>'+
+      '<div class="nf-hook">'+esc(f.title||'')+'</div>'+
+      (f.summary?'<div class="nf-sub">'+esc(f.summary)+'</div>':'')+
+      fcta+
+    '</div>';
+
+    /* (보조) 그 다음 소식 한 줄 — 누르면 전체 목록으로 */
+    if(news[1]){
+      var s=news[1];
+      html+='<a class="nf-mini" href="briefing.html" title="'+esc(s.title||'')+'">'+
+        '<span class="nm-dot" aria-hidden="true"></span>'+
+        '<span class="nm-t">'+esc(s.title||'')+'</span>'+
+        (s.date?'<span class="nm-d">'+esc(s.date)+'</span>':'')+
+      '</a>';
+    }
+
+    /* 더보기 → 전체 소식 목록(briefing.html) */
+    html+='<a class="nf-more" href="briefing.html">오늘의 사업 소식 더보기 '+
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>';
+
+    el.innerHTML=html;
   }
   renderNews();
 
@@ -1009,7 +1038,7 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
 
 <!-- ── 인기글 Firebase 설정 + 검색 인덱스 + 네트워크 ──
      (금리·실시간주가·환율 브리핑 위젯은 메인에서 제거 — '오늘의 사업 소식'으로 대체) -->
-<script src="assets/config.js?v=20260630i"></script>
-<script src="network.js?v=20260630i"></script>
+<script src="assets/config.js?v=20260630n"></script>
+<script src="network.js?v=20260630n"></script>
 </body>
 </html>
