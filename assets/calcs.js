@@ -21,6 +21,7 @@ window.SOHO_CALCS = [
     {cat:'인건비',name:'주휴수당 계산기',desc:'시급·근무시간 → 주휴수당 지급 여부와 주·월 금액 자동 계산',href:'weekly-pay-calc.html',icon:'Clock',color:'#3D5AFE',tags:['주휴수당','시급'],views:4980,isNew:true},
     {cat:'인건비',name:'4대보험 계산기',desc:'월급 → 직원 공제액과 사업주 부담액 동시 계산 (두루누리 감면 포함)',href:'insurance-4d-calc.html',icon:'Shield',color:'#3D5AFE',tags:['4대보험','직원','사업주'],views:5240,isNew:true},
     {cat:'인건비',name:'직원 연차 계산기',desc:'입사일 → 연차 발생 일수와 미사용 연차수당 자동 계산',href:'annual-leave-calc.html',icon:'CalendarDays',color:'#00B8D9',tags:['연차','휴가','법정'],views:3870,isNew:true},
+    {cat:'인건비',name:'해고예고수당 계산기',desc:'월 통상임금 또는 1일 통상임금 → 근로기준법 제26조 30일분 해고예고수당 자동 계산 (3개월 미만 예외 안내)',href:'dismissal-notice-allowance-calc.html',icon:'Briefcase',color:'#F04452',tags:['해고예고수당','통상임금','근로기준법','노무'],views:0,isNew:true},
     {cat:'배달',name:'배달 순이익 계산기',desc:'주문 1건당 수수료·배달비·재료비 빼면 실제 남는 돈',href:'delivery-profit-calc.html',icon:'Bike',color:'#FF6B35',tags:['배달앱','수수료','순이익'],views:9310,isHot:true},
     {cat:'배달',name:'배달앱 광고비 ROI 계산기',desc:'광고비·추가 주문 → 배달앱 광고 ROI와 손익분기 주문 수 계산',href:'delivery-ads-calc.html',icon:'Megaphone',color:'#FF6B35',tags:['배달광고','ROI'],views:2980,isNew:true},
     {cat:'매출',name:'메뉴 원가율 계산기',desc:'재료비·판매가 → 원가율·마진율·권장 판매가 계산',href:'food-cost-calc.html',icon:'UtensilsCrossed',color:'#E040FB',tags:['원가율','마진율','판매가'],views:4470},
