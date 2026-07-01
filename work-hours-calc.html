@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="출근·퇴근 시각과 휴게시간을 넣으면 실근무시간을 계산합니다. 자정 넘김과 야간(22~06시)·연장(8시간 초과)까지 반영해 일급도 확인하세요.">
+<meta name="keywords" content="근무시간 계산기, 실근무시간 계산, 출퇴근 시간 계산, 야간근로 시간, 휴게시간 제외, 일급 계산">
+<meta name="robots" content="index, follow">
+<meta name="author" content="소상공인 마케팅 실전백과">
+<meta name="date" content="2026-07-01">
+<meta property="og:type" content="website">
+<meta property="og:title" content="근무시간 계산기 (2026) — 출퇴근·휴게로 실근무시간·일급 | 소호팁">
+<meta property="og:description" content="출근·퇴근 시각과 휴게시간을 넣으면 실근무시간을 계산합니다. 자정 넘김과 야간·연장까지 반영해 일급도 확인하세요.">
+<meta property="og:url" content="https://sohotip.co.kr/work-hours-calc.html">
+<meta property="og:image" content="https://sohotip.co.kr/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="소상공인 마케팅 실전백과">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="근무시간 계산기 (2026) — 출퇴근·휴게로 실근무시간·일급 | 소호팁">
+<meta name="twitter:description" content="출근·퇴근 시각과 휴게시간을 넣으면 실근무시간을 계산합니다. 자정 넘김과 야간·연장까지 반영해 일급도 확인하세요.">
+<meta name="twitter:image" content="https://sohotip.co.kr/og-image.png">
+<meta name="naver-site-verification" content="d7369feb5de3df4cce2e9016b84ad045c4ed70a4">
+<link rel="canonical" href="https://sohotip.co.kr/work-hours-calc.html">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sohotip.co.kr/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
+<link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
+<title>근무시간 계산기 — 출퇴근·휴게로 실근무시간·일급 자동계산 (2026) | 소호팁</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "근무시간 계산기",
+    "description": "출근·퇴근 시각과 휴게시간으로 실근무시간을 계산하고 야간·연장 시간과 일급까지 확인하는 계산기.",
+    "url": "https://sohotip.co.kr/work-hours-calc.html",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "offers": {"@type": "Offer","price": "0","priceCurrency": "KRW"},
+    "publisher": {"@type": "Organization","name": "소상공인 마케팅 실전백과","url": "https://sohotip.co.kr"},
+    "dateModified": "2026-07-01",
+    "inLanguage": "ko-KR",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"홈","item":"https://sohotip.co.kr/"},
+        {"@type":"ListItem","position":2,"name":"계산기","item":"https://sohotip.co.kr/tools.html"},
+        {"@type":"ListItem","position":3,"name":"근무시간 계산기","item":"https://sohotip.co.kr/work-hours-calc.html"}
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "출퇴근 시각으로 실근무시간 계산하는 법",
+    "description": "출근·퇴근 시각과 휴게시간을 입력해 실근무시간과 야간·연장 시간, 일급을 계산하는 방법.",
+    "totalTime": "PT1M",
+    "step": [
+      {"@type":"HowToStep","position":1,"name":"출근·퇴근 시각 입력","text":"출근 시각과 퇴근 시각을 입력합니다. 퇴근이 다음 날이면 자정 넘김으로 자동 처리됩니다.","url":"https://sohotip.co.kr/work-hours-calc.html#calc"},
+      {"@type":"HowToStep","position":2,"name":"휴게시간 입력","text":"점심·저녁 등 휴게시간을 분 단위로 입력합니다.","url":"https://sohotip.co.kr/work-hours-calc.html#calc"},
+      {"@type":"HowToStep","position":3,"name":"시급·사업장 규모 선택","text":"시급을 넣으면 일급이 계산되고, 상시 5인 이상이면 야간·연장 가산이 반영됩니다.","url":"https://sohotip.co.kr/work-hours-calc.html#calc"},
+      {"@type":"HowToStep","position":4,"name":"계산하기","text":"'근무시간 계산하기'를 누르면 실근무시간과 야간·연장 시간, 일급이 나옵니다.","url":"https://sohotip.co.kr/work-hours-calc.html#calc"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"실근무시간은 어떻게 계산하나요?","acceptedAnswer":{"@type":"Answer","text":"퇴근 시각에서 출근 시각을 뺀 전체 시간에서 휴게시간을 제외하면 실근무시간이 됩니다. 예를 들어 오전 9시 출근, 오후 6시 퇴근에 휴게 1시간이면 9시간에서 1시간을 뺀 8시간이 실근무시간입니다."}},
+      {"@type":"Question","name":"밤에 퇴근해 날짜가 바뀌면 어떻게 되나요?","acceptedAnswer":{"@type":"Answer","text":"퇴근 시각이 출근 시각보다 이르면 다음 날로 보고 자정 넘김을 자동 처리합니다. 예를 들어 밤 10시 출근, 다음 날 오전 6시 퇴근이면 8시간으로 계산됩니다. 이 구간은 야간근로 시간대와 겹치는 부분도 함께 보여줍니다."}},
+      {"@type":"Question","name":"야간·연장 시간은 어떤 기준인가요?","acceptedAnswer":{"@type":"Answer","text":"야간근로는 밤 10시부터 다음 날 오전 6시까지이고, 연장근로는 하루 8시간을 넘는 부분입니다. 상시 5인 이상 사업장은 야간·연장에 각각 통상시급의 50%를 더 가산합니다. 휴게가 야간대에 있으면 실제 야간근로는 표시보다 적을 수 있습니다."}},
+      {"@type":"Question","name":"휴게시간은 왜 빼나요?","acceptedAnswer":{"@type":"Answer","text":"휴게시간은 근로시간이 아니라 임금을 지급하지 않기 때문입니다. 근로기준법상 4시간 근무마다 30분, 8시간 근무마다 1시간 이상의 휴게를 줘야 하며, 이 시간은 실근무시간에서 제외해 계산합니다."}},
+      {"@type":"Question","name":"5인 미만 사업장도 야간·연장 수당을 줘야 하나요?","acceptedAnswer":{"@type":"Answer","text":"아닙니다. 야간·연장·휴일 가산수당은 상시 5인 이상 사업장에만 의무입니다. 5인 미만은 실제 일한 시간에 시급을 곱한 금액만 지급하면 되고, 최저임금과 주휴수당은 규모와 상관없이 지켜야 합니다."}}
+    ]
+  }
+  </script>
+<link rel="stylesheet" href="sohotip.css?v=20260701f">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/theme.css?v=20260701f">
+<link rel="stylesheet" href="assets/calc.css?v=20260701f">
+<style>
+:root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-size:13px;color:var(--text-muted);text-decoration:none;}
+.nav-links a:hover{color:var(--primary);}
+.nav-cta{background:var(--primary);color:#fff;font-size:13px;padding:7px 16px;border-radius:6px;text-decoration:none;}
+@media(max-width:640px){.nav-links{display:none;}}
+.page-wrap{max-width:680px;margin:0 auto;padding:40px 2rem 80px;}
+.page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:24px;line-height:1.6;}
+.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;}
+.card-title{font-size:14px;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:20px;}
+.field{margin-bottom:20px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--text);}
+.field-hint{font-size:11px;color:var(--text-muted);margin-bottom:6px;}
+.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;-webkit-appearance:none;}
+.field input:focus,.field select:focus{border-color:var(--primary);}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.toggle-group{display:flex;gap:8px;flex-wrap:wrap;}
+.toggle-btn{padding:7px 16px;border:1.5px solid var(--border);border-radius:20px;background:var(--bg-card);font-size:13px;cursor:pointer;transition:all 0.15s;color:var(--text-muted);}
+.toggle-btn.active{border-color:var(--primary);background:var(--primary-light);color:var(--primary);font-weight:600;}
+.result-card{background:var(--primary);border-radius:16px;padding:28px;color:#fff;margin-bottom:20px;}
+.result-title{font-size:13px;opacity:0.8;margin-bottom:6px;}
+.result-total{font-size:36px;font-weight:700;margin-bottom:4px;}
+.result-sub{font-size:13px;opacity:0.7;}
+.result-breakdown{background:var(--bg-card);border-radius:16px;padding:24px;border:1px solid var(--border);}
+.breakdown-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);}
+.breakdown-row:last-child{border-bottom:none;font-weight:700;font-size:15px;}
+.breakdown-label{font-size:13px;color:var(--text-muted);}
+.breakdown-value{font-size:14px;font-weight:500;color:var(--text);}
+.breakdown-value.highlight{color:var(--primary);font-weight:700;}
+.notice-box{background:var(--primary-light);border-radius:12px;padding:16px 20px;margin-top:20px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
+.notice-box strong{color:var(--primary);}
+.notice-box a{color:var(--primary);font-weight:700;text-decoration:none;}
+.notice-box a:hover{text-decoration:underline;}
+.notice-box .nb-ic{width:15px;height:15px;vertical-align:-2px;stroke:var(--primary);fill:none;}
+.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background 0.2s;margin-top:8px;}
+.btn-calc:hover{background:var(--primary-mid);}
+.tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+.tag svg{width:13px;height:13px;vertical-align:-2px;margin-right:2px;}
+footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
+footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
+
+  /* ── 함께 사용한 계산기 ── */
+  .related-calcs-section{margin:32px 0 0;}
+  .related-calcs-section h2,.related-articles-section h2{font-size:16px;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .rel-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+  .rel-calc-card{display:flex;align-items:center;gap:10px;padding:14px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s;}
+  .rel-calc-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 14px rgba(61,90,254,.12);}
+  .rcc-icon{flex-shrink:0;width:24px;height:24px;display:flex;align-items:center;justify-content:center;}
+  .rcc-icon svg{width:22px;height:22px;stroke:var(--primary);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+  .rcc-body{flex:1;min-width:0;}
+  .rcc-title{font-size:12px;font-weight:700;line-height:1.3;margin-bottom:3px;}
+  .rcc-desc{font-size:11px;color:var(--text-muted);line-height:1.4;}
+  /* ── 함께 많이 본 글 ── */
+  .related-articles-section{margin:24px 0 0;}
+  .rel-article-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);transition:color .2s;}
+  .rel-article-item:last-child{border-bottom:none;}
+  .rel-article-item:hover .rai-title{color:var(--primary);}
+  .rai-num{font-size:18px;font-weight:900;color:var(--border);width:24px;flex-shrink:0;text-align:center;}
+  .rai-body{flex:1;min-width:0;}
+  .rai-cat{font-size:10px;color:var(--primary);font-weight:700;margin-bottom:2px;}
+  .rai-title{font-size:13px;font-weight:600;line-height:1.4;}
+  .rai-arrow{color:var(--primary);font-size:14px;flex-shrink:0;}
+  @media(max-width:640px){
+    .rel-calc-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:380px){
+    .rel-calc-grid{grid-template-columns:1fr;}
+  }
+
+  /* ── 공통 12블록: 설명 콘텐츠 ── */
+  .article-content{margin-top:36px;}
+  .article-content h2{font-size:20px;font-weight:800;color:var(--text);margin:34px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-.01em;}
+  .article-content h3{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}
+  .article-content p{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:16px;word-break:keep-all;overflow-wrap:anywhere;}
+  .article-content strong{font-weight:700;color:var(--primary);}
+  .formula-box{background:#191F28;color:#fff;border-radius:14px;padding:20px 22px;margin:8px 0 18px;font-size:15px;font-weight:600;line-height:1.7;text-align:center;}
+  .formula-box .fx-sub{display:block;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);margin-top:8px;}
+  .tip-inline{background:var(--primary-light);border-radius:12px;padding:14px 18px;margin:8px 0 18px;font-size:14px;color:var(--primary-mid);line-height:1.7;}
+  .tip-inline strong{color:var(--primary);}
+  .step-box{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin:8px 0 18px;}
+  .step-box .sb-badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--primary);padding:3px 11px;border-radius:20px;margin-bottom:10px;}
+  .step-box .sb-body{font-size:14.5px;line-height:1.8;color:var(--text);}
+  .howto-list{counter-reset:howto;list-style:none;margin:8px 0 18px;padding:0;}
+  .howto-list li{position:relative;padding:12px 16px 12px 46px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;margin-bottom:8px;font-size:14px;line-height:1.7;color:var(--text);}
+  .howto-list li::before{counter-increment:howto;content:counter(howto);position:absolute;left:14px;top:12px;width:22px;height:22px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .article-table{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:13.5px;}
+  .article-table th,.article-table td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.6;word-break:keep-all;}
+  .article-table th{background:#F4F6FB;font-weight:700;color:var(--text);}
+  .article-table td:first-child{font-weight:600;}
+  .faq-section{margin-top:8px;}
+  .faq-item{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;background:var(--bg-card);}
+  .faq-q{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:7px;}
+  .faq-q::before{content:"Q. ";color:var(--primary);}
+  .faq-a{font-size:13.5px;color:var(--text-muted);line-height:1.75;word-break:keep-all;overflow-wrap:anywhere;}
+  .cta-box{margin-top:34px;background:linear-gradient(135deg,#3D5AFE,#536DFE);border-radius:18px;padding:26px 22px;text-align:center;color:#fff;}
+  .cta-box h3{font-size:18px;font-weight:800;margin-bottom:6px;}
+  .cta-box p{font-size:13.5px;opacity:.85;margin-bottom:16px;line-height:1.6;}
+  .cta-box a{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--primary);font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;text-decoration:none;transition:transform .12s;}
+  .cta-box a svg{width:17px;height:17px;stroke:var(--primary);fill:none;stroke-width:2;}
+  .cta-box a:active{transform:scale(.97);}
+  .calc-sources{margin:30px 0 0;padding:18px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;}
+  .calc-sources h2{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;}
+  .calc-sources ul{list-style:none;margin:0;padding:0;}
+  .calc-sources li{font-size:12.5px;color:var(--text-muted);line-height:1.75;padding-left:14px;position:relative;}
+  .calc-sources li::before{content:"·";position:absolute;left:2px;color:var(--primary);font-weight:700;}
+  .calc-sources a{color:var(--primary);text-decoration:none;}
+  .calc-sources a:hover{text-decoration:underline;}
+  .calc-sources .cs-updated{font-size:11px;color:var(--text-muted);margin-top:10px;}
+  .ai-summary .ais-badge svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .ai-summary .ais-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+</style></head>
+<body>
+<div id="progress-bar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">소상공인 마케팅 실전백과</a>
+  <ul class="nav-links">
+    <li><a href="category.html">카테고리</a></li>
+    <li><a href="tools.html">계산기</a></li>
+  </ul>
+  <a href="consultation.html" class="nav-cta">무료 진단</a>
+</nav>
+<div class="mobile-search-bar">
+  <div class="nav-search">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="search-input-mobile" class="nav-search-input" placeholder="궁금한 주제를 검색하세요..." autocomplete="off">
+    <div id="search-dropdown-mobile"></div>
+  </div>
+</div>
+
+<div class="page-wrap">
+  <!-- ① 제목 -->
+  <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg> 근무시간 계산기</span>
+  <h1 class="page-title">근무시간 계산기</h1>
+  <p class="page-desc">출근·퇴근 시각과 휴게시간만 넣으면 실근무시간이 바로 나옵니다. 밤샘 근무처럼 자정을 넘겨도 자동 처리하고, 야간(22~06시)·연장(8시간 초과) 시간과 일급까지 확인할 수 있어요.</p>
+
+  <!-- ② 30초 요약 -->
+  <section class="ai-summary" aria-label="30초 핵심 요약">
+    <span class="ais-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.9L18.7 9.7 13.8 11.5 12 16.4 10.2 11.5 5.3 9.7 10.2 7.9z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg> 30초 요약 · 사장님용</span>
+    <p>직원 근무시간, 손으로 세다 실수한 적 있으시죠? 특히 밤 10시 넘겨 다음 날 새벽까지 일하면 시간 계산이 헷갈립니다. 출근·퇴근 시각이랑 쉰 시간만 넣으면 실제 일한 시간이 딱 나와요.</p>
+    <p>핵심은 두 가지예요. 첫째, <strong>휴게시간은 빼야</strong> 합니다. 9시 출근 6시 퇴근이라도 점심 1시간 쉬면 실근무는 8시간이에요. 둘째, 퇴근이 다음 날이면 <strong>자정 넘김</strong>을 자동으로 잡아줍니다.</p>
+    <p>야간(밤10시~새벽6시)이나 하루 8시간 초과 연장은 <strong>상시 5인 이상</strong> 가게만 50%씩 더 얹으면 돼요. 시급까지 넣으면 그날 일급이 얼마인지도 바로 보여드립니다.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg> 실근무시간 바로 계산</a>
+      <a class="ais-btn ghost" href="weekly-pay-calc.html">주휴수당도 보기</a>
+    </div>
+    <div class="ais-links">이어서 보면 좋아요 · <a href="hourly-wage-calc.html">시급 계산기</a> · <a href="soho-minimum-wage.html">2026 최저임금 정리</a></div>
+  </section>
+
+  <!-- ③ 계산기 -->
+  <div class="calc-card" id="calc">
+    <div class="card-title">근무 시각 입력</div>
+    <div class="field-row">
+      <div class="field">
+        <label>출근 시각</label>
+        <input type="time" id="start" value="09:00">
+      </div>
+      <div class="field">
+        <label>퇴근 시각</label>
+        <input type="time" id="end" value="18:00">
+      </div>
+    </div>
+    <div class="field">
+      <label>휴게시간 (분)</label>
+      <div class="field-hint">점심·저녁 등 쉬는 시간. 8시간 근무면 1시간(60분) 이상 부여 의무.</div>
+      <input type="number" id="break" value="60" min="0" max="1440" step="10">
+    </div>
+    <div class="field">
+      <label>시급 (원) <span style="color:var(--text-muted);font-weight:400;">· 선택, 넣으면 일급 계산</span></label>
+      <div class="field-hint">2026년 최저시급: 10,320원. 비우면 시간만 계산.</div>
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="hourly" value="10,320" min="0" step="100">
+    </div>
+    <div class="field">
+      <label>사업장 규모</label>
+      <div class="field-hint">상시 5인 미만은 야간·연장 가산 의무가 없습니다.</div>
+      <div class="toggle-group">
+        <button class="toggle-btn active" id="btn-size-y" onclick="setSize(true)">상시 5인 이상</button>
+        <button class="toggle-btn" id="btn-size-n" onclick="setSize(false)">상시 5인 미만</button>
+      </div>
+    </div>
+    <button class="btn-calc" onclick="calculate()">근무시간 계산하기</button>
+  </div>
+
+  <!-- ④ 계산 결과 -->
+  <div id="result-section" style="display:none;">
+    <div class="result-card">
+      <div class="result-title">실근무시간</div>
+      <div class="result-total" id="res-total">0시간</div>
+      <div class="result-sub" id="res-sub">전체 시간 − 휴게</div>
+    </div>
+    <div class="result-breakdown">
+      <div class="breakdown-row">
+        <span class="breakdown-label">전체 시간 (출근~퇴근)</span>
+        <span class="breakdown-value" id="res-span">0시간</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">휴게시간</span>
+        <span class="breakdown-value" id="res-break">0분</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">실근무시간</span>
+        <span class="breakdown-value highlight" id="res-work">0시간</span>
+      </div>
+      <div class="breakdown-row" style="margin-top:8px;padding-top:16px;border-top:2px solid var(--border);">
+        <span class="breakdown-label">야간근로 (22시~06시 포함)</span>
+        <span class="breakdown-value" id="res-night">0시간</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">연장근로 (8시간 초과)</span>
+        <span class="breakdown-value" id="res-ot">0시간</span>
+      </div>
+      <div class="breakdown-row" id="row-daily">
+        <span class="breakdown-label" id="res-daily-label">예상 일급 (시급 기준)</span>
+        <span class="breakdown-value highlight" id="res-daily">0원</span>
+      </div>
+    </div>
+    <div class="notice-box" id="notice-box">
+      <strong><svg class="nb-ic" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg> 참고</strong><br>
+      야간·연장 가산은 상시 5인 이상 기준입니다. 휴게가 야간대에 걸치면 실제 야간근로는 표시보다 적을 수 있어요. 월 급여로 환산하려면 <a href="monthly-salary-calc.html">월급 계산기</a>를 함께 쓰세요.
+    </div>
+  </div>
+
+  <div class="article-content">
+    <!-- ⑤ 계산 공식 설명 -->
+    <h2>실근무시간, 결국 빼기 하나</h2>
+    <p>근무시간 계산의 핵심은 단순해요. 출근부터 퇴근까지의 전체 시간에서 <strong>쉰 시간(휴게)을 빼면</strong> 실제 일한 시간입니다. 다만 밤샘 근무처럼 날짜가 바뀌는 경우만 조심하면 돼요.</p>
+    <div class="formula-box">실근무시간 = (퇴근 − 출근) − 휴게시간<span class="fx-sub">퇴근이 출근보다 이르면 다음 날로 보고 24시간을 더해 계산(자정 넘김)</span></div>
+    <p>예를 들어 오전 9시 출근, 오후 6시 퇴근이면 전체 9시간인데, 점심 1시간을 빼면 <strong>실근무 8시간</strong>이에요. 밤 10시 출근, 다음 날 오전 6시 퇴근이면 8시간이고, 이 전부가 야간근로 시간대에 들어갑니다.</p>
+    <h3>이렇게 계산하세요</h3>
+    <ol class="howto-list">
+      <li>출근 시각과 퇴근 시각을 입력합니다(퇴근이 다음 날이면 자동 처리).</li>
+      <li>점심·저녁 등 휴게시간을 분 단위로 입력합니다.</li>
+      <li>시급을 넣으면 일급이 나오고, 상시 5인 이상이면 야간·연장 가산이 반영됩니다.</li>
+      <li>'근무시간 계산하기'를 누르면 실근무시간과 야간·연장, 일급이 나옵니다.</li>
+    </ol>
+
+    <!-- ⑥ 주요 계산항목 표 -->
+    <h2>근무시간 관련 법정 기준 (2026)</h2>
+    <table class="article-table">
+      <thead><tr><th>항목</th><th>기준</th><th>가산</th></tr></thead>
+      <tbody>
+        <tr><td>휴게시간</td><td>4시간당 30분, 8시간당 1시간 이상</td><td>무급(근로시간 제외)</td></tr>
+        <tr><td>야간근로</td><td>밤 10시~다음 날 오전 6시</td><td>통상시급 50% 가산</td></tr>
+        <tr><td>연장근로</td><td>1일 8시간·주 40시간 초과</td><td>통상시급 50% 가산</td></tr>
+        <tr><td>휴일근로</td><td>8시간 이내 / 초과</td><td>1.5배 / 2배</td></tr>
+      </tbody>
+    </table>
+    <h3>주의점 — 5인 미만이냐 5인 이상이냐</h3>
+    <p>실근무시간 자체는 규모와 상관없이 똑같이 세지만, 야간·연장에 <strong>가산수당을 얹느냐</strong>는 사업장 규모가 가릅니다.</p>
+    <table class="article-table">
+      <thead><tr><th>구분</th><th>상시 5인 이상</th><th>상시 5인 미만</th></tr></thead>
+      <tbody>
+        <tr><td>실근무시간 산정</td><td>동일</td><td>동일</td></tr>
+        <tr><td>야간·연장 가산(50%)</td><td>의무</td><td>없음 (실근무 × 시급만)</td></tr>
+        <tr><td>최저임금·주휴수당</td><td>의무</td><td>의무 (동일)</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-inline"><strong>한 가지만:</strong> 5인 미만이라 야간·연장 가산은 없어도, 일한 시간에 대한 시급과 주휴수당은 규모와 상관없이 반드시 줘야 합니다.</div>
+
+    <!-- ⑦ 실무 예시 -->
+    <h2>실무 예시 — 숫자로 따라가 볼게요</h2>
+    <div class="step-box">
+      <span class="sb-badge">주간 근무</span>
+      <div class="sb-body">
+        오전 9시 출근 · 오후 6시 퇴근 · 휴게 60분<br>
+        전체 9시간 − 휴게 1시간 = <strong>실근무 8시간</strong><br>
+        야간 0시간 · 연장 0시간 → 시급 10,320원이면 일급 <strong>82,560원</strong>
+      </div>
+    </div>
+    <div class="step-box">
+      <span class="sb-badge">야간(자정 넘김) · 5인 이상</span>
+      <div class="sb-body">
+        밤 10시 출근 · 다음 날 오전 6시 퇴근 · 휴게 0분<br>
+        실근무 8시간, 전부 야간근로(22~06시)<br>
+        일급 = 8시간×10,320 + 야간가산 8시간×10,320×0.5 = <strong>123,840원</strong>
+      </div>
+    </div>
+    <p>이렇게 야간·연장이 붙으면 같은 8시간이어도 일급이 달라져요. 5인 미만이면 가산이 빠져 82,560원이 됩니다. 우리 직원 출퇴근 시각을 위 계산기에 넣어보세요.</p>
+
+    <!-- ⑧ FAQ -->
+    <h2 id="faq">자주 묻는 질문</h2>
+    <div class="faq-section">
+      <div class="faq-item"><div class="faq-q">실근무시간은 어떻게 계산하나요?</div><div class="faq-a">퇴근 시각에서 출근 시각을 뺀 전체 시간에서 휴게시간을 빼면 실근무시간입니다. 9시 출근·6시 퇴근에 휴게 1시간이면 8시간이에요.</div></div>
+      <div class="faq-item"><div class="faq-q">밤에 퇴근해 날짜가 바뀌면요?</div><div class="faq-a">퇴근 시각이 출근보다 이르면 다음 날로 보고 자정 넘김을 자동 처리합니다. 밤 10시~다음 날 오전 6시면 8시간으로 계산되고, 야간 시간대와 겹치는 부분도 함께 보여줍니다.</div></div>
+      <div class="faq-item"><div class="faq-q">야간·연장 시간은 어떤 기준인가요?</div><div class="faq-a">야간은 밤 10시~오전 6시, 연장은 하루 8시간 초과분입니다. 상시 5인 이상은 각각 통상시급 50%를 더 가산해요. 휴게가 야간대에 있으면 실제 야간근로는 표시보다 적을 수 있습니다.</div></div>
+      <div class="faq-item"><div class="faq-q">휴게시간은 왜 빼나요?</div><div class="faq-a">휴게는 근로시간이 아니라 무급이기 때문입니다. 4시간당 30분, 8시간당 1시간 이상 부여가 의무이고, 이 시간은 실근무에서 제외합니다.</div></div>
+      <div class="faq-item"><div class="faq-q">5인 미만도 야간·연장 수당을 줘야 하나요?</div><div class="faq-a">아니요. 야간·연장·휴일 가산은 상시 5인 이상만 의무입니다. 5인 미만은 실제 일한 시간×시급만 주면 되고, 최저임금·주휴수당은 규모와 상관없이 지켜야 합니다.</div></div>
+    </div>
+  </div>
+
+  <!-- ⑨ 관련 계산기 (5) -->
+  <div class="related-calcs-section">
+    <h2>함께 보면 좋은 계산기</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="hourly-wage-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg></span><div class="rcc-body"><div class="rcc-title">시급 계산기</div><div class="rcc-desc">월급 → 통상시급</div></div></a>
+      <a class="rel-calc-card" href="monthly-salary-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="12" cy="12" r="3"/><line x1="6" y1="12" x2="6.01" y2="12"/><line x1="18" y1="12" x2="18.01" y2="12"/></svg></span><div class="rcc-body"><div class="rcc-title">월급 계산기</div><div class="rcc-desc">시급 → 세전 월급</div></div></a>
+      <a class="rel-calc-card" href="weekly-pay-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><div class="rcc-body"><div class="rcc-title">주휴수당 계산기</div><div class="rcc-desc">주 15시간 주휴수당</div></div></a>
+      <a class="rel-calc-card" href="gross-pay-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/></svg></span><div class="rcc-body"><div class="rcc-title">급여 계산기</div><div class="rcc-desc">기본급+수당 총급여</div></div></a>
+      <a class="rel-calc-card" href="alba-cost-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div class="rcc-body"><div class="rcc-title">알바 인건비 계산기</div><div class="rcc-desc">주휴·4대보험 총비용</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑩ 관련 가이드 (5) -->
+  <div class="related-articles-section">
+    <h2>함께 보면 좋은 가이드</h2>
+    <a class="rel-article-item" href="soho-minimum-wage.html"><span class="rai-num">1</span><div class="rai-body"><div class="rai-cat">인사·노무</div><div class="rai-title">소상공인 최저임금 2026 — 직원 고용 시 꼭 알아야 할 것</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="store-staff-management-2026.html"><span class="rai-num">2</span><div class="rai-body"><div class="rai-cat">인사·노무</div><div class="rai-title">직원 관리 5가지 실전 노하우 (2026 최신 노동법)</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="parttime-hiring-solution.html"><span class="rai-num">3</span><div class="rai-body"><div class="rai-cat">인사·노무</div><div class="rai-title">알바 구인난 해결법 — 사장님이 진짜 써야 할 채널</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="employee-insurance-cost.html"><span class="rai-num">4</span><div class="rai-body"><div class="rai-cat">인사·노무</div><div class="rai-title">직원 1명 고용하면 실제 인건비 얼마나 드나</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="employee-termination-guide.html"><span class="rai-num">5</span><div class="rai-body"><div class="rai-cat">인사·노무</div><div class="rai-title">직원 내보낼 때 — 해고·권고사직·퇴직금 절차</div></div><span class="rai-arrow">→</span></a>
+  </div>
+
+  <!-- ⑪ 관련 서식 (3) -->
+  <div class="related-calcs-section">
+    <h2>함께 쓰면 좋은 서식</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="forms.html#staff"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">근태기록표</div><div class="rcc-desc">출퇴근·근무시간 관리</div></div></a>
+      <a class="rel-calc-card" href="forms.html#staff"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">표준근로계약서</div><div class="rcc-desc">근무시간·휴게 명시</div></div></a>
+      <a class="rel-calc-card" href="forms.html#staff"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">급여대장</div><div class="rcc-desc">근무·급여 내역 관리</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑫ 한 줄 요약 + CTA -->
+  <section class="ai-summary" aria-label="한 줄 요약">
+    <span class="ais-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> 한 줄 요약</span>
+    <p>실근무시간은 <strong>(퇴근 − 출근) − 휴게</strong>예요. 밤샘이라 날짜가 바뀌면 자정 넘김만 챙기면 됩니다. 9시~18시 휴게 1시간이면 딱 8시간이죠.</p>
+    <p>야간(밤10시~새벽6시)이랑 8시간 초과 연장은 <strong>5인 이상</strong>만 50%씩 얹어주면 되고, 5인 미만은 일한 시간에 시급만 곱하면 됩니다. 시급 넣으면 그날 일급까지 바로 나와요.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg> 지금 근무시간 계산</a>
+      <a class="ais-btn ghost" href="hourly-wage-calc.html">시급 확인하기</a>
+    </div>
+  </section>
+
+  <!-- 직접 계산 CTA -->
+  <div class="cta-box">
+    <h3>우리 직원 근무시간, 지금 정확히 재보세요</h3>
+    <p>출퇴근 시각·휴게만 넣으면 실근무시간과 야간·연장, 일급이 바로 나옵니다.</p>
+    <a href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg> 근무시간 바로 계산하기</a>
+  </div>
+
+  <!-- 하단 자료 출처 -->
+  <div class="calc-sources">
+    <h2>자료 출처</h2>
+    <ul>
+      <li>고용노동부 — 근로시간·휴게시간 안내 (<a href="https://www.moel.go.kr" target="_blank" rel="nofollow noopener">moel.go.kr</a>)</li>
+      <li>근로기준법 제50조·제54조·제56조 — 근로시간·휴게·가산수당 (<a href="https://www.law.go.kr" target="_blank" rel="nofollow noopener">law.go.kr</a>)</li>
+      <li>최저임금위원회 — 2026년 최저시급 10,320원 (<a href="https://www.minimumwage.go.kr" target="_blank" rel="nofollow noopener">minimumwage.go.kr</a>)</li>
+    </ul>
+    <p class="cs-updated">기준일: 2026년 6월 · 근로기준법 기준입니다. 본 계산기는 참고용이며, 정확한 임금·근로시간은 노무사·공식기관과 확인하세요.</p>
+  </div>
+</div>
+
+<button id="back-to-top" aria-label="맨 위로">↑</button>
+<script src="assets/layout.js?v=20260701f" defer></script>
+<script src="sohotip.js?v=20260701f" defer></script>
+<script src="assets/consult.js?v=20260701f" defer></script>
+<script>
+var is5plus = true;
+
+function setSize(v) {
+  is5plus = v;
+  document.getElementById('btn-size-y').classList.toggle('active', v);
+  document.getElementById('btn-size-n').classList.toggle('active', !v);
+}
+function parseTime(id) {
+  var v = document.getElementById(id).value;
+  if (!v) return null;
+  var p = v.split(':');
+  var h = parseInt(p[0], 10), m = parseInt(p[1], 10);
+  if (isNaN(h) || isNaN(m)) return null;
+  return h * 60 + m;
+}
+function fmtHM(min) {
+  if (!isFinite(min) || isNaN(min) || min < 0) min = 0;
+  min = Math.round(min);
+  var h = Math.floor(min / 60), m = min % 60;
+  if (h === 0) return m + '분';
+  if (m === 0) return h + '시간';
+  return h + '시간 ' + m + '분';
+}
+function won(n) {
+  if (!isFinite(n) || isNaN(n)) n = 0;
+  return Math.round(n).toLocaleString('ko-KR') + '원';
+}
+/* 야간(22:00~06:00) 겹치는 분 수 — 절대분 기준 순회 */
+function nightMinutes(s, e) {
+  var c = 0;
+  for (var m = s; m < e; m++) {
+    var t = ((m % 1440) + 1440) % 1440;
+    if (t >= 1320 || t < 360) c++;
+  }
+  return c;
+}
+
+function calculate() {
+  var s = parseTime('start'), e = parseTime('end');
+  if (s === null || e === null) { alert('출근·퇴근 시각을 입력해 주세요.'); return; }
+  if (e === s) { alert('출근과 퇴근 시각이 같아요. 다시 확인해 주세요.'); return; }
+  var brk = getRawNumber('break');
+  if (!isFinite(brk) || brk < 0) brk = 0;
+  var hourly = getRawNumber('hourly');
+  if (!isFinite(hourly) || hourly < 0) hourly = 0;
+
+  var end = e;
+  if (end < s) end += 1440; /* 자정 넘김 */
+  var span = end - s;                         /* 전체 시간(분) */
+  var work = Math.max(span - brk, 0);         /* 실근무(분) */
+  var night = Math.min(nightMinutes(s, end), work); /* 야간(분), 실근무 상한 */
+  var overtime = Math.max(work - 480, 0);     /* 연장 = 8시간(480분) 초과 */
+
+  var factor = is5plus ? 1 : 0;
+  var dayPay = work / 60 * hourly;
+  var otPay = overtime / 60 * hourly * 0.5 * factor;
+  var nightPay = night / 60 * hourly * 0.5 * factor;
+  var daily = dayPay + otPay + nightPay;
+
+  document.getElementById('res-total').textContent = fmtHM(work);
+  document.getElementById('res-sub').textContent = '전체 ' + fmtHM(span) + ' − 휴게 ' + fmtHM(brk);
+  document.getElementById('res-span').textContent = fmtHM(span);
+  document.getElementById('res-break').textContent = fmtHM(brk);
+  document.getElementById('res-work').textContent = fmtHM(work);
+  document.getElementById('res-night').textContent = fmtHM(night);
+  document.getElementById('res-ot').textContent = fmtHM(overtime);
+
+  var rowDaily = document.getElementById('row-daily');
+  if (hourly > 0) {
+    rowDaily.style.display = 'flex';
+    document.getElementById('res-daily-label').textContent = '예상 일급 (시급 ' + won(hourly) + ')';
+    document.getElementById('res-daily').textContent = won(daily);
+  } else {
+    rowDaily.style.display = 'none';
+  }
+
+  var msgs = [];
+  if (end - s > 1440) msgs.push('전체 시간이 24시간을 넘습니다. 시각을 다시 확인해 주세요.');
+  if (!is5plus && (night + overtime) > 0) msgs.push('상시 5인 미만은 야간·연장 가산 의무가 없어 실근무 × 시급으로만 계산했습니다.');
+  else if (night + overtime > 0) msgs.push('야간·연장 가산(각 50%)은 상시 5인 이상 기준입니다. 휴게가 야간대에 걸치면 실제 야간근로는 표시보다 적을 수 있어요.');
+  msgs.push('월 급여로 환산하려면 <a href="monthly-salary-calc.html">월급 계산기</a>를 함께 쓰세요.');
+  document.getElementById('notice-box').innerHTML =
+    '<strong><svg class="nb-ic" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg> 참고</strong><br>' + msgs.join('<br>');
+
+  document.getElementById('result-section').style.display = 'block';
+  document.getElementById('result-section').scrollIntoView({behavior:'smooth', block:'start'});
+}
+</script>
+<footer>
+  <a href="index.html">홈</a>
+  <a href="category.html">카테고리</a>
+  <a href="tools.html">계산기 모음</a>
+  <a href="consultation.html">무료 진단</a>
+  <p style="margin-top:12px;">© 2026 소상공인 마케팅 실전백과. 본 계산기는 참고용이며 정확한 금액은 전문가와 확인하세요.</p>
+</footer>
+<script src="network.js?v=20260701f" defer></script>
+</body>
+</html>
