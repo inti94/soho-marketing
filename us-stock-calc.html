@@ -7,14 +7,14 @@
 <meta http-equiv="Expires" content="0">
 <script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="미국주식 계산기. 달러 기준 매수가·수량과 실시간 USD/KRW 환율로 원화 환산 금액과 수익률을 계산합니다. 매수 시점·현재 환율을 넣으면 환율 변동까지 반영한 원화 수익률을 보여줍니다.">
+<meta name="description" content="미국주식 계산기. 달러 기준 매수가·수량과 USD/KRW 환율로 원화 환산 금액과 수익률을 계산합니다. 매수 시점·현재 환율을 넣으면 환율 변동까지 반영한 원화 수익률을 보여줍니다.">
 <meta name="keywords" content="미국주식 계산기, 달러 환산 계산기, 미국주식 수익률, 환율 수익률, USD KRW 환율 계산, 해외주식 원화">
 <meta name="robots" content="index, follow">
 <meta name="author" content="소호팁">
 <meta name="date" content="2026-06-30">
 <meta property="og:type" content="website">
-<meta property="og:title" content="미국주식 계산기 — 실시간 환율 원화 환산·수익률 | 소호팁">
-<meta property="og:description" content="달러 매수가·수량을 넣으면 실시간 USD/KRW 환율로 원화 환산 금액·수익률을 자동 계산. 환율 변동 효과까지.">
+<meta property="og:title" content="미국주식 계산기 — USD/KRW 환율 원화 환산·수익률 | 소호팁">
+<meta property="og:description" content="달러 매수가·수량을 넣으면 USD/KRW 환율로 원화 환산 금액·수익률을 자동 계산. 환율 변동 효과까지.">
 <meta property="og:url" content="https://sohotip.co.kr/us-stock-calc.html">
 <meta property="og:image" content="https://sohotip.co.kr/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -22,8 +22,8 @@
 <meta property="og:site_name" content="소호팁">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="미국주식 계산기 — 실시간 환율 원화 환산·수익률 | 소호팁">
-<meta name="twitter:description" content="달러 매수가·수량을 실시간 환율로 원화 환산하고 수익률까지. 환율 변동 효과 포함.">
+<meta name="twitter:title" content="미국주식 계산기 — USD/KRW 환율 원화 환산·수익률 | 소호팁">
+<meta name="twitter:description" content="달러 매수가·수량을 USD/KRW 환율로 원화 환산하고 수익률까지. 환율 변동 효과 포함.">
 <meta name="twitter:image" content="https://sohotip.co.kr/og-image.png">
 <meta name="naver-site-verification" content="d7369feb5de3df4cce2e9016b84ad045c4ed70a4">
 <link rel="canonical" href="https://sohotip.co.kr/us-stock-calc.html">
@@ -32,14 +32,14 @@
 <link rel="icon" type="image/png" sizes="32x32" href="https://sohotip.co.kr/favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
 <link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
-<title>미국주식 계산기 — 실시간 환율 원화 환산·수익률 자동계산 (2026) | 소호팁</title>
+<title>미국주식 계산기 — USD/KRW 환율 원화 환산·수익률 자동계산 (2026) | 소호팁</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "미국주식 계산기",
-    "description": "달러 기준 매수가·수량과 실시간 USD/KRW 환율로 원화 환산 금액과 수익률을 계산하고, 환율 변동까지 반영한 원화 수익률을 보여주는 무료 미국주식 계산기.",
+    "description": "달러 기준 매수가·수량과 USD/KRW 환율로 원화 환산 금액과 수익률을 계산하고, 환율 변동까지 반영한 원화 수익률을 보여주는 무료 미국주식 계산기.",
     "url": "https://sohotip.co.kr/us-stock-calc.html",
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Web",
@@ -64,16 +64,16 @@
     "mainEntity": [
       {"@type":"Question","name":"미국주식 수익률은 달러 기준인가요, 원화 기준인가요?","acceptedAnswer":{"@type":"Answer","text":"둘 다 봐야 합니다. 주가만 따지는 달러 수익률과, 환전까지 따지는 원화 수익률은 다를 수 있어요. 살 때보다 환율이 오르면 달러로는 그대로여도 원화로는 이득이 늘고, 환율이 내리면 반대입니다. 이 계산기는 매수 시점 환율과 현재 환율을 함께 넣어 환율 변동까지 반영한 원화 수익률을 보여줍니다."}},
       {"@type":"Question","name":"환율이 오르면 무조건 이득인가요?","acceptedAnswer":{"@type":"Answer","text":"이미 보유 중인 미국주식이라면, 원/달러 환율이 오르면 같은 달러 가치가 더 많은 원화로 환산돼 원화 평가금액과 수익률이 올라갑니다. 반대로 새로 살 때는 환율이 높으면 더 많은 원화가 들어 불리해요. 그래서 매수 시점 환율과 현재 환율을 같이 보는 게 중요합니다."}},
-      {"@type":"Question","name":"실시간 환율은 어디서 가져오나요?","acceptedAnswer":{"@type":"Answer","text":"ExchangeRate-API의 실시간 USD/KRW 시세를 불러와 자동으로 채웁니다. 다만 이 값은 시장 기준 환율이라, 실제 증권사 환전에 적용되는 고시환율·매매기준율과는 약간 다르고 환전 수수료(스프레드)도 별도예요. 정확한 환전 금액은 거래 증권사에서 확인하세요. 환율 칸은 직접 수정할 수도 있습니다."}},
+      {"@type":"Question","name":"USD/KRW 환율은 어디서 가져오나요?","acceptedAnswer":{"@type":"Answer","text":"ExchangeRate-API의 USD/KRW 환율을 불러와 자동으로 채웁니다. 다만 무료 플랜은 하루 1회 갱신이라 장중 실시간 시세와는 차이가 날 수 있고, 화면에 '○○ 기준'으로 가져온 시점을 표기합니다. 또 이 값은 시장 기준 환율이라 실제 증권사 고시환율·매매기준율과는 약간 다르고 환전 수수료(스프레드)도 별도예요. 정확한 환전 금액은 거래 증권사에서 확인하세요. 환율 칸은 직접 수정할 수도 있습니다."}},
       {"@type":"Question","name":"미국주식도 세금을 내나요?","acceptedAnswer":{"@type":"Answer","text":"해외주식 양도차익은 연간 250만 원 기본공제 후 초과분에 양도소득세(지방소득세 포함 22%)가 매겨지고, 다음 해 5월에 신고·납부합니다. 배당금은 보통 현지에서 원천징수(미국 약 15%)됩니다. 세율·공제 기준은 바뀔 수 있으니 신고 전 국세청·증권사로 꼭 확인하세요. 이 계산기는 세금을 뺀 단순 환산입니다."}},
       {"@type":"Question","name":"증권사 평가금액이랑 왜 달라요?","acceptedAnswer":{"@type":"Answer","text":"적용한 환율이 다르기 때문입니다. 증권사는 자체 고시환율과 환전 수수료, 매매 수수료·세금까지 반영하지만, 이 계산기는 시장 환율로 단순 계산합니다. 큰 흐름을 잡는 용도로 쓰고, 정확한 평가금액·실현손익은 증권사 거래내역에서 확인하세요."}}
     ]
   }
   </script>
-<link rel="stylesheet" href="sohotip.css?v=20260630t">
+<link rel="stylesheet" href="sohotip.css?v=20260701e">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630t">
-<link rel="stylesheet" href="assets/calc.css?v=20260630t">
+  <link rel="stylesheet" href="assets/theme.css?v=20260701e">
+<link rel="stylesheet" href="assets/calc.css?v=20260701e">
 <style>
 :root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--text-light:#9CA3AF;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--border-light:#F3F4F6;--sans:'Noto Sans KR',sans-serif;--up:#F04452;--down:#3D5AFE;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -108,7 +108,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
 .btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background 0.2s;margin-top:8px;}
 .btn-calc:hover{background:var(--primary-mid);}
 .divider-line{height:1px;background:var(--border);margin:8px 0 18px;}
-/* 실시간 환율 상태줄 */
+/* USD/KRW 환율 상태줄 */
 .fx-status{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:8px;font-size:11.5px;color:var(--text-muted);line-height:1.5;}
 .fx-status.err{color:#C2410C;}
 .fx-live{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--text);}
@@ -217,7 +217,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
 <div class="page-wrap">
   <span class="tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg> 주식 이야기</span>
   <h1 class="page-title">미국주식 계산기</h1>
-  <p class="page-desc">달러 기준 매수가·수량을 넣으면 실시간 USD/KRW 환율로 원화 환산 금액이 바로 나옵니다. 매수 시점 환율과 현재 환율을 함께 넣으면, 주가뿐 아니라 환율 변동까지 반영한 진짜 원화 수익률을 볼 수 있어요.</p>
+  <p class="page-desc">달러 기준 매수가·수량을 넣으면 USD/KRW 환율로 원화 환산 금액이 바로 나옵니다. 매수 시점 환율과 현재 환율을 함께 넣으면, 주가뿐 아니라 환율 변동까지 반영한 진짜 원화 수익률을 볼 수 있어요.</p>
 
   <!-- ① 계산기 -->
   <div class="calc-card" id="calc">
@@ -240,7 +240,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
 
     <div class="divider-line"></div>
 
-    <div class="group-label"><span class="gl-tag fx">환율</span> USD → KRW <span class="group-note">· 현재 환율은 실시간 자동, 직접 수정 가능</span></div>
+    <div class="group-label"><span class="gl-tag fx">환율</span> USD → KRW <span class="group-note">· 환율은 하루 1회 갱신(자동), 직접 수정 가능</span></div>
     <div class="field-group">
       <div class="field">
         <label>매수 시점 환율 (원/$) <span style="color:var(--text-muted);font-weight:400;">· 선택</span></label>
@@ -274,7 +274,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
       </div>
     </div>
     <div class="notice-box">
-      <span class="nb-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.4.8 1 .9 1.6l.1.7h6l.1-.7c.1-.6.4-1.2.9-1.6A7 7 0 0 0 12 2z"/></svg></span><strong>참고하세요.</strong> 실시간 환율은 시장 기준값이라 증권사 고시환율·환전 수수료와 차이가 있어요. 매매 수수료·세금도 빠진 단순 환산이라, 실제 실현 수익은 더 줄 수 있습니다. 달러 기준 수익률만 따로 보려면 <a href="stock-return-calc.html">수익률 계산기</a>도 함께 써보세요.
+      <span class="nb-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.4.8 1 .9 1.6l.1.7h6l.1-.7c.1-.6.4-1.2.9-1.6A7 7 0 0 0 12 2z"/></svg></span><strong>참고하세요.</strong> USD/KRW 환율은 시장 기준값이라 증권사 고시환율·환전 수수료와 차이가 있어요. 매매 수수료·세금도 빠진 단순 환산이라, 실제 실현 수익은 더 줄 수 있습니다. 달러 기준 수익률만 따로 보려면 <a href="stock-return-calc.html">수익률 계산기</a>도 함께 써보세요.
     </div>
   </div>
 
@@ -283,7 +283,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
     <h2>미국주식은 '주가'와 '환율'을 같이 봐야 해요</h2>
     <p>미국주식은 달러로 사고팔기 때문에, 내 손익은 <strong>주가 변화</strong>뿐 아니라 <strong>원/달러 환율 변화</strong>에도 영향을 받아요. 달러로는 그대로여도 환율이 오르면 원화로는 이득이 늘고, 환율이 내리면 줄어듭니다.</p>
     <div class="formula-box">원화 금액 = 달러 금액 × 환율(원/$)<span class="fx-sub">원화 수익률 = (원화 평가금액 − 원화 매수금액) ÷ 원화 매수금액 × 100</span></div>
-    <p>그래서 매수할 때 환율과 지금 환율을 함께 넣으면, <strong>주가로 번 부분(달러 수익률)</strong>과 <strong>환율로 번(또는 잃은) 부분</strong>을 나눠서 볼 수 있어요. 위 계산기의 현재 환율은 실시간 시세로 자동으로 채워집니다.</p>
+    <p>그래서 매수할 때 환율과 지금 환율을 함께 넣으면, <strong>주가로 번 부분(달러 수익률)</strong>과 <strong>환율로 번(또는 잃은) 부분</strong>을 나눠서 볼 수 있어요. 위 계산기의 현재 환율은 하루 1회 갱신되는 시장 환율로 자동으로 채워집니다(가져온 시점을 '○○ 기준'으로 표시).</p>
 
     <!-- ③ 실제 사례 -->
     <h2>환율이 오르면? 내리면?</h2>
@@ -332,14 +332,14 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
       </tbody>
     </table>
     <div class="tip-inline"><strong>이 계산기는 환전 수수료·세금을 뺀 단순 환산이에요.</strong> 큰 흐름을 잡는 용도로 쓰고, 실제 환전 금액·실현 손익·세금은 거래 증권사와 국세청 기준으로 꼭 확인하세요.</div>
-    <div class="prepare"><strong>입력 전 확인.</strong> ① 현재 환율은 실시간 자동(시장 기준) — 증권사 적용 환율과 다를 수 있음 · ② 매수 시점 환율을 넣어야 환율 효과가 보임 · ③ 양도세·배당세는 2026년 기준이며 변동 가능, 신고 전 확인.</div>
+    <div class="prepare"><strong>입력 전 확인.</strong> ① 현재 환율은 하루 1회 갱신 자동(시장 기준) — 증권사 적용 환율과 다를 수 있음 · ② 매수 시점 환율을 넣어야 환율 효과가 보임 · ③ 양도세·배당세는 2026년 기준이며 변동 가능, 신고 전 확인.</div>
 
     <!-- ⑦ FAQ -->
     <h2 id="faq">자주 묻는 질문</h2>
     <div class="faq-section">
       <div class="faq-item"><div class="faq-q">미국주식 수익률은 달러 기준인가요, 원화 기준인가요?</div><div class="faq-a">둘 다 봐야 해요. 주가만 따지는 달러 수익률과 환전까지 따지는 원화 수익률은 다를 수 있어요. 살 때보다 환율이 오르면 달러로는 그대로여도 원화로는 이득이 늘고, 내리면 반대예요. 이 계산기는 매수·현재 환율을 함께 넣어 환율까지 반영한 원화 수익률을 보여줍니다.</div></div>
       <div class="faq-item"><div class="faq-q">환율이 오르면 무조건 이득인가요?</div><div class="faq-a">이미 보유 중이라면 환율이 오를 때 원화 평가금액·수익률이 올라갑니다. 하지만 새로 살 때는 환율이 높으면 더 많은 원화가 들어 불리해요. 그래서 매수 시점 환율과 현재 환율을 같이 보는 게 중요합니다.</div></div>
-      <div class="faq-item"><div class="faq-q">실시간 환율은 어디서 가져오나요?</div><div class="faq-a">ExchangeRate-API의 실시간 USD/KRW 시세를 불러와 자동으로 채웁니다. 다만 시장 기준 환율이라 증권사 고시환율·매매기준율과는 약간 다르고 환전 수수료도 별도예요. 정확한 환전 금액은 거래 증권사에서 확인하시고, 환율 칸은 직접 수정해도 됩니다.</div></div>
+      <div class="faq-item"><div class="faq-q">USD/KRW 환율은 어디서 가져오나요?</div><div class="faq-a">ExchangeRate-API의 USD/KRW 환율을 불러와 자동으로 채웁니다. 무료 플랜은 하루 1회 갱신이라 장중 시세와 차이가 날 수 있고, 시장 기준 환율이라 증권사 고시환율·매매기준율과도 약간 다르고 환전 수수료도 별도예요. 정확한 환전 금액은 거래 증권사에서 확인하시고, 환율 칸은 직접 수정해도 됩니다.</div></div>
       <div class="faq-item"><div class="faq-q">미국주식도 세금을 내나요?</div><div class="faq-a">해외주식 양도차익은 연 250만 원 기본공제 후 22%(지방소득세 포함)가 매겨지고 이듬해 5월에 신고·납부해요. 배당은 보통 현지에서 약 15% 원천징수됩니다. 세율·공제는 바뀔 수 있으니 신고 전 국세청·증권사로 확인하세요.</div></div>
       <div class="faq-item"><div class="faq-q">증권사 평가금액이랑 왜 달라요?</div><div class="faq-a">적용 환율이 다르기 때문이에요. 증권사는 자체 고시환율과 환전 수수료, 매매 수수료·세금까지 반영하지만 이 계산기는 시장 환율로 단순 계산합니다. 큰 흐름 잡는 용도로 쓰고 정확한 숫자는 증권사 거래내역에서 확인하세요.</div></div>
     </div>
@@ -354,7 +354,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
       <a class="rel-calc-card" href="averaging-up-calc.html"><span class="rcc-icon" style="color:#FF6B35"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span><span><span class="rcc-title">불타기 계산기</span><span class="rcc-desc">상승 추가매수 · 평단↑</span></span></a>
       <a class="rel-calc-card" href="stock-return-calc.html"><span class="rcc-icon" style="color:#00C471"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span><span><span class="rcc-title">수익률 계산기</span><span class="rcc-desc">수수료·세금 포함 실수익</span></span></a>
       <a class="rel-calc-card" href="target-price-calc.html"><span class="rcc-icon" style="color:#F04452"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><span><span class="rcc-title">목표가 계산기</span><span class="rcc-desc">목표 매도가·손절가</span></span></a>
-      <a class="rel-calc-card" href="us-stock-calc.html"><span class="rcc-icon" style="color:#6B7280"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span><span class="rcc-title">미국주식 계산기</span><span class="rcc-desc">지금 보는 계산기 · 실시간 환율</span></span></a>
+      <a class="rel-calc-card" href="us-stock-calc.html"><span class="rcc-icon" style="color:#6B7280"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span><span class="rcc-title">미국주식 계산기</span><span class="rcc-desc">지금 보는 계산기 · USD/KRW 환율</span></span></a>
     </div>
   </div>
 
@@ -369,63 +369,66 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <!-- ⑩ 직접 계산 CTA -->
   <div class="cta-box">
     <h3>지금 내 미국주식, 직접 넣어보세요</h3>
-    <p>달러 매수가·수량만 넣으면 실시간 환율로 원화 환산이 5초 만에 나옵니다.</p>
+    <p>달러 매수가·수량만 넣으면 USD/KRW 환율로 원화 환산이 5초 만에 나옵니다.</p>
     <a href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>미국주식 바로 계산하기</a>
   </div>
 </div>
 
 <button id="back-to-top" aria-label="맨 위로">↑</button>
-<script src="assets/layout.js?v=20260630t"></script>
-<script src="sohotip.js?v=20260630t"></script>
-<script src="assets/consult.js?v=20260630t"></script>
-<script src="assets/config.js?v=20260630t"></script>
+<script src="assets/layout.js?v=20260701e"></script>
+<script src="sohotip.js?v=20260701e"></script>
+<script src="assets/consult.js?v=20260701e"></script>
+<script src="assets/config.js?v=20260701e"></script>
 <script>
-/* 미국주식 계산기 — 달러 매수 → 원화 환산·수익률 + 실시간 USD/KRW 환율 */
+/* 미국주식 계산기 — 달러 매수 → 원화 환산·수익률 + USD/KRW 환율 */
 function numOf(v){ var n = parseFloat(String(v == null ? '' : v).replace(/[^0-9.]/g, '')); return isNaN(n) ? 0 : n; }
 function won(n){ return Math.round(n).toLocaleString('ko-KR') + '원'; }
 function fmt(n, dec){ return Number(n).toLocaleString('ko-KR', { minimumFractionDigits: dec, maximumFractionDigits: dec }); }
 function pctTxt(n){ return (n > 0 ? '+' : '') + (Math.round(n * 100) / 100).toLocaleString('ko-KR') + '%'; }
 function clsOf(n){ return n > 0 ? 'up' : (n < 0 ? 'down' : ''); }
 
-/* ── 실시간 환율 (ExchangeRate-API, config.js 키 재사용 · 캐시 1시간) ── */
-var FX_CACHE = 'sohotip_fx_usdkrw', FX_TTL = 60 * 60 * 1000;
+/* ── USD/KRW 환율 (ExchangeRate-API, config.js 키 재사용) ──
+   ※ 무료 플랜은 하루 1회 갱신(실시간 아님). API가 준 값·기준시각을 그대로 표기. 고정 환율 하드코딩 없음. */
+var FX_CACHE = 'sohotip_fx_usdkrw', FX_TTL = 60 * 60 * 1000, FX_MAX_STALE = 3 * 24 * 60 * 60 * 1000;
 function fxCfg(){ return window.SOHO_CONFIG || {}; }
 function fxGet(){ try { return JSON.parse(localStorage.getItem(FX_CACHE) || 'null'); } catch (e) { return null; } }
-function fxSetCache(rate, upd){ try { localStorage.setItem(FX_CACHE, JSON.stringify({ ts: Date.now(), updated: upd || null, rate: rate })); } catch (e) {} }
+function fxSetCache(rate, upd, next){ try { localStorage.setItem(FX_CACHE, JSON.stringify({ ts: Date.now(), updated: upd || null, next: next || null, rate: rate })); } catch (e) {} }
 function fxWhen(unix, fallbackTs){
   var d;
   try { d = unix ? new Date(unix * 1000) : new Date(fallbackTs); } catch (e) { return ''; }
   function p(n){ return ('0' + n).slice(-2); }
   return d.getFullYear() + '.' + p(d.getMonth() + 1) + '.' + p(d.getDate()) + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
 }
+function fxNext(unix){ if (!unix) return ''; try { var d = new Date(unix * 1000); function p(n){ return ('0' + n).slice(-2); } return p(d.getMonth() + 1) + '.' + p(d.getDate()) + ' ' + p(d.getHours()) + ':' + p(d.getMinutes()); } catch (e) { return ''; } }
 var REFRESH_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>';
 function fxEl(){ return document.getElementById('fx-status'); }
-function fxStatusLoading(){ fxEl().className = 'fx-status'; fxEl().innerHTML = '<span class="fx-live"><span class="led"></span>실시간 환율 불러오는 중…</span>'; }
-function fxStatusOk(rate, whenStr, stale){
-  fxEl().className = 'fx-status';
-  fxEl().innerHTML = '<span class="fx-live"><span class="led"></span>' + (stale ? '최신 연결 실패 · 마지막 ' : '') + '1 USD = ' + fmt(rate, 2) + '원</span>' +
-    '<span>· 기준 ' + whenStr + ' · ExchangeRate-API</span>' +
-    '<button type="button" class="fx-refresh" onclick="fxLoad(true)">' + REFRESH_SVG + '새로고침</button>';
+function fxStatusLoading(){ fxEl().className = 'fx-status'; fxEl().innerHTML = '<span class="fx-live"><span class="led"></span>환율 불러오는 중…</span>'; }
+function fxStatusOk(rate, whenStr, stale, nextStr, tooOld){
+  fxEl().className = 'fx-status' + (stale ? ' err' : '');
+  var head = '<span class="fx-live"><span class="led"></span>' + (stale ? '최신 연결 실패 · 마지막 기준값 ' : '') + '1 USD = ' + fmt(rate, 2) + '원</span>';
+  var meta = '<span>· ' + whenStr + ' 기준 · 하루 1회 갱신(ExchangeRate-API)' + (nextStr ? ' · 다음 갱신 ' + nextStr : '') + '</span>';
+  var warn = tooOld ? '<span> · 기준값이 오래됐어요. 새로고침하거나 환율을 직접 입력하세요.</span>' : '';
+  fxEl().innerHTML = head + meta + warn + '<button type="button" class="fx-refresh" onclick="fxLoad(true)">' + REFRESH_SVG + '새로고침</button>';
 }
 function fxStatusError(){
   fxEl().className = 'fx-status err';
   fxEl().innerHTML = '<span>환율을 불러오지 못했어요. 잠시 후 새로고침하거나 환율을 직접 입력해 주세요.</span>' +
     '<button type="button" class="fx-refresh" onclick="fxLoad(true)">' + REFRESH_SVG + '새로고침</button>';
 }
-function fxApply(rate, whenStr, stale){
+function fxApply(rate, whenStr, stale, nextStr, tooOld){
   var input = document.getElementById('cur-fx');
   if (input) input.value = (Math.round(rate * 100) / 100);
-  fxStatusOk(rate, whenStr, stale);
+  fxStatusOk(rate, whenStr, stale, nextStr, tooOld);
 }
 function fxLoad(force){
   var cache = fxGet();
   var fresh = cache && cache.rate && (Date.now() - cache.ts < FX_TTL);
-  /* 1) 캐시가 신선하면 호출 없이 즉시 사용 (과도한 호출 방지) */
-  if (fresh && !force) { fxApply(cache.rate, fxWhen(cache.updated, cache.ts), false); return; }
+  /* 1) 캐시가 1시간 내면 호출 없이 즉시 사용 (과도한 호출 방지 · API는 어차피 하루 1회 갱신) */
+  if (fresh && !force) { fxApply(cache.rate, fxWhen(cache.updated, cache.ts), false, fxNext(cache.next), false); return; }
 
   fxStatusLoading();
   var key = (fxCfg().EXCHANGE_API_KEY || '').trim();
-  /* 키 있으면 운영자 엔드포인트, 없으면 무키 무료 엔드포인트(open.er-api.com) — 둘 다 실시간 */
+  /* 키 있으면 운영자 엔드포인트, 없으면 무키 무료 엔드포인트(open.er-api.com). 둘 다 하루 1회 갱신 */
   var url = key
     ? 'https://v6.exchangerate-api.com/v6/' + encodeURIComponent(key) + '/latest/USD'
     : 'https://open.er-api.com/v6/latest/USD';
@@ -435,13 +438,16 @@ function fxLoad(force){
       if (!j || j.result !== 'success') throw new Error('api');
       var rates = j.conversion_rates || j.rates;        /* 키=conversion_rates / 무키=rates */
       if (!rates || !rates.KRW) throw new Error('rates');
-      fxSetCache(rates.KRW, j.time_last_update_unix || null);
-      fxApply(rates.KRW, fxWhen(j.time_last_update_unix, Date.now()), false);
+      var upd = j.time_last_update_unix || null, nxt = j.time_next_update_unix || null;
+      fxSetCache(rates.KRW, upd, nxt);
+      fxApply(rates.KRW, fxWhen(upd, Date.now()), false, fxNext(nxt), false);
     })
     .catch(function () {
-      /* 실패 → 캐시 폴백, 캐시도 없으면 안내(과거값 하드코딩 금지) */
-      if (cache && cache.rate) fxApply(cache.rate, fxWhen(cache.updated, cache.ts), true);
-      else fxStatusError();
+      /* 실패 → 캐시 폴백(마지막 성공값). 캐시가 3일 넘게 오래되면 경고. 캐시도 없으면 안내(과거값 하드코딩 금지) */
+      if (cache && cache.rate) {
+        var tooOld = (Date.now() - cache.ts) > FX_MAX_STALE;
+        fxApply(cache.rate, fxWhen(cache.updated, cache.ts), true, fxNext(cache.next), tooOld);
+      } else fxStatusError();
     });
 }
 
@@ -503,7 +509,7 @@ function calculate(){
   document.getElementById('result-section').scrollIntoView({behavior:'smooth', block:'start'});
 }
 
-/* 페이지 로드 시 실시간 환율 자동 채움 */
+/* 페이지 로드 시 USD/KRW 환율 자동 채움 */
 fxLoad(false);
 </script>
 <footer>
@@ -513,6 +519,6 @@ fxLoad(false);
   <a href="consultation.html">무료 진단</a>
   <p style="margin-top:12px;">© 2026 소호팁. 본 계산기는 참고용이며 투자 판단의 책임은 본인에게 있습니다.</p>
 </footer>
-<script src="network.js?v=20260630t"></script>
+<script src="network.js?v=20260701e"></script>
 </body>
 </html>
