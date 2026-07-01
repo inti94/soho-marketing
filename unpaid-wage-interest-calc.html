@@ -397,44 +397,65 @@ function setMode(m){
   document.getElementById('mode-resigned').classList.toggle('active',m==='resigned');
   document.getElementById('field-current').style.display=(m==='current')?'':'none';
   document.getElementById('field-resigned').style.display=(m==='resigned')?'':'none';
+  liveCalc();   /* 방식 전환 시 즉시 재계산 */
 }
 function won(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
-function amt(){return (typeof getRawNumber==='function')?(getRawNumber('amount')||0):(parseFloat((document.getElementById('amount').value||'').replace(/[^0-9.]/g,''))||0);}
+function amt(){var el=document.getElementById('amount');if(!el)return 0;return (typeof getRawNumber==='function')?(getRawNumber('amount')||0):(parseFloat(String(el.value).replace(/[^0-9.]/g,''))||0);}
 function dDays(a,b){return Math.floor((a.getTime()-b.getTime())/86400000);} /* a-b, 일수 */
-function calcInterest(){
+/* 입력값으로 결과 산출 (부족하면 null) */
+function computeInterest(){
   var amount=amt();
-  if(amount<=0){alert('체불 임금액을 입력하세요.');return;}
+  if(amount<=0)return null;
   var base=document.getElementById('base-date').value;
-  if(!base){alert('기준일을 입력하세요.');return;}
+  if(!base)return null;
   var baseD=new Date(base+'T00:00:00');
   var startD, delayDays;
   if(_imode==='current'){
     var pay=document.getElementById('pay-date').value;
-    if(!pay){alert('원래 지급일을 입력하세요.');return;}
+    if(!pay)return null;
     var payD=new Date(pay+'T00:00:00');
     startD=payD;                              /* 기산: 지급일 다음 날부터 */
     delayDays=dDays(baseD,payD);              /* 지급일 다음날~기준일 = (기준-지급) */
   }else{
     var res=document.getElementById('resign-date').value;
-    if(!res){alert('퇴직일을 입력하세요.');return;}
+    if(!res)return null;
     var resD=new Date(res+'T00:00:00');
     startD=new Date(resD.getTime()+14*86400000);   /* 퇴직일 +14일 = 기산 기준일 */
     delayDays=dDays(baseD,resD)-14;                /* 14일 지난 다음날부터 */
   }
   if(delayDays<0)delayDays=0;
-  var interest=amount*0.20*delayDays/365;    /* 연 20% 일할 */
-  document.getElementById('res-amount').textContent=won(amount);
-  document.getElementById('res-startdate').textContent=startD.toLocaleDateString('ko-KR');
-  document.getElementById('res-days').textContent=delayDays.toLocaleString('ko-KR')+'일';
-  document.getElementById('res-interest').textContent=won(interest);
-  document.getElementById('res-total').textContent=won(interest);
-  document.getElementById('res-sum').textContent=won(amount+interest);
-  document.getElementById('res-sub').textContent=won(amount)+' × 20% × '+delayDays+'일 ÷ 365';
+  return {amount:amount,startD:startD,delayDays:delayDays,interest:amount*0.20*delayDays/365};
+}
+function render(r){
+  document.getElementById('res-amount').textContent=won(r.amount);
+  document.getElementById('res-startdate').textContent=r.startD.toLocaleDateString('ko-KR');
+  document.getElementById('res-days').textContent=r.delayDays.toLocaleString('ko-KR')+'일';
+  document.getElementById('res-interest').textContent=won(r.interest);
+  document.getElementById('res-total').textContent=won(r.interest);
+  document.getElementById('res-sum').textContent=won(r.amount+r.interest);
+  document.getElementById('res-sub').textContent=won(r.amount)+' × 20% × '+r.delayDays+'일 ÷ 365';
   document.getElementById('result-section').style.display='block';
+}
+/* 입력 즉시 자동 재계산 */
+function liveCalc(){var r=computeInterest();if(r)render(r);}
+/* 버튼 클릭: 값 부족하면 안내, 있으면 결과로 스크롤 */
+function calcInterest(){
+  var r=computeInterest();
+  if(!r){
+    if(amt()<=0){alert('체불 임금액을 입력하세요.');return;}
+    if(!document.getElementById('base-date').value){alert('기준일을 입력하세요.');return;}
+    alert(_imode==='current'?'원래 지급일을 입력하세요.':'퇴직일을 입력하세요.');
+    return;
+  }
+  render(r);
   document.getElementById('result-section').scrollIntoView({behavior:'smooth',block:'start'});
 }
-/* 기준일 기본값 = 오늘 */
-(function(){var b=document.getElementById('base-date');if(b&&!b.value)b.value=todayStr();})();
+/* 기준일 기본값 = 오늘 + 입력 실시간 리스너 */
+(function(){
+  var b=document.getElementById('base-date');if(b&&!b.value)b.value=todayStr();
+  var ids=['amount','pay-date','resign-date','base-date'];
+  for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el)el.addEventListener('input',liveCalc);}
+})();
 </script>
 <footer>
   <a href="index.html">홈</a><a href="category.html">카테고리</a><a href="tools.html">계산기 모음</a><a href="category.html?cat=legal">사장님 법률</a>
