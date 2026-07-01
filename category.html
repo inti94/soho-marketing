@@ -295,7 +295,8 @@ a{color:inherit;text-decoration:none;}
   <a class="tb" href="search.html"><span class="tb-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>검색</a>
 </nav>
 
-<script src="sohotip.js?v=20260701e"></script>
+<script src="guide-data.js?v=20260701j"></script>
+<script src="sohotip.js?v=20260701j"></script>
 <script src="assets/soho-share.js?v=20260701e"></script>
 <script src="assets/soho-cards.js?v=20260701e"></script>
 <script>
@@ -344,7 +345,8 @@ a{color:inherit;text-decoration:none;}
   function setBm(o){try{localStorage.setItem(BM_KEY,JSON.stringify(o));}catch(e){}}
   function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
   function hash(s){var h=0;for(var i=0;i<s.length;i++){h=(h<<5)-h+s.charCodeAt(i);h|=0;}return Math.abs(h);}
-  function viewsOf(u){return (hash(u)%90+10)*100 + (hash(u+'v')%900);}
+  /* 조회수: 운영자가 GA 값을 넣는 guide-data.js(window.SOHO_GUIDE_VIEWS) 기준. 없으면 0(→ 최신순 보조 정렬) */
+  function viewsOf(u){var v=(window.SOHO_GUIDE_VIEWS||{})[u];return (typeof v==='number'&&isFinite(v))?v:0;}
   function likesOf(u){return hash(u+'l')%480+20;}
   function fmt(n){return n.toLocaleString('ko-KR');}
   function splitTag(t){t=(t||'').trim();var i=t.indexOf(' ');return i>0?{e:t.slice(0,i),x:t.slice(i+1)}:{e:'📄',x:t};}
@@ -409,12 +411,11 @@ a{color:inherit;text-decoration:none;}
   function sortItems(arr){
     /* 최신순: 작성일 내림차순 */
     if(sortMode==='new')return arr.slice().sort(function(a,b){return (b.date||'').localeCompare(a.date||'');});
-    /* 조회순: 순수 조회수 내림차순 (계산기 우선 없음) */
-    if(sortMode==='view')return arr.slice().sort(function(a,b){return viewsOf(b.u)-viewsOf(a.u);});
-    /* 인기순(기본): 계산기 우선 + 조회·좋아요 가중 점수 */
+    /* 인기순(기본)·조회순: guide-data.js 조회수 내림차순 → 동률/무값은 최신순 보조 정렬 (수동 고정 없음) */
     return arr.slice().sort(function(a,b){
-      if(a.isCalc!==b.isCalc)return a.isCalc?-1:1;
-      return (viewsOf(b.u)+likesOf(b.u)*3)-(viewsOf(a.u)+likesOf(a.u)*3);
+      var dv=viewsOf(b.u)-viewsOf(a.u);
+      if(dv!==0)return dv;
+      return (b.date||'').localeCompare(a.date||'');
     });
   }
 

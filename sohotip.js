@@ -1506,6 +1506,9 @@ function setupCalcShare(slug) {
     }).join('');
   }
 
+  /* 조회수 집계(Firebase, best-effort) — 인기글 표시 순위는 각 페이지가
+     guide-data.js(운영자가 GA 조회수를 넣는 window.SOHO_GUIDE_VIEWS) 기준으로 직접 렌더한다.
+     (정적 사이트라 실시간 자동 랭킹 대신 운영자 편집값으로 정렬) */
   var BASE = 'https://www.gstatic.com/firebasejs/10.12.2/';
   loadScript(BASE + 'firebase-app-compat.js')
     .then(function(){ return loadScript(BASE + 'firebase-firestore-compat.js'); })
@@ -1515,40 +1518,12 @@ function setupCalcShare(slug) {
       var ref = db.collection('stats').doc('pageviews');
       var file = pageFile();
 
-      // 1) 글 페이지: 오늘자 조회수 +1
+      // 글 페이지: 오늘자 조회수 +1 (운영자 GA 교차확인용 누적, 표시 랭킹엔 미사용)
       var skip = ['index.html','category.html','consultation.html','tools.html'];
       if (/\.html$/.test(file) && skip.indexOf(file) === -1) {
         var counts = {}; counts[slugOf(file)] = {}; counts[slugOf(file)][ymd(new Date())] = firebase.firestore.FieldValue.increment(1);
         ref.set({ counts: counts }, { merge: true }).catch(function(){});
       }
-
-      // 2) 홈/카테고리: 최근 30일 합산 인기글 렌더
-      var top5 = document.querySelector('.top5-list');
-      var popList = document.querySelector('.popular-list');
-      if (!top5 && !popList) return;
-
-      Promise.all([ ref.get(), fetch('search-data.json').then(function(r){ return r.json(); }) ])
-        .then(function(arr){
-          var snap = arr[0], data = arr[1], meta = {};
-          data.forEach(function(a){ meta[slugOf(a.url)] = a; });
-          var co = cutoff(), ranked = [];
-          if (snap.exists && snap.data().counts){
-            var c = snap.data().counts;
-            Object.keys(c).forEach(function(slug){
-              var sum = 0, days = c[slug] || {};
-              Object.keys(days).forEach(function(d){ if (d >= co) sum += (days[d] || 0); });
-              if (sum > 0 && meta[slug]) ranked.push({ slug: slug, v: sum });
-            });
-            ranked.sort(function(a,b){ return b.v - a.v; });
-          }
-          function fill(fb, n){
-            var out = ranked.map(function(x){ return x.slug; });
-            for (var i = 0; i < fb.length && out.length < n; i++){ if (out.indexOf(fb[i]) === -1 && meta[fb[i]]) out.push(fb[i]); }
-            return out.slice(0, n);
-          }
-          if (top5) renderTop5(top5, fill(TOP5_FALLBACK, 5), meta);
-          if (popList) renderPop(popList, fill(POP_FALLBACK, 5), meta);
-        }).catch(function(){});
     }).catch(function(){});
 })();
 

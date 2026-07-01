@@ -654,7 +654,8 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
   <a class="tab-item" href="search.html"><span class="tb-ico" aria-hidden="true"><svg class="lucide" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><span class="tb-label">검색</span></a>
 </nav>
 
-<script src="sohotip.js?v=20260701e"></script>
+<script src="guide-data.js?v=20260701j"></script>
+<script src="sohotip.js?v=20260701j"></script>
 <script src="assets/soho-share.js?v=20260701e"></script>
 <script src="assets/soho-cards.js?v=20260701e"></script>
 <script src="assets/news-data.js?v=20260701e"></script>
@@ -717,7 +718,8 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
   function setBm(o){try{localStorage.setItem(BM_KEY,JSON.stringify(o));}catch(e){}}
   function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
   function hash(s){var h=0;for(var i=0;i<s.length;i++){h=(h<<5)-h+s.charCodeAt(i);h|=0;}return Math.abs(h);}
-  function views(u){return (hash(u)%90+10)*100 + (hash(u+'v')%900);}
+  /* 조회수: 운영자가 GA 값을 넣는 guide-data.js(window.SOHO_GUIDE_VIEWS) 기준. 없으면 0 */
+  function views(u){var v=(window.SOHO_GUIDE_VIEWS||{})[u];return (typeof v==='number'&&isFinite(v))?v:0;}
   function likes(u){return hash(u+'l')%480+20;}
   function fmt(n){return n.toLocaleString('ko-KR');}
   var bm=getBm();
@@ -771,7 +773,30 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
     el.innerHTML=items.map(function(it){return card(it,Object.assign({},opt));}).join('');
   }
   renderFeed('feed-calc',CALCS,{calc:true});
+  /* 가이드 목록: guide-data.js 조회수 인기순(동률→최신순). 수동 고정 없음 */
+  GUIDES.sort(function(a,b){var dv=views(b.u)-views(a.u);if(dv!==0)return dv;return (b.dt||'').localeCompare(a.dt||'');});
   renderFeed('feed-guide',GUIDES,{thumb:true});
+
+  /* 인기 가이드 TOP5 — guide-data.js 조회수 상위 5개(SVG 아이콘, 수동 고정 없음) */
+  (function(){
+    var el=document.querySelector('.top5-list'); if(!el)return;
+    var ICON={
+      '창업·세금':'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>',
+      '네이버 플레이스':'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+      '배달앱':'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3.5 11.5L9 9l3-3 4 4h3"/></svg>',
+      '소상공인 지원금':'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>',
+      'SNS·숏폼':'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M10 9l5 3-5 3z"/></svg>'
+    };
+    var fb='<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>';
+    el.innerHTML=GUIDES.slice(0,5).map(function(g,i){
+      var n=i+1, rank=n<=3?' rank'+n:'';
+      return '<a href="'+esc(g.u)+'" class="top5-item"><span class="top5-num'+rank+'">'+n+'</span>'+
+        '<div class="top5-body"><div class="top5-tag">'+esc(g.c)+'</div>'+
+        '<div class="top5-title">'+esc(g.n)+'</div>'+
+        '<div class="top5-meta">'+esc(g.dt)+(g.rt?' · '+esc(g.rt):'')+'</div></div>'+
+        '<div class="top5-icon" aria-hidden="true">'+(ICON[g.c]||fb)+'</div></a>';
+    }).join('');
+  })();
 
   /* ===================================================================
      홈 패널 섹션 렌더 (실시간 인기 / 소식 / 자주 쓰는 계산기 / 최신 가이드)
@@ -856,7 +881,7 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
       '창업·세금':{i:'FileText',c:'#F04452'},'네이버 플레이스':{i:'MapPin',c:'#00C471'},
       '배달앱':{i:'Bike',c:'#FF6B35'},'소상공인 지원금':{i:'Banknote',c:'#FFB800'},'SNS·숏폼':{i:'Camera',c:'#E040FB'}
     };
-    el.innerHTML=GUIDES.slice(0,3).map(function(g){
+    el.innerHTML=GUIDES.slice().sort(function(a,b){return (b.dt||'').localeCompare(a.dt||'');}).slice(0,3).map(function(g){
       var cv=CATV[g.c]||{i:'FileText',c:'#3D5AFE'};
       return SohoCards.article({
         categoryName:g.c, categoryIcon:cv.i, categoryColor:cv.c,
