@@ -68,12 +68,14 @@ function getCatSvg(cat) {
     sns:      '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/>',
     support:  '<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/>',
     startup:  '<path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/>',
+    legal:    '<path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>',
     calc:     '<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="16" y2="18"/>',
     def:      '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>'
   };
   var key = 'def';
   if (cat) {
-    if (cat.indexOf('플레이스') >= 0) key = 'place';
+    if (cat.indexOf('법률') >= 0 || cat.indexOf('법적') >= 0) key = 'legal';
+    else if (cat.indexOf('플레이스') >= 0) key = 'place';
     else if (cat.indexOf('배달') >= 0) key = 'delivery';
     else if (cat.indexOf('SNS') >= 0 || cat.indexOf('숏폼') >= 0) key = 'sns';
     else if (cat.indexOf('지원금') >= 0) key = 'support';
