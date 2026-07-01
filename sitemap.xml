@@ -28,6 +28,13 @@
 
   <!-- 최신 가이드 (SNS·숏폼) -->
   <url>
+    <loc>https://sohotip.co.kr/reels-account-setup.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://sohotip.co.kr/instagram-algorithm-2026.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>weekly</changefreq>
