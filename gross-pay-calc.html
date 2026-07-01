@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="기본급과 직책·연장·야간·휴일수당, 식대 등 비과세 항목을 합산해 총급여를 계산하고 과세·비과세를 구분합니다. 2026년 비과세 한도(식대·자가운전·보육 각 월 20만원) 반영.">
+<meta name="keywords" content="급여 계산기, 총급여 계산, 기본급 수당 합산, 과세 비과세 구분, 식대 비과세 20만원, 급여명세서 계산">
+<meta name="robots" content="index, follow">
+<meta name="author" content="소상공인 마케팅 실전백과">
+<meta name="date" content="2026-07-01">
+<meta property="og:type" content="website">
+<meta property="og:title" content="급여 계산기 (2026) — 기본급·수당 합산 총급여, 과세/비과세 구분 | 소호팁">
+<meta property="og:description" content="기본급과 각종 수당·식대 등 비과세 항목을 합산해 총급여를 계산하고 과세·비과세를 구분합니다.">
+<meta property="og:url" content="https://sohotip.co.kr/gross-pay-calc.html">
+<meta property="og:image" content="https://sohotip.co.kr/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="소상공인 마케팅 실전백과">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="급여 계산기 (2026) — 기본급·수당 합산 총급여, 과세/비과세 구분 | 소호팁">
+<meta name="twitter:description" content="기본급과 각종 수당·식대 등 비과세 항목을 합산해 총급여를 계산하고 과세·비과세를 구분합니다.">
+<meta name="twitter:image" content="https://sohotip.co.kr/og-image.png">
+<meta name="naver-site-verification" content="d7369feb5de3df4cce2e9016b84ad045c4ed70a4">
+<link rel="canonical" href="https://sohotip.co.kr/gross-pay-calc.html">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sohotip.co.kr/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
+<link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
+<title>급여 계산기 — 기본급·수당 합산 총급여, 과세/비과세 구분 (2026) | 소호팁</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "급여 계산기",
+    "description": "기본급과 각종 수당·비과세 항목을 합산해 총급여를 계산하고 과세·비과세를 구분하는 계산기.",
+    "url": "https://sohotip.co.kr/gross-pay-calc.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {"@type": "Offer","price": "0","priceCurrency": "KRW"},
+    "publisher": {"@type": "Organization","name": "소상공인 마케팅 실전백과","url": "https://sohotip.co.kr"},
+    "dateModified": "2026-07-01",
+    "inLanguage": "ko-KR",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"홈","item":"https://sohotip.co.kr/"},
+        {"@type":"ListItem","position":2,"name":"계산기","item":"https://sohotip.co.kr/tools.html"},
+        {"@type":"ListItem","position":3,"name":"급여 계산기","item":"https://sohotip.co.kr/gross-pay-calc.html"}
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "기본급과 수당으로 총급여 계산하는 법",
+    "description": "기본급과 각종 과세 수당, 식대 등 비과세 항목을 입력해 총급여와 과세·비과세를 계산하는 방법.",
+    "totalTime": "PT2M",
+    "step": [
+      {"@type":"HowToStep","position":1,"name":"기본급 입력","text":"월 기본급을 입력합니다.","url":"https://sohotip.co.kr/gross-pay-calc.html#calc"},
+      {"@type":"HowToStep","position":2,"name":"과세 수당 입력","text":"직책·연장·야간·휴일수당, 상여금 등 과세 수당을 입력합니다.","url":"https://sohotip.co.kr/gross-pay-calc.html#calc"},
+      {"@type":"HowToStep","position":3,"name":"비과세 항목 입력","text":"식대·자가운전보조금·보육수당 등 비과세 항목을 입력합니다.","url":"https://sohotip.co.kr/gross-pay-calc.html#calc"},
+      {"@type":"HowToStep","position":4,"name":"계산하기","text":"'총급여 계산하기'를 누르면 총급여와 과세·비과세 구분이 나옵니다.","url":"https://sohotip.co.kr/gross-pay-calc.html#calc"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"총급여는 어떻게 계산하나요?","acceptedAnswer":{"@type":"Answer","text":"기본급에 직책·연장·야간·휴일수당, 상여금 같은 과세 수당과 식대·자가운전보조금·보육수당 같은 비과세 항목을 모두 더하면 총급여가 됩니다. 이 계산기는 각 항목을 합산하고 과세 대상과 비과세를 구분해 보여줍니다."}},
+      {"@type":"Question","name":"식대는 얼마까지 비과세인가요?","acceptedAnswer":{"@type":"Answer","text":"2026년 기준 식대는 월 20만원까지 비과세입니다. 사내급식을 제공받지 않고 현금으로 받는 경우에 한하며, 20만원을 넘는 금액은 과세 대상에 포함됩니다."}},
+      {"@type":"Question","name":"비과세 항목에는 어떤 게 있나요?","acceptedAnswer":{"@type":"Answer","text":"대표적으로 식대 월 20만원, 본인 명의 차량을 업무에 쓰는 자가운전보조금 월 20만원, 6세 이하 자녀에 대한 출산·보육수당 자녀 1인당 월 20만원이 있습니다. 모두 소득세법 제12조에 따른 비과세 근로소득입니다."}},
+      {"@type":"Question","name":"과세와 비과세를 왜 구분하나요?","acceptedAnswer":{"@type":"Answer","text":"4대보험과 소득세는 비과세를 제외한 과세 대상 보수를 기준으로 부과됩니다. 그래서 비과세 항목이 많을수록 공제가 줄어 실수령액이 늘어납니다. 총급여가 같아도 구성에 따라 실수령이 달라집니다."}},
+      {"@type":"Question","name":"5인 미만 사업장도 연장수당을 줘야 하나요?","acceptedAnswer":{"@type":"Answer","text":"상시 5인 미만 사업장은 연장·야간·휴일 가산수당 지급 의무가 없습니다. 상시 5인 이상만 통상시급의 50% 가산이 의무입니다. 다만 5인 미만이라도 약정으로 수당을 지급하면 그 금액은 총급여에 포함됩니다."}}
+    ]
+  }
+  </script>
+<link rel="stylesheet" href="sohotip.css?v=20260701e">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/theme.css?v=20260701e">
+<link rel="stylesheet" href="assets/calc.css?v=20260701e">
+<style>
+:root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-size:13px;color:var(--text-muted);text-decoration:none;}
+.nav-links a:hover{color:var(--primary);}
+.nav-cta{background:var(--primary);color:#fff;font-size:13px;padding:7px 16px;border-radius:6px;text-decoration:none;}
+@media(max-width:640px){.nav-links{display:none;}}
+.page-wrap{max-width:680px;margin:0 auto;padding:40px 2rem 80px;}
+.page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:24px;line-height:1.6;}
+.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;}
+.card-title{font-size:14px;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:20px;}
+.card-subtitle{font-size:12px;font-weight:700;color:var(--primary);margin:20px 0 12px;padding-top:16px;border-top:1px dashed var(--border);}
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--text);}
+.field-hint{font-size:11px;color:var(--text-muted);margin-bottom:6px;}
+.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;}
+.field input:focus,.field select:focus{border-color:var(--primary);}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.toggle-group{display:flex;gap:8px;flex-wrap:wrap;}
+.toggle-btn{padding:7px 16px;border:1.5px solid var(--border);border-radius:20px;background:var(--bg-card);font-size:13px;cursor:pointer;transition:all 0.15s;color:var(--text-muted);}
+.toggle-btn.active{border-color:var(--primary);background:var(--primary-light);color:var(--primary);font-weight:600;}
+.result-card{background:var(--primary);border-radius:16px;padding:28px;color:#fff;margin-bottom:20px;}
+.result-title{font-size:13px;opacity:0.8;margin-bottom:6px;}
+.result-total{font-size:36px;font-weight:700;margin-bottom:4px;}
+.result-sub{font-size:13px;opacity:0.7;}
+.result-breakdown{background:var(--bg-card);border-radius:16px;padding:24px;border:1px solid var(--border);}
+.breakdown-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);}
+.breakdown-row:last-child{border-bottom:none;font-weight:700;font-size:15px;}
+.breakdown-label{font-size:13px;color:var(--text-muted);}
+.breakdown-value{font-size:14px;font-weight:500;color:var(--text);}
+.breakdown-value.highlight{color:var(--primary);font-weight:700;}
+.notice-box{background:var(--primary-light);border-radius:12px;padding:16px 20px;margin-top:20px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
+.notice-box strong{color:var(--primary);}
+.notice-box a{color:var(--primary);font-weight:700;text-decoration:none;}
+.notice-box a:hover{text-decoration:underline;}
+.notice-box .nb-ic{width:15px;height:15px;vertical-align:-2px;stroke:var(--primary);fill:none;}
+.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background 0.2s;margin-top:8px;}
+.btn-calc:hover{background:var(--primary-mid);}
+.tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+.tag svg{width:13px;height:13px;vertical-align:-2px;margin-right:2px;}
+footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
+footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
+
+  /* ── 함께 사용한 계산기 ── */
+  .related-calcs-section{margin:32px 0 0;}
+  .related-calcs-section h2,.related-articles-section h2{font-size:16px;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .rel-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+  .rel-calc-card{display:flex;align-items:center;gap:10px;padding:14px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s;}
+  .rel-calc-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 14px rgba(61,90,254,.12);}
+  .rcc-icon{flex-shrink:0;width:24px;height:24px;display:flex;align-items:center;justify-content:center;}
+  .rcc-icon svg{width:22px;height:22px;stroke:var(--primary);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+  .rcc-body{flex:1;min-width:0;}
+  .rcc-title{font-size:12px;font-weight:700;line-height:1.3;margin-bottom:3px;}
+  .rcc-desc{font-size:11px;color:var(--text-muted);line-height:1.4;}
+  /* ── 함께 많이 본 글 ── */
+  .related-articles-section{margin:24px 0 0;}
+  .rel-article-list{display:flex;flex-direction:column;gap:0;}
+  .rel-article-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);transition:color .2s;}
+  .rel-article-item:last-child{border-bottom:none;}
+  .rel-article-item:hover .rai-title{color:var(--primary);}
+  .rai-num{font-size:18px;font-weight:900;color:var(--border);width:24px;flex-shrink:0;text-align:center;}
+  .rai-body{flex:1;min-width:0;}
+  .rai-cat{font-size:10px;color:var(--primary);font-weight:700;margin-bottom:2px;}
+  .rai-title{font-size:13px;font-weight:600;line-height:1.4;}
+  .rai-arrow{color:var(--primary);font-size:14px;flex-shrink:0;}
+  @media(max-width:640px){
+    .rel-calc-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:380px){
+    .rel-calc-grid{grid-template-columns:1fr;}
+  }
+
+  /* ── 공통 12블록: 설명 콘텐츠 ── */
+  .article-content{margin-top:36px;}
+  .article-content h2{font-size:20px;font-weight:800;color:var(--text);margin:34px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-.01em;}
+  .article-content h3{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}
+  .article-content p{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:16px;word-break:keep-all;overflow-wrap:anywhere;}
+  .article-content strong{font-weight:700;color:var(--primary);}
+  .article-content ul{margin:14px 0 18px 18px;}
+  .article-content li{font-size:15px;line-height:1.8;margin-bottom:6px;}
+  .formula-box{background:#191F28;color:#fff;border-radius:14px;padding:20px 22px;margin:8px 0 18px;font-size:15px;font-weight:600;line-height:1.7;text-align:center;}
+  .formula-box .fx-sub{display:block;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);margin-top:8px;}
+  .tip-inline{background:var(--primary-light);border-radius:12px;padding:14px 18px;margin:8px 0 18px;font-size:14px;color:var(--primary-mid);line-height:1.7;}
+  .tip-inline strong{color:var(--primary);}
+  .step-box{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin:8px 0 18px;}
+  .step-box .sb-badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--primary);padding:3px 11px;border-radius:20px;margin-bottom:10px;}
+  .step-box .sb-body{font-size:14.5px;line-height:1.8;color:var(--text);}
+  .howto-list{counter-reset:howto;list-style:none;margin:8px 0 18px;padding:0;}
+  .howto-list li{position:relative;padding:12px 16px 12px 46px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;margin-bottom:8px;font-size:14px;line-height:1.7;color:var(--text);}
+  .howto-list li::before{counter-increment:howto;content:counter(howto);position:absolute;left:14px;top:12px;width:22px;height:22px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .article-table{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:13.5px;}
+  .article-table th,.article-table td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.6;word-break:keep-all;}
+  .article-table th{background:#F4F6FB;font-weight:700;color:var(--text);}
+  .article-table td:first-child{font-weight:600;}
+  .faq-section{margin-top:8px;}
+  .faq-item{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;background:var(--bg-card);}
+  .faq-q{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:7px;}
+  .faq-q::before{content:"Q. ";color:var(--primary);}
+  .faq-a{font-size:13.5px;color:var(--text-muted);line-height:1.75;word-break:keep-all;overflow-wrap:anywhere;}
+  /* 직접계산 CTA */
+  .cta-box{margin-top:34px;background:linear-gradient(135deg,#3D5AFE,#536DFE);border-radius:18px;padding:26px 22px;text-align:center;color:#fff;}
+  .cta-box h3{font-size:18px;font-weight:800;margin-bottom:6px;}
+  .cta-box p{font-size:13.5px;opacity:.85;margin-bottom:16px;line-height:1.6;}
+  .cta-box a{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--primary);font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;text-decoration:none;transition:transform .12s;}
+  .cta-box a svg{width:17px;height:17px;stroke:var(--primary);fill:none;stroke-width:2;}
+  .cta-box a:active{transform:scale(.97);}
+  /* 하단 자료 출처 */
+  .calc-sources{margin:30px 0 0;padding:18px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;}
+  .calc-sources h2{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;}
+  .calc-sources ul{list-style:none;margin:0;padding:0;}
+  .calc-sources li{font-size:12.5px;color:var(--text-muted);line-height:1.75;padding-left:14px;position:relative;}
+  .calc-sources li::before{content:"·";position:absolute;left:2px;color:var(--primary);font-weight:700;}
+  .calc-sources a{color:var(--primary);text-decoration:none;}
+  .calc-sources a:hover{text-decoration:underline;}
+  .calc-sources .cs-updated{font-size:11px;color:var(--text-muted);margin-top:10px;}
+  /* AI 요약 배지 SVG (이모지 대체) */
+  .ai-summary .ais-badge svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .ai-summary .ais-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+</style></head>
+<body>
+<div id="progress-bar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">소상공인 마케팅 실전백과</a>
+  <ul class="nav-links">
+    <li><a href="category.html">카테고리</a></li>
+    <li><a href="tools.html">계산기</a></li>
+  </ul>
+  <a href="consultation.html" class="nav-cta">무료 진단</a>
+</nav>
+<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
+<div class="mobile-search-bar">
+  <div class="nav-search">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="search-input-mobile" class="nav-search-input" placeholder="궁금한 주제를 검색하세요..." autocomplete="off">
+    <div id="search-dropdown-mobile"></div>
+  </div>
+</div>
+
+<div class="page-wrap">
+  <!-- ① 제목 -->
+  <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="12" y2="18"/></svg> 급여 계산기</span>
+  <h1 class="page-title">급여 계산기</h1>
+  <p class="page-desc">기본급에 직책·연장·야간·휴일수당, 식대 같은 비과세 항목까지 더해 총급여를 계산하고 과세·비과세를 구분해드립니다. 2026년 비과세 한도(식대·자가운전·보육 각 월 20만원) 기준입니다.</p>
+
+  <!-- ② 30초 요약 -->
+  <section class="ai-summary" aria-label="30초 핵심 요약">
+    <span class="ais-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.9L18.7 9.7 13.8 11.5 12 16.4 10.2 11.5 5.3 9.7 10.2 7.9z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg> 30초 요약 · 사장님용</span>
+    <p>직원 급여를 "기본급 얼마" 하나로 뭉뚱그리면 나중에 꼭 탈이 나요. 급여명세서는 기본급에 직책수당, 연장·야간·휴일수당, 식대까지 항목별로 쪼개서 적어야 깔끔합니다. 그걸 다 더한 게 <strong>총급여</strong>고요.</p>
+    <p>여기서 사장님이 챙길 포인트 하나. 식대 같은 <strong>비과세 항목</strong>은 4대보험이랑 소득세를 안 매겨요. 그래서 같은 총급여라도 식대(월 20만원)를 잡아주면 직원 실수령이 늘고 사장 4대보험 부담도 조금 줄어듭니다.</p>
+    <p>아래에 기본급이랑 수당을 항목별로 넣으면 총급여가 딱 나오고, 과세 얼마·비과세 얼마까지 갈라서 보여줘요. 이 숫자 그대로 급여명세서에 옮기면 됩니다.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/></svg> 우리 직원 총급여 계산</a>
+      <a class="ais-btn ghost" href="net-salary-calc.html">실수령액까지 보기</a>
+    </div>
+    <div class="ais-links">이어서 보면 좋아요 · <a href="soho-minimum-wage.html">2026 최저임금 정리</a> · <a href="net-salary-calc.html">4대보험·세금 공제</a></div>
+  </section>
+
+  <!-- ③ 계산기 -->
+  <div class="calc-card" id="calc">
+    <div class="card-title">급여 항목 입력</div>
+    <div class="field">
+      <label>기본급 (원)</label>
+      <div class="field-hint">2026년 최저월급: 2,156,880원(주 40시간)</div>
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="base" value="2,000,000" min="0" step="10000">
+    </div>
+
+    <div class="card-subtitle">과세 수당</div>
+    <div class="field-row">
+      <div class="field"><label>직책수당</label><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="position" value="0" min="0" step="10000"></div>
+      <div class="field"><label>연장근로수당</label><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="ot" value="0" min="0" step="10000"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>야간근로수당</label><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="night" value="0" min="0" step="10000"></div>
+      <div class="field"><label>휴일근로수당</label><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="holiday" value="0" min="0" step="10000"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>상여금</label><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="bonus" value="0" min="0" step="10000"></div>
+      <div class="field"><label>기타 과세수당</label><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="other" value="0" min="0" step="10000"></div>
+    </div>
+
+    <div class="card-subtitle">비과세 항목 (한도 초과분은 과세)</div>
+    <div class="field">
+      <label>식대 (월 20만원까지 비과세)</label>
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="meal" value="200,000" min="0" step="10000">
+    </div>
+    <div class="field-row">
+      <div class="field"><label>자가운전보조금 (20만)</label><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="car" value="0" min="0" step="10000"></div>
+      <div class="field"><label>보육수당 (자녀당 20만)</label><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="child" value="0" min="0" step="10000"></div>
+    </div>
+
+    <div class="field" style="margin-top:16px;">
+      <label>사업장 규모</label>
+      <div class="field-hint">연장·야간·휴일수당은 상시 5인 이상만 법정 의무입니다.</div>
+      <div class="toggle-group">
+        <button class="toggle-btn active" id="btn-size-y" onclick="setSize(true)">상시 5인 이상</button>
+        <button class="toggle-btn" id="btn-size-n" onclick="setSize(false)">상시 5인 미만</button>
+      </div>
+    </div>
+    <button class="btn-calc" onclick="calculate()">총급여 계산하기</button>
+  </div>
+
+  <!-- ④ 계산 결과 -->
+  <div id="result-section" style="display:none;">
+    <div class="result-card">
+      <div class="result-title">총급여 (세전)</div>
+      <div class="result-total" id="res-total">0원</div>
+      <div class="result-sub" id="res-sub">과세 대상 + 비과세</div>
+    </div>
+    <div class="result-breakdown">
+      <div class="breakdown-row">
+        <span class="breakdown-label">기본급</span>
+        <span class="breakdown-value" id="res-base">0원</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">과세 수당 합계 (직책·연장·야간·휴일·상여·기타)</span>
+        <span class="breakdown-value" id="res-allowance">0원</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">과세 대상 합계</span>
+        <span class="breakdown-value highlight" id="res-taxable">0원</span>
+      </div>
+      <div class="breakdown-row" style="margin-top:8px;padding-top:16px;border-top:2px solid var(--border);">
+        <span class="breakdown-label">식대 (비과세)</span>
+        <span class="breakdown-value" id="res-meal">0원</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">자가운전보조금 (비과세)</span>
+        <span class="breakdown-value" id="res-car">0원</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">보육수당 (비과세)</span>
+        <span class="breakdown-value" id="res-child">0원</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">비과세 합계</span>
+        <span class="breakdown-value highlight" id="res-taxfree">0원</span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">총급여</span>
+        <span class="breakdown-value highlight" id="res-grand">0원</span>
+      </div>
+    </div>
+    <div class="notice-box" id="notice-box">
+      <strong><svg class="nb-ic" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg> 참고</strong><br>
+      4대보험·소득세는 <strong>과세 대상 합계</strong>를 기준으로 부과됩니다. 실제 실수령액은 이 총급여에서 공제를 뺀 금액이니, <a href="net-salary-calc.html">실수령액 계산기</a>로 이어서 확인하세요.
+    </div>
+  </div>
+
+  <div class="article-content">
+    <!-- ⑤ 계산 공식 설명 -->
+    <h2>총급여는 결국 항목의 합</h2>
+    <p>총급여 계산은 복잡할 게 없어요. 기본급에 각종 수당을 <strong>전부 더하면</strong> 끝입니다. 중요한 건 더한 다음, 그중에서 <strong>과세와 비과세를 갈라내는 것</strong>이에요.</p>
+    <div class="formula-box">총급여 = 기본급 + 과세 수당 + 비과세 항목<span class="fx-sub">과세 대상 = 총급여 − 비과세(식대·자가운전·보육 각 월 20만원 한도)</span></div>
+    <p>왜 갈라야 하냐면, 4대보험과 소득세는 <strong>과세 대상 보수</strong>에만 매겨지기 때문이에요. 그래서 식대 20만원을 비과세로 잡아주면 그만큼 공제 기준이 줄어 직원 실수령이 늘어납니다.</p>
+    <h3>이렇게 계산하세요</h3>
+    <ol class="howto-list">
+      <li>월 기본급을 입력합니다.</li>
+      <li>직책·연장·야간·휴일수당, 상여금 등 과세 수당을 입력합니다.</li>
+      <li>식대·자가운전보조금·보육수당 등 비과세 항목을 입력합니다.</li>
+      <li>'총급여 계산하기'를 누르면 총급여와 과세·비과세 구분이 나옵니다.</li>
+    </ol>
+
+    <!-- ⑥ 주요 계산항목 표 -->
+    <h2>2026년 비과세 항목과 한도</h2>
+    <table class="article-table">
+      <thead><tr><th>항목</th><th>월 비과세 한도</th><th>조건</th></tr></thead>
+      <tbody>
+        <tr><td>식대(식사대)</td><td>20만원</td><td>사내급식을 제공받지 않고 현금 지급 시</td></tr>
+        <tr><td>자가운전보조금</td><td>20만원</td><td>본인 명의 차량을 업무에 사용</td></tr>
+        <tr><td>출산·보육수당</td><td>20만원(자녀당)</td><td>6세 이하 자녀 (2024년 10만→20만 상향)</td></tr>
+        <tr><td>기타 과세수당</td><td>—</td><td>직책·연장·야간·휴일·상여 등은 전액 과세</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--text-muted);margin-top:-8px;">※ 한도를 넘는 금액(예: 식대 25만원 중 5만원)은 과세 대상에 포함됩니다. 이 계산기는 초과분을 자동으로 과세로 잡습니다.</p>
+    <h3>주의점 — 5인 미만이냐 5인 이상이냐</h3>
+    <p>연장·야간·휴일수당은 아무 데나 다 줘야 하는 게 아니에요. <strong>상시 5인 이상</strong> 사업장만 법정 의무입니다.</p>
+    <table class="article-table">
+      <thead><tr><th>구분</th><th>상시 5인 이상</th><th>상시 5인 미만</th></tr></thead>
+      <tbody>
+        <tr><td>기본급·주휴수당</td><td>의무</td><td>의무 (동일)</td></tr>
+        <tr><td>연장·야간·휴일 가산수당</td><td>통상시급 50% 가산 의무</td><td>의무 아님 (약정 시 지급)</td></tr>
+        <tr><td>총급여 반영</td><td>가산수당 포함</td><td>지급하면 포함, 안 하면 미포함</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-inline"><strong>한 가지만:</strong> 5인 미만이라 연장수당을 안 줘도 법 위반은 아니지만, 최저임금과 주휴수당은 규모와 상관없이 반드시 지켜야 합니다.</div>
+
+    <!-- ⑦ 실무 예시 -->
+    <h2>실무 예시 — 숫자로 따라가 볼게요</h2>
+    <div class="step-box">
+      <span class="sb-badge">기본급 + 직책 + 연장 + 식대</span>
+      <div class="sb-body">
+        기본급 2,000,000 + 직책수당 100,000 + 연장수당 150,000 + 식대 200,000(비과세)<br>
+        총급여 = 2,000,000 + 100,000 + 150,000 + 200,000 = <strong>2,450,000원</strong><br>
+        비과세(식대) 200,000 → 과세 대상 = <strong>2,250,000원</strong>
+      </div>
+    </div>
+    <div class="step-box">
+      <span class="sb-badge">식대 한도 초과 사례</span>
+      <div class="sb-body">
+        기본급 2,200,000 + 식대 250,000<br>
+        식대 비과세는 20만원까지 → 5만원은 과세로 넘어감<br>
+        총급여 2,450,000 · 비과세 200,000 · 과세 대상 = <strong>2,250,000원</strong>
+      </div>
+    </div>
+    <p>이렇게 비과세 항목을 한도 안에서 잘 잡으면 과세 대상이 줄어 직원 실수령이 올라가요. 우리 직원 급여 구성을 위 계산기에 넣어보고, 실수령까지는 <a href="net-salary-calc.html">실수령액 계산기</a>로 이어서 확인하세요.</p>
+
+    <!-- ⑧ FAQ -->
+    <h2 id="faq">자주 묻는 질문</h2>
+    <div class="faq-section">
+      <div class="faq-item"><div class="faq-q">총급여는 어떻게 계산하나요?</div><div class="faq-a">기본급에 직책·연장·야간·휴일수당, 상여금 같은 과세 수당과 식대·자가운전보조금·보육수당 같은 비과세 항목을 모두 더하면 총급여입니다. 이 계산기가 합산하고 과세·비과세를 갈라 보여줍니다.</div></div>
+      <div class="faq-item"><div class="faq-q">식대는 얼마까지 비과세인가요?</div><div class="faq-a">2026년 기준 식대는 월 20만원까지 비과세입니다. 사내급식을 안 받고 현금으로 받을 때만 해당하며, 20만원 초과분은 과세 대상에 포함됩니다.</div></div>
+      <div class="faq-item"><div class="faq-q">비과세 항목에는 어떤 게 있나요?</div><div class="faq-a">식대 월 20만원, 본인 명의 차량을 업무에 쓰는 자가운전보조금 월 20만원, 6세 이하 자녀 출산·보육수당 자녀당 월 20만원이 대표적입니다. 모두 소득세법 제12조 비과세 근로소득입니다.</div></div>
+      <div class="faq-item"><div class="faq-q">과세와 비과세를 왜 구분하나요?</div><div class="faq-a">4대보험·소득세는 비과세를 뺀 과세 대상 보수 기준으로 부과돼요. 그래서 비과세가 많을수록 공제가 줄어 실수령이 늘어납니다. 총급여가 같아도 구성에 따라 실수령이 달라져요.</div></div>
+      <div class="faq-item"><div class="faq-q">5인 미만도 연장수당을 줘야 하나요?</div><div class="faq-a">상시 5인 미만은 연장·야간·휴일 가산수당 의무가 없어요. 5인 이상만 통상시급 50% 가산이 의무입니다. 다만 5인 미만도 약정으로 지급하면 총급여에 포함됩니다.</div></div>
+    </div>
+  </div>
+
+  <!-- ⑨ 관련 계산기 (5) -->
+  <div class="related-calcs-section">
+    <h2>함께 보면 좋은 계산기</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="net-salary-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1z"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></span><div class="rcc-body"><div class="rcc-title">실수령액 계산기</div><div class="rcc-desc">4대보험·세금 공제</div></div></a>
+      <a class="rel-calc-card" href="monthly-salary-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="12" cy="12" r="3"/><line x1="6" y1="12" x2="6.01" y2="12"/><line x1="18" y1="12" x2="18.01" y2="12"/></svg></span><div class="rcc-body"><div class="rcc-title">월급 계산기</div><div class="rcc-desc">시급 → 세전 월급</div></div></a>
+      <a class="rel-calc-card" href="hourly-wage-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg></span><div class="rcc-body"><div class="rcc-title">시급 계산기</div><div class="rcc-desc">월급 → 통상시급</div></div></a>
+      <a class="rel-calc-card" href="insurance-4d-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div class="rcc-body"><div class="rcc-title">4대보험 계산기</div><div class="rcc-desc">직원·사업주 부담</div></div></a>
+      <a class="rel-calc-card" href="weekly-pay-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><div class="rcc-body"><div class="rcc-title">주휴수당 계산기</div><div class="rcc-desc">주 15시간 주휴수당</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑩ 관련 가이드 (5) -->
+  <div class="related-articles-section">
+    <h2>함께 보면 좋은 가이드</h2>
+    <a class="rel-article-item" href="soho-minimum-wage.html"><span class="rai-num">1</span><div class="rai-body"><div class="rai-cat">인사·노무</div><div class="rai-title">소상공인 최저임금 2026 — 직원 고용 시 꼭 알아야 할 것</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="employee-insurance-cost.html"><span class="rai-num">2</span><div class="rai-body"><div class="rai-cat">인사·노무</div><div class="rai-title">직원 1명 고용하면 실제 인건비 얼마나 드나</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="parttime-hiring-solution.html"><span class="rai-num">3</span><div class="rai-body"><div class="rai-cat">인사·노무</div><div class="rai-title">알바 구인난 해결법 — 사장님이 진짜 써야 할 채널</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="durunuri-application.html"><span class="rai-num">4</span><div class="rai-body"><div class="rai-cat">인사·노무</div><div class="rai-title">두루누리 신청법 — 4대보험 사업주 부담 80% 지원</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="store-staff-management-2026.html"><span class="rai-num">5</span><div class="rai-body"><div class="rai-cat">인사·노무</div><div class="rai-title">직원 관리 5가지 실전 노하우 (2026 최신 노동법)</div></div><span class="rai-arrow">→</span></a>
+  </div>
+
+  <!-- ⑪ 관련 서식 (3) -->
+  <div class="related-calcs-section">
+    <h2>함께 쓰면 좋은 서식</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="forms.html#staff"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">급여대장</div><div class="rcc-desc">기본급·수당 항목 관리</div></div></a>
+      <a class="rel-calc-card" href="forms.html#staff"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">급여명세서</div><div class="rcc-desc">항목별 지급·공제 명시</div></div></a>
+      <a class="rel-calc-card" href="forms.html#staff"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">표준근로계약서</div><div class="rcc-desc">임금 구성 항목 명시</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑫ 한 줄 요약 + CTA -->
+  <section class="ai-summary" aria-label="한 줄 요약">
+    <span class="ais-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> 한 줄 요약</span>
+    <p>총급여는 <strong>기본급 + 모든 수당</strong>이에요. 계산은 그냥 더하기지만, 핵심은 <strong>식대 같은 비과세(각 월 20만원)</strong>를 갈라내는 겁니다. 비과세는 4대보험·소득세를 안 매기니까요.</p>
+    <p>같은 총급여라도 비과세를 잘 잡으면 직원 실수령이 올라가고 사장 4대보험 부담도 살짝 줄어요. 연장·야간·휴일수당은 5인 이상만 의무라는 점도 기억해두세요.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/></svg> 지금 총급여 계산하기</a>
+      <a class="ais-btn ghost" href="net-salary-calc.html">실수령액 확인하기</a>
+    </div>
+  </section>
+
+  <!-- 직접 계산 CTA -->
+  <div class="cta-box">
+    <h3>우리 직원 총급여, 지금 정리해보세요</h3>
+    <p>기본급·수당·식대만 넣으면 총급여와 과세·비과세가 바로 나옵니다.</p>
+    <a href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/></svg> 총급여 바로 계산하기</a>
+  </div>
+
+  <!-- 하단 자료 출처 -->
+  <div class="calc-sources">
+    <h2>자료 출처</h2>
+    <ul>
+      <li>국세청 — 비과세 근로소득(소득세법 제12조): 식대·자가운전·출산보육수당 (<a href="https://www.nts.go.kr" target="_blank" rel="nofollow noopener">nts.go.kr</a>)</li>
+      <li>기획재정부 — 2024년 출산·보육수당 비과세 월 20만원 상향 (<a href="https://www.moef.go.kr" target="_blank" rel="nofollow noopener">moef.go.kr</a>)</li>
+      <li>고용노동부·근로기준법 제56조 — 연장·야간·휴일 가산수당 (<a href="https://www.moel.go.kr" target="_blank" rel="nofollow noopener">moel.go.kr</a>)</li>
+    </ul>
+    <p class="cs-updated">기준일: 2026년 6월 · 비과세 한도는 2026년 기준입니다. 본 계산기는 총급여 구성 참고용이며, 정확한 세무 처리는 세무사·공식기관과 확인하세요.</p>
+  </div>
+</div>
+
+<button id="back-to-top" aria-label="맨 위로">↑</button>
+<script src="assets/layout.js?v=20260701e" defer></script>
+<script src="sohotip.js?v=20260701e" defer></script>
+<script src="assets/consult.js?v=20260701e" defer></script>
+<script>
+var TAXFREE_LIMIT = 200000; // 비과세 한도(식대·자가운전·보육) 각 월 20만원 (2026)
+var is5plus = true;
+
+function setSize(v) {
+  is5plus = v;
+  document.getElementById('btn-size-y').classList.toggle('active', v);
+  document.getElementById('btn-size-n').classList.toggle('active', !v);
+}
+function fmt(n) {
+  if (!isFinite(n) || isNaN(n)) n = 0;
+  return Math.round(n).toLocaleString('ko-KR') + '원';
+}
+function num(id) {
+  var v = getRawNumber(id);
+  if (!isFinite(v) || v < 0) v = 0;
+  return v;
+}
+
+function calculate() {
+  var base = num('base');
+  var position = num('position'), ot = num('ot'), night = num('night'), holiday = num('holiday'), bonus = num('bonus'), other = num('other');
+  var meal = num('meal'), car = num('car'), child = num('child');
+
+  // 비과세는 한도까지만, 초과분은 과세로 이동
+  var mealTF = Math.min(meal, TAXFREE_LIMIT);
+  var carTF  = Math.min(car, TAXFREE_LIMIT);
+  var childTF = Math.min(child, TAXFREE_LIMIT);
+  var taxFree = mealTF + carTF + childTF;
+  var overTF = (meal - mealTF) + (car - carTF) + (child - childTF); // 한도 초과분(과세)
+
+  var allowance = position + ot + night + holiday + bonus + other; // 과세 수당
+  var total = base + allowance + meal + car + child; // 총급여(전 항목 합)
+  var taxable = total - taxFree; // 과세 대상 = 총급여 - 비과세
+
+  document.getElementById('res-base').textContent = fmt(base);
+  document.getElementById('res-allowance').textContent = fmt(allowance + overTF);
+  document.getElementById('res-taxable').textContent = fmt(taxable);
+  document.getElementById('res-meal').textContent = fmt(mealTF);
+  document.getElementById('res-car').textContent = fmt(carTF);
+  document.getElementById('res-child').textContent = fmt(childTF);
+  document.getElementById('res-taxfree').textContent = fmt(taxFree);
+  document.getElementById('res-grand').textContent = fmt(total);
+  document.getElementById('res-total').textContent = fmt(total);
+  document.getElementById('res-sub').textContent = '과세 ' + fmt(taxable) + ' + 비과세 ' + fmt(taxFree);
+
+  // 안내 문구: 사업장 규모 + 비과세 한도 초과
+  var msgs = [];
+  if (overTF > 0) msgs.push('비과세 한도(각 20만원)를 넘는 ' + fmt(overTF) + '은 과세 대상에 포함했습니다.');
+  if (!is5plus && (ot + night + holiday) > 0) msgs.push('상시 5인 미만은 연장·야간·휴일 가산수당이 법정 의무는 아닙니다(지급 시 총급여 포함).');
+  msgs.push('4대보험·소득세는 과세 대상 합계 기준입니다. 실수령액은 <a href="net-salary-calc.html">실수령액 계산기</a>로 확인하세요.');
+  document.getElementById('notice-box').innerHTML =
+    '<strong><svg class="nb-ic" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg> 참고</strong><br>' + msgs.join('<br>');
+
+  document.getElementById('result-section').style.display = 'block';
+  document.getElementById('result-section').scrollIntoView({behavior:'smooth', block:'start'});
+}
+</script>
+<footer>
+  <a href="index.html">홈</a>
+  <a href="category.html">카테고리</a>
+  <a href="tools.html">계산기 모음</a>
+  <a href="consultation.html">무료 진단</a>
+  <p style="margin-top:12px;">© 2026 소상공인 마케팅 실전백과. 본 계산기는 참고용이며 정확한 금액은 전문가와 확인하세요.</p>
+</footer>
+<script src="network.js?v=20260701e" defer></script>
+</body>
+</html>
