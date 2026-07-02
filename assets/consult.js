@@ -105,6 +105,8 @@
   function render() {
     if (document.getElementById('soho-consult')) return;
     if (slugOf() === 'consultation' || slugOf() === 'contact') return; // 상담/문의 페이지엔 미노출
+    // 본문에 이미 맥락 상담 CTA(ais-cta)가 있으면 중복 노출 방지 → 페이지당 상담 CTA 1개로 제한
+    if (document.querySelector('.ais-cta a[href="consultation.html"]')) return;
     var host = contentHost();
     if (!host) return;
     var topic = detectTopic();
