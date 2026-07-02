@@ -175,8 +175,6 @@
     var mainBlock = thumb ? ('<div class="sc-art-main">' + body + thumb + '</div>') : body;
     var foot =
       '<div class="sc-art-foot">' +
-        '<span class="sc-stat">' + icon('Eye', 13) + formatCount(a.views) + '</span>' +
-        '<span class="sc-stat">' + icon('Heart', 13) + formatCount(a.likes) + '</span>' +
         '<span class="sc-date">' + esc(a.date || '') + '</span>' +
       '</div>';
     return '<article class="sc-card sc-card--art" data-href="' + esc(url) + '">' +
@@ -198,7 +196,7 @@
         categoryIcon(iconName, color, 44) +
         '<span class="sc-rank-body"><span class="sc-rank-name">' + esc(c.name || '') + '</span>' +
         '<span class="sc-rank-desc">' + esc(c.desc || '') + '</span></span>' +
-        '<span class="sc-rank-right"><span class="sc-rank-views">' + formatCount(c.views) + '회</span>' +
+        '<span class="sc-rank-right">' +
         '<span class="sc-rank-arrow">' + icon('ArrowRight', 16) + '</span></span></a>';
     }
 
@@ -222,7 +220,7 @@
         '<p class="sc-desc">' + esc(c.desc || '') + '</p></a>';
     var foot =
       '<div class="sc-calc-foot">' +
-        '<span class="sc-use">' + formatCount(c.views) + '회 사용</span>' +
+        '<span class="sc-use">무료</span>' +
         '<a class="sc-go" href="' + esc(href) + '">계산하기' + icon('ArrowRight', 12) + '</a></div>';
     return '<article class="sc-card sc-card--calc" style="--sc-accent:' + esc(color) + '">' +
       top + mid + tags(c.tags, 'calc') + foot + '</article>';

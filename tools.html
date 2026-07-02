@@ -178,7 +178,7 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
   <p style="margin-top:12px;">© 2026 소호팁 (sohotip.co.kr)</p>
 </footer>
 <script src="assets/soho-share.js?v=20260630h"></script>
-<script src="assets/soho-cards.js?v=20260630h"></script>
+<script src="assets/soho-cards.js?v=20260702b"></script>
 <script src="assets/calcs.js?v=20260702b"></script>
 <script>
 /* tools.html — 계산기 카드(SohoCards) + 검색·필터칩·카운트 */
@@ -211,7 +211,7 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
 
   function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
   function cardHTML(c){
-    var views=fmtCount(c.views)+'회';
+    var views='무료';
     return '<a class="cg-card" href="'+esc(c.href)+'" title="'+esc(c.name)+'">'+
       '<span class="cg-ico" aria-hidden="true" style="background:'+c.color+'1A;color:'+c.color+'">'+iconSvg(c.icon)+'</span>'+
       '<span class="cg-name">'+esc(c.name)+'</span>'+
