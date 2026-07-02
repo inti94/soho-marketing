@@ -81,7 +81,7 @@
     var h = document.createElement('header');
     h.className = 'soho-header';
     h.innerHTML =
-      '<a class="soho-logo" href="index.html"><span class="l1">소호</span><span class="l2">팁</span></a>' +
+      '<a class="soho-logo" href="index.html" aria-label="소호팁 홈"><img src="assets/logo.svg?v=20260702d" alt="소호팁" width="99" height="30" style="display:block"></a>' +
       '<div class="soho-hd-right">' +
         '<div class="soho-search">' +
           '<button class="soho-iconbtn" type="button" aria-label="검색" data-search="1">' + svg('search') + '</button>' +
