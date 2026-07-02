@@ -27,11 +27,11 @@
 <meta name="twitter:image" content="https://sohotip.co.kr/og-image.png">
 <link rel="canonical" href="https://sohotip.co.kr/">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-<link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="https://sohotip.co.kr/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="https://sohotip.co.kr/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
-<link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
+<link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg?v=20260702">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sohotip.co.kr/favicon-32x32.png?v=20260702">
+<link rel="icon" type="image/png" sizes="16x16" href="https://sohotip.co.kr/favicon-16x16.png?v=20260702">
+<link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png?v=20260702">
+<link rel="manifest" href="https://sohotip.co.kr/site.webmanifest?v=20260702">
 <title>소상공인을 위한 무료 계산기·실전 가이드 | 소호팁</title>
 
 <!-- Google AdSense -->
@@ -100,7 +100,8 @@ a{color:inherit;text-decoration:none;}
   border-bottom:1px solid var(--g200);
   display:flex; align-items:center; gap:14px; padding:0 16px;
 }
-.brand{display:inline-flex;align-items:center;gap:6px;font-size:21px;font-weight:900;letter-spacing:-.03em;color:var(--g900);flex-shrink:0;}
+.brand{display:inline-flex;align-items:center;flex-shrink:0;}
+.brand-logo{height:34px;width:auto;display:block;}
 .brand .em{font-size:20px;}
 .brand b{color:var(--primary);font-weight:900;}
 .top-menu{display:none;gap:22px;margin-left:8px;}
@@ -359,6 +360,7 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
   :root{--top:64px;--rail:220px;}
   .top-menu{display:flex;}
   .topbar{padding:0 28px;gap:20px;}
+  .brand-logo{height:42px;}
   .quick-band{padding:14px 28px 8px;}
   /* 데스크톱 레일: 아이콘+라벨 가로 정렬 */
   .rail{padding:14px 10px;gap:5px;height:calc(100vh - var(--top));}
@@ -427,7 +429,7 @@ body{padding-bottom:calc(var(--tabbar) + env(safe-area-inset-bottom));}
 
 <!-- ── 글로벌 헤더 ── -->
 <header class="topbar" role="banner">
-  <a href="index.html" class="brand" title="소호팁 홈">소호<b>팁</b></a>
+  <a href="index.html" class="brand" title="소호팁 홈" aria-label="소호팁 홈"><svg class="brand-logo" viewBox="0 0 108 40" role="img" aria-label="소호팁" xmlns="http://www.w3.org/2000/svg"><title>소호팁</title><text text-anchor="end" x="80.5" y="31" font-family="Pretendard,'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif" font-weight="800" font-size="28" letter-spacing="-0.4"><tspan fill="#2F3136">soho</tspan><tspan fill="#2F80ED">T</tspan></text><rect x="81.8" y="11" width="4.4" height="20" rx="0.7" fill="#2F80ED"/><text text-anchor="start" x="87.8" y="31" font-family="Pretendard,'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif" font-weight="800" font-size="28" letter-spacing="-0.4" fill="#2F80ED">P</text><g stroke="#2F80ED" stroke-width="1.8" stroke-linecap="round"><line x1="84" y1="3.2" x2="84" y2="0.7"/><line x1="79.1" y1="4.5" x2="77.5" y2="2.1"/><line x1="88.9" y1="4.5" x2="90.5" y2="2.1"/></g><circle cx="84" cy="8" r="3.1" fill="#2F80ED"/></svg></a>
   <nav class="top-menu" aria-label="주요 메뉴">
     <a data-tab="calc">계산기</a>
     <a data-tab="guide">가이드</a>

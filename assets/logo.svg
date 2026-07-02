@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 40" role="img" aria-label="소호팁">
+  <title>소호팁</title>
+  <!-- soho(차콜) + T(블루) : I 왼쪽에 붙도록 우측정렬 -->
+  <text text-anchor="end" x="80.5" y="31" font-family="Pretendard,'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif" font-weight="800" font-size="28" letter-spacing="-0.4"><tspan fill="#2F3136">soho</tspan><tspan fill="#2F80ED">T</tspan></text>
+  <!-- I : 도형으로 그려 위치 고정(전구 정렬 보장) -->
+  <rect x="81.8" y="11" width="4.4" height="20" rx="0.7" fill="#2F80ED"/>
+  <!-- P : I 오른쪽에 붙도록 좌측정렬 -->
+  <text text-anchor="start" x="87.8" y="31" font-family="Pretendard,'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif" font-weight="800" font-size="28" letter-spacing="-0.4" fill="#2F80ED">P</text>
+  <!-- I 위 아이디어 전구 + 3개 짧은 빛 -->
+  <g stroke="#2F80ED" stroke-width="1.8" stroke-linecap="round">
+    <line x1="84" y1="3.2" x2="84" y2="0.7"/>
+    <line x1="79.1" y1="4.5" x2="77.5" y2="2.1"/>
+    <line x1="88.9" y1="4.5" x2="90.5" y2="2.1"/>
+  </g>
+  <circle cx="84" cy="8" r="3.1" fill="#2F80ED"/>
+</svg>
