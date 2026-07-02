@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0        # 전체 히스토리 확보 → rebase가 안전하게 동작
 
       - uses: actions/setup-node@v5
         with:
@@ -31,10 +33,63 @@ jobs:
         run: |
           git config user.name "sohotip-bot"
           git config user.email "bot@users.noreply.github.com"
+
+          # 봇이 만든 변경 스테이징
           git add -A
+
+          # 커밋할 변경이 없으면 조용히 건너뜀(에러 아님)
           if git diff --cached --quiet; then
             echo "변경 사항 없음 — 발행 건너뜀"
-          else
-            git commit -m "Add daily article (auto)"
-            git push
+            exit 0
           fi
+
+          git commit -m "Add daily article (auto)" || { echo "커밋 실패"; exit 1; }
+
+          # 원격(main)에 사용자(Claude Code 등)가 그 사이 push한 커밋이 있어도
+          # 충돌 없이 반영되도록: fetch → rebase → push 를 최대 5회 재시도.
+          BRANCH=main
+          for i in 1 2 3 4 5; do
+            echo "::group::push 시도 $i"
+
+            # 원격 최신 받기(일시적 실패면 잠깐 쉬고 재시도)
+            if ! git fetch origin "$BRANCH"; then
+              echo "fetch 실패 — 잠시 후 재시도"
+              echo "::endgroup::"
+              sleep 5
+              continue
+            fi
+
+            if git rebase "origin/$BRANCH"; then
+              # rebase 성공 → 봇 커밋을 원격 최신 위에 얹어 push
+              if git push origin "HEAD:$BRANCH"; then
+                echo "push 성공 (시도 $i)"
+                echo "::endgroup::"
+                exit 0
+              fi
+              echo "push 거부됨(원격이 또 갱신됨) — 재시도"
+            else
+              # rebase 충돌 → 워크플로우 깨뜨리지 않고 안전 처리:
+              # rebase 되돌린 뒤, 충돌 파일은 봇(현재 커밋) 값 우선(-X ours)으로 병합.
+              # (신규 글 파일은 대부분 충돌 없음. search-data/index·sitemap 등 인덱스 파일 충돌 시 봇 값 유지)
+              echo "rebase 충돌 — 봇 변경 우선으로 안전 병합"
+              git rebase --abort || true
+              if git merge -X ours "origin/$BRANCH" -m "Merge origin/$BRANCH (bot auto: 충돌 시 봇 변경 우선)"; then
+                if git push origin "HEAD:$BRANCH"; then
+                  echo "충돌 병합 후 push 성공 (시도 $i)"
+                  echo "::endgroup::"
+                  exit 0
+                fi
+                echo "병합 후 push 거부됨 — 재시도"
+              else
+                echo "병합 실패 — 되돌리고 재시도"
+                git merge --abort || true
+              fi
+            fi
+
+            echo "::endgroup::"
+            sleep $(( (RANDOM % 6) + 4 ))   # 3~9초 백오프 후 재시도
+          done
+
+          # 5회 재시도에도 실패 → 이번 회차만 건너뛰고 워크플로우는 성공 처리(다음 스케줄/수동 실행에서 재시도)
+          echo "::warning::원격이 계속 갱신되어 이번 회차 push 실패 — 발행 스킵(다음에 재시도). 워크플로우는 성공으로 종료."
+          exit 0
