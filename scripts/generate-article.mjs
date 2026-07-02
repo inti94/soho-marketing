@@ -16,6 +16,39 @@ const existingSlugs = searchData.map(a => a.url.replace(/\.html$/, ''));
 const existingTitles = searchData.map(a => a.title);
 const template = fs.readFileSync('naver-place-ranking-2026.html', 'utf8');
 
+// 1-b) 근접중복(슬러그만 다르고 주제가 겹치는 글) 판정용 특징 미리 계산
+//   기존 봇은 '슬러그 완전일치'만 막아서, 배달비-analysis/breakdown/reduction 처럼
+//   슬러그가 다른 near-duplicate가 통과됐다. 아래 유사도로 그 구멍을 막는다.
+//   (계산기는 도구라 제외 — 가이드 글끼리만 비교)
+const _norm = s => (s || '').toLowerCase();
+const _slugToks = slug => new Set(slug.replace(/\.html$/, '').split('-').filter(t => t.length > 1));
+function _kwToks(title, keywords) {
+  const set = new Set();
+  _norm(keywords).split(',').forEach(k => {
+    const kk = k.trim(); if (kk) set.add(kk);
+    kk.split(/\s+/).forEach(w => { if (w.length > 1) set.add(w); });
+  });
+  _norm(title).split(/[\s·—\-,()/]+/).forEach(w => { if (w.length > 1) set.add(w); });
+  return set;
+}
+function _jac(a, b) {
+  if (!a.size || !b.size) return 0;
+  let inter = 0; for (const x of a) if (b.has(x)) inter++;
+  return inter / (a.size + b.size - inter);
+}
+const _isCalc = a => a.rt === '무료' || /-calc\.html$/.test(a.url);
+const existingFeats = searchData.filter(a => !_isCalc(a))
+  .map(a => ({ url: a.url, slug: _slugToks(a.url), kw: _kwToks(a.title, a.keywords) }));
+// 새 글이 기존 어떤 글과 이 점수 이상 겹치면 '중복 주제'로 보고 재생성한다.
+// (스캔 결과: 실제 중복쌍 0.35~0.44 / 정당한 토픽클러스터 0.20~0.26 → 0.30이 안전 경계)
+const DUP_THRESHOLD = 0.30;
+// 애드센스 정책 리스크(허위·과장) 재발 방지용 금지표현
+const BANNED_PHRASES = [
+  /실시간\s*조회/, /실시간\s*업데이트/, /명이\s*(보고|접속|시청)/, /지금\s*\d+\s*명/,
+  /100\s*%\s*(보장|성공|환급|합격)/, /무조건\s*(대박|성공|이득|이익)/, /절대\s*실패하지/,
+  /수익\s*보장/, /확실한\s*수익/,
+];
+
 // 2) 프롬프트
 const system = '너는 한국 소상공인 블로그 sohotip.co.kr의 자동 발행 에디터다. 검색 노출(SEO)이 최우선이며, 양산형 스팸이 아니라 사람에게 진짜 도움 되는 독창적·충실한 글만 쓴다.';
 
@@ -157,6 +190,29 @@ async function attempt() {
   for (const m of fullHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
     try { JSON.parse(m[1]); } catch (e) { throw { msg: 'JSON-LD 파싱 실패(구조화 데이터 불량)' }; }
   }
+
+  // ── 발행 전 검수 게이트 (애드센스 승인률 보호) ──
+  const entryTitle = meta.searchEntry?.title || '';
+  const entryKw = meta.searchEntry?.keywords || '';
+
+  // (1) 근접중복 게이트: 슬러그가 달라도 주제가 겹치면 재생성 (scaled-content 방지)
+  const nslug = _slugToks(slug), nkw = _kwToks(entryTitle, entryKw);
+  let worst = 0, worstUrl = '';
+  for (const f of existingFeats) {
+    const sc = 0.45 * _jac(nslug, f.slug) + 0.55 * _jac(nkw, f.kw);
+    if (sc > worst) { worst = sc; worstUrl = f.url; }
+  }
+  if (worst >= DUP_THRESHOLD)
+    throw { msg: `근접중복(${worst.toFixed(2)}≥${DUP_THRESHOLD}) — ${worstUrl}와 주제 겹침 → 다른 주제로 재생성` };
+
+  // (2) 허위·과장 표현 게이트: 정책 위반 표현이 되살아나면 재생성
+  const plain = fullHtml.replace(/<(script|style)[\s\S]*?<\/\1>/gi, ' ').replace(/<[^>]+>/g, ' ');
+  for (const re of BANNED_PHRASES)
+    if (re.test(plain)) throw { msg: `금지표현 감지(${re}) → 재생성` };
+
+  // (3) 빈약본문 게이트: 눈에 보이는 텍스트가 너무 적으면(잘림·부실) 재생성
+  const visibleLen = plain.replace(/\s+/g, '').length;
+  if (visibleLen < 2000) throw { msg: `본문 빈약(${visibleLen}자<2000) → 재생성` };
 
   return { meta, fullHtml, slug };
 }

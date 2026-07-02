@@ -1,9 +1,11 @@
 name: 매일 글 자동 발행
 
 on:
-  schedule:
-    - cron: '0 18 * * *'   # 매일 18:00 UTC = 한국시간 새벽 3시
-  workflow_dispatch: {}      # 수동 실행(테스트) 버튼
+  # ⏸ 애드센스 심사 기간 자동발행 일시정지 (심사 중 AI 신규글 유입 차단 → 승인 리스크↓).
+  #    승인 후 아래 schedule 두 줄의 주석(#)만 다시 풀면 매일 자동발행이 재개됩니다.
+  # schedule:
+  #   - cron: '0 18 * * *'   # 매일 18:00 UTC = 한국시간 새벽 3시
+  workflow_dispatch: {}      # 수동 실행 버튼(필요 시 수동 발행은 계속 가능)
 
 permissions:
   contents: write            # 저장소에 글을 커밋·푸시할 권한 (GitHub 앱 연결 불필요)
