@@ -26,6 +26,14 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- 최신 가이드 (SNS·숏폼) -->
+  <url>
+    <loc>https://sohotip.co.kr/google-adsense-approval.html</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- 최신 가이드 (창업·세금) -->
   <url>
     <loc>https://sohotip.co.kr/business-type-change-tax.html</loc>
