@@ -18,6 +18,14 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- 카테고리: 마케팅 뉴스(소식·트렌드·정책·플랫폼 업데이트) -->
+  <url>
+    <loc>https://sohotip.co.kr/category.html?cat=news</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- 상담 페이지 -->
   <url>
     <loc>https://sohotip.co.kr/consultation.html</loc>
