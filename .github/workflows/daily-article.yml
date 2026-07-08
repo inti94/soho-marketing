@@ -31,6 +31,9 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: node scripts/generate-article.mjs
 
+      - name: 홈·허브 정적 프리렌더 (크롤러가 JS 없이 콘텐츠 읽게)
+        run: node scripts/prerender-hubs.mjs
+
       - name: 커밋 & 배포
         run: |
           git config user.name "sohotip-bot"
