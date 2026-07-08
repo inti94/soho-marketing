@@ -7,14 +7,14 @@
 <meta http-equiv="Expires" content="0">
 <script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="부가세 계산기. 매출·매입을 넣으면 납부할 부가세나 환급액을 즉시 계산합니다. 일반과세자·간이과세자·공급가액 분리 지원, 2026년 간이과세 업종별 부가가치율(소매 15%·제조 20% 등)·신고기한까지 정리했습니다.">
-<meta name="keywords" content="부가세 계산기, 부가가치세 계산, 매출세액 매입세액, 부가세 환급, 간이과세자 부가세, 간이과세 부가가치율, 부가세 신고기한">
+<meta name="description" content="부가세 계산기. 매출·매입을 넣으면 일반과세자 납부·환급세액을 즉시 계산하고, 간이과세자 업종별 부가가치율과 VAT 포함가 공급가액 분리까지 무료로 지원합니다.">
+<meta name="keywords" content="부가세 계산기, 부가가치세 계산, 매출세액 매입세액, 부가세 환급, 간이과세자 부가세, 부가가치율, 공급가액 분리">
 <meta name="robots" content="index, follow">
 <meta name="author" content="소호팁">
-<meta name="date" content="2026-07-07">
+<meta name="date" content="2026-07-08">
 <meta property="og:type" content="website">
-<meta property="og:title" content="부가세 계산기 (2026) — 소호팁">
-<meta property="og:description" content="매출과 매입을 넣으면 납부할 부가세나 환급액을 즉시 계산합니다. 일반과세자, 간이과세자, 공급가액 분리까지 무료로 지원하는 계산기입니다.">
+<meta property="og:title" content="부가세 계산기 (2026) — 납부·환급, 일반·간이과세자 | 소호팁">
+<meta property="og:description" content="매출·매입을 넣으면 납부할 부가세나 환급액을 즉시 계산합니다. 일반과세자·간이과세자·공급가액 분리까지 무료로 지원하는 계산기입니다.">
 <meta property="og:url" content="https://sohotip.co.kr/vat-calc.html">
 <meta property="og:image" content="https://sohotip.co.kr/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -22,8 +22,8 @@
 <meta property="og:site_name" content="소호팁">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="부가세 계산기 (2026) — 소호팁">
-<meta name="twitter:description" content="매출과 매입을 넣으면 납부할 부가세나 환급액을 즉시 계산합니다. 일반과세자, 간이과세자, 공급가액 분리까지 무료로 지원하는 계산기입니다.">
+<meta name="twitter:title" content="부가세 계산기 (2026) — 납부·환급, 일반·간이과세자 | 소호팁">
+<meta name="twitter:description" content="매출·매입을 넣으면 납부할 부가세나 환급액을 즉시 계산합니다. 일반과세자·간이과세자·공급가액 분리까지 무료로 지원하는 계산기입니다.">
 <meta name="twitter:image" content="https://sohotip.co.kr/og-image.png">
 <meta name="naver-site-verification" content="d7369feb5de3df4cce2e9016b84ad045c4ed70a4">
 <link rel="canonical" href="https://sohotip.co.kr/vat-calc.html">
@@ -53,7 +53,7 @@
       "name": "소호팁",
       "url": "https://sohotip.co.kr"
     },
-    "dateModified": "2026-07-07",
+    "dateModified": "2026-07-08",
     "inLanguage": "ko-KR",
     "breadcrumb": {
       "@type": "BreadcrumbList",
@@ -70,12 +70,13 @@
     "@context": "https://schema.org",
     "@type": "HowTo",
     "name": "부가세 계산하는 법",
-    "description": "일반과세자는 매출·매입을, 간이과세자는 연 매출과 업종을 입력해 납부할 부가세 또는 환급액을 계산하는 방법.",
+    "description": "일반과세자는 매출·매입 공급가액을, 간이과세자는 연 매출과 업종을 입력해 납부하거나 환급받을 부가세를 계산하는 방법.",
     "totalTime": "PT1M",
     "step": [
-      {"@type":"HowToStep","position":1,"name":"과세 유형 선택","text":"일반과세자·간이과세자·공급가액 분리 중 내 유형에 맞는 탭을 고릅니다.","url":"https://sohotip.co.kr/vat-calc.html#calc"},
-      {"@type":"HowToStep","position":2,"name":"매출·매입 입력","text":"일반과세자는 과세 매출액과 매입액(공급가액)을, 간이과세자는 연 매출액과 업종을 입력합니다.","url":"https://sohotip.co.kr/vat-calc.html#calc"},
-      {"@type":"HowToStep","position":3,"name":"계산하기","text":"'부가세 계산하기'를 누르면 매출세액·매입세액과 납부(환급) 세액이 자동으로 나옵니다.","url":"https://sohotip.co.kr/vat-calc.html#calc"}
+      {"@type":"HowToStep","position":1,"name":"과세 유형 선택","text":"일반과세자·간이과세자·공급가액 분리 중 내 상황에 맞는 탭을 고릅니다.","url":"https://sohotip.co.kr/vat-calc.html#calc"},
+      {"@type":"HowToStep","position":2,"name":"매출·매입 입력","text":"일반과세자는 과세 매출액과 매입액을 공급가액(VAT 제외) 기준으로 입력합니다.","url":"https://sohotip.co.kr/vat-calc.html#calc"},
+      {"@type":"HowToStep","position":3,"name":"간이과세자는 업종 선택","text":"간이과세자는 연 매출액(부가세 포함)과 업종별 부가가치율을 선택합니다.","url":"https://sohotip.co.kr/vat-calc.html#calc"},
+      {"@type":"HowToStep","position":4,"name":"계산하기","text":"'부가세 계산하기'를 누르면 납부 또는 환급할 부가세가 바로 나옵니다.","url":"https://sohotip.co.kr/vat-calc.html#calc"}
     ]
   }
   </script>
@@ -84,21 +85,22 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type":"Question","name":"부가세 신고는 언제 하나요?","acceptedAnswer":{"@type":"Answer","text":"일반과세 개인사업자는 1년에 2번 확정신고합니다. 1기(1~6월)는 7월 25일까지, 2기(7~12월)는 다음 해 1월 25일까지이며, 4월과 10월에는 직전 납부세액의 절반을 예정고지로 미리 냅니다. 간이과세자는 1년에 한 번, 1월 1일~12월 31일분을 다음 해 1월 25일까지 신고·납부합니다."}},
-      {"@type":"Question","name":"간이과세자와 일반과세자, 뭐가 더 유리한가요?","acceptedAnswer":{"@type":"Answer","text":"매출이 적고 매입(비용)이 크지 않으면 부가가치율만큼만 세금을 내는 간이과세자가 유리합니다. 반대로 초기 인테리어·설비 투자가 커서 매입세액이 매출세액보다 많으면, 그 차액을 환급받을 수 있는 일반과세자가 유리합니다. 간이과세자는 부가세 환급이 되지 않기 때문입니다."}},
-      {"@type":"Question","name":"간이과세자도 부가세를 안 낼 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"연 매출(공급대가)이 4,800만원 미만인 간이과세자는 부가세 납부의무가 면제됩니다. 신고는 해야 하지만 세액은 내지 않습니다. 2024년 7월부터 간이과세 적용 기준 자체는 연 매출 1억 400만원 미만으로 올랐지만, 납부면제 기준은 4,800만원 그대로입니다."}},
-      {"@type":"Question","name":"간이과세자도 세금계산서를 발급하나요?","acceptedAnswer":{"@type":"Answer","text":"직전연도 공급대가가 4,800만원 이상인 간이과세자는 일반과세자처럼 세금계산서를 발급할 의무가 있습니다. 4,800만원 미만이면 세금계산서를 발급할 수 없고 신용카드매출전표·현금영수증 같은 영수증을 발급합니다."}},
-      {"@type":"Question","name":"부가세 환급은 어떻게 받나요?","acceptedAnswer":{"@type":"Answer","text":"일반과세자는 매입세액이 매출세액보다 많으면 그 차액을 환급받습니다. 확정신고를 하면 보통 30일 이내에 신고한 계좌로 입금됩니다. 개업 초기 인테리어·설비 매입이 많은 해에 환급이 자주 발생합니다. 간이과세자는 매입세액이 많아도 환급되지 않습니다."}}
+      {"@type":"Question","name":"부가세 신고는 언제 하나요?","acceptedAnswer":{"@type":"Answer","text":"개인 일반과세자는 1년에 두 번 확정신고를 합니다. 1기분(1~6월 실적)은 7월 25일까지, 2기분(7~12월 실적)은 다음 해 1월 25일까지입니다. 간이과세자는 1년에 한 번, 다음 해 1월 25일까지 신고합니다. 그래서 매년 7월과 1월이 부가세 신고철입니다."}},
+      {"@type":"Question","name":"일반과세자와 간이과세자 부가세 계산이 어떻게 다른가요?","acceptedAnswer":{"@type":"Answer","text":"일반과세자는 매출세액(공급가액×10%)에서 매입세액(매입액×10%)을 빼서 납부세액을 구하고, 매입이 많으면 환급도 받습니다. 간이과세자는 매출(공급대가)에 업종별 부가가치율(15~40%)을 곱한 뒤 다시 10%를 곱해 납부세액을 구합니다. 실효세율은 1.5~4% 수준이라 세 부담이 낮은 대신 환급은 원칙적으로 없습니다."}},
+      {"@type":"Question","name":"간이과세자 업종별 부가가치율은 얼마인가요?","acceptedAnswer":{"@type":"Answer","text":"2021년 7월 개정 기준으로 소매업·음식점업 15%, 제조업 20%, 숙박업 25%, 건설·운수·창고·그 밖의 서비스업 30%, 금융·보험·부동산임대업 40%입니다. 매출에 이 부가가치율을 곱하고 다시 10%를 곱하면 대략적인 납부세액이 나옵니다. 예를 들어 음식점은 실효세율이 15%×10%=1.5%입니다."}},
+      {"@type":"Question","name":"간이과세자도 부가세를 안 낼 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"간이과세자 중 해당 연도 공급대가(매출)가 4,800만원 미만이면 납부의무가 면제됩니다. 다만 신고 자체는 해야 하고, 세금계산서를 발급했거나 재고납부세액이 있으면 면제되지 않을 수 있습니다. 참고로 간이과세 자체는 직전 연도 공급대가 1억 400만원 미만인 개인사업자가 대상입니다."}},
+      {"@type":"Question","name":"부가세 환급은 언제 받나요?","acceptedAnswer":{"@type":"Answer","text":"일반과세자가 매입세액이 매출세액보다 커서 환급세액이 발생하면, 확정신고 기한이 지난 뒤 30일 이내에 환급됩니다. 시설투자 등 조기환급 사유가 있으면 더 빨리 받을 수 있습니다. 간이과세자는 매입세액이 많아도 원칙적으로 환급이 되지 않습니다."}}
     ]
   }
   </script>
-<link rel="stylesheet" href="sohotip.css?v=20260630f">
+<link rel="stylesheet" href="sohotip.css?v=20260708a">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630f">
-<link rel="stylesheet" href="assets/calc.css?v=20260630f">
+  <link rel="stylesheet" href="assets/theme.css?v=20260708a">
+<link rel="stylesheet" href="assets/calc.css?v=20260708a">
 <style>
 :root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
 body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;}
 nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
 .nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
@@ -109,7 +111,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
 @media(max-width:640px){.nav-links{display:none;}}
 .page-wrap{max-width:680px;margin:0 auto;padding:40px 2rem 80px;}
 .page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
-.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:32px;line-height:1.6;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:24px;line-height:1.6;}
 .tabs{display:flex;gap:0;margin-bottom:24px;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;}
 .tab{flex:1;padding:10px;border:none;background:var(--bg-card);font-size:13px;font-weight:500;cursor:pointer;font-family:var(--sans);color:var(--text-muted);transition:all 0.15s;}
 .tab.active{background:var(--primary);color:#fff;}
@@ -119,7 +121,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
 .field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;}
 .field-hint{font-size:11px;color:var(--text-muted);margin-bottom:6px;}
 .field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;}
-.field input:focus{border-color:var(--primary);}
+.field input:focus,.field select:focus{border-color:var(--primary);}
 .result-big{text-align:center;padding:32px;border-radius:16px;margin-bottom:20px;}
 .result-big.pay{background:#FFF7F7;border:2px solid #EF4444;}
 .result-big.refund{background:var(--primary-light);border:2px solid var(--primary);}
@@ -136,6 +138,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
 .btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);margin-top:8px;}
 .btn-calc:hover{background:var(--primary-mid);}
 .tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+.tag svg{width:13px;height:13px;vertical-align:-2px;margin-right:2px;}
 .notice-box{background:var(--primary-light);border-radius:12px;padding:16px 20px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
 footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
 footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
@@ -154,7 +157,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   /* ── 함께 많이 본 글 ── */
   .related-articles-section{margin:24px 0 0;}
   .rel-article-list{display:flex;flex-direction:column;gap:0;}
-  .rel-article-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-light);text-decoration:none;color:var(--text);transition:color .2s;}
+  .rel-article-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);transition:color .2s;}
   .rel-article-item:last-child{border-bottom:none;}
   .rel-article-item:hover .rai-title{color:var(--primary);}
   .rai-num{font-size:18px;font-weight:900;color:var(--border);width:24px;flex-shrink:0;text-align:center;}
@@ -162,28 +165,11 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   .rai-cat{font-size:10px;color:var(--primary);font-weight:700;margin-bottom:2px;}
   .rai-title{font-size:13px;font-weight:600;line-height:1.4;}
   .rai-arrow{color:var(--primary);font-size:14px;flex-shrink:0;}
-  /* ── 인라인 계산기 ── */
-  .inline-calc-box{background:linear-gradient(135deg,var(--primary-light),#fff);border:2px solid var(--primary);border-radius:16px;padding:24px;margin:28px 0;}
-  .inline-calc-box h3{font-size:15px;font-weight:700;color:var(--text);margin-bottom:16px;}
-  .inline-fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:14px;}
-  .inline-field{}
-  .inline-field label{display:block;font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:4px;}
-  .inline-field input{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:15px;font-family:var(--sans);color:var(--text);background:#fff;outline:none;transition:border-color .2s;-webkit-appearance:none;}
-  .inline-field input:focus{border-color:var(--primary);}
-  .inline-calc-btn{width:100%;padding:12px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background .2s;min-height:44px;}
-  .inline-calc-btn:hover{background:var(--primary-mid);}
-  .inline-result{margin-top:14px;padding:14px 16px;background:#fff;border-radius:10px;border:1px solid var(--border);display:none;}
-  .inline-result-val{font-size:22px;font-weight:700;color:var(--primary);margin-bottom:4px;}
-  .inline-result-sub{font-size:12px;color:var(--text-muted);line-height:1.5;}
-  .inline-full-link{display:block;text-align:center;margin-top:12px;font-size:12px;color:var(--primary);text-decoration:none;font-weight:600;}
-  .inline-full-link:hover{text-decoration:underline;}
   @media(max-width:640px){
     .rel-calc-grid{grid-template-columns:1fr 1fr;}
-    .inline-fields{grid-template-columns:1fr 1fr;}
   }
   @media(max-width:380px){
     .rel-calc-grid{grid-template-columns:1fr;}
-    .inline-fields{grid-template-columns:1fr;}
   }
 
   /* ── 공통 12블록: 설명 콘텐츠 ── */
@@ -229,6 +215,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   .calc-sources a{color:var(--primary);text-decoration:none;}
   .calc-sources a:hover{text-decoration:underline;}
   .calc-sources .cs-updated{font-size:11px;color:var(--text-muted);margin-top:10px;}
+  /* AI 요약 배지 SVG (이모지 대체) */
   .ai-summary .ais-badge svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
   .ai-summary .ais-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 
@@ -253,24 +240,26 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
 </div>
 
 <div class="page-wrap">
+  <!-- ① 제목 -->
   <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="12" y2="18"/></svg> 부가세 계산기</span>
   <h1 class="page-title">부가세 계산기</h1>
-  <p class="page-desc">매출과 매입을 입력하면 납부할 부가세 또는 환급받을 금액을 즉시 계산합니다. 일반과세자·간이과세자·공급가액 분리를 모두 지원하고, 2026년 간이과세 업종별 부가가치율까지 반영했습니다.</p>
+  <p class="page-desc">매출과 매입을 입력하면 납부할 부가세 또는 환급받을 금액을 즉시 계산합니다. 일반과세자·간이과세자·공급가액 분리까지 지원합니다. (예: 매출 1,000만 · 매입 400만 → 납부 60만원)</p>
 
   <!-- ② 30초 요약 -->
   <section class="ai-summary" aria-label="30초 핵심 요약">
     <span class="ais-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.9L18.7 9.7 13.8 11.5 12 16.4 10.2 11.5 5.3 9.7 10.2 7.9z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg> 30초 요약 · 사장님용</span>
-    <p>부가세는 내 돈이 아니라 <strong>손님한테 잠깐 맡아둔 세금</strong>이에요. 물건값에 10% 얹어 받아뒀다가 나라에 내는 구조라, 매출의 10%를 그대로 다 내는 게 아니라 <strong>받은 세금(매출세액) − 낸 세금(매입세액)</strong>만큼만 냅니다.</p>
-    <p>일반과세자는 <strong>(매출−매입)×10%</strong>, 간이과세자는 <strong>매출×업종별 부가가치율×10%</strong>로 계산해요. 간이과세 부가가치율은 소매·음식점 15%, 제조 20%, 숙박 25%, 건설·운수·일반서비스 30%, 금융·전문·부동산임대 40%(부가가치세법 시행령 §111)입니다.</p>
-    <p>초기 인테리어·설비 매입이 크면 매출세액보다 매입세액이 많아 <strong>환급</strong>이 나오기도 해요. 우리 가게 매출·매입 넣고 아래에서 바로 확인해보세요.</p>
+    <p>7월 됐으니 부가세 신고철이네요. 겁먹을 거 없습니다. <strong>일반과세자</strong>는 딱 하나만 기억하면 돼요. 손님한테 받은 부가세(매출세액)에서, 내가 물건·재료 살 때 낸 부가세(매입세액)를 빼는 거예요. 매출 1,000만원이면 매출세액 100만원, 매입 400만원이면 매입세액 40만원, 그럼 <strong>납부할 부가세는 60만원</strong>입니다.</p>
+    <p>매입이 매출보다 많으면? 오히려 <strong>환급</strong>받습니다. 그래서 세금계산서·카드매입 영수증을 잘 챙기는 게 곧 세금 아끼는 길이에요. 놓친 매입 하나가 그대로 10% 세금으로 돌아옵니다.</p>
+    <p><strong>간이과세자</strong>는 계산이 더 단순해요. 연 매출에 업종별 부가가치율(음식점·소매 15%, 서비스 30% 등)을 곱하고 다시 10%만 곱하면 끝. 실효세율이 1.5~4%라 부담이 훨씬 가볍습니다. 아래에 우리 가게 숫자 넣고 바로 돌려보세요.</p>
     <div class="ais-cta">
       <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/></svg> 우리 가게 부가세 바로 계산</a>
-      <a class="ais-btn ghost" href="card-fee-calc.html">카드 수수료도 확인</a>
+      <a class="ais-btn ghost" href="general-vs-simple-tax.html">일반 vs 간이 뭐가 유리?</a>
     </div>
-    <div class="ais-links">이어서 보면 좋아요 · <a href="general-vs-simple-tax.html">일반 vs 간이과세 비교</a> · <a href="soho-cash-receipt-guide.html">현금영수증·세금계산서 정리</a></div>
+    <div class="ais-links">이어서 보면 좋아요 · <a href="tax-refund-soho.html">부가세 환급 받는 법</a> · <a href="solo-shop-tax-deduction.html">사장님 절세 체크리스트</a></div>
   </section>
 
-  <div class="tabs">
+  <!-- ③ 계산기 -->
+  <div class="tabs" id="calc">
     <button class="tab active" onclick="switchTab('general',this)">일반과세자</button>
     <button class="tab" onclick="switchTab('simple',this)">간이과세자</button>
     <button class="tab" onclick="switchTab('include',this)">공급가액 분리</button>
@@ -291,6 +280,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
       </div>
       <button class="btn-calc" onclick="calcGeneral()">부가세 계산하기</button>
     </div>
+    <!-- ④ 계산 결과 -->
     <div id="g-result" style="display:none;">
       <div class="result-big" id="g-result-box">
         <div class="result-label" id="g-result-label">납부할 부가세</div>
@@ -313,13 +303,14 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
         <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="s-sales" value="50,000,000" step="1000000">
       </div>
       <div class="field">
-        <label>업종</label>
+        <label>업종 (부가가치율)</label>
+        <div class="field-hint">2021.7 개정 기준. 국세청 고시 업종별 부가가치율</div>
         <select id="s-industry">
-          <option value="0.15">소매업·음식점업 (부가가치율 15%)</option>
-          <option value="0.20">제조업·농림어업·소화물운송업 (부가가치율 20%)</option>
-          <option value="0.25">숙박업 (부가가치율 25%)</option>
-          <option value="0.30">건설·운수·정보통신·기타 서비스업 (부가가치율 30%)</option>
-          <option value="0.40">금융보험·전문서비스·부동산임대업 (부가가치율 40%)</option>
+          <option value="0.15">소매업·음식점업 (15%)</option>
+          <option value="0.20">제조업 (20%)</option>
+          <option value="0.25">숙박업 (25%)</option>
+          <option value="0.30">건설·운수·창고·기타 서비스업 (30%)</option>
+          <option value="0.40">금융·보험·부동산임대업 (40%)</option>
         </select>
       </div>
       <button class="btn-calc" onclick="calcSimple()">부가세 계산하기</button>
@@ -335,7 +326,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
         <div class="br-row"><span class="br-label">부가가치율</span><span class="br-val" id="s-rate">0%</span></div>
         <div class="br-row"><span class="br-label">납부세액 (매출 × 부가가치율 × 10%)</span><span class="br-val" id="s-vat">0원</span></div>
       </div>
-      <div class="notice-box" style="margin-top:16px;">간이과세자는 연 매출 4,800만원 미만이면 납부의무가 면제될 수 있습니다. 정확한 세액은 세무사와 확인하세요.</div>
+      <div class="notice-box" style="margin-top:16px;">간이과세자는 연 매출 4,800만원 미만이면 납부의무가 면제될 수 있습니다. 매입 세금계산서 세액공제(매입액×0.5%)는 이 계산에 반영되지 않은 개략값이니, 정확한 세액은 세무사와 확인하세요.</div>
     </div>
   </div>
 
@@ -359,84 +350,84 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
 
   <div class="article-content">
     <!-- ⑤ 계산 공식 설명 -->
-    <h2>부가세, 이렇게 계산합니다</h2>
-    <p>부가세는 사장님이 부담하는 세금이 아니라, 손님에게서 <strong>10%를 대신 받아 뒀다가 나라에 넘기는</strong> 세금이에요. 그래서 매출의 10%를 통째로 내는 게 아니라, 받은 세금에서 내가 이미 낸 세금을 빼고 그 차액만 냅니다. 과세 유형에 따라 공식이 달라져요.</p>
-    <div class="formula-box">일반과세자 납부세액 = 매출세액(매출×10%) − 매입세액(매입×10%)<span class="fx-sub">매입세액이 더 크면 그 차액을 환급 · 공급가액(VAT 제외) 기준으로 계산</span></div>
-    <div class="formula-box">간이과세자 납부세액 = 매출(공급대가) × 업종별 부가가치율 × 10%<span class="fx-sub">부가가치율은 시행령 §111 기준 15~40% · 매입세액은 매입액×0.5%만 공제</span></div>
-    <p>공급가액 분리는 <strong>부가세가 포함된 금액을 1.1로 나누면</strong> 공급가액, 나머지가 부가세예요. 카드 매출·현금영수증 금액에서 부가세만 떼어 볼 때 씁니다.</p>
+    <h2>부가세는 이렇게 계산됩니다</h2>
+    <p>부가세(부가가치세)는 "내가 만든 부가가치의 10%"를 손님한테 받아서 대신 내주는 세금이에요. 그래서 <strong>일반과세자</strong>는 손님에게 받은 세금에서 내가 이미 낸 세금을 빼는 구조입니다.</p>
+    <div class="formula-box">일반과세자 납부세액 = 매출세액 − 매입세액<span class="fx-sub">매출세액 = 공급가액 × 10% · 매입세액 = 매입액 × 10% · 결과가 음수면 그만큼 환급</span></div>
+    <p>매출 1,000만원이면 매출세액 100만원, 매입 400만원이면 매입세액 40만원, 그래서 납부할 부가세는 <strong>60만원</strong>이에요. 만약 인테리어·설비 투자로 매입이 매출보다 많으면 그 차액을 <strong>환급</strong>받습니다.</p>
+    <p><strong>간이과세자</strong>는 매입세액을 일일이 빼지 않고, 업종별로 정해진 부가가치율로 간단히 계산해요.</p>
+    <div class="formula-box">간이과세자 납부세액 = 매출(공급대가) × 업종별 부가가치율 × 10%<span class="fx-sub">음식점·소매 15% · 제조 20% · 숙박 25% · 서비스 30% · 부동산임대 40%</span></div>
     <h3>이렇게 계산하세요</h3>
     <ol class="howto-list">
-      <li>내 과세 유형에 맞는 탭(일반과세자·간이과세자·공급가액 분리)을 고릅니다.</li>
-      <li>일반과세자는 과세 매출액과 매입액을 공급가액(VAT 제외) 기준으로 넣어요.</li>
-      <li>간이과세자는 연 매출액과 업종을 고릅니다. 업종에 따라 부가가치율이 자동 적용돼요.</li>
-      <li>'부가세 계산하기'를 누르면 매출세액·매입세액과 납부(환급) 세액이 바로 나옵니다.</li>
+      <li>내 사업자 유형에 맞는 탭(일반과세자·간이과세자·공급가액 분리)을 고릅니다.</li>
+      <li>일반과세자는 과세 매출액과 매입액을 공급가액(VAT 제외) 기준으로 입력합니다.</li>
+      <li>간이과세자는 연 매출액(부가세 포함)과 업종별 부가가치율을 선택합니다.</li>
+      <li>'부가세 계산하기'를 누르면 납부 또는 환급할 부가세가 바로 나옵니다.</li>
     </ol>
 
-    <!-- ⑥ 비교표 -->
-    <h2>일반과세자 vs 간이과세자, 뭐가 다른가</h2>
-    <p>같은 매출이어도 과세 유형에 따라 세금이 크게 달라져요. 2024년 7월부터 간이과세 기준이 <strong>연 매출 1억 400만원 미만</strong>으로 올라 대상이 넓어졌습니다.</p>
+    <!-- ⑥ 주요 계산항목 표 -->
+    <h2>일반과세자 vs 간이과세자 (2026)</h2>
     <table class="article-table">
       <thead><tr><th>구분</th><th>일반과세자</th><th>간이과세자</th></tr></thead>
       <tbody>
-        <tr><td>적용 기준</td><td>연매출 1억 400만원 이상 또는 본인 신청</td><td>연매출 1억 400만원 미만</td></tr>
-        <tr><td>세액 계산</td><td>(매출−매입) × 10%</td><td>매출 × 부가가치율(15~40%) × 10%</td></tr>
-        <tr><td>세금계산서</td><td>발급 의무</td><td>직전연도 4,800만원 이상만 발급</td></tr>
-        <tr><td>매입세액 공제</td><td>매입액의 10% 전액</td><td>매입액의 0.5%</td></tr>
-        <tr><td>환급</td><td>가능</td><td>불가</td></tr>
-        <tr><td>신고 횟수</td><td>연 2회(개인 확정)</td><td>연 1회</td></tr>
+        <tr><td>대상</td><td>연 매출 1억 400만원 이상 등</td><td>직전연도 공급대가 1억 400만원 미만</td></tr>
+        <tr><td>납부세액</td><td>매출세액 − 매입세액</td><td>매출 × 부가가치율 × 10%</td></tr>
+        <tr><td>실효세율</td><td>부가가치의 10%</td><td>1.5% ~ 4%</td></tr>
+        <tr><td>매입세액 공제</td><td>전액 공제</td><td>매입액 × 0.5%</td></tr>
+        <tr><td>환급</td><td>가능</td><td>원칙적으로 불가</td></tr>
+        <tr><td>신고 횟수</td><td>연 2회 (7월·1월)</td><td>연 1회 (다음해 1월)</td></tr>
+        <tr><td>납부 면제</td><td>없음</td><td>연 매출 4,800만원 미만</td></tr>
       </tbody>
     </table>
-    <h3>간이과세 업종별 부가가치율 (시행령 §111)</h3>
+    <h3>간이과세자 업종별 부가가치율</h3>
     <table class="article-table">
-      <thead><tr><th>업종</th><th>부가가치율</th></tr></thead>
+      <thead><tr><th>업종</th><th>부가가치율</th><th>실효세율</th></tr></thead>
       <tbody>
-        <tr><td>소매업·음식점업·재생용재료수집판매업</td><td>15%</td></tr>
-        <tr><td>제조업·농림어업·소화물전문운송업</td><td>20%</td></tr>
-        <tr><td>숙박업</td><td>25%</td></tr>
-        <tr><td>건설·운수창고·정보통신·그 밖의 서비스업</td><td>30%</td></tr>
-        <tr><td>금융보험·전문과학기술·부동산임대업</td><td>40%</td></tr>
+        <tr><td>소매업·음식점업</td><td>15%</td><td>1.5%</td></tr>
+        <tr><td>제조업</td><td>20%</td><td>2.0%</td></tr>
+        <tr><td>숙박업</td><td>25%</td><td>2.5%</td></tr>
+        <tr><td>건설·운수·창고·기타 서비스업</td><td>30%</td><td>3.0%</td></tr>
+        <tr><td>금융·보험·부동산임대업</td><td>40%</td><td>4.0%</td></tr>
       </tbody>
     </table>
-    <div class="tip-inline"><strong>많이 헷갈려요:</strong> 소매업은 15%, 제조업이 20%예요. 일반 서비스업(그 밖의 서비스업)은 30%이고, 40%는 금융·전문서비스·부동산임대 등 일부만 해당합니다. 부동산임대·과세유흥업은 간이과세 기준금액이 4,800만원으로 별도예요.</div>
+    <div class="tip-inline"><strong>한 가지만:</strong> 부동산임대업은 부가가치율이 40%지만 애초에 간이과세 배제 업종이라 일반과세로 신고해야 하는 경우가 많습니다. 내 업종이 간이과세 가능한지는 세무서·홈택스에서 먼저 확인하세요.</div>
 
     <!-- ⑦ 실무 예시 -->
     <h2>실무 예시 — 숫자로 따라가 볼게요</h2>
     <div class="step-box">
-      <span class="sb-badge">일반과세 · 평상시 분기</span>
+      <span class="sb-badge">일반과세자 · 납부</span>
       <div class="sb-body">
-        과세 매출 3,000만원 · 과세 매입 800만원 (공급가액 기준)<br>
-        매출세액 = 3,000만 × 10% = <strong>300만원</strong><br>
-        매입세액 = 800만 × 10% = <strong>80만원</strong><br>
-        → 납부세액 = 300만 − 80만 = <strong>220만원 납부</strong>
+        과세 매출 1,000만원(공급가액) · 과세 매입 400만원<br>
+        매출세액 = 1,000만 × 10% = <strong>100만원</strong><br>
+        매입세액 = 400만 × 10% = <strong>40만원</strong><br>
+        → 납부세액 = 100만 − 40만 = <strong>60만원</strong>
       </div>
     </div>
     <div class="step-box">
-      <span class="sb-badge">일반과세 · 개업 인테리어로 환급</span>
+      <span class="sb-badge">일반과세자 · 환급</span>
       <div class="sb-body">
-        과세 매출 500만원 · 과세 매입 3,000만원 (설비·인테리어)<br>
-        매출세액 = 50만원 · 매입세액 = 300만원<br>
-        → 납부세액 = 50만 − 300만 = <strong>250만원 환급</strong><br>
-        개업 초기엔 이렇게 매입세액이 커서 환급이 자주 납니다.
+        매출 500만원 · 매입 800만원(설비 투자로 매입이 큼)<br>
+        매출세액 50만 − 매입세액 80만 = <strong>−30만원</strong><br>
+        → 30만원을 국세청에서 <strong>환급</strong>받습니다.
       </div>
     </div>
     <div class="step-box">
-      <span class="sb-badge">간이과세 · 소매업</span>
+      <span class="sb-badge">간이과세자 · 음식점</span>
       <div class="sb-body">
-        연 매출 6,000만원 · 소매업(부가가치율 15%)<br>
-        납부세액 = 6,000만 × 15% × 10% = <strong>90만원</strong><br>
-        만약 연 매출이 4,800만원 미만이면 <strong>납부면제(0원)</strong>예요.
+        연 매출 5,000만원 · 음식점(부가가치율 15%)<br>
+        납부세액 = 5,000만 × 15% × 10% = <strong>75만원</strong><br>
+        → 매출 4,800만원 이상이라 납부의무 면제 대상은 아닙니다.
       </div>
     </div>
-    <p>같은 매출이라도 일반과세는 매입이 크면 환급까지 받고, 간이과세는 부가가치율만큼만 부담하는 대신 환급은 없습니다. 우리 가게 숫자를 위 계산기에 넣으면 유형별로 바로 확인돼요.</p>
+    <p>세 번째로 <strong>공급가액 분리</strong> 탭도 있어요. 카드전표에 찍힌 VAT 포함 금액 110만원을 넣으면, 공급가액 100만원(÷1.1)과 부가세 10만원(×10%)으로 자동으로 나눠줍니다. 세금계산서 발행할 때 유용해요.</p>
 
     <!-- ⑧ FAQ -->
     <h2 id="faq">자주 묻는 질문</h2>
     <div class="faq-section">
-      <div class="faq-item"><div class="faq-q">부가세 신고는 언제 하나요?</div><div class="faq-a">일반과세 개인사업자는 1년에 2번 확정신고합니다. 1기(1~6월)는 7월 25일까지, 2기(7~12월)는 다음 해 1월 25일까지이고, 4월·10월에는 직전 납부세액의 절반을 예정고지로 미리 냅니다. 간이과세자는 1년에 한 번, 1월 1일~12월 31일분을 다음 해 1월 25일까지 신고·납부해요.</div></div>
-      <div class="faq-item"><div class="faq-q">간이과세자와 일반과세자, 뭐가 더 유리한가요?</div><div class="faq-a">매출이 적고 매입(비용)이 크지 않으면 부가가치율만큼만 내는 간이과세자가 유리합니다. 반대로 초기 인테리어·설비 투자가 커서 매입세액이 매출세액보다 많으면, 그 차액을 환급받을 수 있는 일반과세자가 유리해요. 간이과세자는 부가세 환급이 되지 않기 때문입니다.</div></div>
-      <div class="faq-item"><div class="faq-q">간이과세자도 부가세를 안 낼 수 있나요?</div><div class="faq-a">연 매출(공급대가)이 4,800만원 미만인 간이과세자는 부가세 납부의무가 면제됩니다. 신고는 하되 세액은 내지 않아요. 2024년 7월부터 간이과세 적용 기준 자체는 연 매출 1억 400만원 미만으로 올랐지만, 납부면제 기준은 4,800만원 그대로입니다.</div></div>
-      <div class="faq-item"><div class="faq-q">간이과세자도 세금계산서를 발급하나요?</div><div class="faq-a">직전연도 공급대가가 4,800만원 이상인 간이과세자는 일반과세자처럼 세금계산서를 발급할 의무가 있습니다. 4,800만원 미만이면 세금계산서를 발급할 수 없고, 신용카드매출전표·현금영수증 같은 영수증을 발급해요.</div></div>
-      <div class="faq-item"><div class="faq-q">부가세 환급은 어떻게 받나요?</div><div class="faq-a">일반과세자는 매입세액이 매출세액보다 많으면 그 차액을 환급받습니다. 확정신고를 하면 보통 30일 이내에 신고한 계좌로 입금돼요. 개업 초기 인테리어·설비 매입이 많은 해에 환급이 자주 발생합니다. 간이과세자는 매입세액이 많아도 환급되지 않아요.</div></div>
+      <div class="faq-item"><div class="faq-q">부가세 신고는 언제 하나요?</div><div class="faq-a">개인 일반과세자는 1년에 두 번, 1기분(1~6월)은 7월 25일까지, 2기분(7~12월)은 다음 해 1월 25일까지 확정신고합니다. 간이과세자는 1년에 한 번, 다음 해 1월 25일까지 신고합니다. 그래서 매년 7월과 1월이 부가세 신고철입니다.</div></div>
+      <div class="faq-item"><div class="faq-q">일반과세자와 간이과세자 계산이 어떻게 다른가요?</div><div class="faq-a">일반과세자는 매출세액(공급가액×10%)에서 매입세액(매입액×10%)을 빼서 구하고 매입이 많으면 환급도 받습니다. 간이과세자는 매출에 업종별 부가가치율(15~40%)을 곱한 뒤 다시 10%를 곱해 계산해요. 실효세율이 1.5~4%로 낮은 대신 환급은 원칙적으로 없습니다.</div></div>
+      <div class="faq-item"><div class="faq-q">간이과세자 업종별 부가가치율은 얼마인가요?</div><div class="faq-a">2021년 7월 개정 기준 소매·음식점 15%, 제조 20%, 숙박 25%, 건설·운수·창고·기타 서비스 30%, 금융·보험·부동산임대 40%입니다. 매출에 이 율을 곱하고 다시 10%를 곱하면 대략적인 납부세액이 나옵니다. 음식점이면 실효세율은 15%×10%=1.5%예요.</div></div>
+      <div class="faq-item"><div class="faq-q">간이과세자도 부가세를 안 낼 수 있나요?</div><div class="faq-a">간이과세자 중 해당 연도 공급대가(매출)가 4,800만원 미만이면 납부의무가 면제됩니다. 다만 신고 자체는 해야 하고, 세금계산서를 발급했거나 재고납부세액이 있으면 면제되지 않을 수 있어요. 간이과세 자체는 직전 연도 공급대가 1억 400만원 미만 개인사업자가 대상입니다.</div></div>
+      <div class="faq-item"><div class="faq-q">부가세 환급은 언제 받나요?</div><div class="faq-a">일반과세자가 매입세액이 매출세액보다 커서 환급세액이 생기면 확정신고 기한이 지난 뒤 30일 이내에 환급됩니다. 시설투자 등 조기환급 사유가 있으면 더 빨리 받을 수 있어요. 간이과세자는 매입이 많아도 원칙적으로 환급이 되지 않습니다.</div></div>
     </div>
   </div>
 
@@ -444,49 +435,49 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <div class="related-calcs-section">
     <h2>함께 보면 좋은 계산기</h2>
     <div class="rel-calc-grid">
-      <a class="rel-calc-card" href="card-fee-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></span><div class="rcc-body"><div class="rcc-title">카드 수수료 계산기</div><div class="rcc-desc">매출 대비 수수료 실부담</div></div></a>
-      <a class="rel-calc-card" href="store-profit-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><div class="rcc-body"><div class="rcc-title">매장 수익 계산기</div><div class="rcc-desc">세금·비용 뺀 순이익</div></div></a>
-      <a class="rel-calc-card" href="bep-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><div class="rcc-body"><div class="rcc-title">손익분기점 계산기</div><div class="rcc-desc">얼마 팔아야 남는지</div></div></a>
-      <a class="rel-calc-card" href="startup-cost-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><div class="rcc-body"><div class="rcc-title">창업비용 계산기</div><div class="rcc-desc">개업 초기자금 산정</div></div></a>
-      <a class="rel-calc-card" href="closure-cost-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="15" x2="15" y2="15"/></svg></span><div class="rcc-body"><div class="rcc-title">폐업비용 계산기</div><div class="rcc-desc">정리 시 세금·비용</div></div></a>
+      <a class="rel-calc-card" href="card-fee-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span><div class="rcc-body"><div class="rcc-title">카드수수료 계산기</div><div class="rcc-desc">카드매출 실수령액</div></div></a>
+      <a class="rel-calc-card" href="store-profit-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><div class="rcc-body"><div class="rcc-title">매장 순이익 계산기</div><div class="rcc-desc">매출 대비 실이익</div></div></a>
+      <a class="rel-calc-card" href="bep-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><div class="rcc-body"><div class="rcc-title">손익분기점 계산기</div><div class="rcc-desc">얼마 팔아야 남나</div></div></a>
+      <a class="rel-calc-card" href="startup-cost-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><div class="rcc-body"><div class="rcc-title">창업비용 계산기</div><div class="rcc-desc">개업 초기자금</div></div></a>
+      <a class="rel-calc-card" href="loan-interest-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">대출이자 계산기</div><div class="rcc-desc">월 상환액·총이자</div></div></a>
     </div>
   </div>
 
   <!-- ⑩ 관련 가이드 (5) -->
   <div class="related-articles-section">
     <h2>함께 보면 좋은 가이드</h2>
-    <a class="rel-article-item" href="general-vs-simple-tax.html"><span class="rai-num">1</span><div class="rai-body"><div class="rai-cat">세무·회계</div><div class="rai-title">일반과세 vs 간이과세 — 내 가게에 뭐가 유리할까</div></div><span class="rai-arrow">→</span></a>
-    <a class="rel-article-item" href="tax-refund-soho.html"><span class="rai-num">2</span><div class="rai-body"><div class="rai-cat">세무·회계</div><div class="rai-title">소상공인 부가세·종합소득세 환급받는 법</div></div><span class="rai-arrow">→</span></a>
-    <a class="rel-article-item" href="soho-cash-receipt-guide.html"><span class="rai-num">3</span><div class="rai-body"><div class="rai-cat">세무·회계</div><div class="rai-title">현금영수증·세금계산서 발급 완전 정리</div></div><span class="rai-arrow">→</span></a>
-    <a class="rel-article-item" href="solo-shop-tax-deduction.html"><span class="rai-num">4</span><div class="rai-body"><div class="rai-cat">세무·회계</div><div class="rai-title">1인 사장님이 놓치기 쉬운 세금 공제 항목</div></div><span class="rai-arrow">→</span></a>
-    <a class="rel-article-item" href="business-type-change-tax.html"><span class="rai-num">5</span><div class="rai-body"><div class="rai-cat">세무·회계</div><div class="rai-title">간이→일반 과세유형 전환 시 세금 체크포인트</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="general-vs-simple-tax.html"><span class="rai-num">1</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">일반과세 vs 간이과세 — 우리 가게는 뭐가 유리할까</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="tax-refund-soho.html"><span class="rai-num">2</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">소상공인 부가세 환급 받는 법 — 놓치기 쉬운 매입공제</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="solo-shop-tax-deduction.html"><span class="rai-num">3</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">1인 사장님 절세 체크리스트 — 이건 꼭 챙기세요</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="business-type-change-tax.html"><span class="rai-num">4</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">간이과세 → 일반과세 전환, 뭐가 달라지나</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="card-sales-tax-audit.html"><span class="rai-num">5</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">카드매출 세무조사 — 사장님이 조심해야 할 것</div></div><span class="rai-arrow">→</span></a>
   </div>
 
   <!-- ⑪ 관련 서식 (3) -->
   <div class="related-calcs-section">
     <h2>함께 쓰면 좋은 서식</h2>
     <div class="rel-calc-grid">
-      <a class="rel-calc-card" href="forms.html#tax"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">세금계산서 양식</div><div class="rcc-desc">공급가액·세액 구분</div></div></a>
-      <a class="rel-calc-card" href="forms.html#tax"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">매출·매입 장부</div><div class="rcc-desc">부가세 신고 자료</div></div></a>
-      <a class="rel-calc-card" href="forms.html#tax"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">경비 지출 정리표</div><div class="rcc-desc">매입세액 공제 관리</div></div></a>
+      <a class="rel-calc-card" href="forms.html#tax"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">세금계산서 안내문</div><div class="rcc-desc">발급·수취 안내</div></div></a>
+      <a class="rel-calc-card" href="forms.html#tax"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">거래명세서</div><div class="rcc-desc">매출·매입 내역</div></div></a>
+      <a class="rel-calc-card" href="forms.html#tax"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">지출결의서</div><div class="rcc-desc">매입 경비 정리</div></div></a>
     </div>
   </div>
 
   <!-- ⑫ 한 줄 요약 + CTA -->
   <section class="ai-summary" aria-label="한 줄 요약">
     <span class="ais-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> 한 줄 요약</span>
-    <p>부가세는 <strong>받은 세금(매출×10%) − 낸 세금(매입×10%)</strong>만큼만 내는 세금이에요. 일반과세자는 매입이 크면 환급까지 받고, 간이과세자는 <strong>매출 × 부가가치율(15~40%) × 10%</strong>로 계산하되 환급은 없습니다.</p>
-    <p>간이과세는 연 매출 <strong>4,800만원 미만이면 납부면제</strong>, 적용 기준은 1억 400만원 미만이에요. 우리 가게 매출·매입만 넣으면 납부액인지 환급인지 바로 나오니 아래에서 확인해보세요.</p>
+    <p>일반과세자는 <strong>매출세액 − 매입세액</strong>, 이 한 줄이 전부입니다. 매입 영수증·세금계산서를 잘 챙길수록 낼 세금이 줄고, 매입이 매출보다 많으면 환급까지 받아요.</p>
+    <p>간이과세자는 <strong>매출 × 부가가치율 × 10%</strong>로 훨씬 간단하고, 연 매출 4,800만원 미만이면 납부도 면제됩니다. 7월·1월 신고철 놓치면 가산세 붙으니, 위 계산기로 미리 낼 세금을 확인해두세요.</p>
     <div class="ais-cta">
       <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/></svg> 지금 부가세 계산하기</a>
-      <a class="ais-btn ghost" href="general-vs-simple-tax.html">일반·간이 비교 보기</a>
+      <a class="ais-btn ghost" href="card-fee-calc.html">카드수수료도 확인</a>
     </div>
   </section>
 
   <!-- 직접 계산 CTA -->
   <div class="cta-box">
     <h3>우리 가게 부가세, 지금 계산해보세요</h3>
-    <p>매출·매입만 넣으면 납부할 부가세인지 환급받을 금액인지 바로 나옵니다.</p>
+    <p>매출·매입만 넣으면 납부할 부가세 또는 환급액이 바로 나옵니다.</p>
     <a href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/></svg> 부가세 바로 계산하기</a>
   </div>
 
@@ -494,19 +485,19 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <div class="calc-sources">
     <h2>자료 출처</h2>
     <ul>
-      <li>국세청 — 부가가치세 기본정보·세율·신고안내 (<a href="https://www.nts.go.kr" target="_blank" rel="nofollow noopener">nts.go.kr</a>)</li>
-      <li>부가가치세법 시행령 제111조 — 간이과세자 업종별 부가가치율 (<a href="https://www.law.go.kr" target="_blank" rel="nofollow noopener">law.go.kr</a>)</li>
-      <li>부가가치세법 제69조 — 간이과세자 납부의무 면제(공급대가 4,800만원 미만) (<a href="https://www.law.go.kr" target="_blank" rel="nofollow noopener">law.go.kr</a>)</li>
-      <li>기획재정부 — 간이과세 적용 기준 1억 400만원 상향(2024.7.1 시행)</li>
+      <li>국세청 — 부가가치세 세율 및 간이과세자 업종별 부가가치율 (<a href="https://www.nts.go.kr" target="_blank" rel="nofollow noopener">nts.go.kr</a>)</li>
+      <li>국세청 홈택스 — 부가가치세 신고·납부 안내 (<a href="https://www.hometax.go.kr" target="_blank" rel="nofollow noopener">hometax.go.kr</a>)</li>
+      <li>부가가치세법 제37조·제63조 — 납부세액·간이과세자 계산 (<a href="https://www.law.go.kr" target="_blank" rel="nofollow noopener">law.go.kr</a>)</li>
+      <li>간이과세 기준: 직전연도 공급대가 1억 400만원 미만 · 납부면제 4,800만원 미만</li>
     </ul>
-    <p class="cs-updated">기준일: 2026년 7월 · 본 계산기는 참고용이며, 정확한 세액은 국세청·세무사와 확인하세요.</p>
+    <p class="cs-updated">기준일: 2026년 7월 · 본 계산기는 참고용이며, 정확한 세액은 홈택스·세무사와 확인하세요.</p>
   </div>
 </div>
 
 <button id="back-to-top" aria-label="맨 위로">↑</button>
-<script src="assets/layout.js?v=20260702e"></script>
-<script src="sohotip.js?v=20260630f"></script>
-<script src="assets/consult.js?v=20260702e"></script>
+<script src="assets/layout.js?v=20260702e" defer></script>
+<script src="sohotip.js?v=20260708a" defer></script>
+<script src="assets/consult.js?v=20260702e" defer></script>
 <script>
 function switchTab(t, btn) {
   ['general','simple','include'].forEach(id => {
@@ -548,21 +539,11 @@ function calcInclude(){
   document.getElementById('i-vat').textContent=fmt(vat);
   document.getElementById('i-result').style.display='block';
 }
-
-function calcInlineVat(){
-  var t=getRawNumber('il_total_vat')||0;
-  var supply=t/1.1;
-  var vat=t-supply;
-  var r=document.getElementById('il_result_vat');
-  document.getElementById('il_result_vat_val').textContent='부가세 '+Math.round(vat).toLocaleString('ko-KR')+'원';
-  document.getElementById('il_result_vat_sub').textContent='공급가액 '+Math.round(supply).toLocaleString('ko-KR')+'원 / 부가세 '+Math.round(vat).toLocaleString('ko-KR')+'원';
-  r.style.display='block';
-}
 </script>
 <footer>
-  <a href="index.html">홈</a><a href="category.html">카테고리</a><a href="tools.html">계산기 모음</a>
-  <p style="margin-top:12px;">© 2026 소호팁. 본 계산기는 참고용입니다.</p>
+  <a href="index.html">홈</a><a href="category.html">카테고리</a><a href="tools.html">계산기 모음</a><a href="consultation.html">무료 진단</a>
+  <p style="margin-top:12px;">© 2026 소호팁. 본 계산기는 참고용이며 정확한 세액은 전문가와 확인하세요.</p>
 </footer>
-<script src="network.js?v=20260630f"></script>
+<script src="network.js?v=20260708a" defer></script>
 </body>
 </html>
