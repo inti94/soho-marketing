@@ -22,6 +22,12 @@
 
   <!-- 최신 가이드 (마케팅 뉴스) -->
   <url>
+    <loc>https://sohotip.co.kr/google-ai-overview-seo.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://sohotip.co.kr/portal-ai-search-2026.html</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
