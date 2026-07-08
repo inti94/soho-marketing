@@ -7,14 +7,14 @@
 <meta http-equiv="Expires" content="0">
 <script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="월 매출과 임대료·인건비·재료비·고정비를 입력하면 영업이익·영업이익률·손익분기 매출과 객단가 기준 목표 손님 수를 계산합니다.">
-<meta name="keywords" content="매장 수익성 계산기, 영업이익률 계산, 순이익 계산, 객단가 목표 손님, 손익분기 매출">
-<meta name="robots" content="noindex, follow">
+<meta name="description" content="매장 순이익 계산기. 월 매출과 임대료·인건비·재료비·고정비를 넣으면 영업이익·영업이익률·손익분기 매출과 객단가 기준 목표 손님 수를 즉시 계산합니다. 소상공인 무료 계산기.">
+<meta name="keywords" content="매장 순이익 계산기, 영업이익률 계산, 매장 수익성, 손익분기 매출, 객단가 목표 손님, 외식업 이익률">
+<meta name="robots" content="index, follow">
 <meta name="author" content="소호팁">
-<meta name="date" content="2026-06-20">
+<meta name="date" content="2026-07-08">
 <meta property="og:type" content="website">
-<meta property="og:title" content="매장 수익성 계산기 — 소호팁">
-<meta property="og:description" content="월 매출과 임대료·인건비·재료비·고정비를 입력하면 영업이익·영업이익률·손익분기 매출과 객단가 기준 목표 손님 수를 계산합니다.">
+<meta property="og:title" content="매장 순이익 계산기 (2026) — 영업이익률·손익분기·목표 손님 수 | 소호팁">
+<meta property="og:description" content="월 매출과 임대료·인건비·재료비·고정비를 넣으면 영업이익·영업이익률·손익분기 매출과 객단가 기준 목표 손님 수를 즉시 계산합니다.">
 <meta property="og:url" content="https://sohotip.co.kr/store-profit-calc.html">
 <meta property="og:image" content="https://sohotip.co.kr/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -22,8 +22,8 @@
 <meta property="og:site_name" content="소호팁">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="매장 수익성 계산기 — 소호팁">
-<meta name="twitter:description" content="월 매출과 임대료·인건비·재료비·고정비를 입력하면 영업이익·영업이익률·손익분기 매출과 객단가 기준 목표 손님 수를 계산합니다.">
+<meta name="twitter:title" content="매장 순이익 계산기 (2026) — 영업이익률·손익분기·목표 손님 수 | 소호팁">
+<meta name="twitter:description" content="월 매출과 비용을 넣으면 영업이익·영업이익률·손익분기 매출과 목표 손님 수를 즉시 계산합니다.">
 <meta name="twitter:image" content="https://sohotip.co.kr/og-image.png">
 <meta name="naver-site-verification" content="d7369feb5de3df4cce2e9016b84ad045c4ed70a4">
 <link rel="canonical" href="https://sohotip.co.kr/store-profit-calc.html">
@@ -32,20 +32,20 @@
 <link rel="icon" type="image/png" sizes="32x32" href="https://sohotip.co.kr/favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
 <link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
-<title>매장 수익성 계산기 — 영업이익률·순이익·목표 손님 수 | 소호팁</title>
+<title>매장 순이익 계산기 — 영업이익률·손익분기·목표 손님 수 (2026) | 소호팁</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "매장 수익성 계산기",
-  "description": "월 매출과 비용으로 영업이익률·순이익·목표 손님 수를 계산하는 무료 계산기.",
+  "name": "매장 순이익 계산기",
+  "description": "월 매출과 비용으로 영업이익률·순이익·손익분기 매출·목표 손님 수를 계산하는 무료 계산기.",
   "url": "https://sohotip.co.kr/store-profit-calc.html",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web",
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"},
   "publisher": {"@type": "Organization", "name": "소호팁", "url": "https://sohotip.co.kr"},
-  "dateModified": "2026-06-20",
+  "dateModified": "2026-07-08",
   "inLanguage": "ko-KR"
 }
 </script>
@@ -53,13 +53,41 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
 {"@type":"ListItem","position":1,"name":"홈","item":"https://sohotip.co.kr/"},
 {"@type":"ListItem","position":2,"name":"계산기","item":"https://sohotip.co.kr/tools.html"},
-{"@type":"ListItem","position":3,"name":"매장 수익성 계산기","item":"https://sohotip.co.kr/store-profit-calc.html"}
+{"@type":"ListItem","position":3,"name":"매장 순이익 계산기","item":"https://sohotip.co.kr/store-profit-calc.html"}
 ]}
 </script>
-<link rel="stylesheet" href="sohotip.css?v=20260630f">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "매장 순이익(영업이익) 계산하는 법",
+  "description": "월 매출과 임대료·인건비·재료비·기타 고정비, 객단가를 입력해 영업이익·영업이익률·손익분기 매출·목표 손님 수를 계산하는 방법.",
+  "totalTime": "PT1M",
+  "step": [
+    {"@type":"HowToStep","position":1,"name":"월 매출 입력","text":"한 달 총매출을 입력합니다.","url":"https://sohotip.co.kr/store-profit-calc.html#calc"},
+    {"@type":"HowToStep","position":2,"name":"비용 입력","text":"월 임대료·인건비·재료비·기타 고정비를 입력합니다.","url":"https://sohotip.co.kr/store-profit-calc.html#calc"},
+    {"@type":"HowToStep","position":3,"name":"객단가 입력","text":"손님 1인당 평균 결제액(객단가)을 입력합니다.","url":"https://sohotip.co.kr/store-profit-calc.html#calc"},
+    {"@type":"HowToStep","position":4,"name":"계산하기","text":"'수익성 계산하기'를 누르면 영업이익·이익률·손익분기 매출·목표 손님 수가 나옵니다.","url":"https://sohotip.co.kr/store-profit-calc.html#calc"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"영업이익과 순이익은 뭐가 다른가요?","acceptedAnswer":{"@type":"Answer","text":"영업이익은 매출에서 임대료·인건비·재료비·운영비 같은 영업비용을 뺀 금액입니다. 순이익은 여기서 대출이자·세금(부가세·종합소득세) 등까지 더 뺀 최종 손에 남는 돈이고요. 이 계산기는 영업이익까지 보여주며, 세금·이자는 업체마다 달라 별도로 확인해야 합니다."}},
+    {"@type":"Question","name":"영업이익률은 몇 %면 괜찮은 건가요?","acceptedAnswer":{"@type":"Answer","text":"업종·입지에 따라 크게 다르지만 일반적인 참고치로, 외식업은 영업이익률 10~15%면 양호, 20%를 넘으면 우수한 편으로 봅니다. 카페는 15~20%, 편의점·소매는 5~10% 정도가 흔히 언급됩니다. 절대 기준이 아니라 우리 가게 추이를 매달 비교하는 용도로 보는 게 좋습니다."}},
+    {"@type":"Question","name":"손익분기 매출은 어떻게 계산되나요?","acceptedAnswer":{"@type":"Answer","text":"이 계산기는 재료비를 매출에 비례하는 변동비로 보고, 임대료·인건비·기타를 고정비로 봅니다. 손익분기 매출 = 고정비 ÷ (1 − 재료비율)로 계산합니다. 예를 들어 고정비 1,150만원, 재료비율 35%면 손익분기 매출은 약 1,769만원입니다. 이보다 많이 팔아야 이익이 남습니다."}},
+    {"@type":"Question","name":"하루 목표 손님 수는 어떻게 나온 건가요?","acceptedAnswer":{"@type":"Answer","text":"월 매출을 객단가(1인당 평균 결제액)로 나누면 월 목표 손님 수가 나오고, 이를 30일로 나누면 하루 목표 손님 수가 됩니다. 예를 들어 월 매출 3,000만원, 객단가 15,000원이면 월 2,000명, 하루 약 67명입니다."}},
+    {"@type":"Question","name":"영업이익이 마이너스면 뭐부터 봐야 하나요?","acceptedAnswer":{"@type":"Answer","text":"보통 재료비(원가율)와 인건비, 임대료 순으로 점검합니다. 재료비율이 매출의 35~40%를 크게 넘으면 원가 관리가 필요하고, 인건비가 과하면 근무 편성을, 임대료가 매출 대비 높으면 매출을 늘리거나 계약 조건을 봐야 합니다. 원가율은 메뉴 원가율 계산기로, 손익분기는 손익분기점 계산기로 함께 확인하세요."}}
+  ]
+}
+</script>
+<link rel="stylesheet" href="sohotip.css?v=20260708a">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630f">
-<link rel="stylesheet" href="assets/calc.css?v=20260630f">
+  <link rel="stylesheet" href="assets/theme.css?v=20260708a">
+<link rel="stylesheet" href="assets/calc.css?v=20260708a">
 <style>
 :root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -75,7 +103,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
 .ad-wrap{max-width:680px;margin:0 auto;padding:12px 2rem 0;text-align:center;}
 .page-wrap{max-width:680px;margin:0 auto;padding:24px 2rem 80px;}
 .page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
-.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:32px;line-height:1.6;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:24px;line-height:1.6;}
 .calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;}
 .card-title{font-size:14px;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:20px;}
 .field{margin-bottom:20px;}
@@ -102,9 +130,87 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
 .btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background 0.2s;margin-top:8px;min-height:44px;}
 .btn-calc:hover{background:var(--primary-mid);}
 .tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+.tag svg{width:13px;height:13px;vertical-align:-2px;margin-right:2px;}
 footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
 footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
 @media(max-width:640px){.field-row{grid-template-columns:1fr;}}
+
+  /* ── 함께 사용한 계산기 ── */
+  .related-calcs-section{margin:32px 0 0;}
+  .related-calcs-section h2,.related-articles-section h2{font-size:16px;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .rel-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+  .rel-calc-card{display:flex;align-items:center;gap:10px;padding:14px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s;}
+  .rel-calc-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 14px rgba(61,90,254,.12);}
+  .rcc-icon{flex-shrink:0;width:24px;height:24px;display:flex;align-items:center;justify-content:center;}
+  .rcc-icon svg{width:22px;height:22px;stroke:var(--primary);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+  .rcc-body{flex:1;min-width:0;}
+  .rcc-title{font-size:12px;font-weight:700;line-height:1.3;margin-bottom:3px;}
+  .rcc-desc{font-size:11px;color:var(--text-muted);line-height:1.4;}
+  /* ── 함께 많이 본 글 ── */
+  .related-articles-section{margin:24px 0 0;}
+  .rel-article-list{display:flex;flex-direction:column;gap:0;}
+  .rel-article-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);transition:color .2s;}
+  .rel-article-item:last-child{border-bottom:none;}
+  .rel-article-item:hover .rai-title{color:var(--primary);}
+  .rai-num{font-size:18px;font-weight:900;color:var(--border);width:24px;flex-shrink:0;text-align:center;}
+  .rai-body{flex:1;min-width:0;}
+  .rai-cat{font-size:10px;color:var(--primary);font-weight:700;margin-bottom:2px;}
+  .rai-title{font-size:13px;font-weight:600;line-height:1.4;}
+  .rai-arrow{color:var(--primary);font-size:14px;flex-shrink:0;}
+  @media(max-width:640px){
+    .rel-calc-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:380px){
+    .rel-calc-grid{grid-template-columns:1fr;}
+  }
+
+  /* ── 공통 12블록: 설명 콘텐츠 ── */
+  .article-content{margin-top:36px;}
+  .article-content h2{font-size:20px;font-weight:800;color:var(--text);margin:34px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-.01em;}
+  .article-content h3{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}
+  .article-content p{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:16px;word-break:keep-all;overflow-wrap:anywhere;}
+  .article-content strong{font-weight:700;color:var(--primary);}
+  .article-content ul{margin:14px 0 18px 18px;}
+  .article-content li{font-size:15px;line-height:1.8;margin-bottom:6px;}
+  .formula-box{background:#191F28;color:#fff;border-radius:14px;padding:20px 22px;margin:8px 0 18px;font-size:15px;font-weight:600;line-height:1.7;text-align:center;}
+  .formula-box .fx-sub{display:block;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);margin-top:8px;}
+  .tip-inline{background:var(--primary-light);border-radius:12px;padding:14px 18px;margin:8px 0 18px;font-size:14px;color:var(--primary-mid);line-height:1.7;}
+  .tip-inline strong{color:var(--primary);}
+  .step-box{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin:8px 0 18px;}
+  .step-box .sb-badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--primary);padding:3px 11px;border-radius:20px;margin-bottom:10px;}
+  .step-box .sb-body{font-size:14.5px;line-height:1.8;color:var(--text);}
+  .howto-list{counter-reset:howto;list-style:none;margin:8px 0 18px;padding:0;}
+  .howto-list li{position:relative;padding:12px 16px 12px 46px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;margin-bottom:8px;font-size:14px;line-height:1.7;color:var(--text);}
+  .howto-list li::before{counter-increment:howto;content:counter(howto);position:absolute;left:14px;top:12px;width:22px;height:22px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .article-table{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:13.5px;}
+  .article-table th,.article-table td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.6;word-break:keep-all;}
+  .article-table th{background:#F4F6FB;font-weight:700;color:var(--text);}
+  .article-table td:first-child{font-weight:600;}
+  .faq-section{margin-top:8px;}
+  .faq-item{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;background:var(--bg-card);}
+  .faq-q{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:7px;}
+  .faq-q::before{content:"Q. ";color:var(--primary);}
+  .faq-a{font-size:13.5px;color:var(--text-muted);line-height:1.75;word-break:keep-all;overflow-wrap:anywhere;}
+  /* 직접계산 CTA */
+  .cta-box{margin-top:34px;background:linear-gradient(135deg,#3D5AFE,#536DFE);border-radius:18px;padding:26px 22px;text-align:center;color:#fff;}
+  .cta-box h3{font-size:18px;font-weight:800;margin-bottom:6px;}
+  .cta-box p{font-size:13.5px;opacity:.85;margin-bottom:16px;line-height:1.6;}
+  .cta-box a{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--primary);font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;text-decoration:none;transition:transform .12s;}
+  .cta-box a svg{width:17px;height:17px;stroke:var(--primary);fill:none;stroke-width:2;}
+  .cta-box a:active{transform:scale(.97);}
+  /* ⑫ 하단 자료 출처 */
+  .calc-sources{margin:30px 0 0;padding:18px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;}
+  .calc-sources h2{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;}
+  .calc-sources ul{list-style:none;margin:0;padding:0;}
+  .calc-sources li{font-size:12.5px;color:var(--text-muted);line-height:1.75;padding-left:14px;position:relative;}
+  .calc-sources li::before{content:"·";position:absolute;left:2px;color:var(--primary);font-weight:700;}
+  .calc-sources a{color:var(--primary);text-decoration:none;}
+  .calc-sources a:hover{text-decoration:underline;}
+  .calc-sources .cs-updated{font-size:11px;color:var(--text-muted);margin-top:10px;}
+  /* AI 요약 배지 SVG (이모지 대체) */
+  .ai-summary .ais-badge svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .ai-summary .ais-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
 </style></head>
 <body>
 <div id="progress-bar"></div>
@@ -125,11 +231,26 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
 </div>
 <div class="ad-wrap"><ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-OXO7QmLJ3fqDjM3l" data-ad-width="320" data-ad-height="100"></ins></div>
 <div class="page-wrap">
-  <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="12" y2="18"/></svg> 매출·수익 계산기</span>
-  <h1 class="page-title">매장 수익성 계산기</h1>
+  <!-- ① 제목 -->
+  <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> 매출·수익 계산기</span>
+  <h1 class="page-title">매장 순이익 계산기</h1>
   <p class="page-desc">우리 가게가 실제로 남는 장사인지 궁금하시죠? 월 매출과 임대료·인건비·재료비를 넣으면 영업이익률과 순이익, 그리고 객단가 기준으로 하루에 손님 몇 명을 받아야 하는지까지 알려드려요.</p>
 
-  <div class="calc-card">
+  <!-- ② 30초 요약 -->
+  <section class="ai-summary" aria-label="30초 핵심 요약">
+    <span class="ais-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.9L18.7 9.7 13.8 11.5 12 16.4 10.2 11.5 5.3 9.7 10.2 7.9z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg> 30초 요약 · 사장님용</span>
+    <p>매출은 3,000만원 찍혔는데 통장엔 왜 이것밖에 안 남지? 이 계산기가 그 답을 보여줘요. 매출에서 <strong>임대료·인건비·재료비·고정비</strong>를 다 빼면 진짜 남는 돈, <strong>영업이익</strong>이 나옵니다.</p>
+    <p>예를 들어 월 매출 3,000만원에 비용이 2,200만원이면 영업이익은 <strong>800만원</strong>, 영업이익률은 <strong>26.7%</strong>예요. 외식업은 보통 10~15%면 양호하니, 우리 가게가 어디쯤인지 바로 감이 옵니다.</p>
+    <p>덤으로 <strong>손익분기 매출</strong>(딱 본전인 매출)과 객단가로 <strong>하루에 손님 몇 명</strong>을 받아야 하는지도 알려줘요. "하루 67명은 와야 남는구나" 하고 목표가 숫자로 잡히죠. 아래에 우리 가게 숫자 넣고 확인해보세요.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> 우리 가게 순이익 바로 계산</a>
+      <a class="ais-btn ghost" href="bep-calc.html">손익분기점만 따로 보기</a>
+    </div>
+    <div class="ais-links">이어서 보면 좋아요 · <a href="food-cost-calc.html">메뉴 원가율 계산</a> · <a href="food-cost-control.html">원가율 잡는 법</a></div>
+  </section>
+
+  <!-- ③ 계산기 -->
+  <div class="calc-card" id="calc">
     <div class="card-title">월 매출·비용 입력</div>
     <div class="field"><label>월 매출 (원)</label><input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="sales" value="30,000,000" min="0" step="1000000"></div>
     <div class="field-row">
@@ -144,6 +265,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
     <button class="btn-calc" onclick="calculate()">수익성 계산하기</button>
   </div>
 
+  <!-- ④ 계산 결과 -->
   <div id="result-section" style="display:none;">
     <div class="result-card">
       <div class="result-title">월 영업이익 (예상)</div>
@@ -158,15 +280,148 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
       <div class="breakdown-row"><span class="breakdown-label">월 목표 손님 수</span><span class="breakdown-value" id="res-cust-m">-</span></div>
       <div class="breakdown-row"><span class="breakdown-label">하루 목표 손님 수 (30일)</span><span class="breakdown-value" id="res-cust-d">-</span></div>
     </div>
-    <div class="notice-box"><strong>💡 영업이익률 보는 법</strong><br>외식업은 보통 영업이익률 <strong>10~15%</strong>면 양호, 20% 넘으면 우수한 편이에요. 마이너스가 나오면 재료비(원가율)나 인건비부터 점검해보세요. 손익분기 매출은 "딱 본전"인 매출이라, 이보다 많이 팔아야 남습니다.</div>
+    <div class="notice-box"><strong>영업이익률 보는 법</strong><br>외식업은 보통 영업이익률 <strong>10~15%</strong>면 양호, 20% 넘으면 우수한 편이에요(업종·입지마다 다른 참고치). 마이너스가 나오면 재료비(원가율)나 인건비부터 점검해보세요. 손익분기 매출은 "딱 본전"인 매출이라, 이보다 많이 팔아야 남습니다.</div>
+  </div>
+
+  <div class="article-content">
+    <!-- ⑤ 계산 공식 설명 -->
+    <h2>매장 순이익, 이렇게 계산됩니다</h2>
+    <p>매출이 아무리 커도 남는 게 없으면 소용없죠. 실제로 손에 남는 돈을 보려면 매출에서 <strong>나가는 비용을 전부</strong> 빼야 합니다. 그렇게 나온 게 <strong>영업이익</strong>이에요.</p>
+    <div class="formula-box">영업이익 = 매출 − (임대료 + 인건비 + 재료비 + 기타 고정비)<span class="fx-sub">영업이익률 = 영업이익 ÷ 매출 × 100 · 손익분기 매출 = 고정비 ÷ (1 − 재료비율)</span></div>
+    <p>이 계산기는 <strong>재료비를 매출에 따라 움직이는 변동비</strong>로, 임대료·인건비·기타를 고정비로 봅니다. 그래서 손익분기 매출은 고정비를 '재료비를 뺀 이익 비율(공헌이익률)'로 나눠서 구해요. 여기에 객단가를 넣으면 하루에 손님 몇 명을 받아야 하는지까지 나옵니다.</p>
+    <h3>이렇게 계산하세요</h3>
+    <ol class="howto-list">
+      <li>한 달 총매출을 입력합니다.</li>
+      <li>월 임대료·인건비·재료비·기타 고정비를 입력합니다.</li>
+      <li>손님 1인당 평균 결제액(객단가)을 입력합니다.</li>
+      <li>'수익성 계산하기'를 누르면 영업이익·이익률·손익분기 매출·목표 손님 수가 나옵니다.</li>
+    </ol>
+
+    <!-- ⑥ 주요 계산항목 표 -->
+    <h2>비용 구성과 이익 (예시)</h2>
+    <table class="article-table">
+      <thead><tr><th>항목</th><th>금액</th><th>매출 대비</th></tr></thead>
+      <tbody>
+        <tr><td>월 매출</td><td>30,000,000원</td><td>100%</td></tr>
+        <tr><td>재료비(원가)</td><td>10,500,000원</td><td>35%</td></tr>
+        <tr><td>인건비</td><td>6,000,000원</td><td>20%</td></tr>
+        <tr><td>임대료</td><td>3,000,000원</td><td>10%</td></tr>
+        <tr><td>기타 고정비</td><td>2,500,000원</td><td>약 8%</td></tr>
+        <tr><td>영업이익</td><td>8,000,000원</td><td>약 27%</td></tr>
+      </tbody>
+    </table>
+    <h3>업종별 영업이익률 참고치</h3>
+    <table class="article-table">
+      <thead><tr><th>업종</th><th>흔히 말하는 영업이익률</th></tr></thead>
+      <tbody>
+        <tr><td>외식업(식당)</td><td>10~15% (20%↑ 우수)</td></tr>
+        <tr><td>카페·디저트</td><td>15~20%</td></tr>
+        <tr><td>편의점·소매</td><td>5~10%</td></tr>
+        <tr><td>주점·술집</td><td>15~25%</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-inline"><strong>참고만 하세요:</strong> 위 수치는 업종·입지·규모에 따라 크게 달라지는 대략적인 기준입니다. 절대 기준이 아니라, 우리 가게의 이익률이 <strong>매달 오르는지 내리는지</strong> 추이를 보는 용도로 쓰는 게 훨씬 쓸모 있어요.</div>
+
+    <!-- ⑦ 실무 예시 -->
+    <h2>실무 예시 — 숫자로 따라가 볼게요</h2>
+    <div class="step-box">
+      <span class="sb-badge">이익이 남는 가게</span>
+      <div class="sb-body">
+        월 매출 3,000만 · 임대료 300 · 인건비 600 · 재료비 1,050 · 기타 250(만원)<br>
+        총 비용 = 300+600+1,050+250 = <strong>2,200만원</strong><br>
+        영업이익 = 3,000만 − 2,200만 = <strong>800만원</strong> (이익률 <strong>26.7%</strong>)<br>
+        손익분기 매출 = 1,150만 ÷ (1 − 0.35) ≈ <strong>1,769만원</strong><br>
+        객단가 15,000원 → 월 2,000명, <strong>하루 약 67명</strong>
+      </div>
+    </div>
+    <div class="step-box">
+      <span class="sb-badge">본전도 못 넘긴 가게</span>
+      <div class="sb-body">
+        같은 비용에 월 매출이 1,700만원뿐이라면<br>
+        영업이익 = 1,700만 − (재료비율 35% 반영) … <strong>손익분기(1,769만) 아래</strong>라 적자<br>
+        → 매출을 손익분기 위로 올리거나, 재료비·인건비를 줄여 본전선을 낮춰야 합니다.
+      </div>
+    </div>
+    <p>두 가게의 차이는 결국 <strong>손익분기 매출을 넘겼느냐</strong>예요. 우리 가게 손익분기가 얼마인지 알면, "이달 며칠까지 얼마 팔아야 본전"이라는 목표가 선명해집니다.</p>
+
+    <!-- ⑧ FAQ -->
+    <h2 id="faq">자주 묻는 질문</h2>
+    <div class="faq-section">
+      <div class="faq-item"><div class="faq-q">영업이익과 순이익은 뭐가 다른가요?</div><div class="faq-a">영업이익은 매출에서 임대료·인건비·재료비·운영비 같은 영업비용을 뺀 금액이에요. 순이익은 여기서 대출이자·세금(부가세·종합소득세)까지 더 뺀 최종 남는 돈이고요. 이 계산기는 영업이익까지 보여주며, 세금·이자는 업체마다 달라 별도로 확인해야 합니다.</div></div>
+      <div class="faq-item"><div class="faq-q">영업이익률은 몇 %면 괜찮은 건가요?</div><div class="faq-a">업종·입지에 따라 다르지만 일반적 참고치로 외식업은 10~15%면 양호, 20%↑이면 우수한 편입니다. 카페는 15~20%, 편의점·소매는 5~10% 정도가 흔히 언급돼요. 절대 기준이 아니라 우리 가게 추이를 매달 비교하는 용도로 보세요.</div></div>
+      <div class="faq-item"><div class="faq-q">손익분기 매출은 어떻게 계산되나요?</div><div class="faq-a">재료비를 변동비로, 임대료·인건비·기타를 고정비로 봅니다. 손익분기 매출 = 고정비 ÷ (1 − 재료비율)이에요. 고정비 1,150만원, 재료비율 35%면 약 1,769만원이 손익분기라, 이보다 많이 팔아야 이익이 남습니다.</div></div>
+      <div class="faq-item"><div class="faq-q">하루 목표 손님 수는 어떻게 나온 건가요?</div><div class="faq-a">월 매출을 객단가로 나누면 월 목표 손님 수가 되고, 30일로 나누면 하루 목표 손님 수예요. 월 매출 3,000만원·객단가 15,000원이면 월 2,000명, 하루 약 67명입니다.</div></div>
+      <div class="faq-item"><div class="faq-q">영업이익이 마이너스면 뭐부터 봐야 하나요?</div><div class="faq-a">보통 재료비(원가율)·인건비·임대료 순으로 점검해요. 재료비율이 매출의 35~40%를 크게 넘으면 원가 관리를, 인건비가 과하면 근무 편성을, 임대료가 높으면 매출 확대나 계약 조건을 봐야 합니다. 원가율은 메뉴 원가율 계산기로 함께 확인하세요.</div></div>
+    </div>
+  </div>
+
+  <!-- ⑨ 관련 계산기 (5) -->
+  <div class="related-calcs-section">
+    <h2>함께 보면 좋은 계산기</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="bep-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><div class="rcc-body"><div class="rcc-title">손익분기점 계산기</div><div class="rcc-desc">얼마 팔아야 본전</div></div></a>
+      <a class="rel-calc-card" href="food-cost-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.7 0L15 15Z"/></svg></span><div class="rcc-body"><div class="rcc-title">메뉴 원가율 계산기</div><div class="rcc-desc">원가율·마진율</div></div></a>
+      <a class="rel-calc-card" href="card-fee-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span><div class="rcc-body"><div class="rcc-title">카드수수료 계산기</div><div class="rcc-desc">카드매출 실수령</div></div></a>
+      <a class="rel-calc-card" href="vat-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/></svg></span><div class="rcc-body"><div class="rcc-title">부가세 계산기</div><div class="rcc-desc">납부·환급 세액</div></div></a>
+      <a class="rel-calc-card" href="startup-cost-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><div class="rcc-body"><div class="rcc-title">창업비용 계산기</div><div class="rcc-desc">개업 초기자금</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑩ 관련 가이드 (5) -->
+  <div class="related-articles-section">
+    <h2>함께 보면 좋은 가이드</h2>
+    <a class="rel-article-item" href="food-cost-control.html"><span class="rai-num">1</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">원가율 잡는 법 — 마진 새는 구멍부터 막는 실전 순서</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="rent-increase-refusal.html"><span class="rai-num">2</span><div class="rai-body"><div class="rai-cat">사장님 법률</div><div class="rai-title">임대료 올려달라 할 때 거절하는 법 — 5% 상한과 갱신청구권</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="store-electricity-bill-reduce-2026.html"><span class="rai-num">3</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">매장 전기요금 줄이는 법 2026 — 고정비 새는 곳 점검</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="restaurant-startup-cost.html"><span class="rai-num">4</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">식당 창업 비용 총정리 — 항목별 실제 드는 돈</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="general-vs-simple-tax.html"><span class="rai-num">5</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">일반과세 vs 간이과세 — 우리 가게는 뭐가 유리할까</div></div><span class="rai-arrow">→</span></a>
+  </div>
+
+  <!-- ⑪ 관련 서식 (3) -->
+  <div class="related-calcs-section">
+    <h2>함께 쓰면 좋은 서식</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="forms.html#store"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><div class="rcc-body"><div class="rcc-title">매출관리표</div><div class="rcc-desc">일·월 매출 기록</div></div></a>
+      <a class="rel-calc-card" href="forms.html#store"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.5 9.4 7.5 4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span><div class="rcc-body"><div class="rcc-title">재고관리표</div><div class="rcc-desc">재료비·발주 관리</div></div></a>
+      <a class="rel-calc-card" href="forms.html#store"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg></span><div class="rcc-body"><div class="rcc-title">점검 체크리스트</div><div class="rcc-desc">매장 운영 점검</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑫ 한 줄 요약 + CTA -->
+  <section class="ai-summary" aria-label="한 줄 요약">
+    <span class="ais-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> 한 줄 요약</span>
+    <p>남는 장사인지 보려면 <strong>매출 − 모든 비용 = 영업이익</strong>, 이 한 줄이면 됩니다. 그 이익을 매출로 나눈 <strong>영업이익률</strong>이 외식업 기준 10~15%면 양호예요.</p>
+    <p>거기에 <strong>손익분기 매출</strong>과 <strong>하루 목표 손님 수</strong>까지 알면, "며칠까지 얼마 팔면 본전, 하루 몇 명 받으면 목표"라는 계획이 숫자로 잡혀요. 감으로 하던 장사를 숫자로 바꾸는 첫걸음입니다.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> 지금 순이익 계산하기</a>
+      <a class="ais-btn ghost" href="bep-calc.html">손익분기점 보기</a>
+    </div>
+  </section>
+
+  <!-- 직접 계산 CTA -->
+  <div class="cta-box">
+    <h3>우리 가게, 남는 장사인지 지금 확인하세요</h3>
+    <p>월 매출과 비용만 넣으면 영업이익·이익률·손익분기·목표 손님 수가 바로 나옵니다.</p>
+    <a href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> 순이익 바로 계산하기</a>
+  </div>
+
+  <!-- 하단 자료 출처 -->
+  <div class="calc-sources">
+    <h2>자료 출처</h2>
+    <ul>
+      <li>영업이익 = 매출 − 영업비용, 손익분기 = 고정비 ÷ (1 − 변동비율) — 일반 관리회계 공식</li>
+      <li>업종별 영업이익률 참고치는 통계청·소상공인시장진흥공단 등에서 공개하는 자영업 실태 자료를 참고한 대략적 범위 (<a href="https://www.semas.or.kr" target="_blank" rel="nofollow noopener">semas.or.kr</a>)</li>
+      <li>국세청 — 부가세·종합소득세 등 세금은 순이익 계산 시 별도 반영 (<a href="https://www.nts.go.kr" target="_blank" rel="nofollow noopener">nts.go.kr</a>)</li>
+    </ul>
+    <p class="cs-updated">기준일: 2026년 7월 · 본 계산기는 영업이익 참고용이며, 이익률 기준은 업종·입지마다 다릅니다.</p>
   </div>
 </div>
 <div class="ad-wrap"><ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-92dlbIcNNOkHSZw8" data-ad-width="300" data-ad-height="250"></ins>
 <script type="text/javascript" src="//t1.kakaocdn.net/kas/static/ba.min.js" async></script></div>
 <button id="back-to-top" aria-label="맨 위로">↑</button>
-<script src="assets/layout.js?v=20260702e"></script>
-<script src="sohotip.js?v=20260630f"></script>
-<script src="assets/consult.js?v=20260702e"></script>
+<script src="assets/layout.js?v=20260702e" defer></script>
+<script src="sohotip.js?v=20260708a" defer></script>
+<script src="assets/consult.js?v=20260702e" defer></script>
 <script>
 function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
 function won(n){return Math.round(n).toLocaleString('ko-KR');}
@@ -201,6 +456,6 @@ function calculate(){
   <a href="consultation.html">무료 진단</a>
   <p style="margin-top:12px;">© 2026 소호팁. 본 계산기는 참고용이며 정확한 금액은 전문가와 확인하세요.</p>
 </footer>
-<script src="network.js?v=20260630f"></script>
+<script src="network.js?v=20260708a" defer></script>
 </body>
 </html>
