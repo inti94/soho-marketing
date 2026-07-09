@@ -7,14 +7,14 @@
 <meta http-equiv="Expires" content="0">
 <script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="배달의민족·쿠팡이츠 수수료를 포함해 주문 1건당 재료비, 배달비, 결제수수료를 제외한 실제 순이익을 자동으로 계산합니다.">
-<meta name="keywords" content="배달 순이익 계산기, 배달앱 수수료 계산, 배달의민족 수수료, 쿠팡이츠 수수료, 배달 마진">
-<meta name="robots" content="noindex, follow">
+<meta name="description" content="배달 순이익 계산기. 주문금액에서 중개수수료·결제수수료·업주부담 배달비·재료비·포장비를 빼고 실제 남는 순이익을 계산합니다. 2026 배달앱 차등 수수료(2.0~7.8%) 반영. 무료 계산기.">
+<meta name="keywords" content="배달 순이익 계산기, 배달앱 수수료 계산, 배달의민족 수수료, 쿠팡이츠 수수료, 배달 마진, 배달 중개수수료 2026, 실질 부담률">
+<meta name="robots" content="index, follow">
 <meta name="author" content="소호팁">
-<meta name="date" content="2026-06-20">
+<meta name="date" content="2026-07-09">
 <meta property="og:type" content="website">
-<meta property="og:title" content="배달 순이익 계산기 — 소호팁">
-<meta property="og:description" content="배달의민족·쿠팡이츠 수수료를 포함해 주문 1건당 재료비, 배달비, 결제수수료를 제외한 실제 순이익을 자동으로 계산합니다.">
+<meta property="og:title" content="배달 순이익 계산기 (2026) — 수수료·배달비 빼고 실제 남는 돈 | 소호팁">
+<meta property="og:description" content="주문금액에서 중개수수료·배달비·재료비를 빼고 실제 남는 순이익을 계산합니다. 2026 배달앱 차등 수수료 반영.">
 <meta property="og:url" content="https://sohotip.co.kr/delivery-profit-calc.html">
 <meta property="og:image" content="https://sohotip.co.kr/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -22,8 +22,8 @@
 <meta property="og:site_name" content="소호팁">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="배달 순이익 계산기 — 소호팁">
-<meta name="twitter:description" content="배달의민족·쿠팡이츠 수수료를 포함해 주문 1건당 재료비, 배달비, 결제수수료를 제외한 실제 순이익을 자동으로 계산합니다.">
+<meta name="twitter:title" content="배달 순이익 계산기 (2026) — 수수료·배달비 빼고 실제 남는 돈 | 소호팁">
+<meta name="twitter:description" content="주문금액에서 수수료·배달비·재료비를 빼고 실제 남는 순이익을 계산합니다.">
 <meta name="twitter:image" content="https://sohotip.co.kr/og-image.png">
 <meta name="naver-site-verification" content="d7369feb5de3df4cce2e9016b84ad045c4ed70a4">
 <link rel="canonical" href="https://sohotip.co.kr/delivery-profit-calc.html">
@@ -34,44 +34,64 @@
 <link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
 <title>배달 순이익 계산기 — 수수료·배달비 빼고 실제 남는 돈 계산 (2026) | 소호팁</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "배달 순이익 계산기",
-    "description": "배달앱 수수료와 배달비를 제외한 실제 순이익 계산기. 배달의민족·쿠팡이츠 수수료 자동 적용.",
-    "url": "https://sohotip.co.kr/delivery-profit-calc.html",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "Web",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "KRW"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "소호팁",
-      "url": "https://sohotip.co.kr"
-    },
-    "dateModified": "2026-06-20",
-    "inLanguage": "ko-KR",
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type":"ListItem","position":1,"name":"홈","item":"https://sohotip.co.kr/"},
-        {"@type":"ListItem","position":2,"name":"계산기","item":"https://sohotip.co.kr/tools.html"},
-        {"@type":"ListItem","position":3,"name":"배달 순이익 계산기","item":"https://sohotip.co.kr/delivery-profit-calc.html"}
-      ]
-    }
-  }
-  </script>
-<link rel="stylesheet" href="sohotip.css?v=20260630f">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "배달 순이익 계산기",
+  "description": "배달앱 중개수수료·결제수수료·배달비·재료비를 제외한 주문 1건당 실제 순이익을 계산하는 무료 계산기.",
+  "url": "https://sohotip.co.kr/delivery-profit-calc.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"},
+  "publisher": {"@type": "Organization", "name": "소호팁", "url": "https://sohotip.co.kr"},
+  "dateModified": "2026-07-09",
+  "inLanguage": "ko-KR"
+}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"홈","item":"https://sohotip.co.kr/"},
+{"@type":"ListItem","position":2,"name":"계산기","item":"https://sohotip.co.kr/tools.html"},
+{"@type":"ListItem","position":3,"name":"배달 순이익 계산기","item":"https://sohotip.co.kr/delivery-profit-calc.html"}
+]}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "배달 주문 순이익 계산하는 법",
+  "description": "주문금액과 중개수수료율·결제수수료율·업주부담 배달비·포장비·재료 원가율을 입력해 주문 1건당 순이익을 계산하는 방법.",
+  "totalTime": "PT1M",
+  "step": [
+    {"@type":"HowToStep","position":1,"name":"플랫폼·주문금액 입력","text":"배달의민족·쿠팡이츠 중 플랫폼을 고르고 주문금액을 입력합니다.","url":"https://sohotip.co.kr/delivery-profit-calc.html#calc"},
+    {"@type":"HowToStep","position":2,"name":"수수료·배달비 입력","text":"중개이용료율·결제수수료율·업주부담 배달비·포장비를 입력합니다.","url":"https://sohotip.co.kr/delivery-profit-calc.html#calc"},
+    {"@type":"HowToStep","position":3,"name":"재료 원가율 입력","text":"주문금액의 몇 %가 재료비인지 원가율을 입력합니다.","url":"https://sohotip.co.kr/delivery-profit-calc.html#calc"},
+    {"@type":"HowToStep","position":4,"name":"계산하기","text":"'순이익 계산하기'를 누르면 주문 1건당 순이익과 실질 부담률이 나옵니다.","url":"https://sohotip.co.kr/delivery-profit-calc.html#calc"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"배달 순이익은 어떻게 계산하나요?","acceptedAnswer":{"@type":"Answer","text":"배달 순이익 = 주문금액 − (재료비 + 중개이용료 + 결제수수료 + 업주부담 배달비 + 포장비)입니다. 예를 들어 2만원 주문에 원가율 35%, 중개수수료 6.8%, 결제수수료 1.2%, 배달비 2,400원, 포장비 500원이면 비용 합계 11,500원, 순이익은 8,500원입니다. 실질 부담률(비용÷주문금액)은 약 57.5%가 됩니다."}},
+    {"@type":"Question","name":"2026년 배달앱 중개수수료는 몇 %인가요?","acceptedAnswer":{"@type":"Answer","text":"상생협의체 합의에 따라 배달의민족·쿠팡이츠는 거래액 구간별 차등 중개수수료를 적용합니다. 거래액 상위 35%는 7.8%, 중위 구간은 6.8%, 매출 하위 20% 영세 점포는 2.0% 수준입니다. 여기에 결제수수료와 업주부담 배달비가 별도로 더해집니다. 우리 매장 구간은 각 앱의 사장님 페이지에서 확인할 수 있습니다."}},
+    {"@type":"Question","name":"포장 주문은 수수료가 없나요?","acceptedAnswer":{"@type":"Answer","text":"예전에는 포장 주문에 중개수수료가 없거나 낮았지만, 정책이 바뀌었습니다. 쿠팡이츠는 2026년 4월부터 전통시장·매출 하위 상생요금제 매장 등 일부 예외를 빼고 대부분 포장 주문에도 음식값의 6.8%(부가세 별도)를 중개수수료로 부과합니다. 다만 포장은 업주부담 배달비가 없어, 배달보다는 건당 남는 돈이 큰 편입니다."}},
+    {"@type":"Question","name":"실질 부담률이 왜 이렇게 높나요?","acceptedAnswer":{"@type":"Answer","text":"배달은 재료비 외에 중개수수료·결제수수료·배달비·포장비가 겹겹이 빠지기 때문입니다. 홀 판매라면 재료비 정도만 빠지지만, 배달은 여기에 매출의 8~9%(수수료)와 건당 배달비가 더해져 실질 부담률이 50%를 훌쩍 넘기도 합니다. 그래서 배달 메뉴는 홀과 가격을 다르게 설계하는 경우가 많습니다."}},
+    {"@type":"Question","name":"배달 마진을 개선하려면 어떻게 하나요?","acceptedAnswer":{"@type":"Answer","text":"① 배달 전용 가격을 홀보다 조금 높게 책정하고, ② 원가율을 낮추며(세트·사이드로 객단가 상승), ③ 단골은 포장·자체 채널로 유도해 수수료를 아끼고, ④ 무리한 할인·광고를 줄이는 것이 기본입니다. 특히 광고비는 새는 돈이 되기 쉬우니 배달 광고 효율을 따로 점검하는 것이 좋습니다."}}
+  ]
+}
+</script>
+<link rel="stylesheet" href="sohotip.css?v=20260708a">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630f">
-<link rel="stylesheet" href="assets/calc.css?v=20260630f">
+  <link rel="stylesheet" href="assets/theme.css?v=20260708a">
+<link rel="stylesheet" href="assets/calc.css?v=20260708a">
 <style>
 :root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
 body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;}
 nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
 .nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
@@ -80,15 +100,16 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
 .nav-links a:hover{color:var(--primary);}
 .nav-cta{background:var(--primary);color:#fff;font-size:13px;padding:7px 16px;border-radius:6px;text-decoration:none;}
 @media(max-width:640px){.nav-links{display:none;}}
-.page-wrap{max-width:680px;margin:0 auto;padding:40px 2rem 80px;}
+.ad-wrap{max-width:680px;margin:0 auto;padding:12px 2rem 0;text-align:center;}
+.page-wrap{max-width:680px;margin:0 auto;padding:24px 2rem 80px;}
 .page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
-.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:32px;line-height:1.6;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:24px;line-height:1.6;}
 .calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;}
-.card-title{font-size:13px;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:20px;}
-.field{margin-bottom:18px;}
-.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;}
+.card-title{font-size:14px;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:20px;}
+.field{margin-bottom:20px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--text);}
 .field-hint{font-size:11px;color:var(--text-muted);margin-bottom:6px;}
-.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;}
+.field input,.field select{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;-webkit-appearance:none;}
 .field input:focus,.field select:focus{border-color:var(--primary);}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .platform-tabs{display:flex;gap:8px;margin-bottom:20px;}
@@ -103,21 +124,25 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
 .res-box.profit .res-val{color:var(--primary);}
 .res-box.loss .res-val{color:#EF4444;}
 .breakdown{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:20px;}
-.br-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.br-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;gap:12px;}
 .br-row:last-child{border:none;font-weight:700;font-size:15px;padding-top:12px;}
 .br-label{color:var(--text-muted);}
-.br-val{font-weight:500;}
+.br-val{font-weight:500;text-align:right;}
 .br-val.minus{color:#EF4444;}
 .bar-wrap{margin:20px 0;}
 .bar-label{font-size:12px;color:var(--text-muted);margin-bottom:6px;}
 .bar-bg{background:var(--border);border-radius:8px;height:20px;overflow:hidden;display:flex;}
 .bar-seg{height:100%;transition:width 0.4s;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:600;}
-.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);margin-top:8px;}
+.legend-dot{display:inline-block;width:9px;height:9px;border-radius:2px;vertical-align:-1px;margin-right:3px;}
+.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background 0.2s;margin-top:8px;min-height:44px;}
 .btn-calc:hover{background:var(--primary-mid);}
 .tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+.tag svg{width:13px;height:13px;vertical-align:-2px;margin-right:2px;}
 .notice-box{background:var(--primary-light);border-radius:12px;padding:16px 20px;margin-top:20px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
+.notice-box strong{color:var(--primary);}
 footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
 footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
+@media(max-width:640px){.field-row{grid-template-columns:1fr;}}
 
   /* ── 함께 사용한 계산기 ── */
   .related-calcs-section{margin:32px 0 0;}
@@ -125,14 +150,15 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   .rel-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
   .rel-calc-card{display:flex;align-items:center;gap:10px;padding:14px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s;}
   .rel-calc-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 14px rgba(61,90,254,.12);}
-  .rcc-icon{font-size:22px;flex-shrink:0;}
+  .rcc-icon{flex-shrink:0;width:24px;height:24px;display:flex;align-items:center;justify-content:center;}
+  .rcc-icon svg{width:22px;height:22px;stroke:var(--primary);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
   .rcc-body{flex:1;min-width:0;}
   .rcc-title{font-size:12px;font-weight:700;line-height:1.3;margin-bottom:3px;}
   .rcc-desc{font-size:11px;color:var(--text-muted);line-height:1.4;}
   /* ── 함께 많이 본 글 ── */
   .related-articles-section{margin:24px 0 0;}
   .rel-article-list{display:flex;flex-direction:column;gap:0;}
-  .rel-article-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-light);text-decoration:none;color:var(--text);transition:color .2s;}
+  .rel-article-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);transition:color .2s;}
   .rel-article-item:last-child{border-bottom:none;}
   .rel-article-item:hover .rai-title{color:var(--primary);}
   .rai-num{font-size:18px;font-weight:900;color:var(--border);width:24px;flex-shrink:0;text-align:center;}
@@ -140,29 +166,61 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   .rai-cat{font-size:10px;color:var(--primary);font-weight:700;margin-bottom:2px;}
   .rai-title{font-size:13px;font-weight:600;line-height:1.4;}
   .rai-arrow{color:var(--primary);font-size:14px;flex-shrink:0;}
-  /* ── 인라인 계산기 ── */
-  .inline-calc-box{background:linear-gradient(135deg,var(--primary-light),#fff);border:2px solid var(--primary);border-radius:16px;padding:24px;margin:28px 0;}
-  .inline-calc-box h3{font-size:15px;font-weight:700;color:var(--text);margin-bottom:16px;}
-  .inline-fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:14px;}
-  .inline-field{}
-  .inline-field label{display:block;font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:4px;}
-  .inline-field input{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:15px;font-family:var(--sans);color:var(--text);background:#fff;outline:none;transition:border-color .2s;-webkit-appearance:none;}
-  .inline-field input:focus{border-color:var(--primary);}
-  .inline-calc-btn{width:100%;padding:12px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background .2s;min-height:44px;}
-  .inline-calc-btn:hover{background:var(--primary-mid);}
-  .inline-result{margin-top:14px;padding:14px 16px;background:#fff;border-radius:10px;border:1px solid var(--border);display:none;}
-  .inline-result-val{font-size:22px;font-weight:700;color:var(--primary);margin-bottom:4px;}
-  .inline-result-sub{font-size:12px;color:var(--text-muted);line-height:1.5;}
-  .inline-full-link{display:block;text-align:center;margin-top:12px;font-size:12px;color:var(--primary);text-decoration:none;font-weight:600;}
-  .inline-full-link:hover{text-decoration:underline;}
   @media(max-width:640px){
     .rel-calc-grid{grid-template-columns:1fr 1fr;}
-    .inline-fields{grid-template-columns:1fr 1fr;}
   }
   @media(max-width:380px){
     .rel-calc-grid{grid-template-columns:1fr;}
-    .inline-fields{grid-template-columns:1fr;}
   }
+
+  /* ── 공통 12블록: 설명 콘텐츠 ── */
+  .article-content{margin-top:36px;}
+  .article-content h2{font-size:20px;font-weight:800;color:var(--text);margin:34px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-.01em;}
+  .article-content h3{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}
+  .article-content p{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:16px;word-break:keep-all;overflow-wrap:anywhere;}
+  .article-content strong{font-weight:700;color:var(--primary);}
+  .article-content ul{margin:14px 0 18px 18px;}
+  .article-content li{font-size:15px;line-height:1.8;margin-bottom:6px;}
+  .formula-box{background:#191F28;color:#fff;border-radius:14px;padding:20px 22px;margin:8px 0 18px;font-size:15px;font-weight:600;line-height:1.7;text-align:center;}
+  .formula-box .fx-sub{display:block;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);margin-top:8px;}
+  .tip-inline{background:var(--primary-light);border-radius:12px;padding:14px 18px;margin:8px 0 18px;font-size:14px;color:var(--primary-mid);line-height:1.7;}
+  .tip-inline strong{color:var(--primary);}
+  .warn-inline{background:#FEF3F2;border:1px solid #FEC6C1;border-radius:12px;padding:14px 18px;margin:8px 0 18px;font-size:14px;color:#B42318;line-height:1.7;}
+  .warn-inline strong{color:#B42318;}
+  .step-box{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin:8px 0 18px;}
+  .step-box .sb-badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--primary);padding:3px 11px;border-radius:20px;margin-bottom:10px;}
+  .step-box .sb-body{font-size:14.5px;line-height:1.8;color:var(--text);}
+  .howto-list{counter-reset:howto;list-style:none;margin:8px 0 18px;padding:0;}
+  .howto-list li{position:relative;padding:12px 16px 12px 46px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;margin-bottom:8px;font-size:14px;line-height:1.7;color:var(--text);}
+  .howto-list li::before{counter-increment:howto;content:counter(howto);position:absolute;left:14px;top:12px;width:22px;height:22px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .article-table{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:13.5px;}
+  .article-table th,.article-table td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.6;word-break:keep-all;}
+  .article-table th{background:#F4F6FB;font-weight:700;color:var(--text);}
+  .article-table td:first-child{font-weight:600;}
+  .faq-section{margin-top:8px;}
+  .faq-item{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;background:var(--bg-card);}
+  .faq-q{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:7px;}
+  .faq-q::before{content:"Q. ";color:var(--primary);}
+  .faq-a{font-size:13.5px;color:var(--text-muted);line-height:1.75;word-break:keep-all;overflow-wrap:anywhere;}
+  /* 직접계산 CTA */
+  .cta-box{margin-top:34px;background:linear-gradient(135deg,#3D5AFE,#536DFE);border-radius:18px;padding:26px 22px;text-align:center;color:#fff;}
+  .cta-box h3{font-size:18px;font-weight:800;margin-bottom:6px;}
+  .cta-box p{font-size:13.5px;opacity:.85;margin-bottom:16px;line-height:1.6;}
+  .cta-box a{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--primary);font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;text-decoration:none;transition:transform .12s;}
+  .cta-box a svg{width:17px;height:17px;stroke:var(--primary);fill:none;stroke-width:2;}
+  .cta-box a:active{transform:scale(.97);}
+  /* ⑫ 하단 자료 출처 */
+  .calc-sources{margin:30px 0 0;padding:18px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;}
+  .calc-sources h2{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;}
+  .calc-sources ul{list-style:none;margin:0;padding:0;}
+  .calc-sources li{font-size:12.5px;color:var(--text-muted);line-height:1.75;padding-left:14px;position:relative;}
+  .calc-sources li::before{content:"·";position:absolute;left:2px;color:var(--primary);font-weight:700;}
+  .calc-sources a{color:var(--primary);text-decoration:none;}
+  .calc-sources a:hover{text-decoration:underline;}
+  .calc-sources .cs-updated{font-size:11px;color:var(--text-muted);margin-top:10px;}
+  /* AI 요약 배지 SVG (이모지 대체) */
+  .ai-summary .ais-badge svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .ai-summary .ais-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 
 </style></head>
 <body>
@@ -175,7 +233,6 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   </ul>
   <a href="consultation.html" class="nav-cta">무료 진단</a>
 </nav>
-<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
 <div class="mobile-search-bar">
   <div class="nav-search">
     <span class="nav-search-icon">🔍</span>
@@ -183,13 +240,28 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
     <div id="search-dropdown-mobile"></div>
   </div>
 </div>
-
+<div class="ad-wrap"><ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-OXO7QmLJ3fqDjM3l" data-ad-width="320" data-ad-height="100"></ins></div>
 <div class="page-wrap">
-  <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="12" y2="18"/></svg> 배달 수익 계산기</span>
+  <!-- ① 제목 -->
+  <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8Z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> 배달 수익 계산기</span>
   <h1 class="page-title">배달 순이익 계산기</h1>
-  <p class="page-desc">주문금액에서 배달앱 수수료, 업주부담 배달비, 재료비, 포장비를 빼고 실제로 남는 순이익을 계산합니다. 2024년 11월 배달앱 상생협의체 합의 기준 수수료를 적용합니다. (2026년 6월 현재 기준)</p>
+  <p class="page-desc">배달 한 건 팔면 진짜 얼마 남을까요? 주문금액에서 배달앱 중개수수료·결제수수료·업주부담 배달비·재료비·포장비를 다 빼고 실제 남는 순이익을 계산해 드려요. 2026년 배달앱 차등 수수료(2.0~7.8%)를 반영합니다.</p>
 
-  <div class="calc-card">
+  <!-- ② 30초 요약 -->
+  <section class="ai-summary" aria-label="30초 핵심 요약">
+    <span class="ais-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.9L18.7 9.7 13.8 11.5 12 16.4 10.2 11.5 5.3 9.7 10.2 7.9z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg> 30초 요약 · 사장님용</span>
+    <p>배달은 주문금액이 다 내 돈이 아니에요. <strong>재료비 + 중개수수료 + 결제수수료 + 배달비 + 포장비</strong>를 빼야 진짜 남는 순이익이 나옵니다.</p>
+    <p>예를 들어 <strong>2만원 주문</strong>에 원가율 35%·중개수수료 6.8%·결제 1.2%·배달비 2,400원·포장 500원이면, 비용이 11,500원이라 <strong>순이익은 8,500원</strong>. 실질 부담률이 <strong>57.5%</strong>나 돼요.</p>
+    <p>2026년 배달앱 중개수수료는 <strong>거래액 구간별 차등(2.0~7.8%)</strong>이에요. 배달은 부담이 커서, <strong>배달 전용 가격</strong>과 <strong>포장 유도</strong>로 마진을 지키는 게 핵심입니다.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8Z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> 배달 한 건 순이익 바로 계산</a>
+      <a class="ais-btn ghost" href="food-cost-calc.html">원가율부터 잡기</a>
+    </div>
+    <div class="ais-links">이어서 보면 좋아요 · <a href="delivery-ad-reduce.html">배달 광고비 줄이기</a> · <a href="food-cost-calc.html">메뉴 원가율 계산</a></div>
+  </section>
+
+  <!-- ③ 계산기 -->
+  <div class="calc-card" id="calc">
     <div class="card-title">플랫폼 선택</div>
     <div class="platform-tabs">
       <button class="ptab active" onclick="setPlatform('baemin',this)">배달의민족</button>
@@ -203,7 +275,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
     <div class="field-row">
       <div class="field">
         <label>중개이용료율 (%)</label>
-        <div class="field-hint">배민·쿠팡: 6.8% 기본</div>
+        <div class="field-hint">2026 차등 2.0~7.8%. 중위 구간 6.8% 기준</div>
         <input type="number" id="commission-rate" value="6.8" step="0.1">
       </div>
       <div class="field">
@@ -230,6 +302,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
     <button class="btn-calc" onclick="calculate()">순이익 계산하기</button>
   </div>
 
+  <!-- ④ 계산 결과 -->
   <div id="result-section" style="display:none;">
     <div class="result-wrap">
       <div class="res-box">
@@ -256,7 +329,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
         <div class="bar-seg" id="bar-profit" style="background:#E5E7EB;"></div>
       </div>
       <div style="display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;">
-        <span style="font-size:11px;color:var(--text-muted);">🟠 재료비 &nbsp;🟧 수수료 &nbsp;🟫 배달비 &nbsp;🟡 포장비 &nbsp;⬜ 순이익</span>
+        <span style="font-size:11px;color:var(--text-muted);"><span class="legend-dot" style="background:#3D5AFE;"></span>재료비 &nbsp;<span class="legend-dot" style="background:#F97316;"></span>수수료 &nbsp;<span class="legend-dot" style="background:#FB923C;"></span>배달비 &nbsp;<span class="legend-dot" style="background:#FED7AA;"></span>포장비 &nbsp;<span class="legend-dot" style="background:#E5E7EB;"></span>순이익</span>
       </div>
     </div>
 
@@ -272,15 +345,146 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
     </div>
 
     <div class="notice-box">
-      <strong>💡 팁:</strong> 포장 주문은 업주부담 배달비(2,400원)가 없어 건당 2,000~3,000원 더 남습니다. 단골 손님은 포장 주문으로 유도하면 순이익이 크게 개선됩니다.
+      <strong>포장 주문 팁</strong><br>포장 주문은 업주부담 배달비(2,400원)가 없어 건당 2,000원가량 더 남습니다. 단골은 포장·자체 채널로 유도하면 순이익이 개선돼요. 다만 쿠팡이츠는 2026년 4월부터 대부분 포장 주문에도 중개수수료(6.8%)를 부과하니 확인하세요.
     </div>
   </div>
-</div>
 
+  <div class="article-content">
+    <!-- ⑤ 계산 공식 설명 -->
+    <h2>배달 순이익, 이렇게 계산됩니다</h2>
+    <p>배달은 주문금액이 통째로 내 돈이 아니에요. 재료비 말고도 <strong>배달앱에 내는 수수료</strong>와 <strong>업주가 부담하는 배달비</strong>가 겹겹이 빠집니다. 그래서 실제 남는 돈은 생각보다 훨씬 적어요.</p>
+    <div class="formula-box">순이익 = 주문금액 − (재료비 + 중개이용료 + 결제수수료 + 배달비 + 포장비)<span class="fx-sub">중개이용료 = 주문금액 × 수수료율 · 실질 부담률 = 총비용 ÷ 주문금액 × 100</span></div>
+    <p>중개이용료와 결제수수료는 주문금액에 비례하고, 배달비·포장비는 건당 정액으로 빠져요. 이 다섯 가지를 다 빼야 진짜 순이익입니다. 위 계산기는 플랫폼(배민·쿠팡이츠)을 고르면 대표적인 수수료가 자동으로 채워지고, '직접 입력'으로 우리 매장 실제 조건을 넣을 수도 있어요.</p>
+    <h3>이렇게 계산하세요</h3>
+    <ol class="howto-list">
+      <li>배달의민족·쿠팡이츠 중 플랫폼을 고르고 주문금액을 입력합니다.</li>
+      <li>중개이용료율·결제수수료율·업주부담 배달비·포장비를 입력합니다.</li>
+      <li>주문금액의 몇 %가 재료비인지 원가율을 입력합니다.</li>
+      <li>'순이익 계산하기'를 누르면 주문 1건당 순이익과 실질 부담률이 나옵니다.</li>
+    </ol>
+
+    <!-- ⑥ 주요 계산항목 표 -->
+    <h2>2026 배달앱 중개수수료 (거래액 차등)</h2>
+    <table class="article-table">
+      <thead><tr><th>거래액 구간</th><th>중개수수료(부가세 별도)</th></tr></thead>
+      <tbody>
+        <tr><td>상위 35%</td><td>7.8%</td></tr>
+        <tr><td>중위 구간(35~80%)</td><td>6.8%</td></tr>
+        <tr><td>하위 20%(영세)</td><td>2.0%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--text-muted);margin-top:-6px;">배달의민족·쿠팡이츠 상생협의체 합의 기준. 여기에 결제수수료(약 1.0~3%)와 업주부담 배달비(1,900~3,400원)가 별도로 더해집니다.</p>
+    <h3>주문 1건 비용 구성 (2만원·중위 구간 예시)</h3>
+    <table class="article-table">
+      <thead><tr><th>항목</th><th>금액</th><th>주문 대비</th></tr></thead>
+      <tbody>
+        <tr><td>재료비(원가율 35%)</td><td>7,000원</td><td>35%</td></tr>
+        <tr><td>중개이용료(6.8%)</td><td>1,360원</td><td>6.8%</td></tr>
+        <tr><td>결제수수료(1.2%)</td><td>240원</td><td>1.2%</td></tr>
+        <tr><td>업주부담 배달비</td><td>2,400원</td><td>12%</td></tr>
+        <tr><td>포장재비</td><td>500원</td><td>2.5%</td></tr>
+        <tr><td>순이익</td><td>8,500원</td><td>42.5%</td></tr>
+      </tbody>
+    </table>
+    <div class="warn-inline"><strong>실질 부담률이 50%를 넘기 쉽습니다.</strong> 위 예시도 비용 합계가 57.5%예요. 홀 판매라면 재료비 정도만 빠지지만, 배달은 수수료·배달비가 겹쳐 부담이 확 커집니다. 그래서 <strong>홀과 배달 가격을 다르게 설계</strong>하는 매장이 많아요. 무리한 할인·광고까지 겹치면 순이익이 마이너스가 되기도 합니다.</div>
+
+    <!-- ⑦ 실무 예시 -->
+    <h2>실무 예시 — 배달 vs 포장</h2>
+    <div class="step-box">
+      <span class="sb-badge">배달 주문 · 2만원</span>
+      <div class="sb-body">
+        재료비 7,000 + 중개 1,360 + 결제 240 + 배달비 2,400 + 포장 500 = 비용 <strong>11,500원</strong><br>
+        순이익 = 20,000 − 11,500 = <strong>8,500원</strong> (실질 부담률 57.5%)
+      </div>
+    </div>
+    <div class="step-box">
+      <span class="sb-badge">포장 주문 · 2만원 (배달비 없음)</span>
+      <div class="sb-body">
+        업주부담 배달비 2,400원이 빠지므로<br>
+        순이익 = 8,500 + 2,400 = <strong>약 10,900원</strong><br>
+        → 같은 매출도 포장이 건당 2,400원가량 더 남음(단, 포장 수수료 정책 확인 필요)
+      </div>
+    </div>
+    <p>그래서 배달을 많이 하는 매장일수록 <strong>배달 전용 가격 설계, 원가율 관리, 광고비 점검</strong>이 순이익을 지키는 핵심이에요. 우리 매장 메뉴별 원가율은 원가율 계산기로, 전체 수익성은 매장 순이익 계산기로 함께 보면 좋습니다.</p>
+
+    <!-- ⑧ FAQ -->
+    <h2 id="faq">자주 묻는 질문</h2>
+    <div class="faq-section">
+      <div class="faq-item"><div class="faq-q">배달 순이익은 어떻게 계산하나요?</div><div class="faq-a">순이익 = 주문금액 − (재료비 + 중개이용료 + 결제수수료 + 업주부담 배달비 + 포장비)예요. 2만원 주문에 원가율 35%·중개 6.8%·결제 1.2%·배달비 2,400·포장 500이면 비용 11,500원, 순이익 8,500원, 실질 부담률 약 57.5%입니다.</div></div>
+      <div class="faq-item"><div class="faq-q">2026년 배달앱 중개수수료는 몇 %인가요?</div><div class="faq-a">상생협의체 합의로 배달의민족·쿠팡이츠는 거래액 구간별 차등 수수료를 적용해요. 상위 35%는 7.8%, 중위 구간은 6.8%, 하위 20% 영세 점포는 2.0% 수준입니다. 여기에 결제수수료·업주부담 배달비가 별도로 더해집니다. 우리 구간은 각 앱 사장님 페이지에서 확인하세요.</div></div>
+      <div class="faq-item"><div class="faq-q">포장 주문은 수수료가 없나요?</div><div class="faq-a">예전엔 포장 수수료가 없거나 낮았지만 바뀌었어요. 쿠팡이츠는 2026년 4월부터 전통시장·매출 하위 상생요금제 등 일부 예외를 빼고 대부분 포장 주문에도 음식값의 6.8%(부가세 별도)를 부과합니다. 다만 포장은 업주부담 배달비가 없어 배달보다 건당 남는 돈은 큰 편이에요.</div></div>
+      <div class="faq-item"><div class="faq-q">실질 부담률이 왜 이렇게 높나요?</div><div class="faq-a">배달은 재료비 외에 중개수수료·결제수수료·배달비·포장비가 겹겹이 빠지기 때문이에요. 홀 판매라면 재료비 정도만 빠지지만, 배달은 매출의 8~9%(수수료)와 건당 배달비가 더해져 실질 부담률이 50%를 넘기도 합니다. 그래서 배달 메뉴는 홀과 가격을 다르게 설계하기도 해요.</div></div>
+      <div class="faq-item"><div class="faq-q">배달 마진을 개선하려면 어떻게 하나요?</div><div class="faq-a">① 배달 전용 가격을 홀보다 조금 높게, ② 원가율을 낮추고(세트·사이드로 객단가 상승), ③ 단골은 포장·자체 채널로 유도해 수수료 절감, ④ 무리한 할인·광고 줄이기가 기본이에요. 특히 광고비는 새는 돈이 되기 쉬우니 배달 광고 효율을 따로 점검하세요.</div></div>
+    </div>
+  </div>
+
+  <!-- ⑨ 관련 계산기 (5) -->
+  <div class="related-calcs-section">
+    <h2>함께 보면 좋은 계산기</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="food-cost-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.7 0L15 15Z"/></svg></span><div class="rcc-body"><div class="rcc-title">메뉴 원가율 계산기</div><div class="rcc-desc">배달 원가율 설계</div></div></a>
+      <a class="rel-calc-card" href="delivery-ads-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span><div class="rcc-body"><div class="rcc-title">배달 광고비 계산기</div><div class="rcc-desc">광고 효율·ROAS</div></div></a>
+      <a class="rel-calc-card" href="store-profit-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><div class="rcc-body"><div class="rcc-title">매장 순이익 계산기</div><div class="rcc-desc">전체 수익성</div></div></a>
+      <a class="rel-calc-card" href="bep-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><div class="rcc-body"><div class="rcc-title">손익분기점 계산기</div><div class="rcc-desc">얼마 팔아야 본전</div></div></a>
+      <a class="rel-calc-card" href="card-fee-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span><div class="rcc-body"><div class="rcc-title">카드수수료 계산기</div><div class="rcc-desc">카드매출 실수령</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑩ 관련 가이드 (5) -->
+  <div class="related-articles-section">
+    <h2>함께 보면 좋은 가이드</h2>
+    <a class="rel-article-item" href="delivery-ad-reduce.html"><span class="rai-num">1</span><div class="rai-body"><div class="rai-cat">배달앱</div><div class="rai-title">배달 광고비·수수료 줄이는 법 — 새는 돈부터 점검</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="delivery-only-marketing.html"><span class="rai-num">2</span><div class="rai-body"><div class="rai-cat">배달앱</div><div class="rai-title">배달 전문점 마케팅 — 리뷰·노출로 주문 늘리기</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="delivery-photo-tips.html"><span class="rai-num">3</span><div class="rai-body"><div class="rai-cat">배달앱</div><div class="rai-title">배달앱 음식 사진 잘 찍는 법 — 클릭률 올리기</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="delivery-packaging.html"><span class="rai-num">4</span><div class="rai-body"><div class="rai-cat">배달앱</div><div class="rai-title">배달 포장 잘하는 법 — 새지 않고 식지 않게</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="baemin-vs-coupang.html"><span class="rai-num">5</span><div class="rai-body"><div class="rai-cat">배달앱</div><div class="rai-title">배민 vs 쿠팡이츠 — 우리 가게엔 뭐가 유리할까</div></div><span class="rai-arrow">→</span></a>
+  </div>
+
+  <!-- ⑪ 관련 서식 (3) -->
+  <div class="related-calcs-section">
+    <h2>함께 쓰면 좋은 서식</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="forms.html#store"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><div class="rcc-body"><div class="rcc-title">배달 매출·수수료 정산표</div><div class="rcc-desc">앱별 정산 관리</div></div></a>
+      <a class="rel-calc-card" href="forms.html#store"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.7 0L15 15Z"/></svg></span><div class="rcc-body"><div class="rcc-title">메뉴별 원가표</div><div class="rcc-desc">배달가 설계</div></div></a>
+      <a class="rel-calc-card" href="forms.html#store"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg></span><div class="rcc-body"><div class="rcc-title">배달 운영 체크리스트</div><div class="rcc-desc">광고·리뷰 점검</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑫ 한 줄 요약 + CTA -->
+  <section class="ai-summary" aria-label="한 줄 요약">
+    <span class="ais-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> 한 줄 요약</span>
+    <p>배달 순이익 = <strong>주문금액 − (재료비 + 중개수수료 + 결제수수료 + 배달비 + 포장비)</strong>. 실질 부담률이 50%를 넘기 쉬워요.</p>
+    <p>2026 중개수수료는 <strong>거래액 차등(2.0~7.8%)</strong>. 마진을 지키려면 <strong>배달 전용 가격·원가율 관리·포장 유도·광고비 점검</strong>이 핵심입니다.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8Z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> 지금 배달 순이익 계산하기</a>
+      <a class="ais-btn ghost" href="delivery-ads-calc.html">배달 광고비 보기</a>
+    </div>
+  </section>
+
+  <!-- 직접 계산 CTA -->
+  <div class="cta-box">
+    <h3>배달 한 건에 진짜 얼마 남는지 지금 확인하세요</h3>
+    <p>주문금액·수수료·배달비만 넣으면 순이익과 실질 부담률이 바로 나옵니다.</p>
+    <a href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8Z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> 배달 순이익 바로 계산하기</a>
+  </div>
+
+  <!-- 하단 자료 출처 -->
+  <div class="calc-sources">
+    <h2>자료 출처</h2>
+    <ul>
+      <li>순이익 = 주문금액 − 제반 비용 합계, 실질 부담률 = 총비용 ÷ 주문금액 — 일반 원가 계산</li>
+      <li>배달앱 중개수수료 차등(2.0~7.8%)·포장 수수료 정책 — 배달플랫폼 상생협의체 합의 및 배달의민족·쿠팡이츠 공지 기준(2026년)</li>
+      <li>업주부담 배달비·결제수수료는 지역·상품·플랫폼에 따라 다름 — 각 앱 사장님 페이지에서 확인</li>
+    </ul>
+    <p class="cs-updated">기준일: 2026년 7월 · 본 계산기는 참고용이며, 실제 수수료·배달비는 매장 구간·플랫폼·시점에 따라 다릅니다.</p>
+  </div>
+</div>
+<div class="ad-wrap"><ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-92dlbIcNNOkHSZw8" data-ad-width="300" data-ad-height="250"></ins>
+<script type="text/javascript" src="//t1.kakaocdn.net/kas/static/ba.min.js" async></script></div>
 <button id="back-to-top" aria-label="맨 위로">↑</button>
-<script src="assets/layout.js?v=20260702e"></script>
-<script src="sohotip.js?v=20260630f"></script>
-<script src="assets/consult.js?v=20260702e"></script>
+<script src="assets/layout.js?v=20260702e" defer></script>
+<script src="sohotip.js?v=20260708a" defer></script>
+<script src="assets/consult.js?v=20260702e" defer></script>
 <script>
 function setPlatform(p, btn) {
   document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
@@ -309,7 +513,7 @@ function calculate() {
   const payment = order * payRate;
   const totalCost = foodCost + commission + payment + deliveryFee + packageCost;
   const profit = order - totalCost;
-  const costRate = (totalCost / order * 100);
+  const costRate = order > 0 ? (totalCost / order * 100) : 0;
 
   document.getElementById('res-order').textContent = fmt(order);
   document.getElementById('res-cost').textContent = fmt(totalCost);
@@ -327,7 +531,7 @@ function calculate() {
   document.getElementById('bd-profit').textContent = fmt(profit);
 
   // 막대
-  const pct = v => Math.max(0, Math.min(100, v / order * 100)).toFixed(1) + '%';
+  const pct = v => (order > 0 ? Math.max(0, Math.min(100, v / order * 100)) : 0).toFixed(1) + '%';
   document.getElementById('bar-food').style.width = pct(foodCost);
   document.getElementById('bar-fee').style.width = pct(commission + payment);
   document.getElementById('bar-delivery').style.width = pct(deliveryFee);
@@ -337,23 +541,14 @@ function calculate() {
   document.getElementById('result-section').style.display = 'block';
   document.getElementById('result-section').scrollIntoView({behavior:'smooth', block:'start'});
 }
-
-function calcInlineDelivery(){
-  var o=getRawNumber('il_order')||20000;
-  var c=getRawNumber('il_comm')/100;
-  var d=getRawNumber('il_deli')||2400;
-  var f=getRawNumber('il_food')/100;
-  var profit=o-(o*f)-(o*c)-(o*0.012)-d;
-  var r=document.getElementById('il_result_delivery');
-  document.getElementById('il_result_delivery_val').textContent='순이익 '+Math.round(profit).toLocaleString('ko-KR')+'원';
-  document.getElementById('il_result_delivery_sub').textContent='주문금액 '+o.toLocaleString('ko-KR')+'원 기준 · 실질부담률 '+((1-profit/o)*100).toFixed(1)+'%';
-  r.style.display='block';
-}
 </script>
 <footer>
-  <a href="index.html">홈</a><a href="category.html">카테고리</a><a href="tools.html">계산기 모음</a>
-  <p style="margin-top:12px;">© 2026 소호팁. 본 계산기는 참고용입니다.</p>
+  <a href="index.html">홈</a>
+  <a href="category.html">카테고리</a>
+  <a href="tools.html">계산기 모음</a>
+  <a href="consultation.html">무료 진단</a>
+  <p style="margin-top:12px;">© 2026 소호팁. 본 계산기는 참고용이며 정확한 금액은 전문가와 확인하세요.</p>
 </footer>
-<script src="network.js?v=20260630f"></script>
+<script src="network.js?v=20260708a" defer></script>
 </body>
 </html>
