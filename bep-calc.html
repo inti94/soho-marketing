@@ -7,14 +7,14 @@
 <meta http-equiv="Expires" content="0">
 <script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="월 고정비와 변동비율을 입력하면 손익분기점(BEP) 매출액과 일 목표 매출을 자동으로 계산합니다. 창업 전 반드시 확인해야 할 필수 도구입니다.">
-<meta name="keywords" content="손익분기점 계산기, BEP 계산, 월 고정비 계산, 목표 매출 계산, 소상공인 BEP">
-<meta name="robots" content="noindex, follow">
+<meta name="description" content="손익분기점(BEP) 계산기. 월 고정비와 변동비율을 넣으면 손익분기 매출과 일 목표 매출, 목표 이익까지 달성하는 매출을 즉시 계산합니다. 창업 전 필수 무료 계산기.">
+<meta name="keywords" content="손익분기점 계산기, BEP 계산, 월 고정비 계산, 목표 매출 계산, 소상공인 BEP, 공헌이익률, 변동비율">
+<meta name="robots" content="index, follow">
 <meta name="author" content="소호팁">
-<meta name="date" content="2026-06-20">
+<meta name="date" content="2026-07-09">
 <meta property="og:type" content="website">
-<meta property="og:title" content="손익분기점(BEP) 계산기 (2026) — 소호팁">
-<meta property="og:description" content="월 고정비와 변동비율을 입력하면 손익분기점(BEP) 매출액과 일 목표 매출을 자동으로 계산합니다. 창업 전 반드시 확인해야 할 필수 도구입니다.">
+<meta property="og:title" content="손익분기점(BEP) 계산기 (2026) — 최소 목표 매출·일 목표 매출 | 소호팁">
+<meta property="og:description" content="월 고정비와 변동비율을 넣으면 손익분기 매출과 일 목표 매출, 목표 이익 달성 매출까지 즉시 계산합니다. 창업 전 필수.">
 <meta property="og:url" content="https://sohotip.co.kr/bep-calc.html">
 <meta property="og:image" content="https://sohotip.co.kr/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -22,8 +22,8 @@
 <meta property="og:site_name" content="소호팁">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="손익분기점(BEP) 계산기 (2026) — 소호팁">
-<meta name="twitter:description" content="월 고정비와 변동비율을 입력하면 손익분기점(BEP) 매출액과 일 목표 매출을 자동으로 계산합니다. 창업 전 반드시 확인해야 할 필수 도구입니다.">
+<meta name="twitter:title" content="손익분기점(BEP) 계산기 (2026) — 최소 목표 매출·일 목표 매출 | 소호팁">
+<meta name="twitter:description" content="월 고정비와 변동비율을 넣으면 손익분기 매출과 일 목표 매출을 즉시 계산합니다.">
 <meta name="twitter:image" content="https://sohotip.co.kr/og-image.png">
 <meta name="naver-site-verification" content="d7369feb5de3df4cce2e9016b84ad045c4ed70a4">
 <link rel="canonical" href="https://sohotip.co.kr/bep-calc.html">
@@ -34,44 +34,64 @@
 <link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
 <title>손익분기점(BEP) 계산기 — 고정비·변동비로 최소 목표 매출 계산 (2026) | 소호팁</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "손익분기점(BEP) 계산기",
-    "description": "고정비와 변동비율 입력으로 최소 목표 매출(BEP)을 자동 계산하는 창업 필수 도구.",
-    "url": "https://sohotip.co.kr/bep-calc.html",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "Web",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "KRW"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "소호팁",
-      "url": "https://sohotip.co.kr"
-    },
-    "dateModified": "2026-06-20",
-    "inLanguage": "ko-KR",
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type":"ListItem","position":1,"name":"홈","item":"https://sohotip.co.kr/"},
-        {"@type":"ListItem","position":2,"name":"계산기","item":"https://sohotip.co.kr/tools.html"},
-        {"@type":"ListItem","position":3,"name":"손익분기점 계산기","item":"https://sohotip.co.kr/bep-calc.html"}
-      ]
-    }
-  }
-  </script>
-<link rel="stylesheet" href="sohotip.css?v=20260630f">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "손익분기점(BEP) 계산기",
+  "description": "고정비와 변동비율 입력으로 손익분기 매출·일 목표 매출·목표 이익 달성 매출을 자동 계산하는 무료 도구.",
+  "url": "https://sohotip.co.kr/bep-calc.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"},
+  "publisher": {"@type": "Organization", "name": "소호팁", "url": "https://sohotip.co.kr"},
+  "dateModified": "2026-07-09",
+  "inLanguage": "ko-KR"
+}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"홈","item":"https://sohotip.co.kr/"},
+{"@type":"ListItem","position":2,"name":"계산기","item":"https://sohotip.co.kr/tools.html"},
+{"@type":"ListItem","position":3,"name":"손익분기점 계산기","item":"https://sohotip.co.kr/bep-calc.html"}
+]}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "손익분기점(BEP) 계산하는 법",
+  "description": "월 고정비와 변동비율, 목표 이익, 영업일수를 입력해 손익분기 매출과 일 목표 매출을 계산하는 방법.",
+  "totalTime": "PT1M",
+  "step": [
+    {"@type":"HowToStep","position":1,"name":"고정비 입력","text":"임대료·인건비 등 매출과 무관하게 나가는 월 고정비 합계를 입력합니다.","url":"https://sohotip.co.kr/bep-calc.html#calc"},
+    {"@type":"HowToStep","position":2,"name":"변동비율 입력","text":"매출에서 재료비·포장비 등 변동비가 차지하는 비율(%)을 입력합니다.","url":"https://sohotip.co.kr/bep-calc.html#calc"},
+    {"@type":"HowToStep","position":3,"name":"목표 이익·영업일수 입력","text":"남기고 싶은 목표 이익과 월 영업일수를 입력합니다.","url":"https://sohotip.co.kr/bep-calc.html#calc"},
+    {"@type":"HowToStep","position":4,"name":"계산하기","text":"'손익분기점 계산하기'를 누르면 월·일 BEP 매출과 목표 이익 달성 매출이 나옵니다.","url":"https://sohotip.co.kr/bep-calc.html#calc"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"손익분기점(BEP)이 뭔가요?","acceptedAnswer":{"@type":"Answer","text":"손익분기점(BEP, Break-Even Point)은 이익도 손해도 없는, 딱 본전인 매출을 말합니다. 이보다 많이 팔면 이익, 적게 팔면 손해예요. 계산식은 BEP 매출 = 고정비 ÷ (1 − 변동비율)입니다. 예를 들어 월 고정비 500만원, 변동비율 40%면 BEP는 500만 ÷ 0.6 ≈ 833만원입니다."}},
+    {"@type":"Question","name":"공헌이익률이 뭔가요?","acceptedAnswer":{"@type":"Answer","text":"공헌이익률은 매출에서 변동비를 뺀 비율, 즉 1 − 변동비율입니다. 매출 1,000원 중 변동비가 400원이면 공헌이익률은 60%예요. 이 60%가 고정비를 갚아 나가는 몫이라, 공헌이익률이 높을수록 더 적게 팔아도 본전을 맞출 수 있습니다. BEP는 고정비를 이 공헌이익률로 나눠서 구합니다."}},
+    {"@type":"Question","name":"변동비율은 어떻게 정하나요?","acceptedAnswer":{"@type":"Answer","text":"변동비율은 매출이 늘면 같이 늘어나는 비용(재료비·포장비·배달수수료 등)이 매출에서 차지하는 비율입니다. 지난달 매출과 변동비 실적으로 계산하는 게 가장 정확해요. 일반 외식업은 대략 35~45% 수준이 흔히 쓰이지만, 업종·메뉴 구성에 따라 크게 다르니 우리 가게 실제 값을 넣는 게 좋습니다."}},
+    {"@type":"Question","name":"목표 이익까지 넣으면 어떻게 되나요?","acceptedAnswer":{"@type":"Answer","text":"목표 이익 달성 매출 = (고정비 + 목표 이익) ÷ (1 − 변동비율)입니다. 본전만 맞추는 BEP에 목표 이익만큼을 더 벌어야 하는 개념이에요. 고정비 500만·변동비율 40%·목표 이익 200만이면 (500만+200만) ÷ 0.6 ≈ 1,166만원을 팔아야 200만원이 남습니다."}},
+    {"@type":"Question","name":"BEP를 낮추려면 어떻게 하나요?","acceptedAnswer":{"@type":"Answer","text":"두 방향입니다. ① 고정비를 줄이거나(임대료·불필요한 구독·과한 인건 편성 점검) ② 변동비율을 낮춰 공헌이익률을 올리는 것(원가율 관리, 발주처 조정)이에요. 특히 변동비율을 몇 %만 낮춰도 BEP가 크게 떨어집니다. 원가율은 메뉴 원가율 계산기로 함께 점검해 보세요."}}
+  ]
+}
+</script>
+<link rel="stylesheet" href="sohotip.css?v=20260708a">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630f">
-<link rel="stylesheet" href="assets/calc.css?v=20260630f">
+  <link rel="stylesheet" href="assets/theme.css?v=20260708a">
+<link rel="stylesheet" href="assets/calc.css?v=20260708a">
 <style>
 :root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
 body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;}
 nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
 .nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
@@ -80,34 +100,34 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
 .nav-links a:hover{color:var(--primary);}
 .nav-cta{background:var(--primary);color:#fff;font-size:13px;padding:7px 16px;border-radius:6px;text-decoration:none;}
 @media(max-width:640px){.nav-links{display:none;}}
-.page-wrap{max-width:680px;margin:0 auto;padding:40px 2rem 80px;}
+.ad-wrap{max-width:680px;margin:0 auto;padding:12px 2rem 0;text-align:center;}
+.page-wrap{max-width:680px;margin:0 auto;padding:24px 2rem 80px;}
 .page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
-.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:32px;line-height:1.6;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:24px;line-height:1.6;}
 .calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;}
-.card-title{font-size:13px;font-weight:700;color:var(--text-muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:20px;}
-.field{margin-bottom:18px;}
-.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;}
+.card-title{font-size:14px;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:20px;}
+.field{margin-bottom:20px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--text);}
 .field-hint{font-size:11px;color:var(--text-muted);margin-bottom:6px;}
-.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color .2s;}
+.field input,.field select{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;-webkit-appearance:none;}
 .field input:focus,.field select:focus{border-color:var(--primary);}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .result-card{background:var(--primary);border-radius:16px;padding:28px;color:#fff;margin-bottom:20px;}
-.result-label{font-size:13px;opacity:.8;margin-bottom:6px;}
-.result-total{font-size:36px;font-weight:700;margin-bottom:4px;}
-.result-sub{font-size:13px;opacity:.75;}
 .breakdown{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px;}
-.br-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.br-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;gap:12px;}
 .br-row:last-child{border:none;font-weight:700;font-size:15px;}
 .br-label{color:var(--text-muted);}
-.br-val{font-weight:500;}
+.br-val{font-weight:500;text-align:right;}
 .highlight{color:var(--primary);}
-.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);margin-top:8px;}
+.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background 0.2s;margin-top:8px;min-height:44px;}
 .btn-calc:hover{background:var(--primary-mid);}
 .tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+.tag svg{width:13px;height:13px;vertical-align:-2px;margin-right:2px;}
 .notice-box{background:var(--primary-light);border-radius:12px;padding:16px 20px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
 .notice-box strong{color:var(--primary);}
-footer{background:#1A1A1A;color:rgba(255,255,255,.6);text-align:center;padding:24px;font-size:12px;}
-footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
+footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
+footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
+@media(max-width:640px){.field-row{grid-template-columns:1fr;}}
 
   /* ── 함께 사용한 계산기 ── */
   .related-calcs-section{margin:32px 0 0;}
@@ -115,14 +135,15 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
   .rel-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
   .rel-calc-card{display:flex;align-items:center;gap:10px;padding:14px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s;}
   .rel-calc-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 14px rgba(61,90,254,.12);}
-  .rcc-icon{font-size:22px;flex-shrink:0;}
+  .rcc-icon{flex-shrink:0;width:24px;height:24px;display:flex;align-items:center;justify-content:center;}
+  .rcc-icon svg{width:22px;height:22px;stroke:var(--primary);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
   .rcc-body{flex:1;min-width:0;}
   .rcc-title{font-size:12px;font-weight:700;line-height:1.3;margin-bottom:3px;}
   .rcc-desc{font-size:11px;color:var(--text-muted);line-height:1.4;}
   /* ── 함께 많이 본 글 ── */
   .related-articles-section{margin:24px 0 0;}
   .rel-article-list{display:flex;flex-direction:column;gap:0;}
-  .rel-article-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-light);text-decoration:none;color:var(--text);transition:color .2s;}
+  .rel-article-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);transition:color .2s;}
   .rel-article-item:last-child{border-bottom:none;}
   .rel-article-item:hover .rai-title{color:var(--primary);}
   .rai-num{font-size:18px;font-weight:900;color:var(--border);width:24px;flex-shrink:0;text-align:center;}
@@ -130,29 +151,59 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
   .rai-cat{font-size:10px;color:var(--primary);font-weight:700;margin-bottom:2px;}
   .rai-title{font-size:13px;font-weight:600;line-height:1.4;}
   .rai-arrow{color:var(--primary);font-size:14px;flex-shrink:0;}
-  /* ── 인라인 계산기 ── */
-  .inline-calc-box{background:linear-gradient(135deg,var(--primary-light),#fff);border:2px solid var(--primary);border-radius:16px;padding:24px;margin:28px 0;}
-  .inline-calc-box h3{font-size:15px;font-weight:700;color:var(--text);margin-bottom:16px;}
-  .inline-fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:14px;}
-  .inline-field{}
-  .inline-field label{display:block;font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:4px;}
-  .inline-field input{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:15px;font-family:var(--sans);color:var(--text);background:#fff;outline:none;transition:border-color .2s;-webkit-appearance:none;}
-  .inline-field input:focus{border-color:var(--primary);}
-  .inline-calc-btn{width:100%;padding:12px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background .2s;min-height:44px;}
-  .inline-calc-btn:hover{background:var(--primary-mid);}
-  .inline-result{margin-top:14px;padding:14px 16px;background:#fff;border-radius:10px;border:1px solid var(--border);display:none;}
-  .inline-result-val{font-size:22px;font-weight:700;color:var(--primary);margin-bottom:4px;}
-  .inline-result-sub{font-size:12px;color:var(--text-muted);line-height:1.5;}
-  .inline-full-link{display:block;text-align:center;margin-top:12px;font-size:12px;color:var(--primary);text-decoration:none;font-weight:600;}
-  .inline-full-link:hover{text-decoration:underline;}
   @media(max-width:640px){
     .rel-calc-grid{grid-template-columns:1fr 1fr;}
-    .inline-fields{grid-template-columns:1fr 1fr;}
   }
   @media(max-width:380px){
     .rel-calc-grid{grid-template-columns:1fr;}
-    .inline-fields{grid-template-columns:1fr;}
   }
+
+  /* ── 공통 12블록: 설명 콘텐츠 ── */
+  .article-content{margin-top:36px;}
+  .article-content h2{font-size:20px;font-weight:800;color:var(--text);margin:34px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-.01em;}
+  .article-content h3{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}
+  .article-content p{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:16px;word-break:keep-all;overflow-wrap:anywhere;}
+  .article-content strong{font-weight:700;color:var(--primary);}
+  .article-content ul{margin:14px 0 18px 18px;}
+  .article-content li{font-size:15px;line-height:1.8;margin-bottom:6px;}
+  .formula-box{background:#191F28;color:#fff;border-radius:14px;padding:20px 22px;margin:8px 0 18px;font-size:15px;font-weight:600;line-height:1.7;text-align:center;}
+  .formula-box .fx-sub{display:block;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);margin-top:8px;}
+  .tip-inline{background:var(--primary-light);border-radius:12px;padding:14px 18px;margin:8px 0 18px;font-size:14px;color:var(--primary-mid);line-height:1.7;}
+  .tip-inline strong{color:var(--primary);}
+  .step-box{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin:8px 0 18px;}
+  .step-box .sb-badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--primary);padding:3px 11px;border-radius:20px;margin-bottom:10px;}
+  .step-box .sb-body{font-size:14.5px;line-height:1.8;color:var(--text);}
+  .howto-list{counter-reset:howto;list-style:none;margin:8px 0 18px;padding:0;}
+  .howto-list li{position:relative;padding:12px 16px 12px 46px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;margin-bottom:8px;font-size:14px;line-height:1.7;color:var(--text);}
+  .howto-list li::before{counter-increment:howto;content:counter(howto);position:absolute;left:14px;top:12px;width:22px;height:22px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .article-table{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:13.5px;}
+  .article-table th,.article-table td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.6;word-break:keep-all;}
+  .article-table th{background:#F4F6FB;font-weight:700;color:var(--text);}
+  .article-table td:first-child{font-weight:600;}
+  .faq-section{margin-top:8px;}
+  .faq-item{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;background:var(--bg-card);}
+  .faq-q{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:7px;}
+  .faq-q::before{content:"Q. ";color:var(--primary);}
+  .faq-a{font-size:13.5px;color:var(--text-muted);line-height:1.75;word-break:keep-all;overflow-wrap:anywhere;}
+  /* 직접계산 CTA */
+  .cta-box{margin-top:34px;background:linear-gradient(135deg,#3D5AFE,#536DFE);border-radius:18px;padding:26px 22px;text-align:center;color:#fff;}
+  .cta-box h3{font-size:18px;font-weight:800;margin-bottom:6px;}
+  .cta-box p{font-size:13.5px;opacity:.85;margin-bottom:16px;line-height:1.6;}
+  .cta-box a{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--primary);font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;text-decoration:none;transition:transform .12s;}
+  .cta-box a svg{width:17px;height:17px;stroke:var(--primary);fill:none;stroke-width:2;}
+  .cta-box a:active{transform:scale(.97);}
+  /* ⑫ 하단 자료 출처 */
+  .calc-sources{margin:30px 0 0;padding:18px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;}
+  .calc-sources h2{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;}
+  .calc-sources ul{list-style:none;margin:0;padding:0;}
+  .calc-sources li{font-size:12.5px;color:var(--text-muted);line-height:1.75;padding-left:14px;position:relative;}
+  .calc-sources li::before{content:"·";position:absolute;left:2px;color:var(--primary);font-weight:700;}
+  .calc-sources a{color:var(--primary);text-decoration:none;}
+  .calc-sources a:hover{text-decoration:underline;}
+  .calc-sources .cs-updated{font-size:11px;color:var(--text-muted);margin-top:10px;}
+  /* AI 요약 배지 SVG (이모지 대체) */
+  .ai-summary .ais-badge svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .ai-summary .ais-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 
 </style></head>
 <body>
@@ -165,7 +216,6 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
   </ul>
   <a href="consultation.html" class="nav-cta">무료 진단</a>
 </nav>
-<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
 <div class="mobile-search-bar">
   <div class="nav-search">
     <span class="nav-search-icon">🔍</span>
@@ -173,63 +223,214 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
     <div id="search-dropdown-mobile"></div>
   </div>
 </div>
+<div class="ad-wrap"><ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-OXO7QmLJ3fqDjM3l" data-ad-width="320" data-ad-height="100"></ins></div>
 <div class="page-wrap">
-  <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="12" y2="18"/></svg> 손익분기점 계산기</span>
-  <h1 class="page-title">손익분기점(BEP) 계산기 — 고정비·변동비 입력으로 최소 목표 매출 계산</h1>
-  <p class="page-desc">월 고정비와 변동비율을 입력하면 손익분기점(BEP) 매출액과 일 목표 매출을 자동으로 계산합니다.</p>
-  
-<div class="calc-card">
-  <div class="card-title">비용 구조 입력</div>
-  <div class="field">
-    <label>월 고정비 합계 (원)</label>
-    <div class="field-hint">임대료 + 인건비 + 보험료 + 통신비 등 매출과 무관하게 나가는 비용</div>
-    <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="fixed-cost" value="5,000,000" step="100000">
-  </div>
-  <div class="field">
-    <label>변동비율 (%)</label>
-    <div class="field-hint">매출의 몇 %가 재료비·포장비 등 변동비인지. 일반 외식업 35~45%</div>
-    <input type="number" id="variable-rate" value="40" step="1">
-  </div>
-  <div class="field">
-    <label>목표 이익 (원, 선택)</label>
-    <div class="field-hint">최소 얼마를 남기고 싶은지 입력. 0이면 순수 BEP만 계산</div>
-    <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="target-profit" value="2,000,000" step="100000">
-  </div>
-  <div class="field">
-    <label>월 영업일수</label>
-    <input type="number" id="open-days" value="25" step="1">
-  </div>
-  <button class="btn-calc" onclick="calcBep()">손익분기점 계산하기</button>
-</div>
-<div id="bep-result" style="display:none;">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
-    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center;">
-      <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;">월 BEP 매출</div>
-      <div style="font-size:22px;font-weight:700;" id="bep-monthly">0원</div>
-      <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">이익 0 기준</div>
-    </div>
-    <div style="background:var(--primary-light);border:1px solid var(--primary);border-radius:14px;padding:16px;text-align:center;">
-      <div style="font-size:11px;color:var(--primary);margin-bottom:6px;">목표 달성 매출</div>
-      <div style="font-size:22px;font-weight:700;color:var(--primary);" id="bep-target">0원</div>
-      <div style="font-size:11px;color:var(--primary-mid);margin-top:4px;">목표 이익 포함</div>
-    </div>
-  </div>
-  <div class="breakdown">
-    <div class="br-row"><span class="br-label">월 고정비</span><span class="br-val" id="b-fixed"></span></div>
-    <div class="br-row"><span class="br-label">변동비율</span><span class="br-val" id="b-var-rate"></span></div>
-    <div class="br-row"><span class="br-label">공헌이익률 (1 - 변동비율)</span><span class="br-val" id="b-contrib"></span></div>
-    <div class="br-row"><span class="br-label">BEP 매출 = 고정비 ÷ 공헌이익률</span><span class="br-val highlight" id="b-bep"></span></div>
-    <div class="br-row"><span class="br-label">일 BEP 목표 매출</span><span class="br-val" id="b-daily-bep"></span></div>
-    <div class="br-row"><span class="br-label">목표 이익 달성 매출</span><span class="br-val highlight" id="b-target"></span></div>
-    <div class="br-row"><span class="br-label">일 목표 매출</span><span class="br-val" id="b-daily-target"></span></div>
-  </div>
-  <div class="notice-box"><strong>💡 활용법:</strong> 일 BEP 매출을 영업시간으로 나누면 시간당 최소 매출 목표가 나옵니다. 평균 객단가로 나누면 하루 최소 손님 수를 알 수 있습니다.</div>
-</div>
+  <!-- ① 제목 -->
+  <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg> 매출·수익 계산기</span>
+  <h1 class="page-title">손익분기점(BEP) 계산기</h1>
+  <p class="page-desc">한 달에 최소 얼마를 팔아야 본전인지 궁금하시죠? 월 고정비와 변동비율만 넣으면 손익분기(BEP) 매출과 하루 목표 매출, 목표 이익까지 남기려면 얼마를 팔아야 하는지 바로 계산해 드려요.</p>
 
+  <!-- ② 30초 요약 -->
+  <section class="ai-summary" aria-label="30초 핵심 요약">
+    <span class="ais-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.9L18.7 9.7 13.8 11.5 12 16.4 10.2 11.5 5.3 9.7 10.2 7.9z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg> 30초 요약 · 사장님용</span>
+    <p>손익분기점(BEP)은 <strong>이익도 손해도 없는 딱 본전 매출</strong>이에요. 공식은 <strong>고정비 ÷ (1 − 변동비율)</strong>. 이보다 많이 팔면 이익, 적게 팔면 손해죠.</p>
+    <p>예를 들어 월 고정비 500만원, 변동비율 40%면 공헌이익률은 60%. BEP는 500만 ÷ 0.6 ≈ <strong>833만원</strong>이에요. 월 25일 영업이면 하루 <strong>약 33만원</strong>은 팔아야 본전입니다.</p>
+    <p>목표 이익까지 넣으면 "얼마 팔아야 그만큼 남는지"도 나와요. 목표 200만원이면 (500만+200만) ÷ 0.6 ≈ <strong>1,166만원</strong>. 감으로 하던 목표를 <strong>숫자</strong>로 바꿔줍니다.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg> 우리 가게 손익분기 바로 계산</a>
+      <a class="ais-btn ghost" href="store-profit-calc.html">순이익까지 보기</a>
+    </div>
+    <div class="ais-links">이어서 보면 좋아요 · <a href="store-profit-calc.html">매장 순이익 계산</a> · <a href="food-cost-calc.html">메뉴 원가율 계산</a></div>
+  </section>
+
+  <!-- ③ 계산기 -->
+  <div class="calc-card" id="calc">
+    <div class="card-title">비용 구조 입력</div>
+    <div class="field">
+      <label>월 고정비 합계 (원)</label>
+      <div class="field-hint">임대료 + 인건비 + 보험료 + 통신비 등 매출과 무관하게 나가는 비용</div>
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="fixed-cost" value="5,000,000" step="100000">
+    </div>
+    <div class="field">
+      <label>변동비율 (%)</label>
+      <div class="field-hint">매출의 몇 %가 재료비·포장비 등 변동비인지. 일반 외식업 35~45%</div>
+      <input type="number" id="variable-rate" value="40" step="1">
+    </div>
+    <div class="field">
+      <label>목표 이익 (원, 선택)</label>
+      <div class="field-hint">최소 얼마를 남기고 싶은지 입력. 0이면 순수 BEP만 계산</div>
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="target-profit" value="2,000,000" step="100000">
+    </div>
+    <div class="field">
+      <label>월 영업일수</label>
+      <input type="number" id="open-days" value="25" step="1">
+    </div>
+    <button class="btn-calc" onclick="calcBep()">손익분기점 계산하기</button>
+  </div>
+
+  <!-- ④ 계산 결과 -->
+  <div id="bep-result" style="display:none;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center;">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;">월 BEP 매출</div>
+        <div style="font-size:22px;font-weight:700;" id="bep-monthly">0원</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">이익 0 기준</div>
+      </div>
+      <div style="background:var(--primary-light);border:1px solid var(--primary);border-radius:14px;padding:16px;text-align:center;">
+        <div style="font-size:11px;color:var(--primary);margin-bottom:6px;">목표 달성 매출</div>
+        <div style="font-size:22px;font-weight:700;color:var(--primary);" id="bep-target">0원</div>
+        <div style="font-size:11px;color:var(--primary-mid);margin-top:4px;">목표 이익 포함</div>
+      </div>
+    </div>
+    <div class="breakdown">
+      <div class="br-row"><span class="br-label">월 고정비</span><span class="br-val" id="b-fixed"></span></div>
+      <div class="br-row"><span class="br-label">변동비율</span><span class="br-val" id="b-var-rate"></span></div>
+      <div class="br-row"><span class="br-label">공헌이익률 (1 - 변동비율)</span><span class="br-val" id="b-contrib"></span></div>
+      <div class="br-row"><span class="br-label">BEP 매출 = 고정비 ÷ 공헌이익률</span><span class="br-val highlight" id="b-bep"></span></div>
+      <div class="br-row"><span class="br-label">일 BEP 목표 매출</span><span class="br-val" id="b-daily-bep"></span></div>
+      <div class="br-row"><span class="br-label">목표 이익 달성 매출</span><span class="br-val highlight" id="b-target"></span></div>
+      <div class="br-row"><span class="br-label">일 목표 매출</span><span class="br-val" id="b-daily-target"></span></div>
+    </div>
+    <div class="notice-box"><strong>활용법</strong><br>일 BEP 매출을 영업시간으로 나누면 시간당 최소 매출 목표가 나옵니다. 평균 객단가로 나누면 하루 최소 손님 수를 알 수 있어요. 변동비율이 100% 이상이면(변동비가 매출과 같거나 큼) 아무리 팔아도 본전을 못 맞추니 원가 구조부터 손봐야 합니다.</div>
+  </div>
+
+  <div class="article-content">
+    <!-- ⑤ 계산 공식 설명 -->
+    <h2>손익분기점, 이렇게 계산됩니다</h2>
+    <p>손익분기점(BEP)은 <strong>이익도 손해도 없는 딱 본전 매출</strong>이에요. 비용은 매출과 무관하게 나가는 <strong>고정비</strong>(임대료·인건비 등)와, 매출에 따라 늘어나는 <strong>변동비</strong>(재료비·포장비 등)로 나뉩니다. BEP는 이 둘의 관계로 구해요.</p>
+    <div class="formula-box">BEP 매출 = 고정비 ÷ (1 − 변동비율)<span class="fx-sub">공헌이익률 = 1 − 변동비율 · 목표이익 매출 = (고정비 + 목표이익) ÷ 공헌이익률</span></div>
+    <p>여기서 <strong>공헌이익률(1 − 변동비율)</strong>이 핵심이에요. 매출 1,000원 중 변동비가 400원이면 남는 600원(60%)이 고정비를 갚아 나가는 몫입니다. 그래서 고정비를 이 60%로 나누면, 고정비를 다 메우는 본전 매출이 나옵니다. 여기에 목표 이익을 더하면 "그만큼 남기려면 얼마 팔아야 하는지"까지 계산돼요.</p>
+    <h3>이렇게 계산하세요</h3>
+    <ol class="howto-list">
+      <li>임대료·인건비 등 매출과 무관하게 나가는 월 고정비 합계를 입력합니다.</li>
+      <li>매출에서 재료비·포장비 등 변동비가 차지하는 비율(%)을 입력합니다.</li>
+      <li>남기고 싶은 목표 이익과 월 영업일수를 입력합니다.</li>
+      <li>'손익분기점 계산하기'를 누르면 월·일 BEP 매출과 목표 이익 달성 매출이 나옵니다.</li>
+    </ol>
+
+    <!-- ⑥ 주요 계산항목 표 -->
+    <h2>변동비율에 따른 BEP (고정비 500만원 예시)</h2>
+    <table class="article-table">
+      <thead><tr><th>변동비율</th><th>공헌이익률</th><th>BEP 매출</th></tr></thead>
+      <tbody>
+        <tr><td>30%</td><td>70%</td><td>약 714만원</td></tr>
+        <tr><td>40%</td><td>60%</td><td>약 833만원</td></tr>
+        <tr><td>50%</td><td>50%</td><td>1,000만원</td></tr>
+        <tr><td>60%</td><td>40%</td><td>1,250만원</td></tr>
+        <tr><td>70%</td><td>30%</td><td>약 1,667만원</td></tr>
+      </tbody>
+    </table>
+    <h3>업종별 변동비율 참고치</h3>
+    <table class="article-table">
+      <thead><tr><th>업종</th><th>흔히 쓰는 변동비율</th></tr></thead>
+      <tbody>
+        <tr><td>일반 음식점</td><td>35~45%</td></tr>
+        <tr><td>카페·디저트</td><td>30~40%</td></tr>
+        <tr><td>주점·술집</td><td>25~40%</td></tr>
+        <tr><td>소매·편의점</td><td>60~75%</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-inline"><strong>포인트:</strong> 표에서 보듯 <strong>변동비율을 낮출수록 BEP가 크게 떨어져요.</strong> 변동비율을 40%→30%로만 낮춰도 본전 매출이 833만→714만으로 줄죠. 그래서 원가율(변동비) 관리가 손익분기를 낮추는 가장 강력한 지렛대입니다.</div>
+
+    <!-- ⑦ 실무 예시 -->
+    <h2>실무 예시 — 숫자로 따라가 볼게요</h2>
+    <div class="step-box">
+      <span class="sb-badge">본전만 맞추려면</span>
+      <div class="sb-body">
+        월 고정비 500만 · 변동비율 40% → 공헌이익률 60%<br>
+        BEP 매출 = 500만 ÷ 0.6 ≈ <strong>833만원</strong><br>
+        월 25일 영업이면 하루 = 833만 ÷ 25 ≈ <strong>약 33만원</strong><br>
+        객단가 15,000원이면 하루 약 22명은 받아야 본전
+      </div>
+    </div>
+    <div class="step-box">
+      <span class="sb-badge">200만원 남기려면</span>
+      <div class="sb-body">
+        목표 이익 200만 포함 = (500만 + 200만) ÷ 0.6 ≈ <strong>1,166만원</strong><br>
+        하루 = 1,166만 ÷ 25 ≈ <strong>약 47만원</strong><br>
+        → 본전(하루 33만)보다 하루 14만원씩 더 팔아야 목표 이익 달성
+      </div>
+    </div>
+    <p>이렇게 BEP를 알면 막연한 "많이 팔자"가 아니라 <strong>"하루 얼마, 손님 몇 명"</strong>이라는 구체적 목표가 생겨요. 매일 이 선을 넘겼는지만 봐도 이번 달 남을지 아닐지 감이 잡힙니다.</p>
+
+    <!-- ⑧ FAQ -->
+    <h2 id="faq">자주 묻는 질문</h2>
+    <div class="faq-section">
+      <div class="faq-item"><div class="faq-q">손익분기점(BEP)이 뭔가요?</div><div class="faq-a">이익도 손해도 없는 딱 본전인 매출이에요. 이보다 많이 팔면 이익, 적게 팔면 손해입니다. BEP 매출 = 고정비 ÷ (1 − 변동비율)로 구해요. 고정비 500만·변동비율 40%면 BEP는 약 833만원입니다.</div></div>
+      <div class="faq-item"><div class="faq-q">공헌이익률이 뭔가요?</div><div class="faq-a">매출에서 변동비를 뺀 비율(1 − 변동비율)이에요. 매출 1,000원 중 변동비 400원이면 공헌이익률은 60%. 이 60%가 고정비를 갚는 몫이라, 이 비율이 높을수록 더 적게 팔아도 본전을 맞춥니다.</div></div>
+      <div class="faq-item"><div class="faq-q">변동비율은 어떻게 정하나요?</div><div class="faq-a">매출이 늘면 같이 늘어나는 비용(재료비·포장비·배달수수료)이 매출에서 차지하는 비율이에요. 지난달 실적으로 계산하는 게 가장 정확합니다. 일반 외식업은 35~45%가 흔하지만 업종·메뉴 구성에 따라 다르니 실제 값을 넣으세요.</div></div>
+      <div class="faq-item"><div class="faq-q">목표 이익까지 넣으면 어떻게 되나요?</div><div class="faq-a">목표 이익 달성 매출 = (고정비 + 목표 이익) ÷ (1 − 변동비율)이에요. 본전 매출에 목표 이익만큼 더 벌어야 한다는 뜻이죠. 고정비 500만·변동비율 40%·목표 200만이면 약 1,166만원을 팔아야 200만원이 남습니다.</div></div>
+      <div class="faq-item"><div class="faq-q">BEP를 낮추려면 어떻게 하나요?</div><div class="faq-a">① 고정비를 줄이거나(임대료·불필요한 구독·과한 인건 편성 점검) ② 변동비율을 낮춰 공헌이익률을 올리는 것(원가율 관리)이에요. 특히 변동비율을 몇 %만 낮춰도 BEP가 크게 떨어집니다. 원가율은 메뉴 원가율 계산기로 함께 점검하세요.</div></div>
+    </div>
+  </div>
+
+  <!-- ⑨ 관련 계산기 (5) -->
+  <div class="related-calcs-section">
+    <h2>함께 보면 좋은 계산기</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="store-profit-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><div class="rcc-body"><div class="rcc-title">매장 순이익 계산기</div><div class="rcc-desc">영업이익·이익률</div></div></a>
+      <a class="rel-calc-card" href="food-cost-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.7 0L15 15Z"/></svg></span><div class="rcc-body"><div class="rcc-title">메뉴 원가율 계산기</div><div class="rcc-desc">원가율·마진율</div></div></a>
+      <a class="rel-calc-card" href="startup-cost-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><div class="rcc-body"><div class="rcc-title">창업비용 계산기</div><div class="rcc-desc">개업 초기자금</div></div></a>
+      <a class="rel-calc-card" href="card-fee-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span><div class="rcc-body"><div class="rcc-title">카드수수료 계산기</div><div class="rcc-desc">카드매출 실수령</div></div></a>
+      <a class="rel-calc-card" href="vat-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/></svg></span><div class="rcc-body"><div class="rcc-title">부가세 계산기</div><div class="rcc-desc">납부·환급 세액</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑩ 관련 가이드 (5) -->
+  <div class="related-articles-section">
+    <h2>함께 보면 좋은 가이드</h2>
+    <a class="rel-article-item" href="food-cost-control.html"><span class="rai-num">1</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">원가율 잡는 법 — 마진 새는 구멍부터 막는 실전 순서</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="restaurant-startup-cost.html"><span class="rai-num">2</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">식당 창업 비용 총정리 — 항목별 실제 드는 돈</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="cafe-startup-real-cost.html"><span class="rai-num">3</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">카페 창업 실제 비용 — 예산별로 현실 점검</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="cheap-interior.html"><span class="rai-num">4</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">인테리어 비용 아끼는 법 — 안 깎이는 데 돈 쓰지 않기</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="general-vs-simple-tax.html"><span class="rai-num">5</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">일반과세 vs 간이과세 — 우리 가게는 뭐가 유리할까</div></div><span class="rai-arrow">→</span></a>
+  </div>
+
+  <!-- ⑪ 관련 서식 (3) -->
+  <div class="related-calcs-section">
+    <h2>함께 쓰면 좋은 서식</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="forms.html#store"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><div class="rcc-body"><div class="rcc-title">매출·비용 관리표</div><div class="rcc-desc">고정비·변동비 정리</div></div></a>
+      <a class="rel-calc-card" href="forms.html#store"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg></span><div class="rcc-body"><div class="rcc-title">일 목표 매출 점검표</div><div class="rcc-desc">하루 BEP 관리</div></div></a>
+      <a class="rel-calc-card" href="forms.html#store"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.5 9.4 7.5 4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span><div class="rcc-body"><div class="rcc-title">비용 항목 체크리스트</div><div class="rcc-desc">고정비 새는 곳</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑫ 한 줄 요약 + CTA -->
+  <section class="ai-summary" aria-label="한 줄 요약">
+    <span class="ais-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> 한 줄 요약</span>
+    <p>손익분기점은 <strong>고정비 ÷ (1 − 변동비율)</strong>, 딱 본전인 매출이에요. 목표 이익을 남기려면 <strong>(고정비 + 목표이익) ÷ 공헌이익률</strong>만큼 팔면 됩니다.</p>
+    <p>BEP를 알면 "하루 얼마, 손님 몇 명"이라는 <strong>구체적 목표</strong>가 생겨요. BEP를 낮추는 가장 강한 지렛대는 <strong>변동비율(원가율) 관리</strong>입니다.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg> 지금 손익분기 계산하기</a>
+      <a class="ais-btn ghost" href="store-profit-calc.html">순이익 계산기 보기</a>
+    </div>
+  </section>
+
+  <!-- 직접 계산 CTA -->
+  <div class="cta-box">
+    <h3>한 달에 얼마 팔아야 본전인지 지금 확인하세요</h3>
+    <p>고정비와 변동비율만 넣으면 월·일 BEP 매출과 목표 이익 달성 매출이 바로 나옵니다.</p>
+    <a href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg> 손익분기 바로 계산하기</a>
+  </div>
+
+  <!-- 하단 자료 출처 -->
+  <div class="calc-sources">
+    <h2>자료 출처</h2>
+    <ul>
+      <li>BEP 매출 = 고정비 ÷ (1 − 변동비율), 목표이익 매출 = (고정비 + 목표이익) ÷ 공헌이익률 — 일반 관리회계 손익분기 분석 공식</li>
+      <li>업종별 변동비율 참고치는 소상공인시장진흥공단 등 자영업 경영 자료에서 흔히 인용되는 대략적 범위 (<a href="https://www.semas.or.kr" target="_blank" rel="nofollow noopener">semas.or.kr</a>)</li>
+      <li>변동비·고정비 구분은 회계 기준상 원가 행태 분류를 따름 — 실제 손익분기는 우리 가게 실비로 계산</li>
+    </ul>
+    <p class="cs-updated">기준일: 2026년 7월 · 본 계산기는 손익분기 참고용이며, 변동비율은 업종·메뉴·시점에 따라 다릅니다.</p>
+  </div>
 </div>
+<div class="ad-wrap"><ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-92dlbIcNNOkHSZw8" data-ad-width="300" data-ad-height="250"></ins>
+<script type="text/javascript" src="//t1.kakaocdn.net/kas/static/ba.min.js" async></script></div>
 <button id="back-to-top" aria-label="맨 위로">↑</button>
-<script src="assets/layout.js?v=20260702e"></script>
-<script src="sohotip.js?v=20260630f"></script>
+<script src="assets/layout.js?v=20260702e" defer></script>
+<script src="sohotip.js?v=20260708a" defer></script>
+<script src="assets/consult.js?v=20260702e" defer></script>
 <script>
 function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
 function calcBep(){
@@ -238,37 +439,35 @@ function calcBep(){
   const targetProfit = getRawNumber('target-profit')||0;
   const openDays = getRawNumber('open-days')||25;
   const contrib = 1 - varRate;
+  const el = function(id){return document.getElementById(id);};
+  el('b-fixed').textContent=fmt(fixed);
+  el('b-var-rate').textContent=(varRate*100).toFixed(0)+'%';
+  el('b-contrib').textContent=(contrib*100).toFixed(0)+'%';
+  if(contrib<=0){
+    ['b-bep','b-daily-bep','b-target','b-daily-target','bep-monthly','bep-target'].forEach(function(id){el(id).textContent='계산 불가';});
+    el('bep-result').style.display='block';
+    el('bep-result').scrollIntoView({behavior:'smooth',block:'start'});
+    return;
+  }
   const bep = fixed / contrib;
   const targetSales = (fixed + targetProfit) / contrib;
-  document.getElementById('b-fixed').textContent=fmt(fixed);
-  document.getElementById('b-var-rate').textContent=(varRate*100).toFixed(0)+'%';
-  document.getElementById('b-contrib').textContent=(contrib*100).toFixed(0)+'%';
-  document.getElementById('b-bep').textContent=fmt(bep);
-  document.getElementById('b-daily-bep').textContent=fmt(bep/openDays);
-  document.getElementById('b-target').textContent=fmt(targetSales);
-  document.getElementById('b-daily-target').textContent=fmt(targetSales/openDays);
-  document.getElementById('bep-monthly').textContent=fmt(bep);
-  document.getElementById('bep-target').textContent=fmt(targetSales);
-  document.getElementById('bep-result').style.display='block';
-  document.getElementById('bep-result').scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function calcInlineBep(){
-  var fixed=getRawNumber('il_bep_fixed')||0;
-  var varRate=getRawNumber('il_bep_var')/100;
-  var contrib=1-varRate;
-  var bep=fixed/contrib;
-  var r=document.getElementById('il_result_bep');
-  document.getElementById('il_result_bep_val').textContent='월 BEP '+Math.round(bep).toLocaleString('ko-KR')+'원';
-  document.getElementById('il_result_bep_sub').textContent='일 목표 '+Math.round(bep/25).toLocaleString('ko-KR')+'원 (월 25일 기준) · 공헌이익률 '+(contrib*100).toFixed(0)+'%';
-  r.style.display='block';
+  el('b-bep').textContent=fmt(bep);
+  el('b-daily-bep').textContent=fmt(bep/openDays);
+  el('b-target').textContent=fmt(targetSales);
+  el('b-daily-target').textContent=fmt(targetSales/openDays);
+  el('bep-monthly').textContent=fmt(bep);
+  el('bep-target').textContent=fmt(targetSales);
+  el('bep-result').style.display='block';
+  el('bep-result').scrollIntoView({behavior:'smooth',block:'start'});
 }
 </script>
 <footer>
-  <a href="index.html">홈</a><a href="category.html">카테고리</a><a href="tools.html">계산기 모음</a>
-  <p style="margin-top:12px;">© 2026 소호팁. 본 계산기는 참고용입니다.</p>
+  <a href="index.html">홈</a>
+  <a href="category.html">카테고리</a>
+  <a href="tools.html">계산기 모음</a>
+  <a href="consultation.html">무료 진단</a>
+  <p style="margin-top:12px;">© 2026 소호팁. 본 계산기는 참고용이며 정확한 금액은 전문가와 확인하세요.</p>
 </footer>
-<script src="network.js?v=20260630f"></script>
-<script src="assets/consult.js?v=20260702e"></script>
+<script src="network.js?v=20260708a" defer></script>
 </body>
 </html>
