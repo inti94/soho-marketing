@@ -7,14 +7,14 @@
 <meta http-equiv="Expires" content="0">
 <script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="메뉴별 재료비와 판매가를 입력하면 원가율, 마진율, 목표 마진을 위한 권장 판매가를 자동으로 계산합니다. 외식업 권장 원가율 30~35% 기준.">
-<meta name="keywords" content="메뉴 원가율 계산기, 음식 원가 계산, 마진율 계산, 권장 판매가, 식재료비 계산">
-<meta name="robots" content="noindex, follow">
+<meta name="description" content="메뉴 원가율 계산기. 재료비와 판매가를 넣으면 원가율·건당 마진·목표 원가율 기준 권장 판매가를 즉시 계산합니다. 외식업 권장 원가율 30~35%, 배달 수수료 반영법까지. 소상공인 무료 계산기.">
+<meta name="keywords" content="메뉴 원가율 계산기, 음식 원가 계산, 마진율 계산, 권장 판매가, 식재료비 계산, 배달 원가율, 외식업 원가율">
+<meta name="robots" content="index, follow">
 <meta name="author" content="소호팁">
-<meta name="date" content="2026-06-20">
+<meta name="date" content="2026-07-09">
 <meta property="og:type" content="website">
-<meta property="og:title" content="메뉴 원가율 계산기 (2026) — 소호팁">
-<meta property="og:description" content="메뉴별 재료비와 판매가를 입력하면 원가율, 마진율, 목표 마진을 위한 권장 판매가를 자동으로 계산합니다. 외식업 권장 원가율 30~35% 기준.">
+<meta property="og:title" content="메뉴 원가율 계산기 (2026) — 재료비·마진율·권장 판매가 | 소호팁">
+<meta property="og:description" content="재료비와 판매가를 넣으면 원가율·건당 마진·목표 원가율 기준 권장 판매가를 즉시 계산합니다. 외식업 권장 원가율 30~35% 기준.">
 <meta property="og:url" content="https://sohotip.co.kr/food-cost-calc.html">
 <meta property="og:image" content="https://sohotip.co.kr/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -22,8 +22,8 @@
 <meta property="og:site_name" content="소호팁">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="메뉴 원가율 계산기 (2026) — 소호팁">
-<meta name="twitter:description" content="메뉴별 재료비와 판매가를 입력하면 원가율, 마진율, 목표 마진을 위한 권장 판매가를 자동으로 계산합니다. 외식업 권장 원가율 30~35% 기준.">
+<meta name="twitter:title" content="메뉴 원가율 계산기 (2026) — 재료비·마진율·권장 판매가 | 소호팁">
+<meta name="twitter:description" content="재료비와 판매가를 넣으면 원가율·건당 마진·목표 원가율 기준 권장 판매가를 즉시 계산합니다.">
 <meta name="twitter:image" content="https://sohotip.co.kr/og-image.png">
 <meta name="naver-site-verification" content="d7369feb5de3df4cce2e9016b84ad045c4ed70a4">
 <link rel="canonical" href="https://sohotip.co.kr/food-cost-calc.html">
@@ -34,44 +34,64 @@
 <link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
 <title>메뉴 원가율 계산기 — 재료비·마진율·권장 판매가 자동계산 (2026) | 소호팁</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "메뉴 원가율 계산기",
-    "description": "재료비와 판매가 입력으로 원가율, 마진율, 권장 판매가를 자동 계산하는 외식업 필수 도구.",
-    "url": "https://sohotip.co.kr/food-cost-calc.html",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "Web",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "KRW"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "소호팁",
-      "url": "https://sohotip.co.kr"
-    },
-    "dateModified": "2026-06-20",
-    "inLanguage": "ko-KR",
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type":"ListItem","position":1,"name":"홈","item":"https://sohotip.co.kr/"},
-        {"@type":"ListItem","position":2,"name":"계산기","item":"https://sohotip.co.kr/tools.html"},
-        {"@type":"ListItem","position":3,"name":"메뉴 원가율 계산기","item":"https://sohotip.co.kr/food-cost-calc.html"}
-      ]
-    }
-  }
-  </script>
-<link rel="stylesheet" href="sohotip.css?v=20260630f">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "메뉴 원가율 계산기",
+  "description": "재료비와 판매가 입력으로 원가율·건당 마진·목표 원가율 기준 권장 판매가를 자동 계산하는 외식업 무료 도구.",
+  "url": "https://sohotip.co.kr/food-cost-calc.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"},
+  "publisher": {"@type": "Organization", "name": "소호팁", "url": "https://sohotip.co.kr"},
+  "dateModified": "2026-07-09",
+  "inLanguage": "ko-KR"
+}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"홈","item":"https://sohotip.co.kr/"},
+{"@type":"ListItem","position":2,"name":"계산기","item":"https://sohotip.co.kr/tools.html"},
+{"@type":"ListItem","position":3,"name":"메뉴 원가율 계산기","item":"https://sohotip.co.kr/food-cost-calc.html"}
+]}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "메뉴 원가율 계산하는 법",
+  "description": "메뉴의 재료비와 판매가, 목표 원가율을 입력해 현재 원가율·건당 마진·권장 판매가를 계산하는 방법.",
+  "totalTime": "PT1M",
+  "step": [
+    {"@type":"HowToStep","position":1,"name":"재료비 입력","text":"메뉴 1인분 기준 총 재료비를 입력합니다.","url":"https://sohotip.co.kr/food-cost-calc.html#calc"},
+    {"@type":"HowToStep","position":2,"name":"판매가 입력","text":"현재 판매가를 입력합니다.","url":"https://sohotip.co.kr/food-cost-calc.html#calc"},
+    {"@type":"HowToStep","position":3,"name":"목표 원가율 입력","text":"목표로 하는 원가율(외식업 권장 30~35%)을 입력합니다.","url":"https://sohotip.co.kr/food-cost-calc.html#calc"},
+    {"@type":"HowToStep","position":4,"name":"계산하기","text":"'원가율 계산하기'를 누르면 현재 원가율·마진·권장 판매가가 나옵니다.","url":"https://sohotip.co.kr/food-cost-calc.html#calc"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"원가율은 어떻게 계산하나요?","acceptedAnswer":{"@type":"Answer","text":"원가율 = 재료비 ÷ 판매가 × 100입니다. 예를 들어 재료비 3,500원짜리 메뉴를 10,000원에 팔면 원가율은 35%입니다. 이 계산기는 여기에 더해 목표 원가율을 넣으면 그 비율을 맞추는 권장 판매가(= 재료비 ÷ 목표원가율)까지 계산해 줍니다."}},
+    {"@type":"Question","name":"원가율은 몇 %가 적정한가요?","acceptedAnswer":{"@type":"Answer","text":"외식업에서 흔히 권장하는 재료 원가율은 30~35% 수준입니다. 다만 업종에 따라 달라서, 마진이 큰 음료·주류는 20% 이하로도 잡고, 고기·회처럼 원재료 비중이 큰 메뉴는 40%를 넘기도 합니다. 절대 기준이 아니라 우리 가게 전체 평균 원가율을 관리하는 목표선으로 쓰는 게 좋습니다."}},
+    {"@type":"Question","name":"배달 메뉴는 원가율을 어떻게 잡아야 하나요?","acceptedAnswer":{"@type":"Answer","text":"배달은 재료비 외에 중개수수료·결제수수료·배달비가 매출의 15~30%가량 추가로 빠집니다. 그래서 홀과 같은 가격에 팔면 실제 남는 돈이 확 줄어요. 배달 메뉴는 재료 원가율을 25% 이하로 더 타이트하게 설계하거나, 배달 전용 가격을 홀보다 높게 책정하는 방식으로 수수료를 흡수하는 것이 안전합니다."}},
+    {"@type":"Question","name":"권장 판매가는 어떻게 나온 건가요?","acceptedAnswer":{"@type":"Answer","text":"권장 판매가 = 재료비 ÷ (목표 원가율 ÷ 100)로 계산합니다. 재료비 3,500원, 목표 원가율 33%면 3,500 ÷ 0.33 ≈ 10,606원이 권장 판매가입니다. 이 가격에 팔면 원가율이 딱 목표치에 맞춰집니다. 실제 가격은 주변 시세와 손님 저항선을 함께 고려해 정하세요."}},
+    {"@type":"Question","name":"원가율이 높은데 어떻게 낮추나요?","acceptedAnswer":{"@type":"Answer","text":"방법은 크게 셋입니다. ① 판매가를 올린다(원가율의 분모를 키움), ② 재료비를 낮춘다(대체 식자재·발주처 조정·폐기 줄이기), ③ 포션을 조정한다. 가격 인상이 부담되면 원가가 낮은 사이드·음료를 함께 파는 세트 구성으로 객단가를 올려 전체 평균 원가율을 낮추는 방법도 있습니다."}}
+  ]
+}
+</script>
+<link rel="stylesheet" href="sohotip.css?v=20260708a">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260630f">
-<link rel="stylesheet" href="assets/calc.css?v=20260630f">
+  <link rel="stylesheet" href="assets/theme.css?v=20260708a">
+<link rel="stylesheet" href="assets/calc.css?v=20260708a">
 <style>
 :root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
 body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;}
 nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
 .nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
@@ -80,34 +100,34 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
 .nav-links a:hover{color:var(--primary);}
 .nav-cta{background:var(--primary);color:#fff;font-size:13px;padding:7px 16px;border-radius:6px;text-decoration:none;}
 @media(max-width:640px){.nav-links{display:none;}}
-.page-wrap{max-width:680px;margin:0 auto;padding:40px 2rem 80px;}
+.ad-wrap{max-width:680px;margin:0 auto;padding:12px 2rem 0;text-align:center;}
+.page-wrap{max-width:680px;margin:0 auto;padding:24px 2rem 80px;}
 .page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
-.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:32px;line-height:1.6;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:24px;line-height:1.6;}
 .calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;}
-.card-title{font-size:13px;font-weight:700;color:var(--text-muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:20px;}
-.field{margin-bottom:18px;}
-.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;}
+.card-title{font-size:14px;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:20px;}
+.field{margin-bottom:20px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--text);}
 .field-hint{font-size:11px;color:var(--text-muted);margin-bottom:6px;}
-.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color .2s;}
+.field input,.field select{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;-webkit-appearance:none;}
 .field input:focus,.field select:focus{border-color:var(--primary);}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .result-card{background:var(--primary);border-radius:16px;padding:28px;color:#fff;margin-bottom:20px;}
-.result-label{font-size:13px;opacity:.8;margin-bottom:6px;}
-.result-total{font-size:36px;font-weight:700;margin-bottom:4px;}
-.result-sub{font-size:13px;opacity:.75;}
 .breakdown{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px;}
-.br-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.br-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;gap:12px;}
 .br-row:last-child{border:none;font-weight:700;font-size:15px;}
 .br-label{color:var(--text-muted);}
-.br-val{font-weight:500;}
+.br-val{font-weight:500;text-align:right;}
 .highlight{color:var(--primary);}
-.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);margin-top:8px;}
+.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background 0.2s;margin-top:8px;min-height:44px;}
 .btn-calc:hover{background:var(--primary-mid);}
 .tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+.tag svg{width:13px;height:13px;vertical-align:-2px;margin-right:2px;}
 .notice-box{background:var(--primary-light);border-radius:12px;padding:16px 20px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
 .notice-box strong{color:var(--primary);}
-footer{background:#1A1A1A;color:rgba(255,255,255,.6);text-align:center;padding:24px;font-size:12px;}
-footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
+footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
+footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
+@media(max-width:640px){.field-row{grid-template-columns:1fr;}}
 
   /* ── 함께 사용한 계산기 ── */
   .related-calcs-section{margin:32px 0 0;}
@@ -115,14 +135,15 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
   .rel-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
   .rel-calc-card{display:flex;align-items:center;gap:10px;padding:14px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s;}
   .rel-calc-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 14px rgba(61,90,254,.12);}
-  .rcc-icon{font-size:22px;flex-shrink:0;}
+  .rcc-icon{flex-shrink:0;width:24px;height:24px;display:flex;align-items:center;justify-content:center;}
+  .rcc-icon svg{width:22px;height:22px;stroke:var(--primary);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
   .rcc-body{flex:1;min-width:0;}
   .rcc-title{font-size:12px;font-weight:700;line-height:1.3;margin-bottom:3px;}
   .rcc-desc{font-size:11px;color:var(--text-muted);line-height:1.4;}
   /* ── 함께 많이 본 글 ── */
   .related-articles-section{margin:24px 0 0;}
   .rel-article-list{display:flex;flex-direction:column;gap:0;}
-  .rel-article-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-light);text-decoration:none;color:var(--text);transition:color .2s;}
+  .rel-article-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);transition:color .2s;}
   .rel-article-item:last-child{border-bottom:none;}
   .rel-article-item:hover .rai-title{color:var(--primary);}
   .rai-num{font-size:18px;font-weight:900;color:var(--border);width:24px;flex-shrink:0;text-align:center;}
@@ -130,29 +151,59 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
   .rai-cat{font-size:10px;color:var(--primary);font-weight:700;margin-bottom:2px;}
   .rai-title{font-size:13px;font-weight:600;line-height:1.4;}
   .rai-arrow{color:var(--primary);font-size:14px;flex-shrink:0;}
-  /* ── 인라인 계산기 ── */
-  .inline-calc-box{background:linear-gradient(135deg,var(--primary-light),#fff);border:2px solid var(--primary);border-radius:16px;padding:24px;margin:28px 0;}
-  .inline-calc-box h3{font-size:15px;font-weight:700;color:var(--text);margin-bottom:16px;}
-  .inline-fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:14px;}
-  .inline-field{}
-  .inline-field label{display:block;font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:4px;}
-  .inline-field input{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:15px;font-family:var(--sans);color:var(--text);background:#fff;outline:none;transition:border-color .2s;-webkit-appearance:none;}
-  .inline-field input:focus{border-color:var(--primary);}
-  .inline-calc-btn{width:100%;padding:12px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background .2s;min-height:44px;}
-  .inline-calc-btn:hover{background:var(--primary-mid);}
-  .inline-result{margin-top:14px;padding:14px 16px;background:#fff;border-radius:10px;border:1px solid var(--border);display:none;}
-  .inline-result-val{font-size:22px;font-weight:700;color:var(--primary);margin-bottom:4px;}
-  .inline-result-sub{font-size:12px;color:var(--text-muted);line-height:1.5;}
-  .inline-full-link{display:block;text-align:center;margin-top:12px;font-size:12px;color:var(--primary);text-decoration:none;font-weight:600;}
-  .inline-full-link:hover{text-decoration:underline;}
   @media(max-width:640px){
     .rel-calc-grid{grid-template-columns:1fr 1fr;}
-    .inline-fields{grid-template-columns:1fr 1fr;}
   }
   @media(max-width:380px){
     .rel-calc-grid{grid-template-columns:1fr;}
-    .inline-fields{grid-template-columns:1fr;}
   }
+
+  /* ── 공통 12블록: 설명 콘텐츠 ── */
+  .article-content{margin-top:36px;}
+  .article-content h2{font-size:20px;font-weight:800;color:var(--text);margin:34px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-.01em;}
+  .article-content h3{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}
+  .article-content p{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:16px;word-break:keep-all;overflow-wrap:anywhere;}
+  .article-content strong{font-weight:700;color:var(--primary);}
+  .article-content ul{margin:14px 0 18px 18px;}
+  .article-content li{font-size:15px;line-height:1.8;margin-bottom:6px;}
+  .formula-box{background:#191F28;color:#fff;border-radius:14px;padding:20px 22px;margin:8px 0 18px;font-size:15px;font-weight:600;line-height:1.7;text-align:center;}
+  .formula-box .fx-sub{display:block;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);margin-top:8px;}
+  .tip-inline{background:var(--primary-light);border-radius:12px;padding:14px 18px;margin:8px 0 18px;font-size:14px;color:var(--primary-mid);line-height:1.7;}
+  .tip-inline strong{color:var(--primary);}
+  .step-box{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin:8px 0 18px;}
+  .step-box .sb-badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--primary);padding:3px 11px;border-radius:20px;margin-bottom:10px;}
+  .step-box .sb-body{font-size:14.5px;line-height:1.8;color:var(--text);}
+  .howto-list{counter-reset:howto;list-style:none;margin:8px 0 18px;padding:0;}
+  .howto-list li{position:relative;padding:12px 16px 12px 46px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;margin-bottom:8px;font-size:14px;line-height:1.7;color:var(--text);}
+  .howto-list li::before{counter-increment:howto;content:counter(howto);position:absolute;left:14px;top:12px;width:22px;height:22px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .article-table{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:13.5px;}
+  .article-table th,.article-table td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.6;word-break:keep-all;}
+  .article-table th{background:#F4F6FB;font-weight:700;color:var(--text);}
+  .article-table td:first-child{font-weight:600;}
+  .faq-section{margin-top:8px;}
+  .faq-item{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;background:var(--bg-card);}
+  .faq-q{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:7px;}
+  .faq-q::before{content:"Q. ";color:var(--primary);}
+  .faq-a{font-size:13.5px;color:var(--text-muted);line-height:1.75;word-break:keep-all;overflow-wrap:anywhere;}
+  /* 직접계산 CTA */
+  .cta-box{margin-top:34px;background:linear-gradient(135deg,#3D5AFE,#536DFE);border-radius:18px;padding:26px 22px;text-align:center;color:#fff;}
+  .cta-box h3{font-size:18px;font-weight:800;margin-bottom:6px;}
+  .cta-box p{font-size:13.5px;opacity:.85;margin-bottom:16px;line-height:1.6;}
+  .cta-box a{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--primary);font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;text-decoration:none;transition:transform .12s;}
+  .cta-box a svg{width:17px;height:17px;stroke:var(--primary);fill:none;stroke-width:2;}
+  .cta-box a:active{transform:scale(.97);}
+  /* ⑫ 하단 자료 출처 */
+  .calc-sources{margin:30px 0 0;padding:18px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;}
+  .calc-sources h2{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;}
+  .calc-sources ul{list-style:none;margin:0;padding:0;}
+  .calc-sources li{font-size:12.5px;color:var(--text-muted);line-height:1.75;padding-left:14px;position:relative;}
+  .calc-sources li::before{content:"·";position:absolute;left:2px;color:var(--primary);font-weight:700;}
+  .calc-sources a{color:var(--primary);text-decoration:none;}
+  .calc-sources a:hover{text-decoration:underline;}
+  .calc-sources .cs-updated{font-size:11px;color:var(--text-muted);margin-top:10px;}
+  /* AI 요약 배지 SVG (이모지 대체) */
+  .ai-summary .ais-badge svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .ai-summary .ais-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 
 </style></head>
 <body>
@@ -165,7 +216,6 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
   </ul>
   <a href="consultation.html" class="nav-cta">무료 진단</a>
 </nav>
-<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
 <div class="mobile-search-bar">
   <div class="nav-search">
     <span class="nav-search-icon">🔍</span>
@@ -173,64 +223,215 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 8px;}
     <div id="search-dropdown-mobile"></div>
   </div>
 </div>
+<div class="ad-wrap"><ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-OXO7QmLJ3fqDjM3l" data-ad-width="320" data-ad-height="100"></ins></div>
 <div class="page-wrap">
-  <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="12" y2="18"/></svg> 원가율 계산기</span>
-  <h1 class="page-title">메뉴 원가율 계산기 — 재료비와 판매가로 마진·권장 판매가 계산</h1>
-  <p class="page-desc">메뉴별 재료비와 판매가를 입력하면 원가율, 마진율, 목표 마진을 위한 권장 판매가를 자동으로 계산합니다.</p>
-  
-<div class="calc-card">
-  <div class="card-title">메뉴 정보 입력</div>
-  <div class="field">
-    <label>메뉴명</label>
-    <input type="text" id="menu-name" value="제육볶음" placeholder="계산할 메뉴 이름">
-  </div>
-  <div class="field-row">
-    <div class="field">
-      <label>총 재료비 (원)</label>
-      <div class="field-hint">1인분 기준</div>
-      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="ingredient-cost" value="3,500" step="100">
-    </div>
-    <div class="field">
-      <label>현재 판매가 (원)</label>
-      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="sell-price" value="10,000" step="500">
-    </div>
-  </div>
-  <div class="field">
-    <label>목표 원가율 (%)</label>
-    <div class="field-hint">외식업 권장 30~35%. 이 비율 기준으로 권장 판매가를 계산합니다</div>
-    <input type="number" id="target-rate" value="33" step="1">
-  </div>
-  <button class="btn-calc" onclick="calcFood()">원가율 계산하기</button>
-</div>
-<div id="food-result" style="display:none;">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
-    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center;">
-      <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;">현재 원가율</div>
-      <div style="font-size:28px;font-weight:700;" id="cur-rate-display">0%</div>
-      <div style="font-size:11px;color:var(--text-muted);margin-top:4px;" id="rate-judge"></div>
-    </div>
-    <div style="background:var(--primary-light);border:1px solid var(--primary);border-radius:14px;padding:16px;text-align:center;">
-      <div style="font-size:11px;color:var(--primary);margin-bottom:6px;">권장 판매가</div>
-      <div style="font-size:28px;font-weight:700;color:var(--primary);" id="rec-price-display">0원</div>
-      <div style="font-size:11px;color:var(--primary-mid);margin-top:4px;" id="rec-margin"></div>
-    </div>
-  </div>
-  <div class="breakdown">
-    <div class="br-row"><span class="br-label" id="menu-label">메뉴</span><span class="br-val" id="food-menu-name"></span></div>
-    <div class="br-row"><span class="br-label">재료비</span><span class="br-val" id="food-ingr"></span></div>
-    <div class="br-row"><span class="br-label">현재 판매가</span><span class="br-val" id="food-sell"></span></div>
-    <div class="br-row"><span class="br-label">현재 원가율</span><span class="br-val" id="food-cur-rate"></span></div>
-    <div class="br-row"><span class="br-label">현재 마진 (건당)</span><span class="br-val highlight" id="food-margin"></span></div>
-    <div class="br-row"><span class="br-label">목표 원가율 기준 권장 판매가</span><span class="br-val highlight" id="food-rec-price"></span></div>
-  </div>
-  <div class="notice-box"><strong>💡 원가율 가이드:</strong> 외식업 권장 원가율은 30~35%입니다. 배달 주문은 수수료(15~20%)가 추가로 빠지므로, 배달 메뉴는 일반 원가율을 25% 이하로 설계하거나 배달 전용 가격을 높게 책정하는 게 유리합니다.</div>
-</div>
+  <!-- ① 제목 -->
+  <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.7 0L15 15Z"/></svg> 원가·마진 계산기</span>
+  <h1 class="page-title">메뉴 원가율 계산기</h1>
+  <p class="page-desc">이 메뉴, 남는 장사 맞나 싶으시죠? 재료비와 판매가만 넣으면 원가율과 건당 마진, 그리고 목표 원가율을 맞추는 권장 판매가까지 바로 계산해 드려요. 배달 수수료 반영법도 아래에서 함께 짚어드립니다.</p>
 
+  <!-- ② 30초 요약 -->
+  <section class="ai-summary" aria-label="30초 핵심 요약">
+    <span class="ais-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.9L18.7 9.7 13.8 11.5 12 16.4 10.2 11.5 5.3 9.7 10.2 7.9z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg> 30초 요약 · 사장님용</span>
+    <p>원가율은 <strong>재료비 ÷ 판매가 × 100</strong>이에요. 재료비 3,500원짜리를 10,000원에 팔면 원가율은 <strong>35%</strong>, 건당 마진은 <strong>6,500원</strong>이죠.</p>
+    <p>외식업에서 흔히 권장하는 재료 원가율은 <strong>30~35%</strong>예요. 목표를 33%로 잡으면 이 메뉴의 권장 판매가는 3,500 ÷ 0.33 ≈ <strong>10,606원</strong>. 지금 가격이 목표보다 높은지 낮은지 바로 보여줍니다.</p>
+    <p>주의할 건 <strong>배달</strong>이에요. 배달은 중개·결제수수료에 배달비까지 매출의 <strong>15~30%</strong>가 더 빠지니까, 홀과 같은 가격이면 실제로 남는 게 확 줄어요. 배달 메뉴는 원가율을 더 타이트하게 잡으세요.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.7 0L15 15Z"/></svg> 우리 메뉴 원가율 바로 계산</a>
+      <a class="ais-btn ghost" href="delivery-profit-calc.html">배달 순이익도 보기</a>
+    </div>
+    <div class="ais-links">이어서 보면 좋아요 · <a href="food-cost-control.html">원가율 잡는 법</a> · <a href="store-profit-calc.html">매장 순이익 계산</a></div>
+  </section>
+
+  <!-- ③ 계산기 -->
+  <div class="calc-card" id="calc">
+    <div class="card-title">메뉴 정보 입력</div>
+    <div class="field">
+      <label>메뉴명</label>
+      <input type="text" id="menu-name" value="제육볶음" placeholder="계산할 메뉴 이름">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>총 재료비 (원)</label>
+        <div class="field-hint">1인분 기준</div>
+        <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="ingredient-cost" value="3,500" step="100">
+      </div>
+      <div class="field">
+        <label>현재 판매가 (원)</label>
+        <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="sell-price" value="10,000" step="500">
+      </div>
+    </div>
+    <div class="field">
+      <label>목표 원가율 (%)</label>
+      <div class="field-hint">외식업 권장 30~35%. 이 비율 기준으로 권장 판매가를 계산합니다</div>
+      <input type="number" id="target-rate" value="33" step="1">
+    </div>
+    <button class="btn-calc" onclick="calcFood()">원가율 계산하기</button>
+  </div>
+
+  <!-- ④ 계산 결과 -->
+  <div id="food-result" style="display:none;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center;">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;">현재 원가율</div>
+        <div style="font-size:28px;font-weight:700;" id="cur-rate-display">0%</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;" id="rate-judge"></div>
+      </div>
+      <div style="background:var(--primary-light);border:1px solid var(--primary);border-radius:14px;padding:16px;text-align:center;">
+        <div style="font-size:11px;color:var(--primary);margin-bottom:6px;">권장 판매가</div>
+        <div style="font-size:28px;font-weight:700;color:var(--primary);" id="rec-price-display">0원</div>
+        <div style="font-size:11px;color:var(--primary-mid);margin-top:4px;" id="rec-margin"></div>
+      </div>
+    </div>
+    <div class="breakdown">
+      <div class="br-row"><span class="br-label" id="menu-label">메뉴</span><span class="br-val" id="food-menu-name"></span></div>
+      <div class="br-row"><span class="br-label">재료비</span><span class="br-val" id="food-ingr"></span></div>
+      <div class="br-row"><span class="br-label">현재 판매가</span><span class="br-val" id="food-sell"></span></div>
+      <div class="br-row"><span class="br-label">현재 원가율</span><span class="br-val" id="food-cur-rate"></span></div>
+      <div class="br-row"><span class="br-label">현재 마진 (건당)</span><span class="br-val highlight" id="food-margin"></span></div>
+      <div class="br-row"><span class="br-label">목표 원가율 기준 권장 판매가</span><span class="br-val highlight" id="food-rec-price"></span></div>
+    </div>
+    <div class="notice-box"><strong>원가율 가이드</strong><br>외식업 권장 재료 원가율은 30~35%입니다. 배달 주문은 수수료·배달비(매출의 15~30%)가 추가로 빠지므로, 배달 메뉴는 원가율을 25% 이하로 설계하거나 배달 전용 가격을 높게 책정하는 게 유리합니다.</div>
+  </div>
+
+  <div class="article-content">
+    <!-- ⑤ 계산 공식 설명 -->
+    <h2>원가율, 이렇게 계산됩니다</h2>
+    <p>원가율은 <strong>판매가에서 재료비가 차지하는 비율</strong>이에요. 이 숫자가 높을수록 팔아도 남는 게 적다는 뜻이라, 메뉴 가격을 정하고 관리하는 가장 기본이 되는 지표입니다.</p>
+    <div class="formula-box">원가율 = 재료비 ÷ 판매가 × 100<span class="fx-sub">건당 마진 = 판매가 − 재료비 · 권장 판매가 = 재료비 ÷ (목표 원가율 ÷ 100)</span></div>
+    <p>예를 들어 재료비가 3,500원인데 10,000원에 팔면 원가율은 35%, 남는 마진은 6,500원이에요. 여기서 <strong>목표 원가율</strong>을 넣으면, 그 비율에 맞추려면 얼마에 팔아야 하는지(권장 판매가)를 거꾸로 계산해 줍니다. 목표 33%면 3,500 ÷ 0.33 ≈ 10,606원이죠.</p>
+    <h3>이렇게 계산하세요</h3>
+    <ol class="howto-list">
+      <li>메뉴 1인분 기준 총 재료비를 입력합니다.</li>
+      <li>현재 판매가를 입력합니다.</li>
+      <li>목표로 하는 원가율(외식업 권장 30~35%)을 입력합니다.</li>
+      <li>'원가율 계산하기'를 누르면 현재 원가율·마진·권장 판매가가 나옵니다.</li>
+    </ol>
+
+    <!-- ⑥ 주요 계산항목 표 -->
+    <h2>메뉴 종류별 권장 원가율 참고치</h2>
+    <table class="article-table">
+      <thead><tr><th>메뉴 종류</th><th>흔히 말하는 원가율</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td>일반 식사류</td><td>30~35%</td><td>외식업 표준 권장 범위</td></tr>
+        <tr><td>고기·회·해산물</td><td>40~50%</td><td>원재료 비중 큼, 회전율로 보완</td></tr>
+        <tr><td>커피·음료</td><td>10~20%</td><td>마진 큼, 객단가 올리는 핵심</td></tr>
+        <tr><td>주류</td><td>20~30%</td><td>매장 수익 기여 큼</td></tr>
+        <tr><td>디저트·베이커리</td><td>25~35%</td><td>재료·인건 함께 고려</td></tr>
+      </tbody>
+    </table>
+    <h3>배달 수수료 반영하면 (판매가 10,000원 예시)</h3>
+    <table class="article-table">
+      <thead><tr><th>구분</th><th>홀 판매</th><th>배달 판매</th></tr></thead>
+      <tbody>
+        <tr><td>판매가</td><td>10,000원</td><td>10,000원</td></tr>
+        <tr><td>재료비</td><td>3,500원</td><td>3,500원</td></tr>
+        <tr><td>배달 관련 수수료·배달비(약 20%)</td><td>0원</td><td>약 2,000원</td></tr>
+        <tr><td>남는 돈(대략)</td><td>6,500원</td><td>약 4,500원</td></tr>
+        <tr><td>실질 부담률</td><td>35%</td><td>약 55%</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-inline"><strong>참고만 하세요:</strong> 위 수치는 업종·메뉴·플랫폼에 따라 달라지는 대략적 기준이에요. 배달 수수료는 중개이용료·결제수수료·배달비 구성에 따라 매출의 15~30%까지 벌어집니다. 정확한 배달 실수익은 배달 순이익 계산기로 우리 조건을 넣어 확인하세요.</div>
+
+    <!-- ⑦ 실무 예시 -->
+    <h2>실무 예시 — 숫자로 따라가 볼게요</h2>
+    <div class="step-box">
+      <span class="sb-badge">홀 메뉴 · 제육볶음</span>
+      <div class="sb-body">
+        재료비 3,500원 · 판매가 10,000원<br>
+        원가율 = 3,500 ÷ 10,000 × 100 = <strong>35%</strong><br>
+        건당 마진 = 10,000 − 3,500 = <strong>6,500원</strong><br>
+        목표 33% 권장가 = 3,500 ÷ 0.33 ≈ <strong>10,606원</strong> (지금은 목표보다 살짝 높음)
+      </div>
+    </div>
+    <div class="step-box">
+      <span class="sb-badge">같은 메뉴를 배달로</span>
+      <div class="sb-body">
+        판매가 10,000원 · 재료비 3,500원 · 배달 수수료·배달비 약 2,000원(20%)<br>
+        실제 남는 돈 = 10,000 − 3,500 − 2,000 = <strong>약 4,500원</strong><br>
+        → 홀(6,500원)보다 2,000원 적음. 배달가를 11,000~12,000원으로 올리거나, 재료 원가율을 더 낮춰야 홀과 비슷해집니다.
+      </div>
+    </div>
+    <p>핵심은 <strong>메뉴 하나하나의 원가율보다 가게 전체 평균 원가율</strong>이에요. 원가율 높은 대표 메뉴가 있어도, 마진 큰 음료·사이드를 함께 팔아 평균을 낮추면 됩니다. 그래서 세트 구성과 객단가 관리가 원가율 관리의 실전 무기입니다.</p>
+
+    <!-- ⑧ FAQ -->
+    <h2 id="faq">자주 묻는 질문</h2>
+    <div class="faq-section">
+      <div class="faq-item"><div class="faq-q">원가율은 어떻게 계산하나요?</div><div class="faq-a">원가율 = 재료비 ÷ 판매가 × 100입니다. 재료비 3,500원짜리를 10,000원에 팔면 원가율 35%예요. 여기에 목표 원가율을 넣으면 그 비율을 맞추는 권장 판매가(재료비 ÷ 목표원가율)까지 계산됩니다.</div></div>
+      <div class="faq-item"><div class="faq-q">원가율은 몇 %가 적정한가요?</div><div class="faq-a">외식업에서 흔히 권장하는 재료 원가율은 30~35% 수준이에요. 마진 큰 음료·주류는 20% 이하로도 잡고, 고기·회처럼 원재료 비중이 큰 메뉴는 40%를 넘기도 합니다. 절대 기준이 아니라 가게 전체 평균 원가율을 관리하는 목표선으로 보세요.</div></div>
+      <div class="faq-item"><div class="faq-q">배달 메뉴는 원가율을 어떻게 잡아야 하나요?</div><div class="faq-a">배달은 중개·결제수수료에 배달비까지 매출의 15~30%가 더 빠져요. 홀과 같은 가격이면 실제 남는 돈이 확 줄죠. 배달 메뉴는 재료 원가율을 25% 이하로 더 타이트하게 잡거나, 배달 전용 가격을 홀보다 높게 책정하는 게 안전합니다.</div></div>
+      <div class="faq-item"><div class="faq-q">권장 판매가는 어떻게 나온 건가요?</div><div class="faq-a">권장 판매가 = 재료비 ÷ (목표 원가율 ÷ 100)이에요. 재료비 3,500원, 목표 33%면 3,500 ÷ 0.33 ≈ 10,606원입니다. 이 가격에 팔면 원가율이 목표에 맞춰져요. 실제 가격은 주변 시세와 손님 저항선을 함께 보고 정하세요.</div></div>
+      <div class="faq-item"><div class="faq-q">원가율이 높은데 어떻게 낮추나요?</div><div class="faq-a">① 판매가를 올리거나 ② 재료비를 낮추거나(대체 식자재·발주처 조정·폐기 줄이기) ③ 포션을 조정합니다. 가격 인상이 부담되면 원가 낮은 사이드·음료를 함께 파는 세트로 객단가를 올려 전체 평균 원가율을 낮추는 방법도 있어요.</div></div>
+    </div>
+  </div>
+
+  <!-- ⑨ 관련 계산기 (5) -->
+  <div class="related-calcs-section">
+    <h2>함께 보면 좋은 계산기</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="store-profit-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><div class="rcc-body"><div class="rcc-title">매장 순이익 계산기</div><div class="rcc-desc">영업이익·이익률</div></div></a>
+      <a class="rel-calc-card" href="bep-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><div class="rcc-body"><div class="rcc-title">손익분기점 계산기</div><div class="rcc-desc">얼마 팔아야 본전</div></div></a>
+      <a class="rel-calc-card" href="delivery-profit-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8Z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span><div class="rcc-body"><div class="rcc-title">배달 순이익 계산기</div><div class="rcc-desc">수수료 뗀 실수익</div></div></a>
+      <a class="rel-calc-card" href="card-fee-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span><div class="rcc-body"><div class="rcc-title">카드수수료 계산기</div><div class="rcc-desc">카드매출 실수령</div></div></a>
+      <a class="rel-calc-card" href="vat-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/></svg></span><div class="rcc-body"><div class="rcc-title">부가세 계산기</div><div class="rcc-desc">납부·환급 세액</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑩ 관련 가이드 (5) -->
+  <div class="related-articles-section">
+    <h2>함께 보면 좋은 가이드</h2>
+    <a class="rel-article-item" href="food-cost-control.html"><span class="rai-num">1</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">원가율 잡는 법 — 마진 새는 구멍부터 막는 실전 순서</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="delivery-ad-reduce.html"><span class="rai-num">2</span><div class="rai-body"><div class="rai-cat">배달앱</div><div class="rai-title">배달 광고비·수수료 줄이는 법 — 새는 돈부터 점검</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="restaurant-startup-cost.html"><span class="rai-num">3</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">식당 창업 비용 총정리 — 항목별 실제 드는 돈</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="cafe-startup-real-cost.html"><span class="rai-num">4</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">카페 창업 실제 비용 — 예산별로 현실 점검</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="general-vs-simple-tax.html"><span class="rai-num">5</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">일반과세 vs 간이과세 — 우리 가게는 뭐가 유리할까</div></div><span class="rai-arrow">→</span></a>
+  </div>
+
+  <!-- ⑪ 관련 서식 (3) -->
+  <div class="related-calcs-section">
+    <h2>함께 쓰면 좋은 서식</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="forms.html#store"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><div class="rcc-body"><div class="rcc-title">메뉴 원가표</div><div class="rcc-desc">메뉴별 원가·마진</div></div></a>
+      <a class="rel-calc-card" href="forms.html#store"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.5 9.4 7.5 4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span><div class="rcc-body"><div class="rcc-title">재고·발주 관리표</div><div class="rcc-desc">재료비 관리</div></div></a>
+      <a class="rel-calc-card" href="forms.html#store"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg></span><div class="rcc-body"><div class="rcc-title">일일 매출·매입 기록표</div><div class="rcc-desc">원가율 추적</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑫ 한 줄 요약 + CTA -->
+  <section class="ai-summary" aria-label="한 줄 요약">
+    <span class="ais-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> 한 줄 요약</span>
+    <p>원가율은 <strong>재료비 ÷ 판매가 × 100</strong>, 외식업은 <strong>30~35%</strong>가 흔한 목표선이에요. 목표 원가율을 정하면 권장 판매가(재료비 ÷ 목표율)가 바로 나옵니다.</p>
+    <p>배달은 수수료·배달비가 <strong>15~30%</strong> 더 빠지니 홀과 같은 가격이면 남는 게 줄어요. 메뉴 하나보다 <strong>가게 전체 평균 원가율</strong>을 세트·음료로 관리하는 게 실전 핵심입니다.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.7 0L15 15Z"/></svg> 지금 원가율 계산하기</a>
+      <a class="ais-btn ghost" href="delivery-profit-calc.html">배달 순이익 보기</a>
+    </div>
+  </section>
+
+  <!-- 직접 계산 CTA -->
+  <div class="cta-box">
+    <h3>이 메뉴, 남는 장사인지 지금 확인하세요</h3>
+    <p>재료비와 판매가만 넣으면 원가율·건당 마진·권장 판매가가 바로 나옵니다.</p>
+    <a href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.7 0L15 15Z"/></svg> 원가율 바로 계산하기</a>
+  </div>
+
+  <!-- 하단 자료 출처 -->
+  <div class="calc-sources">
+    <h2>자료 출처</h2>
+    <ul>
+      <li>원가율 = 재료비 ÷ 판매가 × 100, 권장 판매가 = 재료비 ÷ 목표원가율 — 일반 관리회계·외식 원가관리 공식</li>
+      <li>외식업 권장 원가율(30~35%)·메뉴별 참고치는 소상공인시장진흥공단 등 외식업 경영 자료에서 흔히 인용되는 대략적 범위 (<a href="https://www.semas.or.kr" target="_blank" rel="nofollow noopener">semas.or.kr</a>)</li>
+      <li>배달 중개이용료·결제수수료·배달비 구성은 각 배달 플랫폼 공지 기준 — 실제 배달 실수익은 배달 순이익 계산기로 확인</li>
+    </ul>
+    <p class="cs-updated">기준일: 2026년 7월 · 본 계산기는 원가 관리 참고용이며, 권장 원가율은 업종·메뉴·플랫폼에 따라 다릅니다.</p>
+  </div>
 </div>
+<div class="ad-wrap"><ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-92dlbIcNNOkHSZw8" data-ad-width="300" data-ad-height="250"></ins>
+<script type="text/javascript" src="//t1.kakaocdn.net/kas/static/ba.min.js" async></script></div>
 <button id="back-to-top" aria-label="맨 위로">↑</button>
-<script src="assets/layout.js?v=20260702e"></script>
-<script src="sohotip.js?v=20260630f"></script>
-<script src="assets/consult.js?v=20260702e"></script>
+<script src="assets/layout.js?v=20260702e" defer></script>
+<script src="sohotip.js?v=20260708a" defer></script>
+<script src="assets/consult.js?v=20260702e" defer></script>
 <script>
 function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
 function calcFood(){
@@ -242,7 +443,7 @@ function calcFood(){
   const margin = sell-ingr;
   const recPrice = ingr/(target/100);
   const recMargin = recPrice-ingr;
-  const judge = curRate<=target?'✅ 목표 원가율 달성':'⚠️ 원가율이 목표보다 높습니다';
+  const judge = curRate<=target?'목표 원가율 달성':'원가율이 목표보다 높습니다';
   document.getElementById('cur-rate-display').textContent=curRate.toFixed(1)+'%';
   document.getElementById('cur-rate-display').style.color=curRate<=target?'var(--primary)':'#EF4444';
   document.getElementById('rate-judge').textContent=judge;
@@ -257,23 +458,14 @@ function calcFood(){
   document.getElementById('food-result').style.display='block';
   document.getElementById('food-result').scrollIntoView({behavior:'smooth',block:'start'});
 }
-
-function calcInlineFood(){
-  var ingr=getRawNumber('il_fc_ingr')||0;
-  var sell=getRawNumber('il_fc_sell')||1;
-  var rate=ingr/sell*100;
-  var margin=sell-ingr;
-  var rec=ingr/0.33;
-  var r=document.getElementById('il_result_food');
-  document.getElementById('il_result_food_val').textContent='원가율 '+rate.toFixed(1)+'% / 마진 '+Math.round(margin).toLocaleString('ko-KR')+'원';
-  document.getElementById('il_result_food_sub').textContent='권장 33% 기준 판매가: '+Math.round(rec).toLocaleString('ko-KR')+'원 · '+(rate<=33?'✅ 목표 달성':'⚠️ 원가율 높음');
-  r.style.display='block';
-}
 </script>
 <footer>
-  <a href="index.html">홈</a><a href="category.html">카테고리</a><a href="tools.html">계산기 모음</a>
-  <p style="margin-top:12px;">© 2026 소호팁. 본 계산기는 참고용입니다.</p>
+  <a href="index.html">홈</a>
+  <a href="category.html">카테고리</a>
+  <a href="tools.html">계산기 모음</a>
+  <a href="consultation.html">무료 진단</a>
+  <p style="margin-top:12px;">© 2026 소호팁. 본 계산기는 참고용이며 정확한 금액은 전문가와 확인하세요.</p>
 </footer>
-<script src="network.js?v=20260630f"></script>
+<script src="network.js?v=20260708a" defer></script>
 </body>
 </html>
