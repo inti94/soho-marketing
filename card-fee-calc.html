@@ -11,7 +11,7 @@
 <meta name="keywords" content="카드수수료 계산기, 우대수수료율, 영세 중소가맹점, 카드 수수료 구간, 여신금융협회, 카드 수수료 0.4%">
 <meta name="robots" content="index, follow">
 <meta name="author" content="소호팁">
-<meta name="date" content="2026-07-08">
+<meta name="date" content="2026-07-11">
 <meta property="og:type" content="website">
 <meta property="og:title" content="카드수수료 계산기 (2026) — 우대수수료율 구간 자동판단 | 소호팁">
 <meta property="og:description" content="월 카드매출만 넣으면 연매출 구간별 우대수수료율(3억 이하 0.4% 등)을 자동 적용해 월·연 카드수수료를 즉시 계산합니다. 소상공인 무료 계산기.">
@@ -45,7 +45,7 @@
   "operatingSystem": "Web",
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"},
   "publisher": {"@type": "Organization", "name": "소호팁", "url": "https://sohotip.co.kr"},
-  "dateModified": "2026-07-08",
+  "dateModified": "2026-07-11",
   "inLanguage": "ko-KR"
 }
 </script>
@@ -64,9 +64,9 @@
   "description": "월 카드매출을 입력하면 연매출을 추정해 구간별 우대수수료율을 자동 적용, 월·연 카드수수료를 계산하는 방법.",
   "totalTime": "PT1M",
   "step": [
-    {"@type":"HowToStep","position":1,"name":"월 카드매출 입력","text":"현금을 뺀 순수 카드 결제액(월 기준)을 입력합니다.","url":"https://sohotip.co.kr/card-fee-calc.html#calc"},
-    {"@type":"HowToStep","position":2,"name":"계산하기","text":"'카드수수료 계산하기'를 누르면 연매출을 12배로 추정해 구간을 판정합니다.","url":"https://sohotip.co.kr/card-fee-calc.html#calc"},
-    {"@type":"HowToStep","position":3,"name":"결과 확인","text":"적용 구간·우대수수료율과 월·연 카드수수료가 표시됩니다.","url":"https://sohotip.co.kr/card-fee-calc.html#calc"}
+    {"@type":"HowToStep","position":1,"name":"연매출 구간 정하기","text":"연매출 금액을 입력하거나 구간을 직접 선택합니다. 비우면 카드매출 합계로 자동 추정합니다.","url":"https://sohotip.co.kr/card-fee-calc.html#calc"},
+    {"@type":"HowToStep","position":2,"name":"신용·체크 매출 입력","text":"월 신용카드 매출과 체크카드 매출을 각각 입력합니다(현금 제외).","url":"https://sohotip.co.kr/card-fee-calc.html#calc"},
+    {"@type":"HowToStep","position":3,"name":"결과 확인","text":"구간의 신용·체크 우대수수료율이 자동 적용돼 월·연 카드수수료와 실효 요율이 표시됩니다.","url":"https://sohotip.co.kr/card-fee-calc.html#calc"}
   ]
 }
 </script>
@@ -83,10 +83,10 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="sohotip.css?v=20260708a">
+<link rel="stylesheet" href="sohotip.css?v=20260711a">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="assets/theme.css?v=20260708a">
-<link rel="stylesheet" href="assets/calc.css?v=20260708a">
+  <link rel="stylesheet" href="assets/theme.css?v=20260711a">
+<link rel="stylesheet" href="assets/calc.css?v=20260711a">
 <style>
 :root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -233,7 +233,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <!-- ① 제목 -->
   <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> 세무·비용 계산기</span>
   <h1 class="page-title">카드수수료 계산기</h1>
-  <p class="page-desc">카드매출에서 수수료로 얼마나 빠지는지 궁금하시죠? 월 카드매출만 넣으면 연매출 구간에 맞는 우대수수료율을 자동으로 적용해 월·연 수수료를 계산해드려요. (2026년 기준, 3억 이하 0.4%부터)</p>
+  <p class="page-desc">카드매출에서 수수료로 얼마나 빠지는지 궁금하시죠? 연매출 구간을 고르면(또는 금액 입력 시 자동 판별) 그 구간의 신용·체크 우대수수료율을 각각 자동 적용해 월·연 수수료를 계산해드려요. (2026년 기준, 3억 이하 신용 0.4%·체크 0.15%부터)</p>
 
   <!-- ② 30초 요약 -->
   <section class="ai-summary" aria-label="30초 핵심 요약">
@@ -251,12 +251,51 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <!-- ③ 계산기 -->
   <div class="calc-card" id="calc">
     <div class="card-title">카드매출 입력</div>
+
+    <!-- 연매출 구간 정하기 (금액 자동판별 / 직접선택) -->
     <div class="field">
-      <label>월 카드매출 (원)</label>
-      <div class="field-hint">현금 제외, 카드 결제액만</div>
-      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="cardSales" value="25,000,000" min="0" step="1000000">
+      <label>연매출 구간</label>
+      <div class="field-hint">직전연도 연매출 기준으로 우대수수료율 구간이 정해져요.</div>
+      <div class="toggle-group" id="modeToggle">
+        <button type="button" class="toggle-btn active" data-mode="amount" onclick="setMode('amount')">연매출 금액으로 자동</button>
+        <button type="button" class="toggle-btn" data-mode="tier" onclick="setMode('tier')">구간 직접 선택</button>
+      </div>
     </div>
-    <button class="btn-calc" onclick="calculate()">카드수수료 계산하기</button>
+
+    <!-- (a) 연매출 금액 → 자동 판별 -->
+    <div class="field" id="amountField">
+      <label>연매출 (원)</label>
+      <div class="field-hint">비워두면 아래 카드매출 합계를 12배로 추정해 판별해요.</div>
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="annualSales" placeholder="예: 300,000,000">
+    </div>
+
+    <!-- (b) 구간 직접 선택 -->
+    <div class="field" id="tierField" style="display:none;">
+      <label>연매출 구간 선택</label>
+      <div class="toggle-group" id="tierToggle">
+        <button type="button" class="toggle-btn active" data-tier="0" onclick="selectTier(0)">3억 이하</button>
+        <button type="button" class="toggle-btn" data-tier="1" onclick="selectTier(1)">3~5억</button>
+        <button type="button" class="toggle-btn" data-tier="2" onclick="selectTier(2)">5~10억</button>
+        <button type="button" class="toggle-btn" data-tier="3" onclick="selectTier(3)">10~30억</button>
+        <button type="button" class="toggle-btn" data-tier="4" onclick="selectTier(4)">30억 초과</button>
+      </div>
+    </div>
+
+    <!-- 신용/체크 매출 각각 입력 -->
+    <div class="field-row">
+      <div class="field" style="margin-bottom:0;">
+        <label>월 신용카드 매출 (원)</label>
+        <div class="field-hint">현금 제외</div>
+        <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="creditSales" value="20,000,000">
+      </div>
+      <div class="field" style="margin-bottom:0;">
+        <label>월 체크카드 매출 (원)</label>
+        <div class="field-hint">체크·직불</div>
+        <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="debitSales" value="5,000,000">
+      </div>
+    </div>
+
+    <button class="btn-calc" onclick="calculate(true)">카드수수료 계산하기</button>
   </div>
 
   <!-- ④ 계산 결과 -->
@@ -267,26 +306,28 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
       <div class="result-sub" id="res-sub"></div>
     </div>
     <div class="result-breakdown">
-      <div class="breakdown-row"><span class="breakdown-label">연 카드매출 (추정 ×12)</span><span class="breakdown-value" id="res-year">-</span></div>
       <div class="breakdown-row"><span class="breakdown-label">적용 구간</span><span class="breakdown-value" id="res-tier">-</span></div>
-      <div class="breakdown-row"><span class="breakdown-label">우대수수료율</span><span class="breakdown-value" id="res-rate">-</span></div>
-      <div class="breakdown-row"><span class="breakdown-label">월 카드수수료</span><span class="breakdown-value highlight" id="res-month">-</span></div>
-      <div class="breakdown-row"><span class="breakdown-label">연 카드수수료</span><span class="breakdown-value highlight" id="res-yearfee">-</span></div>
+      <div class="breakdown-row"><span class="breakdown-label">판정 기준 연매출</span><span class="breakdown-value" id="res-year">-</span></div>
+      <div class="breakdown-row"><span class="breakdown-label">신용카드 요율 · 수수료</span><span class="breakdown-value" id="res-credit">-</span></div>
+      <div class="breakdown-row"><span class="breakdown-label">체크카드 요율 · 수수료</span><span class="breakdown-value" id="res-debit">-</span></div>
+      <div class="breakdown-row"><span class="breakdown-label">월 카드수수료 합계</span><span class="breakdown-value highlight" id="res-month">-</span></div>
+      <div class="breakdown-row"><span class="breakdown-label">연 카드수수료 합계</span><span class="breakdown-value highlight" id="res-yearfee">-</span></div>
+      <div class="breakdown-row"><span class="breakdown-label">매출 대비 실효 수수료율</span><span class="breakdown-value" id="res-eff">-</span></div>
     </div>
-    <div class="notice-box"><strong>우대수수료율은 자동 적용돼요</strong><br>연매출 3억 이하 0.4%, 5억 이하 1.0%, 10억 이하 1.15%, 30억 이하 1.45%로 영세·중소가맹점 우대수수료가 적용됩니다(여신전문금융업법 기준). 매년 재산정되며, 배달앱·간편결제(PG)는 별도 수수료가 붙을 수 있어요.</div>
+    <div class="notice-box"><strong>우대수수료율은 신용·체크 각각 자동 적용돼요</strong><br>2025.2.14 인하 기준 — 신용카드 연 3억↓ 0.4%·5억↓ 1.0%·10억↓ 1.15%·30억↓ 1.45%, 체크카드 0.15%·0.75%·0.90%·1.15%가 별도 신청 없이 구간별로 적용됩니다(여신전문금융업법). 연 2회(1·7월) 매출 재산정으로 구간이 바뀔 수 있고, 신규 개업자는 초기 일반요율을 냈다가 우대분을 소급·환급받습니다. 30억 초과 일반가맹점은 우대 대상이 아니라 카드사 협상 요율(대략 2.0~2.3%)이며 계산값은 추정입니다. 배달앱·간편결제(PG)는 별도 수수료가 붙어요.</div>
   </div>
 
   <div class="article-content">
     <!-- ⑤ 계산 공식 설명 -->
     <h2>카드수수료, 이렇게 계산됩니다</h2>
-    <p>카드수수료는 단순합니다. <strong>카드매출 × 우대수수료율</strong>이 전부예요. 어려운 건 "우리 가게가 몇 % 구간이냐"인데, 이건 <strong>연매출</strong>로 정해집니다.</p>
-    <div class="formula-box">카드수수료 = 카드매출 × 우대수수료율<span class="fx-sub">구간: 연매출 3억↓ 0.4% · 5억↓ 1.0% · 10억↓ 1.15% · 30억↓ 1.45%</span></div>
-    <p>이 계산기는 입력한 <strong>월 카드매출에 12를 곱해</strong> 연매출을 추정하고, 해당 구간의 우대수수료율을 자동으로 적용합니다. 예를 들어 월 카드매출 2,500만원이면 연 3억으로 <strong>0.4% 구간</strong>이 되고, 월 수수료는 10만원입니다.</p>
+    <p>카드수수료는 단순합니다. <strong>신용매출 × 신용요율 + 체크매출 × 체크요율</strong>이 전부예요. 신용카드와 체크카드는 요율이 다르고, "우리 가게가 몇 % 구간이냐"는 <strong>연매출</strong>로 정해집니다.</p>
+    <div class="formula-box">카드수수료 = 신용매출 × 신용요율 + 체크매출 × 체크요율<span class="fx-sub">신용 3억↓ 0.4%·5억↓ 1.0%·10억↓ 1.15%·30억↓ 1.45% / 체크 0.15%·0.75%·0.90%·1.15%</span></div>
+    <p>이 계산기는 <strong>연매출 금액을 넣거나 구간을 직접 고르면</strong> 그 구간의 신용·체크 요율을 자동 적용합니다. 금액을 비우면 월 신용·체크 매출 합계에 12를 곱해 연매출을 추정해 구간을 판정해요. 예를 들어 신용 월 3,000만원이 연 3억(3억 이하)이면 <strong>0.4%</strong>가 적용돼 월 수수료는 12만원입니다.</p>
     <h3>이렇게 계산하세요</h3>
     <ol class="howto-list">
-      <li>현금을 뺀 순수 월 카드 결제액을 입력합니다.</li>
-      <li>'카드수수료 계산하기'를 누르면 연매출을 12배로 추정해 구간을 판정합니다.</li>
-      <li>적용 구간·우대수수료율과 월·연 카드수수료가 바로 표시됩니다.</li>
+      <li>연매출 금액을 넣거나(비우면 자동 추정) 구간을 직접 선택합니다.</li>
+      <li>월 신용카드·체크카드 매출을 각각 입력합니다(현금 제외).</li>
+      <li>구간의 신용·체크 요율이 자동 적용돼 월·연 수수료와 실효 요율이 바로 표시됩니다.</li>
     </ol>
 
     <!-- ⑥ 주요 계산항목 표 -->
@@ -295,10 +336,10 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
       <thead><tr><th>연매출 구간</th><th>구분</th><th>신용카드</th><th>체크카드</th></tr></thead>
       <tbody>
         <tr><td>3억원 이하</td><td>영세가맹점</td><td>0.40%</td><td>0.15%</td></tr>
-        <tr><td>3억 초과~5억 이하</td><td>중소①</td><td>1.00%</td><td>0.50%</td></tr>
-        <tr><td>5억 초과~10억 이하</td><td>중소②</td><td>1.15%</td><td>0.65%</td></tr>
-        <tr><td>10억 초과~30억 이하</td><td>중소③</td><td>1.45%</td><td>0.95%</td></tr>
-        <tr><td>30억 초과</td><td>일반가맹점</td><td>약 2.0% (협상)</td><td>—</td></tr>
+        <tr><td>3억 초과~5억 이하</td><td>중소①</td><td>1.00%</td><td>0.75%</td></tr>
+        <tr><td>5억 초과~10억 이하</td><td>중소②</td><td>1.15%</td><td>0.90%</td></tr>
+        <tr><td>10억 초과~30억 이하</td><td>중소③</td><td>1.45%</td><td>1.15%</td></tr>
+        <tr><td>30억 초과</td><td>일반가맹점</td><td>약 2.0~2.3% (협상)</td><td>협상(개별)</td></tr>
       </tbody>
     </table>
     <div class="tip-inline"><strong>포인트:</strong> 전체 카드가맹점의 약 95%가 연매출 30억 이하 우대 대상입니다. 별도 신청 없이 자동 적용되니, 우리 가게 요율이 궁금하면 카드사 앱·홈페이지 '가맹점 수수료' 메뉴에서 확인할 수 있어요.</div>
@@ -317,12 +358,21 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
       </div>
     </div>
     <div class="step-box">
-      <span class="sb-badge">중소② · 월 5,000만원</span>
+      <span class="sb-badge">중소② · 신용 월 5,000만원</span>
       <div class="sb-body">
-        월 카드매출 5,000만원 → 연 6억(5~10억)<br>
+        월 신용카드매출 5,000만원 → 연 6억(5~10억)<br>
         우대수수료율 <strong>1.15%</strong> 적용<br>
         월 수수료 = 5,000만 × 1.15% = <strong>575,000원</strong><br>
         → 연 수수료 = 6억 × 1.15% = <strong>6,900,000원</strong>
+      </div>
+    </div>
+    <div class="step-box">
+      <span class="sb-badge">신용+체크 혼합 · 3억 이하</span>
+      <div class="sb-body">
+        구간 '3억 이하' · 월 신용 2,000만원 + 체크 1,000만원<br>
+        신용 = 2,000만 × 0.4% = <strong>80,000원</strong><br>
+        체크 = 1,000만 × 0.15% = <strong>15,000원</strong><br>
+        → 월 합계 = <strong>95,000원</strong> (연 114만원)
       </div>
     </div>
     <p>같은 매출이라도 <strong>구간이 한 칸 바뀌면</strong> 부담이 확 달라집니다. 연 3억(0.4%)과 연 3.1억(1.0%)은 매출은 비슷해도 요율이 2배 넘게 벌어져요. 매출이 3억·5억·10억 경계에 가까우면 실제 요율을 꼭 확인하세요.</p>
@@ -395,41 +445,90 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
       <li>금융위원회 — 영세·중소가맹점 우대수수료율 및 재산정 결과 (<a href="https://www.fsc.go.kr" target="_blank" rel="nofollow noopener">fsc.go.kr</a>)</li>
       <li>여신금융협회 — 가맹점 신용카드 수수료율 공시 (<a href="https://www.crefia.or.kr" target="_blank" rel="nofollow noopener">crefia.or.kr</a>)</li>
       <li>여신전문금융업법 제18조의3 — 우대수수료율 (<a href="https://www.law.go.kr" target="_blank" rel="nofollow noopener">law.go.kr</a>)</li>
-      <li>우대수수료율(2025.2.14 인하): 3억↓ 0.4% · 5억↓ 1.0% · 10억↓ 1.15% · 30억↓ 1.45%</li>
+      <li>우대수수료율(2025.2.14 인하): 신용 3억↓ 0.4%·5억↓ 1.0%·10억↓ 1.15%·30억↓ 1.45% / 체크 0.15%·0.75%·0.90%·1.15%</li>
     </ul>
-    <p class="cs-updated">기준일: 2026년 7월 · 본 계산기는 참고용이며, 실제 요율은 카드사 가맹점 안내로 확인하세요.</p>
+    <p class="cs-updated">기준일: 2026년 7월 (2025.2.14 인하 요율 적용) · 본 계산기는 참고용이며, 실제 요율은 카드사 가맹점 안내로 확인하세요.</p>
   </div>
 </div>
 <div class="ad-wrap"><ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-92dlbIcNNOkHSZw8" data-ad-width="300" data-ad-height="250"></ins>
 <script type="text/javascript" src="//t1.kakaocdn.net/kas/static/ba.min.js" async></script></div>
 <button id="back-to-top" aria-label="맨 위로">↑</button>
 <script src="assets/layout.js?v=20260702e" defer></script>
-<script src="sohotip.js?v=20260708a" defer></script>
+<script src="sohotip.js?v=20260711a" defer></script>
 <script>
 function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
 function won(n){return Math.round(n).toLocaleString('ko-KR');}
-function num(id){return parseFloat(String(document.getElementById(id).value).replace(/,/g,''))||0;}
+function num(id){var e=document.getElementById(id);return e?(parseFloat(String(e.value).replace(/,/g,''))||0):0;}
 function setT(id,v){var e=document.getElementById(id);if(e)e.textContent=v;}
-function showResult(){var r=document.getElementById('result-section');r.style.display='block';r.scrollIntoView({behavior:'smooth',block:'start'});}
-function calculate(){
-  var m=num('cardSales');
-  var year=m*12;
-  var rate,tier;
-  if(year<=300000000){rate=0.004;tier='연 3억 이하 (영세)';}
-  else if(year<=500000000){rate=0.010;tier='연 5억 이하 (중소1)';}
-  else if(year<=1000000000){rate=0.0115;tier='연 10억 이하 (중소2)';}
-  else if(year<=3000000000){rate=0.0145;tier='연 30억 이하 (중소3)';}
-  else{rate=0.02;tier='연 30억 초과 (일반·추정)';}
-  var monthFee=m*rate,yearFee=year*rate;
-  setT('res-year',fmt(year));
-  setT('res-tier',tier);
-  setT('res-rate',(rate*100).toFixed(2)+'%');
+function showResult(scroll){var r=document.getElementById('result-section');r.style.display='block';if(scroll)r.scrollIntoView({behavior:'smooth',block:'start'});}
+
+// 2026 우대수수료율 (금융위 2025.2.14 인하 · 여신전문금융업법) — 값 변경 금지
+var TIERS=[
+  {label:'연 3억 이하 (영세)',        max:300000000,  credit:0.004,  debit:0.0015, general:false},
+  {label:'연 3억 초과~5억 (중소①)',   max:500000000,  credit:0.010,  debit:0.0075, general:false},
+  {label:'연 5억 초과~10억 (중소②)',  max:1000000000, credit:0.0115, debit:0.0090, general:false},
+  {label:'연 10억 초과~30억 (중소③)', max:3000000000, credit:0.0145, debit:0.0115, general:false},
+  {label:'연 30억 초과 (일반·추정)',   max:Infinity,   credit:0.020,  debit:0.020,  general:true}
+];
+var mode='amount';   // 'amount'(연매출 금액 자동판별) | 'tier'(구간 직접선택)
+var selTier=0;
+
+function setMode(m){
+  mode=m;
+  var btns=document.querySelectorAll('#modeToggle .toggle-btn');
+  for(var i=0;i<btns.length;i++){btns[i].classList.toggle('active',btns[i].getAttribute('data-mode')===m);}
+  document.getElementById('amountField').style.display=(m==='amount')?'block':'none';
+  document.getElementById('tierField').style.display=(m==='tier')?'block':'none';
+  calculate(false);
+}
+function selectTier(i){
+  selTier=i;
+  var btns=document.querySelectorAll('#tierToggle .toggle-btn');
+  for(var j=0;j<btns.length;j++){btns[j].classList.toggle('active',parseInt(btns[j].getAttribute('data-tier'),10)===i);}
+  calculate(false);
+}
+function tierIndexByYear(year){
+  for(var i=0;i<TIERS.length;i++){if(year<=TIERS[i].max)return i;}
+  return TIERS.length-1;
+}
+function calculate(scroll){
+  var credit=num('creditSales'), debit=num('debitSales');
+  var totalMonth=credit+debit;
+  var manual=num('annualSales');
+  var year, idx;
+  if(mode==='tier'){
+    idx=selTier;
+    year=totalMonth*12;                 // 참고용(구간은 선택값 사용)
+  }else{
+    year=manual>0?manual:totalMonth*12; // 금액 입력 없으면 카드매출×12로 추정
+    idx=tierIndexByYear(year);
+  }
+  var t=TIERS[idx];
+  var creditFee=credit*t.credit, debitFee=debit*t.debit;
+  var monthFee=creditFee+debitFee, yearFee=monthFee*12;
+  var eff=totalMonth>0?(monthFee/totalMonth*100):0;
+  var debitRateTxt=t.general?'협상(추정)':(t.debit*100).toFixed(2)+'%';
+
+  setT('res-tier',t.label);
+  setT('res-year',(mode==='amount'&&manual>0)?fmt(year)+' (입력)':fmt(year)+' (추정 ×12)');
+  setT('res-credit',(t.credit*100).toFixed(2)+'% · '+fmt(creditFee));
+  setT('res-debit',debitRateTxt+' · '+fmt(debitFee));
   setT('res-month',fmt(monthFee));
   setT('res-yearfee',fmt(yearFee));
+  setT('res-eff',eff.toFixed(2)+'%');
   setT('res-total',fmt(monthFee));
-  setT('res-sub','적용 '+(rate*100).toFixed(2)+'% · 연 '+fmt(yearFee));
-  showResult();
+  setT('res-sub','신용 '+(t.credit*100).toFixed(2)+'%·체크 '+debitRateTxt+' · 연 '+fmt(yearFee));
+  showResult(scroll);
 }
+// 입력·구간 변경 즉시 반영 + 기본값 초기 표시
+document.addEventListener('DOMContentLoaded',function(){
+  var ids=['annualSales','creditSales','debitSales'];
+  for(var i=0;i<ids.length;i++){
+    var e=document.getElementById(ids[i]);
+    if(e)e.addEventListener('input',function(){calculate(false);});
+  }
+  calculate(false);
+});
 </script>
 <footer>
   <a href="index.html">홈</a>
@@ -438,7 +537,7 @@ function calculate(){
   <a href="consultation.html">무료 진단</a>
   <p style="margin-top:12px;">© 2026 소호팁. 본 계산기는 참고용이며 정확한 금액은 전문가와 확인하세요.</p>
 </footer>
-<script src="network.js?v=20260708a" defer></script>
+<script src="network.js?v=20260711a" defer></script>
 <script src="assets/consult.js?v=20260702e" defer></script>
 </body>
 </html>
