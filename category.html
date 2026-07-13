@@ -557,7 +557,7 @@ a{color:inherit;text-decoration:none;}
 
   /* ── 데이터 로드 ── */
   if(query)qIn.value=query;
-  fetch('search-data.json?v=20260703b').then(function(r){return r.json();}).then(function(data){
+  fetch('search-data.json?v=20260713a').then(function(r){return r.json();}).then(function(data){
     /* 가이드 페이지는 '가이드 글'만 — 계산기(-calc.html)는 제외(계산기는 tools.html 전용) */
     ALL=(data||[]).filter(function(a){return !/-calc\.html$/i.test(a.url||'');}).map(normArticle);
     renderAll();

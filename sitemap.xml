@@ -1062,4 +1062,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- 네이버 플레이스 가이드 글 (noindex 해제, index 복귀) -->
+  <url>
+    <loc>https://sohotip.co.kr/article.html</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
