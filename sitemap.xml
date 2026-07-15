@@ -28,12 +28,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sohotip.co.kr/google-ai-overview-seo.html</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://sohotip.co.kr/portal-ai-search-2026.html</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -541,13 +535,6 @@
   </url>
 
   <url>
-    <loc>https://sohotip.co.kr/smart-store-guide.html</loc>
-    <lastmod>2026-06-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
     <loc>https://sohotip.co.kr/smartstore-start-guide.html</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>monthly</changefreq>
@@ -564,13 +551,6 @@
   <url>
     <loc>https://sohotip.co.kr/smartstore-seo-guide.html</loc>
     <lastmod>2026-06-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://sohotip.co.kr/soho-2026-second-half-support.html</loc>
-    <lastmod>2026-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -626,13 +606,6 @@
 
   <url>
     <loc>https://sohotip.co.kr/store-cctv-guide.html</loc>
-    <lastmod>2026-06-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://sohotip.co.kr/store-electricity-bill-reduce.html</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -879,12 +852,6 @@
   <url>
     <loc>https://sohotip.co.kr/store-cleaning-checklist.html</loc>
     <lastmod>2026-06-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sohotip.co.kr/soho-delivery-cost-reduction.html</loc>
-    <lastmod>2026-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
