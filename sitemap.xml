@@ -72,6 +72,14 @@
 
   <!-- 최신 가이드 (창업·세금) -->
   <url>
+    <loc>https://sohotip.co.kr/business-card-account-register.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 최신 가이드 (창업·세금) -->
+  <url>
     <loc>https://sohotip.co.kr/business-type-change-tax.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>weekly</changefreq>
