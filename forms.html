@@ -248,19 +248,10 @@
     <span class="stamp">회원가입 없음</span>
     <span class="stamp">바로 다운로드</span>
   </div>
-  <p class="f-notice">서식 파일은 순차적으로 올리고 있어요. 다운로드가 안 되는 항목은 곧 제공됩니다.</p>
+  <p class="f-notice">모든 서식을 무료로 바로 내려받을 수 있어요. 회원가입도, 로그인도 필요 없습니다.</p>
 </header>
 
-<!--
-  ===========================================================
-  ▣ 서식 파일 업로드 위치 안내 (운영자)
-    현재 각 버튼은 파일 미업로드로 '준비 중'(클릭 불가, 404 방지) 상태입니다.
-    복구 방법: 프로젝트 루트에 forms/ 폴더를 만들고 아래 파일명으로 올린 뒤,
-    해당 카드의 <span class="f-dl is-pending" aria-disabled="true">준비 중</span> 를
-    <a class="f-dl" href="forms/<파일명>" download>다운로드</a> 로 되돌리면 됩니다.
-    예) forms/standard-labor-contract.docx, forms/payroll-ledger.xlsx ...
-  ===========================================================
--->
+<!-- 서식 파일: /forms 폴더에 실제 파일 업로드 완료. 각 카드 버튼은 forms/<파일명> 다운로드 링크. -->
 <main class="wrap">
 
   <!-- 직원관리 -->
@@ -268,13 +259,13 @@
     <div class="f-cat-top"><div class="f-cat-title">직원관리</div><span class="f-cat-no">NO.01 · 4종</span></div>
     <div class="f-grid">
       <div class="f-card"><div class="f-card-top"><span class="fc-ico">📄</span><div><div class="fc-name">표준 근로계약서</div><span class="f-fmt doc">워드</span></div></div>
-        <span class="f-dl is-pending" aria-disabled="true">준비 중</span></div>
+        <a class="f-dl" href="forms/standard-labor-contract.docx" download>다운로드</a></div>
       <div class="f-card"><div class="f-card-top"><span class="fc-ico">📊</span><div><div class="fc-name">급여대장</div><span class="f-fmt xls">엑셀</span></div></div>
-        <span class="f-dl is-pending" aria-disabled="true">준비 중</span></div>
+        <a class="f-dl" href="forms/payroll-ledger.xlsx" download>다운로드</a></div>
       <div class="f-card"><div class="f-card-top"><span class="fc-ico">🌴</span><div><div class="fc-name">연차관리표</div><span class="f-fmt xls">엑셀</span></div></div>
-        <span class="f-dl is-pending" aria-disabled="true">준비 중</span></div>
+        <a class="f-dl" href="forms/annual-leave-tracker.xlsx" download>다운로드</a></div>
       <div class="f-card"><div class="f-card-top"><span class="fc-ico">🕒</span><div><div class="fc-name">근태기록표</div><span class="f-fmt xls">엑셀</span></div></div>
-        <span class="f-dl is-pending" aria-disabled="true">준비 중</span></div>
+        <a class="f-dl" href="forms/attendance-record.xlsx" download>다운로드</a></div>
     </div>
     <div class="f-cat-related"><b>함께 쓰면 좋은 계산기 ›</b>
       <a href="alba-cost-calc.html">직원 인건비</a> · <a href="weekly-pay-calc.html">주휴수당</a> · <a href="severance-calc.html">퇴직금</a> · <a href="insurance-4d-calc.html">4대보험</a> · <a href="annual-leave-calc.html">연차</a>
@@ -286,13 +277,13 @@
     <div class="f-cat-top"><div class="f-cat-title">매장운영</div><span class="f-cat-no">NO.02 · 4종</span></div>
     <div class="f-grid">
       <div class="f-card"><div class="f-card-top"><span class="fc-ico">📦</span><div><div class="fc-name">재고관리표</div><span class="f-fmt xls">엑셀</span></div></div>
-        <span class="f-dl is-pending" aria-disabled="true">준비 중</span></div>
+        <a class="f-dl" href="forms/inventory-management.xlsx" download>다운로드</a></div>
       <div class="f-card"><div class="f-card-top"><span class="fc-ico">📈</span><div><div class="fc-name">매출관리표</div><span class="f-fmt xls">엑셀</span></div></div>
-        <span class="f-dl is-pending" aria-disabled="true">준비 중</span></div>
+        <a class="f-dl" href="forms/sales-management.xlsx" download>다운로드</a></div>
       <div class="f-card"><div class="f-card-top"><span class="fc-ico">🙋</span><div><div class="fc-name">고객관리표</div><span class="f-fmt xls">엑셀</span></div></div>
-        <span class="f-dl is-pending" aria-disabled="true">준비 중</span></div>
+        <a class="f-dl" href="forms/customer-management.xlsx" download>다운로드</a></div>
       <div class="f-card"><div class="f-card-top"><span class="fc-ico">✅</span><div><div class="fc-name">점검 체크리스트</div><span class="f-fmt doc">워드</span></div></div>
-        <span class="f-dl is-pending" aria-disabled="true">준비 중</span></div>
+        <a class="f-dl" href="forms/inspection-checklist.docx" download>다운로드</a></div>
     </div>
     <div class="f-cat-related"><b>함께 쓰면 좋은 계산기 ›</b>
       <a href="bep-calc.html">손익분기점</a> · <a href="store-profit-calc.html">매장 수익성</a> · <a href="food-cost-calc.html">메뉴 원가율</a>
@@ -307,13 +298,13 @@
     <div class="f-cat-top"><div class="f-cat-title">세무회계</div><span class="f-cat-no">NO.03 · 4종</span></div>
     <div class="f-grid">
       <div class="f-card"><div class="f-card-top"><span class="fc-ico">🧾</span><div><div class="fc-name">지출결의서</div><span class="f-fmt doc">워드</span></div></div>
-        <span class="f-dl is-pending" aria-disabled="true">준비 중</span></div>
+        <a class="f-dl" href="forms/expense-approval.docx" download>다운로드</a></div>
       <div class="f-card"><div class="f-card-top"><span class="fc-ico">📋</span><div><div class="fc-name">거래명세서</div><span class="f-fmt xls">엑셀</span></div></div>
-        <span class="f-dl is-pending" aria-disabled="true">준비 중</span></div>
+        <a class="f-dl" href="forms/transaction-statement.xlsx" download>다운로드</a></div>
       <div class="f-card"><div class="f-card-top"><span class="fc-ico">💱</span><div><div class="fc-name">견적서</div><span class="f-fmt xls">엑셀</span></div></div>
-        <span class="f-dl is-pending" aria-disabled="true">준비 중</span></div>
+        <a class="f-dl" href="forms/quotation.xlsx" download>다운로드</a></div>
       <div class="f-card"><div class="f-card-top"><span class="fc-ico">📑</span><div><div class="fc-name">세금계산서 안내문</div><span class="f-fmt doc">워드</span></div></div>
-        <span class="f-dl is-pending" aria-disabled="true">준비 중</span></div>
+        <a class="f-dl" href="forms/tax-invoice-notice.docx" download>다운로드</a></div>
     </div>
     <div class="f-cat-related"><b>함께 쓰면 좋은 계산기 ›</b>
       <a href="vat-calc.html">부가세</a> · <a href="card-fee-calc.html">카드수수료</a>
@@ -326,11 +317,11 @@
     <div class="f-cat-top"><div class="f-cat-title">마케팅</div><span class="f-cat-no">NO.04 · 3종</span></div>
     <div class="f-grid">
       <div class="f-card"><div class="f-card-top"><span class="fc-ico">💰</span><div><div class="fc-name">광고예산표</div><span class="f-fmt xls">엑셀</span></div></div>
-        <span class="f-dl is-pending" aria-disabled="true">준비 중</span></div>
+        <a class="f-dl" href="forms/ad-budget.xlsx" download>다운로드</a></div>
       <div class="f-card"><div class="f-card-top"><span class="fc-ico">🗓️</span><div><div class="fc-name">SNS 콘텐츠 캘린더</div><span class="f-fmt xls">엑셀</span></div></div>
-        <span class="f-dl is-pending" aria-disabled="true">준비 중</span></div>
+        <a class="f-dl" href="forms/sns-content-calendar.xlsx" download>다운로드</a></div>
       <div class="f-card"><div class="f-card-top"><span class="fc-ico">🎉</span><div><div class="fc-name">이벤트 기획서</div><span class="f-fmt doc">워드</span></div></div>
-        <span class="f-dl is-pending" aria-disabled="true">준비 중</span></div>
+        <a class="f-dl" href="forms/event-plan.docx" download>다운로드</a></div>
     </div>
     <div class="f-cat-related"><b>함께 쓰면 좋은 계산기 ›</b>
       <a href="naver-ads-calc.html">네이버 플레이스 광고비</a> · <a href="delivery-ads-calc.html">배달앱 광고 ROI</a>
