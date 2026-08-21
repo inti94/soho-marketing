@@ -135,8 +135,8 @@ ${existingFeats.map(f => `- ${f.title}`).join('\n')}
 
 날짜 하드코딩 금지: 본문 freshness 라인은 정확히 → 최신 정보 기준 · <span class="auto-ym">2026년 6월</span> — 최신 정보를 반영했습니다.  (단 JSON-LD datePublished/dateModified는 ${today})
 
-## 운영자 한마디 (필수 — 본문이 아니라 META의 editorNote에만 담아라)
-글 주제에 맞춘 1~2문장의 실무 코멘트를 editorNote에 써라. "현장에서 보면…", "실제 상담해보면…"처럼 직접 겪은 경험을 바탕에 둔 톤으로, 단순 요약이 아니라 너의 관점·의견이 드러나게. 작성자 정보 블록과 "운영자 한마디" 섹션은 발행 시 자동으로 글에 삽입되니 본문 안에 따로 만들지 마라.
+## 작성자 정보 블록은 자동 삽입됨
+작성자 바이라인은 발행 시 자동으로 글에 삽입되니 본문 안에 따로 만들지 마라.
 
 ## AI 핵심 요약 (필수 — META의 aiSummary 에만 담아라. 본문 HTML 안에는 절대 만들지 말고, 견본(template)에 있는 ai-summary 박스도 복사하지 마라. 발행 시 자동으로 제목 아래에 삽입된다)
 제목 바로 아래에 들어갈 "30초 핵심 요약"이다. 위 '말투' 규칙(공감 우선·구어체·금지 어미·보고서체 금지)을 그대로 적용해 매번 새 문장으로(복붙·패턴·문장 반복 금지) 써라.
@@ -158,7 +158,7 @@ TEMPLATE_END
 
 ## 출력 형식 (반드시 이 형식만, 다른 말 금지)
 <META>
-{"slug":"영문-소문자-하이픈(기존과 중복금지)","searchEntry":{"url":"<슬러그>.html","title":"...","desc":"...","tag":"🏪 창업·세금 같은 형식","date":"${today}","rt":"8분","keywords":"쉼표구분 키워드"},"editorNote":"현장/상담 경험 기반 1~2문장 실무 코멘트(관점·의견 포함, 단순 요약 금지)","aiSummary":{"paras":["공감 문단","의외로 놓치는 점 환기 문단","이유/해결 문단","직접 해보고 싶게 만드는 마무리 문단"],"calcPrimary":"이 글에 맞는 계산기 슬러그 또는 빈문자열","calcPrimaryLabel":"🧮 버튼 문구(없으면 빈문자열)","related":["관련 기존글 슬러그1","관련 기존글 슬러그2"]},"rssItem":"<item>\\n<title>...</title>\\n<link>https://sohotip.co.kr/<슬러그>.html</link>\\n<description>...</description>\\n<pubDate>RFC822 날짜</pubDate>\\n</item>"}
+{"slug":"영문-소문자-하이픈(기존과 중복금지)","searchEntry":{"url":"<슬러그>.html","title":"...","desc":"...","tag":"🏪 창업·세금 같은 형식","date":"${today}","rt":"8분","keywords":"쉼표구분 키워드"},"aiSummary":{"paras":["공감 문단","의외로 놓치는 점 환기 문단","이유/해결 문단","직접 해보고 싶게 만드는 마무리 문단"],"calcPrimary":"이 글에 맞는 계산기 슬러그 또는 빈문자열","calcPrimaryLabel":"🧮 버튼 문구(없으면 빈문자열)","related":["관련 기존글 슬러그1","관련 기존글 슬러그2"]},"rssItem":"<item>\\n<title>...</title>\\n<link>https://sohotip.co.kr/<슬러그>.html</link>\\n<description>...</description>\\n<pubDate>RFC822 날짜</pubDate>\\n</item>"}
 </META>
 <HTML>
 <!DOCTYPE html> ...완성된 전체 페이지...
@@ -308,11 +308,11 @@ function normalizeEmoji(html) {
   html = html.replace(new RegExp(`(<(?:li|p|strong|b|h[1-4])(?=[ >/])[^>]*>)\\s*(${_DECOR_CLUSTER})\\s*`, 'gu'), '$1');
   return html;
 }
-// ── 사람의 흔적: 작성자 정보 블록 + "운영자 한마디" 결정론적 주입(애드센스 E-E-A-T) ──
+// ── 사람의 흔적: 작성자 정보 블록 결정론적 주입(애드센스 E-E-A-T) ──
+// "운영자 한마디"(editor-note)는 소수 문구가 여러 글에 반복 재사용되는 문제가 있어 제거함
+// (기존 발행 글의 editor-note 청소는 별도 작업).
 const AUTHOR = { name: '인티', org: '멘토마케팅', role: '소상공인 마케터', label: '소상공인 마케터 인티', url: 'https://sohotip.co.kr/about.html' };
 const _USER_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
-const _PEN_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>';
-function _escNote(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 const _AB_CSS = [
   '.author-byline{display:flex;align-items:center;gap:12px;margin:18px 0 6px;padding:13px 16px;background:#F4F6FB;border:1px solid #E5E8EB;border-radius:14px}',
   '.author-byline .ab-av{width:40px;height:40px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;background:#ECEEFF;color:#3D5AFE}',
@@ -321,18 +321,11 @@ const _AB_CSS = [
   '.author-byline .ab-name b{color:#3D5AFE}',
   '.author-byline .ab-role{font-size:12px;font-weight:500;color:#6B7684;margin-left:6px}',
   '.author-byline .ab-dates{font-size:12px;color:#8B95A1;margin-top:2px}',
-  '.editor-note{margin:34px 0 10px;padding:20px 22px;background:#FFF8F2;border:1px solid #FFE3CC;border-left:4px solid #FF6A00;border-radius:14px}',
-  '.editor-note .en-head{display:flex;align-items:center;gap:7px;font-size:15px;font-weight:800;color:#191F28;margin-bottom:10px}',
-  '.editor-note .en-head svg{width:18px;height:18px;color:#FF6A00}',
-  '.editor-note .en-body{font-size:15px;line-height:1.75;color:#333D4B;margin:0 0 14px}',
-  '.editor-note .en-author{display:flex;align-items:center;gap:10px;padding-top:12px;border-top:1px dashed #FFD9BE}',
-  '.editor-note .en-av{width:34px;height:34px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;background:#ECEEFF;color:#3D5AFE}',
-  '.editor-note .en-av svg{width:19px;height:19px}',
-  '.editor-note .en-name{font-size:13px;font-weight:700;color:#191F28}',
-  '.editor-note .en-role{font-size:12px;color:#8B95A1;margin-top:1px}',
 ].join('');
 
 function injectAuthor(html, meta) {
+  // ⓪ Gemini가 옛 프롬프트 습관으로 본문에 만들어 넣었을 수 있는 editor-note 잔존물 제거(안전망)
+  html = html.replace(/<section class="editor-note"[\s\S]*?<\/section>\s*/g, '');
   // ① 자체 스타일 1회(테마 미로드에도 안전)
   if (!/id="ab-style"/.test(html))
     html = html.replace('</head>', `<style id="ab-style">${_AB_CSS}</style>\n</head>`);
@@ -342,20 +335,7 @@ function injectAuthor(html, meta) {
       '</header>\n<div class="author-byline"><span class="ab-av">' + _USER_SVG + '</span>' +
       '<div><div class="ab-name"><b>' + AUTHOR.label + '</b><span class="ab-role">' + AUTHOR.org + '</span></div>' +
       '<div class="ab-dates">작성일 ' + today + ' · 최종 수정일 ' + today + '</div></div></div>');
-  // ③ "운영자 한마디" 섹션 (share-row → related → footer 앞)
-  if (!/class="editor-note"/.test(html)) {
-    const note = ((meta && meta.editorNote) || '').trim() ||
-      '현장에서 사장님들을 상담하다 보면, 이 주제는 숫자보다 \'언제 결정하느냐\'에서 갈리는 경우가 많아요. 글의 기준을 우리 가게 상황에 대입해 한 번 점검해 보시길 권합니다.';
-    const block = '\n<section class="editor-note"><div class="en-head">' + _PEN_SVG + '<span>운영자 한마디</span></div>' +
-      '<p class="en-body">' + _escNote(note) + '</p>' +
-      '<div class="en-author"><span class="en-av">' + _USER_SVG + '</span><div>' +
-      '<div class="en-name">' + AUTHOR.label + ' · ' + AUTHOR.org + '</div>' +
-      '<div class="en-role">멘토마케팅에서 소상공인 마케팅 상담 · 최종 수정 ' + today + '</div></div></div></section>\n';
-    const anchor = /<div class="share-row">/.test(html) ? '<div class="share-row">'
-      : /<div class="related">/.test(html) ? '<div class="related">' : '<footer>';
-    if (html.includes(anchor)) html = html.replace(anchor, block + anchor);
-  }
-  // ④ Article JSON-LD author → Person(인티/멘토마케팅) + datePublished/dateModified=today 강제
+  // ③ Article JSON-LD author → Person(인티/멘토마케팅) + datePublished/dateModified=today 강제
   html = html.replace(/"author":\s*\{[^{}]*\}/,
     `"author": {"@type": "Person", "name": "${AUTHOR.name}", "jobTitle": "${AUTHOR.role}", "worksFor": {"@type": "Organization", "name": "${AUTHOR.org}"}, "url": "${AUTHOR.url}"}`);
   html = html.replace(/"datePublished":\s*"[^"]*"/, `"datePublished": "${today}"`)
