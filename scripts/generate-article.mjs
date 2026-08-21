@@ -363,7 +363,7 @@ function injectAuthor(html, meta) {
   return html;
 }
 
-// 제목 아래 "AI 핵심 요약" 박스 자동 삽입 (문단=Gemini(META.aiSummary), 링크=실존 슬러그만 통과)
+// 제목 아래 "핵심 요약" 박스 자동 삽입 (문단=Gemini(META.aiSummary), 링크=실존 슬러그만 통과)
 const _AISUM_VALID_CALC = new Set([
   'alba-cost-calc','weekly-pay-calc','severance-calc','insurance-4d-calc','annual-leave-calc',
   'vat-calc','card-fee-calc','delivery-profit-calc','delivery-ads-calc','delivery-fee-real-calc',
@@ -372,7 +372,7 @@ const _AISUM_VALID_CALC = new Set([
 ]);
 function injectAiSummary(html, meta) {
   // 견본/생성물에 섞여 들어온 ai-summary 박스 제거(중복 방지)
-  html = html.replace(/\n?\s*<!-- AI 핵심 요약 -->/g, '')
+  html = html.replace(/\n?\s*<!--\s*(?:AI\s*)?핵심\s*요약\s*-->/g, '')
              .replace(/<section class="ai-summary"[\s\S]*?<\/section>\s*/g, '');
   const s = meta && meta.aiSummary;
   if (!s || !Array.isArray(s.paras) || !s.paras.length) return html;   // 없으면 박스 생략(안전)
@@ -393,8 +393,8 @@ function injectAiSummary(html, meta) {
         return `<a href="${r}.html">${esc(t).slice(0, 22)}</a>`;
       }).join(' · ') + '</div>'
     : '';
-  const box = '\n<!-- AI 핵심 요약 -->\n<section class="ai-summary" aria-label="AI 핵심 요약">\n' +
-    '  <span class="ais-badge">✨ AI 핵심 요약 · 30초 컷</span>\n' + paras + '\n' +
+  const box = '\n<!-- 핵심 요약 -->\n<section class="ai-summary" aria-label="핵심 요약">\n' +
+    '  <span class="ais-badge">핵심 요약 · 30초 컷</span>\n' + paras + '\n' +
     (cta ? '  <div class="ais-cta">' + cta + '</div>' : '') + relRow + '\n</section>';
   // injectAuthor 뒤에 호출 → 첫 </header> 직후(작성자 바이라인보다 위)에 삽입
   if (/<\/header>/.test(html) && !/class="ai-summary"/.test(html))
