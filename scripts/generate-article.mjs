@@ -13,7 +13,6 @@ const today = new Date().toISOString().slice(0, 10);  // YYYY-MM-DD
 // 1) 기존 글 수집 (중복 회피)
 const searchData = JSON.parse(fs.readFileSync('search-data.json', 'utf8'));
 const existingSlugs = searchData.map(a => a.url.replace(/\.html$/, ''));
-const existingTitles = searchData.map(a => a.title);
 const template = fs.readFileSync('naver-place-ranking-2026.html', 'utf8');
 
 // 1-b) 근접중복(슬러그만 다르고 주제가 겹치는 글) 판정용 특징 미리 계산
@@ -36,9 +35,27 @@ function _jac(a, b) {
   let inter = 0; for (const x of a) if (b.has(x)) inter++;
   return inter / (a.size + b.size - inter);
 }
+// 핵심 주제어(phrase) 게이트: Jaccard(낱말 단위)는 "POS 시스템 선택" vs "POS 시스템 추천"처럼
+// 낱말 하나만 달라도 점수가 확 깎여 같은 대상(POS·화재보험·전기요금 등)의 재탕을 못 잡는다.
+// keywords 필드를 구(phrase) 단위로 보고, 공백 제거 후 부분 문자열이 겹치면 '같은 대상'으로 판정한다.
+const STOP_PHRASE = new Set(['소상공인', '우리가게', '사장님', '2026년', '완전정리', '실전가이드', '가이드', '방법']);
+function _corePhrases(keywords) {
+  const raw = (keywords || '').trim();
+  if (!raw) return [];
+  const parts = raw.includes(',') ? raw.split(',') : raw.split(/\s+/);
+  return parts.map(s => s.trim().toLowerCase().replace(/\s+/g, ''))
+              .filter(s => s.length >= 3 && !STOP_PHRASE.has(s));
+}
+function _hasSharedCore(newPhrases, oldPhrases, minLen = 4) {
+  for (const a of newPhrases) for (const b of oldPhrases) {
+    const short = a.length <= b.length ? a : b, long = a.length <= b.length ? b : a;
+    if (short.length >= minLen && long.includes(short)) return { a, b };
+  }
+  return null;
+}
 const _isCalc = a => a.rt === '무료' || /-calc\.html$/.test(a.url);
 const existingFeats = searchData.filter(a => !_isCalc(a))
-  .map(a => ({ url: a.url, slug: _slugToks(a.url), kw: _kwToks(a.title, a.keywords) }));
+  .map(a => ({ url: a.url, title: a.title, slug: _slugToks(a.url), kw: _kwToks(a.title, a.keywords), core: _corePhrases(a.keywords) }));
 // 새 글이 기존 어떤 글과 이 점수 이상 겹치면 '중복 주제'로 보고 재생성한다.
 // (스캔 결과: 실제 중복쌍 0.35~0.44 / 정당한 토픽클러스터 0.20~0.26 → 0.30이 안전 경계)
 const DUP_THRESHOLD = 0.30;
@@ -57,8 +74,13 @@ const userPrompt = `오늘(${today}) 발행할 한국 소상공인 대상 새 �
 ## 최우선 원칙
 검색 노출(SEO) 1순위. 검색 수요가 실재하고 경쟁이 약해 상위 노출이 현실적인 주제를 골라라. 절대 양산형 금지 — 구체적 정보·수치·절차로 채운 독창적 글.
 
-## 중복 금지 (아래 기존 글과 주제가 겹치면 안 됨)
-슬러그: ${existingSlugs.join(', ')}
+## 중복 금지 (아래 기존 글과 주제가 겹치면 절대 안 됨)
+아래는 이미 발행된 글 제목이다. 표현·구조·연도(2026 등)·질문형/평서문 여부를 바꿔도
+같은 핵심 대상(예: POS, 화재보험, 전기요금, 직원 관리)을 다루면 전부 "중복"이다. 목록에 있는 주제는
+피하고, 이 목록에 없는 완전히 새로운 대상을 골라라.
+${existingFeats.map(f => `- ${f.title}`).join('\n')}
+
+슬러그(파일명, 재사용 금지): ${existingSlugs.join(', ')}
 ※ 아래 <<<TEMPLATE_START 안의 글(naver-place-ranking-2026)은 '구조 견본'일 뿐이다. 그 슬러그·제목·주제를 절대 그대로 쓰지 말고, 완전히 다른 새 주제를 골라라.
 
 ## 품질 기준(모두 충족)
@@ -203,6 +225,14 @@ async function attempt() {
   }
   if (worst >= DUP_THRESHOLD)
     throw { msg: `근접중복(${worst.toFixed(2)}≥${DUP_THRESHOLD}) — ${worstUrl}와 주제 겹침 → 다른 주제로 재생성` };
+
+  // (1-b) 핵심 주제어 게이트: 위 낱말-Jaccard가 놓치는 "제목만 바꾼 재탕"
+  // (예: "POS 시스템 선택" vs "POS 시스템 추천", "화재보험" vs "가게 화재보험")을 phrase 단위로 잡는다.
+  const nCore = _corePhrases(entryKw);
+  for (const f of existingFeats) {
+    const hit = _hasSharedCore(nCore, f.core);
+    if (hit) throw { msg: `핵심 주제어 중복("${hit.a}"↔"${hit.b}") — ${f.url}와 같은 대상 → 재생성` };
+  }
 
   // (2) 허위·과장 표현 게이트: 정책 위반 표현이 되살아나면 재생성
   const plain = fullHtml.replace(/<(script|style)[\s\S]*?<\/\1>/gi, ' ').replace(/<[^>]+>/g, ' ');
