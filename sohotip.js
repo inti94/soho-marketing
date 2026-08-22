@@ -595,6 +595,13 @@ const RECO_CALCS = [
   { slug: 'annual-leave-calc.html',    icon: '🌴', title: '직원 연차 계산기',        badge: '인사·노무', desc: '입사일 → 연차 발생 일수와 미사용 연차수당 자동 계산',            cats: ['창업·세금'],                 inline: 'severance', pop: 16 },
   { slug: 'naver-ads-calc.html',       icon: '📍', title: '네이버 플레이스 광고비 계산기', badge: '매출·수익', desc: '예산·CPC·전환율 → 예상 방문 고객과 고객 1명당 광고비 계산',   cats: ['네이버 플레이스'],            inline: 'bep',       pop: 17 },
   { slug: 'startup-cost-calc.html',    icon: '🚀', title: '창업 초기비용 계산기',     badge: '세무·법률', desc: '업종·평수 → 창업비용(인테리어·보증금·권리금 등)+월 BEP 추정',     cats: ['창업·세금'],                 inline: 'bep',       pop: 18 },
+  /* 사장님 재테크 — 번 돈을 굴리는 투자 계산기 시리즈 */
+  { slug: 'stock-average-calc.html',   icon: '📊', title: '주식 평단가 계산기',      badge: '재테크', desc: '분할매수 매수가·수량으로 평균단가·평가손익·수익률 자동 계산',      cats: ['재테크'], inline: null, pop: 19 },
+  { slug: 'averaging-down-calc.html',  icon: '💧', title: '물타기 계산기',          badge: '재테크', desc: '보유 수량·평단가 + 추가매수 → 물타기 후 새 평단가 자동 계산',      cats: ['재테크'], inline: null, pop: 20 },
+  { slug: 'averaging-up-calc.html',    icon: '🔥', title: '불타기 계산기',          badge: '재테크', desc: '보유 수량·평단가 + 상승 추가매수 → 불타기 후 새 평단가 자동 계산',   cats: ['재테크'], inline: null, pop: 21 },
+  { slug: 'stock-return-calc.html',    icon: '📈', title: '주식 수익률 계산기',      badge: '재테크', desc: '매수가·매도가·수량 + 수수료·거래세 → 수익금·수익률 자동 계산',      cats: ['재테크'], inline: null, pop: 22 },
+  { slug: 'target-price-calc.html',    icon: '🎯', title: '주식 목표가 계산기',      badge: '재테크', desc: '평단가 + 목표 수익률 → 목표 매도가·손절가·손익비 자동 계산',        cats: ['재테크'], inline: null, pop: 23 },
+  { slug: 'us-stock-calc.html',        icon: '🇺🇸', title: '미국주식 계산기',        badge: '재테크', desc: '달러 매수가·수량 + 실시간 환율 → 원화 환산·수익률 자동 계산',       cats: ['재테크'], inline: null, pop: 24 },
 ];
 
 /* 카테고리별 추천 계산기 매핑 (게시글 → 함께 쓰는 계산기) */

@@ -36,10 +36,10 @@ window.SOHO_CALCS = [
     {cat:'창업',name:'권리금 계산기',desc:'월 순이익·시설 잔존가치 → 시설+영업 권리금 적정 범위 계산',href:'premium-calc.html',icon:'KeyRound',color:'#FFB800',tags:['권리금','시설가치'],views:2890,isNew:true},
     {cat:'창업',name:'폐업 비용 계산기',desc:'철거비·퇴직금·재고 + 폐업 지원금 차감한 실제 부담액 계산',href:'closure-cost-calc.html',icon:'Package',color:'#6B7684',tags:['폐업','철거','지원금'],views:2530,isNew:true},
     {cat:'창업',name:'창업 초기비용 계산기',desc:'업종·평수 → 인테리어·보증금·권리금 등 창업비용 + 월 BEP 매출 추정',href:'startup-cost-calc.html',icon:'Rocket',color:'#F04452',tags:['창업','초기자금'],views:3940,isNew:true},
-    {cat:'주식',name:'주식 평단가 계산기',desc:'분할매수 매수가·수량으로 평균단가·총매입·평가손익·수익률 자동 계산',href:'stock-average-calc.html',icon:'TrendingUp',color:'#3D5AFE',tags:['평단가','물타기','수익률'],views:1280,isNew:true},
-    {cat:'주식',name:'물타기 계산기',desc:'보유 수량·평단가 + 추가매수 → 물타기 후 새 평단가·총수량·평가손익 자동 계산',href:'averaging-down-calc.html',icon:'BarChart2',color:'#00B8D9',tags:['물타기','추가매수','평단가'],views:640,isNew:true},
-    {cat:'주식',name:'불타기 계산기',desc:'보유 수량·평단가 + 상승 추가매수 → 불타기 후 새 평단가·총수량·평가손익 자동 계산',href:'averaging-up-calc.html',icon:'TrendingUp',color:'#FF6B35',tags:['불타기','상승추가매수','평단가'],views:520,isNew:true},
-    {cat:'주식',name:'주식 수익률 계산기',desc:'매수가·매도가·수량 + 수수료·거래세 → 수익금·수익률과 실수익률 자동 계산',href:'stock-return-calc.html',icon:'TrendingUp',color:'#00C471',tags:['수익률','실수익','손익'],views:480,isNew:true},
-    {cat:'주식',name:'주식 목표가 계산기',desc:'평단가 + 목표 수익률 → 목표 매도가, 손절 수익률 넣으면 손절가·손익비까지 계산',href:'target-price-calc.html',icon:'Tag',color:'#F04452',tags:['목표가','손절가','손익비'],views:430,isNew:true},
-    {cat:'주식',name:'미국주식 계산기',desc:'달러 매수가·수량 + 실시간 USD/KRW 환율 → 원화 환산 금액·수익률, 환율 효과까지 계산',href:'us-stock-calc.html',icon:'Banknote',color:'#00B8D9',tags:['미국주식','환율','달러환산'],views:560,isNew:true}
+    {cat:'재테크',name:'주식 평단가 계산기',desc:'분할매수 매수가·수량으로 평균단가·총매입·평가손익·수익률 자동 계산',href:'stock-average-calc.html',icon:'TrendingUp',color:'#3D5AFE',tags:['평단가','물타기','수익률'],views:1280,isNew:true},
+    {cat:'재테크',name:'물타기 계산기',desc:'보유 수량·평단가 + 추가매수 → 물타기 후 새 평단가·총수량·평가손익 자동 계산',href:'averaging-down-calc.html',icon:'BarChart2',color:'#00B8D9',tags:['물타기','추가매수','평단가'],views:640,isNew:true},
+    {cat:'재테크',name:'불타기 계산기',desc:'보유 수량·평단가 + 상승 추가매수 → 불타기 후 새 평단가·총수량·평가손익 자동 계산',href:'averaging-up-calc.html',icon:'TrendingUp',color:'#FF6B35',tags:['불타기','상승추가매수','평단가'],views:520,isNew:true},
+    {cat:'재테크',name:'주식 수익률 계산기',desc:'매수가·매도가·수량 + 수수료·거래세 → 수익금·수익률과 실수익률 자동 계산',href:'stock-return-calc.html',icon:'TrendingUp',color:'#00C471',tags:['수익률','실수익','손익'],views:480,isNew:true},
+    {cat:'재테크',name:'주식 목표가 계산기',desc:'평단가 + 목표 수익률 → 목표 매도가, 손절 수익률 넣으면 손절가·손익비까지 계산',href:'target-price-calc.html',icon:'Tag',color:'#F04452',tags:['목표가','손절가','손익비'],views:430,isNew:true},
+    {cat:'재테크',name:'미국주식 계산기',desc:'달러 매수가·수량 + 실시간 USD/KRW 환율 → 원화 환산 금액·수익률, 환율 효과까지 계산',href:'us-stock-calc.html',icon:'Banknote',color:'#00B8D9',tags:['미국주식','환율','달러환산'],views:560,isNew:true}
 ];
