@@ -602,11 +602,12 @@ const RECO_CALCS = [
   { slug: 'stock-return-calc.html',    icon: '📈', title: '주식 수익률 계산기',      badge: '재테크', desc: '매수가·매도가·수량 + 수수료·거래세 → 수익금·수익률 자동 계산',      cats: ['재테크'], inline: null, pop: 22 },
   { slug: 'target-price-calc.html',    icon: '🎯', title: '주식 목표가 계산기',      badge: '재테크', desc: '평단가 + 목표 수익률 → 목표 매도가·손절가·손익비 자동 계산',        cats: ['재테크'], inline: null, pop: 23 },
   { slug: 'us-stock-calc.html',        icon: '🇺🇸', title: '미국주식 계산기',        badge: '재테크', desc: '달러 매수가·수량 + 실시간 환율 → 원화 환산·수익률 자동 계산',       cats: ['재테크'], inline: null, pop: 24 },
+  { slug: 'income-tax-calc.html',      icon: '📋', title: '종합소득세 계산기',      badge: '세무·법률', desc: '매출·필요경비 → 2026년 세율 기준 사업소득 예상세액·지방소득세 계산', cats: ['창업·세금'], inline: null, pop: 25 },
 ];
 
 /* 카테고리별 추천 계산기 매핑 (게시글 → 함께 쓰는 계산기) */
 const CAT_TO_CALCS = {
-  '창업·세금':       ['vat-calc.html', 'alba-cost-calc.html', 'severance-calc.html', 'bep-calc.html'],
+  '창업·세금':       ['vat-calc.html', 'income-tax-calc.html', 'alba-cost-calc.html', 'severance-calc.html', 'bep-calc.html'],
   '배달앱':          ['delivery-profit-calc.html', 'food-cost-calc.html', 'bep-calc.html'],
   '네이버 플레이스': ['delivery-profit-calc.html', 'food-cost-calc.html', 'bep-calc.html'],
   '소상공인 지원금': ['loan-interest-calc.html', 'vat-calc.html', 'alba-cost-calc.html'],
