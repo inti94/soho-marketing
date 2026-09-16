@@ -34,6 +34,7 @@ window.SOHO_CALCS = [
     {cat:'세금',name:'정책자금 이자 계산기',desc:'대출금·금리·기간 → 월 상환액·총이자·총 상환액 계산',href:'loan-interest-calc.html',icon:'Banknote',color:'#00B8D9',tags:['정책자금','대출','이자'],views:3560},
     {cat:'세금',name:'카드수수료 계산기',desc:'월 카드매출 → 우대수수료율 구간 자동 적용, 월·연 수수료 계산',href:'card-fee-calc.html',icon:'CreditCard',color:'#00B8D9',tags:['카드수수료','단말기'],views:3180,isNew:true},
     {cat:'세금',name:'종합소득세 계산기',desc:'매출·필요경비 → 2026년 세율 8단계 기준 사업소득 예상세액·지방소득세 계산',href:'income-tax-calc.html',icon:'FileText',color:'#00C471',tags:['종합소득세','사업소득','과세표준'],views:0,isNew:true},
+    {cat:'세금',name:'근로장려금 계산기',desc:'가구유형·총소득·재산 → 2026년 기준 소득·재산 요건 충족 여부와 법정 최대지급액 자가진단',href:'eitc-eligibility-calc.html',icon:'UserCheck',color:'#FF6B35',tags:['근로장려금','자가진단','소상공인 지원금'],views:0,isNew:true},
     {cat:'창업',name:'권리금 계산기',desc:'월 순이익·시설 잔존가치 → 시설+영업 권리금 적정 범위 계산',href:'premium-calc.html',icon:'KeyRound',color:'#FFB800',tags:['권리금','시설가치'],views:2890,isNew:true},
     {cat:'창업',name:'폐업 비용 계산기',desc:'철거비·퇴직금·재고 + 폐업 지원금 차감한 실제 부담액 계산',href:'closure-cost-calc.html',icon:'Package',color:'#6B7684',tags:['폐업','철거','지원금'],views:2530,isNew:true},
     {cat:'창업',name:'창업 초기비용 계산기',desc:'업종·평수 → 인테리어·보증금·권리금 등 창업비용 + 월 BEP 매출 추정',href:'startup-cost-calc.html',icon:'Rocket',color:'#F04452',tags:['창업','초기자금'],views:3940,isNew:true},

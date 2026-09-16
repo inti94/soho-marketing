@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="근로장려금 자가진단 계산기. 가구유형·총소득·재산을 넣으면 2026년 기준(2025년 귀속) 소득·재산 요건 충족 여부와 가구유형별 법정 최대지급액을 확인합니다.">
+<meta name="keywords" content="근로장려금 계산기, 근로장려금 자격, 근로장려금 2026, 단독가구 홑벌이 맞벌이, 근로장려금 재산요건, 근로장려금 소득기준">
+<meta name="robots" content="index, follow">
+<meta name="author" content="소호팁">
+<meta name="date" content="2026-09-16">
+<meta property="og:type" content="website">
+<meta property="og:title" content="근로장려금 자가진단 계산기 (2026) — 소득·재산 요건 확인 | 소호팁">
+<meta property="og:description" content="가구유형·총소득·재산을 넣으면 2026년 기준 근로장려금 신청 자격(소득·재산 요건)을 바로 확인합니다.">
+<meta property="og:url" content="https://sohotip.co.kr/eitc-eligibility-calc.html">
+<meta property="og:image" content="https://sohotip.co.kr/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="소호팁">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="근로장려금 자가진단 계산기 (2026) — 소득·재산 요건 확인 | 소호팁">
+<meta name="twitter:description" content="가구유형·총소득·재산을 넣으면 2026년 기준 근로장려금 신청 자격을 바로 확인합니다.">
+<meta name="twitter:image" content="https://sohotip.co.kr/og-image.png">
+<meta name="naver-site-verification" content="d7369feb5de3df4cce2e9016b84ad045c4ed70a4">
+<link rel="canonical" href="https://sohotip.co.kr/eitc-eligibility-calc.html">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sohotip.co.kr/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
+<link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
+<title>근로장려금 계산기 — 자격 자가진단 (2026) | 소호팁</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "근로장려금 자가진단 계산기",
+    "description": "가구유형·총소득·재산을 입력하면 2026년 기준(2025년 귀속) 근로장려금 소득·재산 요건 충족 여부와 가구유형별 법정 최대지급액을 확인하는 무료 계산기.",
+    "url": "https://sohotip.co.kr/eitc-eligibility-calc.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "KRW"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "소호팁",
+      "url": "https://sohotip.co.kr"
+    },
+    "dateModified": "2026-09-16",
+    "inLanguage": "ko-KR",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"홈","item":"https://sohotip.co.kr/"},
+        {"@type":"ListItem","position":2,"name":"계산기","item":"https://sohotip.co.kr/tools.html"},
+        {"@type":"ListItem","position":3,"name":"근로장려금 계산기","item":"https://sohotip.co.kr/eitc-eligibility-calc.html"}
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "근로장려금 자격 확인하는 법",
+    "description": "가구유형을 고르고 총소득·재산을 입력해 근로장려금 소득·재산 요건 충족 여부를 확인하는 방법.",
+    "totalTime": "PT1M",
+    "step": [
+      {"@type":"HowToStep","position":1,"name":"가구유형 선택","text":"단독가구·홑벌이가구·맞벌이가구 중 배우자 소득 기준에 맞는 유형을 고릅니다.","url":"https://sohotip.co.kr/eitc-eligibility-calc.html#calc"},
+      {"@type":"HowToStep","position":2,"name":"총소득·재산 입력","text":"연간 총소득(총급여액등)과 가구원 재산 합계액을 입력합니다.","url":"https://sohotip.co.kr/eitc-eligibility-calc.html#calc"},
+      {"@type":"HowToStep","position":3,"name":"자가진단 확인","text":"'자격 확인하기'를 누르면 소득·재산 요건 충족 여부와 최대지급액이 나옵니다.","url":"https://sohotip.co.kr/eitc-eligibility-calc.html#calc"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"이 계산기는 정확한 수급액을 알려주나요?","acceptedAnswer":{"@type":"Answer","text":"아니요. 근로장려금 수급액은 소득 구간별로 세분화된 법정 산정표(조세특례제한법 시행령 별표11)를 따르는데, 구간별 증가·감소 폭이 일정하지 않아 이 계산기가 임의로 계산하지 않습니다. 이 계산기는 소득·재산 요건 충족 여부와 가구유형별 법정 최대지급액(상한)만 안내하며, 정확한 예상 수급액은 홈택스 모의계산 또는 국세상담센터(126)로 확인해야 합니다."}},
+      {"@type":"Question","name":"단독가구·홑벌이가구·맞벌이가구는 어떻게 구분하나요?","acceptedAnswer":{"@type":"Answer","text":"단독가구는 배우자·부양자녀·70세 이상 직계존속이 모두 없는 경우입니다. 홑벌이가구는 배우자의 총급여액등이 300만원 미만이거나, 배우자 없이 부양자녀(18세 미만) 또는 70세 이상 직계존속이 있는 경우입니다. 맞벌이가구는 거주자 본인과 배우자 각각의 총급여액등이 300만원 이상인 경우입니다."}},
+      {"@type":"Question","name":"재산 요건은 어떻게 계산하나요?","acceptedAnswer":{"@type":"Answer","text":"신청일 기준 가구원 전체의 부동산·자동차·예금·전세보증금 등 재산 합계액(부채 차감 전 시가 기준)이 2억 4천만원 미만이어야 합니다. 1억 7천만원 이상 2억 4천만원 미만이면 산정된 근로장려금의 50%만 지급됩니다."}},
+      {"@type":"Question","name":"근로장려금은 언제 신청하나요?","acceptedAnswer":{"@type":"Answer","text":"정기신청은 매년 5월 1일부터 5월 31일까지 전년도 소득분을 신청합니다. 근로소득자는 반기별로 미리 신청하는 반기신청 제도도 있습니다."}},
+      {"@type":"Question","name":"사업소득만 있어도 근로장려금을 받을 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"네, 근로소득뿐 아니라 사업소득(전문직 등 일부 제외 업종 제외)도 대상입니다. 다만 변호사·의사·약사 등 전문직 사업자, 전문 종교인 등은 제외 업종에 해당할 수 있으니 본인 업종이 해당되는지 홈택스에서 확인이 필요합니다."}}
+    ]
+  }
+  </script>
+<link rel="stylesheet" href="sohotip.css?v=20260711a">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/theme.css?v=20260711a">
+<link rel="stylesheet" href="assets/calc.css?v=20260711a">
+<style>
+:root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-size:13px;color:var(--text-muted);text-decoration:none;}
+.nav-links a:hover{color:var(--primary);}
+@media(max-width:640px){.nav-links{display:none;}}
+.page-wrap{max-width:680px;margin:0 auto;padding:40px 2rem 80px;}
+.page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:24px;line-height:1.6;}
+.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;}
+.card-title{font-size:13px;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:20px;}
+.field{margin-bottom:18px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;}
+.field-hint{font-size:11px;color:var(--text-muted);margin-bottom:6px;}
+.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;}
+.field input:focus,.field select:focus{border-color:var(--primary);}
+.result-big{text-align:center;padding:32px;border-radius:16px;margin-bottom:20px;}
+.result-big.ok{background:var(--primary-light);border:2px solid var(--primary);}
+.result-big.no{background:#FFF7F7;border:2px solid #EF4444;}
+.result-label{font-size:14px;margin-bottom:8px;}
+.result-amount{font-size:26px;font-weight:700;}
+.result-big.ok .result-amount{color:var(--primary);}
+.result-big.no .result-amount{color:#EF4444;}
+.result-sub{font-size:13px;color:var(--text-muted);margin-top:6px;}
+.breakdown{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px;}
+.br-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.br-row:last-child{border:none;font-weight:700;font-size:15px;}
+.br-label{color:var(--text-muted);}
+.br-val{font-weight:500;}
+.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);margin-top:8px;}
+.btn-calc:hover{background:var(--primary-mid);}
+.tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+.tag svg{width:13px;height:13px;vertical-align:-2px;margin-right:2px;}
+.notice-box{background:var(--primary-light);border-radius:12px;padding:16px 20px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
+.notice-box.strong{background:#FFF7F7;color:#B42318;}
+footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
+footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
+
+/* ── 함께 사용한 계산기 ── */
+.related-calcs-section{margin:32px 0 0;}
+.related-calcs-section h2,.related-articles-section h2{font-size:16px;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.rel-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.rel-calc-card{display:flex;align-items:center;gap:10px;padding:14px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s;}
+.rel-calc-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 14px rgba(61,90,254,.12);}
+.rcc-icon{flex-shrink:0;width:24px;height:24px;display:flex;align-items:center;justify-content:center;}
+.rcc-icon svg{width:22px;height:22px;stroke:var(--primary);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+.rcc-body{flex:1;min-width:0;}
+.rcc-title{font-size:12px;font-weight:700;line-height:1.3;margin-bottom:3px;}
+.rcc-desc{font-size:11px;color:var(--text-muted);line-height:1.4;}
+/* ── 함께 많이 본 글 ── */
+.related-articles-section{margin:24px 0 0;}
+.rel-article-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);transition:color .2s;}
+.rel-article-item:last-child{border-bottom:none;}
+.rel-article-item:hover .rai-title{color:var(--primary);}
+.rai-num{font-size:18px;font-weight:900;color:var(--border);width:24px;flex-shrink:0;text-align:center;}
+.rai-body{flex:1;min-width:0;}
+.rai-cat{font-size:10px;color:var(--primary);font-weight:700;margin-bottom:2px;}
+.rai-title{font-size:13px;font-weight:600;line-height:1.4;}
+.rai-arrow{color:var(--primary);font-size:14px;flex-shrink:0;}
+@media(max-width:640px){
+  .rel-calc-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:380px){
+  .rel-calc-grid{grid-template-columns:1fr;}
+}
+
+/* ── 공통 12블록: 설명 콘텐츠 ── */
+.article-content{margin-top:36px;}
+.article-content h2{font-size:20px;font-weight:800;color:var(--text);margin:34px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-.01em;}
+.article-content h3{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}
+.article-content p{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:16px;word-break:keep-all;overflow-wrap:anywhere;}
+.article-content strong{font-weight:700;color:var(--primary);}
+.article-content ul{margin:14px 0 18px 18px;}
+.article-content li{font-size:15px;line-height:1.8;margin-bottom:6px;}
+.formula-box{background:#191F28;color:#fff;border-radius:14px;padding:20px 22px;margin:8px 0 18px;font-size:15px;font-weight:600;line-height:1.7;text-align:center;}
+.formula-box .fx-sub{display:block;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);margin-top:8px;}
+.tip-inline{background:var(--primary-light);border-radius:12px;padding:14px 18px;margin:8px 0 18px;font-size:14px;color:var(--primary-mid);line-height:1.7;}
+.tip-inline strong{color:var(--primary);}
+.step-box{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin:8px 0 18px;}
+.step-box .sb-badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--primary);padding:3px 11px;border-radius:20px;margin-bottom:10px;}
+.step-box .sb-body{font-size:14.5px;line-height:1.8;color:var(--text);}
+.howto-list{counter-reset:howto;list-style:none;margin:8px 0 18px;padding:0;}
+.howto-list li{position:relative;padding:12px 16px 12px 46px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;margin-bottom:8px;font-size:14px;line-height:1.7;color:var(--text);}
+.howto-list li::before{counter-increment:howto;content:counter(howto);position:absolute;left:14px;top:12px;width:22px;height:22px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.article-table{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:13.5px;}
+.article-table th,.article-table td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.6;word-break:keep-all;}
+.article-table th{background:#F4F6FB;font-weight:700;color:var(--text);}
+.article-table td:first-child{font-weight:600;}
+.faq-section{margin-top:8px;}
+.faq-item{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;background:var(--bg-card);}
+.faq-q{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:7px;}
+.faq-q::before{content:"Q. ";color:var(--primary);}
+.faq-a{font-size:13.5px;color:var(--text-muted);line-height:1.75;word-break:keep-all;overflow-wrap:anywhere;}
+/* 직접계산 CTA */
+.cta-box{margin-top:34px;background:linear-gradient(135deg,#3D5AFE,#536DFE);border-radius:18px;padding:26px 22px;text-align:center;color:#fff;}
+.cta-box h3{font-size:18px;font-weight:800;margin-bottom:6px;}
+.cta-box p{font-size:13.5px;opacity:.85;margin-bottom:16px;line-height:1.6;}
+.cta-box a{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--primary);font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;text-decoration:none;transition:transform .12s;}
+.cta-box a svg{width:17px;height:17px;stroke:var(--primary);fill:none;stroke-width:2;}
+.cta-box a:active{transform:scale(.97);}
+/* ⑫ 하단 자료 출처 */
+.calc-sources{margin:30px 0 0;padding:18px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;}
+.calc-sources h2{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;}
+.calc-sources ul{list-style:none;margin:0;padding:0;}
+.calc-sources li{font-size:12.5px;color:var(--text-muted);line-height:1.75;padding-left:14px;position:relative;}
+.calc-sources li::before{content:"·";position:absolute;left:2px;color:var(--primary);font-weight:700;}
+.calc-sources a{color:var(--primary);text-decoration:none;}
+.calc-sources a:hover{text-decoration:underline;}
+.calc-sources .cs-updated{font-size:11px;color:var(--text-muted);margin-top:10px;}
+.ai-summary .ais-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+</style></head>
+<body>
+<div id="progress-bar"></div>
+<nav>
+  <a href="index.html" class="nav-logo" aria-label="소호팁 홈"><img src="assets/logo.svg?v=20260702d" alt="소호팁" width="99" height="30" style="display:block"></a>
+  <ul class="nav-links">
+    <li><a href="category.html">카테고리</a></li>
+    <li><a href="tools.html">계산기</a></li>
+  </ul>
+</nav>
+<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
+<div class="mobile-search-bar">
+  <div class="nav-search">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="search-input-mobile" class="nav-search-input" placeholder="궁금한 주제를 검색하세요..." autocomplete="off">
+    <div id="search-dropdown-mobile"></div>
+  </div>
+</div>
+
+<div class="page-wrap">
+  <!-- ① 제목 -->
+  <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg> 근로장려금 계산기</span>
+  <h1 class="page-title">근로장려금 자가진단 계산기</h1>
+  <p class="page-desc">가구유형·총소득·재산을 입력하면 2026년 기준(2025년 귀속, 5월 신청분) 소득·재산 요건 충족 여부와 가구유형별 법정 최대지급액을 확인합니다. 정확한 예상 수급액은 홈택스 모의계산으로 확인하세요.</p>
+
+  <!-- ② 30초 요약 -->
+  <section class="ai-summary" aria-label="30초 핵심 요약">
+    <span class="ais-badge">핵심 요약 · 30초 컷</span>
+    <p>근로장려금은 <strong>가구유형(단독·홑벌이·맞벌이)</strong>에 따라 소득 기준이 다르고, 재산 기준(2억4천만원 미만)까지 같이 봐야 해요. 배우자 총급여액이 300만원 미만이면 홑벌이, 300만원 이상이면 맞벌이로 갈려요.</p>
+    <p>2026년 5월 신청분(2025년 귀속) 기준 소득 상한은 단독가구 <strong>약 2,188만원</strong>, 홑벌이가구 <strong>약 3,190만원</strong>, 맞벌이가구 <strong>약 4,388만원</strong> 미만이고, 최대지급액은 각각 165만원·285만원·330만원이에요.</p>
+    <p>다만 <strong>정확한 수급액은 소득 구간마다 산정 방식이 달라</strong> 이 계산기가 임의로 계산하지 않아요. 아래에서 자격이 되는지만 먼저 확인하고, 정확한 금액은 홈택스 모의계산이나 국세상담센터(126)로 확인하세요.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg> 자격 바로 확인</a>
+      <a class="ais-btn ghost" href="income-tax-calc.html">종합소득세도 확인</a>
+    </div>
+    <div class="ais-links">이어서 보면 좋아요 · <a href="durunuri-application.html">두루누리 신청법</a> · <a href="solo-shop-tax-deduction.html">사장님 절세 체크리스트</a></div>
+  </section>
+
+  <!-- ③ 계산기 -->
+  <div class="calc-card" id="calc">
+    <div class="card-title">근로장려금 자격 자가진단</div>
+    <div class="field">
+      <label>가구유형</label>
+      <div class="field-hint">단독: 배우자·부양자녀·70세 이상 직계존속 없음 · 홑벌이: 배우자 총급여액 300만원 미만 · 맞벌이: 본인·배우자 각각 300만원 이상</div>
+      <select id="eitc-type">
+        <option value="single">단독가구</option>
+        <option value="single-earner">홑벌이가구</option>
+        <option value="dual-earner">맞벌이가구</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>연간 총소득 (총급여액등, 원)</label>
+      <div class="field-hint">근로소득·사업소득·기타소득 등 가구 합산 총소득</div>
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="eitc-income" value="15,000,000" step="1000000">
+    </div>
+    <div class="field">
+      <label>가구원 재산 합계액 (원)</label>
+      <div class="field-hint">부동산·자동차·예금·전세보증금 등 시가 합계 (부채 차감 전)</div>
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="eitc-asset" value="50,000,000" step="1000000">
+    </div>
+    <button class="btn-calc" onclick="calcEitc()">자격 확인하기</button>
+  </div>
+
+  <!-- ④ 계산 결과 -->
+  <div id="eitc-result" style="display:none;">
+    <div class="result-big" id="eitc-result-box">
+      <div class="result-label" id="eitc-result-label">진단 결과</div>
+      <div class="result-amount" id="eitc-result-amount">-</div>
+      <div class="result-sub" id="eitc-result-sub"></div>
+    </div>
+    <div class="breakdown">
+      <div class="br-row"><span class="br-label">가구유형</span><span class="br-val" id="eitc-out-type">-</span></div>
+      <div class="br-row"><span class="br-label">소득요건 (상한 미만이어야 함)</span><span class="br-val" id="eitc-out-income">-</span></div>
+      <div class="br-row"><span class="br-label">재산요건 (2.4억원 미만이어야 함)</span><span class="br-val" id="eitc-out-asset">-</span></div>
+      <div class="br-row"><span class="br-label">가구유형별 법정 최대지급액</span><span class="br-val" id="eitc-out-max">-</span></div>
+    </div>
+    <div class="notice-box strong">이 결과는 소득·재산 <strong>요건 충족 여부와 법정 최대지급액(상한)</strong>만 알려주는 자가진단입니다. 실제 지급액은 소득 구간별 산정표에 따라 달라지며 이 계산기가 임의로 계산하지 않습니다. <strong>정확한 예상 수급액은 국세청 홈택스 모의계산 또는 국세상담센터(126)</strong>로 확인하세요.</div>
+  </div>
+
+  <div class="article-content">
+    <!-- ⑤ 계산 공식 설명 -->
+    <h2>근로장려금 자격은 이렇게 판단합니다</h2>
+    <p>근로장려금을 받으려면 <strong>소득요건</strong>과 <strong>재산요건</strong>을 모두 충족해야 합니다. 소득요건은 가구유형(단독·홑벌이·맞벌이)마다 기준이 다르고, 재산요건은 가구유형과 상관없이 동일합니다.</p>
+    <div class="formula-box">신청 가능 = 총소득 &lt; 가구유형별 소득 상한  AND  재산 합계 &lt; 2억 4천만원<span class="fx-sub">재산 1억7천만원 이상 2.4억원 미만이면 산정액의 50%만 지급</span></div>
+    <p>두 요건을 충족해도 <strong>실제 지급액은 소득 구간마다 다른 산정표</strong>(점증→평탄→점감 구조)를 따릅니다. 이 산정표는 구간별 증감 폭이 일정하지 않아 이 계산기에서 임의로 재현하지 않았습니다.</p>
+    <h3>이렇게 확인하세요</h3>
+    <ol class="howto-list">
+      <li>배우자 소득 기준으로 가구유형(단독·홑벌이·맞벌이)을 고릅니다.</li>
+      <li>연간 총소득(근로소득·사업소득 등 합산)을 입력합니다.</li>
+      <li>가구원 재산 합계액을 입력합니다.</li>
+      <li>'자격 확인하기'를 누르면 요건 충족 여부와 최대지급액이 나옵니다.</li>
+    </ol>
+
+    <!-- ⑥ 주요 계산항목 표 -->
+    <h2>2026년 근로장려금 기준 (2025년 귀속, 5월 신청분)</h2>
+    <table class="article-table">
+      <thead><tr><th>가구유형</th><th>소득 상한</th><th>최대지급액</th></tr></thead>
+      <tbody>
+        <tr><td>단독가구</td><td>21,881,900원 미만 (약 2,188만원)</td><td>1,650,000원</td></tr>
+        <tr><td>홑벌이가구</td><td>31,905,300원 미만 (약 3,190만원)</td><td>2,850,000원</td></tr>
+        <tr><td>맞벌이가구</td><td>43,877,300원 미만 (약 4,388만원)</td><td>3,300,000원</td></tr>
+      </tbody>
+    </table>
+    <table class="article-table">
+      <thead><tr><th>재산 합계액</th><th>지급 방식</th></tr></thead>
+      <tbody>
+        <tr><td>1억 7천만원 미만</td><td>산정액 전액 지급</td></tr>
+        <tr><td>1억 7천만원 ~ 2억 4천만원 미만</td><td>산정액의 50%만 지급</td></tr>
+        <tr><td>2억 4천만원 이상</td><td>지급 대상 아님</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-inline"><strong>한 가지만:</strong> 위 소득 상한 21,881,900원·31,905,300원·43,877,300원은 조세특례제한법 시행령 별표11 원문에서 직접 확인한 정확한 컷오프입니다. 요약 자료에서 흔히 보는 "2,200만원·3,200만원·4,400만원 미만"은 이 숫자를 반올림한 값이라 실제 경계값과 약간 다릅니다.</div>
+
+    <!-- ⑦ 실무 예시 -->
+    <h2>실무 예시 — 숫자로 따라가 볼게요</h2>
+    <div class="step-box">
+      <span class="sb-badge">단독가구 · 요건 충족</span>
+      <div class="sb-body">
+        총소득 1,500만원 · 재산 5,000만원<br>
+        소득요건: 1,500만원 &lt; 2,188만1,900원 → <strong>충족</strong><br>
+        재산요건: 5,000만원 &lt; 1억7,000만원 → <strong>충족(전액 지급 대상)</strong><br>
+        → 법정 최대지급액 165만원 이내에서 신청 가능성 있음
+      </div>
+    </div>
+    <div class="step-box">
+      <span class="sb-badge">홑벌이가구 · 재산 감액 구간</span>
+      <div class="sb-body">
+        총소득 2,800만원 · 재산 1억9,000만원<br>
+        소득요건: 2,800만원 &lt; 3,190만5,300원 → <strong>충족</strong><br>
+        재산요건: 1억7,000만원 ≤ 1억9,000만원 &lt; 2억4,000만원 → <strong>50% 감액 대상</strong><br>
+        → 산정액이 나와도 그 금액의 절반만 지급
+      </div>
+    </div>
+    <div class="step-box">
+      <span class="sb-badge">맞벌이가구 · 소득 초과</span>
+      <div class="sb-body">
+        총소득 5,000만원<br>
+        소득요건: 5,000만원 &gt; 4,387만7,300원 → <strong>초과, 해당 없음</strong><br>
+        → 소득 기준을 넘어 신청 대상이 아닙니다
+      </div>
+    </div>
+
+    <!-- ⑧ FAQ -->
+    <h2 id="faq">자주 묻는 질문</h2>
+    <div class="faq-section">
+      <div class="faq-item"><div class="faq-q">이 계산기는 정확한 수급액을 알려주나요?</div><div class="faq-a">아니요. 근로장려금 수급액은 소득 구간별로 세분화된 법정 산정표를 따르는데, 구간별 증가·감소 폭이 일정하지 않아 이 계산기가 임의로 계산하지 않습니다. 소득·재산 요건 충족 여부와 가구유형별 법정 최대지급액(상한)만 안내하며, 정확한 예상 수급액은 홈택스 모의계산 또는 국세상담센터(126)로 확인해야 합니다.</div></div>
+      <div class="faq-item"><div class="faq-q">단독가구·홑벌이가구·맞벌이가구는 어떻게 구분하나요?</div><div class="faq-a">단독가구는 배우자·부양자녀·70세 이상 직계존속이 모두 없는 경우입니다. 홑벌이가구는 배우자의 총급여액등이 300만원 미만이거나, 배우자 없이 부양자녀(18세 미만) 또는 70세 이상 직계존속이 있는 경우입니다. 맞벌이가구는 본인과 배우자 각각의 총급여액등이 300만원 이상인 경우입니다.</div></div>
+      <div class="faq-item"><div class="faq-q">재산 요건은 어떻게 계산하나요?</div><div class="faq-a">신청일 기준 가구원 전체의 부동산·자동차·예금·전세보증금 등 재산 합계액(부채 차감 전 시가 기준)이 2억 4천만원 미만이어야 합니다. 1억 7천만원 이상 2억 4천만원 미만이면 산정된 근로장려금의 50%만 지급됩니다.</div></div>
+      <div class="faq-item"><div class="faq-q">근로장려금은 언제 신청하나요?</div><div class="faq-a">정기신청은 매년 5월 1일부터 5월 31일까지 전년도 소득분을 신청합니다. 근로소득자는 반기별로 미리 신청하는 반기신청 제도도 있습니다.</div></div>
+      <div class="faq-item"><div class="faq-q">사업소득만 있어도 근로장려금을 받을 수 있나요?</div><div class="faq-a">네, 근로소득뿐 아니라 사업소득도 대상입니다. 다만 변호사·의사·약사 등 전문직 사업자나 일부 제외 업종에 해당할 수 있으니 본인 업종이 해당되는지 홈택스에서 확인이 필요합니다.</div></div>
+    </div>
+  </div>
+
+  <!-- ⑨ 관련 계산기 (5) -->
+  <div class="related-calcs-section">
+    <h2>함께 보면 좋은 계산기</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="income-tax-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span><div class="rcc-body"><div class="rcc-title">종합소득세 계산기</div><div class="rcc-desc">사업소득 예상세액</div></div></a>
+      <a class="rel-calc-card" href="insurance-4d-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></span><div class="rcc-body"><div class="rcc-title">4대보험 계산기</div><div class="rcc-desc">공제액·부담액</div></div></a>
+      <a class="rel-calc-card" href="alba-cost-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span><div class="rcc-body"><div class="rcc-title">알바 인건비 계산기</div><div class="rcc-desc">월 인건비 자동계산</div></div></a>
+      <a class="rel-calc-card" href="net-salary-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/></svg></span><div class="rcc-body"><div class="rcc-title">실수령액 계산기</div><div class="rcc-desc">세후 월급 계산</div></div></a>
+      <a class="rel-calc-card" href="vat-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg></span><div class="rcc-body"><div class="rcc-title">부가세 계산기</div><div class="rcc-desc">납부·환급세액</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑩ 관련 가이드 (5) -->
+  <div class="related-articles-section">
+    <h2>함께 보면 좋은 가이드</h2>
+    <a class="rel-article-item" href="durunuri-application.html"><span class="rai-num">1</span><div class="rai-body"><div class="rai-cat">소상공인 지원금</div><div class="rai-title">소상공인 두루누리 신청방법 — 4대 보험료 80% 절약하는 법</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="management-voucher-2026.html"><span class="rai-num">2</span><div class="rai-body"><div class="rai-cat">소상공인 지원금</div><div class="rai-title">2026년 경영 바우처 — 신청 조건과 방법</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="noran-umbrella.html"><span class="rai-num">3</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">노란우산공제 — 소상공인 목돈 마련·절세 제도</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="solo-shop-tax-deduction.html"><span class="rai-num">4</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">1인 사장님 절세 체크리스트 — 이건 꼭 챙기세요</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="tax-refund-soho.html"><span class="rai-num">5</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">소상공인 부가세 환급 받는 법 — 놓치기 쉬운 매입공제</div></div><span class="rai-arrow">→</span></a>
+  </div>
+
+  <!-- ⑪ 관련 서식 (3) -->
+  <div class="related-calcs-section">
+    <h2>함께 쓰면 좋은 서식</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="forms.html#tax"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">소득금액증명원 안내</div><div class="rcc-desc">신청 시 참고서류</div></div></a>
+      <a class="rel-calc-card" href="forms.html#tax"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">지출결의서</div><div class="rcc-desc">사업소득 경비 정리</div></div></a>
+      <a class="rel-calc-card" href="forms.html#tax"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">거래명세서</div><div class="rcc-desc">매출·매입 내역</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑫ 한 줄 요약 + CTA -->
+  <section class="ai-summary" aria-label="한 줄 요약">
+    <span class="ais-badge">한 줄 요약</span>
+    <p><strong>소득요건(가구유형별 상한 미만) + 재산요건(2.4억원 미만)</strong>을 둘 다 충족해야 근로장려금 신청 대상이 됩니다. 정확한 금액이 아니라 자격 여부부터 먼저 확인하세요.</p>
+    <p>재산이 1.7억~2.4억원이면 산정액의 절반만 나온다는 점, 배우자 소득 300만원이 홑벌이·맞벌이를 가른다는 점만 기억해도 절반은 확인한 겁니다. 정확한 금액은 5월 신청 전에 홈택스에서 모의계산해보세요.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg> 지금 자격 확인하기</a>
+      <a class="ais-btn ghost" href="https://www.hometax.go.kr" rel="nofollow noopener">홈택스 모의계산</a>
+    </div>
+  </section>
+
+  <!-- 직접 계산 CTA -->
+  <div class="cta-box">
+    <h3>우리 가구, 근로장려금 자격 될까요?</h3>
+    <p>가구유형·총소득·재산만 넣으면 요건 충족 여부가 바로 나옵니다.</p>
+    <a href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg> 자격 바로 확인하기</a>
+  </div>
+
+  <!-- 하단 자료 출처 -->
+  <div class="calc-sources">
+    <h2>자료 출처</h2>
+    <ul>
+      <li>조세특례제한법 시행령 [별표11] 근로장려금 산정표(제100조의6제5항 관련, 2025.2.28 개정) — 가구유형별 소득 상한·최대지급액의 정확한 근거 (<a href="https://www.law.go.kr" target="_blank" rel="nofollow noopener">law.go.kr</a>)</li>
+      <li>조세특례제한법 시행령 별표11 비고2 — 재산 1억7천만원 이상 시 산정액 50% 지급 근거</li>
+      <li>국세청 — 근로장려금·자녀장려금 신청자격 안내 (<a href="https://www.nts.go.kr" target="_blank" rel="nofollow noopener">nts.go.kr</a>)</li>
+      <li>국세청 홈택스 — 근로장려금 모의계산·신청 (<a href="https://www.hometax.go.kr" target="_blank" rel="nofollow noopener">hometax.go.kr</a>)</li>
+      <li>[확인 필요] 정확한 예상 수급액, 가구유형 판정의 세부 예외(부양자녀 요건, 제외 업종 등)는 홈택스 모의계산 또는 국세상담센터(126)로 확인하세요.</li>
+    </ul>
+    <p class="cs-updated">기준일: 2026년 9월(2025년 귀속, 2026년 5월 신청분 기준) · 본 계산기는 자격 자가진단 참고용이며, 정확한 수급액과 최종 자격은 홈택스·126 상담으로 확인하세요.</p>
+  </div>
+</div>
+
+<button id="back-to-top" aria-label="맨 위로">↑</button>
+<script src="assets/layout.js?v=20260702e" defer></script>
+<script src="sohotip.js?v=20260711a" defer></script>
+<script>
+function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
+const EITC_RULES = {
+  'single':        {label:'단독가구',   incomeCap: 21881900, maxAmount: 1650000},
+  'single-earner': {label:'홑벌이가구', incomeCap: 31905300, maxAmount: 2850000},
+  'dual-earner':   {label:'맞벌이가구', incomeCap: 43877300, maxAmount: 3300000}
+};
+function calcEitc(){
+  const type = document.getElementById('eitc-type').value;
+  const income = getRawNumber('eitc-income')||0;
+  const asset = getRawNumber('eitc-asset')||0;
+  const rule = EITC_RULES[type];
+
+  const incomeOk = income < rule.incomeCap;
+  let assetStatus, assetOk;
+  if (asset >= 240000000) { assetStatus = '2.4억원 이상 — 대상 아님'; assetOk = false; }
+  else if (asset >= 170000000) { assetStatus = '1.7억~2.4억원 미만 — 산정액 50%만 지급'; assetOk = true; }
+  else { assetStatus = '1.7억원 미만 — 전액 지급 대상'; assetOk = true; }
+
+  document.getElementById('eitc-out-type').textContent = rule.label;
+  document.getElementById('eitc-out-income').textContent = (incomeOk?'충족 (':'초과 (')+fmt(income)+' / 상한 '+fmt(rule.incomeCap)+')';
+  document.getElementById('eitc-out-asset').textContent = assetStatus;
+  document.getElementById('eitc-out-max').textContent = fmt(rule.maxAmount)+' 이내';
+
+  const box = document.getElementById('eitc-result-box');
+  const eligible = incomeOk && assetOk;
+  box.className = 'result-big '+(eligible?'ok':'no');
+  document.getElementById('eitc-result-label').textContent = '진단 결과';
+  document.getElementById('eitc-result-amount').textContent = eligible ? '신청 자격 가능성 있음' : '신청 자격에 해당하지 않음';
+  document.getElementById('eitc-result-sub').textContent = eligible
+    ? '정확한 수급액은 홈택스 모의계산·126 상담으로 확인하세요'
+    : (!incomeOk ? '소득 기준을 초과했습니다' : '재산 기준을 초과했습니다');
+  document.getElementById('eitc-result').style.display='block';
+}
+</script>
+<footer>
+  <a href="index.html">홈</a><a href="category.html">카테고리</a><a href="tools.html">계산기 모음</a>
+  <p style="margin-top:12px;">© 2026 소호팁. 본 계산기는 자가진단 참고용이며 정확한 수급액은 홈택스·126 상담으로 확인하세요.</p>
+</footer>
+<script src="network.js?v=20260711a" defer></script>
+</body>
+</html>
