@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="대출 조기상환 손익 비교 계산기. 남은 대출 잔액·금리·기간과 중도상환수수료율을 넣으면 지금 갚는 게 이득인지, 남은 이자 절감액과 수수료를 비교해 즉시 계산합니다.">
+<meta name="keywords" content="조기상환 계산기, 중도상환수수료 계산, 대출 조기상환 손익, 대출 미리 갚기, 중도상환 유리 불리">
+<meta name="robots" content="index, follow">
+<meta name="author" content="소호팁">
+<meta name="date" content="2026-09-16">
+<meta property="og:type" content="website">
+<meta property="og:title" content="대출 조기상환 손익 비교 계산기 (2026) — 갚을지 말지 | 소호팁">
+<meta property="og:description" content="남은 대출 잔액·금리와 중도상환수수료율을 넣으면 지금 갚는 게 이득인지 즉시 비교합니다.">
+<meta property="og:url" content="https://sohotip.co.kr/loan-prepayment-calc.html">
+<meta property="og:image" content="https://sohotip.co.kr/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="소호팁">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="대출 조기상환 손익 비교 계산기 (2026) — 갚을지 말지 | 소호팁">
+<meta name="twitter:description" content="남은 대출 잔액·금리와 중도상환수수료율을 넣으면 지금 갚는 게 이득인지 즉시 비교합니다.">
+<meta name="twitter:image" content="https://sohotip.co.kr/og-image.png">
+<meta name="naver-site-verification" content="d7369feb5de3df4cce2e9016b84ad045c4ed70a4">
+<link rel="canonical" href="https://sohotip.co.kr/loan-prepayment-calc.html">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sohotip.co.kr/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
+<link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
+<title>대출 조기상환 계산기 — 갚을지 말지 손익 비교 (2026) | 소호팁</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "대출 조기상환 손익 비교 계산기",
+    "description": "남은 대출 잔액·금리·상환기간과 중도상환수수료율로 남은 이자 절감액과 중도상환수수료를 비교해 조기상환 유불리를 판단하는 무료 계산기.",
+    "url": "https://sohotip.co.kr/loan-prepayment-calc.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "KRW"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "소호팁",
+      "url": "https://sohotip.co.kr"
+    },
+    "dateModified": "2026-09-16",
+    "inLanguage": "ko-KR",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"홈","item":"https://sohotip.co.kr/"},
+        {"@type":"ListItem","position":2,"name":"계산기","item":"https://sohotip.co.kr/tools.html"},
+        {"@type":"ListItem","position":3,"name":"대출 조기상환 계산기","item":"https://sohotip.co.kr/loan-prepayment-calc.html"}
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "대출 조기상환 유불리 판단하는 법",
+    "description": "남은 대출 잔액·금리·상환기간과 중도상환수수료율을 입력해 조기상환 시 이득인지 손해인지 계산하는 방법.",
+    "totalTime": "PT1M",
+    "step": [
+      {"@type":"HowToStep","position":1,"name":"남은 대출 정보 입력","text":"남은 대출 잔액, 연 금리, 남은 상환기간, 상환방식을 입력합니다.","url":"https://sohotip.co.kr/loan-prepayment-calc.html#calc"},
+      {"@type":"HowToStep","position":2,"name":"중도상환수수료율 입력","text":"은행에서 확인한 현재 적용 중도상환수수료율을 입력합니다.","url":"https://sohotip.co.kr/loan-prepayment-calc.html#calc"},
+      {"@type":"HowToStep","position":3,"name":"비교하기","text":"'조기상환 손익 비교하기'를 누르면 남은 이자, 수수료, 순이득이 나옵니다.","url":"https://sohotip.co.kr/loan-prepayment-calc.html#calc"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"이 계산기는 대출이자 계산기와 뭐가 다른가요?","acceptedAnswer":{"@type":"Answer","text":"대출이자 계산기는 새로 받을 대출의 월 상환액·총이자를 계산합니다. 이 계산기는 이미 쓰고 있는 대출을 지금 조기상환(중도상환)하는 게 이득인지, 남은 이자 절감액과 중도상환수수료를 비교해 판단하는 도구입니다."}},
+      {"@type":"Question","name":"중도상환수수료율은 어떻게 알 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"대출 상품·은행마다 다르고, 대출 실행일로부터 지난 기간에 따라 줄어드는 경우가 많습니다(보통 3년 경과 후 면제되는 상품이 흔합니다). 정확한 수수료율은 대출 약정서나 은행 고객센터·인터넷뱅킹에서 반드시 직접 확인해야 합니다. 이 계산기는 특정 수치를 임의로 넣지 않으니 확인한 값을 입력하세요."}},
+      {"@type":"Question","name":"순이득이 양수면 무조건 갚는 게 맞나요?","acceptedAnswer":{"@type":"Answer","text":"이 계산기는 '남은 이자 절감액 vs 중도상환수수료'만 비교합니다. 그 목돈을 다른 곳(예금·투자·재고 확보 등)에 썼을 때 얻을 수 있는 수익은 반영하지 않으므로, 다른 활용처가 있다면 그 기대수익과도 비교해보고 결정하세요."}},
+      {"@type":"Question","name":"일부만 갚는 부분 중도상환도 계산되나요?","acceptedAnswer":{"@type":"Answer","text":"이 계산기는 잔액 전액을 조기상환하는 경우를 기준으로 계산합니다. 일부만 상환하는 경우에도 같은 방식(절감 이자 vs 수수료 비교)이 적용되지만, 상환 후 남은 대출의 재상환 스케줄이 은행마다 다르게 처리될 수 있어 정확한 금액은 은행에 문의하는 게 안전합니다."}},
+      {"@type":"Question","name":"손익분기 수수료율이 뭔가요?","acceptedAnswer":{"@type":"Answer","text":"지금 조건에서 수수료율이 몇 %까지면 조기상환이 그래도 이득인지 보여주는 참고 수치입니다. 실제 수수료율이 이 값보다 낮으면 조기상환이 유리하고, 높으면 계속 상환하는 쪽이 유리합니다."}}
+    ]
+  }
+  </script>
+<link rel="stylesheet" href="sohotip.css?v=20260711a">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/theme.css?v=20260711a">
+<link rel="stylesheet" href="assets/calc.css?v=20260711a">
+<style>
+:root{--primary:#EC4899;--primary-light:#FDF0F7;--primary-mid:#DB2777;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-size:13px;color:var(--text-muted);text-decoration:none;}
+.nav-links a:hover{color:var(--primary);}
+@media(max-width:640px){.nav-links{display:none;}}
+.page-wrap{max-width:680px;margin:0 auto;padding:40px 2rem 80px;}
+.page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:24px;line-height:1.6;}
+.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;}
+.card-title{font-size:13px;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:20px;}
+.field{margin-bottom:18px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;}
+.field-hint{font-size:11px;color:var(--text-muted);margin-bottom:6px;}
+.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;}
+.field input:focus,.field select:focus{border-color:var(--primary);}
+.result-big{text-align:center;padding:32px;border-radius:16px;margin-bottom:20px;}
+.result-big.ok{background:var(--primary-light);border:2px solid var(--primary);}
+.result-big.no{background:#F4F6FB;border:2px solid #6B7684;}
+.result-label{font-size:14px;margin-bottom:8px;}
+.result-amount{font-size:32px;font-weight:700;}
+.result-big.ok .result-amount{color:var(--primary-mid);}
+.result-big.no .result-amount{color:#6B7684;}
+.result-sub{font-size:13px;color:var(--text-muted);margin-top:6px;}
+.breakdown{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px;}
+.br-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.br-row:last-child{border:none;font-weight:700;font-size:15px;}
+.br-label{color:var(--text-muted);}
+.br-val{font-weight:500;}
+.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);margin-top:8px;}
+.btn-calc:hover{background:var(--primary-mid);}
+.tag{display:inline-block;background:var(--primary-light);color:var(--primary-mid);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+.tag svg{width:13px;height:13px;vertical-align:-2px;margin-right:2px;}
+.notice-box{background:var(--primary-light);border-radius:12px;padding:16px 20px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
+.notice-box.strong{background:#FFF7F7;color:#B42318;}
+footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
+footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
+
+/* ── 함께 사용한 계산기 ── */
+.related-calcs-section{margin:32px 0 0;}
+.related-calcs-section h2,.related-articles-section h2{font-size:16px;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.rel-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.rel-calc-card{display:flex;align-items:center;gap:10px;padding:14px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s;}
+.rel-calc-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 14px rgba(236,72,153,.12);}
+.rcc-icon{flex-shrink:0;width:24px;height:24px;display:flex;align-items:center;justify-content:center;}
+.rcc-icon svg{width:22px;height:22px;stroke:var(--primary-mid);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+.rcc-body{flex:1;min-width:0;}
+.rcc-title{font-size:12px;font-weight:700;line-height:1.3;margin-bottom:3px;}
+.rcc-desc{font-size:11px;color:var(--text-muted);line-height:1.4;}
+/* ── 함께 많이 본 글 ── */
+.related-articles-section{margin:24px 0 0;}
+.rel-article-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);transition:color .2s;}
+.rel-article-item:last-child{border-bottom:none;}
+.rel-article-item:hover .rai-title{color:var(--primary-mid);}
+.rai-num{font-size:18px;font-weight:900;color:var(--border);width:24px;flex-shrink:0;text-align:center;}
+.rai-body{flex:1;min-width:0;}
+.rai-cat{font-size:10px;color:var(--primary-mid);font-weight:700;margin-bottom:2px;}
+.rai-title{font-size:13px;font-weight:600;line-height:1.4;}
+.rai-arrow{color:var(--primary-mid);font-size:14px;flex-shrink:0;}
+@media(max-width:640px){
+  .rel-calc-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:380px){
+  .rel-calc-grid{grid-template-columns:1fr;}
+}
+
+/* ── 공통 12블록: 설명 콘텐츠 ── */
+.article-content{margin-top:36px;}
+.article-content h2{font-size:20px;font-weight:800;color:var(--text);margin:34px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-.01em;}
+.article-content h3{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}
+.article-content p{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:16px;word-break:keep-all;overflow-wrap:anywhere;}
+.article-content strong{font-weight:700;color:var(--primary-mid);}
+.article-content ul{margin:14px 0 18px 18px;}
+.article-content li{font-size:15px;line-height:1.8;margin-bottom:6px;}
+.formula-box{background:#191F28;color:#fff;border-radius:14px;padding:20px 22px;margin:8px 0 18px;font-size:15px;font-weight:600;line-height:1.7;text-align:center;}
+.formula-box .fx-sub{display:block;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);margin-top:8px;}
+.tip-inline{background:var(--primary-light);border-radius:12px;padding:14px 18px;margin:8px 0 18px;font-size:14px;color:var(--primary-mid);line-height:1.7;}
+.tip-inline strong{color:var(--primary-mid);}
+.step-box{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin:8px 0 18px;}
+.step-box .sb-badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--primary);padding:3px 11px;border-radius:20px;margin-bottom:10px;}
+.step-box .sb-body{font-size:14.5px;line-height:1.8;color:var(--text);}
+.howto-list{counter-reset:howto;list-style:none;margin:8px 0 18px;padding:0;}
+.howto-list li{position:relative;padding:12px 16px 12px 46px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;margin-bottom:8px;font-size:14px;line-height:1.7;color:var(--text);}
+.howto-list li::before{counter-increment:howto;content:counter(howto);position:absolute;left:14px;top:12px;width:22px;height:22px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.article-table{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:13.5px;}
+.article-table th,.article-table td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.6;word-break:keep-all;}
+.article-table th{background:#F4F6FB;font-weight:700;color:var(--text);}
+.article-table td:first-child{font-weight:600;}
+.faq-section{margin-top:8px;}
+.faq-item{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;background:var(--bg-card);}
+.faq-q{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:7px;}
+.faq-q::before{content:"Q. ";color:var(--primary-mid);}
+.faq-a{font-size:13.5px;color:var(--text-muted);line-height:1.75;word-break:keep-all;overflow-wrap:anywhere;}
+/* 직접계산 CTA */
+.cta-box{margin-top:34px;background:linear-gradient(135deg,#EC4899,#DB2777);border-radius:18px;padding:26px 22px;text-align:center;color:#fff;}
+.cta-box h3{font-size:18px;font-weight:800;margin-bottom:6px;}
+.cta-box p{font-size:13.5px;opacity:.85;margin-bottom:16px;line-height:1.6;}
+.cta-box a{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--primary-mid);font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;text-decoration:none;transition:transform .12s;}
+.cta-box a svg{width:17px;height:17px;stroke:var(--primary-mid);fill:none;stroke-width:2;}
+.cta-box a:active{transform:scale(.97);}
+/* ⑫ 하단 자료 출처 */
+.calc-sources{margin:30px 0 0;padding:18px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;}
+.calc-sources h2{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;}
+.calc-sources ul{list-style:none;margin:0;padding:0;}
+.calc-sources li{font-size:12.5px;color:var(--text-muted);line-height:1.75;padding-left:14px;position:relative;}
+.calc-sources li::before{content:"·";position:absolute;left:2px;color:var(--primary-mid);font-weight:700;}
+.calc-sources a{color:var(--primary-mid);text-decoration:none;}
+.calc-sources a:hover{text-decoration:underline;}
+.calc-sources .cs-updated{font-size:11px;color:var(--text-muted);margin-top:10px;}
+.ai-summary .ais-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+</style></head>
+<body>
+<div id="progress-bar"></div>
+<nav>
+  <a href="index.html" class="nav-logo" aria-label="소호팁 홈"><img src="assets/logo.svg?v=20260702d" alt="소호팁" width="99" height="30" style="display:block"></a>
+  <ul class="nav-links">
+    <li><a href="category.html">카테고리</a></li>
+    <li><a href="tools.html">계산기</a></li>
+  </ul>
+</nav>
+<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
+<div class="mobile-search-bar">
+  <div class="nav-search">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="search-input-mobile" class="nav-search-input" placeholder="궁금한 주제를 검색하세요..." autocomplete="off">
+    <div id="search-dropdown-mobile"></div>
+  </div>
+</div>
+
+<div class="page-wrap">
+  <!-- ① 제목 -->
+  <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"/><path d="M5 8l7-5 7 5"/><path d="M5 8a4 4 0 0 0 7 3 4 4 0 0 0 7-3"/><path d="M2 21h20"/></svg> 대출 조기상환 계산기</span>
+  <h1 class="page-title">대출 조기상환 손익 비교 계산기</h1>
+  <p class="page-desc">남은 대출 잔액·금리·기간과 중도상환수수료율을 입력하면, 지금 갚는 게 이득인지 남은 이자 절감액과 수수료를 비교해 즉시 계산합니다. (예: 잔액 3,000만·금리 5%·24개월·수수료 1.2% → 약 123만원 이득)</p>
+
+  <!-- ② 30초 요약 -->
+  <section class="ai-summary" aria-label="30초 핵심 요약">
+    <span class="ais-badge">핵심 요약 · 30초 컷</span>
+    <p>목돈이 생기면 "대출부터 갚을까?" 고민되죠. 답은 딱 하나 비교하면 나와요. <strong>계속 갚았을 때 내야 할 남은 이자 총액</strong>과 <strong>지금 갚을 때 내는 중도상환수수료</strong>, 뭐가 더 큰지만 보면 됩니다.</p>
+    <p>남은 이자가 수수료보다 크면 <strong>지금 갚는 게 이득</strong>이고, 반대면 그냥 계속 갚는 게 나아요. 이 계산기는 남은 잔액·금리·기간으로 남은 이자를 정확히 계산하고, 중도상환수수료율은 상품마다 달라서 직접 입력받습니다.</p>
+    <p>예를 들어 잔액 3,000만원·금리 5%·24개월 남았는데 수수료율이 1.2%라면, 남은 이자 약 159만원에서 수수료 약 36만원을 빼고 <strong>약 123만원이 남는 이득</strong>이에요.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18"/><path d="M5 8l7-5 7 5"/></svg> 지금 손익 비교하기</a>
+      <a class="ais-btn ghost" href="loan-interest-calc.html">신규 대출 이자는 여기서</a>
+    </div>
+    <div class="ais-links">이어서 보면 좋아요 · <a href="soho-loan-refinancing.html">대출 갈아타기 가이드</a> · <a href="solo-shop-tax-deduction.html">사장님 절세 체크리스트</a></div>
+  </section>
+
+  <!-- ③ 계산기 -->
+  <div class="calc-card" id="calc">
+    <div class="card-title">조기상환 손익 비교</div>
+    <div class="field">
+      <label>남은 대출 잔액 (원)</label>
+      <div class="field-hint">지금 시점에 갚아야 할 원금(대출잔액증명서·인터넷뱅킹에서 확인)</div>
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="lp-balance" value="30,000,000" step="1000000">
+    </div>
+    <div class="field">
+      <label>연 금리 (%)</label>
+      <input type="number" id="lp-rate" value="5" step="0.1">
+    </div>
+    <div class="field">
+      <label>남은 상환기간 (개월)</label>
+      <input type="number" id="lp-months" value="24" step="1">
+    </div>
+    <div class="field">
+      <label>상환방식</label>
+      <div class="field-hint">지금 대출이 어떤 방식으로 상환되고 있는지</div>
+      <select id="lp-method">
+        <option value="equal-payment">원리금균등 (매달 같은 금액)</option>
+        <option value="equal-principal">원금균등 (매달 원금 동일, 이자는 줄어듦)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>중도상환수수료율 (%)</label>
+      <div class="field-hint">상품·은행·대출 경과기간마다 다릅니다. 약정서나 은행 안내에서 확인한 현재 적용 수수료율을 직접 입력하세요(임의로 채우지 않았습니다)</div>
+      <input type="number" id="lp-fee-rate" value="1.2" step="0.1">
+    </div>
+    <button class="btn-calc" onclick="calcPrepayment()">조기상환 손익 비교하기</button>
+  </div>
+
+  <!-- ④ 계산 결과 -->
+  <div id="lp-result" style="display:none;">
+    <div class="result-big" id="lp-result-box">
+      <div class="result-label" id="lp-result-label">비교 결과</div>
+      <div class="result-amount" id="lp-result-amount">0원</div>
+      <div class="result-sub" id="lp-result-sub"></div>
+    </div>
+    <div class="breakdown">
+      <div class="br-row"><span class="br-label">계속 상환 시 남은 이자 총액</span><span class="br-val" id="lp-remaining-interest">0원</span></div>
+      <div class="br-row"><span class="br-label">중도상환수수료 (잔액 × 수수료율)</span><span class="br-val" id="lp-fee">0원</span></div>
+      <div class="br-row"><span class="br-label">순이득(손해)</span><span class="br-val" id="lp-net">0원</span></div>
+      <div class="br-row"><span class="br-label">손익분기 수수료율 (참고)</span><span class="br-val" id="lp-breakeven">0%</span></div>
+    </div>
+    <div class="notice-box strong">이 결과는 <strong>남은 이자 절감액과 중도상환수수료만 비교</strong>한 값입니다. 그 목돈을 다른 곳에 썼을 때 얻을 수 있는 수익(기회비용)은 반영하지 않으니, 다른 활용처가 있다면 그것과도 비교해보고 결정하세요. 중도상환수수료율은 반드시 은행에서 현재 적용 수치를 확인하세요.</div>
+  </div>
+
+  <div class="article-content">
+    <!-- ⑤ 계산 공식 설명 -->
+    <h2>조기상환 유불리는 이렇게 비교합니다</h2>
+    <p>지금 대출을 갚아버리면 앞으로 낼 이자를 안 내도 되지만, 그 대신 <strong>중도상환수수료</strong>를 내야 할 수 있어요. 둘 중 뭐가 더 큰지만 비교하면 됩니다.</p>
+    <div class="formula-box">순이득 = 계속 상환 시 남은 이자 총액 − 중도상환수수료<span class="fx-sub">중도상환수수료 = 남은 대출 잔액 × 중도상환수수료율</span></div>
+    <p>남은 이자 총액은 지금 방식(원리금균등 또는 원금균등)대로 만기까지 계속 갚았을 때 내야 할 이자를 전부 더한 값입니다. 원리금균등은 매달 같은 금액을 내지만 초반엔 이자 비중이 크고, 원금균등은 매달 내는 원금이 같아 이자가 꾸준히 줄어듭니다.</p>
+    <div class="formula-box">손익분기 수수료율 = 남은 이자 총액 ÷ 대출 잔액 × 100<span class="fx-sub">실제 수수료율이 이 값보다 낮으면 조기상환 유리, 높으면 계속 상환이 유리</span></div>
+    <h3>이렇게 계산하세요</h3>
+    <ol class="howto-list">
+      <li>남은 대출 잔액, 연 금리, 남은 상환기간을 입력합니다.</li>
+      <li>지금 대출의 상환방식(원리금균등/원금균등)을 고릅니다.</li>
+      <li>은행에서 확인한 중도상환수수료율을 입력합니다.</li>
+      <li>'조기상환 손익 비교하기'를 누르면 순이득(손해)이 바로 나옵니다.</li>
+    </ol>
+
+    <!-- ⑥ 주요 계산항목 표 -->
+    <h2>원리금균등 vs 원금균등 — 남은 이자 차이</h2>
+    <table class="article-table">
+      <thead><tr><th>상환방식</th><th>매달 내는 돈</th><th>남은 이자 특징</th></tr></thead>
+      <tbody>
+        <tr><td>원리금균등</td><td>매달 동일</td><td>초반 이자 비중이 커서, 상환 초기에 조기상환할수록 절감 효과가 큼</td></tr>
+        <tr><td>원금균등</td><td>매달 원금 동일, 총액은 점점 감소</td><td>이자가 이미 꾸준히 줄어드는 구조라 같은 잔액이면 남은 이자가 원리금균등보다 약간 적음</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-inline"><strong>중도상환수수료, 이렇게 확인하세요:</strong> 은행마다, 상품마다 다르고 대출 실행 후 지난 기간에 따라 줄어드는 경우가 많습니다(3년 경과 후 면제되는 상품도 흔합니다). 정확한 수수료율은 반드시 대출 약정서나 인터넷뱅킹·은행 고객센터에서 확인한 뒤 입력하세요. 이 계산기는 특정 수치를 기본값으로 단정하지 않습니다.</div>
+
+    <!-- ⑦ 실무 예시 -->
+    <h2>실무 예시 — 숫자로 따라가 볼게요</h2>
+    <div class="step-box">
+      <span class="sb-badge">조기상환이 유리한 경우</span>
+      <div class="sb-body">
+        잔액 3,000만원 · 금리 5% · 24개월 남음 · 원리금균등 · 수수료율 1.2%<br>
+        남은 이자 총액 ≈ <strong>158만 7,401원</strong><br>
+        중도상환수수료 = 3,000만 × 1.2% = <strong>36만원</strong><br>
+        → 순이득 = 158만 7,401 − 36만 = <strong>약 122만 7,401원 이득</strong>
+      </div>
+    </div>
+    <div class="step-box">
+      <span class="sb-badge">계속 상환이 유리한 경우</span>
+      <div class="sb-body">
+        같은 조건, 수수료율만 8%로 높은 경우<br>
+        남은 이자 총액 ≈ 158만 7,401원<br>
+        중도상환수수료 = 3,000만 × 8% = <strong>240만원</strong><br>
+        → 순이득 = 158만 7,401 − 240만 = <strong>약 81만 2,599원 손해</strong> — 이 경우는 계속 상환하는 게 낫습니다
+      </div>
+    </div>
+    <p>같은 대출 조건이라도 <strong>중도상환수수료율 하나로 결론이 완전히 바뀝니다.</strong> 그래서 이 계산기에 임의의 수수료율을 기본으로 넣지 않고, 반드시 본인이 확인한 값을 입력하도록 만들었어요.</p>
+
+    <!-- ⑧ FAQ -->
+    <h2 id="faq">자주 묻는 질문</h2>
+    <div class="faq-section">
+      <div class="faq-item"><div class="faq-q">이 계산기는 대출이자 계산기와 뭐가 다른가요?</div><div class="faq-a">대출이자 계산기는 새로 받을 대출의 월 상환액·총이자를 계산합니다. 이 계산기는 이미 쓰고 있는 대출을 지금 조기상환(중도상환)하는 게 이득인지, 남은 이자 절감액과 중도상환수수료를 비교해 판단하는 도구입니다.</div></div>
+      <div class="faq-item"><div class="faq-q">중도상환수수료율은 어떻게 알 수 있나요?</div><div class="faq-a">대출 상품·은행마다 다르고, 대출 실행일로부터 지난 기간에 따라 줄어드는 경우가 많습니다(보통 3년 경과 후 면제되는 상품이 흔합니다). 정확한 수수료율은 대출 약정서나 은행 고객센터·인터넷뱅킹에서 반드시 직접 확인해야 합니다. 이 계산기는 특정 수치를 임의로 넣지 않으니 확인한 값을 입력하세요.</div></div>
+      <div class="faq-item"><div class="faq-q">순이득이 양수면 무조건 갚는 게 맞나요?</div><div class="faq-a">이 계산기는 '남은 이자 절감액 vs 중도상환수수료'만 비교합니다. 그 목돈을 다른 곳(예금·투자·재고 확보 등)에 썼을 때 얻을 수 있는 수익은 반영하지 않으므로, 다른 활용처가 있다면 그 기대수익과도 비교해보고 결정하세요.</div></div>
+      <div class="faq-item"><div class="faq-q">일부만 갚는 부분 중도상환도 계산되나요?</div><div class="faq-a">이 계산기는 잔액 전액을 조기상환하는 경우를 기준으로 계산합니다. 일부만 상환하는 경우에도 같은 방식(절감 이자 vs 수수료 비교)이 적용되지만, 상환 후 남은 대출의 재상환 스케줄이 은행마다 다르게 처리될 수 있어 정확한 금액은 은행에 문의하는 게 안전합니다.</div></div>
+      <div class="faq-item"><div class="faq-q">손익분기 수수료율이 뭔가요?</div><div class="faq-a">지금 조건에서 수수료율이 몇 %까지면 조기상환이 그래도 이득인지 보여주는 참고 수치입니다. 실제 수수료율이 이 값보다 낮으면 조기상환이 유리하고, 높으면 계속 상환하는 쪽이 유리합니다.</div></div>
+    </div>
+  </div>
+
+  <!-- ⑨ 관련 계산기 (5) -->
+  <div class="related-calcs-section">
+    <h2>함께 보면 좋은 계산기</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="loan-interest-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">대출 이자 계산기</div><div class="rcc-desc">월 상환액·총이자</div></div></a>
+      <a class="rel-calc-card" href="income-tax-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span><div class="rcc-body"><div class="rcc-title">종합소득세 계산기</div><div class="rcc-desc">사업소득 예상세액</div></div></a>
+      <a class="rel-calc-card" href="startup-cost-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><div class="rcc-body"><div class="rcc-title">창업비용 계산기</div><div class="rcc-desc">개업 초기자금</div></div></a>
+      <a class="rel-calc-card" href="closure-cost-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><div class="rcc-body"><div class="rcc-title">폐업 비용 계산기</div><div class="rcc-desc">실부담 계산</div></div></a>
+      <a class="rel-calc-card" href="vat-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg></span><div class="rcc-body"><div class="rcc-title">부가세 계산기</div><div class="rcc-desc">납부·환급세액</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑩ 관련 가이드 (5) -->
+  <div class="related-articles-section">
+    <h2>함께 보면 좋은 가이드</h2>
+    <a class="rel-article-item" href="soho-loan-refinancing.html"><span class="rai-num">1</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">소상공인 대출 갈아타기 — 금리 비교부터 신청까지</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="solo-shop-tax-deduction.html"><span class="rai-num">2</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">1인 사장님 절세 체크리스트 — 이건 꼭 챙기세요</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="business-type-change-tax.html"><span class="rai-num">3</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">간이과세 → 일반과세 전환, 뭐가 달라지나</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="durunuri-application.html"><span class="rai-num">4</span><div class="rai-body"><div class="rai-cat">소상공인 지원금</div><div class="rai-title">소상공인 두루누리 신청방법 — 4대 보험료 80% 절약하는 법</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="tax-refund-soho.html"><span class="rai-num">5</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">소상공인 부가세 환급 받는 법 — 놓치기 쉬운 매입공제</div></div><span class="rai-arrow">→</span></a>
+  </div>
+
+  <!-- ⑪ 관련 서식 (3) -->
+  <div class="related-calcs-section">
+    <h2>함께 쓰면 좋은 서식</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="forms.html#tax"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">대출 상환계획표</div><div class="rcc-desc">잔액·이자 기록</div></div></a>
+      <a class="rel-calc-card" href="forms.html#tax"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">지출결의서</div><div class="rcc-desc">자금 사용 정리</div></div></a>
+      <a class="rel-calc-card" href="forms.html#tax"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">거래명세서</div><div class="rcc-desc">매출·매입 내역</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑫ 한 줄 요약 + CTA -->
+  <section class="ai-summary" aria-label="한 줄 요약">
+    <span class="ais-badge">한 줄 요약</span>
+    <p><strong>남은 이자 절감액 vs 중도상환수수료</strong>, 이 둘만 비교하면 지금 갚을지 말지 답이 나옵니다. 수수료율은 상품마다 달라서 반드시 은행에서 확인한 값을 넣으세요.</p>
+    <p>순이득이 크게 나와도 그 목돈의 다른 쓰임새(투자·재고 확보 등)가 있다면 그것과 한 번 더 비교해보고 결정하세요.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18"/><path d="M5 8l7-5 7 5"/></svg> 지금 손익 비교하기</a>
+      <a class="ais-btn ghost" href="loan-interest-calc.html">대출 이자 계산도 확인</a>
+    </div>
+  </section>
+
+  <!-- 직접 계산 CTA -->
+  <div class="cta-box">
+    <h3>지금 대출 갚는 게 이득일까요?</h3>
+    <p>남은 잔액·금리·수수료율만 넣으면 손익이 바로 나옵니다.</p>
+    <a href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18"/><path d="M5 8l7-5 7 5"/></svg> 조기상환 손익 비교하기</a>
+  </div>
+
+  <!-- 하단 자료 출처 -->
+  <div class="calc-sources">
+    <h2>자료 출처</h2>
+    <ul>
+      <li>원리금균등·원금균등 상환 이자 계산 공식 — 표준 금융 일반 공식(월복리 기준)</li>
+      <li>중도상환수수료 산정 방식은 은행·상품별로 다르며, 이 계산기는 특정 수수료율을 기본값으로 단정하지 않고 사용자가 직접 입력한 값만 사용합니다.</li>
+      <li>[확인 필요] 정확한 중도상환수수료율·면제 조건은 대출 약정서 또는 은행(인터넷뱅킹·고객센터)에서 확인하세요.</li>
+    </ul>
+    <p class="cs-updated">기준일: 2026년 9월 · 본 계산기는 참고용이며, 실제 상환 결정은 은행 확인 후 하세요.</p>
+  </div>
+</div>
+
+<button id="back-to-top" aria-label="맨 위로">↑</button>
+<script src="assets/layout.js?v=20260702e" defer></script>
+<script src="sohotip.js?v=20260711a" defer></script>
+<script>
+function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
+function remainingInterestEqualPayment(principal, annualRatePct, months){
+  const r = annualRatePct/100/12;
+  if (r===0) return principal*0;
+  const pmt = principal * r * Math.pow(1+r, months) / (Math.pow(1+r, months) - 1);
+  let balance = principal, totalInterest = 0;
+  for (let i=0;i<months;i++){
+    const interest = balance*r;
+    const principalPaid = pmt - interest;
+    totalInterest += interest;
+    balance -= principalPaid;
+  }
+  return totalInterest;
+}
+function remainingInterestEqualPrincipal(principal, annualRatePct, months){
+  const r = annualRatePct/100/12;
+  const monthlyPrincipal = principal/months;
+  let balance = principal, totalInterest = 0;
+  for (let i=0;i<months;i++){
+    totalInterest += balance*r;
+    balance -= monthlyPrincipal;
+  }
+  return totalInterest;
+}
+function calcPrepayment(){
+  const balance = getRawNumber('lp-balance')||0;
+  const rate = getRawNumber('lp-rate')||0;
+  const months = getRawNumber('lp-months')||1;
+  const method = document.getElementById('lp-method').value;
+  const feeRate = (getRawNumber('lp-fee-rate')||0)/100;
+
+  const remainingInterest = method==='equal-payment'
+    ? remainingInterestEqualPayment(balance, rate, months)
+    : remainingInterestEqualPrincipal(balance, rate, months);
+  const fee = balance * feeRate;
+  const net = remainingInterest - fee;
+  const breakEven = balance>0 ? remainingInterest/balance*100 : 0;
+
+  document.getElementById('lp-remaining-interest').textContent = fmt(remainingInterest);
+  document.getElementById('lp-fee').textContent = fmt(fee);
+  document.getElementById('lp-net').textContent = (net>=0?'+':'-')+fmt(Math.abs(net));
+  document.getElementById('lp-breakeven').textContent = breakEven.toFixed(3)+'%';
+
+  const box = document.getElementById('lp-result-box');
+  const favorable = net >= 0;
+  box.className = 'result-big '+(favorable?'ok':'no');
+  document.getElementById('lp-result-label').textContent = favorable ? '지금 갚는 게 유리합니다' : '계속 상환하는 게 유리합니다';
+  document.getElementById('lp-result-amount').textContent = (favorable?'+':'-')+fmt(Math.abs(net));
+  document.getElementById('lp-result-sub').textContent = favorable
+    ? '남은 이자 절감액이 중도상환수수료보다 큽니다'
+    : '중도상환수수료가 남은 이자 절감액보다 큽니다';
+
+  document.getElementById('lp-result').style.display='block';
+}
+</script>
+<footer>
+  <a href="index.html">홈</a><a href="category.html">카테고리</a><a href="tools.html">계산기 모음</a>
+  <p style="margin-top:12px;">© 2026 소호팁. 본 계산기는 참고용이며 실제 상환 결정은 은행 확인 후 하세요.</p>
+</footer>
+<script src="network.js?v=20260711a" defer></script>
+</body>
+</html>

@@ -606,6 +606,7 @@ const RECO_CALCS = [
   { slug: 'eitc-eligibility-calc.html', icon: '✅', title: '근로장려금 계산기',     badge: '소상공인 지원금', desc: '가구유형·총소득·재산 → 2026년 기준 소득·재산 요건 자가진단', cats: ['소상공인 지원금', '창업·세금'], inline: null, pop: 26 },
   { slug: 'inventory-turnover-calc.html', icon: '📦', title: '재고 회전율 계산기', badge: '매출·수익', desc: '기초·기말재고·매출원가 → 재고회전율·회전일수, 목표 대비 적정재고 계산', cats: ['창업·세금'], inline: null, pop: 27 },
   { slug: 'target-customers-calc.html', icon: '🎯', title: '필요 손님 수 계산기', badge: '매출·수익', desc: '고정비·변동비율·목표이익·객단가 → 목표 달성에 필요한 손님 수·좌석 회전율 계산', cats: ['창업·세금'], inline: null, pop: 28 },
+  { slug: 'loan-prepayment-calc.html', icon: '⚖️', title: '대출 조기상환 계산기', badge: '세무·법률', desc: '남은 대출 잔액·중도상환수수료율 → 지금 갚는 게 이득인지 손익 비교', cats: ['창업·세금'], inline: null, pop: 29 },
 ];
 
 /* 카테고리별 추천 계산기 매핑 (게시글 → 함께 쓰는 계산기) */
