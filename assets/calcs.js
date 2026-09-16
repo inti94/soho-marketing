@@ -29,6 +29,7 @@ window.SOHO_CALCS = [
     {cat:'매출',name:'손익분기점(BEP) 계산기',desc:'고정비·변동비율 → 최소 목표 매출과 일 매출 목표 계산',href:'bep-calc.html',icon:'TrendingUp',color:'#FFB800',tags:['BEP','손익분기','고정비'],views:5180},
     {cat:'매출',name:'매장 수익성 계산기',desc:'월 매출·비용 → 영업이익률·순이익·목표 손님 수 계산',href:'store-profit-calc.html',icon:'BarChart2',color:'#3D5AFE',tags:['매출','이익률','순이익'],views:3320,isNew:true},
     {cat:'매출',name:'네이버 플레이스 광고비 계산기',desc:'예산·CPC·전환율 → 예상 방문 고객과 고객 1명당 광고비 계산',href:'naver-ads-calc.html',icon:'MapPin',color:'#00C471',tags:['플레이스','CPC','광고'],views:2740,isNew:true},
+    {cat:'매출',name:'재고 회전율 계산기',desc:'기초·기말재고·매출원가 → 재고회전율·회전일수, 목표 대비 적정재고까지 계산',href:'inventory-turnover-calc.html',icon:'Package',color:'#8B5CF6',tags:['재고회전율','회전일수','적정재고'],views:0,isNew:true},
     {cat:'세금',name:'부가세 계산기',desc:'매출·매입 입력 → 납부세액 또는 환급액 즉시 계산',href:'vat-calc.html',icon:'Receipt',color:'#00C471',tags:['부가세','납부세액','환급'],views:7625,isHot:true},
     {cat:'세금',name:'임대료 인상 상한 계산기',desc:'현재 월세 → 법정 5% 상한 기준 최대 인상 가능액',href:'rent-increase-calc.html',icon:'Home',color:'#F04452',tags:['임대료','5%상한'],views:4110},
     {cat:'세금',name:'정책자금 이자 계산기',desc:'대출금·금리·기간 → 월 상환액·총이자·총 상환액 계산',href:'loan-interest-calc.html',icon:'Banknote',color:'#00B8D9',tags:['정책자금','대출','이자'],views:3560},

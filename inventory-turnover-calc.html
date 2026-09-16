@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="재고 회전율 계산기. 기초·기말재고와 매출원가를 넣으면 재고회전율·회전일수를 즉시 계산하고, 목표 회전일수 대비 적정재고까지 확인합니다.">
+<meta name="keywords" content="재고회전율 계산기, 재고 회전일수, 적정재고 계산, 평균재고, 매출원가, 재고자산회전율">
+<meta name="robots" content="index, follow">
+<meta name="author" content="소호팁">
+<meta name="date" content="2026-09-16">
+<meta property="og:type" content="website">
+<meta property="og:title" content="재고 회전율 계산기 — 회전일수·적정재고 (2026) | 소호팁">
+<meta property="og:description" content="기초·기말재고와 매출원가를 넣으면 재고회전율·회전일수와 목표 대비 적정재고를 즉시 계산합니다.">
+<meta property="og:url" content="https://sohotip.co.kr/inventory-turnover-calc.html">
+<meta property="og:image" content="https://sohotip.co.kr/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="소호팁">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="재고 회전율 계산기 — 회전일수·적정재고 (2026) | 소호팁">
+<meta name="twitter:description" content="기초·기말재고와 매출원가를 넣으면 재고회전율·회전일수와 목표 대비 적정재고를 즉시 계산합니다.">
+<meta name="twitter:image" content="https://sohotip.co.kr/og-image.png">
+<meta name="naver-site-verification" content="d7369feb5de3df4cce2e9016b84ad045c4ed70a4">
+<link rel="canonical" href="https://sohotip.co.kr/inventory-turnover-calc.html">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sohotip.co.kr/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
+<link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
+<title>재고 회전율 계산기 — 회전일수·적정재고 자동계산 (2026) | 소호팁</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "재고 회전율 계산기",
+    "description": "기초·기말재고와 매출원가로 평균재고·재고회전율·회전일수를 계산하고, 목표 회전일수 대비 적정재고까지 확인하는 무료 계산기.",
+    "url": "https://sohotip.co.kr/inventory-turnover-calc.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "KRW"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "소호팁",
+      "url": "https://sohotip.co.kr"
+    },
+    "dateModified": "2026-09-16",
+    "inLanguage": "ko-KR",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"홈","item":"https://sohotip.co.kr/"},
+        {"@type":"ListItem","position":2,"name":"계산기","item":"https://sohotip.co.kr/tools.html"},
+        {"@type":"ListItem","position":3,"name":"재고 회전율 계산기","item":"https://sohotip.co.kr/inventory-turnover-calc.html"}
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "재고 회전율 계산하는 법",
+    "description": "기초재고·기말재고·매출원가를 입력해 평균재고·재고회전율·회전일수를 계산하는 방법.",
+    "totalTime": "PT1M",
+    "step": [
+      {"@type":"HowToStep","position":1,"name":"기초·기말재고 입력","text":"분석 기간의 시작 시점과 끝 시점 재고자산 금액을 입력합니다.","url":"https://sohotip.co.kr/inventory-turnover-calc.html#calc"},
+      {"@type":"HowToStep","position":2,"name":"매출원가·기간 입력","text":"해당 기간의 매출원가와 분석 기간(일수)을 입력합니다.","url":"https://sohotip.co.kr/inventory-turnover-calc.html#calc"},
+      {"@type":"HowToStep","position":3,"name":"계산하기","text":"'회전율 계산하기'를 누르면 평균재고·회전율·회전일수가 바로 나옵니다.","url":"https://sohotip.co.kr/inventory-turnover-calc.html#calc"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"재고회전율은 어떻게 계산하나요?","acceptedAnswer":{"@type":"Answer","text":"재고회전율 = 매출원가 ÷ 평균재고. 평균재고는 (기초재고 + 기말재고) ÷ 2로 구합니다. 회전율이 높을수록 재고가 빨리 팔려나간다는 뜻입니다."}},
+      {"@type":"Question","name":"재고회전일수는 뭔가요?","acceptedAnswer":{"@type":"Answer","text":"재고회전일수 = 분석 기간(일수) ÷ 재고회전율. 재고를 한 번 다 파는 데 평균 며칠이 걸리는지를 나타냅니다. 연간 기준이면 365를 회전율로 나눕니다."}},
+      {"@type":"Question","name":"매출원가 대신 매출액으로 계산해도 되나요?","acceptedAnswer":{"@type":"Answer","text":"정확한 재고회전율은 매출원가 기준입니다. 매출원가를 따로 관리하지 않는 소규모 매장이라면 매출액으로 대신 계산할 수도 있지만, 이 경우 마진율만큼 회전율이 실제보다 부풀려집니다. 참고용으로만 활용하세요."}},
+      {"@type":"Question","name":"업종별 적정 회전율 기준이 있나요?","acceptedAnswer":{"@type":"Answer","text":"업종별로 흔히 참고되는 범위는 있지만(신선식품 위주 외식업은 빠르고, 의류·가전은 느린 편), 매장 규모·상품 구성·발주 주기에 따라 편차가 커서 정답이라 할 수 없습니다. 일반적 참고치로만 보고, 본인 매장의 과거 추이와 비교하는 게 더 정확합니다."}},
+      {"@type":"Question","name":"회전일수가 길면 무조건 나쁜 건가요?","acceptedAnswer":{"@type":"Answer","text":"꼭 그렇지는 않습니다. 회전일수가 짧으면 재고 부담은 적지만 품절 위험이 커지고, 길면 재고 부담(보관비·재고 손실·자금 묶임)이 커지는 대신 품절은 줄어듭니다. 업종과 상품 특성에 맞는 균형점을 찾는 게 중요합니다."}}
+    ]
+  }
+  </script>
+<link rel="stylesheet" href="sohotip.css?v=20260711a">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/theme.css?v=20260711a">
+<link rel="stylesheet" href="assets/calc.css?v=20260711a">
+<style>
+:root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--sans:'Noto Sans KR',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-size:13px;color:var(--text-muted);text-decoration:none;}
+.nav-links a:hover{color:var(--primary);}
+@media(max-width:640px){.nav-links{display:none;}}
+.page-wrap{max-width:680px;margin:0 auto;padding:40px 2rem 80px;}
+.page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:24px;line-height:1.6;}
+.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px;}
+.card-title{font-size:13px;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:20px;}
+.field{margin-bottom:18px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;}
+.field-hint{font-size:11px;color:var(--text-muted);margin-bottom:6px;}
+.field input,.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;}
+.field input:focus,.field select:focus{border-color:var(--primary);}
+.result-big{text-align:center;padding:32px;border-radius:16px;margin-bottom:20px;background:var(--primary-light);border:2px solid var(--primary);}
+.result-label{font-size:14px;margin-bottom:8px;}
+.result-amount{font-size:40px;font-weight:700;color:var(--primary);}
+.result-sub{font-size:13px;color:var(--text-muted);margin-top:6px;}
+.breakdown{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px;}
+.br-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.br-row:last-child{border:none;font-weight:700;font-size:15px;}
+.br-label{color:var(--text-muted);}
+.br-val{font-weight:500;}
+.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);margin-top:8px;}
+.btn-calc:hover{background:var(--primary-mid);}
+.tag{display:inline-block;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+.tag svg{width:13px;height:13px;vertical-align:-2px;margin-right:2px;}
+.notice-box{background:var(--primary-light);border-radius:12px;padding:16px 20px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
+footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
+footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
+
+/* ── 함께 사용한 계산기 ── */
+.related-calcs-section{margin:32px 0 0;}
+.related-calcs-section h2,.related-articles-section h2{font-size:16px;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.rel-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.rel-calc-card{display:flex;align-items:center;gap:10px;padding:14px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s;}
+.rel-calc-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 14px rgba(61,90,254,.12);}
+.rcc-icon{flex-shrink:0;width:24px;height:24px;display:flex;align-items:center;justify-content:center;}
+.rcc-icon svg{width:22px;height:22px;stroke:var(--primary);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+.rcc-body{flex:1;min-width:0;}
+.rcc-title{font-size:12px;font-weight:700;line-height:1.3;margin-bottom:3px;}
+.rcc-desc{font-size:11px;color:var(--text-muted);line-height:1.4;}
+/* ── 함께 많이 본 글 ── */
+.related-articles-section{margin:24px 0 0;}
+.rel-article-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);transition:color .2s;}
+.rel-article-item:last-child{border-bottom:none;}
+.rel-article-item:hover .rai-title{color:var(--primary);}
+.rai-num{font-size:18px;font-weight:900;color:var(--border);width:24px;flex-shrink:0;text-align:center;}
+.rai-body{flex:1;min-width:0;}
+.rai-cat{font-size:10px;color:var(--primary);font-weight:700;margin-bottom:2px;}
+.rai-title{font-size:13px;font-weight:600;line-height:1.4;}
+.rai-arrow{color:var(--primary);font-size:14px;flex-shrink:0;}
+@media(max-width:640px){
+  .rel-calc-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:380px){
+  .rel-calc-grid{grid-template-columns:1fr;}
+}
+
+/* ── 공통 12블록: 설명 콘텐츠 ── */
+.article-content{margin-top:36px;}
+.article-content h2{font-size:20px;font-weight:800;color:var(--text);margin:34px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-.01em;}
+.article-content h3{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}
+.article-content p{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:16px;word-break:keep-all;overflow-wrap:anywhere;}
+.article-content strong{font-weight:700;color:var(--primary);}
+.article-content ul{margin:14px 0 18px 18px;}
+.article-content li{font-size:15px;line-height:1.8;margin-bottom:6px;}
+.formula-box{background:#191F28;color:#fff;border-radius:14px;padding:20px 22px;margin:8px 0 18px;font-size:15px;font-weight:600;line-height:1.7;text-align:center;}
+.formula-box .fx-sub{display:block;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);margin-top:8px;}
+.tip-inline{background:var(--primary-light);border-radius:12px;padding:14px 18px;margin:8px 0 18px;font-size:14px;color:var(--primary-mid);line-height:1.7;}
+.tip-inline strong{color:var(--primary);}
+.step-box{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin:8px 0 18px;}
+.step-box .sb-badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--primary);padding:3px 11px;border-radius:20px;margin-bottom:10px;}
+.step-box .sb-body{font-size:14.5px;line-height:1.8;color:var(--text);}
+.howto-list{counter-reset:howto;list-style:none;margin:8px 0 18px;padding:0;}
+.howto-list li{position:relative;padding:12px 16px 12px 46px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;margin-bottom:8px;font-size:14px;line-height:1.7;color:var(--text);}
+.howto-list li::before{counter-increment:howto;content:counter(howto);position:absolute;left:14px;top:12px;width:22px;height:22px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.article-table{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:13.5px;}
+.article-table th,.article-table td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.6;word-break:keep-all;}
+.article-table th{background:#F4F6FB;font-weight:700;color:var(--text);}
+.article-table td:first-child{font-weight:600;}
+.faq-section{margin-top:8px;}
+.faq-item{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;background:var(--bg-card);}
+.faq-q{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:7px;}
+.faq-q::before{content:"Q. ";color:var(--primary);}
+.faq-a{font-size:13.5px;color:var(--text-muted);line-height:1.75;word-break:keep-all;overflow-wrap:anywhere;}
+/* 직접계산 CTA */
+.cta-box{margin-top:34px;background:linear-gradient(135deg,#3D5AFE,#536DFE);border-radius:18px;padding:26px 22px;text-align:center;color:#fff;}
+.cta-box h3{font-size:18px;font-weight:800;margin-bottom:6px;}
+.cta-box p{font-size:13.5px;opacity:.85;margin-bottom:16px;line-height:1.6;}
+.cta-box a{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--primary);font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;text-decoration:none;transition:transform .12s;}
+.cta-box a svg{width:17px;height:17px;stroke:var(--primary);fill:none;stroke-width:2;}
+.cta-box a:active{transform:scale(.97);}
+/* ⑫ 하단 자료 출처 */
+.calc-sources{margin:30px 0 0;padding:18px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;}
+.calc-sources h2{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;}
+.calc-sources ul{list-style:none;margin:0;padding:0;}
+.calc-sources li{font-size:12.5px;color:var(--text-muted);line-height:1.75;padding-left:14px;position:relative;}
+.calc-sources li::before{content:"·";position:absolute;left:2px;color:var(--primary);font-weight:700;}
+.calc-sources a{color:var(--primary);text-decoration:none;}
+.calc-sources a:hover{text-decoration:underline;}
+.calc-sources .cs-updated{font-size:11px;color:var(--text-muted);margin-top:10px;}
+.ai-summary .ais-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+</style></head>
+<body>
+<div id="progress-bar"></div>
+<nav>
+  <a href="index.html" class="nav-logo" aria-label="소호팁 홈"><img src="assets/logo.svg?v=20260702d" alt="소호팁" width="99" height="30" style="display:block"></a>
+  <ul class="nav-links">
+    <li><a href="category.html">카테고리</a></li>
+    <li><a href="tools.html">계산기</a></li>
+  </ul>
+</nav>
+<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
+<div class="mobile-search-bar">
+  <div class="nav-search">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="search-input-mobile" class="nav-search-input" placeholder="궁금한 주제를 검색하세요..." autocomplete="off">
+    <div id="search-dropdown-mobile"></div>
+  </div>
+</div>
+
+<div class="page-wrap">
+  <!-- ① 제목 -->
+  <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg> 재고 회전율 계산기</span>
+  <h1 class="page-title">재고 회전율 계산기</h1>
+  <p class="page-desc">기초·기말재고와 매출원가를 입력하면 평균재고·재고회전율·회전일수를 즉시 계산합니다. 목표 회전일수를 넣으면 적정재고와 비교도 됩니다. (예: 기초 2,000만 · 기말 3,000만 · 매출원가 3억 → 회전율 12회·회전일수 30.4일)</p>
+
+  <!-- ② 30초 요약 -->
+  <section class="ai-summary" aria-label="30초 핵심 요약">
+    <span class="ais-badge">핵심 요약 · 30초 컷</span>
+    <p>재고가 창고에 쌓여만 있으면 그게 다 묶인 돈이에요. <strong>재고회전율</strong>은 그 재고가 1년(또는 정한 기간) 동안 몇 번이나 팔려나갔는지를 보여줍니다. 계산은 딱 한 줄, <strong>매출원가 ÷ 평균재고</strong>예요.</p>
+    <p>회전율을 일수로 바꾼 게 <strong>회전일수</strong>입니다. "재고 한 바퀴 도는 데 며칠 걸리나"를 알려줘요. 회전율 12회면 365일÷12=약 30일, 재고가 평균 한 달이면 한 번 소진된다는 뜻이에요.</p>
+    <p>회전일수가 너무 길면 자금이 재고에 오래 묶여있는 거고, 너무 짧으면 품절 위험이 커요. 업종마다 적정선이 다르니(신선식품은 짧게, 의류·가전은 길게) 일반 참고치로만 보고 본인 매장 추이와 비교하는 게 정확합니다.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/></svg> 회전율 바로 계산</a>
+      <a class="ais-btn ghost" href="food-cost-calc.html">원가율도 확인</a>
+    </div>
+    <div class="ais-links">이어서 보면 좋아요 · <a href="bep-calc.html">손익분기점 계산기</a> · <a href="store-profit-calc.html">매장 수익성 계산기</a></div>
+  </section>
+
+  <!-- ③ 계산기 -->
+  <div class="calc-card" id="calc">
+    <div class="card-title">재고 회전율·회전일수 계산</div>
+    <div class="field">
+      <label>기초재고 (원)</label>
+      <div class="field-hint">분석 기간 시작 시점의 재고자산 금액</div>
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="inv-begin" value="20,000,000" step="1000000">
+    </div>
+    <div class="field">
+      <label>기말재고 (원)</label>
+      <div class="field-hint">분석 기간 끝 시점의 재고자산 금액</div>
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="inv-end" value="30,000,000" step="1000000">
+    </div>
+    <div class="field">
+      <label>매출원가 (기간 합계, 원)</label>
+      <div class="field-hint">해당 기간에 실제로 판매된 상품의 원가 합계 (매출액 아님)</div>
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="inv-cogs" value="300,000,000" step="1000000">
+    </div>
+    <div class="field">
+      <label>분석 기간 (일수)</label>
+      <div class="field-hint">연간이면 365, 월간이면 30, 분기면 90</div>
+      <input type="text" inputmode="numeric" pattern="[0-9]*" id="inv-days" value="365" step="1">
+    </div>
+    <div class="field">
+      <label>목표 회전일수 (일, 선택)</label>
+      <div class="field-hint">비교하고 싶은 목표치가 있으면 입력 — 없으면 비워두세요</div>
+      <input type="text" inputmode="numeric" pattern="[0-9]*" id="inv-target" value="" placeholder="예: 20" step="1">
+    </div>
+    <button class="btn-calc" onclick="calcInventory()">회전율 계산하기</button>
+  </div>
+
+  <!-- ④ 계산 결과 -->
+  <div id="inv-result" style="display:none;">
+    <div class="result-big">
+      <div class="result-label">재고회전율</div>
+      <div class="result-amount" id="inv-ratio">0회</div>
+      <div class="result-sub" id="inv-days-sub"></div>
+    </div>
+    <div class="breakdown">
+      <div class="br-row"><span class="br-label">평균재고 ((기초+기말)÷2)</span><span class="br-val" id="inv-avg">0원</span></div>
+      <div class="br-row"><span class="br-label">재고회전율 (매출원가÷평균재고)</span><span class="br-val" id="inv-ratio2">0회</span></div>
+      <div class="br-row"><span class="br-label">재고회전일수</span><span class="br-val" id="inv-days-out">0일</span></div>
+    </div>
+    <div id="inv-target-box" class="breakdown" style="display:none;">
+      <div class="br-row"><span class="br-label">목표 회전일수 기준 적정 평균재고</span><span class="br-val" id="inv-target-avg">0원</span></div>
+      <div class="br-row"><span class="br-label">실제 평균재고와의 차이</span><span class="br-val" id="inv-target-diff">0원</span></div>
+    </div>
+    <div class="notice-box">회전일수가 길다고 무조건 나쁜 것도, 짧다고 무조건 좋은 것도 아닙니다. 업종·상품 특성에 맞는 균형점을 찾는 참고 지표로 활용하세요.</div>
+  </div>
+
+  <div class="article-content">
+    <!-- ⑤ 계산 공식 설명 -->
+    <h2>재고 회전율은 이렇게 계산됩니다</h2>
+    <p>재고 회전율은 <strong>재고가 일정 기간 동안 몇 번 팔려나갔는지</strong>를 보여주는 표준 재무 지표입니다. 평균재고를 먼저 구하고, 매출원가를 그걸로 나눕니다.</p>
+    <div class="formula-box">평균재고 = (기초재고 + 기말재고) ÷ 2<span class="fx-sub">재고회전율(회) = 매출원가 ÷ 평균재고</span></div>
+    <div class="formula-box">재고회전일수(일) = 분석 기간(일수) ÷ 재고회전율<span class="fx-sub">= 평균재고 ÷ 매출원가 × 분석 기간(일수)</span></div>
+    <p>목표로 하는 회전일수가 있다면, 그 일수를 유지하기 위한 <strong>적정 평균재고</strong>도 거꾸로 계산할 수 있습니다.</p>
+    <div class="formula-box">적정 평균재고 = 매출원가 ÷ 분석 기간(일수) × 목표 회전일수</div>
+    <h3>이렇게 계산하세요</h3>
+    <ol class="howto-list">
+      <li>분석 기간의 기초재고·기말재고 금액을 입력합니다.</li>
+      <li>같은 기간의 매출원가(판매된 상품의 원가)를 입력합니다.</li>
+      <li>분석 기간을 일수로 입력합니다(연간 365, 월간 30 등).</li>
+      <li>목표로 하는 회전일수가 있으면 함께 입력해 적정재고와 비교합니다.</li>
+    </ol>
+
+    <!-- ⑥ 주요 계산항목 표 -->
+    <h2>업종별 회전율·회전일수 일반 참고치</h2>
+    <table class="article-table">
+      <thead><tr><th>업종 성격</th><th>회전율(연간, 참고)</th><th>회전일수(참고)</th></tr></thead>
+      <tbody>
+        <tr><td>신선식품·외식업(식자재 위주)</td><td>약 30~80회</td><td>약 5~12일</td></tr>
+        <tr><td>일반 소매·편의점</td><td>약 8~15회</td><td>약 24~46일</td></tr>
+        <tr><td>의류·패션 소매</td><td>약 3~6회</td><td>약 60~120일</td></tr>
+        <tr><td>가전·가구 등 내구재</td><td>약 4~8회</td><td>약 45~90일</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-inline"><strong>단정 아닌 참고치입니다:</strong> 위 범위는 업계에서 통상적으로 언급되는 대략적인 감각치이며, 특정 기관의 공식 통계가 아닙니다. 매장 규모·상품 구성·발주 주기·지역 상권에 따라 편차가 매우 큽니다. 본인 업종의 정확한 기준보다는, <strong>이번 달 vs 지난달, 올해 vs 작년</strong>처럼 본인 매장의 추이를 비교하는 데 더 유용합니다.</div>
+
+    <!-- ⑦ 실무 예시 -->
+    <h2>실무 예시 — 숫자로 따라가 볼게요</h2>
+    <div class="step-box">
+      <span class="sb-badge">일반 소매 · 연간 기준</span>
+      <div class="sb-body">
+        기초재고 2,000만원 · 기말재고 3,000만원 · 연간 매출원가 3억원<br>
+        평균재고 = (2,000만+3,000만)÷2 = <strong>2,500만원</strong><br>
+        재고회전율 = 3억÷2,500만 = <strong>12회</strong><br>
+        회전일수 = 365÷12 ≈ <strong>30.4일</strong> — 한 달 정도면 재고가 한 바퀴 돕니다
+      </div>
+    </div>
+    <div class="step-box">
+      <span class="sb-badge">신선식품 카페 · 연간 기준</span>
+      <div class="sb-body">
+        기초재고 300만원 · 기말재고 500만원 · 연간 매출원가 8,000만원<br>
+        평균재고 = (300만+500만)÷2 = <strong>400만원</strong><br>
+        재고회전율 = 8,000만÷400만 = <strong>20회</strong><br>
+        회전일수 = 365÷20 ≈ <strong>18.3일</strong>
+      </div>
+    </div>
+    <div class="step-box">
+      <span class="sb-badge">목표 대비 비교 · 첫 예시에 목표 20일 적용</span>
+      <div class="sb-body">
+        매출원가 3억원 ÷ 365일 × 목표 20일 = 적정 평균재고 <strong>약 1,644만원</strong><br>
+        실제 평균재고 2,500만원 − 적정 1,644만원 = <strong>약 856만원 초과</strong><br>
+        → 목표(20일)보다 재고가 다소 여유 있게 쌓여 있는 편(참고용)
+      </div>
+    </div>
+
+    <!-- ⑧ FAQ -->
+    <h2 id="faq">자주 묻는 질문</h2>
+    <div class="faq-section">
+      <div class="faq-item"><div class="faq-q">재고회전율은 어떻게 계산하나요?</div><div class="faq-a">재고회전율 = 매출원가 ÷ 평균재고. 평균재고는 (기초재고 + 기말재고) ÷ 2로 구합니다. 회전율이 높을수록 재고가 빨리 팔려나간다는 뜻입니다.</div></div>
+      <div class="faq-item"><div class="faq-q">재고회전일수는 뭔가요?</div><div class="faq-a">재고회전일수 = 분석 기간(일수) ÷ 재고회전율. 재고를 한 번 다 파는 데 평균 며칠이 걸리는지를 나타냅니다. 연간 기준이면 365를 회전율로 나눕니다.</div></div>
+      <div class="faq-item"><div class="faq-q">매출원가 대신 매출액으로 계산해도 되나요?</div><div class="faq-a">정확한 재고회전율은 매출원가 기준입니다. 매출원가를 따로 관리하지 않는 소규모 매장이라면 매출액으로 대신 계산할 수도 있지만, 이 경우 마진율만큼 회전율이 실제보다 부풀려집니다. 참고용으로만 활용하세요.</div></div>
+      <div class="faq-item"><div class="faq-q">업종별 적정 회전율 기준이 있나요?</div><div class="faq-a">업종별로 흔히 참고되는 범위는 있지만(신선식품 위주 외식업은 빠르고, 의류·가전은 느린 편), 매장 규모·상품 구성·발주 주기에 따라 편차가 커서 정답이라 할 수 없습니다. 일반적 참고치로만 보고, 본인 매장의 과거 추이와 비교하는 게 더 정확합니다.</div></div>
+      <div class="faq-item"><div class="faq-q">회전일수가 길면 무조건 나쁜 건가요?</div><div class="faq-a">꼭 그렇지는 않습니다. 회전일수가 짧으면 재고 부담은 적지만 품절 위험이 커지고, 길면 재고 부담(보관비·재고 손실·자금 묶임)이 커지는 대신 품절은 줄어듭니다. 업종과 상품 특성에 맞는 균형점을 찾는 게 중요합니다.</div></div>
+    </div>
+  </div>
+
+  <!-- ⑨ 관련 계산기 (5) -->
+  <div class="related-calcs-section">
+    <h2>함께 보면 좋은 계산기</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="food-cost-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 2h6l2 20H5z"/><path d="M15 2v20"/><path d="M15 8h6"/></svg></span><div class="rcc-body"><div class="rcc-title">메뉴 원가율 계산기</div><div class="rcc-desc">원가율·마진율</div></div></a>
+      <a class="rel-calc-card" href="bep-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><div class="rcc-body"><div class="rcc-title">손익분기점 계산기</div><div class="rcc-desc">최소 목표 매출</div></div></a>
+      <a class="rel-calc-card" href="store-profit-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><div class="rcc-body"><div class="rcc-title">매장 수익성 계산기</div><div class="rcc-desc">영업이익률·순이익</div></div></a>
+      <a class="rel-calc-card" href="startup-cost-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><div class="rcc-body"><div class="rcc-title">창업비용 계산기</div><div class="rcc-desc">개업 초기자금</div></div></a>
+      <a class="rel-calc-card" href="card-fee-calc.html"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span><div class="rcc-body"><div class="rcc-title">카드수수료 계산기</div><div class="rcc-desc">카드매출 실수령액</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑩ 관련 가이드 (5) -->
+  <div class="related-articles-section">
+    <h2>함께 보면 좋은 가이드</h2>
+    <a class="rel-article-item" href="food-poisoning-prevention.html"><span class="rai-num">1</span><div class="rai-body"><div class="rai-cat">매출·수익</div><div class="rai-title">여름 음식점 식중독 예방 — 사장님이 꼭 알아야 할 위생 관리</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="cafe-startup-real-cost.html"><span class="rai-num">2</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">카페 창업 비용 현실 — 10평·20평·30평별 실제 비용 총정리</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="solo-shop-tax-deduction.html"><span class="rai-num">3</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">1인 사장님 절세 체크리스트 — 이건 꼭 챙기세요</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="store-cleaning-business-tips.html"><span class="rai-num">4</span><div class="rai-body"><div class="rai-cat">매출·수익</div><div class="rai-title">가게 청소 체크리스트 — 100점 위생 등급 & 단골 만드는 노하우</div></div><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="card-sales-tax-audit.html"><span class="rai-num">5</span><div class="rai-body"><div class="rai-cat">창업·세금</div><div class="rai-title">카드매출 세무조사 — 사장님이 조심해야 할 것</div></div><span class="rai-arrow">→</span></a>
+  </div>
+
+  <!-- ⑪ 관련 서식 (3) -->
+  <div class="related-calcs-section">
+    <h2>함께 쓰면 좋은 서식</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="forms.html#tax"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">재고관리표</div><div class="rcc-desc">기초·기말재고 기록</div></div></a>
+      <a class="rel-calc-card" href="forms.html#tax"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">거래명세서</div><div class="rcc-desc">매출·매입 내역</div></div></a>
+      <a class="rel-calc-card" href="forms.html#tax"><span class="rcc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span><div class="rcc-body"><div class="rcc-title">지출결의서</div><div class="rcc-desc">매입 경비 정리</div></div></a>
+    </div>
+  </div>
+
+  <!-- ⑫ 한 줄 요약 + CTA -->
+  <section class="ai-summary" aria-label="한 줄 요약">
+    <span class="ais-badge">한 줄 요약</span>
+    <p><strong>재고회전율 = 매출원가 ÷ 평균재고</strong>, 회전일수는 그걸 날짜로 바꾼 것뿐이에요. 숫자 자체보다 지난달·작년과 비교해 늘었는지 줄었는지를 보는 게 더 유용합니다.</p>
+    <p>회전일수가 계속 길어지고 있다면 과잉 발주나 안 팔리는 재고가 쌓이고 있다는 신호일 수 있어요. 위 계산기로 정기적으로 체크해보세요.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/></svg> 지금 회전율 계산하기</a>
+      <a class="ais-btn ghost" href="bep-calc.html">손익분기점도 확인</a>
+    </div>
+  </section>
+
+  <!-- 직접 계산 CTA -->
+  <div class="cta-box">
+    <h3>우리 매장 재고, 잘 돌고 있을까요?</h3>
+    <p>기초·기말재고와 매출원가만 넣으면 회전율·회전일수가 바로 나옵니다.</p>
+    <a href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/></svg> 회전율 바로 계산하기</a>
+  </div>
+
+  <!-- 하단 자료 출처 -->
+  <div class="calc-sources">
+    <h2>자료 출처</h2>
+    <ul>
+      <li>재고자산회전율·회전일수 계산 공식 — 표준 재무비율 분석(관리회계 일반 공식, 평균재고=(기초+기말)÷2 기준)</li>
+      <li>업종별 회전율 참고치는 특정 기관의 공식 통계가 아닌 업계에서 통상적으로 언급되는 일반 참고 범위입니다. 정확한 기준이 필요하면 업종 협회·동종업계 데이터를 별도로 확인하세요.</li>
+    </ul>
+    <p class="cs-updated">기준일: 2026년 9월 · 본 계산기는 참고용이며, 실제 재고 관리 판단은 매장 상황에 맞춰 종합적으로 하세요.</p>
+  </div>
+</div>
+
+<button id="back-to-top" aria-label="맨 위로">↑</button>
+<script src="assets/layout.js?v=20260702e" defer></script>
+<script src="sohotip.js?v=20260711a" defer></script>
+<script>
+function fmt(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
+function calcInventory(){
+  const begin = getRawNumber('inv-begin')||0;
+  const end = getRawNumber('inv-end')||0;
+  const cogs = getRawNumber('inv-cogs')||0;
+  const days = getRawNumber('inv-days')||365;
+  const targetDaysRaw = document.getElementById('inv-target').value;
+  const targetDays = targetDaysRaw ? (parseFloat(targetDaysRaw)||0) : 0;
+
+  const avgInv = (begin+end)/2;
+  const ratio = avgInv>0 ? cogs/avgInv : 0;
+  const turnoverDays = cogs>0 ? avgInv/cogs*days : 0;
+
+  document.getElementById('inv-ratio').textContent = ratio.toFixed(2)+'회';
+  document.getElementById('inv-ratio2').textContent = ratio.toFixed(2)+'회';
+  document.getElementById('inv-avg').textContent = fmt(avgInv);
+  document.getElementById('inv-days-out').textContent = turnoverDays.toFixed(1)+'일';
+  document.getElementById('inv-days-sub').textContent = '재고 한 바퀴 도는 데 평균 '+turnoverDays.toFixed(1)+'일';
+
+  const targetBox = document.getElementById('inv-target-box');
+  if (targetDays > 0 && cogs > 0) {
+    const targetAvg = cogs/days*targetDays;
+    const diff = avgInv - targetAvg;
+    document.getElementById('inv-target-avg').textContent = fmt(targetAvg);
+    document.getElementById('inv-target-diff').textContent = (diff>=0?'+':'-')+fmt(Math.abs(diff))+(diff>=0?' (목표보다 많음)':' (목표보다 적음)');
+    targetBox.style.display = 'block';
+  } else {
+    targetBox.style.display = 'none';
+  }
+
+  document.getElementById('inv-result').style.display='block';
+}
+</script>
+<footer>
+  <a href="index.html">홈</a><a href="category.html">카테고리</a><a href="tools.html">계산기 모음</a>
+  <p style="margin-top:12px;">© 2026 소호팁. 본 계산기는 참고용이며 실제 재고 관리 판단은 매장 상황에 맞춰 하세요.</p>
+</footer>
+<script src="network.js?v=20260711a" defer></script>
+</body>
+</html>

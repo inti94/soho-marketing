@@ -604,6 +604,7 @@ const RECO_CALCS = [
   { slug: 'us-stock-calc.html',        icon: '🇺🇸', title: '미국주식 계산기',        badge: '재테크', desc: '달러 매수가·수량 + 실시간 환율 → 원화 환산·수익률 자동 계산',       cats: ['재테크'], inline: null, pop: 24 },
   { slug: 'income-tax-calc.html',      icon: '📋', title: '종합소득세 계산기',      badge: '세무·법률', desc: '매출·필요경비 → 2026년 세율 기준 사업소득 예상세액·지방소득세 계산', cats: ['창업·세금'], inline: null, pop: 25 },
   { slug: 'eitc-eligibility-calc.html', icon: '✅', title: '근로장려금 계산기',     badge: '소상공인 지원금', desc: '가구유형·총소득·재산 → 2026년 기준 소득·재산 요건 자가진단', cats: ['소상공인 지원금', '창업·세금'], inline: null, pop: 26 },
+  { slug: 'inventory-turnover-calc.html', icon: '📦', title: '재고 회전율 계산기', badge: '매출·수익', desc: '기초·기말재고·매출원가 → 재고회전율·회전일수, 목표 대비 적정재고 계산', cats: ['창업·세금'], inline: null, pop: 27 },
 ];
 
 /* 카테고리별 추천 계산기 매핑 (게시글 → 함께 쓰는 계산기) */
