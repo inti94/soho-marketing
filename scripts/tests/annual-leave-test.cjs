@@ -1,4 +1,4 @@
-// 연차·연차수당 계산 엔진 자동 테스트 (TEST 1~28 + 경계·오류 입력)
+// 연차·연차수당 계산 엔진 자동 테스트 (TEST 1~30 + 날짜 경계·오류 입력)
 // 실행: node scripts/tests/annual-leave-test.cjs [engine.js 경로]
 const path = require('path');
 const L = require(process.argv[2] ? path.resolve(process.argv[2]) : path.join(__dirname, '../../assets/annual-leave-2026.js'));
@@ -39,7 +39,7 @@ test('4', () => { eq('3년 → 16', years(3).r.days, 16); eq('함수', L.calcula
 test('5', () => { eq('4년 → 16', years(4).r.days, 16); eq('함수', L.calculateAnnualLeaveDays(4), 16); });
 test('6', () => { eq('5년 → 17', years(5).r.days, 17); eq('함수', L.calculateAnnualLeaveDays(5), 17); });
 test('7', () => {
-  const T = { 1: 15, 2: 15, 3: 16, 4: 16, 5: 17, 6: 17, 7: 18, 8: 18, 9: 19, 10: 19, 11: 20, 13: 21, 15: 22, 17: 23, 19: 24, 21: 25, 23: 25 };
+  const T = { 1: 15, 2: 15, 3: 16, 4: 16, 5: 17, 6: 17, 7: 18, 8: 18, 9: 19, 10: 19, 11: 20, 12: 20, 13: 21, 14: 21, 15: 22, 17: 23, 19: 24, 21: 25, 23: 25, 30: 25 };
   for (const [y, d] of Object.entries(T)) { eq(`${y}년 함수`, L.calculateAnnualLeaveDays(+y), d); eq(`${y}년 날짜`, years(+y).r.days, d); }
 });
 test('8', () => { eq('21년 → 25', years(21).r.days, 25); });
@@ -108,7 +108,7 @@ test('22', () => {
 test('23', () => {
   const { r } = years(3, { attendance: 'lt80', fullMonths: '7' });
   eq('7일(8·16 아님)', r.days, 7);
-  eq('80% 미만 12개월 상한', years(3, { attendance: 'lt80', fullMonths: '13' }).r, null);
+  eq('80% 미만 13개월 거부', years(3, { attendance: 'lt80', fullMonths: '13' }).r, null);
   eq('80% 미만 개근월 필수', years(3, { attendance: 'lt80', fullMonths: '' }).r, null);
 });
 test('24', () => {
@@ -138,13 +138,44 @@ test('28', () => {
   eq('통상시급 ≈ 11,538.46', near(r.hourly, 11538.46), true); eq('600,000원', r.pay, 600000);
 });
 
+test('29', () => {
+  const x = years(3, { attendance: 'lt80', fullMonths: '12' });
+  eq('80% 미만 + 개근 12 → 차단', x.r, null);
+  eq('모순 안내 문구', x.errors, ['12개월 모두 개근한 경우 출근율 80% 미만과 동시에 선택할 수 없습니다. 입력값을 다시 확인해주세요.']);
+});
+test('30', () => {
+  const x = years(3, { attendance: 'lt80', fullMonths: '11' });
+  eq('80% 미만 + 개근 11 → 허용·11일', [x.errors, x.r.days, x.r.bonus], [[], 11, 0]);
+});
+
+// ── 날짜 경계(달력 기준: 30일·365일 근사 금지) ──
+console.log('--- 날짜 경계');
+const P = s => L.parseDate(s), Y = (h, b) => L.calculateCompletedYears(P(h), P(b)), M = (h, b) => L.calculateCompletedMonthlyPeriods(P(h), P(b));
+eq('6/20 입사: 7/19까지 0구간', M('2026-06-20', '2026-07-19'), 0);
+eq('6/20 입사: 7/20(첫 1개월 근로 마친 다음 날) 1구간', M('2026-06-20', '2026-07-20'), 1);
+eq('6/20 입사 1개월 권리 발생일 = 7/20', L.anniversary(P('2026-06-20'), 1), { y: 2026, m: 7, d: 20 });
+eq('1/31 입사 → 3/1 첫 권리(2월 31일 없음)', L.anniversary(P('2026-01-31'), 1), { y: 2026, m: 3, d: 1 });
+eq('1/31 입사 → 3/31 2구간', M('2026-01-31', '2026-03-31'), 2);
+eq('1/31 입사 → 3/30 1구간', M('2026-01-31', '2026-03-30'), 1);
+eq('1/31 입사 → 5/1(4월 31일 없음) 3구간', [M('2026-01-31', '2026-04-30'), M('2026-01-31', '2026-05-01')], [2, 3]);
+eq('1/30 입사(평년 2월) → 2/28 0, 3/1 1', [M('2026-01-30', '2026-02-28'), M('2026-01-30', '2026-03-01')], [0, 1]);
+eq('1/29 입사(윤년 2028) → 2/29 1구간', M('2028-01-29', '2028-02-29'), 1);
+eq('2/29 입사 → 평년 2/28 0년, 3/1 1년', [Y('2024-02-29', '2025-02-28'), Y('2024-02-29', '2025-03-01')], [0, 1]);
+eq('2/29 입사 → 윤년 2028-02-28 3년, 2/29 4년', [Y('2024-02-29', '2028-02-28'), Y('2024-02-29', '2028-02-29')], [3, 4]);
+eq('2/29 입사 1년 미만 구간: 2025-02-28까지 11구간', M('2024-02-29', '2025-02-28'), 11);
+eq('1주년 전날/당일', [Y('2025-09-29', '2026-09-28'), Y('2025-09-29', '2026-09-29')], [0, 1]);
+eq('3주년 전날/당일 연차', [run({ hireDate: '2023-09-29', baseDate: '2026-09-28', attendance: 'ge80' }).r.days, run({ hireDate: '2023-09-29', baseDate: '2026-09-29', attendance: 'ge80' }).r.days], [15, 16]);
+eq('21주년 전날/당일 연차(24 → 25)', [run({ hireDate: '2005-09-29', baseDate: '2026-09-28', attendance: 'ge80' }).r.days, run({ hireDate: '2005-09-29', baseDate: '2026-09-29', attendance: 'ge80' }).r.days], [24, 25]);
+eq('12/31 입사 → 다음 해 12/31 1년', [Y('2025-12-31', '2026-12-30'), Y('2025-12-31', '2026-12-31')], [0, 1]);
+eq('5개월 경과 시점 개근 8 입력 거부', run({ hireDate: '2026-01-10', baseDate: '2026-06-10', fullMonths: '8' }).errors, ['개근월은 입사일부터 계산 기준일까지 끝난 1개월 구간 수(5개월)보다 클 수 없습니다.']);
+
 // ── 추가: 날짜 경계 ──
 console.log('--- 추가 검증');
-eq('월말 입사 1/31 → 2/28: 0개월', L.calculateMonthsBeforeFirstAnniversary(L.parseDate('2026-01-31'), L.parseDate('2026-02-28')), 0);
-eq('월말 입사 1/31 → 3/1: 1개월', L.calculateMonthsBeforeFirstAnniversary(L.parseDate('2026-01-31'), L.parseDate('2026-03-01')), 1);
+eq('월말 입사 1/31 → 2/28: 0개월', L.calculateCompletedMonthlyPeriods(L.parseDate('2026-01-31'), L.parseDate('2026-02-28')), 0);
+eq('월말 입사 1/31 → 3/1: 1개월', L.calculateCompletedMonthlyPeriods(L.parseDate('2026-01-31'), L.parseDate('2026-03-01')), 1);
 eq('윤일 입사 2024-02-29 → 2025-02-28: 0년', L.calculateCompletedYears(L.parseDate('2024-02-29'), L.parseDate('2025-02-28')), 0);
 eq('윤일 입사 2024-02-29 → 2025-03-01: 1년', L.calculateCompletedYears(L.parseDate('2024-02-29'), L.parseDate('2025-03-01')), 1);
-eq('입사 당일 기준: 0년·0개월', [L.calculateCompletedYears(L.parseDate('2026-05-05'), L.parseDate('2026-05-05')), L.calculateMonthsBeforeFirstAnniversary(L.parseDate('2026-05-05'), L.parseDate('2026-05-05'))], [0, 0]);
+eq('입사 당일 기준: 0년·0개월', [L.calculateCompletedYears(L.parseDate('2026-05-05'), L.parseDate('2026-05-05')), L.calculateCompletedMonthlyPeriods(L.parseDate('2026-05-05'), L.parseDate('2026-05-05'))], [0, 0]);
 eq('6개월 경과 전 개근 6 입력 거부(최대 5)', run({ hireDate: '2026-01-10', baseDate: '2026-07-09', fullMonths: '6' }).errors, ['개근월은 입사일부터 계산 기준일까지 끝난 1개월 구간 수(5개월)보다 클 수 없습니다.']);
 eq('6개월 경과 당일 개근 6 허용', run({ hireDate: '2026-01-10', baseDate: '2026-07-10', fullMonths: '6' }).r.days, 6);
 eq('기준일 < 입사일 거부', run({ hireDate: '2026-05-05', baseDate: '2026-05-04', fullMonths: '0' }).errors, ['계산 기준일이 입사일보다 빠릅니다. 날짜를 확인하세요.']);

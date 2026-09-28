@@ -8,7 +8,7 @@
     BASE_DAYS: 15,            // 1년간 80% 이상 출근 시 (제60조 ①)
     MAX_DAYS: 25,             // 가산 포함 한도 (제60조 ④)
     FIRST_YEAR_MAX: 11,       // 1년 미만: 1개월 개근당 1일, 최대 11일 (제60조 ②)
-    LOW_ATTENDANCE_MAX: 12,   // 1년 이상·출근율 80% 미만: 직전 1년 개근월 수만큼 (제60조 ②)
+    LOW_ATTENDANCE_MAX: 11,   // 1년 이상·출근율 80% 미만: 직전 1년 개근월 수만큼 (제60조 ②). 12개월 개근은 80% 미만과 모순
     MIN_WEEKLY_HOURS: 15,     // 4주 평균 주 소정근로 15시간 미만은 적용 제외 (제18조 ③)
     MAX_WEEKLY_HOURS: 40,     // 소정근로시간은 법정근로시간(주 40시간) 범위 안 (제2조 ① 8호)
     MAX_DAILY_HOURS: 8,
@@ -47,10 +47,11 @@
     return Math.max(0, n);
   }
 
-  // 1년 미만 구간에서 날짜상 끝난 1개월 구간 수(개근 가능한 최대 월수). 0~11.
-  function calculateMonthsBeforeFirstAnniversary(hire, base) {
-    var k = 0;
-    while (k < A.FIRST_YEAR_MAX && key(anniversary(hire, k + 1)) <= key(base)) k++;
+  // 입사일부터 기준일까지 날짜상 끝난 1개월 구간 수(달력 기준, 30일 근사 없음).
+  // k번째 구간의 권리는 그 구간 근로를 마친 다음 날(anniversary) 생긴다. 1년 미만이면 결과는 0~11.
+  function calculateCompletedMonthlyPeriods(hire, base) {
+    var k = Math.max(0, (base.y - hire.y) * 12 + (base.m - hire.m) + 1);
+    while (k > 0 && key(anniversary(hire, k)) > key(base)) k--;
     return k;
   }
 
@@ -138,7 +139,7 @@
     if (e.length) return { errors: e, values: null };
     v.hire = hire; v.base = base; v.size = raw.size; v.workerType = raw.workerType;
     v.completedYears = calculateCompletedYears(hire, base);
-    v.maxFirstYearMonths = v.completedYears === 0 ? calculateMonthsBeforeFirstAnniversary(hire, base) : null;
+    v.maxFirstYearMonths = v.completedYears === 0 ? calculateCompletedMonthlyPeriods(hire, base) : null;
 
     // 적용 제외면 여기서 끝(임금 등 나머지 입력은 요구하지 않는다). 5인 미만은 근로시간과 무관하게 제외.
     if (v.size === 'lt5') { v.excluded = 'excluded5'; return { errors: [], values: v }; }
@@ -153,7 +154,7 @@
       v.fullTimeWeeklyHours = num(raw.fullTimeWeeklyHours, '동종 통상근로자의 주 소정근로시간', { positive: true, max: A.MAX_WEEKLY_HOURS,
         maxMsg: '동종 통상근로자의 주 소정근로시간은 40시간 이하로 입력하세요.' }, e);
       if (v.fullTimeWeeklyHours != null && weekly >= v.fullTimeWeeklyHours)
-        e.push('단시간근로자는 주 소정근로시간이 동종 통상근로자보다 짧아야 합니다. 같다면 근로형태를 \'통상근로자\'로 선택하세요.');
+        e.push('단시간근로자는 주 소정근로시간이 동종 통상근로자보다 짧아야 합니다. 같다면 근로형태를 \'일반근로자\'로 선택하세요.');
     } else {
       v.dailyHours = num(raw.dailyHours, '1일 소정근로시간', { positive: true, max: A.MAX_DAILY_HOURS,
         maxMsg: '1일 소정근로시간은 법정근로시간(1일 8시간) 범위에서 정하므로 8시간 이하로 입력하세요.' }, e);
@@ -171,7 +172,9 @@
       else v.attendance = raw.attendance;
       if (v.attendance === 'lt80') {
         v.basis = 'lowAttendance';
-        v.fullMonths = num(raw.fullMonths, '직전 1년 동안 개근한 월 수', { int: true, max: A.LOW_ATTENDANCE_MAX }, e);
+        if (parseNum(raw.fullMonths).n === 12) e.push('12개월 모두 개근한 경우 출근율 80% 미만과 동시에 선택할 수 없습니다. 입력값을 다시 확인해주세요.');
+        else v.fullMonths = num(raw.fullMonths, '직전 1년 동안 개근한 월 수', { int: true, max: A.LOW_ATTENDANCE_MAX,
+          maxMsg: '직전 1년 동안 개근한 월 수는 0~11개월로 입력하세요.' }, e);
       } else if (v.attendance === 'ge80') v.basis = 'regular';
       else if (v.attendance === 'unknown') v.basis = 'unknown';
     }
@@ -236,7 +239,7 @@
     ANNUAL_LEAVE: A,
     parseDate: parseDate, anniversary: anniversary,
     calculateCompletedYears: calculateCompletedYears,
-    calculateMonthsBeforeFirstAnniversary: calculateMonthsBeforeFirstAnniversary,
+    calculateCompletedMonthlyPeriods: calculateCompletedMonthlyPeriods,
     calculateAnnualLeaveDays: calculateAnnualLeaveDays,
     calculateLowAttendanceLeave: calculateLowAttendanceLeave,
     roundLeaveHours: roundLeaveHours,
