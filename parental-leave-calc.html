@@ -268,7 +268,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
 
     <div class="field" id="pl-ext-field" style="display:none;">
       <label for="pl-ext" id="pl-ext-label">육아휴직 6개월 추가 사용요건을 충족하나요?</label>
-      <div class="field-hint">사용기간이 13개월 이상인 사람만 확인합니다. 계획만으로는 충족으로 보지 않으니 실제 사용 이력·증빙 기준으로 선택하세요.</div>
+      <div class="field-hint">사용기간이 13개월 이상인 사람만 확인합니다. 상대 배우자 요건은 추가 6개월을 신청하는 시점에 같은 자녀에 대해 이미 3개월 이상 실제로 사용한 경우만 해당하며, 사용 예정은 충족으로 보지 않습니다.</div>
       <select id="pl-ext">
         <option value="">선택하세요</option>
         <option value="spouse3">같은 자녀에 대해 상대 배우자가 이미 3개월 이상 육아휴직을 사용함</option>
@@ -303,7 +303,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
       </div>
       <div class="field">
         <label for="pl-same-child">본인과 배우자가 같은 자녀를 대상으로 육아휴직을 사용하나요?</label>
-        <div class="field-hint">부모함께 특례는 같은 자녀에 대해 부모가 모두 육아휴직을 사용할 때만 적용됩니다.</div>
+        <div class="field-hint">부모함께 특례는 같은 자녀에 대해 부모가 모두 육아휴직을 사용할 때만 적용됩니다. 아니오를 고르면 연장요건 중 '상대 배우자 3개월 사용' 항목은 선택할 수 없습니다.</div>
         <select id="pl-same-child"><option value="">선택하세요</option><option value="yes">예</option><option value="no">아니오</option></select>
       </div>
       <div class="field" id="pl-child-age-field" style="display:none;">
@@ -494,6 +494,14 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
     $('pl-ext-label').textContent = type === 'together' ? '본인의 육아휴직 6개월 추가 사용요건을 충족하나요?' : '육아휴직 6개월 추가 사용요건을 충족하나요?';
     toggleField('pl-spouse-ext-field', 'pl-spouse-ext', type === 'together' && (+$('pl-spouse-months').value || 0) > MAXBASE);
     toggleField('pl-child-age-field', 'pl-child-age', type === 'together' && $('pl-same-child').value === 'yes');
+    // 같은 자녀 '아니오'이면 '상대 배우자 3개월 사용' 연장요건은 모순 → 선택지 비활성·숨김, 이미 골랐으면 초기화.
+    // 한부모·장애아동 부모 요건은 같은 자녀 여부와 무관하므로 그대로 둔다.
+    var noSpouse3 = type === 'together' && $('pl-same-child').value === 'no';
+    ['pl-ext', 'pl-spouse-ext'].forEach(function (id) {
+      var sel = $(id), opt = sel.querySelector('option[value="spouse3"]');
+      if (noSpouse3 && sel.value === 'spouse3') sel.value = '';
+      opt.disabled = noSpouse3; opt.hidden = noSpouse3;
+    });
   }
 
   function warn(html) { return '<div class="warn-box show">' + html + '</div>'; }

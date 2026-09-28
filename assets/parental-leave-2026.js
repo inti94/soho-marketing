@@ -161,6 +161,12 @@
       if (EXT.indexOf(raw.spouseExtension) < 0) e.push('배우자의 육아휴직 6개월 추가 사용요건 충족 여부를 선택하세요.');
       else v.spouseExtension = raw.spouseExtension;
     }
+    // 연장요건 'spouse3'은 같은 자녀에 대해 상대 배우자가 실제로 3개월 이상 사용했을 때만 성립 → 같은 자녀 '아니오'와 모순.
+    // (부모함께 급여 특례와 18개월 연장요건은 별개 제도: 여기서는 모순 입력만 막고 서로 자동 연결하지 않는다.)
+    if (raw.type === 'together' && v.sameChild === 'no') {
+      if (v.extension === 'spouse3') e.push('같은 자녀가 아니면 본인 연장요건으로 \'같은 자녀에 대해 상대 배우자가 이미 3개월 이상 육아휴직을 사용함\'을 선택할 수 없습니다.');
+      if (v.spouseExtension === 'spouse3') e.push('같은 자녀가 아니면 배우자 연장요건으로 \'같은 자녀에 대해 상대 배우자가 이미 3개월 이상 육아휴직을 사용함\'을 선택할 수 없습니다.');
+    }
     return { errors: e, values: e.length ? null : v };
   }
 
