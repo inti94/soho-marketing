@@ -152,7 +152,7 @@
   }
 
   /* ── 2. 미니 계산기 정의 (실동작 4종 + 폴백) ──────── */
-  /* 2026년 기준: 최저시급 10,320원 / 배민 중개수수료 기본 6.8% / 결제수수료 약 1.2% */
+  /* 2026년 기준: 최저시급 10,320원 / 배민 중개수수료 6.8% 구간 / 결제수수료 약 3% */
   var MINI = {
     juhyu: {
       title: '주휴수당 미니 계산', emoji: '📅', full: 'weekly-pay-calc.html',
@@ -182,18 +182,18 @@
       fields: [
         { id: 'order', label: '주문금액', suf: '원', value: 20000, money: true },
         { id: 'comm', label: '중개수수료율', suf: '%', value: 6.8 },
-        { id: 'deliv', label: '업주부담 배달비', suf: '원', value: 2400, money: true, full: true },
+        { id: 'deliv', label: '업주부담 배달비', suf: '원', value: 2900, money: true, full: true },
       ],
       compute: function (v) {
         var order = v.order;
         var commission = order * (v.comm / 100);
-        var payment = order * 0.012; // 결제수수료 약 1.2%
+        var payment = order * 0.03; // 결제수수료 약 3% (배민 기본값)
         var net = order - commission - payment - v.deliv;
         return {
           main: { label: '수수료·배달비 빼고 남는 금액', value: won(net) },
           rows: [
             { k: '중개수수료 (' + v.comm + '%)', v: '-' + won(commission) },
-            { k: '결제수수료 (1.2%)', v: '-' + won(payment) },
+            { k: '결제수수료 (약 3%)', v: '-' + won(payment) },
             { k: '업주부담 배달비', v: '-' + won(v.deliv) },
             { k: '주문 1건 실수령', v: won(net) },
           ],

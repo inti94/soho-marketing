@@ -45,7 +45,7 @@
     "operatingSystem": "Web",
     "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"},
     "publisher": {"@type": "Organization", "name": "소호팁", "url": "https://sohotip.co.kr"},
-    "dateModified": "2026-06-30",
+    "dateModified": "2026-09-28",
     "inLanguage": "ko-KR",
     "breadcrumb": {
       "@type": "BreadcrumbList",
@@ -64,7 +64,7 @@
     "mainEntity": [
       {"@type":"Question","name":"수익률은 어떻게 계산하나요?","acceptedAnswer":{"@type":"Answer","text":"수익률(%)은 수익금을 매수금액으로 나눈 뒤 100을 곱한 값입니다. 수익금은 (매도가 − 매수가) × 수량이고, 매수금액은 매수가 × 수량이에요. 예를 들어 1만 원에 100주 사서 1만 2천 원에 다 팔면, 수익금 20만 원 ÷ 매수금액 100만 원 × 100 = 수익률 20%가 됩니다."}},
       {"@type":"Question","name":"수수료·세금을 넣으면 수익률이 왜 줄어드나요?","acceptedAnswer":{"@type":"Answer","text":"매매 수수료는 살 때와 팔 때 모두 붙고, 증권거래세는 팔 때 매도금액 기준으로 떼입니다. 이 비용이 수익금에서 빠지기 때문에 실제 손에 쥐는 실수익률은 단순 수익률보다 낮아집니다. 수익이 작을수록 이 차이가 체감상 더 크게 느껴져요."}},
-      {"@type":"Question","name":"수수료율·거래세율은 얼마로 넣어야 하나요?","acceptedAnswer":{"@type":"Answer","text":"수수료율은 증권사·계좌마다 달라서 보통 0.01~0.5% 수준이고, 비대면 계좌는 더 낮거나 이벤트로 무료인 경우도 있습니다. 증권거래세율은 시장(코스피·코스닥)과 연도에 따라 바뀌므로, 정확한 값은 본인 증권사 수수료 안내와 그 해 적용 세율을 확인해 입력하세요. 이 계산기의 기본값은 예시입니다."}},
+      {"@type":"Question","name":"수수료율·거래세율은 얼마로 넣어야 하나요?","acceptedAnswer":{"@type":"Answer","text":"수수료율은 증권사·계좌마다 달라서 보통 0.01~0.5% 수준이고, 비대면 계좌는 더 낮거나 이벤트로 무료인 경우도 있습니다. 증권거래세율(2026년 코스피 0.05%+농특세 0.15%, 코스닥 0.20%)은 시장과 연도에 따라 바뀌므로, 정확한 값은 본인 증권사 수수료 안내와 그 해 적용 세율을 확인해 입력하세요. 이 계산기의 기본값은 예시입니다."}},
       {"@type":"Question","name":"손실이 났을 때 수익률은 어떻게 보나요?","acceptedAnswer":{"@type":"Answer","text":"매도가가 매수가보다 낮으면 수익금이 마이너스가 되고, 수익률도 음수(−%)로 표시됩니다. 수수료·세금을 포함하면 손실 폭은 조금 더 커집니다. 본전이 되려면 적어도 수수료·세금만큼은 가격이 더 올라줘야 한다는 점도 같이 기억해 두면 좋아요."}},
       {"@type":"Question","name":"증권사 앱 수익률이랑 다를 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"네, 조금 다를 수 있습니다. 증권사 앱은 실제 체결 수수료·거래세, 해외주식이라면 환율과 환전 비용까지 반영하기 때문입니다. 이 계산기는 입력한 값만으로 단순 계산하므로 큰 흐름을 잡는 용도로 쓰고, 정확한 숫자는 증권사 거래내역을 함께 확인하세요."}}
     ]
@@ -238,7 +238,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
       </div>
       <div class="field">
         <label>증권거래세율 (%)</label>
-        <input type="text" inputmode="decimal" id="tax-rate" placeholder="예: 0.15">
+        <input type="text" inputmode="decimal" id="tax-rate" placeholder="예: 0.20">
       </div>
     </div>
     <button class="btn-calc" onclick="calculate()">수익률 계산하기</button>
@@ -289,12 +289,12 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
         단순 수익금 = 1,200,000 − 1,000,000 = <strong>200,000원</strong><br>
         단순 수익률 = 200,000 ÷ 1,000,000 × 100 = <strong>20%</strong><br>
         ── 수수료 0.015%(양방향) = (1,000,000+1,200,000)×0.015% ≈ <strong>330원</strong><br>
-        ── 거래세 0.15%(매도) = 1,200,000×0.15% = <strong>1,800원</strong><br>
-        → 실수익금 = 200,000 − 330 − 1,800 = <strong>197,870원</strong><br>
-        → 실수익률 = 197,870 ÷ 1,000,000 × 100 ≈ <strong>19.79%</strong>
+        ── 거래세 0.20%(매도, 2026년 코스피·코스닥) = 1,200,000×0.20% = <strong>2,400원</strong><br>
+        → 실수익금 = 200,000 − 330 − 2,400 = <strong>197,270원</strong><br>
+        → 실수익률 = 197,270 ÷ 1,000,000 × 100 ≈ <strong>19.73%</strong>
       </div>
     </div>
-    <p>단순 수익률 20%가 비용을 빼면 <strong>19.79%</strong>로 줄었죠. 0.2%p 차이지만, 매매가 잦거나 금액이 크면 이런 차이가 쌓여 무시 못 할 크기가 됩니다.</p>
+    <p>단순 수익률 20%가 비용을 빼면 <strong>19.73%</strong>로 줄었죠. 약 0.3%p 차이지만, 매매가 잦거나 금액이 크면 이런 차이가 쌓여 무시 못 할 크기가 됩니다.</p>
 
     <!-- ⑤ 항목표 -->
     <h2>결과에 나오는 항목, 뜻만 알면 쉬워요</h2>

@@ -53,7 +53,7 @@
       "name": "소호팁",
       "url": "https://sohotip.co.kr"
     },
-    "dateModified": "2026-07-11",
+    "dateModified": "2026-09-28",
     "inLanguage": "ko-KR",
     "breadcrumb": {
       "@type": "BreadcrumbList",
@@ -277,11 +277,11 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
     <div class="field">
       <label>업종 (산재보험 요율)</label>
       <select id="industry">
-        <option value="0.007">음식점업 (0.7%)</option>
-        <option value="0.009">소매업 (0.9%)</option>
-        <option value="0.011">미용·서비스업 (1.1%)</option>
-        <option value="0.006">사무직 (0.6%)</option>
-        <option value="0.013">기타 (1.3%)</option>
+        <option value="0.0086">도소매·음식·숙박업 (0.8% + 출퇴근 0.06%)</option>
+            <option value="0.0086">미용·세탁 등 개인서비스(기타의 각종사업) (0.86%)</option>
+            <option value="0.0066">전문·보건·교육·여가 서비스업 (0.66%)</option>
+            <option value="0.0076">부동산·임대업 (0.76%)</option>
+            <option value="0.0056">금융·보험업 (0.56%)</option>
       </select>
     </div>
     <button class="btn-calc" onclick="calculate()">인건비 계산하기</button>
@@ -315,11 +315,11 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
         <span class="breakdown-value" id="res-health">0원</span>
       </div>
       <div class="breakdown-row">
-        <span class="breakdown-label">장기요양 (건강보험료의 12.95%)</span>
+        <span class="breakdown-label">장기요양 (건강보험료의 13.14%)</span>
         <span class="breakdown-value" id="res-care">0원</span>
       </div>
       <div class="breakdown-row">
-        <span class="breakdown-label">고용보험 (사업주 0.9%)</span>
+        <span class="breakdown-label">고용보험 (사업주 1.15%)</span>
         <span class="breakdown-value" id="res-employ">0원</span>
       </div>
       <div class="breakdown-row">
@@ -375,9 +375,9 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
         <tr><td>주휴수당</td><td>사업주</td><td>주 15시간 이상 개근 시 지급</td></tr>
         <tr><td>국민연금</td><td>사업주</td><td>약 4.5%</td></tr>
         <tr><td>건강보험</td><td>사업주</td><td>약 3.595%</td></tr>
-        <tr><td>장기요양</td><td>사업주</td><td>건강보험료의 12.95%</td></tr>
-        <tr><td>고용보험</td><td>사업주</td><td>0.9%</td></tr>
-        <tr><td>산재보험</td><td>사업주 전액</td><td>업종별 0.6~1.3%</td></tr>
+        <tr><td>장기요양</td><td>사업주</td><td>건강보험료의 13.14%</td></tr>
+        <tr><td>고용보험</td><td>사업주</td><td>0.9% + 고용안정·직능 0.25%(150인 미만)</td></tr>
+        <tr><td>산재보험</td><td>사업주 전액</td><td>업종별(도소매·음식·숙박 0.8%) + 출퇴근재해 0.06%</td></tr>
       </tbody>
     </table>
 
@@ -450,7 +450,7 @@ function setInsurance(v) {
 function fmt(n) { return Math.round(n).toLocaleString('ko-KR') + '원'; }
 
 function calculate() {
-  const hourly = getRawNumber('hourly') || 10030;
+  const hourly = getRawNumber('hourly') || 10320;
   const dailyHours = getRawNumber('daily-hours') || 8;
   const weeklyDays = getRawNumber('weekly-days') || 5;
   const industryRate = getRawNumber('industry');
@@ -459,15 +459,15 @@ function calculate() {
   const monthlyHours = weeklyHours * 4.345;
   const base = hourly * monthlyHours;
 
-  const weeklyPay = applyWeekly ? (hourly * dailyHours * (weeklyHours / 40) * 4.345) : 0;
+  const weeklyPay = (applyWeekly && weeklyHours >= 15) ? (hourly * (Math.min(weeklyHours, 40) / 40) * 8 * 4.345) : 0; // 주휴시간 = 주 소정근로(40시간 상한)/40×8
   const workerTotal = base + weeklyPay;
 
   let pension = 0, health = 0, care = 0, employ = 0, accident = 0;
   if (applyInsurance) {
     pension = workerTotal * 0.0475;    // 국민연금 사업주 4.75% (2026년)
     health = workerTotal * 0.03595;   // 건강보험 사업주 3.595% (2026년)
-    care = health * 0.1295;            // 장기요양 건강보험료의 12.95%
-    employ = workerTotal * 0.009;      // 고용보험 실업급여분 0.9%
+    care = health * 0.1314;            // 장기요양 건강보험료의 13.14% (2026년)
+    employ = workerTotal * (0.009 + 0.0025); // 고용보험 실업급여 0.9% + 고용안정·직능 0.25%(150인 미만)
   }
   accident = workerTotal * industryRate;
   const insTotal = pension + health + care + employ + accident;
@@ -495,9 +495,9 @@ function calcInlineAlba(){
   var days=getRawNumber('il_days')||5;
   var weekHrs=hrs*days;
   var base=h*weekHrs*4.345;
-  var weekly=weekHrs>=15?h*hrs*(weekHrs/40)*4.345:0;
+  var weekly=weekHrs>=15?h*(Math.min(weekHrs,40)/40)*8*4.345:0;
   var total=base+weekly;
-  var ins=total*(0.0475+0.03595+0.009);
+  var ins=total*(0.0475+0.03595+0.03595*0.1314+0.0115+0.0086);
   var grand=total+ins;
   var r=document.getElementById('il_result_alba');
   var rv=document.getElementById('il_result_alba_val');

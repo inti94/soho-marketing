@@ -765,13 +765,13 @@ const INLINE_CALCS = {
     fields: [
       { id: 'order', label: '주문금액', hint: '(원)', value: 20000, suffix: '원' },
       { id: 'comm', label: '중개수수료율', hint: '(%)', value: 6.8, suffix: '%' },
-      { id: 'delivery', label: '업주부담 배달비', hint: '(원)', value: 2400, suffix: '원' },
+      { id: 'delivery', label: '업주부담 배달비', hint: '(원)', value: 2900, suffix: '원' },
       { id: 'food', label: '재료비 원가율', hint: '(%)', value: 35, suffix: '%' },
     ],
     compute: (v) => {
       const order = v.order;
       const commission = order * (v.comm / 100);
-      const payment = order * 0.012; // 결제수수료 약 1.2%
+      const payment = order * 0.03; // 결제수수료 약 3% (배민 기본값)
       const foodCost = order * (v.food / 100);
       const profit = order - commission - payment - v.delivery - foodCost;
       const margin = order ? (profit / order) * 100 : 0;
@@ -780,7 +780,7 @@ const INLINE_CALCS = {
         rows: [
           { k: '주문금액', v: recoWon(order) },
           { k: '중개수수료 (' + v.comm + '%)', v: '-' + recoWon(commission), minus: true },
-          { k: '결제수수료 (1.2%)', v: '-' + recoWon(payment), minus: true },
+          { k: '결제수수료 (약 3%)', v: '-' + recoWon(payment), minus: true },
           { k: '업주부담 배달비', v: '-' + recoWon(v.delivery), minus: true },
           { k: '재료비 (' + v.food + '%)', v: '-' + recoWon(foodCost), minus: true },
           { k: '순이익률', v: recoPct(margin) },
