@@ -27,7 +27,7 @@ const c100 = x => Math.round(x * 100);
 function refPartHours(days, w, ft) { const num = days * c100(w) * 8, den = c100(ft); return Math.floor((num + den - 1) / den); }   // 올림
 function refPay(wage, hoursEq100, base) { const num = wage * hoursEq100, den = c100(base) ; return Math.floor((2 * num + den) / (2 * den)); } // hoursEq100 = 시간×100, 반올림(0.5 올림)
 
-const BASE = { size: 'ge5', workerType: 'full', weeklyHours: '40', dailyHours: '8', fullTimeWeeklyHours: '40', used: '0', monthlyWage: '2500000', baseHours: '209' };
+const BASE = { size: 'ge5', workerType: 'full', weeklyHours: '40', dailyHours: '8', fullTimeWeeklyHours: '40', used: '0', expired: '0', monthlyWage: '2500000', baseHours: '209' };
 const run = o => { const r = L.validateAnnualLeaveInputs(Object.assign({}, BASE, o)); return { errors: r.errors, r: r.values ? L.calculateAnnualLeave(r.values) : null }; };
 
 section('무작위 날짜(2000~2025 입사, 0~30년) 근속연수·1개월 구간', ok => {
@@ -50,6 +50,16 @@ section('1·3·21주년 전날/당일/다음날 + 월말·윤일 입사', ok => 
       const got = L.calculateCompletedYears({ y: hy, m: hm, d: hd }, b), exp = off < 0 ? n - 1 : n;
       ok(got === exp && got === refYears(hy, hm, hd, bms), { h: `${hy}-${hm}-${hd}`, b: iso(bms), got, exp });
       if (n === 1 && off < 0) ok(L.calculateCompletedMonthlyPeriods({ y: hy, m: hm, d: hd }, b) === 11, { h: `${hy}-${hm}-${hd}`, b: iso(bms), msg: '1주년 전날 11구간' });
+    }
+  }
+});
+section('28~31일 입사 × 1~24개월 경계(전날/당일/다음날), 2월·30/31일 월', ok => {
+  for (let hy = 2019; hy <= 2028; hy++) for (let hm = 1; hm <= 12; hm++) for (let hd = 28; hd <= dim(hy, hm); hd++) for (let k = 1; k <= 24; k++) {
+    const a = ariseRef(hy, hm, hd, k);
+    for (const off of [-1, 0, 1]) {
+      const bms = a + off * DAY, b = L.parseDate(iso(bms)), h = { y: hy, m: hm, d: hd };
+      const got = L.calculateCompletedMonthlyPeriods(h, b), exp = refMonths(hy, hm, hd, bms);
+      ok(got === exp && got === (off < 0 ? k - 1 : k), { h: `${hy}-${hm}-${hd}`, b: iso(bms), k, got, exp });
     }
   }
 });
@@ -85,21 +95,28 @@ section('단시간근로자 시간 환산(1시간 미만 올림)', ok => {
 section('단시간근로자 전체 계산(발생시간·남은시간·수당)', ok => {
   for (let i = 0; i < 2000; i++) {
     const yrs = ri(1, 25), w = ri(1500, 3900) / 100, ft = 40, wage = ri(300000, 4000000), base = ri(600, 2090) / 10;
-    const hours = refPartHours(refDays(yrs), w, ft), used = ri(0, hours);
-    const x = run({ hireDate: `${2026 - yrs}-03-15`, baseDate: '2026-03-15', attendance: 'ge80', workerType: 'part', weeklyHours: String(w), fullTimeWeeklyHours: '40', used: String(used), monthlyWage: String(wage), baseHours: String(base) });
-    const expPay = refPay(wage, (hours - used) * 100, base);
-    ok(x.r && x.r.hours === hours && x.r.remainingHours === hours - used && x.r.pay === expPay, { yrs, w, wage, base, used, got: x.r && [x.r.hours, x.r.pay], exp: [hours, expPay] });
+    const hours = refPartHours(refDays(yrs), w, ft), used = ri(0, hours), expired = ri(0, hours - used);
+    const x = run({ hireDate: `${2026 - yrs}-03-15`, baseDate: '2026-03-15', attendance: 'ge80', workerType: 'part', weeklyHours: String(w), fullTimeWeeklyHours: '40', used: String(used), expired: String(expired), monthlyWage: String(wage), baseHours: String(base) });
+    const expPay = refPay(wage, (hours - used - expired) * 100, base);
+    ok(x.r && x.r.hours === hours && x.r.remainingHours === hours - used - expired && x.r.pay === expPay, { yrs, w, wage, base, used, got: x.r && [x.r.hours, x.r.pay], exp: [hours, expPay] });
   }
 });
 section('일반근로자 수당(남은 일수 × 1일 소정근로시간, 최종 반올림)', ok => {
   for (let i = 0; i < 3000; i++) {
-    const yrs = ri(1, 25), days = refDays(yrs), used = ri(0, days * 2) / 2, daily = ri(1, 8), wage = ri(300000, 6000000), base = ri(600, 2090) / 10;
-    const x = run({ hireDate: `${2026 - yrs}-03-15`, baseDate: '2026-03-15', attendance: 'ge80', used: String(used), dailyHours: String(daily), monthlyWage: String(wage), baseHours: String(base) });
-    const expPay = refPay(wage, Math.round((days - used) * daily * 100), base);
-    ok(x.r && x.r.pay === expPay && x.r.remainingDays === days - used, { yrs, used, daily, wage, base, got: x.r && x.r.pay, exp: expPay });
+    const yrs = ri(1, 25), days = refDays(yrs), used = ri(0, days * 2) / 2, expired = ri(0, (days - used) * 2) / 2, daily = ri(1, 8), wage = ri(300000, 6000000), base = ri(600, 2090) / 10;
+    const x = run({ hireDate: `${2026 - yrs}-03-15`, baseDate: '2026-03-15', attendance: 'ge80', used: String(used), expired: String(expired), dailyHours: String(daily), monthlyWage: String(wage), baseHours: String(base) });
+    const expPay = refPay(wage, Math.round((days - used - expired) * daily * 100), base);
+    ok(x.r && x.r.pay === expPay && x.r.remainingDays === days - used - expired, { yrs, used, daily, wage, base, got: x.r && x.r.pay, exp: expPay });
   }
 });
 
+section('사용+소멸 합계 초과는 항상 차단(음수 잔여 없음)', ok => {
+  for (let i = 0; i < 1000; i++) {
+    const yrs = ri(1, 25), days = refDays(yrs), used = ri(0, days * 2) / 2, expired = (days - used) + ri(1, 10) / 2;
+    const x = run({ hireDate: `${2026 - yrs}-03-15`, baseDate: '2026-03-15', attendance: 'ge80', used: String(used), expired: String(expired) });
+    ok(x.r === null && x.errors.length === 1, { yrs, used, expired, r: x.r });
+  }
+});
 const bad = results.reduce((a, r) => a + r.bad, 0), tot = results.reduce((a, r) => a + r.n, 0);
 console.log(`\n검산 ${tot}건, 불일치 ${bad}건`);
 process.exit(bad ? 1 : 0);
