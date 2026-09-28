@@ -25,8 +25,9 @@
   };
   var P = PARENTAL_LEAVE_2026;
 
-  /* ── 금액 계산 단일 함수: 원 단위 처리 규칙을 여기 한 곳에서 통일 ──
-     통상임금 × 지급률 → 원 미만 절사. 지급률은 백분율 정수로 바꿔 정수 연산(부동소수 오차 방지). */
+  /* ── 금액 계산 단일 함수: 원 단위 처리를 여기 한 곳에서 통일 ──
+     통상임금 × 80% 계산 시 원 미만 금액은 계산기 표시를 위해 절사한다(법령상 공식 절사 규칙이 아닌 계산기 표시정책).
+     지급률은 백분율 정수로 바꿔 정수 연산(부동소수 오차 방지). */
   function calculateMonthlyBenefit(wage, rule) {
     var pct = Math.round(rule.RATE * 100);
     var paid = Math.floor(wage * pct / 100);
@@ -78,10 +79,11 @@
   }
 
   /* ── 요건 판단 (사용자 직접 확인값 기반) ── */
-  // months > 12 이면 연장요건 필요. answer: both3 | single | disabledChild | none | unknown
-  function validateExtensionEligibility(maxMonths, answer) {
-    if (maxMonths <= P.BASE_MAX_MONTHS) return { needed: false, status: 'ok' };
-    if (answer === 'both3' || answer === 'single' || answer === 'disabledChild') return { needed: true, status: 'ok', reason: answer };
+  // 한 사람 기준. months > 12 이면 그 사람의 연장요건 필요.
+  // answer: spouse3(같은 자녀에 대해 상대 배우자가 이미 3개월 이상 사용) | single | disabledChild | none | unknown
+  function validateExtensionEligibility(months, answer) {
+    if (months <= P.BASE_MAX_MONTHS) return { needed: false, status: 'ok' };
+    if (answer === 'spouse3' || answer === 'single' || answer === 'disabledChild') return { needed: true, status: 'ok', reason: answer };
     if (answer === 'none') return { needed: true, status: 'blocked' };
     if (answer === 'unknown') return { needed: true, status: 'check' };
     return { needed: true, status: 'missing' };
@@ -115,7 +117,8 @@
     return { ok: true, value: n };
   }
   var YNU = ['yes', 'no', 'unknown'];
-  var EXT = ['both3', 'single', 'disabledChild', 'none', 'unknown'];
+  var YN = ['yes', 'no'];
+  var EXT = ['spouse3', 'single', 'disabledChild', 'none', 'unknown'];
 
   function wageErr(who, p) {
     return { empty: who + ' 월 통상임금을 입력하세요.', negative: who + ' 월 통상임금은 음수일 수 없습니다.', nan: who + ' 월 통상임금은 숫자로만 입력하세요.',
@@ -125,7 +128,7 @@
     return p.code === 'empty' ? who + ' 육아휴직 사용기간을 선택하세요.' : who + ' 육아휴직 사용기간은 1~18개월 사이의 정수로 입력하세요.';
   }
 
-  // raw: { type, wage, months, insured, extension, spouseWage, spouseMonths, spouseInsured, childAge, singleParent }
+  // raw: { type, wage, months, insured, extension, spouseWage, spouseMonths, spouseInsured, spouseExtension, sameChild, childAge, singleParent }
   function validateParentalLeaveInputs(raw) {
     var e = [], v = { type: raw.type }, p;
     if (['general', 'together', 'single'].indexOf(raw.type) < 0) return { errors: ['계산 유형을 선택하세요.'], values: null };
@@ -137,47 +140,70 @@
     if (raw.type === 'together') {
       p = parseWage(raw.spouseWage); if (p.ok) v.spouseWage = p.value; else e.push(wageErr('배우자', p));
       p = parseMonths(raw.spouseMonths); if (p.ok) v.spouseMonths = p.value; else e.push(monthErr('배우자', p));
-      if (YNU.indexOf(raw.childAge) < 0) e.push('부모함께 특례 자녀 연령요건 충족 여부를 선택하세요.'); else v.childAge = raw.childAge;
+      if (YN.indexOf(raw.sameChild) < 0) e.push('본인과 배우자가 같은 자녀를 대상으로 육아휴직을 사용하는지 선택하세요.'); else v.sameChild = raw.sameChild;
+      // 자녀 연령요건은 같은 자녀일 때만 의미가 있으므로 그때만 묻는다
+      if (v.sameChild === 'yes') {
+        if (YNU.indexOf(raw.childAge) < 0) e.push('부모함께 특례 자녀 연령요건 충족 여부를 선택하세요.'); else v.childAge = raw.childAge;
+      }
       if (YNU.indexOf(raw.spouseInsured) < 0) e.push('배우자 피보험단위기간 180일 이상 여부를 선택하세요.'); else v.spouseInsured = raw.spouseInsured;
     }
     if (raw.type === 'single') {
-      if (YNU.indexOf(raw.singleParent) < 0) e.push('법령상 한부모 해당 여부를 선택하세요.'); else v.singleParent = raw.singleParent;
+      if (YNU.indexOf(raw.singleParent) < 0) e.push('「한부모가족지원법」상 한부모 해당 여부를 선택하세요.'); else v.singleParent = raw.singleParent;
     }
 
-    // 연장요건: 13개월 이상 입력이 있을 때만 필요. 한부모 유형에서 한부모 '예'면 요건 ②로 자동 충족.
-    var maxM = Math.max(v.months || 0, v.spouseMonths || 0);
-    if (maxM > P.BASE_MAX_MONTHS) {
-      if (raw.type === 'single' && v.singleParent === 'yes') v.extension = 'single';
-      else if (EXT.indexOf(raw.extension) < 0) e.push('육아휴직 6개월 추가 사용요건 충족 여부를 선택하세요.');
+    // 연장요건: 사람별로 독립 판단. 13개월 이상인 사람만 묻고, 본인 답을 배우자에게 복사하지 않는다.
+    if (v.months > P.BASE_MAX_MONTHS) {
+      if (raw.type === 'single' && v.singleParent === 'yes') v.extension = 'single';   // 한부모 '예' → 연장요건 자동 충족
+      else if (EXT.indexOf(raw.extension) < 0) e.push('본인의 육아휴직 6개월 추가 사용요건 충족 여부를 선택하세요.');
       else v.extension = raw.extension;
+    }
+    if (raw.type === 'together' && v.spouseMonths > P.BASE_MAX_MONTHS) {
+      if (EXT.indexOf(raw.spouseExtension) < 0) e.push('배우자의 육아휴직 6개월 추가 사용요건 충족 여부를 선택하세요.');
+      else v.spouseExtension = raw.spouseExtension;
     }
     return { errors: e, values: e.length ? null : v };
   }
 
+  // 연장요건 '해당 없음'인 사람: 13개월차 이후는 금액을 확정하지 않고 1~12개월만 남긴다
+  function capAtBase(schedule, ext) {
+    if (ext.status !== 'blocked') return schedule;
+    var rows = schedule.rows.slice(0, P.BASE_MAX_MONTHS);
+    return { rows: rows, sums: calculateTotalBenefit(rows), blockedMonths: schedule.rows.length - rows.length };
+  }
+
   /* ── 전체 계산 ── */
   function calculateParentalLeave(v) {
-    var maxM = Math.max(v.months, v.spouseMonths || 0);
-    var ext = validateExtensionEligibility(maxM, v.extension);
-    var out = { type: v.type, extension: ext, insured: validateInsuranceEligibility(v.insured), notices: [] };
-    if (ext.status === 'blocked') { out.blocked = true; return out; }   // 13~18개월인데 연장요건 없음 → 결과 미출력
+    var meExt = validateExtensionEligibility(v.months, v.extension);
+    var out = { type: v.type, extension: meExt, insured: validateInsuranceEligibility(v.insured), notices: [] };
 
-    if (v.type === 'general') {
-      out.me = calculateGeneralParentalLeaveBenefit(v.wage, v.months);
-    } else if (v.type === 'single') {
-      out.singleStatus = v.singleParent;
-      out.me = v.singleParent === 'no' ? calculateGeneralParentalLeaveBenefit(v.wage, v.months) : calculateSingleParentBenefit(v.wage, v.months);
-    } else {
-      out.spouseInsured = validateInsuranceEligibility(v.spouseInsured);
-      out.childAge = v.childAge;
-      if (v.childAge === 'no') {
-        out.specialMonths = 0;
-        out.me = calculateGeneralParentalLeaveBenefit(v.wage, v.months);
-        out.spouse = calculateGeneralParentalLeaveBenefit(v.spouseWage, v.spouseMonths);
-      } else {
-        out.specialMonths = getTogetherSpecialMonths(v.months, v.spouseMonths);
-        out.me = calculateTogetherSpecialBenefit(v.wage, v.months, out.specialMonths);
-        out.spouse = calculateTogetherSpecialBenefit(v.spouseWage, v.spouseMonths, out.specialMonths);
+    if (v.type === 'general' || v.type === 'single') {
+      if (meExt.status === 'blocked') { out.blocked = true; return out; }   // 13~18개월인데 연장요건 없음 → 결과 미출력
+      if (v.type === 'general') out.me = calculateGeneralParentalLeaveBenefit(v.wage, v.months);
+      else {
+        out.singleStatus = v.singleParent;
+        out.me = v.singleParent === 'no' ? calculateGeneralParentalLeaveBenefit(v.wage, v.months) : calculateSingleParentBenefit(v.wage, v.months);
       }
+    } else {
+      var spExt = validateExtensionEligibility(v.spouseMonths, v.spouseExtension);
+      out.spouseExtension = spExt;
+      out.spouseInsured = validateInsuranceEligibility(v.spouseInsured);
+      out.sameChild = v.sameChild;
+      out.childAge = v.childAge;
+      // 부모함께 특례: 같은 자녀 + (부모 모두 사용: 두 사람 모두 1개월 이상 입력) + 자녀 연령요건(예, 또는 모름=참고계산)
+      out.specialApplied = v.sameChild === 'yes' && v.childAge !== 'no';
+      var me, sp;
+      if (out.specialApplied) {
+        out.specialMonths = getTogetherSpecialMonths(v.months, v.spouseMonths);
+        me = calculateTogetherSpecialBenefit(v.wage, v.months, out.specialMonths);
+        sp = calculateTogetherSpecialBenefit(v.spouseWage, v.spouseMonths, out.specialMonths);
+      } else {
+        out.specialMonths = 0;
+        me = calculateGeneralParentalLeaveBenefit(v.wage, v.months);
+        sp = calculateGeneralParentalLeaveBenefit(v.spouseWage, v.spouseMonths);
+      }
+      out.me = capAtBase(me, meExt);
+      out.spouse = capAtBase(sp, spExt);
+      out.partial = !!(out.me.blockedMonths || out.spouse.blockedMonths);
       out.coupleTotal = out.me.sums.total + out.spouse.sums.total;
     }
     // 노출 전 최종 방어: 모든 금액이 유한한 0 이상 정수여야 한다
