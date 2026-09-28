@@ -20,7 +20,7 @@ window.SOHO_CALCS = [
     {cat:'인건비',name:'퇴직금 계산기',desc:'입사일·퇴사일·평균임금 → 법정 퇴직금 자동 산출',href:'severance-calc.html',icon:'Briefcase',color:'#00B8D9',tags:['퇴직금','법정','노무'],views:6120},
     {cat:'인건비',name:'주휴수당 계산기',desc:'시급·근무시간 → 주휴수당 지급 여부와 주·월 금액 자동 계산',href:'weekly-pay-calc.html',icon:'Clock',color:'#3D5AFE',tags:['주휴수당','시급'],views:4980,isNew:true},
     {cat:'인건비',name:'4대보험 계산기',desc:'월급 → 직원 공제액과 사업주 부담액 동시 계산 (두루누리 감면 포함)',href:'insurance-4d-calc.html',icon:'Shield',color:'#3D5AFE',tags:['4대보험','직원','사업주'],views:5240,isNew:true},
-    {cat:'인건비',name:'직원 연차 계산기',desc:'입사일 → 연차 발생 일수와 미사용 연차수당 자동 계산',href:'annual-leave-calc.html',icon:'CalendarDays',color:'#00B8D9',tags:['연차','휴가','법정'],views:3870,isNew:true},
+    {cat:'인건비',name:'연차·연차수당 계산기',desc:'현재 산정기간 법정 연차·남은 연차·예상 미사용 연차수당 (단시간 시간 단위)',href:'annual-leave-calc.html',icon:'CalendarDays',color:'#00B8D9',tags:['연차','휴가','법정'],views:3870,isNew:true},
     {cat:'인건비',name:'해고예고수당 계산기',desc:'월 통상임금 또는 1일 통상임금 → 근로기준법 제26조 30일분 해고예고수당 자동 계산 (3개월 미만 예외 안내)',href:'dismissal-notice-allowance-calc.html',icon:'Briefcase',color:'#F04452',tags:['해고예고수당','통상임금','근로기준법','노무'],views:0,isNew:true},
     {cat:'인건비',name:'실업급여 계산기',desc:'퇴직 전 3개월 임금·가입기간·나이 → 2026 상·하한 적용 1일 구직급여·지급일수·총액',href:'unemployment-benefit-calc.html',icon:'Shield',color:'#00B8D9',tags:['실업급여','구직급여','퇴사','고용보험'],views:0,isNew:true},
     {cat:'인건비',name:'육아휴직 급여 계산기',desc:'월 통상임금·사용기간 → 2026 일반·부모함께(6+6)·한부모 월별 육아휴직급여와 총액',href:'parental-leave-calc.html',icon:'Heart',color:'#F04452',tags:['육아휴직','육아휴직급여','6+6','고용보험'],views:0,isNew:true},

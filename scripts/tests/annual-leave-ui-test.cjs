@@ -1,0 +1,222 @@
+// 연차·연차수당 계산기 UI 자동 테스트 — 실제 페이지 + 실제 스크립트를 jsdom에서 실행
+// 실행: NODE_PATH=<jsdom 설치 경로> node scripts/tests/annual-leave-ui-test.cjs [page.html] [engine.js] [sohotip.js]
+const fs = require('fs'), path = require('path');
+const { JSDOM } = require('jsdom');
+const ROOT = path.join(__dirname, '../../');
+const html = fs.readFileSync(process.argv[2] || ROOT + 'annual-leave-calc.html', 'utf8');
+const engine = fs.readFileSync(process.argv[3] || ROOT + 'assets/annual-leave-2026.js', 'utf8');
+const sohotip = fs.readFileSync(process.argv[4] || ROOT + 'sohotip.js', 'utf8');
+
+async function boot() {
+  const stripped = html.replace(/<script[^>]*\bsrc=[^>]*><\/script>/g, '');
+  const inline = [...stripped.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]).filter(s => s.includes('AnnualLeave2026'))[0];
+  const dom = new JSDOM(stripped.replace(/<script>[\s\S]*?<\/script>/g, ''), { runScripts: 'outside-only', pretendToBeVisual: true });
+  const w = dom.window;
+  w.HTMLElement.prototype.scrollIntoView = function () {};
+  w.alert = m => { throw new Error('alert: ' + m); };
+  try { w.eval(sohotip); } catch (e) {}
+  w.eval(engine); w.eval(inline);
+  // 실제 브라우저처럼 DOMContentLoaded 이후 상태(금액 콤마 포맷 등 바인딩 완료)에서 테스트한다
+  if (w.document.readyState === 'loading') await new Promise(r => w.document.addEventListener('DOMContentLoaded', r));
+  return w;
+}
+(async () => {
+let w = await boot(), d = w.document;
+let pass = 0, fail = 0;
+const eq = (n, g, e) => { const ok = JSON.stringify(g) === JSON.stringify(e); ok ? pass++ : fail++; console.log((ok ? 'PASS ' : 'FAIL ') + n + (ok ? '' : `  got=${JSON.stringify(g)} exp=${JSON.stringify(e)}`)); };
+const $ = id => d.getElementById(id);
+const type = (id, v) => { $(id).value = v; $(id).dispatchEvent(new w.Event('input', { bubbles: true })); };
+const pick = (id, v) => { $(id).value = v; $(id).dispatchEvent(new w.Event('change', { bubbles: true })); };
+const click = id => $(id).click();
+const vis = id => { let e = $(id); while (e) { if (e.style && e.style.display === 'none') return false; e = e.parentElement; } return true; };
+const txt = id => $(id).textContent;
+const rows = () => [...$('al-rows').querySelectorAll('.breakdown-row')].map(r => [...r.children].map(c => c.textContent.trim()).join(' '));
+const rowVal = label => { const r = [...$('al-rows').querySelectorAll('.breakdown-row')].find(x => x.children[0].textContent.trim() === label); return r ? r.children[1].textContent.trim() : null; };
+const clean = () => !/NaN|Infinity|undefined|null/.test(txt('result-section') + txt('al-errors'));
+const errShown = () => $('al-errors').classList.contains('show');
+const blocked = () => $('al-blocked').classList.contains('show') && vis('al-blocked');
+async function fresh() { w = await boot(); d = w.document; }
+function fill(o) {   // 순서: 날짜 → 규모 → 형태 → 시간 → 출근율 → 개근월 → 나머지
+  if (o.hire != null) pick('al-hire', o.hire);
+  if (o.base != null) pick('al-base', o.base);
+  if (o.size != null) pick('al-size', o.size);
+  if (o.part) click('al-type-part');
+  if (o.weekly != null) type('al-weekly', o.weekly);
+  if (o.ft != null) type('al-ftweekly', o.ft);
+  if (o.daily != null) type('al-daily', o.daily);
+  if (o.att != null) pick('al-att', o.att);
+  if (o.months != null) type('al-months', o.months);
+  if (o.used != null) type('al-used', o.used);
+  if (o.wage != null) type('al-wage', o.wage);
+  if (o.bh != null) type('al-base-hours', o.bh);
+}
+
+// ── 초기 상태 ──
+const t = new Date(); const todayStr = t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0');
+eq('초기: 결과 숨김', vis('result-section'), false);
+eq('초기: 기준일 = 오늘', $('al-base').value, todayStr);
+eq('초기: 통상근로자·1일 시간 표시·통상근로자 시간 숨김', [$('al-type-full').classList.contains('active'), vis('al-daily-field'), vis('al-ftweekly-field')], [true, true, false]);
+eq('초기: 출근율·개근월 숨김', [vis('al-att-field'), vis('al-months-field')], [false, false]);
+eq('초기: 기본값 40·8·209·0', [$('al-weekly').value, $('al-daily').value, $('al-base-hours').value, $('al-used').value], ['40', '8', '209', '0']);
+click('al-calc-btn');
+eq('빈값 → 오류·결과 없음', [errShown(), vis('result-section')], [true, false]);
+eq('빈값 오류에 NaN 등 없음', clean(), true);
+
+// ── TEST 1 ──
+await fresh();
+fill({ hire: '2026-01-10', base: '2026-04-10', size: 'ge5' });
+eq('T1 개근월 질문(1년 미만 문구)·출근율 숨김', [vis('al-months-field'), txt('al-months-label'), vis('al-att-field')], [true, '입사일부터 계산기준일까지 개근한 1개월 구간은 몇 개월인가요?', false]);
+eq('T1 최대 개근월 안내 3개월', txt('al-months-hint').startsWith('날짜상 끝난 1개월 구간은 3개월입니다'), true);
+fill({ months: '3', used: '1', wage: '2500000' }); click('al-calc-btn');
+eq('T1 콤마 자동', $('al-wage').value, '2,500,000');
+eq('T1 발생 3일', txt('res-total'), '3일');
+eq('T1 행', [rowVal('현재 발생 연차'), rowVal('이미 사용한 연차'), rowVal('남은 연차'), rowVal('통상시급'), rowVal('연차 1일 예상 가치'), rowVal('통상임금 기준 예상 미사용 연차수당')],
+  ['3일', '1일', '2일', '약 11,962원', '약 95,694원', '약 191,388원']);
+eq('T1 NaN 없음', clean(), true);
+type('al-months', '4');
+eq('개근월 날짜상 최대 초과(4) → 오류·결과 숨김', [errShown(), vis('result-section'), txt('al-errors').includes('3개월')], [true, false, true]);
+type('al-months', '3');
+eq('정상값 복귀 → 재계산', [vis('result-section'), txt('res-total')], [true, '3일']);
+
+// ── TEST 17 → 18 → 22: 입사기념일 전날 → 당일 (상태변경 9) ──
+await fresh();
+fill({ hire: '2025-09-29', base: '2026-09-28', size: 'ge5', months: '11', wage: '2,500,000' }); click('al-calc-btn');
+eq('T17 전날: 1년 미만 11일', [txt('res-total'), rowVal('근속')], ['11일', '1년 미만 (날짜상 끝난 1개월 구간 11개월)']);
+pick('al-base', '2026-09-29');
+eq('T22 당일: 개근월 질문 숨김·값 삭제', [vis('al-months-field'), $('al-months').value], [false, '']);
+eq('T22 당일: 출근율 질문 표시', vis('al-att-field'), true);
+eq('T22 출근율 미선택 → 이전 11일 결과 숨김·비움', [vis('result-section'), txt('res-total'), txt('al-rows')], [false, '', '']);
+pick('al-att', 'ge80');
+eq('T18/T22 당일 80% 이상 → 15일', [txt('res-total'), rowVal('근속'), rowVal('현재 발생 연차')], ['15일', '완료 근속 1년', '15일']);
+eq('T22 11일·26일 흔적 없음', /11일|26일/.test(txt('al-rows') + txt('res-total') + txt('res-sub')), false);
+pick('al-base', '2026-09-28');
+eq('다시 전날로: 출근율 숨김·값 삭제, 개근월 빈칸', [vis('al-att-field'), $('al-att').value, vis('al-months-field'), $('al-months').value], [false, '', true, '']);
+eq('다시 전날로: 개근월 미입력 → 결과 숨김', vis('result-section'), false);
+
+// ── TEST 19 ──
+await fresh();
+fill({ hire: '2023-09-29', base: '2026-09-28', size: 'ge5', att: 'ge80', wage: '2,500,000' }); click('al-calc-btn');
+eq('T19 전날 2년·15일', [rowVal('근속'), txt('res-total')], ['완료 근속 2년', '15일']);
+pick('al-base', '2026-09-29');
+eq('T19 당일 3년·16일', [rowVal('근속'), txt('res-total')], ['완료 근속 3년', '16일']);
+
+// ── TEST 10/11/23: 80% 이상 ↔ 미만 (상태변경 1·2) ──
+await fresh();
+fill({ hire: '2023-03-15', base: '2026-03-15', size: 'ge5', att: 'ge80', used: '5', wage: '2,500,000' }); click('al-calc-btn');
+eq('T4 3년 80% 이상 16일', txt('res-total'), '16일');
+const steps = txt('al-steps');
+eq('계산과정: 기본 15 + 가산 1 → 16', steps.includes('기본 15일 + 장기근속 가산 1일 → 16일'), true);
+eq('계산과정: 16 − 5 = 11일', steps.includes('16 − 5 = 11일'), true);
+eq('계산과정: 통상시급', steps.includes('2,500,000원 ÷ 209시간 = 11,961.72원 → 약 11,962원'), true);
+eq('계산과정: 1일 가치', steps.includes('11,961.72원 × 8시간 = 약 95,694원'), true);
+eq('계산과정: 수당', steps.includes('95,693.78원 × 11일 = 약 1,052,632원'), true);
+pick('al-att', 'lt80');
+eq('상태1: 80% 미만 → 개근월 질문(직전 1년 문구)·빈칸', [vis('al-months-field'), txt('al-months-label'), $('al-months').value], [true, '직전 1년 동안 개근한 월은 몇 개월인가요?', '']);
+eq('상태1: 개근월 미입력 → 이전 16일 숨김', [vis('result-section'), txt('res-total')], [false, '']);
+type('al-months', '7'); type('al-used', '0');
+eq('T10/T23 80% 미만 7일(가산 없음)', [txt('res-total'), rowVal('현재 발생 연차')], ['7일', '7일']);
+eq('T10 계산과정에 가산 없음', /가산 \d/.test(txt('al-steps')), false);
+type('al-months', '13');
+eq('80% 미만 개근월 13 → 오류', [errShown(), vis('result-section')], [true, false]);
+type('al-months', '7');
+pick('al-att', 'ge80');
+eq('상태2: 80% 이상 복귀 → 즉시 16일·개근월 숨김·삭제', [txt('res-total'), vis('al-months-field'), $('al-months').value], ['16일', false, '']);
+pick('al-att', 'lt80');
+eq('다시 80% 미만: 이전 개근월 7 재사용 안 함', $('al-months').value, '');
+pick('al-att', 'unknown');
+eq('출근율 모름 → 확정 결과 없음·안내', [blocked(), vis('al-result-body'), txt('al-blocked').includes('정확한 근태기록을 확인해주세요'), txt('al-blocked').includes('80% 이상일 경우 예상값: 근속 3년 기준 16일')], [true, false, true, true]);
+eq('출근율 모름: 개근월 질문 숨김', vis('al-months-field'), false);
+eq('출근율 모름: 이전 금액 잔존 없음', [txt('res-total'), txt('al-rows'), /원/.test(txt('al-blocked'))], ['', '', false]);
+pick('al-att', 'ge80');
+eq('모름 → 80% 이상 복귀 16일', [txt('res-total'), blocked()], ['16일', false]);
+
+// ── T13/14/24: 주 15시간 경계 (상태변경 3·4) ──
+type('al-weekly', '14');
+eq('상태4/T13: 주14시간 → 적용 제외 안내·결과 숨김', [blocked(), txt('al-blocked').includes('15시간 미만인 근로자는 근로기준법상 연차유급휴가 규정이 적용되지 않습니다'), vis('al-result-body'), txt('res-total')], [true, true, false, '']);
+type('al-weekly', '14.99');
+eq('T24: 14.99 → 적용 제외', blocked(), true);
+type('al-weekly', '15');
+eq('상태3/T14: 15시간 → 정상 계산', [blocked(), txt('res-total')], [false, '16일']);
+type('al-weekly', '40');
+
+// ── T12/25: 5인 경계 (상태변경 5·6) ──
+pick('al-size', 'lt5');
+eq('상태6/T12: 5인 미만 → 계산 중단 안내', [blocked(), txt('al-blocked').includes('상시근로자 5인 미만 사업장은 근로기준법 제60조에 따른 법정 연차유급휴가 의무 적용 대상이 아닙니다')], [true, true]);
+eq('T12: 0일로 단정하지 않음·금액 없음', [/0일/.test(txt('result-section')), txt('res-total'), txt('al-rows')], [false, '', '']);
+pick('al-size', 'ge5');
+eq('상태5/T25: 5인 이상 → 정상 계산', [blocked(), txt('res-total')], [false, '16일']);
+
+// ── T20/26: 사용연차 초과 (상태변경 10) ──
+type('al-used', '17');
+eq('상태10/T20: 사용 17 > 발생 16 → 차단·문구', [vis('result-section'), txt('al-errors').includes('사용한 연차가 현재 계산된 발생 연차보다 많습니다. 입력값 또는 전년도 이월연차 여부를 확인해주세요.')], [false, true]);
+eq('T20: 음수 잔여 표시 없음', /-\d|−\d+일/.test(txt('res-total') + txt('al-rows')), false);
+type('al-used', '16');
+eq('사용 16 = 발생 16 → 남은 0일·0원', [rowVal('남은 연차'), rowVal('통상임금 기준 예상 미사용 연차수당')], ['0일', '0원']);
+type('al-used', '0.5');
+eq('반차 0.5 → 남은 15.5일', rowVal('남은 연차'), '15.5일');
+
+// ── T27: 기준시간 209 → 0 → 209 (상태변경 11) ──
+type('al-used', '5');
+const before = rows();
+type('al-base-hours', '0');
+eq('상태11/T27: 0 → 차단·Infinity 없음', [vis('result-section'), errShown(), clean()], [false, true, true]);
+type('al-base-hours', '209');
+eq('상태11: 209 복귀 → 같은 결과', rows(), before);
+type('al-wage', 'abc');
+eq('문자만 입력 → 계산 안 함', [vis('result-section'), clean()], [false, true]);
+type('al-wage', '2,500,000');
+
+// ── T15/16/28: 단시간근로자 (상태변경 7·8) ──
+await fresh();
+fill({ hire: '2025-03-15', base: '2026-03-15', size: 'ge5', att: 'ge80', used: '3', wage: '2,500,000' }); click('al-calc-btn');
+eq('통상근로자 15일', txt('res-total'), '15일');
+click('al-type-part');
+eq('상태7: 단시간 → 통상근로자 시간 표시(40)·1일 시간 숨김', [vis('al-ftweekly-field'), $('al-ftweekly').value, vis('al-daily-field')], [true, '40', false]);
+eq('상태7: 사용량 단위 시간·이전 일수 삭제', [txt('al-used-unit'), $('al-used').value], ['시간', '0']);
+eq('상태7: 단시간이 통상근로자와 같은 40시간 → 오류', [errShown(), vis('result-section')], [true, false]);
+type('al-weekly', '20'); type('al-used', '8'); type('al-wage', '1,200,000'); type('al-base-hours', '104');
+eq('T15/T28 60시간', [txt('res-total'), txt('res-sub').startsWith('법정 연차 15일 상당 / 실제 연차시간 60시간')], ['60시간', true]);
+eq('T16/T28 행', [rowVal('법정 연차일수 상당'), rowVal('실제 법정 연차시간'), rowVal('이미 사용한 연차시간'), rowVal('남은 연차시간'), rowVal('통상시급 (연차 1시간 가치)'), rowVal('통상임금 기준 예상 미사용 연차수당')],
+  ['15일', '60시간', '8시간', '52시간', '약 11,538원', '600,000원']);
+eq('T15 계산과정', txt('al-steps').includes('15일 × 주 20시간 ÷ 통상근로자 주 40시간 × 8시간 = 60시간 → 60시간'), true);
+eq('일반근로자 전용 행 없음', [rowVal('연차 1일 예상 가치'), rowVal('현재 발생 연차')], [null, null]);
+type('al-used', '61');
+eq('사용시간 61 > 60 → 차단', [vis('result-section'), txt('al-errors').includes('사용한 연차시간이 현재 계산된 발생 연차시간보다 많습니다')], [false, true]);
+type('al-used', '8');
+type('al-weekly', '18.5');
+eq('1시간 미만 올림: 15×18.5/40×8=55.5 → 56시간', [txt('res-total'), txt('al-steps').includes('55.5시간 → 1시간 미만은 1시간으로 봄 → 56시간')], ['56시간', true]);
+type('al-weekly', '20');
+type('al-ftweekly', '35');
+eq('통상근로자 35시간 → 15×20/35×8=68.57 → 69시간', txt('res-total'), '69시간');
+click('al-type-full');
+eq('상태8: 통상근로자 복귀 → 단시간 값 초기화(40)·숨김, 1일 시간 8 표시', [vis('al-ftweekly-field'), $('al-ftweekly').value, vis('al-daily-field'), $('al-daily').value], [false, '40', true, '8']);
+eq('상태8: 사용 시간 값 삭제(0일)·단위 일', [$('al-used').value, txt('al-used-unit')], ['0', '일']);
+eq('상태8: 일 단위 결과·시간 결과 잔존 없음', [txt('res-total'), /시간\s*$/.test(txt('res-total')), rowVal('실제 법정 연차시간')], ['15일', false, null]);
+click('al-type-part');
+eq('다시 단시간: 이전 35시간 재사용 안 함', $('al-ftweekly').value, '40');
+
+// ── 기준일 < 입사일 ──
+await fresh();
+fill({ hire: '2026-05-05', base: '2026-05-04', size: 'ge5', wage: '2,500,000' }); click('al-calc-btn');
+eq('기준일 < 입사일 → 오류·질문 숨김', [errShown(), txt('al-errors').includes('계산 기준일이 입사일보다 빠릅니다'), vis('al-att-field'), vis('al-months-field')], [true, true, false, false]);
+
+// ── 새로고침/뒤로가기 초기화 ──
+await fresh();
+fill({ hire: '2023-03-15', base: '2026-03-15', size: 'ge5', att: 'ge80', wage: '2,500,000' }); click('al-calc-btn');
+eq('bfcache 전 결과 표시', vis('result-section'), true);
+const ev = new w.Event('pageshow'); ev.persisted = true; w.dispatchEvent(ev);
+eq('bfcache 복원 → 초기화', [vis('result-section'), $('al-hire').value, $('al-wage').value, $('al-size').value, txt('res-total')], [false, '', '', '', '']);
+
+// ── 정적 문구 ──
+eq('회계연도 안내 문구', d.body.textContent.includes('이 계산기는 입사일 기준으로 계산합니다. 회사가 회계연도 기준으로 연차를 운영하는 경우 입사 첫해 비례부여, 연도별 정산 방식 등에 따라 회사의 연차일수와 차이가 날 수 있습니다.'), true);
+eq('연차사용촉진 안내 문구', d.body.textContent.includes('회사가 근로기준법상 연차사용촉진 절차를 적법하게 완료한 경우 미사용 연차에 대해 연차수당이 발생하지 않을 수 있습니다.'), true);
+eq('"확정액" 표현 없음', d.body.textContent.includes('확정액'), false);
+const ld = [...d.querySelectorAll('script[type="application/ld+json"]')].map(s => JSON.parse(s.textContent));
+const faq = ld.find(x => x['@type'] === 'FAQPage');
+const visQ = [...d.querySelectorAll('.faq-q')].map(x => x.textContent.trim());
+const visA = [...d.querySelectorAll('.faq-a')].map(x => x.textContent.trim());
+eq('FAQ 스키마 = 화면 FAQ', [faq.mainEntity.map(q => q.name), faq.mainEntity.map(q => q.acceptedAnswer.text)], [visQ, visA]);
+
+console.log(`\n${pass} passed, ${fail} failed`);
+process.exit(fail ? 1 : 0);
+})();
