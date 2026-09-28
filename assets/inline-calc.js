@@ -450,6 +450,8 @@
     if (!map.calcs[slug]) return; // 등록된 계산기 페이지에서만
     var scope = document.querySelector('.page-wrap');
     if (!scope) return;
+    /* 조건부 질문(숨김 필드 초기화)이 있는 계산기는 필드별 복원이 상태를 깨뜨리므로 저장·복원하지 않는다 */
+    if (scope.querySelector('[data-no-persist]')) return;
     var sel = 'input[type="text"],input[type="number"],input[type="tel"],input[inputmode],select';
     var fields = scope.querySelectorAll(sel);
     var keyBase = 'full_' + slug + '_';

@@ -1551,7 +1551,7 @@ function setupCalcShare(slug) {
   /* PART 2: 미니 계산기 + "함께 보면 좋은". 자체 게이트(문맥 맞을 때만 렌더).
      상담 CTA(consult.js)·"준비 중" 형제사이트 카드(assets/network.js)는 2026-09-29 제거
      — 정보제공 사이트 포지션, scripts/CONSULT-REMOVAL-LOG.md 참고. */
-  ['assets/inline-calc.js?v=20260628'].forEach(function (src) {
+  ['assets/inline-calc.js?v=20260929'].forEach(function (src) {
     var s = document.createElement('script');
     s.src = src; s.async = true;
     document.head.appendChild(s);

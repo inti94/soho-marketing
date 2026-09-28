@@ -214,6 +214,32 @@ eq('bfcache 전 결과 표시', vis('result-section'), true);
 const ev = new w.Event('pageshow'); ev.persisted = true; w.dispatchEvent(ev);
 eq('bfcache 복원 → 초기화', [vis('result-section'), $('al-hire').value, $('al-wage').value, $('al-size').value, txt('res-total')], [false, '', '', '', '']);
 
+// ── 사이트 공통 입력 저장·복원(inline-calc.js)이 이 계산기 상태를 덮어쓰지 않는지 ──
+// 실제 inline-calc.js·calc-map.js 를 실행하고, 이전 방문에서 저장된 값이 localStorage 에 있는 상황을 만든다.
+async function bootWithPersist(pageHtml) {
+  const stripped = pageHtml.replace(/<script[^>]*\bsrc=[^>]*><\/script>/g, '');
+  const inline = [...stripped.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]).filter(x => x.includes('AnnualLeave2026'))[0];
+  const dom = new JSDOM(stripped.replace(/<script>[\s\S]*?<\/script>/g, ''), { runScripts: 'outside-only', pretendToBeVisual: true, url: 'https://sohotip.co.kr/annual-leave-calc.html' });
+  const ww = dom.window;
+  ww.HTMLElement.prototype.scrollIntoView = function () {};
+  const saved = { 'al-weekly': '20', 'al-base-hours': '104', 'al-used': '5', 'al-att': 'ge80', 'al-months': '11', 'al-wage': '2,500,000', 'al-size': 'ge5', 'al-ftweekly': '35' };
+  for (const [k, v] of Object.entries(saved)) ww.localStorage.setItem('sohotip_full_annual-leave-calc_' + k, v);
+  try { ww.eval(sohotip); } catch (e) {}
+  ww.eval(engine); ww.eval(inline);
+  ww.eval(fs.readFileSync(ROOT + 'assets/calc-map.js', 'utf8'));
+  ww.SohoCards = ww.SohoCards || {};
+  ww.eval(fs.readFileSync(ROOT + 'assets/inline-calc.js', 'utf8'));
+  if (ww.document.readyState === 'loading') await new Promise(r => ww.document.addEventListener('DOMContentLoaded', r));
+  await new Promise(r => setTimeout(r, 50));
+  return ww;
+}
+{
+  const ww = await bootWithPersist(html), g = id => ww.document.getElementById(id).value;
+  eq('저장값 복원 안 함(data-no-persist): 기본값 유지', [g('al-weekly'), g('al-base-hours'), g('al-used'), g('al-wage'), g('al-size'), g('al-ftweekly'), g('al-months'), g('al-att')], ['40', '209', '0', '', '', '40', '', '']);
+  const ctl = await bootWithPersist(html.replace(' data-no-persist', ''));
+  eq('대조군: 속성을 빼면 실제로 복원됨(테스트 유효성)', ctl.document.getElementById('al-base-hours').value, '104');
+}
+
 // ── 정적 문구 ──
 eq('회계연도 안내 문구', d.body.textContent.includes('이 계산기는 입사일 기준으로 계산합니다. 회사가 회계연도 기준으로 연차를 운영하는 경우 입사 첫해 비례부여, 연도별 정산 방식 등에 따라 회사의 연차일수와 차이가 날 수 있습니다.'), true);
 eq('연차사용촉진 안내 문구', d.body.textContent.includes('회사가 근로기준법상 연차사용촉진 절차를 적법하게 완료한 경우 미사용 연차에 대해 연차수당이 발생하지 않을 수 있습니다.'), true);
