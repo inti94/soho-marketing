@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="2026 육아휴직 급여 계산기. 월 통상임금과 사용기간을 넣으면 일반 육아휴직, 부모함께 육아휴직(6+6) 특례, 한부모 특례 기준으로 월별 급여와 총액을 계산합니다. 18개월 연장요건까지 반영.">
+<meta name="keywords" content="육아휴직 급여 계산기, 2026 육아휴직급여, 부모함께 육아휴직, 6+6 육아휴직, 한부모 육아휴직, 육아휴직 상한액, 육아휴직 18개월">
+<meta name="robots" content="index, follow">
+<meta name="author" content="소호팁">
+<meta name="date" content="2026-09-28">
+<meta property="og:type" content="website">
+<meta property="og:title" content="2026 육아휴직 급여 계산기 — 일반·부모함께·한부모 월별 계산 | 소호팁">
+<meta property="og:description" content="월 통상임금과 사용기간으로 2026년 육아휴직급여를 월별로 계산합니다. 부모함께(6+6)·한부모 특례, 18개월 연장요건 반영.">
+<meta property="og:url" content="https://sohotip.co.kr/parental-leave-calc.html">
+<meta property="og:image" content="https://sohotip.co.kr/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="소호팁">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="2026 육아휴직 급여 계산기 — 일반·부모함께·한부모 월별 계산 | 소호팁">
+<meta name="twitter:description" content="월 통상임금과 사용기간으로 2026년 육아휴직급여를 월별로 계산합니다. 부모함께(6+6)·한부모 특례, 18개월 연장요건 반영.">
+<meta name="twitter:image" content="https://sohotip.co.kr/og-image.png">
+<meta name="naver-site-verification" content="d7369feb5de3df4cce2e9016b84ad045c4ed70a4">
+<link rel="canonical" href="https://sohotip.co.kr/parental-leave-calc.html">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="icon" type="image/svg+xml" href="https://sohotip.co.kr/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sohotip.co.kr/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
+<link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
+<title>2026 육아휴직 급여 계산기 — 일반·부모함께·한부모 월별 계산 | 소호팁</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "2026 육아휴직 급여 계산기",
+    "description": "월 통상임금과 육아휴직 사용기간으로 2026년 일반 육아휴직, 부모함께 육아휴직 특례, 한부모 특례 기준의 월별 육아휴직급여와 총액을 계산하는 계산기.",
+    "url": "https://sohotip.co.kr/parental-leave-calc.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"},
+    "publisher": {"@type": "Organization", "name": "소호팁", "url": "https://sohotip.co.kr"},
+    "dateModified": "2026-09-28",
+    "inLanguage": "ko-KR",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"홈","item":"https://sohotip.co.kr/"},
+        {"@type":"ListItem","position":2,"name":"계산기","item":"https://sohotip.co.kr/tools.html"},
+        {"@type":"ListItem","position":3,"name":"육아휴직 급여 계산기","item":"https://sohotip.co.kr/parental-leave-calc.html"}
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"부모가 동시에 휴직하지 않아도 부모함께 특례를 받을 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"받을 수 있습니다. 부모 모두 같은 자녀에 대해 출생 후 18개월 이내에 육아휴직을 시작하면 되고, 두 사람의 휴직 기간이 달력상 겹칠 필요는 없습니다. 특례가 적용되는 기간은 두 사람이 각각 사용한 개월 수 중 짧은 쪽(최대 6개월)입니다."}},
+      {"@type":"Question","name":"특례 기간이 끝나면 급여가 다시 1개월차 기준으로 돌아가나요?","acceptedAnswer":{"@type":"Answer","text":"아닙니다. 육아휴직 사용 차수는 계속 이어집니다. 예를 들어 특례를 3개월 받았다면 4개월차부터는 일반 육아휴직 4~6개월 기준(통상임금 100%, 상한 200만원)이 적용되고, 7개월차부터는 80%(상한 160만원)가 적용됩니다."}},
+      {"@type":"Question","name":"육아휴직을 18개월까지 쓸 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"기본은 1년입니다. 같은 자녀에 대해 부모가 각각 3개월 이상 육아휴직을 사용했거나, 한부모이거나, 법령상 장애아동의 부모인 경우 6개월 이내에서 추가로 사용할 수 있습니다. 7개월차 이후 기준(통상임금 80%, 상한 160만원)이 13~18개월에도 그대로 적용됩니다."}},
+      {"@type":"Question","name":"한부모는 육아휴직급여가 얼마나 다른가요?","acceptedAnswer":{"@type":"Answer","text":"법령상 한부모는 첫 3개월 상한이 월 300만원으로 일반(250만원)보다 높습니다. 4~6개월은 상한 200만원, 7개월 이후는 통상임금 80%에 상한 160만원으로 일반과 같습니다."}}
+    ]
+  }
+  </script>
+<link rel="stylesheet" href="sohotip.css?v=20260702a">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/theme.css?v=20260702a">
+<link rel="stylesheet" href="assets/calc.css?v=20260702a">
+<style>
+:root{--primary:#3D5AFE;--primary-light:#ECEFFF;--primary-mid:#2C45D8;--text:#1A1A1A;--text-muted:#6B7280;--text-light:#9CA3AF;--bg:#FAFAF8;--bg-card:#FFFFFF;--border:#E5E7EB;--border-light:#F3F4F6;--sans:'Noto Sans KR',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;overflow-x:clip;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:clip;}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-size:13px;color:var(--text-muted);text-decoration:none;}
+.nav-links a:hover{color:var(--primary);}
+.nav-cta{background:var(--primary);color:#fff;font-size:13px;padding:7px 16px;border-radius:6px;text-decoration:none;}
+@media(max-width:640px){.nav-links{display:none;}}
+.page-wrap{max-width:680px;margin:0 auto;padding:36px 16px 80px;}
+.page-title{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.page-desc{font-size:14px;color:var(--text-muted);margin-bottom:20px;line-height:1.6;}
+.lead3{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--primary);border-radius:12px;padding:14px 18px;margin-bottom:26px;font-size:13.5px;line-height:1.8;color:var(--text);}
+.lead3 b{color:var(--primary-mid);}
+.tag{display:inline-flex;align-items:center;gap:5px;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:16px;}
+.tag svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* 블록① 계산기 */
+.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px;}
+.card-title{font-size:14px;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:18px;}
+.mode-row{display:flex;gap:8px;margin-bottom:20px;}
+.mode-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:11px 10px;border:1.5px solid var(--border);background:var(--bg-card);border-radius:10px;font-size:13px;font-weight:600;color:var(--text-muted);cursor:pointer;font-family:var(--sans);transition:all .15s;}
+.mode-btn.active{border-color:var(--primary);background:var(--primary-light);color:var(--primary-mid);}
+.field{margin-bottom:18px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--text);}
+.field-hint{font-size:11px;color:var(--text-muted);margin-bottom:6px;line-height:1.5;}
+.field input{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;-webkit-appearance:none;}
+.field input:focus{border-color:var(--primary);}
+.btn-calc{width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:background 0.2s;margin-top:8px;}
+.btn-calc:hover{background:var(--primary-mid);}
+.result-card{background:var(--primary);border-radius:16px;padding:26px;color:#fff;margin-bottom:18px;}
+.result-title{font-size:13px;opacity:0.8;margin-bottom:6px;}
+.result-total{font-size:34px;font-weight:700;margin-bottom:4px;}
+.result-sub{font-size:13px;opacity:0.75;line-height:1.6;}
+.result-breakdown{background:var(--bg-card);border-radius:16px;padding:22px;border:1px solid var(--border);}
+.breakdown-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+.breakdown-row:last-child{border-bottom:none;}
+.breakdown-label{font-size:13px;color:var(--text-muted);min-width:0;}
+.breakdown-value{font-size:14px;font-weight:500;color:var(--text);text-align:right;flex-shrink:0;}
+.breakdown-value.highlight{color:var(--primary);font-weight:700;font-size:15px;}
+.warn-box{background:#FFF8F2;border:1px solid #FFE3CC;border-radius:12px;padding:14px 16px;margin-top:16px;font-size:12.5px;color:#9A5B1E;line-height:1.7;display:none;}
+.warn-box.show{display:block;}
+.warn-box strong{color:#C2410C;}
+.notice-box{background:var(--primary-light);border-radius:12px;padding:16px 18px;margin-top:16px;font-size:12px;color:var(--primary-mid);line-height:1.7;}
+.notice-box strong{color:var(--primary);}
+.notice-box a{color:var(--primary);font-weight:600;}
+
+/* 블록②~⑨ 설명 콘텐츠 */
+.article-content{margin-top:36px;}
+.article-content h2{font-size:20px;font-weight:800;color:var(--text);margin:34px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-.01em;}
+.article-content h3{font-size:16px;font-weight:700;color:var(--text);margin:22px 0 8px;}
+.article-content p{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:16px;}
+.article-content strong{font-weight:700;color:var(--primary);}
+.article-content ul{margin:14px 0 18px 18px;}
+.article-content li{font-size:15px;line-height:1.8;margin-bottom:6px;}
+.formula-box{background:#191F28;color:#fff;border-radius:14px;padding:20px 22px;margin:8px 0 18px;font-size:15px;font-weight:600;line-height:1.7;text-align:center;}
+.formula-box .fx-sub{display:block;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);margin-top:8px;}
+.law-box{background:#F4F6FB;border:1px solid var(--border);border-left:4px solid var(--text-muted);border-radius:12px;padding:16px 18px;margin:8px 0 18px;font-size:13.5px;color:var(--text);line-height:1.8;}
+.law-box .law-src{display:block;font-size:11.5px;color:var(--text-muted);margin-top:8px;}
+.tip-inline{background:var(--primary-light);border-radius:12px;padding:14px 18px;margin:8px 0 18px;font-size:14px;color:var(--primary-mid);line-height:1.7;}
+.tip-inline strong{color:var(--primary);}
+.article-table{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:13.5px;}
+.article-table th,.article-table td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;line-height:1.6;}
+.article-table th{background:#F4F6FB;font-weight:700;color:var(--text);}
+.article-table td:first-child{font-weight:600;white-space:nowrap;}
+.prepare{background:#FFF8F2;border:1px solid #FFE3CC;border-radius:12px;padding:16px 18px;font-size:13px;color:#9A5B1E;line-height:1.8;margin:8px 0 18px;}
+.prepare strong{color:#C2410C;}
+.prepare a{color:#C2410C;font-weight:700;}
+/* FAQ */
+.faq-item{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;background:var(--bg-card);}
+.faq-q{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:7px;}
+.faq-q::before{content:"Q. ";color:var(--primary);}
+.faq-a{font-size:13.5px;color:var(--text-muted);line-height:1.75;}
+.faq-section{margin-top:8px;}
+.ai-summary .ais-badge svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.ai-summary .ais-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* 블록⑩ 관련 계산기 */
+.related-calcs-section{margin:34px 0 0;}
+.related-calcs-section h2,.related-articles-section h2{font-size:17px;font-weight:800;color:var(--text);margin-bottom:14px;}
+.rel-calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;}
+.rel-calc-card{display:flex;align-items:center;gap:10px;padding:14px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s;}
+.rel-calc-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 14px rgba(61,90,254,.12);}
+.rcc-icon{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;color:var(--primary);}
+.rcc-icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.rcc-title{font-size:12.5px;font-weight:700;line-height:1.3;}
+.rcc-desc{font-size:11px;color:var(--text-muted);margin-top:2px;}
+/* 블록⑪ 관련 글 */
+.related-articles-section{margin:28px 0 0;}
+.rel-article-item{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--border-light);text-decoration:none;color:var(--text);}
+.rel-article-item:last-child{border-bottom:none;}
+.rel-article-item:hover .rai-title{color:var(--primary);}
+.rai-num{font-size:18px;font-weight:900;color:var(--border);width:22px;flex-shrink:0;text-align:center;}
+.rai-title{font-size:13.5px;font-weight:600;line-height:1.4;flex:1;min-width:0;}
+.rai-arrow{color:var(--primary);font-size:14px;flex-shrink:0;}
+/* 블록⑫ CTA */
+.cta-box{margin-top:34px;background:linear-gradient(135deg,#3D5AFE,#536DFE);border-radius:18px;padding:26px 22px;text-align:center;color:#fff;}
+.cta-box h3{font-size:18px;font-weight:800;margin-bottom:6px;}
+.cta-box p{font-size:13.5px;opacity:.85;margin-bottom:16px;line-height:1.6;}
+.cta-box a{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--primary);font-size:15px;font-weight:700;padding:13px 26px;border-radius:12px;text-decoration:none;transition:transform .12s;}
+.cta-box a:active{transform:scale(.97);}
+.cta-box a svg{width:18px;height:18px;fill:none;stroke:var(--primary);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.nav-search-icon svg{width:16px;height:16px;fill:none;stroke:#9CA3AF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+footer{background:#1A1A1A;color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:12px;}
+footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
+@media(max-width:380px){.rel-calc-grid{grid-template-columns:1fr 1fr;}}
+/* 기존 입력창 스타일을 select·2열 입력에 그대로 적용 (실업급여 계산기와 동일) */
+.field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:var(--sans);color:var(--text);background:var(--bg-card);outline:none;transition:border-color 0.2s;}
+.field select:focus{border-color:var(--primary);}
+.field-row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.unit-input{position:relative;}
+.unit-input input{padding-right:44px;}
+.unit-input span{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--text-muted);pointer-events:none;}
+.steps-title{font-size:15px;font-weight:700;color:var(--text);margin:22px 0 10px;}
+.result-breakdown.steps .breakdown-row{align-items:flex-start;}
+.result-breakdown.steps .breakdown-label{flex-shrink:0;}
+.result-breakdown.steps .breakdown-value{flex-shrink:1;font-size:13px;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;}
+.result-breakdown.steps b{color:var(--primary);}
+.calc-sources{margin:30px 0 0;padding:18px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;}
+.calc-sources h2{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;}
+.calc-sources ul{list-style:none;margin:0;padding:0;}
+.calc-sources li{font-size:12.5px;color:var(--text-muted);line-height:1.75;padding-left:14px;position:relative;}
+.calc-sources li::before{content:"·";position:absolute;left:2px;color:var(--primary);font-weight:700;}
+.calc-sources a{color:var(--primary);text-decoration:none;}
+.calc-sources .cs-updated{font-size:11px;color:var(--text-muted);margin-top:10px;}
+.mode-row .mode-btn{min-width:0;word-break:keep-all;}
+</style></head>
+<body>
+<div id="progress-bar"></div>
+<nav>
+  <a href="index.html" class="nav-logo" aria-label="소호팁 홈"><img src="assets/logo.svg?v=20260702d" alt="소호팁" width="99" height="30" style="display:block"></a>
+  <ul class="nav-links">
+    <li><a href="category.html">카테고리</a></li>
+    <li><a href="tools.html">계산기</a></li>
+  </ul>
+
+</nav>
+<!-- 모바일 검색바 (nav 아래, 모바일에서만 표시) -->
+<div class="mobile-search-bar">
+  <div class="nav-search">
+    <span class="nav-search-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg></span>
+    <input type="text" id="search-input-mobile" class="nav-search-input" placeholder="궁금한 주제를 검색하세요..." autocomplete="off">
+    <div id="search-dropdown-mobile"></div>
+  </div>
+</div>
+
+<div class="page-wrap">
+  <span class="tag"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="12" y2="18"/></svg> 인사·노무 · 계산기</span>
+  <h1 class="page-title">2026 육아휴직 급여 계산기 — 일반·부모함께·한부모</h1>
+  <p class="page-desc">월 통상임금과 육아휴직 사용기간을 넣으면 2026년 기준 육아휴직급여를 월별로 계산합니다. 부모함께 육아휴직(6+6) 특례와 한부모 특례, 13~18개월 연장요건까지 반영하며 완전한 개월 단위로 계산합니다.</p>
+  <!-- ② 30초 요약 -->
+  <section class="ai-summary" aria-label="30초 핵심 요약">
+    <span class="ais-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.9L18.7 9.7 13.8 11.5 12 16.4 10.2 11.5 5.3 9.7 10.2 7.9z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg> 30초 요약</span>
+    <p>일반 육아휴직급여는 <strong>1~3개월 통상임금 100%(상한 250만원)</strong>, <strong>4~6개월 100%(상한 200만원)</strong>, <strong>7개월부터 80%(상한 160만원)</strong>이고 하한은 월 70만원이에요.</p>
+    <p>부모가 같은 자녀로 모두 휴직하면 <strong>부모함께 특례</strong>로 첫 6개월 안에서 상한이 250·250·300·350·400·450만원으로 올라가고, <strong>한부모</strong>는 첫 3개월 상한이 300만원입니다.</p>
+    <div class="ais-cta">
+      <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/></svg> 육아휴직급여 바로 계산</a>
+      <a class="ais-btn ghost" href="net-salary-calc.html">월급 실수령액 보기</a>
+    </div>
+    <div class="ais-links">이어서 보면 좋아요 · <a href="net-salary-calc.html">월급 실수령액</a> · <a href="unemployment-benefit-calc.html">실업급여 계산</a></div>
+  </section>
+
+  <!-- ① 계산기 -->
+  <form class="calc-card" id="calc" autocomplete="off" novalidate>
+    <div class="card-title">육아휴직 조건</div>
+
+    <div class="field">
+      <label>계산 유형</label>
+      <div class="mode-row">
+        <button type="button" class="mode-btn active" data-type="general" id="pl-type-general">일반 육아휴직</button>
+        <button type="button" class="mode-btn" data-type="together" id="pl-type-together">부모함께</button>
+        <button type="button" class="mode-btn" data-type="single" id="pl-type-single">한부모</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="pl-wage">본인 월 통상임금 (원)</label>
+      <div class="field-hint">육아휴직 시작일 기준 월 통상임금(기본급 + 정기적·일률적으로 주는 수당).</div>
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="pl-wage" placeholder="예: 3,000,000">
+    </div>
+    <div class="field">
+      <label for="pl-months">본인 육아휴직 사용기간</label>
+      <div class="field-hint">완전한 개월 단위. 13~18개월은 6개월 추가 사용요건을 충족해야 합니다.</div>
+      <select id="pl-months" class="pl-months-select"></select>
+    </div>
+    <div class="field">
+      <label for="pl-insured">육아휴직 시작 전 피보험단위기간이 합산 180일 이상인가요?</label>
+      <select id="pl-insured"><option value="">선택하세요</option><option value="yes">예</option><option value="no">아니오</option><option value="unknown">잘 모르겠어요</option></select>
+    </div>
+
+    <div id="pl-together-fields" style="display:none;">
+      <div class="field">
+        <label for="pl-spouse-wage">배우자 월 통상임금 (원)</label>
+        <div class="field-hint">배우자 급여는 배우자 통상임금으로만 따로 계산합니다.</div>
+        <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="pl-spouse-wage" placeholder="예: 3,000,000">
+      </div>
+      <div class="field">
+        <label for="pl-spouse-months">배우자 육아휴직 사용기간</label>
+        <select id="pl-spouse-months" class="pl-months-select"></select>
+      </div>
+      <div class="field">
+        <label for="pl-child-age">부모 모두 해당 자녀에 대한 육아휴직을 출생 후 18개월 이내에 개시했나요?</label>
+        <div class="field-hint">두 사람의 휴직 기간이 서로 겹칠 필요는 없습니다.</div>
+        <select id="pl-child-age"><option value="">선택하세요</option><option value="yes">예</option><option value="no">아니오</option><option value="unknown">잘 모르겠어요</option></select>
+      </div>
+      <div class="field">
+        <label for="pl-spouse-insured">배우자 피보험단위기간이 합산 180일 이상인가요?</label>
+        <select id="pl-spouse-insured"><option value="">선택하세요</option><option value="yes">예</option><option value="no">아니오</option><option value="unknown">잘 모르겠어요</option></select>
+      </div>
+    </div>
+
+    <div id="pl-single-fields" style="display:none;">
+      <div class="field">
+        <label for="pl-single">법령상 한부모에 해당하나요?</label>
+        <div class="field-hint">「한부모가족지원법」상 부 또는 모에 해당하는지 여부입니다.</div>
+        <select id="pl-single"><option value="">선택하세요</option><option value="yes">예</option><option value="no">아니오</option><option value="unknown">잘 모르겠어요</option></select>
+      </div>
+    </div>
+
+    <div class="field" id="pl-ext-field" style="display:none;">
+      <label for="pl-ext">육아휴직 6개월 추가 사용요건을 충족하나요?</label>
+      <div class="field-hint">계획만으로는 충족으로 보지 않습니다. 실제 사용 이력·증빙 기준으로 직접 확인해 선택하세요.</div>
+      <select id="pl-ext">
+        <option value="">선택하세요</option>
+        <option value="both3">부모 모두 같은 자녀에 대해 각각 3개월 이상 육아휴직 사용</option>
+        <option value="single">한부모</option>
+        <option value="disabledChild">법령상 해당 장애아동의 부모</option>
+        <option value="none">해당하지 않음</option>
+        <option value="unknown">잘 모르겠음</option>
+      </select>
+    </div>
+
+    <button type="button" class="btn-calc" id="pl-calc-btn">육아휴직급여 계산하기</button>
+    <div class="warn-box" id="pl-errors" role="alert"></div>
+  </form>
+
+  <div id="result-section" style="display:none;" aria-live="polite">
+    <div class="warn-box" id="pl-blocked"></div>
+    <div id="pl-result-body">
+      <div class="result-card">
+        <div class="result-title" id="res-title"></div>
+        <div class="result-total" id="res-total">0원</div>
+        <div class="result-sub" id="res-sub"></div>
+      </div>
+      <div id="pl-status"></div>
+      <div id="pl-persons"></div>
+    </div>
+    <div class="notice-box">
+      <strong>※ 안내</strong><br>
+      본 계산기는 2026년 현행 법령 기준의 예상 육아휴직급여를 계산합니다.<br>
+      실제 지급 여부와 금액은 피보험단위기간, 통상임금 산정, 육아휴직 사용이력, 부모함께 육아휴직 특례요건, 한부모 여부, 18개월 연장요건 및 고용센터 심사 결과 등에 따라 달라질 수 있습니다.<br>
+      1개월 미만 육아휴직 기간은 실제 휴직일수에 따라 일할 계산될 수 있으며 현재 계산기는 완전한 개월 단위를 기준으로 계산합니다.<br>
+      최종 지급액은 <a href="https://www.work24.go.kr" target="_blank" rel="noopener">고용24</a> 또는 관할 고용센터에서 확인하세요.
+    </div>
+  </div>
+
+  <!-- 설명 콘텐츠 -->
+  <div class="article-content">
+
+    <h2>2026년 일반 육아휴직급여 기준</h2>
+    <p>육아휴직급여는 휴직을 시작한 날의 <strong>월 통상임금</strong>을 기준으로, 휴직 몇 개월차인지에 따라 지급률과 상한이 달라집니다. 하한은 모든 구간에서 월 70만원이에요. 2025년부터 복직 후에 나눠 주던 사후지급금이 없어져 매달 전액 지급됩니다.</p>
+    <table class="article-table">
+      <thead><tr><th>휴직 차수</th><th>지급률</th><th>월 상한</th><th>월 하한</th></tr></thead>
+      <tbody>
+        <tr><td>1~3개월</td><td>통상임금 100%</td><td>250만원</td><td>70만원</td></tr>
+        <tr><td>4~6개월</td><td>통상임금 100%</td><td>200만원</td><td>70만원</td></tr>
+        <tr><td>7개월 이후 (13~18개월 포함)</td><td>통상임금 80%</td><td>160만원</td><td>70만원</td></tr>
+      </tbody>
+    </table>
+    <div class="formula-box">
+      월 육아휴직급여 = max(70만원, min(통상임금 × 지급률, 해당 차수 상한))
+      <span class="fx-sub">이 계산기는 통상임금 × 80%에서 생기는 원 미만 금액을 모든 구간에서 똑같이 절사합니다</span>
+    </div>
+
+    <h2>부모함께 육아휴직(6+6) 특례</h2>
+    <p>같은 자녀에 대해 부모가 모두 육아휴직을 쓰고, 두 사람 모두 자녀 출생 후 18개월 이내에 휴직을 시작했다면 특례가 적용됩니다. 두 사람의 휴직 기간이 <strong>달력상 겹칠 필요는 없어요.</strong> 엄마가 먼저 6개월 쓰고 복직한 뒤 아빠가 6개월을 써도 대상이 될 수 있습니다.</p>
+    <p>특례가 적용되는 기간은 두 사람이 <strong>각각 사용한 개월 수 중 짧은 쪽</strong>이고 최대 6개월입니다. 본인 12개월·배우자 3개월이면 두 사람 모두 첫 3개월만 특례예요. 그 기간에는 통상임금 100%를 주되 월별 상한이 아래처럼 올라갑니다.</p>
+    <table class="article-table">
+      <thead><tr><th>특례 차수</th><th>1개월</th><th>2개월</th><th>3개월</th><th>4개월</th><th>5개월</th><th>6개월</th></tr></thead>
+      <tbody><tr><td>월 상한</td><td>250만</td><td>250만</td><td>300만</td><td>350만</td><td>400만</td><td>450만</td></tr></tbody>
+    </table>
+    <div class="tip-inline"><strong>특례가 끝난 다음 달은 1개월차가 아닙니다.</strong> 휴직 차수는 계속 이어지므로, 특례 3개월 뒤 4개월차부터는 일반 4~6개월 기준(상한 200만원), 7개월차부터는 80%(상한 160만원)가 적용됩니다. 두 사람의 급여는 각자의 통상임금으로 따로 계산합니다.</div>
+
+    <h2>한부모 육아휴직 특례</h2>
+    <p>법령상 한부모는 첫 3개월 상한이 월 <strong>300만원</strong>으로 일반보다 50만원 높습니다. 4~6개월(상한 200만원)과 7개월 이후(80%, 상한 160만원)는 일반과 같아요. 한부모는 육아휴직을 6개월 더 쓸 수 있는 연장요건에도 해당합니다.</p>
+
+    <h2>13~18개월 연장은 요건이 있어야 합니다</h2>
+    <p>육아휴직은 기본 1년입니다. ① 같은 자녀에 대해 부모가 각각 3개월 이상 육아휴직을 사용했거나 ② 한부모이거나 ③ 법령상 장애아동의 부모이면 6개월 이내에서 더 쓸 수 있어요. 계산기에서 13개월 이상을 고르면 이 요건을 따로 묻고, '해당하지 않음'이면 결과를 내지 않습니다.</p>
+
+    <h2>숫자로 보는 예시</h2>
+    <table class="article-table">
+      <thead><tr><th>조건</th><th>월별 급여</th><th>총액</th></tr></thead>
+      <tbody>
+        <tr><td>일반 · 통상임금 300만원 · 12개월</td><td>250만×3, 200만×3, 160만×6</td><td>23,100,000원</td></tr>
+        <tr><td>일반 · 통상임금 180만원 · 12개월</td><td>180만×6, 144만×6</td><td>19,440,000원</td></tr>
+        <tr><td>한부모 · 통상임금 300만원 · 12개월</td><td>300만×3, 200만×3, 160만×6</td><td>24,600,000원</td></tr>
+        <tr><td>부모함께 · 둘 다 500만원 · 각 6개월</td><td>250·250·300·350·400·450만</td><td>1인 20,000,000원 · 부부 40,000,000원</td></tr>
+        <tr><td>부모함께 · 본인 450만원 12개월 · 배우자 3개월</td><td>본인 250·250·300만(특례), 200만×3, 160만×6</td><td>본인 23,600,000원</td></tr>
+      </tbody>
+    </table>
+
+    <!-- FAQ -->
+    <h2 id="faq">자주 묻는 질문</h2>
+    <div class="faq-section">
+    <div class="faq-item"><div class="faq-q">부모가 동시에 휴직하지 않아도 부모함께 특례를 받을 수 있나요?</div><div class="faq-a">받을 수 있습니다. 부모 모두 같은 자녀에 대해 출생 후 18개월 이내에 육아휴직을 시작하면 되고, 두 사람의 휴직 기간이 달력상 겹칠 필요는 없습니다. 특례가 적용되는 기간은 두 사람이 각각 사용한 개월 수 중 짧은 쪽(최대 6개월)입니다.</div></div>
+    <div class="faq-item"><div class="faq-q">특례 기간이 끝나면 급여가 다시 1개월차 기준으로 돌아가나요?</div><div class="faq-a">아닙니다. 육아휴직 사용 차수는 계속 이어집니다. 예를 들어 특례를 3개월 받았다면 4개월차부터는 일반 육아휴직 4~6개월 기준(통상임금 100%, 상한 200만원)이 적용되고, 7개월차부터는 80%(상한 160만원)가 적용됩니다.</div></div>
+    <div class="faq-item"><div class="faq-q">육아휴직을 18개월까지 쓸 수 있나요?</div><div class="faq-a">기본은 1년입니다. 같은 자녀에 대해 부모가 각각 3개월 이상 육아휴직을 사용했거나, 한부모이거나, 법령상 장애아동의 부모인 경우 6개월 이내에서 추가로 사용할 수 있습니다. 7개월차 이후 기준(통상임금 80%, 상한 160만원)이 13~18개월에도 그대로 적용됩니다.</div></div>
+    <div class="faq-item"><div class="faq-q">한부모는 육아휴직급여가 얼마나 다른가요?</div><div class="faq-a">법령상 한부모는 첫 3개월 상한이 월 300만원으로 일반(250만원)보다 높습니다. 4~6개월은 상한 200만원, 7개월 이후는 통상임금 80%에 상한 160만원으로 일반과 같습니다.</div></div>
+    </div>
+
+    <h2>꼭 기억하세요</h2>
+    <div class="prepare">
+      이 계산은 <strong>예상 모의계산</strong>입니다. 실제 지급 여부와 금액은 고용센터가 통상임금, 피보험단위기간, 사용 이력, 특례·연장 요건을 확인해 결정합니다. 공무원 육아휴직수당은 별도 제도라 이 계산기로 계산하지 않습니다.<br>
+      · <strong>고용24</strong> (work24.go.kr) — 육아휴직급여 신청·모의계산<br>
+      · <strong>고용노동부 고객상담센터 ☎1350</strong>
+    </div>
+  </div>
+
+  <!-- ⑩ 관련 계산기 -->
+  <section class="related-calcs-section">
+    <h2>함께 보면 좋은 계산기</h2>
+    <div class="rel-calc-grid">
+      <a class="rel-calc-card" href="net-salary-calc.html">
+        <span class="rcc-icon"><svg viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></span>
+        <span><span class="rcc-title">월급 실수령액 계산기</span><span class="rcc-desc">4대보험·세금 뺀 세후 급여</span></span>
+      </a>
+      <a class="rel-calc-card" href="unemployment-benefit-calc.html">
+        <span class="rcc-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+        <span><span class="rcc-title">실업급여 계산기</span><span class="rcc-desc">1일 구직급여·지급일수</span></span>
+      </a>
+      <a class="rel-calc-card" href="annual-leave-calc.html">
+        <span class="rcc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+        <span><span class="rcc-title">연차 계산기</span><span class="rcc-desc">연차 일수·미사용 연차수당</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ⑪ 관련 글 -->
+  <section class="related-articles-section">
+    <h2>함께 읽으면 좋은 글</h2>
+    <a class="rel-article-item" href="soho-minimum-wage.html"><span class="rai-num">1</span><span class="rai-title">소상공인 최저임금 2026 — 직원 고용 시 꼭 알아야 할 것</span><span class="rai-arrow">→</span></a>
+    <a class="rel-article-item" href="employee-insurance-cost.html"><span class="rai-num">2</span><span class="rai-title">직원 1명 고용하면 실제 인건비 얼마나 드나</span><span class="rai-arrow">→</span></a>
+  </section>
+
+  <!-- 자료 출처 -->
+  <div class="calc-sources">
+    <h2>자료 출처</h2>
+    <ul>
+      <li>고용보험법 제70조(육아휴직 급여)·제73조의2(부모 모두 육아휴직) 및 같은 법 시행령 제95조·제95조의3 (<a href="https://www.law.go.kr/법령/고용보험법시행령" target="_blank" rel="nofollow noopener">law.go.kr</a>)</li>
+      <li>남녀고용평등과 일·가정 양립 지원에 관한 법률 제19조(육아휴직 기간·연장) (<a href="https://www.law.go.kr/법령/남녀고용평등과일ㆍ가정양립지원에관한법률" target="_blank" rel="nofollow noopener">law.go.kr</a>)</li>
+      <li>고용24 — 육아휴직급여 제도 안내·모의계산 (<a href="https://www.work24.go.kr" target="_blank" rel="nofollow noopener">work24.go.kr</a>)</li>
+    </ul>
+    <p class="cs-updated">기준일: 2026년 9월 · 일반 근로자, 완전한 개월 단위 기준</p>
+  </div>
+</div>
+<button id="back-to-top" aria-label="맨 위로">↑</button>
+<script src="assets/layout.js?v=20260702e"></script>
+<script src="sohotip.js?v=20260702a"></script>
+<script src="assets/parental-leave-2026.js?v=20260928a"></script>
+<script>
+(function () {
+  var L = window.ParentalLeave2026, MAXBASE = L.PARENTAL_LEAVE_2026.BASE_MAX_MONTHS;
+  var type = 'general', shown = false;
+  function $(id) { return document.getElementById(id); }
+  function won(n) { return Number(n).toLocaleString('ko-KR') + '원'; }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  // 사용기간 선택지 1~18개월
+  Array.prototype.forEach.call(document.querySelectorAll('.pl-months-select'), function (sel) {
+    sel.innerHTML = '<option value="">선택하세요</option>';
+    for (var i = 1; i <= 18; i++) sel.innerHTML += '<option value="' + i + '">' + i + '개월' + (i > MAXBASE ? ' (연장요건 필요)' : '') + '</option>';
+  });
+
+  function readRaw() {
+    return {
+      type: type, wage: $('pl-wage').value, months: $('pl-months').value, insured: $('pl-insured').value,
+      spouseWage: $('pl-spouse-wage').value, spouseMonths: $('pl-spouse-months').value,
+      spouseInsured: $('pl-spouse-insured').value, childAge: $('pl-child-age').value,
+      singleParent: $('pl-single').value, extension: $('pl-ext').value
+    };
+  }
+
+  // 연장요건 질문 표시: 해당 유형에서 쓰는 사용기간 중 13개월 이상이 있을 때. 한부모 유형+한부모 '예'는 자동 충족.
+  function extensionNeeded() {
+    var m = +$('pl-months').value || 0, sm = type === 'together' ? (+$('pl-spouse-months').value || 0) : 0;
+    if (Math.max(m, sm) <= MAXBASE) return false;
+    return !(type === 'single' && $('pl-single').value === 'yes');
+  }
+  function syncFields() {
+    ['general', 'together', 'single'].forEach(function (t) { $('pl-type-' + t).classList.toggle('active', t === type); });
+    $('pl-together-fields').style.display = type === 'together' ? '' : 'none';
+    $('pl-single-fields').style.display = type === 'single' ? '' : 'none';
+    var need = extensionNeeded();
+    if (!need && $('pl-ext-field').style.display !== 'none') $('pl-ext').value = '';   // 숨길 때 이전 답 초기화
+    $('pl-ext-field').style.display = need ? '' : 'none';
+  }
+
+  function warn(html) { return '<div class="warn-box show">' + html + '</div>'; }
+  var BASIS = { general: '일반', together: '부모함께 특례', single: '한부모 특례' };
+
+  function personBlock(title, monthlyTitle, s, showBasis) {
+    var rows = s.rows.map(function (r) {
+      return '<div class="breakdown-row"><span class="breakdown-label">' + r.month + '개월' + (showBasis ? ' · ' + BASIS[r.basis] : '') + '</span><span class="breakdown-value">' + won(r.amount) + '</span></div>';
+    }).join('');
+    var sum = '<div class="breakdown-row"><span class="breakdown-label">1~3개월 합계</span><span class="breakdown-value">' + won(s.sums.m1_3) + '</span></div>' +
+      (s.rows.length > 3 ? '<div class="breakdown-row"><span class="breakdown-label">4~6개월 합계</span><span class="breakdown-value">' + won(s.sums.m4_6) + '</span></div>' : '') +
+      (s.rows.length > 6 ? '<div class="breakdown-row"><span class="breakdown-label">7개월 이후 합계</span><span class="breakdown-value">' + won(s.sums.m7plus) + '</span></div>' : '') +
+      '<div class="breakdown-row"><span class="breakdown-label">전체 합계</span><span class="breakdown-value highlight">' + won(s.sums.total) + '</span></div>';
+    return '<h2 class="steps-title">' + title + '</h2><div class="result-breakdown">' + sum + '</div>' +
+      '<h2 class="steps-title">' + monthlyTitle + '</h2><div class="result-breakdown">' + rows + '</div>';
+  }
+
+  function insuranceMsg(who, st) {
+    if (st === 'fail') return warn('<strong>' + who + ' 피보험단위기간 요건 미충족 가능성</strong><br>육아휴직 시작 전 피보험단위기간이 합산 180일에 못 미치면 육아휴직급여를 받기 어려울 수 있습니다. 아래 금액은 참고용 예상액입니다.');
+    if (st === 'check') return warn('<strong>' + who + ' 피보험단위기간 확인 필요</strong><br>고용보험 가입기간과 피보험단위기간은 동일하지 않습니다. 실제 피보험단위기간은 고용24 등을 통해 확인해주세요.');
+    return '';
+  }
+
+  function render(v, r) {
+    $('pl-blocked').classList.remove('show'); $('pl-blocked').innerHTML = '';
+    $('pl-result-body').style.display = '';
+    var ref = false, status = '';
+    if (r.extension.status === 'check') { ref = true; status += warn('<strong>18개월 연장요건 확인 필요</strong><br>13~18개월 금액은 연장요건을 충족한다고 가정한 참고값입니다. 부모 각각 3개월 이상 사용, 한부모, 법령상 장애아동 부모 중 하나에 해당해야 합니다.'); }
+    if (r.extension.status === 'ok' && r.extension.needed && v.type === 'single' && v.singleParent === 'yes') status += warn('한부모에 해당해 6개월 추가 사용요건(한부모)을 충족하는 것으로 보고 계산했습니다.');
+    var ins = insuranceMsg(v.type === 'together' ? '본인' : '', r.insured.status);
+    if (r.insured.status === 'fail') ref = true;
+    status += ins;
+    if (v.type === 'together') {
+      status += insuranceMsg('배우자', r.spouseInsured.status);
+      if (r.spouseInsured.status === 'fail') ref = true;
+      if (r.childAge === 'no') status += warn('입력하신 조건에서는 부모함께 육아휴직 특례를 적용하지 않고 일반 육아휴직 급여 기준으로 계산했습니다.');
+      if (r.childAge === 'unknown') status += warn('<strong>자녀 연령요건 확인 필요</strong><br>아래 금액은 부모함께 특례가 적용된다고 가정한 <strong>특례 적용 시 예상액</strong>입니다. 부모 모두 자녀 출생 후 18개월 이내에 육아휴직을 개시해야 특례가 적용됩니다.');
+    }
+    if (v.type === 'single') {
+      if (v.singleParent === 'no') status += warn('법령상 한부모에 해당하지 않는 것으로 입력하셔서 한부모 특례를 적용하지 않고 일반 육아휴직 급여 기준으로 계산했습니다.');
+      if (v.singleParent === 'unknown') status += warn('<strong>한부모 해당 여부 확인 필요</strong><br>아래 금액은 한부모 특례가 적용된다고 가정한 <strong>한부모 특례 적용 시 예상액</strong>입니다.');
+    }
+    $('pl-status').innerHTML = status;
+
+    var prefix = ref ? '참고용 ' : '';
+    if (v.type === 'together') {
+      var special = r.childAge === 'unknown' ? '특례 적용 시 ' : '';
+      $('res-title').textContent = prefix + special + '부부 합산 예상 육아휴직급여';
+      $('res-total').textContent = won(r.coupleTotal);
+      $('res-sub').textContent = '부모함께 특례 적용 예상기간: ' + r.specialMonths + '개월 · 본인 ' + won(r.me.sums.total) + ' + 배우자 ' + won(r.spouse.sums.total);
+      $('pl-persons').innerHTML = personBlock('본인 예상 급여', '본인 월별 예상 급여', r.me, true) + personBlock('배우자 예상 급여', '배우자 월별 예상 급여', r.spouse, true) +
+        '<h2 class="steps-title">부부 합산</h2><div class="result-breakdown"><div class="breakdown-row"><span class="breakdown-label">본인 총액 + 배우자 총액</span><span class="breakdown-value highlight">' + won(r.coupleTotal) + '</span></div></div>';
+    } else {
+      var singleRef = v.type === 'single' && v.singleParent === 'unknown' ? '한부모 특례 적용 시 ' : '';
+      $('res-title').textContent = prefix + singleRef + v.months + '개월 동안 예상 육아휴직급여';
+      $('res-total').textContent = '총 ' + won(r.me.sums.total);
+      var basis = v.type === 'single' && v.singleParent !== 'no' ? '한부모 특례 기준' : '일반 육아휴직 기준';
+      $('res-sub').textContent = basis + ' · 월 통상임금 ' + won(v.wage);
+      $('pl-persons').innerHTML = personBlock('구간별 합계', '월별 지급액', r.me, false);
+    }
+  }
+
+  function renderBlocked() {
+    $('pl-result-body').style.display = 'none';
+    $('pl-status').innerHTML = ''; $('pl-persons').innerHTML = '';
+    $('res-title').textContent = ''; $('res-total').textContent = ''; $('res-sub').textContent = '';   // 이전 금액 잔존 방지
+    $('pl-blocked').innerHTML = '<strong>계산 결과를 표시하지 않습니다.</strong><br>일반적인 육아휴직 기간은 최대 12개월입니다. 13~18개월 사용은 법정 연장요건을 충족하는 경우에만 가능합니다.';
+    $('pl-blocked').classList.add('show');
+  }
+
+  function run(scroll) {
+    syncFields();
+    var res = L.validateParentalLeaveInputs(readRaw()), box = $('pl-errors');
+    var r = res.values ? L.calculateParentalLeave(res.values) : null;
+    if (!r) {
+      var errs = res.errors.length ? res.errors : ['입력값을 다시 확인하세요.'];
+      box.innerHTML = '<strong>계산할 수 없습니다.</strong><br>' + errs.map(esc).join('<br>');
+      box.classList.add('show');
+      $('result-section').style.display = 'none';
+      $('pl-status').innerHTML = ''; $('pl-persons').innerHTML = '';   // 이전 결과 잔존 방지
+      return;
+    }
+    box.classList.remove('show'); box.innerHTML = '';
+    if (r.blocked) renderBlocked(); else render(res.values, r);
+    $('result-section').style.display = 'block';
+    shown = true;
+    if (scroll) $('result-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function onChange() { syncFields(); if (shown) run(false); }
+
+  // 새로고침·뒤로가기 시 브라우저가 이전 입력을 복원하지 않도록 초기화
+  function resetAll() {
+    $('calc').reset(); type = 'general'; shown = false;
+    $('result-section').style.display = 'none'; $('pl-errors').classList.remove('show');
+    $('pl-status').innerHTML = ''; $('pl-persons').innerHTML = '';
+    syncFields();
+  }
+  window.addEventListener('pageshow', function (e) { if (e.persisted) resetAll(); });
+  resetAll();
+
+  ['general', 'together', 'single'].forEach(function (t) {
+    $('pl-type-' + t).addEventListener('click', function () { type = t; onChange(); });
+  });
+  ['pl-wage', 'pl-spouse-wage'].forEach(function (id) { $(id).addEventListener('input', onChange); });
+  ['pl-months', 'pl-insured', 'pl-spouse-months', 'pl-child-age', 'pl-spouse-insured', 'pl-single', 'pl-ext'].forEach(function (id) { $(id).addEventListener('change', onChange); });
+  $('pl-calc-btn').addEventListener('click', function () { run(true); });
+  $('calc').addEventListener('submit', function (e) { e.preventDefault(); run(true); });
+})();
+</script>
+<footer>
+  <a href="index.html">홈</a><a href="category.html">카테고리</a><a href="tools.html">계산기 모음</a>
+  <p style="margin-top:12px;">© 2026 소호팁 (sohotip.co.kr) · 본 계산기는 예상 모의계산이며 실제 지급 여부·금액은 고용센터에서 결정됩니다.</p>
+</footer>
+<script src="network.js?v=20260702a"></script>
+</body>
+</html>
