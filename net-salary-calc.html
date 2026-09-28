@@ -7,14 +7,14 @@
 <meta http-equiv="Expires" content="0">
 <script>if(location.protocol==="http:")location.replace("https://"+location.host+location.pathname+location.search+location.hash);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="세전 월급을 넣으면 국민연금·건강보험·장기요양·고용보험 공제와 소득세를 빼고 실수령액을 계산합니다. 2026년 확정 4대보험 요율 반영.">
-<meta name="keywords" content="실수령액 계산기, 세후 월급 계산, 4대보험 공제 2026, 실수령 월급, 국민연금 건강보험 공제, 세후 실수령">
+<meta name="description" content="세전 월급과 가족 수만 넣으면 2026년 4대보험 근로자 부담분과 국세청 근로소득 간이세액표 소득세·지방소득세를 자동으로 빼서 실제 통장에 들어오는 월급을 계산합니다.">
+<meta name="keywords" content="월급 실수령액 계산기, 실수령액 계산기 2026, 세후 월급 계산, 간이세액표 소득세, 4대보험 공제 2026, 국민연금 건강보험 공제">
 <meta name="robots" content="index, follow">
 <meta name="author" content="소호팁">
-<meta name="date" content="2026-07-01">
+<meta name="date" content="2026-09-28">
 <meta property="og:type" content="website">
-<meta property="og:title" content="실수령액 계산기 (2026) — 4대보험·세금 공제 후 세후 월급 | 소호팁">
-<meta property="og:description" content="세전 월급을 넣으면 국민연금·건강보험·장기요양·고용보험 공제와 소득세를 빼고 실수령액을 계산합니다. 2026년 확정 4대보험 요율 반영.">
+<meta property="og:title" content="2026 월급 실수령액 계산기 — 4대보험·간이세액표 소득세 자동 계산 | 소호팁">
+<meta property="og:description" content="세전 월급과 가족 수만 넣으면 2026년 4대보험 근로자 부담분과 국세청 근로소득 간이세액표 소득세·지방소득세를 자동으로 빼서 실제 통장에 들어오는 월급을 계산합니다.">
 <meta property="og:url" content="https://sohotip.co.kr/net-salary-calc.html">
 <meta property="og:image" content="https://sohotip.co.kr/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -22,8 +22,8 @@
 <meta property="og:site_name" content="소호팁">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="실수령액 계산기 (2026) — 4대보험·세금 공제 후 세후 월급 | 소호팁">
-<meta name="twitter:description" content="세전 월급을 넣으면 국민연금·건강보험·장기요양·고용보험 공제와 소득세를 빼고 실수령액을 계산합니다. 2026년 확정 4대보험 요율 반영.">
+<meta name="twitter:title" content="2026 월급 실수령액 계산기 — 4대보험·간이세액표 소득세 자동 계산 | 소호팁">
+<meta name="twitter:description" content="세전 월급과 가족 수만 넣으면 2026년 4대보험 근로자 부담분과 국세청 근로소득 간이세액표 소득세·지방소득세를 자동으로 빼서 실제 통장에 들어오는 월급을 계산합니다.">
 <meta name="twitter:image" content="https://sohotip.co.kr/og-image.png">
 <meta name="naver-site-verification" content="d7369feb5de3df4cce2e9016b84ad045c4ed70a4">
 <link rel="canonical" href="https://sohotip.co.kr/net-salary-calc.html">
@@ -32,14 +32,14 @@
 <link rel="icon" type="image/png" sizes="32x32" href="https://sohotip.co.kr/favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="https://sohotip.co.kr/apple-touch-icon.png">
 <link rel="manifest" href="https://sohotip.co.kr/site.webmanifest">
-<title>실수령액 계산기 — 4대보험·세금 공제 후 세후 월급 (2026) | 소호팁</title>
+<title>2026 월급 실수령액 계산기 — 4대보험·간이세액표 소득세 자동 계산 | 소호팁</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059494172804910" crossorigin="anonymous"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "실수령액 계산기",
-    "description": "2026년 확정 4대보험 요율 기준 실수령액 계산기. 세전 월급에서 4대보험과 소득세를 공제해 세후 실수령액 계산.",
+    "name": "2026 월급 실수령액 계산기",
+    "description": "세전 월급에서 2026년 4대보험 근로자 부담분과 국세청 근로소득 간이세액표 기준 소득세·지방소득세를 자동 공제해 실수령액을 계산.",
     "url": "https://sohotip.co.kr/net-salary-calc.html",
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Web",
@@ -53,14 +53,14 @@
       "name": "소호팁",
       "url": "https://sohotip.co.kr"
     },
-    "dateModified": "2026-07-01",
+    "dateModified": "2026-09-28",
     "inLanguage": "ko-KR",
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
         {"@type":"ListItem","position":1,"name":"홈","item":"https://sohotip.co.kr/"},
         {"@type":"ListItem","position":2,"name":"계산기","item":"https://sohotip.co.kr/tools.html"},
-        {"@type":"ListItem","position":3,"name":"실수령액 계산기","item":"https://sohotip.co.kr/net-salary-calc.html"}
+        {"@type":"ListItem","position":3,"name":"월급 실수령액 계산기","item":"https://sohotip.co.kr/net-salary-calc.html"}
       ]
     }
   }
@@ -73,10 +73,10 @@
     "description": "세전 월급에서 4대보험과 소득세를 공제해 실수령액을 계산하는 방법.",
     "totalTime": "PT2M",
     "step": [
-      {"@type":"HowToStep","position":1,"name":"세전 월급여 입력","text":"세전 월 급여 총액을 입력합니다.","url":"https://sohotip.co.kr/net-salary-calc.html#calc"},
-      {"@type":"HowToStep","position":2,"name":"비과세액 입력","text":"식대 등 비과세 금액을 입력합니다. 4대보험·소득세 산정에서 제외됩니다.","url":"https://sohotip.co.kr/net-salary-calc.html#calc"},
-      {"@type":"HowToStep","position":3,"name":"소득세 입력","text":"홈택스 근로소득 간이세액표에서 부양가족 수에 맞는 소득세를 조회해 입력합니다.","url":"https://sohotip.co.kr/net-salary-calc.html#calc"},
-      {"@type":"HowToStep","position":4,"name":"계산하기","text":"'실수령액 계산하기'를 누르면 4대보험과 세금을 뺀 실수령액이 나옵니다.","url":"https://sohotip.co.kr/net-salary-calc.html#calc"}
+      {"@type":"HowToStep","position":1,"name":"세전 월급 입력","text":"비과세 포함 세전 월 급여 총액을 입력합니다.","url":"https://sohotip.co.kr/net-salary-calc.html#calc"},
+      {"@type":"HowToStep","position":2,"name":"비과세 금액 입력","text":"식대 등 비과세 금액을 입력합니다. 4대보험·소득세 산정에서 제외됩니다.","url":"https://sohotip.co.kr/net-salary-calc.html#calc"},
+      {"@type":"HowToStep","position":3,"name":"가족 수·자녀 수 선택","text":"본인 포함 공제대상 가족 수와 그중 8세 이상 20세 이하 자녀 수를 고릅니다. 소득세는 국세청 간이세액표로 자동 계산됩니다.","url":"https://sohotip.co.kr/net-salary-calc.html#calc"},
+      {"@type":"HowToStep","position":4,"name":"기준연월 선택","text":"급여를 받는 연월을 고르면 국민연금 상·하한과 자녀 공제 기준이 그 시점으로 적용되고, 실수령액이 바로 표시됩니다.","url":"https://sohotip.co.kr/net-salary-calc.html#calc"}
     ]
   }
   </script>
@@ -86,8 +86,8 @@
     "@type": "FAQPage",
     "mainEntity": [
       {"@type":"Question","name":"실수령액은 어떻게 계산하나요?","acceptedAnswer":{"@type":"Answer","text":"세전 월급에서 4대보험 근로자 부담분(국민연금·건강보험·장기요양·고용보험)과 소득세·지방소득세를 빼면 실수령액이 됩니다. 4대보험과 소득세는 식대 같은 비과세 금액을 제외한 보수를 기준으로 산정합니다."}},
-      {"@type":"Question","name":"2026년 4대보험 근로자 부담 요율은 얼마인가요?","acceptedAnswer":{"@type":"Answer","text":"2026년 근로자 부담 요율은 국민연금 4.75%, 건강보험 3.595%, 장기요양보험은 건강보험료의 13.14%, 고용보험 0.9%입니다. 국민연금은 기준소득월액 상한 659만원·하한 41만원(2026년 7월~2027년 6월)이 적용됩니다."}},
-      {"@type":"Question","name":"소득세는 왜 직접 입력하나요?","acceptedAnswer":{"@type":"Answer","text":"근로소득 소득세는 부양가족 수와 8~20세 자녀 수에 따라 달라지는 국세청 간이세액표(조회표)를 따르기 때문에, 홈택스 간이세액표에서 조회한 금액을 입력해야 정확한 실수령액이 나옵니다. 이 계산기는 소득세를 임의로 추정하지 않습니다."}},
+      {"@type":"Question","name":"2026년 4대보험 근로자 부담 요율은 얼마인가요?","acceptedAnswer":{"@type":"Answer","text":"2026년 근로자 부담 요율은 국민연금 4.75%, 건강보험 3.595%(전체 7.19%의 절반), 장기요양보험은 건강보험료 × 0.9448 ÷ 7.19, 고용보험 0.9%입니다. 국민연금 기준소득월액은 2026년 1~6월 40만~637만원, 7월부터 41만~659만원 범위로 적용됩니다."}},
+      {"@type":"Question","name":"소득세는 어떻게 계산되나요?","acceptedAnswer":{"@type":"Answer","text":"임의의 세율이 아니라 소득세법 시행령 별표2 근로소득 간이세액표(2026년 2월 27일 개정)의 금액을 월 과세급여와 공제대상 가족 수로 찾아 적용합니다. 8세 이상 20세 이하 자녀가 있으면 2026년 3월부터 1명 20,830원, 2명 45,830원, 3명 이상은 45,830원에 초과 1명당 33,330원을 더 뺍니다. 월 과세급여 1천만원 초과는 간이세액표에 정해진 공식으로 계산합니다."}},
       {"@type":"Question","name":"식대 같은 비과세는 왜 빼고 계산하나요?","acceptedAnswer":{"@type":"Answer","text":"4대보험과 소득세는 비과세 소득을 제외한 보수(과세 대상 급여)를 기준으로 부과됩니다. 식대는 월 20만원까지 비과세이므로, 비과세액을 입력하면 그만큼 공제 대상 보수가 줄어 공제액이 정확해집니다."}},
       {"@type":"Question","name":"5인 미만 사업장이면 실수령액이 달라지나요?","acceptedAnswer":{"@type":"Answer","text":"근로자가 부담하는 4대보험 공제는 사업장 규모와 상관없이 동일합니다. 다만 상시 5인 이상 사업장은 연장·야간·휴일 가산수당이 붙어 세전 급여 자체가 커지므로, 그만큼 실수령액도 커질 수 있습니다."}}
     ]
@@ -129,6 +129,10 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,0.95);backdrop
 .result-title{font-size:13px;opacity:0.8;margin-bottom:6px;}
 .result-total{font-size:36px;font-weight:700;margin-bottom:4px;}
 .result-sub{font-size:13px;opacity:0.7;}
+.result-facts{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.25);display:flex;flex-direction:column;gap:4px;font-size:14px;}
+.result-facts strong{font-weight:800;}
+.field-warn{font-size:12px;color:#C2410C;margin-top:6px;}
+@media(max-width:640px){.page-wrap{padding:24px 16px 64px;}.calc-card,.result-card{padding:20px;}.result-total{font-size:30px;}}
 .result-breakdown{background:var(--bg-card);border-radius:16px;padding:24px;border:1px solid var(--border);}
 .breakdown-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);}
 .breakdown-row:last-child{border-bottom:none;font-weight:700;font-size:15px;}
@@ -245,16 +249,16 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
 
 <div class="page-wrap">
   <!-- ① 제목 -->
-  <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="12" y2="18"/></svg> 실수령액 계산기</span>
-  <h1 class="page-title">실수령액 계산기</h1>
-  <p class="page-desc">세전 월급에서 2026년 확정 요율로 4대보험을 공제하고, 홈택스 소득세를 반영해 실제 손에 쥐는 실수령액을 계산해드립니다. (4대보험 근로자 부담: 국민연금 4.75%·건강 3.595%·장기요양 13.14%·고용 0.9%)</p>
+  <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="18" x2="12" y2="18"/></svg> 월급 실수령액 계산기</span>
+  <h1 class="page-title">2026 월급 실수령액 계산기</h1>
+  <p class="page-desc">세전 월급과 가족 수만 넣으면 2026년 4대보험 근로자 부담분과 국세청 근로소득 간이세액표 기준 소득세·지방소득세를 자동으로 빼서, 실제 통장에 들어오는 월급을 보여드립니다. 숫자를 바꾸면 바로 다시 계산돼요.</p>
 
   <!-- ② 30초 요약 -->
   <section class="ai-summary" aria-label="30초 핵심 요약">
     <span class="ais-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.9L18.7 9.7 13.8 11.5 12 16.4 10.2 11.5 5.3 9.7 10.2 7.9z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg> 30초 요약 · 사장님용</span>
-    <p>직원한테 "월급 216만원 줄게" 해놓고 통장 찍히는 건 왜 190만원대일까요? 세전에서 <strong>4대보험이랑 소득세</strong>가 빠져나가서 그래요. 직원이 "왜 이것밖에 안 들어오냐" 물으면 사장이 설명해줄 수 있어야 뒷말이 없습니다.</p>
-    <p>4대보험 근로자 몫은 2026년 기준 국민연금 4.75%, 건강보험 3.595%, 장기요양은 건강보험료의 13.14%, 고용보험 0.9%예요. 대충 세전의 <strong>9% 안팎</strong>이 4대보험으로 빠집니다. 여기에 소득세가 더 붙고요.</p>
-    <p>소득세는 부양가족 수에 따라 딱딱 달라지는 <strong>국세청 간이세액표</strong>를 따라서, 이 계산기는 임의로 추정하지 않아요. 홈택스에서 조회한 소득세를 넣으면 정확한 실수령액이 나옵니다. 안 넣으면 4대보험만 뺀 금액까지 보여줘요.</p>
+    <p>직원한테 "월급 216만원 줄게" 해놓고 통장 찍히는 건 왜 192만원쯤일까요? 세전에서 <strong>4대보험이랑 소득세</strong>가 빠져나가서 그래요. 직원이 "왜 이것밖에 안 들어오냐" 물으면 사장이 설명해줄 수 있어야 뒷말이 없습니다.</p>
+    <p>4대보험 근로자 몫은 2026년 기준 국민연금 4.75%, 건강보험 3.595%, 장기요양은 건강보험료의 약 13.14%, 고용보험 0.9%로 세전의 <strong>9.4% 안팎</strong>이에요. 여기에 소득세와 지방소득세가 더 붙습니다.</p>
+    <p>소득세는 국세청 <strong>근로소득 간이세액표</strong>(2026년 2월 개정) 646개 구간을 그대로 넣어, 월급·가족 수·자녀 수로 찾아 자동 계산합니다. 홈택스에서 따로 조회해 옮겨 적을 필요가 없어요.</p>
     <div class="ais-cta">
       <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/></svg> 우리 직원 실수령액 계산</a>
       <a class="ais-btn ghost" href="monthly-salary-calc.html">세전 월급부터 계산하기</a>
@@ -264,42 +268,54 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
 
   <!-- ③ 계산기 -->
   <div class="calc-card" id="calc">
-    <div class="card-title">월급·공제 입력</div>
+    <div class="card-title">월급·공제 조건</div>
     <div class="field">
-      <label>세전 월 급여 (원)</label>
-      <div class="field-hint">비과세 포함한 월 급여 총액. 2026년 최저월급: 2,156,880원</div>
-      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="gross" value="2,156,880" min="0" step="10000">
+      <label for="gross">세전 월급 (원)</label>
+      <div class="field-hint">비과세 포함 월 급여 총액. 2026년 최저월급(주 40시간): 2,156,880원</div>
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="gross" value="3,000,000">
     </div>
     <div class="field">
-      <label>비과세액 (원, 식대 등)</label>
-      <div class="field-hint">4대보험·소득세 산정에서 제외됩니다. 식대는 월 20만원까지 비과세. 없으면 0.</div>
-      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="nontax" value="0" min="0" step="10000">
+      <label for="nontax">비과세 금액 (원)</label>
+      <div class="field-hint">식대(월 20만원 한도)·자가운전보조금 등 회사가 비과세로 처리하는 금액. 급여명세서를 보고 직접 넣으세요. 없으면 0.</div>
+      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="nontax" value="0">
     </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="fam">공제대상 가족 수</label>
+        <div class="field-hint">본인 포함</div>
+        <select id="fam"></select>
+      </div>
+      <div class="field">
+        <label for="kids">자녀 수</label>
+        <div class="field-hint">8세 이상 20세 이하</div>
+        <select id="kids"></select>
+      </div>
+    </div>
+    <div class="field-warn" id="fam-warn" style="display:none;margin:-10px 0 16px;"></div>
     <div class="field">
-      <label>소득세 (원, 홈택스 간이세액표 조회값)</label>
-      <div class="field-hint">부양가족 수에 따라 달라집니다. <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=6583&cntntsId=7862" target="_blank" rel="nofollow noopener">홈택스 간이세액표 조회 →</a> · 모르면 0으로 두세요(4대보험만 반영).</div>
-      <input type="text" inputmode="numeric" pattern="[0-9,]*" data-money id="incometax" value="0" min="0" step="1000">
+      <label for="ym">기준연월</label>
+      <div class="field-hint">급여를 받는 달. 국민연금 상·하한(7월 변경)과 자녀 세액 공제(3월 변경)가 이 시점 기준으로 적용됩니다.</div>
+      <select id="ym"></select>
     </div>
-    <button class="btn-calc" onclick="calculate()">실수령액 계산하기</button>
   </div>
 
   <!-- ④ 계산 결과 -->
-  <div id="result-section" style="display:none;">
+  <div id="result-section" aria-live="polite">
     <div class="result-card">
-      <div class="result-title" id="res-title">예상 실수령액 (월)</div>
+      <div class="result-title">예상 실수령액 (월)</div>
       <div class="result-total" id="res-total">0원</div>
-      <div class="result-sub" id="res-sub">세전 - 4대보험 - 소득세</div>
+      <div class="result-sub">세전 월급 − 4대보험 − 소득세 − 지방소득세</div>
+      <div class="result-facts">
+        <div>월급의 <strong id="res-rate">0.0%</strong>가 실제 통장에 들어옵니다</div>
+        <div>세전 월급과 실수령액 차이: <strong id="res-diff">0원</strong></div>
+      </div>
     </div>
     <div class="result-breakdown">
       <div class="breakdown-row">
-        <span class="breakdown-label">세전 월 급여</span>
+        <span class="breakdown-label">세전 월급</span>
         <span class="breakdown-value" id="res-gross">0원</span>
       </div>
       <div class="breakdown-row">
-        <span class="breakdown-label">과세 대상 보수 (비과세 제외)</span>
-        <span class="breakdown-value" id="res-base">0원</span>
-      </div>
-      <div class="breakdown-row" style="margin-top:8px;padding-top:16px;border-top:2px solid var(--border);">
         <span class="breakdown-label">국민연금 (4.75%)</span>
         <span class="breakdown-value" id="res-pension">0원</span>
       </div>
@@ -308,7 +324,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
         <span class="breakdown-value" id="res-health">0원</span>
       </div>
       <div class="breakdown-row">
-        <span class="breakdown-label">장기요양 (건강보험료의 13.14%)</span>
+        <span class="breakdown-label">장기요양보험</span>
         <span class="breakdown-value" id="res-care">0원</span>
       </div>
       <div class="breakdown-row">
@@ -316,11 +332,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
         <span class="breakdown-value" id="res-employ">0원</span>
       </div>
       <div class="breakdown-row">
-        <span class="breakdown-label">4대보험 합계</span>
-        <span class="breakdown-value highlight" id="res-ins-total">0원</span>
-      </div>
-      <div class="breakdown-row" style="margin-top:8px;padding-top:16px;border-top:2px solid var(--border);">
-        <span class="breakdown-label">소득세</span>
+        <span class="breakdown-label">소득세 (간이세액표)</span>
         <span class="breakdown-value" id="res-income-tax">0원</span>
       </div>
       <div class="breakdown-row">
@@ -328,17 +340,14 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
         <span class="breakdown-value" id="res-local-tax">0원</span>
       </div>
       <div class="breakdown-row">
-        <span class="breakdown-label">공제 합계</span>
+        <span class="breakdown-label">총 공제액</span>
         <span class="breakdown-value highlight" id="res-deduction">0원</span>
       </div>
-      <div class="breakdown-row">
-        <span class="breakdown-label">월 실수령액</span>
-        <span class="breakdown-value highlight" id="res-net">0원</span>
-      </div>
     </div>
-    <div class="notice-box" id="notice-box">
+    <div class="notice-box">
       <strong><svg class="nb-ic" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg> 참고</strong><br>
-      소득세를 입력하지 않으면 4대보험만 반영한 금액입니다. 정확한 실수령액은 <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=6583&cntntsId=7862" target="_blank" rel="nofollow noopener">홈택스 간이세액표</a>에서 부양가족 수에 맞는 소득세를 조회해 입력하세요.
+      <span id="res-basis"></span><br>
+      실제 급여는 회사의 신고 보수월액, 비과세 항목, 가족공제 및 원천징수 방식에 따라 달라질 수 있습니다.
     </div>
   </div>
 
@@ -346,69 +355,77 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
     <!-- ⑤ 계산 공식 설명 -->
     <h2>실수령액, 세전에서 뭐가 빠지나</h2>
     <p>세전 월급이 그대로 통장에 꽂히면 좋겠지만, 현실은 <strong>4대보험</strong>과 <strong>세금</strong>이 먼저 빠집니다. 이 둘을 빼고 남는 게 실수령액이에요.</p>
-    <div class="formula-box">실수령액 = 세전 월급 − 4대보험 − (소득세 + 지방소득세)<span class="fx-sub">4대보험·소득세는 비과세(식대 등) 제외한 보수 기준 · 지방소득세 = 소득세 × 10%</span></div>
-    <p>4대보험 근로자 부담은 2026년 기준 국민연금 4.75%, 건강보험 3.595%, 장기요양은 건강보험료의 13.14%, 고용보험 0.9%예요. 소득세는 부양가족 수에 따라 국세청 간이세액표로 정해지므로, 홈택스에서 조회한 값을 넣으면 정확합니다.</p>
+    <div class="formula-box">실수령액 = 세전 월급 − 국민연금 − 건강보험 − 장기요양 − 고용보험 − 소득세 − 지방소득세<span class="fx-sub">4대보험·소득세는 비과세(식대 등)를 뺀 과세급여 기준 · 각 항목 10원 미만 절사</span></div>
+    <p>4대보험은 요율이 정해져 있어 곱하기만 하면 되지만, 소득세는 다릅니다. 국세청이 월급 구간과 공제대상 가족 수별로 떼야 할 세액을 표로 정해 두었는데, 이게 <strong>근로소득 간이세액표</strong>예요. 이 계산기는 2026년 2월 27일 개정된 표(소득세법 시행령 별표2)의 월 77만원~1,000만원 구간 646줄을 그대로 옮겨 넣고, 입력한 월급이 속한 줄과 가족 수 칸의 금액을 꺼내 씁니다.</p>
     <h3>이렇게 계산하세요</h3>
     <ol class="howto-list">
-      <li>세전 월 급여 총액을 입력합니다.</li>
-      <li>식대 등 비과세액을 입력합니다(없으면 0).</li>
-      <li>홈택스 간이세액표에서 부양가족 수에 맞는 소득세를 조회해 입력합니다.</li>
-      <li>'실수령액 계산하기'를 누르면 공제 후 실수령액이 나옵니다.</li>
+      <li>세전 월급 총액을 입력합니다(비과세 포함).</li>
+      <li>급여명세서에 있는 비과세 금액(식대 등)을 입력합니다. 없으면 0.</li>
+      <li>본인 포함 공제대상 가족 수와 그중 8세 이상 20세 이하 자녀 수를 고릅니다.</li>
+      <li>급여를 받는 기준연월을 고르면 결과가 바로 바뀝니다. 버튼을 누를 필요는 없어요.</li>
     </ol>
 
     <!-- ⑥ 주요 계산항목 표 -->
-    <h2>2026년 4대보험 근로자 부담 요율</h2>
+    <h2>2026년 공제 항목별 계산 기준</h2>
     <table class="article-table">
-      <thead><tr><th>항목</th><th>근로자 부담 요율</th><th>비고</th></tr></thead>
+      <thead><tr><th>항목</th><th>근로자 부담 계산식</th><th>비고</th></tr></thead>
       <tbody>
-        <tr><td>국민연금</td><td>4.75%</td><td>기준소득월액 상한 659만·하한 41만원(2026.7~)</td></tr>
-        <tr><td>건강보험</td><td>3.595%</td><td>2025년 3.545% → 2026년 인상</td></tr>
-        <tr><td>장기요양</td><td>건강보험료 × 13.14%</td><td>2026년 소득 대비 0.9448%</td></tr>
-        <tr><td>고용보험</td><td>0.9%</td><td>실업급여분</td></tr>
-        <tr><td>소득세</td><td>간이세액표 조회</td><td>부양가족·자녀 수에 따라 상이(홈택스)</td></tr>
+        <tr><td>국민연금</td><td>기준소득월액 × 4.75%</td><td>2026.1~6월 40만~637만원, 7월부터 41만~659만원 상·하한</td></tr>
+        <tr><td>건강보험</td><td>보수월액 × 7.19% ÷ 2</td><td>근로자·회사 절반씩</td></tr>
+        <tr><td>장기요양</td><td>건강보험료 × 0.9448 ÷ 7.19</td><td>건강보험료의 약 13.14%</td></tr>
+        <tr><td>고용보험</td><td>보수월액 × 0.9%</td><td>실업급여분</td></tr>
+        <tr><td>소득세</td><td>간이세액표 금액 − 자녀 공제</td><td>월 과세급여·가족 수로 조회</td></tr>
         <tr><td>지방소득세</td><td>소득세 × 10%</td><td>소득세에 연동</td></tr>
       </tbody>
     </table>
-    <h3>주의점 — 5인 미만이냐 5인 이상이냐</h3>
-    <p>많이들 헷갈리는데, <strong>근로자가 내는 4대보험 공제는 사업장 규모와 전혀 상관없이 똑같습니다.</strong> 5인 미만이라고 덜 떼는 게 아니에요.</p>
+    <h3>자녀가 있으면 소득세가 더 줄어요</h3>
+    <p>간이세액표에서 찾은 금액에서 <strong>8세 이상 20세 이하 자녀</strong> 수만큼 한 번 더 뺍니다. 2026년 3월 1일 이후 원천징수분부터 공제액이 커졌어요. 자녀도 공제대상 가족 수에 포함되니, 예를 들어 부부와 자녀 둘이면 가족 수 4명·자녀 수 2명으로 넣으면 됩니다.</p>
     <table class="article-table">
-      <thead><tr><th>구분</th><th>상시 5인 이상</th><th>상시 5인 미만</th></tr></thead>
+      <thead><tr><th>8~20세 자녀</th><th>2026.3월부터</th><th>2026.1~2월</th></tr></thead>
       <tbody>
-        <tr><td>4대보험 근로자 공제</td><td>동일 적용</td><td>동일 적용 (차이 없음)</td></tr>
-        <tr><td>연장·야간·휴일 가산</td><td>의무 (세전이 커짐)</td><td>없음</td></tr>
-        <tr><td>실수령액에 미치는 영향</td><td>가산수당만큼 세전↑ → 실수령↑</td><td>기본급 기준</td></tr>
+        <tr><td>1명</td><td>20,830원</td><td>12,500원</td></tr>
+        <tr><td>2명</td><td>45,830원</td><td>29,160원</td></tr>
+        <tr><td>3명 이상</td><td>45,830원 + 초과 1명당 33,330원</td><td>29,160원 + 초과 1명당 25,000원</td></tr>
       </tbody>
     </table>
-    <div class="tip-inline"><strong>한 가지만:</strong> 5인 미만이라 실수령이 적어 보인다면, 그건 공제를 더 떼서가 아니라 연장·야간 가산수당이 안 붙어 세전이 작아서예요. 공제율은 똑같습니다.</div>
+    <div class="tip-inline"><strong>월급이 1천만원을 넘으면:</strong> 간이세액표는 1천만원까지만 줄로 나와 있고, 그 위는 "1천만원일 때 세액 + 초과분 × 정해진 비율" 공식으로 계산합니다. 이 계산기도 표에 적힌 공식을 그대로 씁니다. 가족 수가 11명을 넘는 경우도 표에 적힌 규칙대로 처리해요.</div>
+    <h3>5인 미만 사업장이라고 덜 떼지 않습니다</h3>
+    <p>많이들 헷갈리는데, <strong>근로자가 내는 4대보험 공제는 사업장 규모와 상관없이 똑같습니다.</strong> 5인 미만 사업장의 실수령액이 적어 보인다면 공제를 더 떼서가 아니라, 연장·야간·휴일 가산수당 의무가 없어 세전 월급 자체가 작기 때문이에요.</p>
 
     <!-- ⑦ 실무 예시 -->
     <h2>실무 예시 — 숫자로 따라가 볼게요</h2>
+    <p>아래 금액은 모두 2026년 9월 기준, 비과세 0원(마지막 예시 제외)으로 위 계산기와 같은 방식으로 계산한 값입니다.</p>
     <div class="step-box">
-      <span class="sb-badge">최저월급 · 부양 본인만 · 비과세 0</span>
+      <span class="sb-badge">월급 300만원 · 가족 1명(본인) · 자녀 0</span>
       <div class="sb-body">
-        세전 2,156,880원 · 비과세 0원<br>
-        국민연금 102,452 + 건강 77,540 + 장기요양 10,189 + 고용 19,412<br>
-        → 4대보험 합계 <strong>209,593원</strong><br>
-        소득세는 홈택스 조회(부양 1인 기준 극소액) → 4대보험만 빼면 <strong>약 1,947,287원</strong>
+        국민연금 142,500 + 건강보험 107,850 + 장기요양 14,170 + 고용보험 27,000<br>
+        소득세 74,350 (간이세액표 300만~302만원 구간, 1명 칸) + 지방소득세 7,430<br>
+        → 총 공제 373,300원, 실수령액 <strong>2,626,700원</strong> (월급의 87.6%)
       </div>
     </div>
     <div class="step-box">
-      <span class="sb-badge">식대 20만원 비과세 반영</span>
+      <span class="sb-badge">월급 400만원 · 가족 4명</span>
       <div class="sb-body">
-        세전 2,156,880원 · 비과세(식대) 200,000원<br>
-        과세 보수 = 1,956,880원 기준으로 4대보험 부과<br>
-        국민연금 92,952 + 건강 70,350 + 장기요양 9,244 + 고용 17,612 = <strong>190,158원</strong><br>
-        → 비과세 반영으로 4대보험이 약 1.9만원 줄어듭니다
+        4대보험: 국민연금 190,000 + 건강보험 143,800 + 장기요양 18,890 + 고용보험 36,000 = 388,690원<br>
+        8~20세 자녀 없음: 소득세 91,670 + 지방소득세 9,160 → 실수령액 <strong>3,510,480원</strong><br>
+        8~20세 자녀 2명: 소득세 45,840(91,670 − 45,830) + 지방소득세 4,580 → 실수령액 <strong>3,560,890원</strong>
       </div>
     </div>
-    <p>이렇게 비과세(식대)를 잡아두면 4대보험·소득세가 줄어 실수령액이 늘어요. 우리 직원 조건을 위 계산기에 넣고, 소득세는 홈택스에서 조회해 넣으면 정확한 실수령액이 나옵니다.</p>
+    <div class="step-box">
+      <span class="sb-badge">최저월급 2,156,880원 · 가족 1명</span>
+      <div class="sb-body">
+        비과세 0원: 총 공제 236,300원 → 실수령액 <strong>1,920,580원</strong><br>
+        식대 20만원 비과세: 과세급여 1,956,880원 기준으로 공제 210,130원 → 실수령액 <strong>1,946,750원</strong>
+      </div>
+    </div>
+    <p>같은 세전 월급이어도 식대를 비과세로 잡아두면 4대보험과 소득세가 함께 줄어 실수령이 2만 6천원가량 늘어납니다. 다만 비과세는 회사가 급여를 어떻게 구성했는지에 달린 문제라, 급여명세서에 적힌 금액을 넣어야 정확해요.</p>
 
     <!-- ⑧ FAQ -->
     <h2 id="faq">자주 묻는 질문</h2>
     <div class="faq-section">
       <div class="faq-item"><div class="faq-q">실수령액은 어떻게 계산하나요?</div><div class="faq-a">세전 월급에서 4대보험 근로자 부담분과 소득세·지방소득세를 빼면 실수령액입니다. 4대보험과 소득세는 식대 같은 비과세를 제외한 보수를 기준으로 산정합니다.</div></div>
-      <div class="faq-item"><div class="faq-q">2026년 4대보험 근로자 부담 요율은?</div><div class="faq-a">국민연금 4.75%, 건강보험 3.595%, 장기요양은 건강보험료의 13.14%, 고용보험 0.9%입니다. 국민연금은 기준소득월액 상한 659만원·하한 41만원(2026.7~2027.6)이 적용됩니다.</div></div>
-      <div class="faq-item"><div class="faq-q">소득세는 왜 직접 입력하나요?</div><div class="faq-a">근로소득 소득세는 부양가족·자녀 수에 따라 달라지는 국세청 간이세액표(조회표)를 따르기 때문입니다. 홈택스에서 조회한 소득세를 넣어야 정확하며, 이 계산기는 소득세를 임의로 추정하지 않습니다.</div></div>
+      <div class="faq-item"><div class="faq-q">2026년 4대보험 근로자 부담 요율은?</div><div class="faq-a">국민연금 4.75%, 건강보험 3.595%(전체 7.19%의 절반), 장기요양은 건강보험료 × 0.9448 ÷ 7.19, 고용보험 0.9%입니다. 국민연금 기준소득월액은 2026년 1~6월 40만~637만원, 7월부터 41만~659만원 범위로 적용됩니다.</div></div>
+      <div class="faq-item"><div class="faq-q">소득세는 어떻게 계산되나요?</div><div class="faq-a">임의의 세율이 아니라 소득세법 시행령 별표2 근로소득 간이세액표(2026년 2월 27일 개정)의 금액을 월 과세급여와 공제대상 가족 수로 찾아 적용합니다. 8세 이상 20세 이하 자녀가 있으면 2026년 3월부터 1명 20,830원, 2명 45,830원, 3명 이상은 45,830원에 초과 1명당 33,330원을 더 뺍니다. 월 과세급여 1천만원 초과는 간이세액표에 정해진 공식으로 계산합니다.</div></div>
       <div class="faq-item"><div class="faq-q">식대 같은 비과세는 왜 빼고 계산하나요?</div><div class="faq-a">4대보험·소득세는 비과세를 제외한 보수를 기준으로 부과됩니다. 식대는 월 20만원까지 비과세라, 비과세액을 넣으면 그만큼 공제 대상 보수가 줄어 공제액이 정확해집니다.</div></div>
       <div class="faq-item"><div class="faq-q">5인 미만이면 실수령액이 달라지나요?</div><div class="faq-a">근로자 4대보험 공제는 규모와 상관없이 동일합니다. 다만 5인 이상은 연장·야간·휴일 가산수당이 붙어 세전이 커지므로 실수령도 커질 수 있어요.</div></div>
     </div>
@@ -447,8 +464,8 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <!-- ⑫ 한 줄 요약 + CTA -->
   <section class="ai-summary" aria-label="한 줄 요약">
     <span class="ais-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> 한 줄 요약</span>
-    <p>실수령액은 <strong>세전 − 4대보험 − 소득세</strong>예요. 4대보험만 해도 세전의 9% 안팎이 빠지고, 여기에 소득세까지 더해집니다. 최저월급 216만원이면 실수령은 190만원대라고 보면 돼요.</p>
-    <p>4대보험 요율은 규모와 상관없이 똑같고, 소득세는 부양가족에 따라 달라져서 홈택스 간이세액표로 확인해야 정확합니다. 식대 같은 비과세를 잡아두면 공제가 줄어 실수령이 조금 늘어요.</p>
+    <p>실수령액은 <strong>세전 − 4대보험 − 소득세 − 지방소득세</strong>예요. 4대보험만 해도 세전의 9.4% 안팎이 빠지고, 여기에 소득세까지 더해집니다. 1인 가구 기준 최저월급 216만원이면 실수령은 약 192만원, 월급 300만원이면 약 263만원이에요.</p>
+    <p>4대보험 요율은 사업장 규모와 상관없이 똑같고, 소득세는 가족 수와 8~20세 자녀 수에 따라 간이세액표 금액이 달라집니다. 식대 같은 비과세를 잡아두면 공제가 줄어 실수령이 조금 늘어요.</p>
     <div class="ais-cta">
       <a class="ais-btn primary" href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/></svg> 지금 실수령액 계산하기</a>
       <a class="ais-btn ghost" href="insurance-4d-calc.html">4대보험 상세 보기</a>
@@ -458,7 +475,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <!-- 직접 계산 CTA -->
   <div class="cta-box">
     <h3>우리 직원 실수령액, 지금 확인해보세요</h3>
-    <p>세전 월급·비과세·소득세만 넣으면 4대보험·세금 뺀 실수령액이 바로 나옵니다.</p>
+    <p>세전 월급·비과세·가족 수만 넣으면 4대보험·세금 뺀 실수령액이 바로 나옵니다.</p>
     <a href="#calc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="16" y1="14" x2="16" y2="18"/></svg> 실수령액 바로 계산하기</a>
   </div>
 
@@ -466,90 +483,60 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   <div class="calc-sources">
     <h2>자료 출처</h2>
     <ul>
-      <li>국민연금공단 — 연금보험료율 9.5%(근로자 4.75%)·기준소득월액 상하한 (<a href="https://www.nps.or.kr" target="_blank" rel="nofollow noopener">nps.or.kr</a>)</li>
-      <li>국민건강보험공단 — 2026년 건강보험료율 7.19%(근로자 3.595%) (<a href="https://www.nhis.or.kr" target="_blank" rel="nofollow noopener">nhis.or.kr</a>)</li>
-      <li>보건복지부 — 2026년 장기요양보험료율(건강보험료의 13.14%) (<a href="https://www.mohw.go.kr" target="_blank" rel="nofollow noopener">mohw.go.kr</a>)</li>
+      <li>국민연금공단 — 연금보험료율 9.5%(근로자 4.75%)·기준소득월액 상하한(2026.1~6 40만~637만원, 2026.7~ 41만~659만원) (<a href="https://www.nps.or.kr" target="_blank" rel="nofollow noopener">nps.or.kr</a>)</li>
+      <li>국민건강보험공단 — 2026년 건강보험료율 7.19%(근로자 3.595%)·장기요양보험료율 소득 대비 0.9448% (<a href="https://www.nhis.or.kr" target="_blank" rel="nofollow noopener">nhis.or.kr</a>)</li>
       <li>근로복지공단·고용노동부 — 고용보험 근로자 0.9% (<a href="https://www.comwel.or.kr" target="_blank" rel="nofollow noopener">comwel.or.kr</a>)</li>
-      <li>국세청 — 근로소득 간이세액표(소득세) (<a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=6583&cntntsId=7862" target="_blank" rel="nofollow noopener">nts.go.kr</a>)</li>
+      <li>소득세법 시행령 [별표 2] 근로소득 간이세액표 (2026. 2. 27. 개정, 2026.3.1 이후 원천징수분) (<a href="https://www.law.go.kr/법령/소득세법시행령" target="_blank" rel="nofollow noopener">law.go.kr</a>)</li>
+      <li>국세청 — 근로소득 간이세액표 안내 (<a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=6583&cntntsId=7862" target="_blank" rel="nofollow noopener">nts.go.kr</a>)</li>
     </ul>
-    <p class="cs-updated">기준일: 2026년 6월 · 4대보험 요율은 2026년 확정치입니다. 소득세는 홈택스 간이세액표 조회값을 입력해야 정확하며, 본 계산기는 참고용입니다.</p>
+    <p class="cs-updated">기준일: 2026년 9월 · 소득세는 간이세액표 100% 원천징수 기준이며, 연말정산으로 최종 세액이 확정됩니다. 본 계산기는 참고용입니다.</p>
   </div>
 </div>
 
 <button id="back-to-top" aria-label="맨 위로">↑</button>
 <script src="assets/layout.js?v=20260702e" defer></script>
 <script src="sohotip.js?v=20260701d" defer></script>
+<script src="assets/salary-tax-2026.js?v=20260928a"></script>
 <script>
-// 2026년 4대보험 근로자 부담 요율 (웹검증 확정)
-var PENSION_RATE = 0.0475;      // 국민연금 4.75% (총 9.5%)
-var PENSION_MAX  = 6590000;     // 기준소득월액 상한 659만원 (2026.7~2027.6)
-var PENSION_MIN  = 410000;      // 기준소득월액 하한 41만원
-var HEALTH_RATE  = 0.03595;     // 건강보험 3.595% (총 7.19%)
-var CARE_RATE    = 0.1314;      // 장기요양 = 건강보험료 × 13.14%
-var EMP_RATE     = 0.009;       // 고용보험 0.9%
-var LOCAL_RATE   = 0.1;         // 지방소득세 = 소득세 × 10%
+(function () {
+  var fam = document.getElementById('fam'), kids = document.getElementById('kids'), ym = document.getElementById('ym');
+  var i, o;
+  for (i = 1; i <= 15; i++) { o = document.createElement('option'); o.value = i; o.textContent = i + '명'; fam.appendChild(o); }
+  for (i = 0; i <= 10; i++) { o = document.createElement('option'); o.value = i; o.textContent = i + '명'; kids.appendChild(o); }
+  for (i = 1; i <= 12; i++) { o = document.createElement('option'); o.value = 202600 + i; o.textContent = '2026년 ' + i + '월'; ym.appendChild(o); }
+  var now = new Date();
+  ym.value = now.getFullYear() === 2026 ? 202600 + now.getMonth() + 1 : (now.getFullYear() > 2026 ? 202612 : 202601);
 
-function fmt(n) {
-  if (!isFinite(n) || isNaN(n)) n = 0;
-  return Math.round(n).toLocaleString('ko-KR') + '원';
-}
+  function num(id) { return parseFloat(String(document.getElementById(id).value).replace(/[^\d.]/g, '')) || 0; }
+  function won(n) { return Math.round(n).toLocaleString('ko-KR') + '원'; }
+  function set(id, t) { document.getElementById(id).textContent = t; }
 
-function calculate() {
-  var gross = getRawNumber('gross');
-  var nonTax = getRawNumber('nontax');
-  var incomeTax = getRawNumber('incometax');
-  if (!isFinite(gross) || gross < 0) gross = 0;
-  if (!isFinite(nonTax) || nonTax < 0) nonTax = 0;
-  if (!isFinite(incomeTax) || incomeTax < 0) incomeTax = 0;
-  if (nonTax > gross) nonTax = gross; // 비과세가 급여를 넘지 않도록
-
-  var taxableBase = Math.max(gross - nonTax, 0); // 과세 대상 보수(비과세 제외)
-
-  var pension = 0, health = 0, care = 0, employ = 0;
-  if (taxableBase > 0) {
-    var pensionBase = Math.min(Math.max(taxableBase, PENSION_MIN), PENSION_MAX);
-    pension = Math.round(pensionBase * PENSION_RATE);
-    health = Math.round(taxableBase * HEALTH_RATE);
-    care = Math.round(health * CARE_RATE);
-    employ = Math.round(taxableBase * EMP_RATE);
+  function calculate() {
+    var f = +fam.value, k = +kids.value, warn = document.getElementById('fam-warn');
+    if (k > f - 1) {
+      warn.textContent = '자녀도 공제대상 가족 수에 포함됩니다. 자녀 ' + k + '명이면 가족 수는 본인 포함 ' + (k + 1) + '명 이상이어야 해서 ' + (k + 1) + '명으로 계산했어요.';
+      warn.style.display = 'block'; f = k + 1;
+    } else warn.style.display = 'none';
+    var r = SalaryTax2026.compute({ gross: num('gross'), nontax: num('nontax'), fam: f, kids: k, ym: +ym.value });
+    set('res-total', won(r.net));
+    set('res-rate', (r.gross > 0 ? Math.round(r.net / r.gross * 1000) / 10 : 0).toFixed(1) + '%');
+    set('res-diff', won(r.total));
+    set('res-gross', won(r.gross));
+    set('res-pension', won(r.pension));
+    set('res-health', won(r.health));
+    set('res-care', won(r.care));
+    set('res-employ', won(r.employ));
+    set('res-income-tax', won(r.incomeTax));
+    set('res-local-tax', won(r.localTax));
+    set('res-deduction', won(r.total));
+    var m = +ym.value % 100;
+    set('res-basis', '2026년 ' + m + '월 기준 · 과세급여 ' + won(r.taxable) + (r.nontax > 0 ? '(비과세 ' + won(r.nontax) + ' 제외)' : '') +
+      ' · 국민연금 기준소득월액 ' + won(r.pensionBase) + ' · 소득세는 간이세액표 100% 원천징수 기준입니다.');
   }
-  var insTotal = pension + health + care + employ;
-
-  var localTax = Math.round(incomeTax * LOCAL_RATE);
-  var taxTotal = incomeTax + localTax;
-  var deduction = insTotal + taxTotal;
-  var net = Math.max(gross - deduction, 0);
-
-  document.getElementById('res-gross').textContent = fmt(gross);
-  document.getElementById('res-base').textContent = fmt(taxableBase);
-  document.getElementById('res-pension').textContent = fmt(pension);
-  document.getElementById('res-health').textContent = fmt(health);
-  document.getElementById('res-care').textContent = fmt(care);
-  document.getElementById('res-employ').textContent = fmt(employ);
-  document.getElementById('res-ins-total').textContent = fmt(insTotal);
-  document.getElementById('res-income-tax').textContent = incomeTax > 0 ? fmt(incomeTax) : '미입력';
-  document.getElementById('res-local-tax').textContent = incomeTax > 0 ? fmt(localTax) : '미입력';
-  document.getElementById('res-deduction').textContent = fmt(deduction);
-  document.getElementById('res-net').textContent = fmt(net);
-  document.getElementById('res-total').textContent = fmt(net);
-
-  if (incomeTax > 0) {
-    document.getElementById('res-title').textContent = '예상 실수령액 (월)';
-    document.getElementById('res-sub').textContent = '세전 ' + fmt(gross) + ' − 4대보험 ' + fmt(insTotal) + ' − 세금 ' + fmt(taxTotal);
-    document.getElementById('notice-box').innerHTML =
-      '<strong><svg class="nb-ic" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg> 참고</strong><br>' +
-      '4대보험은 2026년 확정 요율로 정확히 계산됩니다. 소득세는 입력하신 홈택스 간이세액표 조회값 기준이며, 연말정산으로 최종 정산됩니다.';
-  } else {
-    document.getElementById('res-title').textContent = '4대보험 공제 후 금액 (소득세 반영 전)';
-    document.getElementById('res-sub').textContent = '세전 ' + fmt(gross) + ' − 4대보험 ' + fmt(insTotal) + ' (소득세 미반영)';
-    document.getElementById('notice-box').innerHTML =
-      '<strong><svg class="nb-ic" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg> 소득세가 아직 반영되지 않았습니다</strong><br>' +
-      '정확한 실수령액을 보려면 <a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=6583&cntntsId=7862" target="_blank" rel="nofollow noopener">홈택스 간이세액표</a>에서 부양가족 수에 맞는 소득세를 조회해 위에 입력하세요.';
-  }
-
-  document.getElementById('result-section').style.display = 'block';
-  document.getElementById('result-section').scrollIntoView({behavior:'smooth', block:'start'});
-}
+  ['gross', 'nontax'].forEach(function (id) { document.getElementById(id).addEventListener('input', calculate); });
+  [fam, kids, ym].forEach(function (el) { el.addEventListener('change', calculate); });
+  calculate();
+})();
 </script>
 <footer>
   <a href="index.html">홈</a>
