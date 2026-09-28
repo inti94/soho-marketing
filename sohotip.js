@@ -1533,7 +1533,7 @@ function setupCalcShare(slug) {
       var file = pageFile();
 
       // 글 페이지: 오늘자 조회수 +1 (운영자 GA 교차확인용 누적, 표시 랭킹엔 미사용)
-      var skip = ['index.html','category.html','consultation.html','tools.html'];
+      var skip = ['index.html','category.html','tools.html'];
       if (/\.html$/.test(file) && skip.indexOf(file) === -1) {
         var counts = {}; counts[slugOf(file)] = {}; counts[slugOf(file)][ymd(new Date())] = firebase.firestore.FieldValue.increment(1);
         ref.set({ counts: counts }, { merge: true }).catch(function(){});
@@ -1548,11 +1548,10 @@ function setupCalcShare(slug) {
 (function () {
   if (window.__sohoPart2Loaded) return;
   window.__sohoPart2Loaded = true;
-  /* PART 2: 미니 계산기 + "함께 보면 좋은"  /  PART 4: 상담 전환 + 6사이트 네트워크.
-     모두 자체 게이트(문맥 맞을 때만 렌더)되므로 전 페이지 로드해도 안전. */
-  ['assets/inline-calc.js?v=20260628',
-   'assets/consult.js?v=20260628',
-   'assets/network.js?v=20260628'].forEach(function (src) {
+  /* PART 2: 미니 계산기 + "함께 보면 좋은". 자체 게이트(문맥 맞을 때만 렌더).
+     상담 CTA(consult.js)·"준비 중" 형제사이트 카드(assets/network.js)는 2026-09-29 제거
+     — 정보제공 사이트 포지션, scripts/CONSULT-REMOVAL-LOG.md 참고. */
+  ['assets/inline-calc.js?v=20260628'].forEach(function (src) {
     var s = document.createElement('script');
     s.src = src; s.async = true;
     document.head.appendChild(s);

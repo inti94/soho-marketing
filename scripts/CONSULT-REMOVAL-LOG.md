@@ -45,3 +45,19 @@
 ## 복구 방법
 - **전체:** 이 작업 커밋을 `git revert`.
 - **상담 injector만 다시 켜기(승인 후):** 각 HTML의 `<script src="sohotip.js...">` 뒤에 `<script src="assets/consult.js?v=최신"></script>` 재삽입 + `generate-article.mjs`의 봇 로직 되돌리기.
+
+---
+
+# 2차 정리 (2026-09-29) — 1차의 누락 보완
+
+**1차 누락:** 위 1차는 HTML의 `consult.js` `<script>` 태그만 지웠지만, `sohotip.js`의 PART 2 로더가
+`assets/consult.js`를 **전 페이지에 동적 주입**하고 있어 상담 박스가 계속 노출됨(jsdom 전수 실행 기준 75페이지, 노출 글 34).
+
+- `sohotip.js` 로더: `assets/consult.js`·`assets/network.js` 제거 → `inline-calc.js`만 로드. 페이지뷰 skip 목록에서 `consultation.html` 제거.
+- `assets/network.js`("함께 보면 좋은 정보" — 카백과·머니백과·집백과 등 **존재하지 않는 형제 사이트를 "준비 중" 카드로 노출**, 21페이지) 파일 삭제.
+- `assets/consult.js` 파일 삭제(1차에선 보존했었음).
+- `consultation.html` 삭제(→ 404). GitHub Pages는 서버 301 불가라 meta-refresh 빈 페이지 대신 삭제 선택.
+- `about.html` 연락처 문단의 "마케팅 상담, 숏폼·플레이스 작업 문의 … 1영업일 안에 답장" 문구 제거.
+- `scripts/prerender-hubs.mjs` UTIL 목록에서 `consultation.html` 제거.
+- 루트 `network.js`(푸터 법적 링크 + 전 항목 enabled:false 추천 위젯)는 별개 파일이라 유지.
+- 복구: 이 커밋 `git revert`.

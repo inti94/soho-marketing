@@ -34,7 +34,7 @@ const VIEWS = sandbox.window.SOHO_GUIDE_VIEWS || {};
 const SEARCH = JSON.parse(rd('search-index.json'));
 
 /* ── 가이드 목록: search-index에서 계산기·유틸 제외 → 조회수순 정렬 ── */
-const UTIL = new Set(['index.html','about.html','consultation.html','forms.html','tools.html','category.html','briefing.html','search.html','404.html','article.html','components-demo.html','terms.html','privacy.html','contact.html']);
+const UTIL = new Set(['index.html','about.html','forms.html','tools.html','category.html','briefing.html','search.html','404.html','article.html','components-demo.html','terms.html','privacy.html','contact.html']);
 /* delivery-fee-real-calc.html: 파일명은 -calc.html이지만 실제로는 계산기 도구가 아니라
    article-content 구조의 가이드 글(인라인 계산기만 포함) — calcs.js에도 없어 필터에 안 걸리면
    어느 피드에도 안 잡히는 고아 페이지가 된다. 이름 규칙 예외로 가이드에 포함시킨다. */

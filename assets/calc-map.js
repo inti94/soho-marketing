@@ -148,7 +148,7 @@
   };
 
   /* 계산기별 상담/네트워크 문맥 토픽 (marketing/startup/tax/labor/ad)
-     — consult.js / 서식 자동연결에서 사용. */
+     — 서식 자동연결에서 사용. */
   var TOPIC_OF = {
     'weekly-pay-calc': 'labor', 'severance-calc': 'labor', 'insurance-4d-calc': 'labor',
     'alba-cost-calc': 'labor', 'annual-leave-calc': 'labor',
