@@ -216,14 +216,57 @@ eq('TEST 17 스케줄 360행·마지막 잔액 0원', [$('lrc-sched-table').quer
 ok('TEST 17 NaN 없음', clean());
 eq('TEST 17 총이자 차 1억 문구', /약 1억 3,191만원/.test(txt('res-msg')), true);
 
-// ── TEST 26 고금리 경고 ──
-type('lrc-comp-rate', '100');
-eq('TEST 26 100% 계산·경고 표시', [resultShown(), $('lrc-warn').classList.contains('show'), tableRow('금리')[1]], [true, true, '100.0%']);
-ok('TEST 26 NaN/Infinity 없음', clean());
-type('lrc-comp-rate', '100.5');
-eq('TEST 26 100% 초과 차단', [resultShown(), errShown()], [false, true]);
+// ── TEST 26 (정책 변경): 연 20% 초과 입력 차단 ──
+const OVER_MSG = '입력한 금리가 국내 일반 개인대출의 법정 최고금리(연 20%) 범위를 초과합니다. 금리를 다시 확인해주세요.';
+for (const r of ['100', '25']) {
+  type('lrc-comp-rate', r);
+  eq(`TEST 26 비교금리 ${r}% → 결과 숨김·오류 표시`, [resultShown(), errShown(), txt('res-total'), $('lrc-table').innerHTML], [false, true, '', '']);
+  ok(`TEST 26 비교금리 ${r}% 안내 문구`, txt('lrc-errors').includes(OVER_MSG));
+}
 type('lrc-comp-rate', '6');
-eq('정상 금리 복귀 → 경고 사라짐', [resultShown(), $('lrc-warn').classList.contains('show')], [true, false]);
+eq('정상 금리 복귀 → 결과 복귀·오류 사라짐·경고 없음', [resultShown(), errShown(), $('lrc-warn').classList.contains('show')], [true, false, false]);
+ok('입력 안내에 0%~20% 범위 표시', /연 0%~20%\(법정 최고금리\)까지 입력할 수 있습니다/.test(d.getElementById('calc').textContent));
+
+// ── TEST 36 금리 20% → 정상 계산 ──
+type('lrc-principal', '100000000'); type('lrc-term', '5');
+for (const t of ['equalPayment', 'equalPrincipal', 'bullet']) {
+  click('lrc-type-' + t);
+  type('lrc-base-rate', '4'); type('lrc-comp-rate', '20');
+  const R = eng(1e8, 4, 20, 60, t);
+  eq(`TEST 36 비교금리 20% (${t}) 결과 표시·오류 없음·경고 없음`, [resultShown(), errShown(), $('lrc-warn').classList.contains('show')], [true, false, false]);
+  eq(`TEST 36 비교금리 20% (${t}) 금리·총이자 표시`, [tableRow('금리'), tableRow('총 이자').slice(0, 2)], [['4.0%', '20.0%', '+16.0%p'], [W(R.base.totalInterest), W(R.compare.totalInterest)]]);
+  ok(`TEST 36 (${t}) NaN 없음`, clean());
+  type('lrc-base-rate', '20'); type('lrc-comp-rate', '4');
+  eq(`TEST 36 기준금리 20% (${t}) 정상·절감 방향`, [resultShown(), errShown(), /절감$/.test(txt('res-total'))], [true, false, true]);
+}
+click('lrc-type-equalPayment'); type('lrc-base-rate', '4'); type('lrc-comp-rate', '20');
+eq('TEST 36 20% 원리금균등 월상환 2,649,388원', tableRow('월 상환액')[1], '2,649,388원');
+
+// ── TEST 37 금리 20.01% → 입력 차단 ──
+type('lrc-comp-rate', '20.01');
+eq('TEST 37 비교금리 20.01% → 결과 즉시 숨김·오류', [resultShown(), errShown()], [false, true]);
+eq('TEST 37 이전 결과 DOM 제거', [txt('res-total'), $('lrc-table').innerHTML, $('lrc-sched-table').innerHTML], ['', '', '']);
+ok('TEST 37 안내 문구(비교할 금리)', txt('lrc-errors').includes('비교할 금리 연 20.01% — ' + OVER_MSG));
+type('lrc-comp-rate', '7'); type('lrc-base-rate', '20.01');
+eq('TEST 37 기준금리 20.01% 차단', [resultShown(), errShown()], [false, true]);
+ok('TEST 37 안내 문구(기준 금리)', txt('lrc-errors').includes('기준 금리 연 20.01% — ' + OVER_MSG));
+ok('TEST 37 NaN 없음', clean());
+type('lrc-base-rate', '4');
+eq('TEST 37 20% 이하로 고치면 자동 재계산', [resultShown(), errShown(), tableRow('금리')], [true, false, ['4.0%', '7.0%', '+3.0%p']]);
+await fresh();
+fill({ P: '100000000', a: '20.01', b: '7' }); calc();
+eq('TEST 37 첫 계산부터 20.01%면 결과 없음', [resultShown(), errShown()], [false, true]);
+
+// ── TEST 38 금리 0% → 정상 계산 ──
+type('lrc-base-rate', '0');
+const R0 = eng(1e8, 0, 7, 60, 'equalPayment');
+eq('TEST 38 기준금리 0% 정상 계산', [resultShown(), errShown(), tableRow('금리')[0], tableRow('월 상환액')[0], tableRow('총 이자')[0]], [true, false, '0.0%', W(1e8 / 60), '0원']);
+eq('TEST 38 비교 7% 값 = 엔진', tableRow('총 이자')[1], W(R0.compare.totalInterest));
+type('lrc-base-rate', '7'); type('lrc-comp-rate', '0');
+eq('TEST 38 비교금리 0% 정상·절감', [resultShown(), errShown(), tableRow('총 이자')[1], /절감$/.test(txt('res-total'))], [true, false, '0원', true]);
+for (const t of ['equalPrincipal', 'bullet']) { click('lrc-type-' + t); ok(`TEST 38 비교금리 0% (${t}) 총이자 0원·NaN 없음`, resultShown() && tableRow('총 이자')[1] === '0원' && clean()); }
+await fresh();
+fill({ P: '300000000', a: '4', b: '6', term: '30' }); calc();
 
 // ── TEST 31 비교금리 삭제 → 즉시 숨김 ──
 type('lrc-comp-rate', '');

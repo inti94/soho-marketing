@@ -182,20 +182,50 @@ for (const r of ['-0.1', '-5']) { eq(`TEST 25 기준금리 ${r} 차단`, V({ bas
 eq('TEST 25 0% 허용', V({ baseRate: '0', compareRate: '0' }).values.baseRate, 0);
 eq('TEST 31(엔진) 비교금리 빈값 차단', V({ compareRate: '' }).values, null);
 eq('상환방식 미선택 차단', V({ repaymentType: '' }).values, null);
-{
-  const v = V({ compareRate: '100' });
-  ok('TEST 26 100% 허용 + 경고', v.values && v.values.compareRate === 100 && v.warnings.length === 1);
-  for (const t of ['equalPayment', 'equalPrincipal', 'bullet']) {
-    const R = E.calculateLoanComparison(Object.assign({}, v.values, { repaymentType: t }));
-    ok(`TEST 26 100% (${t}) NaN/Infinity 없음·금리 보정 없음`, finiteAll(R) && R.compare.annualRate === 100);
-  }
-  // 회귀: 점화식 방식은 여기서 수천~수십만원 틀렸다 (기대값은 BigInt 60자리 고정밀 계산)
-  near('TEST 26 회귀 100%·360개월 총이자 = 29,000,000.00', E.calculateEqualPaymentLoan(1000000, 100, 360).totalInterest, 29000000.000009, 0.01);
-  near('TEST 26 회귀 74.807%·480개월 총이자 = 8,676,840,000.00', E.calculateEqualPaymentLoan(300000000, 74.807, 480).totalInterest, 8676840000.002222, 0.01);
-  near('TEST 26 회귀 100%·360개월 마지막 회차 = 월상환액', E.calculateEqualPaymentLoan(1000000, 100, 360).lastMonthlyPayment, E.calculateEqualPaymentLoan(1000000, 100, 360).monthlyPayment, 1e-6);
-  eq('TEST 26 100.01% 차단', V({ compareRate: '100.01' }).values, null);
-  eq('TEST 26 20%는 경고 없음', V({ compareRate: '20' }).warnings.length, 0);
+// ── TEST 26 (정책 변경 2026-09-29): 연 20% 초과는 입력 차단 — 계산기 입력 정책이며 수학적 한계가 아님 ──
+const OVER_MSG = '입력한 금리가 국내 일반 개인대출의 법정 최고금리(연 20%) 범위를 초과합니다. 금리를 다시 확인해주세요.';
+eq('TEST 26 상한 정책값 = 20', E.LIMITS.MAX_RATE, 20);
+for (const r of ['25', '100', '100.01']) {
+  const vb = V({ baseRate: r }), vc = V({ compareRate: r });
+  ok(`TEST 26 기준금리 ${r}% 차단 + 법정 최고금리 안내`, vb.values === null && vb.errors.length === 1 && vb.errors[0].includes(OVER_MSG) && vb.errors[0].startsWith('기준 금리'));
+  ok(`TEST 26 비교금리 ${r}% 차단 + 법정 최고금리 안내`, vc.values === null && vc.errors.length === 1 && vc.errors[0].includes(OVER_MSG) && vc.errors[0].startsWith('비교할 금리'));
 }
+// 엔진 계산 함수 자체의 고금리 수치 안정성(입력 정책과 무관) — 점화식 방식은 여기서 수천~수십만원 틀렸다 (기대값은 BigInt 60자리 고정밀 계산)
+for (const t of ['equalPayment', 'equalPrincipal', 'bullet'])
+  ok(`엔진 수치 안정성 100% (${t}) NaN/Infinity 없음·금리 보정 없음`, (R => finiteAll(R) && R.compare.annualRate === 100)(E.calculateLoanComparison({ principal: 1e8, baseRate: 4.5, compareRate: 100, months: 60, repaymentType: t })));
+near('엔진 수치 안정성 회귀 100%·360개월 총이자 = 29,000,000.00', E.calculateEqualPaymentLoan(1000000, 100, 360).totalInterest, 29000000.000009, 0.01);
+near('엔진 수치 안정성 회귀 74.807%·480개월 총이자 = 8,676,840,000.00', E.calculateEqualPaymentLoan(300000000, 74.807, 480).totalInterest, 8676840000.002222, 0.01);
+near('엔진 수치 안정성 회귀 100%·360개월 마지막 회차 = 월상환액', E.calculateEqualPaymentLoan(1000000, 100, 360).lastMonthlyPayment, E.calculateEqualPaymentLoan(1000000, 100, 360).monthlyPayment, 1e-6);
+eq('경고 목록 항상 비어 있음(20% 이하는 경고 없이 계산)', [V({ compareRate: '20' }).warnings, V({ baseRate: '19.99' }).warnings], [[], []]);
+// ── TEST 36 금리 20% → 정상 계산 ──
+for (const t of ['equalPayment', 'equalPrincipal', 'bullet']) for (const side of ['baseRate', 'compareRate']) {
+  const v = V({ [side]: '20', repaymentType: t });
+  ok(`TEST 36 ${side === 'baseRate' ? '기준' : '비교'}금리 20% (${t}) 검증 통과·오류 0·값 보정 없음`, v.values !== null && v.errors.length === 0 && v.values[side] === 20);
+  const R = E.calculateLoanComparison(v.values), res = side === 'baseRate' ? R.base : R.compare;
+  ok(`TEST 36 ${side === 'baseRate' ? '기준' : '비교'}금리 20% (${t}) 결과 NaN/Infinity 없음·잔액 0`, finiteAll(R) && res.schedule[59].remainingPrincipal === 0);
+}
+{
+  const R = E.calculateLoanComparison(V({ compareRate: '20' }).values);
+  near('TEST 36 20% 원리금균등 월상환 = 독립 공식', R.compare.monthlyPayment, pmt(1e8, 20, 60), 1e-6);
+  eq('TEST 36 20% 원리금균등 월상환 표시 2,649,388원', E.formatMoney(R.compare.monthlyPayment), '2,649,388원');
+  near('TEST 36 20% 만기일시 월이자 = 1,666,666.67', E.calculateLoanComparison(V({ compareRate: '20', repaymentType: 'bullet' }).values).compare.monthlyInterest, 1e8 * 0.2 / 12, 1e-6);
+  near('TEST 36 20% 원금균등 총이자 = P×r×(n+1)/2', E.calculateLoanComparison(V({ compareRate: '20', repaymentType: 'equalPrincipal' }).values).compare.totalInterest, 1e8 * (0.2 / 12) * 61 / 2, 1e-5);
+}
+// ── TEST 37 금리 20.01% → 입력 차단 ──
+for (const side of ['baseRate', 'compareRate']) for (const r of ['20.01', '20.001', '20.0001']) {
+  const v = V({ [side]: r });
+  ok(`TEST 37 ${side === 'baseRate' ? '기준' : '비교'}금리 ${r}% 차단 + 안내 문구`, v.values === null && v.errors.length === 1 && v.errors[0].includes(OVER_MSG));
+}
+ok('TEST 37 두 금리 모두 초과 → 오류 2건', V({ baseRate: '21', compareRate: '20.01' }).errors.filter(e => e.includes(OVER_MSG)).length === 2);
+ok('TEST 37 "20.00"은 20과 같아 허용', V({ compareRate: '20.00' }).values !== null);
+// ── TEST 38 금리 0% → 정상 계산 ──
+for (const t of ['equalPayment', 'equalPrincipal', 'bullet']) for (const side of ['baseRate', 'compareRate']) {
+  const v = V({ [side]: '0', repaymentType: t });
+  ok(`TEST 38 ${side === 'baseRate' ? '기준' : '비교'}금리 0% (${t}) 검증 통과`, v.values !== null && v.errors.length === 0 && v.values[side] === 0);
+  const R = E.calculateLoanComparison(v.values), res = side === 'baseRate' ? R.base : R.compare;
+  ok(`TEST 38 ${side === 'baseRate' ? '기준' : '비교'}금리 0% (${t}) 총이자 0·총상환 = 원금·NaN 없음`, res.totalInterest === 0 && res.totalPayment === 1e8 && finiteAll(R));
+}
+eq('TEST 38 0% 원리금균등 월상환 = 원금/개월', E.calculateLoanComparison(V({ baseRate: '0' }).values).base.monthlyPayment, 1e8 / 60);
 // ── TEST 27 콤마 ──
 eq('TEST 27 100,000,000 파싱', V({ principal: '100,000,000' }).values.principal, 100000000);
 eq('TEST 27 공백 포함 파싱', V({ principal: ' 30,000,000 ' }).values.principal, 30000000);

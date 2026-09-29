@@ -9,9 +9,12 @@
   var LIMITS = {
     MAX_PRINCIPAL: 10000000000,   // 100억원 (계산기 정책)
     MAX_MONTHS: 480,              // 40년 (계산기 정책)
-    MAX_RATE: 100,                // 연 100% 초과는 입력 오류로 본다 (계산기 정책)
-    WARN_RATE: 20                 // 연 20% 초과는 계산하되 경고
+    // 연 20% 초과 차단 — 수학 공식상의 한계가 아니다(계산 함수는 고금리에서도 정확히 동작하며 테스트로 확인함).
+    // 국내 일반 개인대출 비교용 계산기라는 목적에 맞춘 입력 정책으로, 법정 최고금리(대부업법 시행령·이자제한법,
+    // 2021.7.7부터 연 20%)를 넘는 금리는 오입력으로 보고 계산하지 않는다. 최고금리가 바뀌면 이 값만 고친다.
+    MAX_RATE: 20
   };
+  var RATE_OVER_MAX_MSG = '입력한 금리가 국내 일반 개인대출의 법정 최고금리(연 20%) 범위를 초과합니다. 금리를 다시 확인해주세요.';
   var TYPES = { equalPayment: '원리금균등상환', equalPrincipal: '원금균등상환', bullet: '만기일시상환' };
   var EPS_BALANCE = 1e-6;         // 부동소수점 잔액(0.0000001원 등)은 0으로 본다
 
@@ -41,8 +44,7 @@
       var r = parseNum(v);
       if (!isFinite(r)) { errors.push(name + '를 입력하세요. (예: 4.5)'); return NaN; }
       if (r < 0) { errors.push(name + '는 0% 이상이어야 합니다.'); return NaN; }
-      if (r > LIMITS.MAX_RATE) { errors.push(name + '는 연 100% 이하로 입력하세요.'); return NaN; }
-      if (r > LIMITS.WARN_RATE) warnings.push(name + ' 연 ' + r + '%는 일반적인 대출금리 범위(연 20% 이하)를 크게 벗어난 값입니다. 입력값을 다시 확인하세요.');
+      if (r > LIMITS.MAX_RATE) { errors.push(name + ' 연 ' + r + '% — ' + RATE_OVER_MAX_MSG); return NaN; }
       return r;
     }
     var baseRate = rate(raw.baseRate, '기준 금리');

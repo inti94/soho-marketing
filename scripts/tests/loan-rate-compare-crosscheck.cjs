@@ -71,6 +71,16 @@ for (let i = 0; i < N; i++) {
   chk(`${tag} 금리차`, c.rateDifference, Math.round((b - a) * 1e6) / 1e6, 1e-9);
   chk(`${tag} 방향 일관(이자차 부호 = 금리차 부호)`, Math.sign(Math.round(c.totalInterestDifference * 1e4)) === Math.sign(Math.round((b - a) * 1e6)) || P * Math.abs(b - a) < 1e3 ? 1 : 0, 1, 0);
 }
+// 입력 정책 검산: 금리는 0 이상 20 이하만 통과(국내 일반 개인대출 계산기 정책). 무작위 금리 문자열로 대조
+const RATE_N = 20000;
+for (let i = 0; i < RATE_N; i++) {
+  const r = pick([0, 20, 20.01, 20.001, -0.01, 19.999, Math.round((rnd() * 30 - 2) * 1000) / 1000, Math.round(rnd() * 2000) / 100]);
+  const s = String(r), side = i % 2 ? 'baseRate' : 'compareRate';
+  const v = E.validateLoanInputs(Object.assign({ principal: '100000000', baseRate: '5', compareRate: '5', term: '5', termUnit: 'year', repaymentType: 'equalPayment' }, { [side]: s }));
+  const expectOk = Number(s) >= 0 && Number(s) <= 20;
+  chk(`금리정책 ${side}=${s}`, v.values ? 1 : 0, expectOk ? 1 : 0, 0);
+  if (expectOk) chk(`금리정책 값 보정 없음 ${s}`, v.values[side], Number(s), 0);
+}
 fails.forEach(f => console.log('MISMATCH ' + f));
-console.log(`독립 검산: 조합 ${N}건 · 비교 항목 ${checks}건 / 불일치 ${bad}`);
+console.log(`독립 검산: 계산 조합 ${N}건 + 금리 입력정책 ${RATE_N}건 · 비교 항목 ${checks}건 / 불일치 ${bad}`);
 process.exit(bad ? 1 : 0);
