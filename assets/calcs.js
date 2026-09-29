@@ -43,6 +43,7 @@ window.SOHO_CALCS = [
     {cat:'창업',name:'폐업 비용 계산기',desc:'철거비·퇴직금·재고 + 폐업 지원금 차감한 실제 부담액 계산',href:'closure-cost-calc.html',icon:'Package',color:'#6B7684',tags:['폐업','철거','지원금'],views:2530,isNew:true},
     {cat:'창업',name:'창업 초기비용 계산기',desc:'업종·평수 → 인테리어·보증금·권리금 등 창업비용 + 월 BEP 매출 추정',href:'startup-cost-calc.html',icon:'Rocket',color:'#F04452',tags:['창업','초기자금'],views:3940,isNew:true},
     {cat:'창업',name:'대출 조기상환 계산기',desc:'남은 대출 잔액·금리·중도상환수수료율 → 지금 갚는 게 이득인지 손익 비교',href:'loan-prepayment-calc.html',icon:'Scale',color:'#EC4899',tags:['조기상환','중도상환수수료','대출'],views:0,isNew:true},
+    {cat:'창업',name:'신용점수별 대출비용 비교 계산기',desc:'직접 확인한 두 대출금리 → 같은 조건으로 월 상환액·첫 1년 이자·총이자 차이 비교 (원리금균등·원금균등·만기일시)',href:'loan-rate-compare-calc.html',icon:'BarChart2',color:'#EC4899',tags:['대출금리 비교','금리 차이','대출이자'],views:0,isNew:true},
     {cat:'재테크',name:'주식 평단가 계산기',desc:'분할매수 매수가·수량으로 평균단가·총매입·평가손익·수익률 자동 계산',href:'stock-average-calc.html',icon:'TrendingUp',color:'#3D5AFE',tags:['평단가','물타기','수익률'],views:1280,isNew:true},
     {cat:'재테크',name:'물타기 계산기',desc:'보유 수량·평단가 + 추가매수 → 물타기 후 새 평단가·총수량·평가손익 자동 계산',href:'averaging-down-calc.html',icon:'BarChart2',color:'#00B8D9',tags:['물타기','추가매수','평단가'],views:640,isNew:true},
     {cat:'재테크',name:'불타기 계산기',desc:'보유 수량·평단가 + 상승 추가매수 → 불타기 후 새 평단가·총수량·평가손익 자동 계산',href:'averaging-up-calc.html',icon:'TrendingUp',color:'#FF6B35',tags:['불타기','상승추가매수','평단가'],views:520,isNew:true},
