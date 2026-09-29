@@ -8,8 +8,8 @@ const engine = fs.readFileSync(ROOT + 'assets/loan-rate-compare.js', 'utf8');
 const sohotip = fs.readFileSync(ROOT + 'sohotip.js', 'utf8');
 const E = require(ROOT + 'assets/loan-rate-compare.js');
 
-async function boot() {
-  const stripped = html.replace(/<script[^>]*\bsrc=[^>]*><\/script>/g, '');
+async function boot(src) {
+  const stripped = (src || html).replace(/<script[^>]*\bsrc=[^>]*><\/script>/g, '');
   const inline = [...stripped.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]).filter(s => s.includes('LoanRateCompare'))[0];
   const dom = new JSDOM(stripped.replace(/<script>[\s\S]*?<\/script>/g, ''), { runScripts: 'outside-only', pretendToBeVisual: true });
   const w = dom.window;
@@ -315,6 +315,63 @@ ok('TEST 26(안내) 고정 연이율 가정 문구', page.includes('본 계산�
 ok('TEST 29(안내) 일할이자 문구', page.includes('실제 금융기관 상환금액은 대출 실행일, 납입일, 일할이자 계산방식 등에 따라 일부 차이가 날 수 있습니다.'));
 ok('TEST 77(안내) 결과 하단 안내문', page.includes('본 계산기는 입력한 금리가 전체 대출기간 동안 변하지 않는다는 가정으로 계산한 참고용 결과입니다.'));
 ok('SEO: 점수→금리 약속 문구 없음', !/신용점수 \d+점|점수만으로 금리를|점수별 금리표/.test(html.replace(/<script[\s\S]*?<\/script>/g, '')));
+
+// ── LAYOUT: 금리별 상세 비교표 (jsdom은 픽셀 레이아웃이 없어 CSS 규칙·캐스케이드·DOM 구조로 검사, 픽셀은 실제 Chrome에서 측정) ──
+{
+  // 실제 페이지와 같은 순서로 공통 calc.css를 넣는다: <link calc.css>를 같은 위치의 <style>로 치환.
+  // (jsdom은 동적으로 넣은 <style>을 styleSheets 끝에 두고, 캐스케이드에서 선택자 명시도를 무시하고 순서만 본다 →
+  //  명시도는 아래에서 직접 계산해 검사하고, 실제 계산값 display:table은 Chrome에서 측정)
+  const calcCss = fs.readFileSync(ROOT + 'assets/calc.css', 'utf8');
+  const linkRe = /<link rel="stylesheet" href="assets\/calc\.css[^"]*">/;
+  ok('LAYOUT 실제 페이지에서 calc.css <link>가 페이지 <style>보다 앞', linkRe.test(html) && html.search(linkRe) < html.indexOf('<style>'));
+  w = await boot(html.replace(linkRe, '<style>' + calcCss + '</style>')); d = w.document;
+  // 단순 선택자(태그·클래스·id 조합, 자손 결합자)용 명시도 계산 — [id, class, type]
+  const spec = sel => sel.trim().split(/\s+/).reduce((a, part) => {
+    a[0] += (part.match(/#[\w-]+/g) || []).length;
+    a[1] += (part.match(/\.[\w-]+/g) || []).length;
+    a[2] += /^[a-z]/i.test(part) ? 1 : 0;
+    return a;
+  }, [0, 0, 0]);
+  const gt = (x, y) => x[0] !== y[0] ? x[0] > y[0] : x[1] !== y[1] ? x[1] > y[1] : x[2] > y[2];
+  eq('LAYOUT 명시도: 공통 ".page-wrap table" = (0,1,1)', spec('.page-wrap table'), [0, 1, 1]);
+  eq('LAYOUT 명시도: 전용 ".page-wrap .cmp-wrap .cmp-table" = (0,3,0)', spec('.page-wrap .cmp-wrap .cmp-table'), [0, 3, 0]);
+  ok('LAYOUT 명시도: 전용 규칙이 공통 규칙보다 높음(순서와 무관하게 브라우저에서 이김)', gt(spec('.page-wrap .cmp-wrap .cmp-table'), spec('.page-wrap table')) && gt(spec('.page-wrap .cmp-wrap .cmp-table'), spec('table.article-table')));
+  fill({ P: '50000000', a: '5', b: '18', term: '5', t: 'bullet' }); calc();
+  const t = $('lrc-table'), cs = w.getComputedStyle(t);
+  ok('LAYOUT 원인 재현: 공통 calc.css의 ".page-wrap table"은 display:block', /\.page-wrap table[^{]*\{[^}]*display:\s*block/.test(calcCss));
+  const probe = d.createElement('table'); d.querySelector('.page-wrap').appendChild(probe);
+  eq('LAYOUT 원인 재현: 전용 규칙 없는 표는 block', w.getComputedStyle(probe).display, 'block'); probe.remove();
+  eq('LAYOUT 1 상세표 display:table (공통 block 규칙을 이 표만 덮어씀)', cs.display, 'table');
+  eq('LAYOUT 1 상세표 width 100%', cs.width, '100%');
+  eq('LAYOUT 2 상세표 max-width none·wrapper만 가로 스크롤', [cs.maxWidth, w.getComputedStyle(t.parentElement).overflowX, w.getComputedStyle(t.parentElement).width], ['none', 'auto', '100%']);
+  eq('LAYOUT 2 table-layout auto(긴 금액이 옆 칸에 겹치지 않게)·border-collapse', [cs.tableLayout, cs.borderCollapse], ['auto', 'collapse']);
+  const cols = [...t.querySelectorAll('colgroup col')];
+  eq('LAYOUT 3 colgroup 4열', cols.map(c => c.className), ['cc-label', 'cc-base', 'cc-comp', 'cc-diff']);
+  eq('LAYOUT 3 PC 열 비율 22/26/26/26 (합 100%)', cols.map(c => w.getComputedStyle(c).width), ['22%', '26%', '26%', '26%']);
+  eq('LAYOUT 3 헤더 4열', [...t.querySelectorAll('thead th')].map(x => x.textContent), ['항목', '기준 금리', '비교 금리', '차이']);
+  eq('LAYOUT 4 모든 본문 행 4칸(헤더 열과 1:1)', [...t.querySelectorAll('tbody tr')].map(r => r.children.length), [4, 4, 4, 4, 4, 4]);
+  eq('LAYOUT 4 스펙 데이터 표시값(배치만 변경, 숫자 불변)', [...t.querySelectorAll('tbody tr')].map(r => [...r.children].map(c => c.textContent).join('|')), ['금리|5.0%|18.0%|+13.0%p', '매월 이자|208,333원|750,000원|+541,667원', '만기 상환 원금|50,000,000원|50,000,000원|0원', '첫 1년 이자|2,500,000원|9,000,000원|+6,500,000원', '총 이자|12,500,000원|45,000,000원|+32,500,000원', '총 상환액|62,500,000원|95,000,000원|+32,500,000원']);
+  const td = t.querySelector('tbody tr:nth-child(2) td:nth-child(2)'), th0 = t.querySelector('thead th'), tdLabel = t.querySelector('tbody td');
+  eq('LAYOUT 6 숫자 열 오른쪽 정렬·한 줄·고정폭 숫자', [w.getComputedStyle(td).textAlign, w.getComputedStyle(td).whiteSpace, cs.fontVariantNumeric], ['right', 'nowrap', 'tabular-nums']);
+  eq('LAYOUT 6 항목 열 왼쪽 정렬·단어 단위 줄바꿈', [w.getComputedStyle(tdLabel).textAlign, w.getComputedStyle(tdLabel).wordBreak, w.getComputedStyle(th0).textAlign], ['left', 'keep-all', 'left']);
+  eq('LAYOUT 15 카드 좌우 안쪽 여백 동일(PC 12px/12px)', [w.getComputedStyle(th0).paddingLeft, w.getComputedStyle(t.querySelector('thead th:last-child')).paddingRight], ['12px', '12px']);
+  eq('LAYOUT 18 wrapper 고정 height 없음·radius 유지', [w.getComputedStyle(t.parentElement).height, w.getComputedStyle(t.parentElement).borderRadius], ['', '14px']);
+  // 절감 방향: 금액은 .amt(nowrap)로 묶고 '절감'만 줄바꿈 허용
+  type('lrc-base-rate', '18'); type('lrc-comp-rate', '5');
+  const saveCell = t.querySelector('tbody tr:nth-child(2) td:nth-child(4)');
+  eq('LAYOUT 12 절감 금액은 .amt 한 줄 묶음', [saveCell.querySelector('.amt') && saveCell.querySelector('.amt').textContent, saveCell.textContent, w.getComputedStyle(saveCell.querySelector('.amt')).whiteSpace], ['541,667원', '541,667원 절감', 'nowrap']);
+  // 모바일 미디어쿼리(jsdom은 @media를 평가하지 않아 CSSOM 규칙을 직접 검사)
+  const pageSheet = [...d.styleSheets].find(s => [...s.cssRules].some(r => r.selectorText === '.cmp-table col.cc-label'));
+  const mq = [...pageSheet.cssRules].filter(r => r.media && r.media.mediaText.replace(/\s/g, '') === '(max-width:480px)' && /cc-label/.test(r.cssText));
+  eq('LAYOUT 5 모바일 breakpoint(max-width:480px) 규칙 1개', mq.length, 1);
+  const mr = sel => [...mq[0].cssRules].find(r => r.selectorText === sel);
+  const pct = s => parseFloat(mr(s).style.getPropertyValue('width'));
+  eq('LAYOUT 5 모바일 열 비율 22/25/25/28 (합 100%)', [pct('.cmp-table col.cc-label'), pct('.cmp-table col.cc-base,.cmp-table col.cc-comp'), pct('.cmp-table col.cc-diff')], [22, 25, 28]);
+  ok('LAYOUT 5 모바일 글자 12px 이상(헤더·본문·항목)', ['.page-wrap .cmp-wrap .cmp-table', '.cmp-table th', '.cmp-table th:first-child,.cmp-table td:first-child'].every(s => parseFloat(mr(s).style.getPropertyValue('font-size')) >= 12));
+  eq('LAYOUT 5 모바일 항목 열 최소폭·좌우 끝 여백 동일', [mr('.cmp-table th:first-child,.cmp-table td:first-child').style.getPropertyValue('min-width'), mr('.cmp-table th:first-child,.cmp-table td:first-child').style.getPropertyValue('padding-left'), mr('.cmp-table th:last-child,.cmp-table td:last-child').style.getPropertyValue('padding-right')], ['50px', '8px', '8px']);
+  ok('LAYOUT 21 공통 calc.css 미수정(".page-wrap table" 규칙 유지)', /\.page-wrap table, \.article-content table, \.article-main table,\s*table\.article-table, \.article-table \{ display: block;/.test(calcCss));
+  ok('LAYOUT 7 표 전용 규칙은 이 페이지 안에만(.cmp-table은 calc.css에 없음)', !/cmp-table|cmp-wrap/.test(calcCss));
+}
 
 console.log(`\nUI 테스트: ${pass + fail}건 / 통과 ${pass} / 실패 ${fail}`);
 process.exit(fail ? 1 : 0);

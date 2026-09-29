@@ -219,15 +219,34 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
 .rate-diff-live{font-size:12.5px;color:var(--primary-mid);margin:-8px 0 16px;min-height:18px;}
 .result-card .result-msg{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.25);font-size:14px;line-height:1.6;word-break:keep-all;}
 .sec-title{font-size:15px;font-weight:700;color:var(--text);margin:22px 0 10px;}
-.cmp-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:14px;background:var(--bg-card);}
-.cmp-table{width:100%;border-collapse:collapse;font-size:13px;}
-.cmp-table th,.cmp-table td{padding:10px 10px;border-bottom:1px solid var(--border);text-align:right;white-space:nowrap;}
-.cmp-table th{background:#F4F6FB;font-weight:700;font-size:12px;color:var(--text-muted);}
+.cmp-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:14px;background:var(--bg-card);}
+/* 공통 calc.css의 '.page-wrap table{display:block}'(좁은 화면 넘침 방지용)이 이 표에도 걸려, 표 상자는 100%인데
+   실제 행(익명 table 상자)은 내용 폭만 차지해 오른쪽이 비었다. 이 페이지 표만 display:table로 되돌린다(공통 CSS는 그대로).
+   table-layout:auto + colgroup 비율: 공간이 있으면 비율대로 꽉 채우고, 금액이 비율 폭보다 길면 그 열만 넓혀 겹치지 않게 한다.
+   그래도 모자라면(320px 등) 표가 wrapper보다 넓어져 wrapper 안에서만 가로 스크롤된다. */
+.page-wrap .cmp-wrap .cmp-table{display:table;width:100%;max-width:none;overflow:visible;table-layout:auto;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums;}
+.cmp-table col.cc-label{width:22%;}
+.cmp-table col.cc-base,.cmp-table col.cc-comp{width:26%;}
+.cmp-table col.cc-diff{width:26%;}
+.cmp-table th,.cmp-table td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:right;white-space:nowrap;vertical-align:middle;}
+.cmp-table th{background:#F4F6FB;font-weight:700;font-size:12.5px;color:var(--text-muted);}
 .cmp-table th:first-child,.cmp-table td:first-child{text-align:left;white-space:normal;word-break:keep-all;color:var(--text-muted);font-size:12.5px;}
+.cmp-table td.down{white-space:normal;}
+.cmp-table .amt{white-space:nowrap;}
 .cmp-table tr:last-child td{border-bottom:none;}
 .cmp-table td.up{color:#C2410C;font-weight:600;}
 .cmp-table td.down{color:#047857;font-weight:600;}
-@media(max-width:480px){.cmp-table{font-size:12px;}.cmp-table th,.cmp-table td{padding:9px 6px;}.cmp-table th:first-child,.cmp-table td:first-child{font-size:11.5px;}}
+@media(max-width:480px){
+  .page-wrap .cmp-wrap .cmp-table{font-size:12px;}
+  .cmp-table col.cc-label{width:22%;}
+  .cmp-table col.cc-base,.cmp-table col.cc-comp{width:25%;}
+  .cmp-table col.cc-diff{width:28%;}
+  .cmp-table th,.cmp-table td{padding:9px 5px;letter-spacing:-0.3px;}
+  .cmp-table th{font-size:12px;}
+  /* 항목 열이 긴 금액에 밀려 한 글자 폭까지 줄지 않게 최소폭 확보(모자라면 wrapper 안에서만 가로 스크롤) */
+  .cmp-table th:first-child,.cmp-table td:first-child{font-size:12px;letter-spacing:0;min-width:50px;padding-left:8px;}
+  .cmp-table th:last-child,.cmp-table td:last-child{padding-right:8px;}
+}
 .breakdown-value.up{color:#C2410C;font-weight:700;}
 .breakdown-value.down{color:#047857;font-weight:700;}
 .breakdown-value small{display:block;font-size:11px;color:var(--text-muted);font-weight:400;}
@@ -500,7 +519,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
   // 차이는 표시된(반올림된) 두 값의 차로 보여 표 안에서 숫자가 맞아떨어지게 한다
   function dRound(a, b) { return r0(b) - r0(a); }
   function diffText(d) { return d > 0 ? '+' + won(d) + ' 더 부담' : d < 0 ? won(-d) + ' 절감' : '0원 (차이 없음)'; }
-  function diffCell(d) { return d > 0 ? '+' + won(d) : d < 0 ? won(-d) + ' 절감' : '0원'; }
+  function diffCell(d) { return d > 0 ? '+' + won(d) : d < 0 ? '<span class="amt">' + won(-d) + '</span> 절감' : '0원'; }   // 금액은 한 줄, '절감'만 필요 시 다음 줄로
   function cls(d) { return d > 0 ? 'up' : d < 0 ? 'down' : ''; }
   function row(label, value, c) { return '<div class="breakdown-row"><span class="breakdown-label">' + label + '</span><span class="breakdown-value' + (c ? ' ' + c : '') + '">' + value + '</span></div>'; }
   function termText(n) {
@@ -560,7 +579,7 @@ footer a{color:rgba(255,255,255,0.4);text-decoration:none;margin:0 8px;}
     // 비교표
     function tr(label, a, b, dcell, dc) { return '<tr><td>' + label + '</td><td>' + a + '</td><td>' + b + '</td><td class="' + (dc || '') + '">' + dcell + '</td></tr>'; }
     function mrow(label, a, b) { var d = dRound(a, b); return tr(label, won(a), won(b), diffCell(d), cls(d)); }
-    var tb = '<thead><tr><th>항목</th><th>기준 금리</th><th>비교 금리</th><th>차이</th></tr></thead><tbody>';
+    var tb = '<colgroup><col class="cc-label"><col class="cc-base"><col class="cc-comp"><col class="cc-diff"></colgroup><thead><tr><th>항목</th><th>기준 금리</th><th>비교 금리</th><th>차이</th></tr></thead><tbody>';
     tb += tr('금리', rate(v.baseRate), rate(v.compareRate), point(c.rateDifference), cls(c.rateDifference));
     if (t === 'equalPayment') tb += mrow('월 상환액', A.monthlyPayment, B.monthlyPayment);
     if (t === 'equalPrincipal') { tb += mrow('첫 달 상환액', A.firstMonthlyPayment, B.firstMonthlyPayment); tb += mrow('월평균 상환액', A.averageMonthlyPayment, B.averageMonthlyPayment); tb += mrow('마지막 달 상환액', A.lastMonthlyPayment, B.lastMonthlyPayment); }
